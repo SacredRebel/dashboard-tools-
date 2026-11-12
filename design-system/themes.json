@@ -1,0 +1,72 @@
+{
+  "description": "Metadata for the themes defined in tokens.css. Used by the showcase and by agents choosing a direction.",
+  "google_fonts_url": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&family=Manrope:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap",
+  "themes": [
+    {
+      "id": "atelier",
+      "name": "Atelier",
+      "mode": "light",
+      "mood": ["warm", "editorial", "crafted"],
+      "description": "Warm paper canvas with a whisper of grain, ink-dark text and a terracotta accent. Serif page titles give it a studio feel.",
+      "best_for": ["Interior design", "Architecture", "Creative studios", "Consultants"],
+      "fonts": { "display": "Fraunces", "sans": "Instrument Sans" },
+      "signature": "Paper-grain canvas + Fraunces page titles and numerals",
+      "swatches": ["#f6f2ea", "#fffdf8", "#231d17", "#a84b26", "#3f6e7a", "#c4943c"]
+    },
+    {
+      "id": "linen",
+      "name": "Linen",
+      "mode": "light",
+      "mood": ["calm", "natural", "gentle"],
+      "description": "Soft linen neutrals with a sage accent and rounder corners. Quiet and reassuring.",
+      "best_for": ["Wellness", "Coaching", "Therapy", "Hospitality"],
+      "fonts": { "display": "Manrope", "sans": "Manrope" },
+      "signature": "Generous radius and soft sage highlights",
+      "swatches": ["#f2f3ee", "#fbfbf8", "#1d231f", "#3f6b4c", "#b07d4f", "#5b7fa0"]
+    },
+    {
+      "id": "coastal",
+      "name": "Coastal",
+      "mode": "light",
+      "mood": ["fresh", "clear", "trustworthy"],
+      "description": "Crisp whites, cool grey-blue neutrals and an ocean accent. The most universal of the six.",
+      "best_for": ["Real estate", "Agencies", "Professional services", "Finance-lite"],
+      "fonts": { "display": "Plus Jakarta Sans", "sans": "Plus Jakarta Sans" },
+      "signature": "High clarity, tight display tracking",
+      "swatches": ["#f2f6f8", "#ffffff", "#10212c", "#1c6a86", "#e07a5f", "#3d9a7a"]
+    },
+    {
+      "id": "blush",
+      "name": "Blush",
+      "mode": "light",
+      "mood": ["soft", "elegant", "personal"],
+      "description": "Rosy off-whites with a deep rose accent and an editorial serif for titles.",
+      "best_for": ["Beauty", "Events & weddings", "Fashion", "Boutique brands"],
+      "fonts": { "display": "Instrument Serif", "sans": "DM Sans" },
+      "signature": "Instrument Serif titles, rounded soft cards",
+      "swatches": ["#faf4f2", "#fffcfb", "#2a1e21", "#a8445e", "#6c8ea4", "#c58f5a"]
+    },
+    {
+      "id": "noir",
+      "name": "Noir",
+      "mode": "dark",
+      "mood": ["luxurious", "exclusive", "quiet"],
+      "description": "Near-black surfaces, champagne gold accent and a classic Garamond for titles. Sharp corners, low noise.",
+      "best_for": ["Luxury services", "Private clients", "High-end real estate", "Jewellery"],
+      "fonts": { "display": "Cormorant Garamond", "sans": "Manrope" },
+      "signature": "Gold on black, Garamond numerals, edge-lit surfaces",
+      "swatches": ["#0d0d0f", "#151517", "#eeebe4", "#cfae72", "#8fa8c8", "#b98a9e"]
+    },
+    {
+      "id": "midnight",
+      "name": "Midnight",
+      "mode": "dark",
+      "mood": ["focused", "technical", "crisp"],
+      "description": "Deep navy with a periwinkle accent and Geist throughout. Feels like a pro tool.",
+      "best_for": ["Tech-savvy users", "Agencies", "Late-night workers"],
+      "fonts": { "display": "Geist", "sans": "Geist" },
+      "signature": "Dense, precise, keyboard-first feel",
+      "swatches": ["#0a0e1a", "#111727", "#e7ebf5", "#8ea6ff", "#5cc2b0", "#e5a35c"]
+    }
+  ]
+}

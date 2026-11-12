@@ -1,0 +1,13 @@
+{
+  "name": "dashboard-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Toolkit, design system and agent playbook for building beautiful, functional dashboards with AI.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npx serve site",
+    "screenshot": "node scripts/screenshot.mjs"
+  },
+  "license": "MIT"
+}

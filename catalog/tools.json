@@ -1,0 +1,4709 @@
+{
+  "schema_version": 1,
+  "description": "Curated catalog of skills, connectors, agents and libraries for designing and building dashboards. Source of truth for docs/tools/ and the showcase site. Edit here, then run `node scripts/build.mjs`.",
+  "tiers": [
+    {
+      "id": "core",
+      "meaning": "Use on every dashboard project."
+    },
+    {
+      "id": "recommended",
+      "meaning": "Use in most projects; skip only with a reason."
+    },
+    {
+      "id": "optional",
+      "meaning": "Useful add-on when the situation fits."
+    },
+    {
+      "id": "situational",
+      "meaning": "Only for a specific need (named in use_when)."
+    }
+  ],
+  "kinds": [
+    {
+      "id": "skill",
+      "meaning": "A Claude skill, invoked by name (e.g. via the Skill tool or /name)."
+    },
+    {
+      "id": "builtin",
+      "meaning": "A built-in Claude Code command."
+    },
+    {
+      "id": "agent",
+      "meaning": "A subagent type."
+    },
+    {
+      "id": "connector",
+      "meaning": "An MCP connector or CLI to an external service."
+    },
+    {
+      "id": "cli",
+      "meaning": "A command-line tool."
+    },
+    {
+      "id": "library",
+      "meaning": "An open-source library or hosted service used in the code."
+    }
+  ],
+  "categories": [
+    {
+      "id": "process",
+      "name": "Process & Planning",
+      "icon": "compass",
+      "blurb": "Skills that keep the agent disciplined: brainstorm, spec, plan, then execute in small verified steps."
+    },
+    {
+      "id": "research",
+      "name": "Discovery & Research",
+      "icon": "search",
+      "blurb": "Turn interviews, voice notes, meeting transcripts and playbooks into clear needs and journeys."
+    },
+    {
+      "id": "brand",
+      "name": "Brand & Visual Direction",
+      "icon": "palette",
+      "blurb": "Decide what the product should feel like: positioning, palette, type, logo and mood boards."
+    },
+    {
+      "id": "uiux",
+      "name": "UI / UX Design",
+      "icon": "layout",
+      "blurb": "Screen design, interaction design, design systems and critique, from flows to finished screens."
+    },
+    {
+      "id": "polish",
+      "name": "UX Polish Rules",
+      "icon": "sparkles",
+      "blurb": "Small, strict rule-sets (spacing, type, motion, loaders, empty states) that separate premium from generic."
+    },
+    {
+      "id": "dataviz",
+      "name": "Dashboards & Data Viz",
+      "icon": "chart",
+      "blurb": "KPI tiles, charts, report layouts and honest data presentation."
+    },
+    {
+      "id": "crm",
+      "name": "CRM & Sales Workflows",
+      "icon": "users",
+      "blurb": "Pipeline logic, follow-ups, call summaries, lead triage. The functionality behind a CRM dashboard."
+    },
+    {
+      "id": "build",
+      "name": "Frontend Engineering",
+      "icon": "code",
+      "blurb": "Build production-quality UI incrementally, grounded in official docs."
+    },
+    {
+      "id": "quality",
+      "name": "Testing, Review & Accessibility",
+      "icon": "shield",
+      "blurb": "Prove it works: browser tests, audits, code review, security and verification gates."
+    },
+    {
+      "id": "ship",
+      "name": "Deploy & Operate",
+      "icon": "rocket",
+      "blurb": "GitHub and Vercel: repos, previews, production deploys, logs and rollbacks."
+    },
+    {
+      "id": "integrations",
+      "name": "Connectors & Data Sources",
+      "icon": "plug",
+      "blurb": "Gmail, Calendar, Drive, spreadsheets and meeting recorders that feed the CRM."
+    },
+    {
+      "id": "media",
+      "name": "Media & Assets",
+      "icon": "image",
+      "blurb": "Images, icons, illustrations, sound and video for a polished product."
+    },
+    {
+      "id": "libraries",
+      "name": "Code Libraries & Services",
+      "icon": "package",
+      "blurb": "The recommended open-source building blocks and hosted services for the stack."
+    },
+    {
+      "id": "handover",
+      "name": "Docs, Handover & Training",
+      "icon": "book",
+      "blurb": "Make the client self-sufficient: docs, decision records and guided onboarding."
+    }
+  ],
+  "phases": [
+    {
+      "id": "discover",
+      "n": 1,
+      "name": "Discover",
+      "goal": "Understand the business, the people and the job the dashboard must do.",
+      "gate": "A written summary of needs that the client has confirmed."
+    },
+    {
+      "id": "define",
+      "n": 2,
+      "name": "Define",
+      "goal": "Turn needs into a scoped spec: data model, screens, v1 features, non-goals.",
+      "gate": "spec.md approved; v1 scope fits in one page."
+    },
+    {
+      "id": "direction",
+      "n": 3,
+      "name": "Direction",
+      "goal": "Choose the look and feel: theme, typography, palette, tone of voice.",
+      "gate": "One visual direction chosen from 2-3 options; tokens written."
+    },
+    {
+      "id": "design",
+      "n": 4,
+      "name": "Design",
+      "goal": "Information architecture, page patterns, component inventory, key states.",
+      "gate": "Every screen has a named page pattern and its empty/loading/error states are defined."
+    },
+    {
+      "id": "build",
+      "n": 5,
+      "name": "Build",
+      "goal": "Implement in small, deployable slices on the recommended stack.",
+      "gate": "Each slice deployed to a Vercel preview and checked in a real browser."
+    },
+    {
+      "id": "polish",
+      "n": 6,
+      "name": "Polish & QA",
+      "goal": "Apply the rulebook, audit UX and accessibility, test on phone and desktop.",
+      "gate": "QA checklist passes; no open severity-1 findings."
+    },
+    {
+      "id": "ship",
+      "n": 7,
+      "name": "Ship",
+      "goal": "Production deploy, domain, backups, monitoring.",
+      "gate": "Production URL live; rollback path known."
+    },
+    {
+      "id": "handover",
+      "n": 8,
+      "name": "Handover",
+      "goal": "Transfer ownership and teach the client to change it with their own AI.",
+      "gate": "Client made one change themselves via Claude -> GitHub -> Vercel."
+    }
+  ],
+  "tools": [
+    {
+      "id": "brainstorming",
+      "name": "Brainstorming",
+      "invoke": "superpowers:brainstorming",
+      "kind": "skill",
+      "plugin": "superpowers",
+      "category": "process",
+      "phases": [
+        "discover",
+        "define"
+      ],
+      "tier": "core",
+      "summary": "Structured, question-by-question exploration of intent and requirements before any creative or build work starts.",
+      "use_when": [
+        "Starting a new dashboard or a new major feature",
+        "The request is fuzzy (\"make it nice\", \"something like a CRM\")"
+      ],
+      "avoid_when": [
+        "Small, fully specified fixes",
+        "The spec is already approved; go to writing-plans"
+      ],
+      "how_to_use": [
+        "Ask one question at a time; propose 2-3 approaches with a recommendation",
+        "Write the agreed design to docs/ before building"
+      ],
+      "pairs_with": [
+        "spec-driven-development",
+        "idea-refine",
+        "writing-plans"
+      ],
+      "fallback": "docs/framework/01-discover.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "idea-refine",
+      "name": "Idea Refine",
+      "invoke": "agent-protocols:idea-refine",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "process",
+      "phases": [
+        "discover"
+      ],
+      "tier": "recommended",
+      "summary": "Divergent-then-convergent ideation: generates options, then narrows to the strongest with explicit criteria.",
+      "use_when": [
+        "Choosing between dashboard concepts or feature ideas",
+        "The client has many wishes and v1 needs a focus"
+      ],
+      "avoid_when": [
+        "The direction is already decided"
+      ],
+      "how_to_use": [
+        "Feed it the client's goals and constraints; ask for 3 concepts scored against them"
+      ],
+      "pairs_with": [
+        "brainstorming",
+        "choose-what-to-build"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "spec-driven-development",
+      "name": "Spec-Driven Development",
+      "invoke": "agent-protocols:spec-driven-development",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "process",
+      "phases": [
+        "define"
+      ],
+      "tier": "core",
+      "summary": "Writes a structured specification (goals, users, scope, acceptance criteria, non-goals) before code exists.",
+      "use_when": [
+        "After discovery, before any design or code",
+        "Requirements live only in voice notes or chat"
+      ],
+      "avoid_when": [
+        "Tiny changes to an existing, documented feature"
+      ],
+      "how_to_use": [
+        "Use templates/spec.md as the output shape",
+        "Every v1 feature needs a testable acceptance criterion"
+      ],
+      "pairs_with": [
+        "planning-and-task-breakdown",
+        "writing-plans"
+      ],
+      "fallback": "templates/spec.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "planning-and-task-breakdown",
+      "name": "Planning & Task Breakdown",
+      "invoke": "agent-protocols:planning-and-task-breakdown",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "process",
+      "phases": [
+        "define",
+        "build"
+      ],
+      "tier": "core",
+      "summary": "Breaks a spec into small, ordered, verifiable tasks with dependencies.",
+      "use_when": [
+        "The spec is approved and you need a build order",
+        "A task feels too big to start"
+      ],
+      "avoid_when": [
+        "There is no spec yet: write one first"
+      ],
+      "how_to_use": [
+        "Slice vertically: each task ends in something visible on a preview URL"
+      ],
+      "pairs_with": [
+        "writing-plans",
+        "incremental-implementation"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "writing-plans",
+      "name": "Writing Plans",
+      "invoke": "superpowers:writing-plans",
+      "kind": "skill",
+      "plugin": "superpowers",
+      "category": "process",
+      "phases": [
+        "define",
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Produces a step-by-step implementation plan file an agent (or a later session) can execute faithfully.",
+      "use_when": [
+        "Multi-session work where context will be lost between sessions",
+        "Handing work to subagents"
+      ],
+      "avoid_when": [
+        "One-file changes"
+      ],
+      "how_to_use": [
+        "Save plans in docs/plans/ so the client's AI can resume later"
+      ],
+      "pairs_with": [
+        "executing-plans",
+        "subagent-driven-development"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "executing-plans",
+      "name": "Executing Plans",
+      "invoke": "superpowers:executing-plans",
+      "kind": "skill",
+      "plugin": "superpowers",
+      "category": "process",
+      "phases": [
+        "build"
+      ],
+      "tier": "optional",
+      "summary": "Executes a written plan task by task with checkpoints, as the implementer in the current session.",
+      "use_when": [
+        "A plan file exists and you are implementing it yourself"
+      ],
+      "avoid_when": [
+        "No written plan exists"
+      ],
+      "how_to_use": [
+        "Tick tasks off in the plan file as you go"
+      ],
+      "pairs_with": [
+        "writing-plans"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "subagent-driven-development",
+      "name": "Subagent-Driven Development",
+      "invoke": "superpowers:subagent-driven-development",
+      "kind": "skill",
+      "plugin": "superpowers",
+      "category": "process",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Runs independent plan tasks through fresh subagents with review between tasks.",
+      "use_when": [
+        "Large builds with many independent tasks"
+      ],
+      "avoid_when": [
+        "Small projects: overhead outweighs benefit",
+        "Tasks that share files heavily"
+      ],
+      "how_to_use": [
+        "Use only after the plan is stable"
+      ],
+      "pairs_with": [
+        "dispatching-parallel-agents",
+        "writing-plans"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "dispatching-parallel-agents",
+      "name": "Dispatching Parallel Agents",
+      "invoke": "superpowers:dispatching-parallel-agents",
+      "kind": "skill",
+      "plugin": "superpowers",
+      "category": "process",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Fans out 2+ independent tasks (e.g. separate audits) to parallel agents.",
+      "use_when": [
+        "Running UX, accessibility and performance audits at once"
+      ],
+      "avoid_when": [
+        "Tasks that depend on each other's output"
+      ],
+      "how_to_use": [
+        "Give every agent a self-contained brief and expected output format"
+      ],
+      "pairs_with": [
+        "ux-audit-suite"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "using-agent-skills",
+      "name": "Using Agent Skills",
+      "invoke": "agent-protocols:using-agent-skills",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "process",
+      "phases": [
+        "discover"
+      ],
+      "tier": "optional",
+      "summary": "Meta-skill: how to discover and invoke the right skill for a task.",
+      "use_when": [
+        "Starting a session in a new environment with many installed skills"
+      ],
+      "avoid_when": [
+        "You already know which skill applies: just use it"
+      ],
+      "how_to_use": [
+        "This repo's catalog/tools.json is the curated version of this for dashboards"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "karpathy-guidelines",
+      "name": "Karpathy Guidelines",
+      "invoke": "agent-protocols:karpathy-guidelines",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "process",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Behavioral guardrails against common LLM coding mistakes: over-engineering, unrequested changes, hidden assumptions.",
+      "use_when": [
+        "Any coding session, especially when a non-developer client is directing changes"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Make surgical changes; state assumptions; define how success is verified"
+      ],
+      "pairs_with": [
+        "incremental-implementation"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "context-engineering",
+      "name": "Context Engineering",
+      "invoke": "agent-protocols:context-engineering",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "process",
+      "phases": [
+        "handover"
+      ],
+      "tier": "optional",
+      "summary": "Sets up rules files and context so future agent sessions start with the right knowledge.",
+      "use_when": [
+        "Writing the client project's CLAUDE.md / AGENTS.md",
+        "Agent output quality is degrading over a long project"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Keep always-loaded files short; link to deeper docs"
+      ],
+      "pairs_with": [
+        "documentation-and-adrs"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "research-synthesis",
+      "name": "Research Synthesis",
+      "invoke": "design:research-synthesis",
+      "kind": "skill",
+      "plugin": "design",
+      "category": "research",
+      "phases": [
+        "discover"
+      ],
+      "tier": "core",
+      "summary": "Distills transcripts, interviews and notes into themes, insights and recommendations.",
+      "use_when": [
+        "You have the client's voice memo, a meeting transcript (Fathom, Otter, etc.) or interview notes",
+        "Several sources need to be merged into one picture"
+      ],
+      "avoid_when": [
+        "There is no raw research yet: plan it with user-research first"
+      ],
+      "how_to_use": [
+        "Quote the client verbatim for each insight",
+        "End with 'needs', 'pains', 'must-haves', 'nice-to-haves'"
+      ],
+      "pairs_with": [
+        "user-research",
+        "journey-mapping",
+        "call-summary"
+      ],
+      "fallback": "docs/framework/01-discover.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "user-research",
+      "name": "User Research",
+      "invoke": "design:user-research",
+      "kind": "skill",
+      "plugin": "design",
+      "category": "research",
+      "phases": [
+        "discover"
+      ],
+      "tier": "recommended",
+      "summary": "Plans research: interview guides, research questions, usability tests and surveys.",
+      "use_when": [
+        "Preparing for an in-person conversation with the client",
+        "Planning a usability test of a prototype"
+      ],
+      "avoid_when": [
+        "You already have enough input to synthesize"
+      ],
+      "how_to_use": [
+        "Start from templates/discovery-questions.md"
+      ],
+      "pairs_with": [
+        "ux-research",
+        "research-synthesis"
+      ],
+      "fallback": "templates/discovery-questions.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "ux-research",
+      "name": "UX Research (deep)",
+      "invoke": "design-skills:ux-research",
+      "kind": "skill",
+      "plugin": "design-skills",
+      "category": "research",
+      "phases": [
+        "discover",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Deeper research methodology: scripts, test plans, recruiting, qualitative analysis.",
+      "use_when": [
+        "Testing the finished dashboard with the client's team"
+      ],
+      "avoid_when": [
+        "A single-user tool where talking to the owner is enough"
+      ],
+      "how_to_use": [
+        "Use for a 30-minute think-aloud test before handover"
+      ],
+      "pairs_with": [
+        "user-research"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "journey-mapping",
+      "name": "Journey Mapping",
+      "invoke": "design-skills:journey-mapping",
+      "kind": "skill",
+      "plugin": "design-skills",
+      "category": "research",
+      "phases": [
+        "discover",
+        "define"
+      ],
+      "tier": "core",
+      "summary": "Customer journey maps, service blueprints and empathy maps.",
+      "use_when": [
+        "Mapping the client's client lifecycle (lead -> client -> repeat) to derive pipeline stages",
+        "Finding where follow-ups fall through the cracks"
+      ],
+      "avoid_when": [
+        "Purely visual tasks"
+      ],
+      "how_to_use": [
+        "The stages of the journey usually become the pipeline columns"
+      ],
+      "pairs_with": [
+        "research-synthesis",
+        "pipeline-review"
+      ],
+      "fallback": "docs/crm/pipeline-and-views.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "ux-strategy",
+      "name": "UX Strategy",
+      "invoke": "design-skills:ux-strategy",
+      "kind": "skill",
+      "plugin": "design-skills",
+      "category": "research",
+      "phases": [
+        "define"
+      ],
+      "tier": "optional",
+      "summary": "Jobs-to-be-done, opportunity mapping and UX metrics tied to business outcomes.",
+      "use_when": [
+        "Deciding what the dashboard should measure and why"
+      ],
+      "avoid_when": [
+        "Small internal tools with obvious goals"
+      ],
+      "how_to_use": [
+        "Use JTBD to phrase each screen's one job"
+      ],
+      "pairs_with": [
+        "choose-metrics"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "call-summary",
+      "name": "Call Summary",
+      "invoke": "sales:call-summary",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "research",
+      "phases": [
+        "discover",
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Turns a call transcript or notes into a follow-up email, an internal summary and proposed CRM updates.",
+      "use_when": [
+        "Processing the recorded client meeting",
+        "Later: a CRM feature that turns meeting notes into record updates"
+      ],
+      "avoid_when": [
+        "No transcript or notes exist"
+      ],
+      "how_to_use": [
+        "Run on the Fathom transcript first to extract action items and requirements"
+      ],
+      "pairs_with": [
+        "research-synthesis",
+        "log-activity"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "deep-research",
+      "name": "Deep Research",
+      "invoke": "anthropic-skills:deep-research",
+      "kind": "skill",
+      "plugin": "anthropic-skills",
+      "category": "research",
+      "phases": [
+        "discover",
+        "direction"
+      ],
+      "tier": "optional",
+      "summary": "Multi-source web research with comparison and synthesis.",
+      "use_when": [
+        "Researching the client's industry, competitors or CRM conventions in their niche"
+      ],
+      "avoid_when": [
+        "Facts already in the client's documents"
+      ],
+      "how_to_use": [
+        "Ask for a sourced comparison table, not prose"
+      ],
+      "pairs_with": [
+        "research-synthesis"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "file-reading",
+      "name": "File Reading (PDF / DOCX / XLSX)",
+      "invoke": "anthropic-skills:pdf | docx | xlsx",
+      "kind": "skill",
+      "plugin": "anthropic-skills",
+      "category": "research",
+      "phases": [
+        "discover"
+      ],
+      "tier": "recommended",
+      "summary": "Read and extract content from the client's playbook, spreadsheets and documents.",
+      "use_when": [
+        "The client sends a PDF playbook or an existing spreadsheet of contacts"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Extract the playbook's stages, rules and terminology into docs/ before designing"
+      ],
+      "pairs_with": [
+        "research-synthesis"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "choose-what-to-build",
+      "name": "Choose What to Build",
+      "invoke": "superme:choose-what-to-build",
+      "kind": "skill",
+      "plugin": "superme",
+      "category": "research",
+      "phases": [
+        "define"
+      ],
+      "tier": "situational",
+      "summary": "Prioritization grounded in how others in your network handled similar decisions.",
+      "use_when": [
+        "The wish-list is long and needs ruthless v1 prioritization"
+      ],
+      "avoid_when": [
+        "Scope is already small and clear"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "idea-refine"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "choose-metrics",
+      "name": "Choose Metrics",
+      "invoke": "superme:choose-metrics",
+      "kind": "skill",
+      "plugin": "superme",
+      "category": "research",
+      "phases": [
+        "define"
+      ],
+      "tier": "situational",
+      "summary": "Helps decide which metrics to track (the KPI strip).",
+      "use_when": [
+        "Picking the max-5 KPI tiles for the overview page"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Each KPI must drive a decision; otherwise drop it"
+      ],
+      "pairs_with": [
+        "build-dashboard",
+        "ux-strategy"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "brand-strategy",
+      "name": "Brand Strategy",
+      "invoke": "brand-studio:brand-strategy",
+      "kind": "skill",
+      "plugin": "brand-studio",
+      "category": "brand",
+      "phases": [
+        "direction"
+      ],
+      "tier": "optional",
+      "summary": "Positioning, audience, personality and promise. The 'why' behind the look.",
+      "use_when": [
+        "The client's business has no clear brand yet"
+      ],
+      "avoid_when": [
+        "The client already has a brand guide: reuse it"
+      ],
+      "how_to_use": [
+        "Keep to one page; the dashboard is internal, so personality matters more than positioning"
+      ],
+      "pairs_with": [
+        "brand-brief"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "brand-brief",
+      "name": "Brand Brief",
+      "invoke": "brand-studio:brand-brief",
+      "kind": "skill",
+      "plugin": "brand-studio",
+      "category": "brand",
+      "phases": [
+        "direction"
+      ],
+      "tier": "recommended",
+      "summary": "Turns brand decisions into a practical production brief: principles, assets, constraints.",
+      "use_when": [
+        "Translating 'I want it calm and luxurious' into concrete design inputs"
+      ],
+      "avoid_when": [
+        "No brand decisions exist yet: run brand-strategy or ask the client"
+      ],
+      "how_to_use": [
+        "Output feeds templates/design-direction.md"
+      ],
+      "pairs_with": [
+        "brand-identity-system",
+        "creative-direction"
+      ],
+      "fallback": "templates/design-direction.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "brand-identity-system",
+      "name": "Brand Identity System",
+      "invoke": "brand-studio:brand-identity-system",
+      "kind": "skill",
+      "plugin": "brand-studio",
+      "category": "brand",
+      "phases": [
+        "direction"
+      ],
+      "tier": "optional",
+      "summary": "Logo concepts, color, typography and identity guidelines.",
+      "use_when": [
+        "The client wants a small logo mark or wordmark for the dashboard"
+      ],
+      "avoid_when": [
+        "Just choosing a dashboard theme: use the themes in design-system/"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "brand-brief",
+        "codesign-create"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "brand-review",
+      "name": "Brand Review",
+      "invoke": "brand-studio:brand-review",
+      "kind": "skill",
+      "plugin": "brand-studio",
+      "category": "brand",
+      "phases": [
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Checks assets and screens against the brand for consistency and drift.",
+      "use_when": [
+        "Before handover, to check every screen follows the chosen direction"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "design-review"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "brand-style",
+      "name": "Brand Style (Small Business)",
+      "invoke": "small-business:brand-style",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "brand",
+      "phases": [
+        "direction"
+      ],
+      "tier": "recommended",
+      "summary": "Captures a small business's look from a website link or a plain-words description.",
+      "use_when": [
+        "The client has a website or Instagram: extract colors and tone from it quickly"
+      ],
+      "avoid_when": [
+        "Formal identity work"
+      ],
+      "how_to_use": [
+        "Paste the client's website URL; map the result to design-system tokens"
+      ],
+      "pairs_with": [
+        "map-design"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "creative-direction",
+      "name": "Creative Direction",
+      "invoke": "design-superpowers:creative",
+      "kind": "skill",
+      "plugin": "design-superpowers",
+      "category": "brand",
+      "phases": [
+        "direction"
+      ],
+      "tier": "core",
+      "summary": "Explores visual direction: mood boards, palettes, typography systems, art direction.",
+      "use_when": [
+        "Producing 2-3 distinct visual directions for the client to choose from"
+      ],
+      "avoid_when": [
+        "Direction already chosen: move to design"
+      ],
+      "how_to_use": [
+        "Present directions as live themes (see site/ Themes page), not abstract adjectives"
+      ],
+      "pairs_with": [
+        "frontend-design",
+        "brand-brief"
+      ],
+      "fallback": "docs/design/06-themes.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "map-design",
+      "name": "Map Design (extract DESIGN.md)",
+      "invoke": "design-superpowers:map-design",
+      "kind": "skill",
+      "plugin": "design-superpowers",
+      "category": "brand",
+      "phases": [
+        "direction"
+      ],
+      "tier": "recommended",
+      "summary": "Extracts a design language from a screenshot, URL, Figma file or codebase into a DESIGN.md.",
+      "use_when": [
+        "The client shows apps or sites whose look they love",
+        "Documenting the final token set"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Run on 2-3 reference screenshots, then merge into one token set"
+      ],
+      "pairs_with": [
+        "brand-style",
+        "ds-make"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "theme-factory",
+      "name": "Theme Factory",
+      "invoke": "anthropic-skills:theme-factory",
+      "kind": "skill",
+      "plugin": "anthropic-skills",
+      "category": "brand",
+      "phases": [
+        "direction"
+      ],
+      "tier": "optional",
+      "summary": "Ten preset color/font themes that can be applied to any artifact, or a custom one.",
+      "use_when": [
+        "Quick theme exploration for a prototype"
+      ],
+      "avoid_when": [
+        "Production theming: use design-system/tokens.css"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "creative-direction"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "codesign-create",
+      "name": "CoDesign: Create",
+      "invoke": "codesign:create",
+      "kind": "skill",
+      "plugin": "codesign",
+      "category": "brand",
+      "phases": [
+        "direction"
+      ],
+      "tier": "optional",
+      "summary": "Generates visual designs (posters, social posts, decks, mood boards) on the IMG.LY CoDesign canvas.",
+      "use_when": [
+        "Making a mood board or brand board to show the client",
+        "Making a launch graphic for the client"
+      ],
+      "avoid_when": [
+        "Building the dashboard UI itself: that is code"
+      ],
+      "how_to_use": [
+        "Load codesign:handbook first; run codesign:judge before calling it done"
+      ],
+      "pairs_with": [
+        "codesign-brand",
+        "image-generation"
+      ],
+      "fallback": null,
+      "requires": "CoDesign MCP connector",
+      "url": null
+    },
+    {
+      "id": "codesign-brand",
+      "name": "CoDesign: Brand",
+      "invoke": "codesign:brand",
+      "kind": "skill",
+      "plugin": "codesign",
+      "category": "brand",
+      "phases": [
+        "direction"
+      ],
+      "tier": "situational",
+      "summary": "Applies a brand kit to an existing CoDesign design by rule.",
+      "use_when": [
+        "Re-skinning a mood board or graphic to the chosen brand"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "codesign-create"
+      ],
+      "fallback": null,
+      "requires": "CoDesign MCP connector",
+      "url": null
+    },
+    {
+      "id": "adobe-fonts",
+      "name": "Adobe Fonts",
+      "invoke": "adobe-for-creativity:adobe-fonts",
+      "kind": "skill",
+      "plugin": "adobe-for-creativity",
+      "category": "brand",
+      "phases": [
+        "direction"
+      ],
+      "tier": "situational",
+      "summary": "Finds and previews licensable typefaces with metadata.",
+      "use_when": [
+        "Searching for a distinctive typeface beyond Google Fonts"
+      ],
+      "avoid_when": [
+        "Google Fonts already covers the need (easier to self-host on Vercel)"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "creative-direction"
+      ],
+      "fallback": null,
+      "requires": "Adobe connector",
+      "url": null
+    },
+    {
+      "id": "adobe-firefly-boards",
+      "name": "Adobe Firefly Boards",
+      "invoke": "adobe-for-creativity:adobe-firefly-boards",
+      "kind": "skill",
+      "plugin": "adobe-for-creativity",
+      "category": "brand",
+      "phases": [
+        "direction"
+      ],
+      "tier": "situational",
+      "summary": "Builds shareable mood/inspiration boards.",
+      "use_when": [
+        "Collecting visual references with the client"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "creative-direction"
+      ],
+      "fallback": null,
+      "requires": "Adobe connector",
+      "url": null
+    },
+    {
+      "id": "frontend-design",
+      "name": "Frontend Design",
+      "invoke": "frontend-design:frontend-design",
+      "kind": "skill",
+      "plugin": "frontend-design",
+      "category": "uiux",
+      "phases": [
+        "direction",
+        "design",
+        "build"
+      ],
+      "tier": "core",
+      "summary": "Distinctive, intentional visual design: subject-grounded palette and typography, no templated defaults.",
+      "use_when": [
+        "Any time you create or reshape UI",
+        "The output risks looking like a generic AI SaaS template"
+      ],
+      "avoid_when": [
+        "Pure backend work"
+      ],
+      "how_to_use": [
+        "Ground choices in the client's world (their industry, materials, vocabulary)",
+        "Avoid: single accented headline word, ALL-CAPS labels, decorative 01/02/03 numbering, entrance animation on every section"
+      ],
+      "pairs_with": [
+        "anti-slop",
+        "design-elevation"
+      ],
+      "fallback": "docs/design/01-principles.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "design-elevation",
+      "name": "Design Elevation",
+      "invoke": "design-skills:design-elevation",
+      "kind": "skill",
+      "plugin": "design-skills",
+      "category": "uiux",
+      "phases": [
+        "design",
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Turns functional output into polished design: functional and perceptual patterns, interrogating every default.",
+      "use_when": [
+        "The dashboard works but looks 'fine' rather than premium"
+      ],
+      "avoid_when": [
+        "Before a working version exists (function first)"
+      ],
+      "how_to_use": [
+        "Dashboard structure: KPI bar -> primary chart -> supporting charts -> detail tables",
+        "Question every default: font, radius, shadow, color"
+      ],
+      "pairs_with": [
+        "frontend-design",
+        "data-visualization"
+      ],
+      "fallback": "docs/design/01-principles.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "design-feature",
+      "name": "Design (features & flows)",
+      "invoke": "design-superpowers:design",
+      "kind": "skill",
+      "plugin": "design-superpowers",
+      "category": "uiux",
+      "phases": [
+        "design"
+      ],
+      "tier": "recommended",
+      "summary": "Designs features, flows and screens using an existing design system.",
+      "use_when": [
+        "Composing the contact detail page, pipeline board or add-lead flow from components"
+      ],
+      "avoid_when": [
+        "No design system exists yet: run ds-make first"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "ds-make",
+        "page-patterns"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "ds-make",
+      "name": "Design System: Make",
+      "invoke": "design-superpowers:ds-make",
+      "kind": "skill",
+      "plugin": "design-superpowers",
+      "category": "uiux",
+      "phases": [
+        "direction",
+        "design"
+      ],
+      "tier": "recommended",
+      "summary": "Creates and versions tokens, components and patterns.",
+      "use_when": [
+        "Turning the chosen direction into tokens and a component list"
+      ],
+      "avoid_when": [
+        "One-off prototypes"
+      ],
+      "how_to_use": [
+        "Start from design-system/tokens.css instead of from scratch"
+      ],
+      "pairs_with": [
+        "design-systems",
+        "design-system-audit"
+      ],
+      "fallback": "design-system/README.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "design-systems",
+      "name": "Design Systems (deep)",
+      "invoke": "design-skills:design-systems",
+      "kind": "skill",
+      "plugin": "design-skills",
+      "category": "uiux",
+      "phases": [
+        "design"
+      ],
+      "tier": "optional",
+      "summary": "Tokens, component specs, naming conventions and governance.",
+      "use_when": [
+        "Documenting the system so the client's AI keeps it consistent"
+      ],
+      "avoid_when": [
+        "Small single-page tools"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "ds-make"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "design-system-audit",
+      "name": "Design System Audit",
+      "invoke": "design:design-system",
+      "kind": "skill",
+      "plugin": "design",
+      "category": "uiux",
+      "phases": [
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Audits components for hard-coded values and naming inconsistencies; documents variants.",
+      "use_when": [
+        "Before handover, find hard-coded colors and spacing that bypass tokens"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "ds-make"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "interaction-design",
+      "name": "Interaction Design",
+      "invoke": "design-skills:interaction-design",
+      "kind": "skill",
+      "plugin": "design-skills",
+      "category": "uiux",
+      "phases": [
+        "design"
+      ],
+      "tier": "core",
+      "summary": "Microinteractions, state machines, gestures, error prevention and product behavior across states.",
+      "use_when": [
+        "Designing drag-and-drop pipeline moves, quick-add, inline edit, undo"
+      ],
+      "avoid_when": [
+        "Static content pages"
+      ],
+      "how_to_use": [
+        "Specify every component's states: default, hover, focus, active, loading, empty, error, disabled"
+      ],
+      "pairs_with": [
+        "surfaces",
+        "motion"
+      ],
+      "fallback": "docs/design/02-rulebook.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "design-critique",
+      "name": "Design Critique (heuristics)",
+      "invoke": "design-skills:design-critique",
+      "kind": "skill",
+      "plugin": "design-skills",
+      "category": "uiux",
+      "phases": [
+        "design",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Heuristic evaluation against usability heuristics, UX laws and IA principles.",
+      "use_when": [
+        "Reviewing screens before showing the client"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Ask for severity-ranked findings with concrete fixes"
+      ],
+      "pairs_with": [
+        "design-critique-quick",
+        "design-review"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "design-critique-quick",
+      "name": "Design Critique (quick)",
+      "invoke": "design:design-critique",
+      "kind": "skill",
+      "plugin": "design",
+      "category": "uiux",
+      "phases": [
+        "design",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Faster structured feedback on hierarchy, usability and consistency from a screenshot.",
+      "use_when": [
+        "Fast feedback on a single screenshot"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "design-critique"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "design-review",
+      "name": "Design Review",
+      "invoke": "design-superpowers:design-review",
+      "kind": "skill",
+      "plugin": "design-superpowers",
+      "category": "uiux",
+      "phases": [
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Reviews designs against heuristics, accessibility, design-system compliance, visual quality and motion.",
+      "use_when": [
+        "Pre-handover review of the whole product"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "design-critique",
+        "ux-audit-vectorlab"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "ux-writing",
+      "name": "UX Writing",
+      "invoke": "design-skills:ux-writing",
+      "kind": "skill",
+      "plugin": "design-skills",
+      "category": "uiux",
+      "phases": [
+        "design",
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "User-centered interface copy: buttons, labels, errors, notifications, onboarding, empty states.",
+      "use_when": [
+        "Writing every label, button and message in the CRM"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Verb-first buttons ('Add client', not 'Submit')",
+        "Use the client's own vocabulary from the playbook"
+      ],
+      "pairs_with": [
+        "ux-copy",
+        "verbs",
+        "errors"
+      ],
+      "fallback": "docs/design/02-rulebook.md#copy",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "ux-copy",
+      "name": "UX Copy (quick)",
+      "invoke": "design:ux-copy",
+      "kind": "skill",
+      "plugin": "design",
+      "category": "uiux",
+      "phases": [
+        "design"
+      ],
+      "tier": "optional",
+      "summary": "Quick microcopy and CTA wording.",
+      "use_when": [
+        "Naming a single button or wording one error"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "ux-writing"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "design-handoff",
+      "name": "Design Handoff",
+      "invoke": "design:design-handoff",
+      "kind": "skill",
+      "plugin": "design",
+      "category": "uiux",
+      "phases": [
+        "design"
+      ],
+      "tier": "optional",
+      "summary": "Developer spec sheets: tokens, props, states, breakpoints, motion.",
+      "use_when": [
+        "Design was done in Figma or by a separate designer and must be handed to the coding agent"
+      ],
+      "avoid_when": [
+        "Designer and builder are the same agent"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "figma-design-to-code"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "superdesign",
+      "name": "Superdesign",
+      "invoke": "superdesign:superdesign",
+      "kind": "skill",
+      "plugin": "superdesign",
+      "category": "uiux",
+      "phases": [
+        "direction",
+        "design"
+      ],
+      "tier": "recommended",
+      "summary": "Designs or redesigns UI on the Superdesign canvas with multiple AI models, producing variations fast.",
+      "use_when": [
+        "Producing several layout variations of the overview page to show the client"
+      ],
+      "avoid_when": [
+        "Final production code"
+      ],
+      "how_to_use": [
+        "Use for exploration; rebuild the chosen variation with tokens in code"
+      ],
+      "pairs_with": [
+        "creative-direction",
+        "frontend-design"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "21st-ui",
+      "name": "21st.dev UI",
+      "invoke": "21st:21st-ui",
+      "kind": "skill",
+      "plugin": "21st",
+      "category": "uiux",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Find, install and generate React UI components (dashboards, forms, navbars) from 21st.dev.",
+      "use_when": [
+        "Need a polished starting point for a complex component (command palette, data table, calendar)"
+      ],
+      "avoid_when": [
+        "Components that already exist in shadcn/ui"
+      ],
+      "how_to_use": [
+        "Re-skin installed components with project tokens; delete decorative extras (anti-slop)"
+      ],
+      "pairs_with": [
+        "shadcn-ui",
+        "anti-slop"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "web-artifacts-builder",
+      "name": "Web Artifacts Builder",
+      "invoke": "anthropic-skills:web-artifacts-builder",
+      "kind": "skill",
+      "plugin": "anthropic-skills",
+      "category": "uiux",
+      "phases": [
+        "direction",
+        "design"
+      ],
+      "tier": "optional",
+      "summary": "Builds multi-component React + Tailwind + shadcn HTML artifacts on claude.ai.",
+      "use_when": [
+        "A clickable prototype to show the client on claude.ai before the real build"
+      ],
+      "avoid_when": [
+        "The production app (use the Next.js repo)"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "frontend-design"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "figma-use",
+      "name": "Figma (read/write)",
+      "invoke": "figma:figma-use",
+      "kind": "skill",
+      "plugin": "figma",
+      "category": "uiux",
+      "phases": [
+        "design"
+      ],
+      "tier": "situational",
+      "summary": "Prerequisite for all Figma MCP writes; create and edit Figma files.",
+      "use_when": [
+        "The client or a designer works in Figma"
+      ],
+      "avoid_when": [
+        "No Figma account: design in code instead"
+      ],
+      "how_to_use": [
+        "Always load before any use_figma call"
+      ],
+      "pairs_with": [
+        "figma-design-to-code",
+        "figma-generate-design"
+      ],
+      "fallback": null,
+      "requires": "Figma connector",
+      "url": null
+    },
+    {
+      "id": "figma-design-to-code",
+      "name": "Figma: Design to Code",
+      "invoke": "figma:figma-design-to-code",
+      "kind": "skill",
+      "plugin": "figma",
+      "category": "uiux",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Implements a Figma design as code.",
+      "use_when": [
+        "A Figma mockup exists and must be built"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "figma-use"
+      ],
+      "fallback": null,
+      "requires": "Figma connector",
+      "url": null
+    },
+    {
+      "id": "figma-generate-design",
+      "name": "Figma: Generate Design",
+      "invoke": "figma:figma-generate-design",
+      "kind": "skill",
+      "plugin": "figma",
+      "category": "uiux",
+      "phases": [
+        "design",
+        "handover"
+      ],
+      "tier": "situational",
+      "summary": "Pushes an app page or layout from code into Figma.",
+      "use_when": [
+        "The client wants editable Figma copies of the screens"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "figma-use"
+      ],
+      "fallback": null,
+      "requires": "Figma connector",
+      "url": null
+    },
+    {
+      "id": "figma-generate-library",
+      "name": "Figma: Generate Library",
+      "invoke": "figma:figma-generate-library",
+      "kind": "skill",
+      "plugin": "figma",
+      "category": "uiux",
+      "phases": [
+        "handover"
+      ],
+      "tier": "situational",
+      "summary": "Builds a Figma design-system library from the codebase tokens and components.",
+      "use_when": [
+        "Handing a designer a Figma library that matches the code"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "figma-use"
+      ],
+      "fallback": null,
+      "requires": "Figma connector",
+      "url": null
+    },
+    {
+      "id": "page-patterns",
+      "name": "Page Patterns",
+      "invoke": "vectorlab-ux-skills:page-patterns",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Forces one named page pattern (list, detail, form, dashboard, settings, board, calendar, split pane, analytics, inbox) before any page markup.",
+      "use_when": [
+        "Before creating any new screen or route"
+      ],
+      "avoid_when": [
+        "Components inside a page (charts, tiles)"
+      ],
+      "how_to_use": [
+        "Overview = Dashboard (glance, max 5 KPIs, read-only)",
+        "Pipeline = Board",
+        "Clients = List",
+        "One client = Detail"
+      ],
+      "pairs_with": [
+        "surfaces",
+        "viewports"
+      ],
+      "fallback": "docs/design/02-rulebook.md#page-patterns",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "surfaces",
+      "name": "Surfaces (inline / slide-over / page)",
+      "invoke": "vectorlab-ux-skills:surfaces",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Routes each task to the lightest surface: inline edit, slide-over or a dedicated page; named confirmations for destructive actions.",
+      "use_when": [
+        "Adding any modal, drawer, dialog or inline edit"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "<10s task: slide-over; >=10s or multi-step: its own page; single field: inline, zero layout shift",
+        "Destructive confirm names the item: \"Delete client 'Harbor & Pine'?\""
+      ],
+      "pairs_with": [
+        "page-patterns",
+        "keyboard"
+      ],
+      "fallback": "docs/design/02-rulebook.md#surfaces",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "anti-slop",
+      "name": "Anti-Slop",
+      "invoke": "vectorlab-ux-skills:anti-slop",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Removes AI-template clichés: rainbow gradients, glassmorphism, cartoon empty states, decorative pills and input icons.",
+      "use_when": [
+        "Reviewing any AI-generated UI",
+        "Before every client demo"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Delete decoration, never structure (keep table frames, dividers, search)"
+      ],
+      "pairs_with": [
+        "frontend-design",
+        "colour-palette"
+      ],
+      "fallback": "docs/design/02-rulebook.md#anti-slop",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "colour-palette",
+      "name": "Colour Palette & Elevation",
+      "invoke": "vectorlab-ux-skills:colour-palette",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "60-30-10 color distribution; depth via 1px subtle borders then soft shadows (alpha < 0.08).",
+      "use_when": [
+        "Choosing surfaces, borders, shadows, accents or dark-mode depth"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Accent only on actions, active nav, links and focus; never on big fills"
+      ],
+      "pairs_with": [
+        "anti-slop",
+        "typography"
+      ],
+      "fallback": "docs/design/02-rulebook.md#color",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "typography",
+      "name": "Typography",
+      "invoke": "vectorlab-ux-skills:typography",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Max 3 weights (never > 700), 16/14/12px base sizes, line-height inversely related to size.",
+      "use_when": [
+        "Setting type styles or fixing noisy hierarchy"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Table cells use 14-16px, never 12px",
+        "Hierarchy from size and spacing, not weight"
+      ],
+      "pairs_with": [
+        "spacing"
+      ],
+      "fallback": "docs/design/02-rulebook.md#typography",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "spacing",
+      "name": "Spacing & Alignment",
+      "invoke": "vectorlab-ux-skills:spacing",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "8pt grid for components, 4pt for micro spacing, 65-75ch line length, cap-height icon alignment.",
+      "use_when": [
+        "Laying out any screen"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Tokens: 4, 8, 12, 16, 24, 32, 48, 64"
+      ],
+      "pairs_with": [
+        "typography",
+        "viewports"
+      ],
+      "fallback": "docs/design/02-rulebook.md#spacing",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "motion",
+      "name": "Motion",
+      "invoke": "vectorlab-ux-skills:motion",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Duration tokens 100/150/200/300ms, ease-out in / ease-in out, animate transform & opacity only, no bouncy chrome.",
+      "use_when": [
+        "Adding any transition or animation"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "One motion language per product",
+        "No infinite decorative loops"
+      ],
+      "pairs_with": [
+        "transitions",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/02-rulebook.md#motion",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "transitions",
+      "name": "Transitions",
+      "invoke": "vectorlab-ux-skills:transitions",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Enter/exit patterns for overlays and lists with zero layout jump.",
+      "use_when": [
+        "Animating drawers, dialogs, popovers, route changes, staggered lists"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Slide-overs: translateX + opacity 200ms in, 150ms out"
+      ],
+      "pairs_with": [
+        "motion"
+      ],
+      "fallback": "docs/design/02-rulebook.md#motion",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "reduced-motion",
+      "name": "Reduced Motion",
+      "invoke": "vectorlab-ux-skills:reduced-motion",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Honors prefers-reduced-motion with instant or opacity-only fallbacks.",
+      "use_when": [
+        "Every time motion is added"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "motion"
+      ],
+      "fallback": "docs/design/02-rulebook.md#motion",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "loaders",
+      "name": "Loaders",
+      "invoke": "vectorlab-ux-skills:loaders",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Loader by duration: none < 100ms, inline 100ms-1s, structural skeleton > 1s.",
+      "use_when": [
+        "Adding spinners, skeletons or async fetches"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Never a full-page spinner; skeletons mirror the real layout"
+      ],
+      "pairs_with": [
+        "empty-states"
+      ],
+      "fallback": "docs/design/02-rulebook.md#states",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "empty-states",
+      "name": "Empty States",
+      "invoke": "vectorlab-ux-skills:empty-states",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Every empty view states what belongs there, why it matters, and gives one primary action; filtered-empty offers 'Clear filters'.",
+      "use_when": [
+        "Building any list, board, table or first-run screen"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Keep the page skeleton visible in the empty state"
+      ],
+      "pairs_with": [
+        "loaders",
+        "verbs"
+      ],
+      "fallback": "docs/design/02-rulebook.md#states",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "errors",
+      "name": "Errors",
+      "invoke": "vectorlab-ux-skills:errors",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Error copy never blames the user and always offers recovery.",
+      "use_when": [
+        "Writing errors, toasts or failure states"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Say what happened, why (if known), and what to do next"
+      ],
+      "pairs_with": [
+        "ux-writing"
+      ],
+      "fallback": "docs/design/02-rulebook.md#copy",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "forms",
+      "name": "Forms",
+      "invoke": "vectorlab-ux-skills:forms",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Validate on blur, clear errors instantly, fewer fields, always-clickable submit.",
+      "use_when": [
+        "Building add-client, add-deal, settings or any form"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Ask only for what v1 needs; everything else is optional later"
+      ],
+      "pairs_with": [
+        "labels",
+        "defaults"
+      ],
+      "fallback": "docs/design/02-rulebook.md#forms",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "labels",
+      "name": "Labels",
+      "invoke": "vectorlab-ux-skills:labels",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Visible labels on every input; placeholders only for format hints.",
+      "use_when": [
+        "Any form field"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "forms"
+      ],
+      "fallback": "docs/design/02-rulebook.md#forms",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "defaults",
+      "name": "Smart Defaults",
+      "invoke": "vectorlab-ux-skills:defaults",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Intelligent defaults and draft persistence to avoid blank busywork.",
+      "use_when": [
+        "Forms, dropdowns, preferences, multi-step entry"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Default the follow-up date (e.g. +3 days) and the stage (first stage)"
+      ],
+      "pairs_with": [
+        "forms"
+      ],
+      "fallback": "docs/design/02-rulebook.md#forms",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "verbs",
+      "name": "Verbs (button labels)",
+      "invoke": "vectorlab-ux-skills:verbs",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Verb-first labels; bans OK, Submit, Proceed.",
+      "use_when": [
+        "Any button, link or menu item"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "ux-writing"
+      ],
+      "fallback": "docs/design/02-rulebook.md#copy",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "icon-buttons",
+      "name": "Icon Buttons",
+      "invoke": "vectorlab-ux-skills:icon-buttons",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Square icon buttons with required tooltips and keyboard shortcuts.",
+      "use_when": [
+        "Toolbars, view toggles, export/filter controls"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Hit area >= 44x44 even if the glyph is 16px"
+      ],
+      "pairs_with": [
+        "keyboard"
+      ],
+      "fallback": "docs/design/02-rulebook.md#a11y",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "keyboard",
+      "name": "Keyboard",
+      "invoke": "vectorlab-ux-skills:keyboard",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Full keyboard access, visible focus rings, focus trap/restore for overlays.",
+      "use_when": [
+        "Any interactive UI, especially the pipeline board and slide-overs"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Drag-and-drop must have a keyboard alternative (Move to...)"
+      ],
+      "pairs_with": [
+        "icon-buttons",
+        "surfaces"
+      ],
+      "fallback": "docs/design/02-rulebook.md#a11y",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "viewports",
+      "name": "Viewports",
+      "invoke": "vectorlab-ux-skills:viewports",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Works from 375px to 1280px: no page overflow, collapsing chrome, 44px targets, no hover-only actions.",
+      "use_when": [
+        "Every page, before calling it done"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Test at 375 and 1280; tables/boards scroll inside their region only"
+      ],
+      "pairs_with": [
+        "page-patterns"
+      ],
+      "fallback": "docs/design/02-rulebook.md#responsive",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "ux-audit-vectorlab",
+      "name": "VectorLab UX Audit",
+      "invoke": "vectorlab-ux-skills:ux-audit",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Audits the current UI against every VectorLab rule at once.",
+      "use_when": [
+        "Before finishing any UI work; before every client demo"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Fix all hard-rule failures before showing the client"
+      ],
+      "pairs_with": [
+        "ux-ui-audit",
+        "design-review"
+      ],
+      "fallback": "templates/qa-checklist.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "setup-ui-ux-skills",
+      "name": "VectorLab Setup (.ux-profile.md)",
+      "invoke": "vectorlab-ux-skills:setup-ui-ux-skills",
+      "kind": "skill",
+      "plugin": "vectorlab-ux-skills",
+      "category": "polish",
+      "phases": [
+        "direction"
+      ],
+      "tier": "recommended",
+      "summary": "Writes a .ux-profile.md (aesthetic reference, bans, accessibility target, voice, icon library) that all polish skills read.",
+      "use_when": [
+        "Once per project, right after the visual direction is chosen"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Aesthetic reference for a calm premium CRM: 'Linear/Notion restraint, warm palette'"
+      ],
+      "pairs_with": [
+        "creative-direction"
+      ],
+      "fallback": "templates/ux-profile.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "soundweaver",
+      "name": "Soundweaver (UI sounds)",
+      "invoke": "soundweaver",
+      "kind": "skill",
+      "plugin": null,
+      "category": "polish",
+      "phases": [
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Adds subtle contextual UI sound effects (click, success) to web projects.",
+      "use_when": [
+        "The client explicitly wants a tactile, playful feel"
+      ],
+      "avoid_when": [
+        "Default: most business dashboards should be silent"
+      ],
+      "how_to_use": [
+        "Off by default with a settings toggle"
+      ],
+      "pairs_with": [
+        "motion"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "dataviz",
+      "name": "Dataviz (chart system)",
+      "invoke": "dataviz",
+      "kind": "skill",
+      "plugin": null,
+      "category": "dataviz",
+      "phases": [
+        "design",
+        "build"
+      ],
+      "tier": "core",
+      "summary": "Method for charts, stat tiles and dashboards that read as one system: form heuristic, color formula, mark specs, interaction rules.",
+      "use_when": [
+        "Before writing ANY chart, KPI tile, sparkline or legend"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Pick the chart from the question; one categorical palette; same look in light and dark"
+      ],
+      "pairs_with": [
+        "data-visualization",
+        "build-dashboard"
+      ],
+      "fallback": "docs/design/04-data-viz.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "build-dashboard",
+      "name": "Build Dashboard (HTML report)",
+      "invoke": "data:build-dashboard",
+      "kind": "skill",
+      "plugin": "data",
+      "category": "dataviz",
+      "phases": [
+        "design",
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Builds interactive self-contained HTML dashboards with KPI cards, charts, filters and tables.",
+      "use_when": [
+        "A one-off reporting dashboard or a prototype of the analytics view"
+      ],
+      "avoid_when": [
+        "The CRM app itself (use the Next.js stack)"
+      ],
+      "how_to_use": [
+        "Borrow its KPI-card and filter layouts for the app's analytics page"
+      ],
+      "pairs_with": [
+        "dataviz"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "data-visualization",
+      "name": "Data Visualization (Python)",
+      "invoke": "data:data-visualization",
+      "kind": "skill",
+      "plugin": "data",
+      "category": "dataviz",
+      "phases": [
+        "design"
+      ],
+      "tier": "optional",
+      "summary": "Chart-type selection and design principles with matplotlib/seaborn/plotly.",
+      "use_when": [
+        "Static charts for a report or proposal"
+      ],
+      "avoid_when": [
+        "Interactive in-app charts (use Recharts)"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "dataviz"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "create-viz",
+      "name": "Create Viz",
+      "invoke": "data:create-viz",
+      "kind": "skill",
+      "plugin": "data",
+      "category": "dataviz",
+      "phases": [
+        "design"
+      ],
+      "tier": "optional",
+      "summary": "Publication-quality charts from query results.",
+      "use_when": [
+        "Exporting a chart image for a PDF report"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "data-visualization"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "explore-data",
+      "name": "Explore Data",
+      "invoke": "data:explore-data",
+      "kind": "skill",
+      "plugin": "data",
+      "category": "dataviz",
+      "phases": [
+        "discover",
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Profiles a dataset: shape, nulls, duplicates, distributions.",
+      "use_when": [
+        "Importing the client's existing spreadsheet of contacts"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Run before designing the import: find duplicates and missing emails"
+      ],
+      "pairs_with": [
+        "validate-data"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "validate-data",
+      "name": "Validate Data",
+      "invoke": "data:validate-data",
+      "kind": "skill",
+      "plugin": "data",
+      "category": "dataviz",
+      "phases": [
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "QA an analysis: methodology, accuracy, bias.",
+      "use_when": [
+        "Checking KPI calculations (pipeline value, win rate) are right"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "explore-data"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "report-builder",
+      "name": "Report Builder",
+      "invoke": "small-business:report-builder",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "dataviz",
+      "phases": [
+        "define",
+        "build"
+      ],
+      "tier": "optional",
+      "summary": "Turns a plain-English description of a recurring report into defined metrics and a repeatable report.",
+      "use_when": [
+        "The client wants a weekly/monthly emailed summary"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "business-pulse"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "business-pulse",
+      "name": "Business Pulse",
+      "invoke": "small-business:business-pulse",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "dataviz",
+      "phases": [
+        "define"
+      ],
+      "tier": "optional",
+      "summary": "One-page cross-functional business snapshot for owners.",
+      "use_when": [
+        "Inspiration for what a small-business owner wants on one screen"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "report-builder"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "analyze",
+      "name": "Analyze",
+      "invoke": "data:analyze",
+      "kind": "skill",
+      "plugin": "data",
+      "category": "dataviz",
+      "phases": [
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Answers data questions from quick lookups to full analyses.",
+      "use_when": [
+        "After launch: 'which lead source converts best?'"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "explore-data"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "crm-autopilot",
+      "name": "CRM Autopilot",
+      "invoke": "small-business:crm-autopilot",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "crm",
+      "phases": [
+        "define",
+        "build"
+      ],
+      "tier": "core",
+      "summary": "Keeps a CRM current from email, calendar and transcripts; drafts follow-ups on quiet deals.",
+      "use_when": [
+        "Defining which updates the CRM should do automatically",
+        "Designing 'gone quiet' alerts"
+      ],
+      "avoid_when": [
+        "The client wants full manual control in v1"
+      ],
+      "how_to_use": [
+        "Use its behavior as the spec for v2 automations"
+      ],
+      "pairs_with": [
+        "log-activity",
+        "deal-signals"
+      ],
+      "fallback": "docs/crm/features.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "sales-setup",
+      "name": "Sales Setup",
+      "invoke": "sales:setup",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "define"
+      ],
+      "tier": "recommended",
+      "summary": "First-run setup: checks connected tools and renders a starter sales dashboard.",
+      "use_when": [
+        "Seeing what a sales starter dashboard contains, quickly"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "pipeline-review"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "pipeline-review",
+      "name": "Pipeline Review",
+      "invoke": "sales:pipeline-review",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "define",
+        "design"
+      ],
+      "tier": "core",
+      "summary": "Stage-by-stage pipeline health: coverage, aging, conversion and at-risk deals.",
+      "use_when": [
+        "Designing the pipeline board and its health indicators"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Aging (days in stage) and 'no next step' are the two most useful flags"
+      ],
+      "pairs_with": [
+        "deal-review",
+        "journey-mapping"
+      ],
+      "fallback": "docs/crm/pipeline-and-views.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "deal-review",
+      "name": "Deal Review",
+      "invoke": "sales:deal-review",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "design"
+      ],
+      "tier": "recommended",
+      "summary": "Single-opportunity deep dive: health, risks, qualification gaps, next actions.",
+      "use_when": [
+        "Designing the deal/client detail page"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "deal-advance-gap"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "deal-advance-gap",
+      "name": "Deal Advance Gap",
+      "invoke": "sales:deal-advance-gap",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "design"
+      ],
+      "tier": "optional",
+      "summary": "What is missing to advance a deal to the next stage, with owners and dates.",
+      "use_when": [
+        "Designing stage-exit checklists from the client's playbook"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "deal-review"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "deal-signals",
+      "name": "Deal Signals",
+      "invoke": "sales:deal-signals",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "design"
+      ],
+      "tier": "recommended",
+      "summary": "Alert digest: quiet deals, slipping dates, renewals, competitor mentions.",
+      "use_when": [
+        "Designing the 'Needs attention' panel on the overview"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "crm-autopilot"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "daily-briefing",
+      "name": "Daily Briefing",
+      "invoke": "sales:daily-briefing",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "design"
+      ],
+      "tier": "core",
+      "summary": "Morning rundown: today's meetings, deals closing soon, waiting emails, top actions.",
+      "use_when": [
+        "Designing the 'Today' home view"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "The Today view is usually the most-used screen of a small-business CRM"
+      ],
+      "pairs_with": [
+        "monday-brief"
+      ],
+      "fallback": "docs/crm/pipeline-and-views.md#today",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "monday-brief",
+      "name": "Monday Brief",
+      "invoke": "small-business:monday-brief",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "crm",
+      "phases": [
+        "design"
+      ],
+      "tier": "optional",
+      "summary": "Weekly owner briefing combining business snapshot and saved reports.",
+      "use_when": [
+        "Designing a 'This week' view or weekly email"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "daily-briefing"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "log-activity",
+      "name": "Log Activity",
+      "invoke": "sales:log-activity",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "design",
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Logs a call, meeting or email to the right record from a description or transcript.",
+      "use_when": [
+        "Designing the activity timeline and quick-log interaction"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "call-summary",
+        "update-opportunity"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "update-opportunity",
+      "name": "Update Opportunity",
+      "invoke": "sales:update-opportunity",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "design"
+      ],
+      "tier": "optional",
+      "summary": "Guided updates with before/after: stage, close date, next step, amount.",
+      "use_when": [
+        "Designing the edit-deal slide-over"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "log-activity"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "crm-hygiene-check",
+      "name": "CRM Hygiene Check",
+      "invoke": "sales:crm-hygiene-check",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Audits records for missing fields, stale dates and stage mismatches.",
+      "use_when": [
+        "Designing data-quality nudges; checking imported data"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "explore-data"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "lead-triage",
+      "name": "Lead Triage",
+      "invoke": "small-business:lead-triage",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "crm",
+      "phases": [
+        "design"
+      ],
+      "tier": "recommended",
+      "summary": "Scores and ranks inbound leads with talking points and follow-ups.",
+      "use_when": [
+        "Designing a lead inbox and priority ranking"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "speed-to-lead",
+        "call-list"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "speed-to-lead",
+      "name": "Speed to Lead",
+      "invoke": "small-business:speed-to-lead",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "crm",
+      "phases": [
+        "define"
+      ],
+      "tier": "optional",
+      "summary": "Ensures no inbound lead goes unanswered; qualifies and drafts replies.",
+      "use_when": [
+        "The client loses leads from web forms or DMs"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "lead-triage"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "call-list",
+      "name": "Call List",
+      "invoke": "small-business:call-list",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "crm",
+      "phases": [
+        "design"
+      ],
+      "tier": "optional",
+      "summary": "Today's ranked call list with talking points and calendar blocks.",
+      "use_when": [
+        "Designing a 'Who to call today' widget"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "daily-briefing"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "grow-pipeline",
+      "name": "Grow Pipeline",
+      "invoke": "small-business:grow-pipeline",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "crm",
+      "phases": [
+        "define"
+      ],
+      "tier": "situational",
+      "summary": "Prospecting end to end: market read, ranked prospects, personalized outreach.",
+      "use_when": [
+        "The client wants help finding new clients, not just tracking them"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "lead-finder",
+        "outreach-composer"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "lead-finder",
+      "name": "Lead Finder",
+      "invoke": "small-business:lead-finder",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "crm",
+      "phases": [
+        "define"
+      ],
+      "tier": "situational",
+      "summary": "Builds a ranked list of look-alike prospects from the owner's existing customers.",
+      "use_when": [
+        "The client wants new prospects suggested inside the CRM (v2+)"
+      ],
+      "avoid_when": [
+        "Tracking existing relationships only"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "grow-pipeline"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "outreach-composer",
+      "name": "Outreach Composer",
+      "invoke": "small-business:outreach-composer",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "crm",
+      "phases": [
+        "build"
+      ],
+      "tier": "optional",
+      "summary": "Follow-up and outreach sequences in the owner's own voice.",
+      "use_when": [
+        "Adding 'Draft follow-up' to the client detail page (v2)"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "draft-outreach"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "draft-outreach",
+      "name": "Draft Outreach",
+      "invoke": "sales:draft-outreach",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "build"
+      ],
+      "tier": "optional",
+      "summary": "Personalized outreach email or sequence drafts.",
+      "use_when": [
+        "Same as outreach-composer, sales-team flavor"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "outreach-composer"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "reactivate",
+      "name": "Reactivate",
+      "invoke": "small-business:reactivate",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "crm",
+      "phases": [
+        "define"
+      ],
+      "tier": "optional",
+      "summary": "Finds lapsed customers and drafts win-back messages.",
+      "use_when": [
+        "Designing a 'Lapsed clients' view"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "deal-signals"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "proposal-builder",
+      "name": "Proposal Builder",
+      "invoke": "small-business:proposal-builder",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "crm",
+      "phases": [
+        "define"
+      ],
+      "tier": "situational",
+      "summary": "Turns discovery notes into a branded, costed proposal or SOW.",
+      "use_when": [
+        "The client sends proposals after discovery calls (possible v2 feature)"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "call-summary"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "invoice-chase",
+      "name": "Invoice Chase",
+      "invoke": "small-business:invoice-chase",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "crm",
+      "phases": [
+        "define"
+      ],
+      "tier": "situational",
+      "summary": "Overdue-invoice reminders matched to each customer's history.",
+      "use_when": [
+        "The CRM also tracks payments"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "stakeholder-map",
+      "name": "Stakeholder Map",
+      "invoke": "sales:stakeholder-map",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "design"
+      ],
+      "tier": "situational",
+      "summary": "Maps people in an account: roles, influence, sentiment.",
+      "use_when": [
+        "B2B clients with several contacts per company"
+      ],
+      "avoid_when": [
+        "One contact per client"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "account-research"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "account-research",
+      "name": "Account Research",
+      "invoke": "sales:account-research",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Company overview, news and fit for a target account.",
+      "use_when": [
+        "A 'Research this company' button (v2)"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "forecast",
+      "name": "Forecast",
+      "invoke": "sales:forecast",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "design"
+      ],
+      "tier": "situational",
+      "summary": "Commit / best-case / pipeline forecast narrative.",
+      "use_when": [
+        "The client forecasts revenue from the pipeline"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "pipeline-review"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "weekly-wrap",
+      "name": "Weekly Wrap",
+      "invoke": "sales:weekly-wrap",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "design"
+      ],
+      "tier": "optional",
+      "summary": "End-of-week summary: closed, moved, slipped, on deck.",
+      "use_when": [
+        "Designing a weekly recap view or email"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "monday-brief"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "schedule-meeting",
+      "name": "Schedule Meeting",
+      "invoke": "sales:schedule-meeting",
+      "kind": "skill",
+      "plugin": "sales",
+      "category": "crm",
+      "phases": [
+        "build"
+      ],
+      "tier": "optional",
+      "summary": "Finds a time, books it, and logs it to the CRM.",
+      "use_when": [
+        "Calendar integration (v2)"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "google-calendar"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "frontend-ui-engineering",
+      "name": "Frontend UI Engineering",
+      "invoke": "agent-protocols:frontend-ui-engineering",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "build",
+      "phases": [
+        "build"
+      ],
+      "tier": "core",
+      "summary": "Production-quality components, layouts and state that don't look AI-generated.",
+      "use_when": [
+        "Implementing any screen or component"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Components consume tokens only; no hard-coded colors"
+      ],
+      "pairs_with": [
+        "incremental-implementation",
+        "frontend-design"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "incremental-implementation",
+      "name": "Incremental Implementation",
+      "invoke": "agent-protocols:incremental-implementation",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "build",
+      "phases": [
+        "build"
+      ],
+      "tier": "core",
+      "summary": "Delivers changes in small, always-working steps.",
+      "use_when": [
+        "Any change touching more than one file"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "One slice = one commit = one Vercel preview"
+      ],
+      "pairs_with": [
+        "planning-and-task-breakdown",
+        "git-workflow"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "source-driven-development",
+      "name": "Source-Driven Development",
+      "invoke": "agent-protocols:source-driven-development",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "build",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Grounds implementation in official, current documentation.",
+      "use_when": [
+        "Using Next.js, Supabase, shadcn/ui or any library API",
+        "When versions matter"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Check the installed version's docs before writing framework code"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "api-and-interface-design",
+      "name": "API & Interface Design",
+      "invoke": "agent-protocols:api-and-interface-design",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "build",
+      "phases": [
+        "define",
+        "build"
+      ],
+      "tier": "optional",
+      "summary": "Stable APIs, module boundaries and type contracts.",
+      "use_when": [
+        "Designing the data layer between UI and database"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "test-driven-development",
+      "name": "Test-Driven Development",
+      "invoke": "agent-protocols:test-driven-development",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "build",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Write a failing test, implement, verify.",
+      "use_when": [
+        "Business logic: stage rules, follow-up date math, KPI calculations"
+      ],
+      "avoid_when": [
+        "Pure visual tweaks"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "testing-strategy"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "git-workflow",
+      "name": "Git Workflow & Versioning",
+      "invoke": "agent-protocols:git-workflow-and-versioning",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "build",
+      "phases": [
+        "build",
+        "handover"
+      ],
+      "tier": "recommended",
+      "summary": "Branching, committing and conflict practice.",
+      "use_when": [
+        "Every code change; teaching the client branches + preview deploys"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Each change on a branch -> PR -> Vercel preview -> merge"
+      ],
+      "pairs_with": [
+        "vercel"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "debugging",
+      "name": "Debugging & Error Recovery",
+      "invoke": "agent-protocols:debugging-and-error-recovery",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "build",
+      "phases": [
+        "build",
+        "ship"
+      ],
+      "tier": "recommended",
+      "summary": "Systematic root-cause debugging.",
+      "use_when": [
+        "Build fails, tests fail, or behavior surprises"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "systematic-debugging"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "systematic-debugging",
+      "name": "Systematic Debugging",
+      "invoke": "superpowers:systematic-debugging",
+      "kind": "skill",
+      "plugin": "superpowers",
+      "category": "build",
+      "phases": [
+        "build",
+        "ship"
+      ],
+      "tier": "optional",
+      "summary": "Hypothesis-driven debugging discipline.",
+      "use_when": [
+        "Hard bugs that resisted a first fix"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "debugging"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "performance-optimization",
+      "name": "Performance Optimization",
+      "invoke": "agent-protocols:performance-optimization",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "build",
+      "phases": [
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Measurement-first performance work and Core Web Vitals.",
+      "use_when": [
+        "The dashboard feels slow with real data"
+      ],
+      "avoid_when": [
+        "Premature optimization in v1"
+      ],
+      "how_to_use": [],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "i18n",
+      "name": "Internationalization",
+      "invoke": "agent-protocols:internationalization-and-localization",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "build",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Multiple languages, regional formats, RTL.",
+      "use_when": [
+        "The client works in more than one language or currency"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "At minimum: format money and dates with Intl APIs from day one"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "security-and-hardening",
+      "name": "Security & Hardening",
+      "invoke": "agent-protocols:security-and-hardening",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "build",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Input handling, auth, data storage and third-party integration security.",
+      "use_when": [
+        "Any feature touching client data, login or integrations",
+        "Setting Supabase row-level security"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Client data is private: login required, RLS on every table, secrets only in Vercel env vars"
+      ],
+      "pairs_with": [
+        "security-review"
+      ],
+      "fallback": "docs/stack/02-data-and-auth.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "browser-testing",
+      "name": "Browser Testing with DevTools",
+      "invoke": "agent-protocols:browser-testing-with-devtools",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "quality",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Tests in a real browser: DOM, console errors, network, visual output.",
+      "use_when": [
+        "After every UI slice",
+        "Debugging layout or runtime errors"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Screenshot at 375px and 1280px each time"
+      ],
+      "pairs_with": [
+        "playwright"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "ux-ui-audit",
+      "name": "UX/UI Audit (measured)",
+      "invoke": "ux-ui-audit",
+      "kind": "skill",
+      "plugin": null,
+      "category": "quality",
+      "phases": [
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Evidence-backed audit of a live page: contrast ratios, tap targets, focus rings, accessible names.",
+      "use_when": [
+        "Before handover, on the deployed preview URL"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Fix all WCAG AA failures"
+      ],
+      "pairs_with": [
+        "accessibility-audit",
+        "ux-audit-vectorlab"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "accessibility-audit",
+      "name": "Accessibility Audit (WCAG 2.2)",
+      "invoke": "design-skills:accessibility-audit",
+      "kind": "skill",
+      "plugin": "design-skills",
+      "category": "quality",
+      "phases": [
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "WCAG 2.2 audit with severity and code fixes.",
+      "use_when": [
+        "Final accessibility pass"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "accessibility-review"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "accessibility-review",
+      "name": "Accessibility Review (quick)",
+      "invoke": "design:accessibility-review",
+      "kind": "skill",
+      "plugin": "design",
+      "category": "quality",
+      "phases": [
+        "design",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Quick WCAG 2.1 AA review of a design or page.",
+      "use_when": [
+        "Checking a design before it is built"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "accessibility-audit"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "ux-audit-suite",
+      "name": "UX Audit Suite (usability + a11y + journeys)",
+      "invoke": "ux-agent-skills:ux-audit",
+      "kind": "skill",
+      "plugin": "ux-agent-skills",
+      "category": "quality",
+      "phases": [
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Fans out usability, accessibility and critical-user-journey audits into one go/no-go report.",
+      "use_when": [
+        "Release readiness check"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Define journeys first with ux-agent-skills:spec-cuj (e.g. 'add a lead and move it to Won')"
+      ],
+      "pairs_with": [
+        "spec-cuj"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "spec-cuj",
+      "name": "Critical User Journeys",
+      "invoke": "ux-agent-skills:spec-cuj",
+      "kind": "skill",
+      "plugin": "ux-agent-skills",
+      "category": "quality",
+      "phases": [
+        "define",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Authors critical user journeys as replayable step files.",
+      "use_when": [
+        "Writing the 5 journeys the CRM must never break"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "ux-audit-suite"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "code-review-and-quality",
+      "name": "Code Review & Quality",
+      "invoke": "agent-protocols:code-review-and-quality",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "quality",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Multi-axis review: correctness, readability, architecture, security, performance.",
+      "use_when": [
+        "Before merging each meaningful change"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "code-review"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "code-review",
+      "name": "/code-review",
+      "invoke": "code-review",
+      "kind": "builtin",
+      "plugin": null,
+      "category": "quality",
+      "phases": [
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Built-in Claude Code review of the current diff or a PR.",
+      "use_when": [
+        "Before merging to main"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "code-review-and-quality"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "security-review",
+      "name": "/security-review",
+      "invoke": "security-review",
+      "kind": "builtin",
+      "plugin": null,
+      "category": "quality",
+      "phases": [
+        "polish",
+        "ship"
+      ],
+      "tier": "core",
+      "summary": "Built-in security review of pending changes.",
+      "use_when": [
+        "Before the first production deploy with real client data"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "security-and-hardening"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "verification-before-completion",
+      "name": "Verification Before Completion",
+      "invoke": "superpowers:verification-before-completion",
+      "kind": "skill",
+      "plugin": "superpowers",
+      "category": "quality",
+      "phases": [
+        "build",
+        "polish",
+        "ship"
+      ],
+      "tier": "core",
+      "summary": "Evidence before claims: run the checks and read the output before saying 'done'.",
+      "use_when": [
+        "Before every 'it works' / 'it's deployed' statement"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "browser-testing"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "testing-strategy",
+      "name": "Testing Strategy",
+      "invoke": "engineering:testing-strategy",
+      "kind": "skill",
+      "plugin": "engineering",
+      "category": "quality",
+      "phases": [
+        "define"
+      ],
+      "tier": "optional",
+      "summary": "Decides which tests are worth writing.",
+      "use_when": [
+        "Setting up tests for the CRM logic"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "For a small CRM: unit-test the logic, one end-to-end test per critical journey"
+      ],
+      "pairs_with": [
+        "test-driven-development"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "playwright",
+      "name": "Playwright",
+      "invoke": "npx playwright / require('playwright')",
+      "kind": "cli",
+      "plugin": null,
+      "category": "quality",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "core",
+      "summary": "Headless browser automation for screenshots and end-to-end tests.",
+      "use_when": [
+        "Screenshots at phone and desktop widths",
+        "End-to-end tests of journeys"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "See scripts/screenshot.mjs in this repo for a ready example"
+      ],
+      "pairs_with": [
+        "browser-testing"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": "https://playwright.dev"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel (MCP + CLI)",
+      "invoke": "Vercel MCP tools / vercel CLI",
+      "kind": "connector",
+      "plugin": "vercel",
+      "category": "ship",
+      "phases": [
+        "build",
+        "ship",
+        "handover"
+      ],
+      "tier": "core",
+      "summary": "Hosting: create projects, deploy, preview URLs, env vars, domains, logs, rollbacks, project transfer.",
+      "use_when": [
+        "Every deploy; reading runtime errors; adding env vars; connecting a domain"
+      ],
+      "avoid_when": [
+        "Storing secrets in the repo (use env vars)"
+      ],
+      "how_to_use": [
+        "Connect the GitHub repo once: every push makes a preview, merge to main = production",
+        "Debug prod with get_runtime_errors then get_runtime_logs"
+      ],
+      "pairs_with": [
+        "github",
+        "shipping-and-launch"
+      ],
+      "fallback": "docs/stack/03-github-vercel-workflow.md",
+      "requires": null,
+      "url": "https://vercel.com/docs"
+    },
+    {
+      "id": "github",
+      "name": "GitHub (gh CLI / MCP)",
+      "invoke": "gh CLI / GitHub connector",
+      "kind": "connector",
+      "plugin": "github",
+      "category": "ship",
+      "phases": [
+        "build",
+        "ship",
+        "handover"
+      ],
+      "tier": "core",
+      "summary": "Repository, branches, pull requests, issues, repo transfer.",
+      "use_when": [
+        "Creating the client repo, PRs for each change, transferring ownership"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Use 'gh repo transfer' (or Settings -> Transfer) at handover"
+      ],
+      "pairs_with": [
+        "vercel",
+        "git-workflow"
+      ],
+      "fallback": "docs/stack/03-github-vercel-workflow.md",
+      "requires": null,
+      "url": "https://cli.github.com/manual/"
+    },
+    {
+      "id": "shipping-and-launch",
+      "name": "Shipping & Launch",
+      "invoke": "agent-protocols:shipping-and-launch",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "ship",
+      "phases": [
+        "ship"
+      ],
+      "tier": "core",
+      "summary": "Pre-launch checklist, monitoring, staged rollout and rollback plan.",
+      "use_when": [
+        "Before the client starts using it for real"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "deploy-checklist"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "deploy-checklist",
+      "name": "Deploy Checklist",
+      "invoke": "engineering:deploy-checklist",
+      "kind": "skill",
+      "plugin": "engineering",
+      "category": "ship",
+      "phases": [
+        "ship"
+      ],
+      "tier": "recommended",
+      "summary": "Pre-deploy verification: CI, migrations, flags, rollback triggers.",
+      "use_when": [
+        "Deploys with database migrations"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "shipping-and-launch"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "ci-cd",
+      "name": "CI/CD & Automation",
+      "invoke": "agent-protocols:ci-cd-and-automation",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "ship",
+      "phases": [
+        "ship"
+      ],
+      "tier": "optional",
+      "summary": "Pipelines and quality gates in CI.",
+      "use_when": [
+        "Adding GitHub Actions for lint/test on every PR"
+      ],
+      "avoid_when": [
+        "Vercel's built-in build check is enough for v1"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "vercel"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "session-start-hook",
+      "name": "Session Start Hook",
+      "invoke": "session-start-hook",
+      "kind": "skill",
+      "plugin": null,
+      "category": "ship",
+      "phases": [
+        "handover"
+      ],
+      "tier": "situational",
+      "summary": "Creates startup hooks for Claude Code cloud sessions in the repo.",
+      "use_when": [
+        "Making the client's cloud sessions install dependencies automatically"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "gmail",
+      "name": "Gmail connector",
+      "invoke": "Gmail MCP",
+      "kind": "connector",
+      "plugin": "google",
+      "category": "integrations",
+      "phases": [
+        "discover",
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Search, read and draft email.",
+      "use_when": [
+        "Pulling client email history; drafting follow-ups (v2)"
+      ],
+      "avoid_when": [
+        "Sending email automatically without the owner's review"
+      ],
+      "how_to_use": [
+        "Drafts only. The owner presses send."
+      ],
+      "pairs_with": [
+        "crm-autopilot"
+      ],
+      "fallback": null,
+      "requires": "Google account",
+      "url": null
+    },
+    {
+      "id": "google-calendar",
+      "name": "Google Calendar connector",
+      "invoke": "Google Calendar MCP",
+      "kind": "connector",
+      "plugin": "google",
+      "category": "integrations",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "List, create and update events; suggest times.",
+      "use_when": [
+        "Showing upcoming meetings on the Today view (v2)"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "schedule-meeting"
+      ],
+      "fallback": null,
+      "requires": "Google account",
+      "url": null
+    },
+    {
+      "id": "google-drive",
+      "name": "Google Drive connector",
+      "invoke": "Google Drive MCP",
+      "kind": "connector",
+      "plugin": "google",
+      "category": "integrations",
+      "phases": [
+        "discover"
+      ],
+      "tier": "recommended",
+      "summary": "Search and read files: playbooks, existing spreadsheets.",
+      "use_when": [
+        "Importing the client's playbook or contact sheet"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "google-workspace"
+      ],
+      "fallback": null,
+      "requires": "Google account",
+      "url": null
+    },
+    {
+      "id": "google-workspace",
+      "name": "Google Workspace (Sheets/Docs)",
+      "invoke": "anthropic-skills:google-workspace",
+      "kind": "skill",
+      "plugin": "anthropic-skills",
+      "category": "integrations",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Create or change Google Docs, Sheets and Slides.",
+      "use_when": [
+        "The 'rudimentary' option: a Google Sheet CRM",
+        "Exporting data to Sheets"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "xlsx"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "xlsx",
+      "name": "Spreadsheets (xlsx/csv)",
+      "invoke": "anthropic-skills:xlsx",
+      "kind": "skill",
+      "plugin": "anthropic-skills",
+      "category": "integrations",
+      "phases": [
+        "discover",
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Read, clean and write spreadsheet files.",
+      "use_when": [
+        "Importing an existing contact list; CSV export feature"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "explore-data"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "meeting-recorders",
+      "name": "Meeting recorders (Fathom, Fireflies, Otter, Gong)",
+      "invoke": "Fireflies / Otter / Gong connectors; Fathom via export or Zapier",
+      "kind": "connector",
+      "plugin": null,
+      "category": "integrations",
+      "phases": [
+        "discover",
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Bring meeting transcripts into the CRM as activities and updates.",
+      "use_when": [
+        "The client records client meetings (e.g. with Fathom)"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "v1: paste/upload transcript -> call-summary. v2: automate via Zapier/webhook"
+      ],
+      "pairs_with": [
+        "call-summary",
+        "build-connector"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "build-connector",
+      "name": "Build Connector",
+      "invoke": "small-business:build-connector",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "integrations",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Connects a tool with no official connector, often via Zapier.",
+      "use_when": [
+        "Fathom or a booking tool needs to push data into the CRM"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "meeting-recorders"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "mcp-builder",
+      "name": "MCP Builder",
+      "invoke": "anthropic-skills:mcp-builder",
+      "kind": "skill",
+      "plugin": "anthropic-skills",
+      "category": "integrations",
+      "phases": [
+        "handover"
+      ],
+      "tier": "situational",
+      "summary": "Builds an MCP server so the client's Claude can read and update the CRM directly.",
+      "use_when": [
+        "v3: 'Claude, add a note to Sarah's record'"
+      ],
+      "avoid_when": [
+        "v1"
+      ],
+      "how_to_use": [],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "image-generation",
+      "name": "Image Generation",
+      "invoke": "image-generation:image-generation",
+      "kind": "skill",
+      "plugin": "image-generation",
+      "category": "media",
+      "phases": [
+        "direction",
+        "build"
+      ],
+      "tier": "optional",
+      "summary": "Prompting best practices for any text-to-image model.",
+      "use_when": [
+        "Login-page art, subtle background texture, empty-state imagery that matches the brand"
+      ],
+      "avoid_when": [
+        "Cartoon people in empty states (anti-slop)"
+      ],
+      "how_to_use": [],
+      "pairs_with": [
+        "codesign-create"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "adobe-stock",
+      "name": "Adobe Stock",
+      "invoke": "adobe-for-creativity:adobe-stock-search-and-license",
+      "kind": "skill",
+      "plugin": "adobe-for-creativity",
+      "category": "media",
+      "phases": [
+        "direction"
+      ],
+      "tier": "situational",
+      "summary": "Find and license stock photos, vectors and icons.",
+      "use_when": [
+        "Licensed photography for a login screen"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": "Adobe connector",
+      "url": null
+    },
+    {
+      "id": "canvas-design",
+      "name": "Canvas Design",
+      "invoke": "anthropic-skills:canvas-design",
+      "kind": "skill",
+      "plugin": "anthropic-skills",
+      "category": "media",
+      "phases": [
+        "direction"
+      ],
+      "tier": "optional",
+      "summary": "Original static visual art (PNG/PDF) from a design philosophy.",
+      "use_when": [
+        "A poster-style brand board"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "codesign-launch-video",
+      "name": "CoDesign: Launch Video",
+      "invoke": "codesign:launch-video",
+      "kind": "skill",
+      "plugin": "codesign",
+      "category": "media",
+      "phases": [
+        "handover"
+      ],
+      "tier": "situational",
+      "summary": "Turns a project into a 15-25s promo video.",
+      "use_when": [
+        "A fun 'your new dashboard' reveal for the client"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "remotion"
+      ],
+      "fallback": null,
+      "requires": "CoDesign MCP connector",
+      "url": null
+    },
+    {
+      "id": "remotion",
+      "name": "Remotion (video in React)",
+      "invoke": "remotion:remotion-create",
+      "kind": "skill",
+      "plugin": "remotion",
+      "category": "media",
+      "phases": [
+        "handover"
+      ],
+      "tier": "situational",
+      "summary": "Programmatic video: walkthroughs and tutorials.",
+      "use_when": [
+        "A narrated tutorial video for the client"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "nextjs",
+      "name": "Next.js (App Router)",
+      "invoke": "https://nextjs.org/docs",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "core",
+      "summary": "React framework with first-class Vercel hosting.",
+      "use_when": [
+        "The production app"
+      ],
+      "avoid_when": [
+        "A one-file prototype"
+      ],
+      "how_to_use": [
+        "Use the App Router and Server Actions for simple CRUD"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://nextjs.org/docs"
+    },
+    {
+      "id": "tailwind",
+      "name": "Tailwind CSS",
+      "invoke": "https://tailwindcss.com/docs",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "core",
+      "summary": "Utility CSS; map design-system tokens to it.",
+      "use_when": [
+        "All styling"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Point theme colors at CSS variables from design-system/tokens.css"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://tailwindcss.com/docs"
+    },
+    {
+      "id": "shadcn-ui",
+      "name": "shadcn/ui",
+      "invoke": "https://ui.shadcn.com",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "core",
+      "summary": "Copy-in, accessible React components (Radix-based) you own and can restyle.",
+      "use_when": [
+        "Buttons, dialogs, sheets (slide-overs), tables, forms, command palette"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Its CSS-variable theming maps 1:1 to tokens.css; see docs/stack/04-tokens-to-tailwind.md"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://ui.shadcn.com"
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "invoke": "https://supabase.com/docs",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "define",
+        "build"
+      ],
+      "tier": "core",
+      "summary": "Postgres database, auth and storage with row-level security; generous free tier.",
+      "use_when": [
+        "Storing clients, deals, activities; login"
+      ],
+      "avoid_when": [
+        "You only need a Google Sheet"
+      ],
+      "how_to_use": [
+        "Enable RLS on every table; owner-only policies"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://supabase.com/docs"
+    },
+    {
+      "id": "motion-lib",
+      "name": "Motion (Framer Motion)",
+      "invoke": "https://motion.dev",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Animation library for React with layout animations.",
+      "use_when": [
+        "Board card moves, slide-overs, list reordering"
+      ],
+      "avoid_when": [
+        "Simple hovers (use CSS)"
+      ],
+      "how_to_use": [
+        "Respect the motion rule tokens (100-300ms)"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://motion.dev"
+    },
+    {
+      "id": "dnd-kit",
+      "name": "dnd-kit",
+      "invoke": "https://dndkit.com",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Accessible drag-and-drop toolkit with keyboard support.",
+      "use_when": [
+        "The pipeline board"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Keep a 'Move to…' menu as the keyboard path too"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://dndkit.com"
+    },
+    {
+      "id": "tanstack-table",
+      "name": "TanStack Table",
+      "invoke": "https://tanstack.com/table",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Headless table logic: sort, filter, paginate.",
+      "use_when": [
+        "The clients list"
+      ],
+      "avoid_when": [
+        "Fewer than ~50 rows with no sorting"
+      ],
+      "how_to_use": [],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://tanstack.com/table"
+    },
+    {
+      "id": "recharts",
+      "name": "Recharts",
+      "invoke": "https://recharts.org",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Composable React charts; also used by shadcn/ui charts.",
+      "use_when": [
+        "Pipeline value, wins over time, source breakdown"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Style with tokens; follow docs/design/04-data-viz.md"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://recharts.org"
+    },
+    {
+      "id": "lucide",
+      "name": "Lucide Icons",
+      "invoke": "https://lucide.dev",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Consistent open-source icon set (shadcn default).",
+      "use_when": [
+        "All UI icons"
+      ],
+      "avoid_when": [
+        "Mixing icon sets"
+      ],
+      "how_to_use": [
+        "One stroke width app-wide (1.5 or 2)"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://lucide.dev"
+    },
+    {
+      "id": "google-fonts",
+      "name": "Google Fonts / next/font",
+      "invoke": "https://fonts.google.com",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "direction",
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Free typefaces, self-hosted automatically by next/font.",
+      "use_when": [
+        "Theme typography"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Load max 2 families, max 3 weights"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://fonts.google.com"
+    },
+    {
+      "id": "zod",
+      "name": "Zod + React Hook Form",
+      "invoke": "https://zod.dev",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Schema validation and form state.",
+      "use_when": [
+        "Every form"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "One schema per entity shared by form and server"
+      ],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://zod.dev"
+    },
+    {
+      "id": "resend",
+      "name": "Resend",
+      "invoke": "https://resend.com/docs",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Transactional email API.",
+      "use_when": [
+        "Weekly summary email or reminders (v2)"
+      ],
+      "avoid_when": [
+        "v1"
+      ],
+      "how_to_use": [],
+      "pairs_with": [],
+      "fallback": null,
+      "requires": null,
+      "url": "https://resend.com/docs"
+    },
+    {
+      "id": "documentation-and-adrs",
+      "name": "Documentation & ADRs",
+      "invoke": "agent-protocols:documentation-and-adrs",
+      "kind": "skill",
+      "plugin": "agent-protocols",
+      "category": "handover",
+      "phases": [
+        "define",
+        "handover"
+      ],
+      "tier": "core",
+      "summary": "Records decisions and writes docs future engineers and agents need.",
+      "use_when": [
+        "Writing the client repo's README, AGENTS.md and HOW-TO-CHANGE-THINGS.md"
+      ],
+      "avoid_when": [],
+      "how_to_use": [
+        "Write for a non-developer reading with their AI"
+      ],
+      "pairs_with": [
+        "context-engineering"
+      ],
+      "fallback": "templates/handover-guide.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "engineering-documentation",
+      "name": "Engineering Documentation",
+      "invoke": "engineering:documentation",
+      "kind": "skill",
+      "plugin": "engineering",
+      "category": "handover",
+      "phases": [
+        "handover"
+      ],
+      "tier": "optional",
+      "summary": "READMEs, runbooks and onboarding guides.",
+      "use_when": [
+        "A runbook: 'site is down, what do I do?'"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "documentation-and-adrs"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "smb-onboard",
+      "name": "SMB Onboard",
+      "invoke": "small-business:smb-onboard",
+      "kind": "skill",
+      "plugin": "small-business",
+      "category": "handover",
+      "phases": [
+        "handover"
+      ],
+      "tier": "recommended",
+      "summary": "Walks a small-business owner through connecting tools and running a first recipe.",
+      "use_when": [
+        "Teaching the client to use their own Claude with the CRM"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "claude-code-guide"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "claude-code-guide",
+      "name": "Claude Code Guide (agent)",
+      "invoke": "Agent: claude-code-guide",
+      "kind": "agent",
+      "plugin": null,
+      "category": "handover",
+      "phases": [
+        "handover"
+      ],
+      "tier": "recommended",
+      "summary": "Answers accurate, current questions about Claude Code, the web app, plugins and settings.",
+      "use_when": [
+        "Setting the client up with Claude Code on the web connected to GitHub"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "smb-onboard"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "skill-creator",
+      "name": "Skill Creator",
+      "invoke": "anthropic-skills:skill-creator",
+      "kind": "skill",
+      "plugin": "anthropic-skills",
+      "category": "handover",
+      "phases": [
+        "handover"
+      ],
+      "tier": "optional",
+      "summary": "Creates and tests new skills.",
+      "use_when": [
+        "Packaging this framework as an installable skill for the client's Claude"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "writing-skills"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "writing-skills",
+      "name": "Writing Skills",
+      "invoke": "superpowers:writing-skills",
+      "kind": "skill",
+      "plugin": "superpowers",
+      "category": "handover",
+      "phases": [
+        "handover"
+      ],
+      "tier": "optional",
+      "summary": "Discipline for authoring and verifying skills.",
+      "use_when": [
+        "Same as skill-creator"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "skill-creator"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "doc-coauthoring",
+      "name": "Doc Co-authoring",
+      "invoke": "anthropic-skills:doc-coauthoring",
+      "kind": "skill",
+      "plugin": "anthropic-skills",
+      "category": "handover",
+      "phases": [
+        "define",
+        "handover"
+      ],
+      "tier": "optional",
+      "summary": "Structured workflow for co-writing specs and proposals.",
+      "use_when": [
+        "Writing the spec together with the client"
+      ],
+      "avoid_when": [],
+      "how_to_use": [],
+      "pairs_with": [
+        "spec-driven-development"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": null
+    }
+  ]
+}

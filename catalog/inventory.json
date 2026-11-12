@@ -1,0 +1,2323 @@
+{
+ "description": "Full inventory of skills installed in the environment this repo was authored in (snapshot). catalog_id links to the curated entry in tools.json when the skill is part of the dashboard toolkit. Names only; see each plugin for details.",
+ "snapshot_date": "2026-11-12",
+ "total": 499,
+ "plugins": [
+  {
+   "plugin": "agent-protocols",
+   "relevance": "high",
+   "note": "Engineering discipline: spec, plan, build, test, secure, ship.",
+   "skills": [
+    {
+     "name": "api-and-interface-design",
+     "catalog_id": "api-and-interface-design"
+    },
+    {
+     "name": "browser-testing-with-devtools",
+     "catalog_id": "browser-testing"
+    },
+    {
+     "name": "ci-cd-and-automation",
+     "catalog_id": "ci-cd"
+    },
+    {
+     "name": "code-review-and-quality",
+     "catalog_id": "code-review-and-quality"
+    },
+    {
+     "name": "context-engineering",
+     "catalog_id": "context-engineering"
+    },
+    {
+     "name": "debugging-and-error-recovery",
+     "catalog_id": "debugging"
+    },
+    {
+     "name": "documentation-and-adrs",
+     "catalog_id": "documentation-and-adrs"
+    },
+    {
+     "name": "frontend-ui-engineering",
+     "catalog_id": "frontend-ui-engineering"
+    },
+    {
+     "name": "git-workflow-and-versioning",
+     "catalog_id": "git-workflow"
+    },
+    {
+     "name": "idea-refine",
+     "catalog_id": "idea-refine"
+    },
+    {
+     "name": "incremental-implementation",
+     "catalog_id": "incremental-implementation"
+    },
+    {
+     "name": "internationalization-and-localization",
+     "catalog_id": "i18n"
+    },
+    {
+     "name": "karpathy-guidelines",
+     "catalog_id": "karpathy-guidelines"
+    },
+    {
+     "name": "performance-optimization",
+     "catalog_id": "performance-optimization"
+    },
+    {
+     "name": "planning-and-task-breakdown",
+     "catalog_id": "planning-and-task-breakdown"
+    },
+    {
+     "name": "security-and-hardening",
+     "catalog_id": "security-and-hardening"
+    },
+    {
+     "name": "shipping-and-launch",
+     "catalog_id": "shipping-and-launch"
+    },
+    {
+     "name": "source-driven-development",
+     "catalog_id": "source-driven-development"
+    },
+    {
+     "name": "spec-driven-development",
+     "catalog_id": "spec-driven-development"
+    },
+    {
+     "name": "test-driven-development",
+     "catalog_id": "test-driven-development"
+    },
+    {
+     "name": "using-agent-skills",
+     "catalog_id": "using-agent-skills"
+    },
+    {
+     "name": "code-simplification",
+     "catalog_id": null
+    },
+    {
+     "name": "deprecation-and-migration",
+     "catalog_id": null
+    },
+    {
+     "name": "incident-response-and-postmortems",
+     "catalog_id": null
+    },
+    {
+     "name": "research-spike-and-poc",
+     "catalog_id": null
+    }
+   ],
+   "count": 25
+  },
+  {
+   "plugin": "design",
+   "relevance": "high",
+   "note": "Quick design utilities: research synthesis, critique, copy, a11y, handoff.",
+   "skills": [
+    {
+     "name": "accessibility-review",
+     "catalog_id": "accessibility-review"
+    },
+    {
+     "name": "design-critique",
+     "catalog_id": "design-critique-quick"
+    },
+    {
+     "name": "design-handoff",
+     "catalog_id": "design-handoff"
+    },
+    {
+     "name": "design-system",
+     "catalog_id": "design-system-audit"
+    },
+    {
+     "name": "research-synthesis",
+     "catalog_id": "research-synthesis"
+    },
+    {
+     "name": "user-research",
+     "catalog_id": "user-research"
+    },
+    {
+     "name": "ux-copy",
+     "catalog_id": "ux-copy"
+    }
+   ],
+   "count": 7
+  },
+  {
+   "plugin": "design-skills",
+   "relevance": "high",
+   "note": "Deep design craft: elevation, interaction, critique, systems, UX writing.",
+   "skills": [
+    {
+     "name": "accessibility-audit",
+     "catalog_id": "accessibility-audit"
+    },
+    {
+     "name": "design-critique",
+     "catalog_id": "design-critique"
+    },
+    {
+     "name": "design-elevation",
+     "catalog_id": "design-elevation"
+    },
+    {
+     "name": "design-systems",
+     "catalog_id": "design-systems"
+    },
+    {
+     "name": "interaction-design",
+     "catalog_id": "interaction-design"
+    },
+    {
+     "name": "journey-mapping",
+     "catalog_id": "journey-mapping"
+    },
+    {
+     "name": "ux-research",
+     "catalog_id": "ux-research"
+    },
+    {
+     "name": "ux-strategy",
+     "catalog_id": "ux-strategy"
+    },
+    {
+     "name": "ux-writing",
+     "catalog_id": "ux-writing"
+    },
+    {
+     "name": "design-ops",
+     "catalog_id": null
+    }
+   ],
+   "count": 10
+  },
+  {
+   "plugin": "design-superpowers",
+   "relevance": "high",
+   "note": "Creative direction, design-system making and design review.",
+   "skills": [
+    {
+     "name": "creative",
+     "catalog_id": "creative-direction"
+    },
+    {
+     "name": "design",
+     "catalog_id": "design-feature"
+    },
+    {
+     "name": "design-review",
+     "catalog_id": "design-review"
+    },
+    {
+     "name": "ds-make",
+     "catalog_id": "ds-make"
+    },
+    {
+     "name": "map-design",
+     "catalog_id": "map-design"
+    },
+    {
+     "name": "ds-consumer",
+     "catalog_id": null
+    },
+    {
+     "name": "ds-manage",
+     "catalog_id": null
+    },
+    {
+     "name": "ds-producer",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-setup",
+     "catalog_id": null
+    }
+   ],
+   "count": 9
+  },
+  {
+   "plugin": "frontend-design",
+   "relevance": "high",
+   "note": "Distinctive visual design guidance.",
+   "skills": [
+    {
+     "name": "frontend-design",
+     "catalog_id": "frontend-design"
+    }
+   ],
+   "count": 1
+  },
+  {
+   "plugin": "sales",
+   "relevance": "high",
+   "note": "CRM and pipeline workflows. Use as functional spec for CRM features.",
+   "skills": [
+    {
+     "name": "account-research",
+     "catalog_id": "account-research"
+    },
+    {
+     "name": "call-summary",
+     "catalog_id": "call-summary"
+    },
+    {
+     "name": "crm-hygiene-check",
+     "catalog_id": "crm-hygiene-check"
+    },
+    {
+     "name": "daily-briefing",
+     "catalog_id": "daily-briefing"
+    },
+    {
+     "name": "deal-advance-gap",
+     "catalog_id": "deal-advance-gap"
+    },
+    {
+     "name": "deal-review",
+     "catalog_id": "deal-review"
+    },
+    {
+     "name": "deal-signals",
+     "catalog_id": "deal-signals"
+    },
+    {
+     "name": "draft-outreach",
+     "catalog_id": "draft-outreach"
+    },
+    {
+     "name": "forecast",
+     "catalog_id": "forecast"
+    },
+    {
+     "name": "log-activity",
+     "catalog_id": "log-activity"
+    },
+    {
+     "name": "pipeline-review",
+     "catalog_id": "pipeline-review"
+    },
+    {
+     "name": "schedule-meeting",
+     "catalog_id": "schedule-meeting"
+    },
+    {
+     "name": "setup",
+     "catalog_id": "sales-setup"
+    },
+    {
+     "name": "stakeholder-map",
+     "catalog_id": "stakeholder-map"
+    },
+    {
+     "name": "update-opportunity",
+     "catalog_id": "update-opportunity"
+    },
+    {
+     "name": "weekly-wrap",
+     "catalog_id": "weekly-wrap"
+    },
+    {
+     "name": "account-context",
+     "catalog_id": null
+    },
+    {
+     "name": "account-plan",
+     "catalog_id": null
+    },
+    {
+     "name": "account-tiering",
+     "catalog_id": null
+    },
+    {
+     "name": "call-prep",
+     "catalog_id": null
+    },
+    {
+     "name": "close-plan",
+     "catalog_id": null
+    },
+    {
+     "name": "competitive-intelligence",
+     "catalog_id": null
+    },
+    {
+     "name": "create-an-asset",
+     "catalog_id": null
+    },
+    {
+     "name": "customer-health",
+     "catalog_id": null
+    },
+    {
+     "name": "customer-voice",
+     "catalog_id": null
+    },
+    {
+     "name": "deal-slip-scenario",
+     "catalog_id": null
+    },
+    {
+     "name": "end-of-day",
+     "catalog_id": null
+    },
+    {
+     "name": "expansion-whitespace",
+     "catalog_id": null
+    },
+    {
+     "name": "handle-objection",
+     "catalog_id": null
+    },
+    {
+     "name": "inbox-sweep",
+     "catalog_id": null
+    },
+    {
+     "name": "lead-triage",
+     "catalog_id": null
+    },
+    {
+     "name": "renewal-radar",
+     "catalog_id": null
+    },
+    {
+     "name": "rep-context",
+     "catalog_id": null
+    },
+    {
+     "name": "route-lead",
+     "catalog_id": null
+    },
+    {
+     "name": "team-pipeline",
+     "catalog_id": null
+    },
+    {
+     "name": "win-loss-review",
+     "catalog_id": null
+    }
+   ],
+   "count": 36
+  },
+  {
+   "plugin": "small-business",
+   "relevance": "high",
+   "note": "Owner-focused CRM, lead and reporting workflows.",
+   "skills": [
+    {
+     "name": "brand-style",
+     "catalog_id": "brand-style"
+    },
+    {
+     "name": "build-connector",
+     "catalog_id": "build-connector"
+    },
+    {
+     "name": "business-pulse",
+     "catalog_id": "business-pulse"
+    },
+    {
+     "name": "call-list",
+     "catalog_id": "call-list"
+    },
+    {
+     "name": "crm-autopilot",
+     "catalog_id": "crm-autopilot"
+    },
+    {
+     "name": "grow-pipeline",
+     "catalog_id": "grow-pipeline"
+    },
+    {
+     "name": "invoice-chase",
+     "catalog_id": "invoice-chase"
+    },
+    {
+     "name": "lead-finder",
+     "catalog_id": "lead-finder"
+    },
+    {
+     "name": "lead-triage",
+     "catalog_id": "lead-triage"
+    },
+    {
+     "name": "monday-brief",
+     "catalog_id": "monday-brief"
+    },
+    {
+     "name": "outreach-composer",
+     "catalog_id": "outreach-composer"
+    },
+    {
+     "name": "proposal-builder",
+     "catalog_id": "proposal-builder"
+    },
+    {
+     "name": "reactivate",
+     "catalog_id": "reactivate"
+    },
+    {
+     "name": "report-builder",
+     "catalog_id": "report-builder"
+    },
+    {
+     "name": "smb-onboard",
+     "catalog_id": "smb-onboard"
+    },
+    {
+     "name": "speed-to-lead",
+     "catalog_id": "speed-to-lead"
+    },
+    {
+     "name": "ad-manager",
+     "catalog_id": null
+    },
+    {
+     "name": "ap-processor",
+     "catalog_id": null
+    },
+    {
+     "name": "build-agent",
+     "catalog_id": null
+    },
+    {
+     "name": "canva-creator",
+     "catalog_id": null
+    },
+    {
+     "name": "cash-flow-snapshot",
+     "catalog_id": null
+    },
+    {
+     "name": "close-month",
+     "catalog_id": null
+    },
+    {
+     "name": "content-strategy",
+     "catalog_id": null
+    },
+    {
+     "name": "contract-review",
+     "catalog_id": null
+    },
+    {
+     "name": "grant-rfp-writer",
+     "catalog_id": null
+    },
+    {
+     "name": "growth-pulse",
+     "catalog_id": null
+    },
+    {
+     "name": "hiring-screener",
+     "catalog_id": null
+    },
+    {
+     "name": "inbox-manager",
+     "catalog_id": null
+    },
+    {
+     "name": "inventory-planner",
+     "catalog_id": null
+    },
+    {
+     "name": "job-post-builder",
+     "catalog_id": null
+    },
+    {
+     "name": "marketing-monday",
+     "catalog_id": null
+    },
+    {
+     "name": "month-end-prep",
+     "catalog_id": null
+    },
+    {
+     "name": "pay-the-bills",
+     "catalog_id": null
+    },
+    {
+     "name": "payroll-prep",
+     "catalog_id": null
+    },
+    {
+     "name": "plan-payroll",
+     "catalog_id": null
+    },
+    {
+     "name": "report-pack",
+     "catalog_id": null
+    },
+    {
+     "name": "restock",
+     "catalog_id": null
+    },
+    {
+     "name": "review-reputation",
+     "catalog_id": null
+    },
+    {
+     "name": "seo-ai-visibility",
+     "catalog_id": null
+    },
+    {
+     "name": "smb-router",
+     "catalog_id": null
+    },
+    {
+     "name": "social-content-engine",
+     "catalog_id": null
+    },
+    {
+     "name": "tax-prep",
+     "catalog_id": null
+    },
+    {
+     "name": "tax-season-organizer",
+     "catalog_id": null
+    },
+    {
+     "name": "ticket-deflector",
+     "catalog_id": null
+    }
+   ],
+   "count": 44
+  },
+  {
+   "plugin": "superpowers",
+   "relevance": "high",
+   "note": "Process discipline: brainstorm, plan, verify.",
+   "skills": [
+    {
+     "name": "brainstorming",
+     "catalog_id": "brainstorming"
+    },
+    {
+     "name": "dispatching-parallel-agents",
+     "catalog_id": "dispatching-parallel-agents"
+    },
+    {
+     "name": "executing-plans",
+     "catalog_id": "executing-plans"
+    },
+    {
+     "name": "subagent-driven-development",
+     "catalog_id": "subagent-driven-development"
+    },
+    {
+     "name": "verification-before-completion",
+     "catalog_id": "verification-before-completion"
+    },
+    {
+     "name": "writing-plans",
+     "catalog_id": "writing-plans"
+    },
+    {
+     "name": "writing-skills",
+     "catalog_id": "writing-skills"
+    },
+    {
+     "name": "diagnosing-superpowers",
+     "catalog_id": null
+    },
+    {
+     "name": "finishing-a-development-branch",
+     "catalog_id": null
+    },
+    {
+     "name": "receiving-code-review",
+     "catalog_id": null
+    },
+    {
+     "name": "requesting-code-review",
+     "catalog_id": null
+    },
+    {
+     "name": "test-driven-development",
+     "catalog_id": null
+    },
+    {
+     "name": "using-git-worktrees",
+     "catalog_id": null
+    },
+    {
+     "name": "using-superpowers",
+     "catalog_id": null
+    }
+   ],
+   "count": 14
+  },
+  {
+   "plugin": "vectorlab-ux-skills",
+   "relevance": "high",
+   "note": "Strict UI polish rules. Core of docs/design/02-rulebook.md.",
+   "skills": [
+    {
+     "name": "anti-slop",
+     "catalog_id": "anti-slop"
+    },
+    {
+     "name": "colour-palette",
+     "catalog_id": "colour-palette"
+    },
+    {
+     "name": "defaults",
+     "catalog_id": "defaults"
+    },
+    {
+     "name": "empty-states",
+     "catalog_id": "empty-states"
+    },
+    {
+     "name": "errors",
+     "catalog_id": "errors"
+    },
+    {
+     "name": "forms",
+     "catalog_id": "forms"
+    },
+    {
+     "name": "icon-buttons",
+     "catalog_id": "icon-buttons"
+    },
+    {
+     "name": "keyboard",
+     "catalog_id": "keyboard"
+    },
+    {
+     "name": "labels",
+     "catalog_id": "labels"
+    },
+    {
+     "name": "loaders",
+     "catalog_id": "loaders"
+    },
+    {
+     "name": "motion",
+     "catalog_id": "motion"
+    },
+    {
+     "name": "page-patterns",
+     "catalog_id": "page-patterns"
+    },
+    {
+     "name": "reduced-motion",
+     "catalog_id": "reduced-motion"
+    },
+    {
+     "name": "setup-ui-ux-skills",
+     "catalog_id": "setup-ui-ux-skills"
+    },
+    {
+     "name": "spacing",
+     "catalog_id": "spacing"
+    },
+    {
+     "name": "surfaces",
+     "catalog_id": "surfaces"
+    },
+    {
+     "name": "transitions",
+     "catalog_id": "transitions"
+    },
+    {
+     "name": "typography",
+     "catalog_id": "typography"
+    },
+    {
+     "name": "ux-audit",
+     "catalog_id": "ux-audit-vectorlab"
+    },
+    {
+     "name": "verbs",
+     "catalog_id": "verbs"
+    },
+    {
+     "name": "viewports",
+     "catalog_id": "viewports"
+    }
+   ],
+   "count": 21
+  },
+  {
+   "plugin": "21st",
+   "relevance": "medium",
+   "note": "Ready-made React UI components.",
+   "skills": [
+    {
+     "name": "21st-ui",
+     "catalog_id": "21st-ui"
+    }
+   ],
+   "count": 1
+  },
+  {
+   "plugin": "brand-studio",
+   "relevance": "medium",
+   "note": "Brand strategy and identity.",
+   "skills": [
+    {
+     "name": "brand-brief",
+     "catalog_id": "brand-brief"
+    },
+    {
+     "name": "brand-identity-system",
+     "catalog_id": "brand-identity-system"
+    },
+    {
+     "name": "brand-review",
+     "catalog_id": "brand-review"
+    },
+    {
+     "name": "brand-strategy",
+     "catalog_id": "brand-strategy"
+    },
+    {
+     "name": "brand-studio-router",
+     "catalog_id": null
+    }
+   ],
+   "count": 5
+  },
+  {
+   "plugin": "codesign",
+   "relevance": "medium",
+   "note": "Visual design canvas: mood boards, graphics, video.",
+   "skills": [
+    {
+     "name": "brand",
+     "catalog_id": "codesign-brand"
+    },
+    {
+     "name": "create",
+     "catalog_id": "codesign-create"
+    },
+    {
+     "name": "launch-video",
+     "catalog_id": "codesign-launch-video"
+    },
+    {
+     "name": "animate",
+     "catalog_id": null
+    },
+    {
+     "name": "api",
+     "catalog_id": null
+    },
+    {
+     "name": "formats",
+     "catalog_id": null
+    },
+    {
+     "name": "guide",
+     "catalog_id": null
+    },
+    {
+     "name": "handbook",
+     "catalog_id": null
+    },
+    {
+     "name": "judge",
+     "catalog_id": null
+    },
+    {
+     "name": "layerize",
+     "catalog_id": null
+    },
+    {
+     "name": "localize",
+     "catalog_id": null
+    },
+    {
+     "name": "models",
+     "catalog_id": null
+    },
+    {
+     "name": "onboard",
+     "catalog_id": null
+    },
+    {
+     "name": "resize",
+     "catalog_id": null
+    },
+    {
+     "name": "video-thumbnail-template",
+     "catalog_id": null
+    }
+   ],
+   "count": 15
+  },
+  {
+   "plugin": "data",
+   "relevance": "medium",
+   "note": "Dashboards, charts and data quality.",
+   "skills": [
+    {
+     "name": "analyze",
+     "catalog_id": "analyze"
+    },
+    {
+     "name": "build-dashboard",
+     "catalog_id": "build-dashboard"
+    },
+    {
+     "name": "create-viz",
+     "catalog_id": "create-viz"
+    },
+    {
+     "name": "data-visualization",
+     "catalog_id": "data-visualization"
+    },
+    {
+     "name": "explore-data",
+     "catalog_id": "explore-data"
+    },
+    {
+     "name": "validate-data",
+     "catalog_id": "validate-data"
+    },
+    {
+     "name": "data-context-extractor",
+     "catalog_id": null
+    },
+    {
+     "name": "sql-queries",
+     "catalog_id": null
+    },
+    {
+     "name": "statistical-analysis",
+     "catalog_id": null
+    },
+    {
+     "name": "write-query",
+     "catalog_id": null
+    }
+   ],
+   "count": 10
+  },
+  {
+   "plugin": "engineering",
+   "relevance": "medium",
+   "note": "Docs, deploy checklists, testing strategy.",
+   "skills": [
+    {
+     "name": "code-review",
+     "catalog_id": "code-review"
+    },
+    {
+     "name": "deploy-checklist",
+     "catalog_id": "deploy-checklist"
+    },
+    {
+     "name": "documentation",
+     "catalog_id": "engineering-documentation"
+    },
+    {
+     "name": "testing-strategy",
+     "catalog_id": "testing-strategy"
+    },
+    {
+     "name": "architecture",
+     "catalog_id": null
+    },
+    {
+     "name": "debug",
+     "catalog_id": null
+    },
+    {
+     "name": "incident-response",
+     "catalog_id": null
+    },
+    {
+     "name": "standup",
+     "catalog_id": null
+    },
+    {
+     "name": "tech-debt",
+     "catalog_id": null
+    }
+   ],
+   "count": 9
+  },
+  {
+   "plugin": "figma",
+   "relevance": "medium",
+   "note": "Only if the client or a designer uses Figma.",
+   "skills": [
+    {
+     "name": "figma-design-to-code",
+     "catalog_id": "figma-design-to-code"
+    },
+    {
+     "name": "figma-generate-design",
+     "catalog_id": "figma-generate-design"
+    },
+    {
+     "name": "figma-generate-library",
+     "catalog_id": "figma-generate-library"
+    },
+    {
+     "name": "figma-use",
+     "catalog_id": "figma-use"
+    },
+    {
+     "name": "figma-code-connect",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-code-workflows",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-create-new-file",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-generate-diagram",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-generative-plugins",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-implement-motion",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-shaders",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-spec",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-swiftui",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-use-figjam",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-use-motion",
+     "catalog_id": null
+    },
+    {
+     "name": "figma-use-slides",
+     "catalog_id": null
+    },
+    {
+     "name": "generate-project-plan",
+     "catalog_id": null
+    },
+    {
+     "name": "video-interaction-mapper",
+     "catalog_id": null
+    }
+   ],
+   "count": 18
+  },
+  {
+   "plugin": "image-generation",
+   "relevance": "medium",
+   "note": "Image prompting best practices.",
+   "skills": [
+    {
+     "name": "image-generation",
+     "catalog_id": "image-generation"
+    }
+   ],
+   "count": 1
+  },
+  {
+   "plugin": "superdesign",
+   "relevance": "medium",
+   "note": "Fast UI variation canvas.",
+   "skills": [
+    {
+     "name": "superdesign",
+     "catalog_id": "superdesign"
+    }
+   ],
+   "count": 1
+  },
+  {
+   "plugin": "ux-agent-skills",
+   "relevance": "medium",
+   "note": "Usability, journeys and roll-up audits.",
+   "skills": [
+    {
+     "name": "spec-cuj",
+     "catalog_id": "spec-cuj"
+    },
+    {
+     "name": "ux-audit",
+     "catalog_id": "ux-audit-suite"
+    },
+    {
+     "name": "audit-cuj",
+     "catalog_id": null
+    },
+    {
+     "name": "render-report",
+     "catalog_id": null
+    },
+    {
+     "name": "usability-audit",
+     "catalog_id": null
+    }
+   ],
+   "count": 5
+  },
+  {
+   "plugin": "built-in",
+   "relevance": "mixed",
+   "note": "Built-in Anthropic skills. Some are relevant (docs, sheets, artifacts, frontend-design, ux-ui-audit), most are personal-assistant tasks.",
+   "skills": [
+    {
+     "name": "canvas-design",
+     "catalog_id": "canvas-design"
+    },
+    {
+     "name": "deep-research",
+     "catalog_id": "deep-research"
+    },
+    {
+     "name": "doc-coauthoring",
+     "catalog_id": "doc-coauthoring"
+    },
+    {
+     "name": "docx",
+     "catalog_id": "file-reading"
+    },
+    {
+     "name": "google-workspace",
+     "catalog_id": "google-workspace"
+    },
+    {
+     "name": "mcp-builder",
+     "catalog_id": "mcp-builder"
+    },
+    {
+     "name": "pdf",
+     "catalog_id": "file-reading"
+    },
+    {
+     "name": "skill-creator",
+     "catalog_id": "skill-creator"
+    },
+    {
+     "name": "soundweaver",
+     "catalog_id": "soundweaver"
+    },
+    {
+     "name": "theme-factory",
+     "catalog_id": "theme-factory"
+    },
+    {
+     "name": "ux-ui-audit",
+     "catalog_id": "ux-ui-audit"
+    },
+    {
+     "name": "web-artifacts-builder",
+     "catalog_id": "web-artifacts-builder"
+    },
+    {
+     "name": "xlsx",
+     "catalog_id": "file-reading"
+    },
+    {
+     "name": "algorithmic-art",
+     "catalog_id": null
+    },
+    {
+     "name": "artifact-emulator",
+     "catalog_id": null
+    },
+    {
+     "name": "benepass-reimbursement",
+     "catalog_id": null
+    },
+    {
+     "name": "brand-guidelines",
+     "catalog_id": null
+    },
+    {
+     "name": "built-in-browser",
+     "catalog_id": null
+    },
+    {
+     "name": "call-to-book",
+     "catalog_id": null
+    },
+    {
+     "name": "cancel-unsubscribe",
+     "catalog_id": null
+    },
+    {
+     "name": "chrome-browser",
+     "catalog_id": null
+    },
+    {
+     "name": "computer-use",
+     "catalog_id": null
+    },
+    {
+     "name": "computer-use-desktop",
+     "catalog_id": null
+    },
+    {
+     "name": "docs",
+     "catalog_id": null
+    },
+    {
+     "name": "event-planning",
+     "catalog_id": null
+    },
+    {
+     "name": "file-expenses",
+     "catalog_id": null
+    },
+    {
+     "name": "file-form",
+     "catalog_id": null
+    },
+    {
+     "name": "file-reading",
+     "catalog_id": null
+    },
+    {
+     "name": "financial-calculator",
+     "catalog_id": null
+    },
+    {
+     "name": "frontend-design",
+     "catalog_id": null
+    },
+    {
+     "name": "grocery-shopping",
+     "catalog_id": null
+    },
+    {
+     "name": "hire-help",
+     "catalog_id": null
+    },
+    {
+     "name": "import-memory",
+     "catalog_id": null
+    },
+    {
+     "name": "internal-comms",
+     "catalog_id": null
+    },
+    {
+     "name": "learn",
+     "catalog_id": null
+    },
+    {
+     "name": "meal-delivery",
+     "catalog_id": null
+    },
+    {
+     "name": "morning",
+     "catalog_id": null
+    },
+    {
+     "name": "paint",
+     "catalog_id": null
+    },
+    {
+     "name": "pdf-reading",
+     "catalog_id": null
+    },
+    {
+     "name": "pptx",
+     "catalog_id": null
+    },
+    {
+     "name": "prescription-refill",
+     "catalog_id": null
+    },
+    {
+     "name": "product-self-knowledge",
+     "catalog_id": null
+    },
+    {
+     "name": "return-refund",
+     "catalog_id": null
+    },
+    {
+     "name": "setup-writing-style",
+     "catalog_id": null
+    },
+    {
+     "name": "slack-gif-creator",
+     "catalog_id": null
+    },
+    {
+     "name": "startup-hook-skill",
+     "catalog_id": null
+    },
+    {
+     "name": "video-making",
+     "catalog_id": null
+    }
+   ],
+   "count": 47
+  },
+  {
+   "plugin": "adobe-for-creativity",
+   "relevance": "low",
+   "note": "Photo/video/PDF/brand assets; occasionally useful for media.",
+   "skills": [
+    {
+     "name": "adobe-firefly-boards",
+     "catalog_id": "adobe-firefly-boards"
+    },
+    {
+     "name": "adobe-fonts",
+     "catalog_id": "adobe-fonts"
+    },
+    {
+     "name": "adobe-stock-search-and-license",
+     "catalog_id": "adobe-stock"
+    },
+    {
+     "name": "adobe",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-anydocx",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-anyexcel",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-anypdf",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-anypptx",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-batch-edit-photos",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-before-and-after-image-edit",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-brand-kit",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-cleanup-audio",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-create-pdfs-from-data",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-create-social-variations",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-design-from-template",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-design-to-pdf",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-document-review",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-edit-quick-cut",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-expand-image",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-match-style",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-product-photo-cutout",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-resize-photos-and-videos",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-retouch-portraits",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-standardize-headshots",
+     "catalog_id": null
+    },
+    {
+     "name": "adobe-summarize-media",
+     "catalog_id": null
+    },
+    {
+     "name": "configure",
+     "catalog_id": null
+    }
+   ],
+   "count": 26
+  },
+  {
+   "plugin": "apollo",
+   "relevance": "low",
+   "note": "B2B prospecting and enrichment.",
+   "skills": [
+    {
+     "name": "enrich-lead",
+     "catalog_id": null
+    },
+    {
+     "name": "prospect",
+     "catalog_id": null
+    },
+    {
+     "name": "sequence-load",
+     "catalog_id": null
+    }
+   ],
+   "count": 3
+  },
+  {
+   "plugin": "brightdata-plugin",
+   "relevance": "low",
+   "note": "Web scraping/research; competitor research at most.",
+   "skills": [
+    {
+     "name": "agent-onboarding",
+     "catalog_id": null
+    },
+    {
+     "name": "brand-listening",
+     "catalog_id": null
+    },
+    {
+     "name": "brd-browser-debug",
+     "catalog_id": null
+    },
+    {
+     "name": "bright-data-best-practices",
+     "catalog_id": null
+    },
+    {
+     "name": "bright-data-mcp",
+     "catalog_id": null
+    },
+    {
+     "name": "brightdata-cli",
+     "catalog_id": null
+    },
+    {
+     "name": "brightdata-proxy",
+     "catalog_id": null
+    },
+    {
+     "name": "brightdata-sdk",
+     "catalog_id": null
+    },
+    {
+     "name": "brightdata-sdk-js",
+     "catalog_id": null
+    },
+    {
+     "name": "competitive-intel",
+     "catalog_id": null
+    },
+    {
+     "name": "data-feeds",
+     "catalog_id": null
+    },
+    {
+     "name": "design-mirror",
+     "catalog_id": null
+    },
+    {
+     "name": "discover-api",
+     "catalog_id": null
+    },
+    {
+     "name": "live-research",
+     "catalog_id": null
+    },
+    {
+     "name": "price-comparison",
+     "catalog_id": null
+    },
+    {
+     "name": "rag-pipeline",
+     "catalog_id": null
+    },
+    {
+     "name": "scrape",
+     "catalog_id": null
+    },
+    {
+     "name": "scraper-builder",
+     "catalog_id": null
+    },
+    {
+     "name": "scraper-studio",
+     "catalog_id": null
+    },
+    {
+     "name": "search",
+     "catalog_id": null
+    },
+    {
+     "name": "seo-audit",
+     "catalog_id": null
+    }
+   ],
+   "count": 21
+  },
+  {
+   "plugin": "common-room",
+   "relevance": "low",
+   "note": "Account signals for B2B sales teams.",
+   "skills": [
+    {
+     "name": "account-research",
+     "catalog_id": null
+    },
+    {
+     "name": "call-prep",
+     "catalog_id": null
+    },
+    {
+     "name": "compose-outreach",
+     "catalog_id": null
+    },
+    {
+     "name": "contact-research",
+     "catalog_id": null
+    },
+    {
+     "name": "prospect",
+     "catalog_id": null
+    },
+    {
+     "name": "weekly-prep-brief",
+     "catalog_id": null
+    }
+   ],
+   "count": 6
+  },
+  {
+   "plugin": "exa",
+   "relevance": "low",
+   "note": "Web research engine.",
+   "skills": [
+    {
+     "name": "Exa Agent",
+     "catalog_id": null
+    },
+    {
+     "name": "search",
+     "catalog_id": null
+    }
+   ],
+   "count": 2
+  },
+  {
+   "plugin": "octopus",
+   "relevance": "low",
+   "note": "Third-party AI code review.",
+   "skills": [
+    {
+     "name": "code-review",
+     "catalog_id": "code-review"
+    },
+    {
+     "name": "autofix",
+     "catalog_id": null
+    }
+   ],
+   "count": 2
+  },
+  {
+   "plugin": "remotion",
+   "relevance": "low",
+   "note": "Programmatic video, e.g. tutorial for the client.",
+   "skills": [
+    {
+     "name": "remotion-create",
+     "catalog_id": "remotion"
+    },
+    {
+     "name": "remotion-best-practices",
+     "catalog_id": null
+    },
+    {
+     "name": "remotion-captions",
+     "catalog_id": null
+    },
+    {
+     "name": "remotion-docs",
+     "catalog_id": null
+    },
+    {
+     "name": "remotion-interactivity",
+     "catalog_id": null
+    },
+    {
+     "name": "remotion-maps",
+     "catalog_id": null
+    },
+    {
+     "name": "remotion-markup",
+     "catalog_id": null
+    },
+    {
+     "name": "remotion-multimedia",
+     "catalog_id": null
+    },
+    {
+     "name": "remotion-render",
+     "catalog_id": null
+    },
+    {
+     "name": "remotion-saas",
+     "catalog_id": null
+    },
+    {
+     "name": "remotion-studio",
+     "catalog_id": null
+    },
+    {
+     "name": "remotion-upgrade",
+     "catalog_id": null
+    }
+   ],
+   "count": 12
+  },
+  {
+   "plugin": "superme",
+   "relevance": "low",
+   "note": "Advice grounded in peers' experience (prioritization, metrics).",
+   "skills": [
+    {
+     "name": "choose-metrics",
+     "catalog_id": "choose-metrics"
+    },
+    {
+     "name": "choose-what-to-build",
+     "catalog_id": "choose-what-to-build"
+    },
+    {
+     "name": "ask-how-others-handle-this",
+     "catalog_id": null
+    },
+    {
+     "name": "close-deals",
+     "catalog_id": null
+    },
+    {
+     "name": "evaluate-metrics",
+     "catalog_id": null
+    },
+    {
+     "name": "fundraise",
+     "catalog_id": null
+    },
+    {
+     "name": "get-buy-in",
+     "catalog_id": null
+    },
+    {
+     "name": "get-customers",
+     "catalog_id": null
+    },
+    {
+     "name": "hire-someone",
+     "catalog_id": null
+    },
+    {
+     "name": "manage-a-team",
+     "catalog_id": null
+    },
+    {
+     "name": "negotiate-a-raise",
+     "catalog_id": null
+    },
+    {
+     "name": "pick-software-tools",
+     "catalog_id": null
+    },
+    {
+     "name": "prep-for-a-meeting",
+     "catalog_id": null
+    },
+    {
+     "name": "prep-for-an-interview",
+     "catalog_id": null
+    },
+    {
+     "name": "review-doc",
+     "catalog_id": null
+    },
+    {
+     "name": "set-pricing",
+     "catalog_id": null
+    },
+    {
+     "name": "switch-jobs",
+     "catalog_id": null
+    },
+    {
+     "name": "validate-an-idea",
+     "catalog_id": null
+    }
+   ],
+   "count": 18
+  },
+  {
+   "plugin": "active-memory",
+   "relevance": "none",
+   "note": "Claude memory tooling.",
+   "skills": [
+    {
+     "name": "amcheckpoint",
+     "catalog_id": null
+    },
+    {
+     "name": "amcodeword",
+     "catalog_id": null
+    },
+    {
+     "name": "amhandoff",
+     "catalog_id": null
+    },
+    {
+     "name": "amhelp",
+     "catalog_id": null
+    },
+    {
+     "name": "amsetup",
+     "catalog_id": null
+    }
+   ],
+   "count": 5
+  },
+  {
+   "plugin": "beckett",
+   "relevance": "none",
+   "note": "Personal life organizer.",
+   "skills": [
+    {
+     "name": "birthdays",
+     "catalog_id": null
+    },
+    {
+     "name": "bookmarks",
+     "catalog_id": null
+    },
+    {
+     "name": "calendar",
+     "catalog_id": null
+    },
+    {
+     "name": "check-ins",
+     "catalog_id": null
+    },
+    {
+     "name": "grocery-list",
+     "catalog_id": null
+    },
+    {
+     "name": "habits",
+     "catalog_id": null
+    },
+    {
+     "name": "meal-plan",
+     "catalog_id": null
+    },
+    {
+     "name": "notes",
+     "catalog_id": null
+    },
+    {
+     "name": "people",
+     "catalog_id": null
+    },
+    {
+     "name": "projects",
+     "catalog_id": null
+    },
+    {
+     "name": "recipes",
+     "catalog_id": null
+    },
+    {
+     "name": "reminders",
+     "catalog_id": null
+    },
+    {
+     "name": "start",
+     "catalog_id": null
+    },
+    {
+     "name": "today",
+     "catalog_id": null
+    },
+    {
+     "name": "use-beckett",
+     "catalog_id": null
+    },
+    {
+     "name": "watchlist",
+     "catalog_id": null
+    }
+   ],
+   "count": 16
+  },
+  {
+   "plugin": "claude-context-optimizer",
+   "relevance": "none",
+   "note": "Claude token/context tooling.",
+   "skills": [
+    {
+     "name": "cco",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-anatomy",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-budget",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-claudemd",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-clean",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-coach",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-config",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-digest",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-doctor",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-export",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-git",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-overhead",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-pack",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-patterns",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-replay",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-report",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-roi",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-shield",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-task",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-templates",
+     "catalog_id": null
+    },
+    {
+     "name": "cco-tools",
+     "catalog_id": null
+    },
+    {
+     "name": "smart-loader",
+     "catalog_id": null
+    }
+   ],
+   "count": 22
+  },
+  {
+   "plugin": "cowork-plugin-management",
+   "relevance": "none",
+   "note": "Plugin authoring for Cowork.",
+   "skills": [
+    {
+     "name": "cowork-plugin-customizer",
+     "catalog_id": null
+    },
+    {
+     "name": "create-cowork-plugin",
+     "catalog_id": null
+    }
+   ],
+   "count": 2
+  },
+  {
+   "plugin": "meshy-3d-agent",
+   "relevance": "none",
+   "note": "3D model generation.",
+   "skills": [
+    {
+     "name": "meshy-3d-generation",
+     "catalog_id": null
+    },
+    {
+     "name": "meshy-3d-printing",
+     "catalog_id": null
+    },
+    {
+     "name": "meshy-openclaw",
+     "catalog_id": null
+    }
+   ],
+   "count": 3
+  },
+  {
+   "plugin": "searchfit-seo",
+   "relevance": "none",
+   "note": "SEO for marketing sites. Not needed for a private dashboard.",
+   "skills": [
+    {
+     "name": "ai-visibility",
+     "catalog_id": null
+    },
+    {
+     "name": "broken-links",
+     "catalog_id": null
+    },
+    {
+     "name": "content-brief",
+     "catalog_id": null
+    },
+    {
+     "name": "content-strategy",
+     "catalog_id": null
+    },
+    {
+     "name": "content-translation",
+     "catalog_id": null
+    },
+    {
+     "name": "internal-linking",
+     "catalog_id": null
+    },
+    {
+     "name": "keyword-clustering",
+     "catalog_id": null
+    },
+    {
+     "name": "on-page-seo",
+     "catalog_id": null
+    },
+    {
+     "name": "schema-markup",
+     "catalog_id": null
+    },
+    {
+     "name": "seo-audit",
+     "catalog_id": null
+    },
+    {
+     "name": "technical-seo",
+     "catalog_id": null
+    }
+   ],
+   "count": 11
+  },
+  {
+   "plugin": "setup-audit",
+   "relevance": "none",
+   "note": "Claude Code configuration audit.",
+   "skills": [
+    {
+     "name": "setup-audit",
+     "catalog_id": null
+    }
+   ],
+   "count": 1
+  },
+  {
+   "plugin": "token-efficiency-audit",
+   "relevance": "none",
+   "note": "Claude token/context tooling.",
+   "skills": [
+    {
+     "name": "token-efficiency-audit",
+     "catalog_id": null
+    },
+    {
+     "name": "token-efficiency-expert",
+     "catalog_id": null
+    }
+   ],
+   "count": 2
+  },
+  {
+   "plugin": "token-inspector",
+   "relevance": "none",
+   "note": "Claude token/context tooling.",
+   "skills": [
+    {
+     "name": "context-health",
+     "catalog_id": null
+    },
+    {
+     "name": "find-bloat",
+     "catalog_id": null
+    },
+    {
+     "name": "history-trim",
+     "catalog_id": null
+    },
+    {
+     "name": "inspect-context",
+     "catalog_id": null
+    },
+    {
+     "name": "mcp-audit",
+     "catalog_id": null
+    },
+    {
+     "name": "slim-instructions",
+     "catalog_id": null
+    },
+    {
+     "name": "suggest-split",
+     "catalog_id": null
+    },
+    {
+     "name": "token-forecast",
+     "catalog_id": null
+    }
+   ],
+   "count": 8
+  },
+  {
+   "plugin": "token-saver",
+   "relevance": "none",
+   "note": "Claude token/context tooling.",
+   "skills": [
+    {
+     "name": "token-saver",
+     "catalog_id": null
+    }
+   ],
+   "count": 1
+  },
+  {
+   "plugin": "token-shield",
+   "relevance": "none",
+   "note": "Claude token/context tooling.",
+   "skills": [
+    {
+     "name": "token-shield",
+     "catalog_id": null
+    }
+   ],
+   "count": 1
+  },
+  {
+   "plugin": "token-usage",
+   "relevance": "none",
+   "note": "Claude token/context tooling.",
+   "skills": [
+    {
+     "name": "report",
+     "catalog_id": null
+    }
+   ],
+   "count": 1
+  },
+  {
+   "plugin": "zoom-plugin",
+   "relevance": "none",
+   "note": "Zoom app development.",
+   "skills": [
+    {
+     "name": "build-zoom-bot",
+     "catalog_id": null
+    },
+    {
+     "name": "build-zoom-contact-center-app",
+     "catalog_id": null
+    },
+    {
+     "name": "build-zoom-meeting-app",
+     "catalog_id": null
+    },
+    {
+     "name": "build-zoom-meeting-sdk-app",
+     "catalog_id": null
+    },
+    {
+     "name": "build-zoom-phone-integration",
+     "catalog_id": null
+    },
+    {
+     "name": "build-zoom-rest-api-app",
+     "catalog_id": null
+    },
+    {
+     "name": "build-zoom-team-chat-app",
+     "catalog_id": null
+    },
+    {
+     "name": "build-zoom-video-sdk-app",
+     "catalog_id": null
+    },
+    {
+     "name": "build-zoom-virtual-agent",
+     "catalog_id": null
+    },
+    {
+     "name": "choose-zoom-approach",
+     "catalog_id": null
+    },
+    {
+     "name": "contact-center/android",
+     "catalog_id": null
+    },
+    {
+     "name": "contact-center/ios",
+     "catalog_id": null
+    },
+    {
+     "name": "contact-center/web",
+     "catalog_id": null
+    },
+    {
+     "name": "debug-zoom",
+     "catalog_id": null
+    },
+    {
+     "name": "debug-zoom-integration",
+     "catalog_id": null
+    },
+    {
+     "name": "design-mcp-workflow",
+     "catalog_id": null
+    },
+    {
+     "name": "meeting-sdk/linux",
+     "catalog_id": null
+    },
+    {
+     "name": "plan-zoom-integration",
+     "catalog_id": null
+    },
+    {
+     "name": "plan-zoom-product",
+     "catalog_id": null
+    },
+    {
+     "name": "probe-sdk",
+     "catalog_id": null
+    },
+    {
+     "name": "rivet-sdk",
+     "catalog_id": null
+    },
+    {
+     "name": "scribe",
+     "catalog_id": null
+    },
+    {
+     "name": "setup-zoom-mcp",
+     "catalog_id": null
+    },
+    {
+     "name": "setup-zoom-oauth",
+     "catalog_id": null
+    },
+    {
+     "name": "setup-zoom-webhooks",
+     "catalog_id": null
+    },
+    {
+     "name": "setup-zoom-websockets",
+     "catalog_id": null
+    },
+    {
+     "name": "start",
+     "catalog_id": null
+    },
+    {
+     "name": "ui-toolkit/web",
+     "catalog_id": null
+    },
+    {
+     "name": "video-sdk/linux",
+     "catalog_id": null
+    },
+    {
+     "name": "video-sdk/web",
+     "catalog_id": null
+    },
+    {
+     "name": "video-sdk/windows",
+     "catalog_id": null
+    },
+    {
+     "name": "virtual-agent/android",
+     "catalog_id": null
+    },
+    {
+     "name": "virtual-agent/ios",
+     "catalog_id": null
+    },
+    {
+     "name": "virtual-agent/web",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-apps-sdk",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-cobrowse-sdk",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-general",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-mcp",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-mcp/whiteboard",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-meeting-sdk-android",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-meeting-sdk-electron",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-meeting-sdk-ios",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-meeting-sdk-macos",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-meeting-sdk-react-native",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-meeting-sdk-unreal",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-meeting-sdk-web",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-meeting-sdk-web-client-view",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-meeting-sdk-web-component-view",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-meeting-sdk-windows",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-oauth",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-rtms",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-video-sdk-android",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-video-sdk-flutter",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-video-sdk-ios",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-video-sdk-macos",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-video-sdk-react-native",
+     "catalog_id": null
+    },
+    {
+     "name": "zoom-video-sdk-unity",
+     "catalog_id": null
+    }
+   ],
+   "count": 57
+  }
+ ]
+}
