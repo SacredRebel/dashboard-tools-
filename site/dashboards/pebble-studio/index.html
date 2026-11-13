@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Pebble Studio · Dashboard Tools gallery</title>
+  <meta name="description" content="Cream soft-UI SaaS admin with extruded pills, peach/pink pebble blobs, circular knobs, wave dunes and a torus dial. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="pb">
+    <header class="pb-top">
+      <a class="pb-brand" href="#" aria-label="Pebble Studio home">
+        <span class="pb-mark" aria-hidden="true"></span>
+        <span>Pebble Studio</span>
+      </a>
+      <nav class="pb-nav" aria-label="Studio" data-nav>
+        <button data-v="board" aria-pressed="true">Board</button>
+        <button data-v="assets" aria-pressed="false">Assets</button>
+        <button data-v="mixes" aria-pressed="false">Mixes</button>
+        <button data-v="team" aria-pressed="false">Team</button>
+      </nav>
+      <label class="pb-search">
+        <span data-icon="search"></span>
+        <span class="vh">Search studio</span>
+        <input type="search" placeholder="Search pebbles" data-q>
+      </label>
+      <button class="pb-round" aria-label="Notifications, 2 new"><span data-icon="bell"></span><i class="num">2</i></button>
+      <span class="pb-avatar" role="img" aria-label="Signed in as Mira Chen">MC</span>
+    </header>
+
+    <main class="pb-main">
+      <section class="pb-card pb-stage" aria-labelledby="pb-stage-h">
+        <div class="pb-stagehead">
+          <div>
+            <p class="pb-k" id="pb-stage-h">Studio pebbles</p>
+            <h1 data-stage-title>Soft clay kit</h1>
+            <p class="pb-lede" data-stage-lede>Overlapping forms for the spring board.</p>
+          </div>
+          <div class="pb-seg" role="group" aria-label="Mood" data-mood>
+            <button data-v="clay" aria-pressed="true">Clay</button>
+            <button data-v="candy" aria-pressed="false">Candy</button>
+            <button data-v="mint" aria-pressed="false">Mint</button>
+          </div>
+        </div>
+        <div class="pb-blobs" data-blobs aria-hidden="true"></div>
+        <div class="pb-floatknob" data-float-knob></div>
+      </section>
+
+      <section class="pb-card pb-analytics" aria-labelledby="pb-an-h">
+        <div class="pb-head">
+          <h2 id="pb-an-h">Mix health</h2>
+          <span class="pb-meta num" data-mix-meta>84 · stable</span>
+        </div>
+        <div class="pb-anbody">
+          <div class="pb-torus" data-torus role="img" aria-label="Gradient mix torus"></div>
+          <div class="pb-dialwrap">
+            <div class="pb-tickdial">
+              <span data-tickdial aria-hidden="true"></span>
+              <div class="pb-dialread">
+                <b class="num" data-dial-val>72</b>
+                <small>Clarity</small>
+              </div>
+            </div>
+            <div class="pb-dialbtns" role="group" aria-label="Clarity dial">
+              <button type="button" data-dial-dec aria-label="Decrease clarity"><span data-icon="minus"></span></button>
+              <button type="button" data-dial-inc aria-label="Increase clarity"><span data-icon="plus"></span></button>
+            </div>
+          </div>
+        </div>
+        <ul class="pb-mixpills" data-mixpills></ul>
+      </section>
+
+      <section class="pb-card pb-dunes" aria-labelledby="pb-dune-h">
+        <div class="pb-head">
+          <h2 id="pb-dune-h">Wave dunes</h2>
+          <div class="pb-seg" role="group" aria-label="Range" data-range>
+            <button data-v="7" aria-pressed="true">7d</button>
+            <button data-v="30" aria-pressed="false">30d</button>
+          </div>
+        </div>
+        <div class="pb-dunescene" data-dunes aria-hidden="true"></div>
+        <div class="pb-dunestats">
+          <div><p class="pb-k">Depth</p><b class="num" data-depth>4.2</b><small>layers</small></div>
+          <div><p class="pb-k">Warmth</p><b class="num" data-warmth>68%</b><small>peach band</small></div>
+          <div><p class="pb-k">Flow</p><b class="num" data-flow>+12</b><small>vs last</small></div>
+        </div>
+      </section>
+
+      <section class="pb-card pb-knobs" aria-labelledby="pb-knob-h">
+        <h2 id="pb-knob-h">Studio knobs</h2>
+        <div class="pb-knobrow" data-knobs></div>
+        <p class="pb-knobnote" data-knobnote aria-live="polite"></p>
+      </section>
+
+      <section class="pb-card pb-lite" aria-labelledby="pb-lite-h">
+        <h2 id="pb-lite-h">Lite</h2>
+        <p class="pb-lede">Surface lift for export frames.</p>
+        <label class="pb-slider">
+          <span class="vh">Lite level</span>
+          <input type="range" min="0" max="100" value="42" data-lite>
+          <span class="num" data-lite-val>42%</span>
+        </label>
+        <button class="pb-pillbtn" type="button" data-export>Export soft frame</button>
+      </section>
+
+      <section class="pb-card pb-feed" aria-labelledby="pb-feed-h">
+        <div class="pb-head">
+          <h2 id="pb-feed-h">Pastel activity</h2>
+          <div class="pb-seg" role="group" aria-label="Feed filter" data-feedfilter>
+            <button data-v="all" aria-pressed="true">All</button>
+            <button data-v="mix" aria-pressed="false">Mixes</button>
+            <button data-v="team" aria-pressed="false">Team</button>
+          </div>
+        </div>
+        <ul class="pb-feedlist" data-feed></ul>
+        <p class="pb-msg" data-feedmsg hidden></p>
+      </section>
+
+      <section class="pb-kpis" aria-label="Key figures">
+        <button type="button" class="pb-kpi" data-kpi="projects" aria-pressed="true"><span data-icon="layers"></span><p>Projects</p><b class="num">28</b></button>
+        <button type="button" class="pb-kpi" data-kpi="exports"><span data-icon="download"></span><p>Exports</p><b class="num">146</b></button>
+        <button type="button" class="pb-kpi" data-kpi="seats"><span data-icon="users"></span><p>Seats</p><b class="num">12</b></button>
+        <button type="button" class="pb-kpi" data-kpi="streak"><span data-icon="sparkle"></span><p>Streak</p><b class="num">9</b></button>
+      </section>
+    </main>
+    <p class="db-sample pb-foot">Sample data · fictional</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

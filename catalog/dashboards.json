@@ -2733,6 +2733,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft-UI / neumorphic mood board. Brand (Dune Panels), metrics and labels are fictional. The fabric wave and charts were redrawn as SVG. The source image is not stored in the repo." },
       "path": "site/dashboards/dune-panels/"
+    },
+    {
+      "id": "pebble-studio",
+      "number": 31,
+      "name": "Pebble Studio",
+      "style_family": "skeuo",
+      "use_cases": ["saas-admin"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A cream-and-pink soft-UI studio admin: extruded nav pills, overlapping peach/pink SVG pebble blobs, circular knobs, layered wave dunes, and a gradient torus beside a tick-mark dial — all on neumorphic clay surfaces.",
+      "mood": ["tactile", "playful", "soft", "warm", "calm"],
+      "best_for": ["Creative or design SaaS homes that want a kit-like soft-UI feel", "Admin overviews where tactile dials and pills carry the brand", "Light-mode products that lean skeuomorphic without heavy chrome"],
+      "avoid_when": ["Dense tables or finance-grade precision charts", "Dark, technical security brands", "Brands that need flat, sharp corners"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Top extruded pill nav · blob stage + torus/dial analytics · wave dunes + knobs + lite slider · pastel activity feed + KPI pill strip",
+        "responsive": "≤1180px: two-column bento · ≤960px: nav wraps, torus under blobs · ≤640px: single column, knobs in a row, feed last"
+      },
+      "components": ["Extruded soft nav pills", "Overlapping peach/pink SVG pebble blobs", "Floating circular knobs with ± controls", "Wave-dune SVG analytics card", "Gradient torus + tick dial card", "Neumorphic KPI pills", "Lite range slider card", "Pastel activity feed with loading/empty/error/populated"],
+      "signature": "Cream soft-UI board with extruded pills, overlapping peach/pink pebble blobs, circular knobs, layered wave dunes, and a rainbow torus beside a tick-mark dial.",
+      "palette": { "bg": "#efe6df", "surface": "#f7f1eb", "text": "#3a2c28", "muted": "#6a564e", "accent": "#a84f42", "peach": "#f0b49a", "candy": "#e9a6b5", "mint": "#9fcfbe" },
+      "fonts": { "display": "Nunito", "sans": "Nunito" },
+      "variants": [
+        { "id": "default", "name": "Cream", "swatch": "#a84f42" },
+        { "id": "coral", "name": "Coral", "swatch": "#b03d52" },
+        { "id": "moss", "name": "Moss", "swatch": "#3d735f" }
+      ],
+      "maps_to_theme": "blush",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft-UI / neumorphic kit render. Brand (Pebble Studio), copy and metrics are fictional. Product photos and original marks were replaced with SVG blobs, dunes, torus and knobs. The source image is not stored in the repo." },
+      "path": "site/dashboards/pebble-studio/"
     }
   ]
 }

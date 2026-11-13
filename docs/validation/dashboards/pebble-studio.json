@@ -1,0 +1,62 @@
+{
+  "id": "pebble-studio",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/pebble-studio/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/pebble-studio/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/pebble-studio/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/pebble-studio/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/pebble-studio/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=coral",
+      "width": 1440,
+      "variant": "coral",
+      "final_path": "/dashboards/pebble-studio/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=moss",
+      "width": 1440,
+      "variant": "moss",
+      "final_path": "/dashboards/pebble-studio/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/pebble-studio",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

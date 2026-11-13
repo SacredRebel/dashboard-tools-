@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-30 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+31 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -36,6 +36,7 @@
 | 28 | [Mauve Ledger](#mauve-ledger) | Glass & glow | Finance & banking | light | Lilac, Blush, Slate | [site/dashboards/mauve-ledger/](../../site/dashboards/mauve-ledger/) |
 | 29 | [Tidebath Showroom](#tidebath-showroom) | Soft & friendly | E-commerce & retail, Hospitality & food | light | Porcelain, Mist, Dusk | [site/dashboards/tidebath-showroom/](../../site/dashboards/tidebath-showroom/) |
 | 30 | [Dune Panels](#dune-panels) | Tactile & neumorphic | Analytics & BI | light | Sand, Coastal, Ember | [site/dashboards/dune-panels/](../../site/dashboards/dune-panels/) |
+| 31 | [Pebble Studio](#pebble-studio) | Tactile & neumorphic | SaaS admin | light | Cream, Coral, Moss | [site/dashboards/pebble-studio/](../../site/dashboards/pebble-studio/) |
 
 ## Cinematic & atmospheric
 
@@ -923,6 +924,34 @@ A skeuomorphic soft-UI analytics board in sand, sage and slate: blue fabric wave
 - Dark-only or neon cyber aesthetics
 
 **Components:** Blue fabric wave SVG backdrop · Dark slate panel headers with icons · Dual side-by-side donut charts · Recessed neumorphic donut well · Pill search field · 3×3 raised icon shelf grid · 24h / 48h / 72h range pills · 2×2 analytics donut grid
+
+---
+
+<a id="pebble-studio"></a>
+### 31. Pebble Studio
+
+![Pebble Studio](../../site/dashboards/pebble-studio/thumb.jpg)
+
+A cream-and-pink soft-UI studio admin: extruded nav pills, overlapping peach/pink SVG pebble blobs, circular knobs, layered wave dunes, and a gradient torus beside a tick-mark dial — all on neumorphic clay surfaces.
+
+- **Use cases:** SaaS admin · **Mode:** light · **Mood:** tactile, playful, soft, warm, calm
+- **Signature:** Cream soft-UI board with extruded pills, overlapping peach/pink pebble blobs, circular knobs, layered wave dunes, and a rainbow torus beside a tick-mark dial.
+- **Layout:** Top extruded pill nav · blob stage + torus/dial analytics · wave dunes + knobs + lite slider · pastel activity feed + KPI pill strip
+- **Responsive:** ≤1180px: two-column bento · ≤960px: nav wraps, torus under blobs · ≤640px: single column, knobs in a row, feed last
+- **Fonts:** Nunito / Nunito · **Palette:** bg `#efe6df`, surface `#f7f1eb`, text `#3a2c28`, muted `#6a564e`, accent `#a84f42`, peach `#f0b49a`, candy `#e9a6b5`, mint `#9fcfbe`
+- **Variants:** Cream, Coral, Moss · **Closest toolkit theme:** `blush`
+
+**Best for**
+- Creative or design SaaS homes that want a kit-like soft-UI feel
+- Admin overviews where tactile dials and pills carry the brand
+- Light-mode products that lean skeuomorphic without heavy chrome
+
+**Avoid when**
+- Dense tables or finance-grade precision charts
+- Dark, technical security brands
+- Brands that need flat, sharp corners
+
+**Components:** Extruded soft nav pills · Overlapping peach/pink SVG pebble blobs · Floating circular knobs with ± controls · Wave-dune SVG analytics card · Gradient torus + tick dial card · Neumorphic KPI pills · Lite range slider card · Pastel activity feed with loading/empty/error/populated
 
 ---
 
