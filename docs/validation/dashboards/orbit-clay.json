@@ -1,0 +1,62 @@
+{
+  "id": "orbit-clay",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/orbit-clay/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/orbit-clay/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/orbit-clay/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/orbit-clay/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/orbit-clay/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=moss",
+      "width": 1440,
+      "variant": "moss",
+      "final_path": "/dashboards/orbit-clay/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=dusk",
+      "width": 1440,
+      "variant": "dusk",
+      "final_path": "/dashboards/orbit-clay/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/orbit-clay",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

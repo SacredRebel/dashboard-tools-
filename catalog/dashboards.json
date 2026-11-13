@@ -2797,6 +2797,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft-light SOC dashboard render. Brand (Copper Radar), vendor names and copy are fictional. Real vendor logos (Okta, AWS, Alibaba and others) were replaced with invented chips such as NimbusID and RidgeHost. The source image is not stored in the repo." },
       "path": "site/dashboards/copper-radar/"
+    },
+    {
+      "id": "orbit-clay",
+      "number": 33,
+      "name": "Orbit Clay",
+      "style_family": "skeuo",
+      "use_cases": ["media"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "Cream, forest and gold claymorphism for an immersive media console: twin phone panels with a gold-ring astronaut helmet, a START pill, and a calibration landscape where a gold sphere rides a vertical rail beside stacked KPIs.",
+      "mood": ["tactile", "playful", "premium", "earthy", "curious"],
+      "best_for": ["Media, game or experiential apps that want a toy-like clay interface", "Phone-first concepts shown as twin panels on desktop", "Brand explorations that need soft depth without glass"],
+      "avoid_when": ["Dense analytics or financial tools", "Clinical or high-contrast accessibility-first UIs", "Flat material or neon dark-neon brands"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Split stage · twin phone panels: mission phone (score, gold-ring helmet, pager, START) · calibration phone (KPI stack, clay terrain, gold sphere rail, foot icons)",
+        "responsive": "≤1100px: panels stack centred · ≤700px: single phone width, stage padding shrinks, foot icons wrap"
+      },
+      "components": ["Twin clay phone shells", "Gold-ring astronaut hero SVG", "Mission pager dots and house markers", "Pressable START pill", "Vertical gold-sphere calibration slider", "Clay mountain terrain SVG", "Stacked gold KPI numbers", "Foot icon strip"],
+      "signature": "Soft cream clay phones with a thick gold ring framing an abstract forest-green astronaut helmet, and a gold sphere on a vertical rail over clay mountains.",
+      "palette": { "bg": "#f3ebe0", "surface": "#f7f0e6", "text": "#1f3a2e", "muted": "#4a6356", "accent": "#c9a24a", "forest": "#1f3a2e", "gold": "#c9a24a", "cream": "#f7f0e6" },
+      "fonts": { "display": "Outfit", "sans": "Outfit" },
+      "variants": [
+        { "id": "default", "name": "Orbit", "swatch": "#c9a24a" },
+        { "id": "moss", "name": "Moss", "swatch": "#2f6b4f" },
+        { "id": "dusk", "name": "Dusk", "swatch": "#d4b06a" }
+      ],
+      "maps_to_theme": "linen",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied claymorphism twin-phone render. Layout rhythm, cream/forest/gold clay and the gold-ring helmet plus rail sphere were kept; any photo helmet or brand marks were replaced with abstract SVG and invented Orbit Clay copy. The source image is not stored in the repo." },
+      "path": "site/dashboards/orbit-clay/"
     }
   ]
 }

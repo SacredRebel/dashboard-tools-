@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-32 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+33 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -38,6 +38,7 @@
 | 30 | [Dune Panels](#dune-panels) | Tactile & neumorphic | Analytics & BI | light | Sand, Coastal, Ember | [site/dashboards/dune-panels/](../../site/dashboards/dune-panels/) |
 | 31 | [Pebble Studio](#pebble-studio) | Tactile & neumorphic | SaaS admin | light | Cream, Coral, Moss | [site/dashboards/pebble-studio/](../../site/dashboards/pebble-studio/) |
 | 32 | [Copper Radar](#copper-radar) | Soft & friendly | Analytics & BI | light | Copper, Slate, Ember | [site/dashboards/copper-radar/](../../site/dashboards/copper-radar/) |
+| 33 | [Orbit Clay](#orbit-clay) | Tactile & neumorphic | Music & media | light | Orbit, Moss, Dusk | [site/dashboards/orbit-clay/](../../site/dashboards/orbit-clay/) |
 
 ## Cinematic & atmospheric
 
@@ -981,6 +982,34 @@ A cream-and-pink soft-UI studio admin: extruded nav pills, overlapping peach/pin
 - Brands that need flat, sharp corners
 
 **Components:** Extruded soft nav pills · Overlapping peach/pink SVG pebble blobs · Floating circular knobs with ± controls · Wave-dune SVG analytics card · Gradient torus + tick dial card · Neumorphic KPI pills · Lite range slider card · Pastel activity feed with loading/empty/error/populated
+
+---
+
+<a id="orbit-clay"></a>
+### 33. Orbit Clay
+
+![Orbit Clay](../../site/dashboards/orbit-clay/thumb.jpg)
+
+Cream, forest and gold claymorphism for an immersive media console: twin phone panels with a gold-ring astronaut helmet, a START pill, and a calibration landscape where a gold sphere rides a vertical rail beside stacked KPIs.
+
+- **Use cases:** Music & media · **Mode:** light · **Mood:** tactile, playful, premium, earthy, curious
+- **Signature:** Soft cream clay phones with a thick gold ring framing an abstract forest-green astronaut helmet, and a gold sphere on a vertical rail over clay mountains.
+- **Layout:** Split stage · twin phone panels: mission phone (score, gold-ring helmet, pager, START) · calibration phone (KPI stack, clay terrain, gold sphere rail, foot icons)
+- **Responsive:** ≤1100px: panels stack centred · ≤700px: single phone width, stage padding shrinks, foot icons wrap
+- **Fonts:** Outfit / Outfit · **Palette:** bg `#f3ebe0`, surface `#f7f0e6`, text `#1f3a2e`, muted `#4a6356`, accent `#c9a24a`, forest `#1f3a2e`, gold `#c9a24a`, cream `#f7f0e6`
+- **Variants:** Orbit, Moss, Dusk · **Closest toolkit theme:** `linen`
+
+**Best for**
+- Media, game or experiential apps that want a toy-like clay interface
+- Phone-first concepts shown as twin panels on desktop
+- Brand explorations that need soft depth without glass
+
+**Avoid when**
+- Dense analytics or financial tools
+- Clinical or high-contrast accessibility-first UIs
+- Flat material or neon dark-neon brands
+
+**Components:** Twin clay phone shells · Gold-ring astronaut hero SVG · Mission pager dots and house markers · Pressable START pill · Vertical gold-sphere calibration slider · Clay mountain terrain SVG · Stacked gold KPI numbers · Foot icon strip
 
 ---
 
