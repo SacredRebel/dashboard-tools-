@@ -1,7 +1,7 @@
 {
   "id": "aura-ring",
   "checked": "2026-11-13",
-  "ok": false,
+  "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -56,9 +56,7 @@
       "url": "/#/dashboards/aura-ring",
       "width": 1280,
       "variant": "gallery preview",
-      "errors": [
-        "gallery preview iframe did not load"
-      ]
+      "errors": []
     }
   ]
 }

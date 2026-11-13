@@ -266,7 +266,7 @@
       },
       "components": ["Centred pill tabs that switch the score", "Two-weight headline with tip chip", "Score card with arc dial and state chip", "Thin line charts with point markers", "Device card with battery bar and status rows", "Body map with selectable points", "Summary card with glossy orb", "White pill buttons with round arrow"],
       "signature": "Frosted cards with a hairline white edge over a deep periwinkle field that blooms pink on the right, and solid white pills as the only opaque elements.",
-      "palette": { "bg": "#3f4f8f", "text": "#ffffff", "muted": "#e3e4f5", "accent": "#ffffff", "periwinkle": "#6079c4", "pink": "#ffc4dd", "lilac": "#b9a4ff", "mint": "#8ef0b4" },
+      "palette": { "bg": "#3f4f8f", "surface": "#34417f", "text": "#ffffff", "muted": "#e3e4f5", "accent": "#ffffff", "periwinkle": "#6079c4", "pink": "#ffc4dd", "lilac": "#b9a4ff", "mint": "#8ef0b4" },
       "fonts": { "display": "Red Hat Display", "sans": "Red Hat Display" },
       "variants": [
         { "id": "default", "name": "Haze", "swatch": "#6079c4" },

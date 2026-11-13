@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-7 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+8 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -13,6 +13,7 @@
 | 5 | [Canopy Reforest](#canopy-reforest) | Soft & friendly | Projects & tasks, Analytics & BI | dark | Forest, Autumn, Birch | [site/dashboards/canopy-reforest/](../../site/dashboards/canopy-reforest/) |
 | 6 | [Ridgeline Trails](#ridgeline-trails) | Editorial | Travel & places, Analytics & BI | light | Mist, Dusk, Pine night | [site/dashboards/ridgeline-trails/](../../site/dashboards/ridgeline-trails/) |
 | 7 | [Haven Listings](#haven-listings) | Glass & glow | Real estate | light | Dusk, Sunrise, Midnight | [site/dashboards/haven-listings/](../../site/dashboards/haven-listings/) |
+| 8 | [Aura Ring](#aura-ring) | Glass & glow | Health & fitness | dark | Haze, Lagoon, Pearl | [site/dashboards/aura-ring/](../../site/dashboards/aura-ring/) |
 
 ## Cinematic & atmospheric
 
@@ -132,6 +133,34 @@ A property browser built around one large dusk scene: a code-drawn curved house 
 - Low-end devices where backdrop blur is costly (the card falls back to a near-opaque fill)
 
 **Components:** Buy / Rent toggle pills · Notched filter tab with selects · Vertical icon rail in a pill · Match count card with step-through arrow · Frosted detail card with specs and save, compare, share · Selectable listing rows with drawn thumbnails · Line chart with hover/focus values · Viewings list with date chips
+
+---
+
+<a id="aura-ring"></a>
+### 8. Aura Ring
+
+![Aura Ring](../../site/dashboards/aura-ring/thumb.jpg)
+
+A wellness overview for a smart ring: frosted, softly bordered cards float over a periwinkle-to-pink haze, with a two-weight headline, a score dial, thin white line charts, a code-drawn metal ring and a tappable body map.
+
+- **Use cases:** Health & fitness · **Mode:** dark · **Mood:** serene, dreamy, premium, soft, futuristic
+- **Signature:** Frosted cards with a hairline white edge over a deep periwinkle field that blooms pink on the right, and solid white pills as the only opaque elements.
+- **Layout:** Top bar (brand, centred pill tabs, bell, avatar) · 12-column grid, 18px gaps: row 1 headline (5) + score card (4) + heart-rate card (3) · rows 2–3: two small chart cards and a summary card on the left (5), device card (4) and body-map card (3) spanning both rows
+- **Responsive:** ≤1100px: 2 columns (headline, score + heart rate, stress + sleep, device + body, summary) and tabs scroll · ≤680px: single column, tabs on their own scrolling row
+- **Fonts:** Red Hat Display / Red Hat Display · **Palette:** bg `#3f4f8f`, surface `#34417f`, text `#ffffff`, muted `#e3e4f5`, accent `#ffffff`, periwinkle `#6079c4`, pink `#ffc4dd`, lilac `#b9a4ff`, mint `#8ef0b4`
+- **Variants:** Haze, Lagoon, Pearl · **Closest toolkit theme:** `aurora`
+
+**Best for**
+- Wearables, sleep, wellness and other consumer health products
+- Tablet-first overviews with a few scores and one device
+- Brands that want a calm, ambient feeling
+
+**Avoid when**
+- Clinical tools where precision and density matter more than mood
+- Long tables or many KPIs
+- Interfaces that must work without colour gradients (print, e-ink)
+
+**Components:** Centred pill tabs that switch the score · Two-weight headline with tip chip · Score card with arc dial and state chip · Thin line charts with point markers · Device card with battery bar and status rows · Body map with selectable points · Summary card with glossy orb · White pill buttons with round arrow
 
 ---
 
