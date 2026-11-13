@@ -242,7 +242,7 @@ code, kbd, pre { font-family: var(--s-mono); }
 .s-prose p { margin: 0 0 14px; }
 .s-prose ul, .s-prose ol { padding-left: 22px; margin: 0 0 16px; }
 .s-prose li { margin: 4px 0; }
-.s-prose a { color: var(--s-accent); text-underline-offset: 3px; }
+.s-prose a { overflow-wrap: anywhere; color: var(--s-accent); text-underline-offset: 3px; }
 .s-prose code { font-size: 0.86em; background: var(--s-sunken); border: 1px solid var(--s-line); padding: 1px 5px; border-radius: 5px; }
 .s-prose pre { background: var(--s-sunken); border: 1px solid var(--s-line); border-radius: 12px; padding: 16px; overflow-x: auto; font-size: 13px; line-height: 1.55; margin: 0 0 18px; }
 .s-prose pre code { background: none; border: 0; padding: 0; font-size: inherit; }

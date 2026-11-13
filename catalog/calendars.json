@@ -1,0 +1,336 @@
+{
+  "schema_version": 1,
+  "description": "Calendar hub: every calendar repo, approach and visual style in this toolkit, with when to use it, when not to, and how to integrate it. Source of truth for docs/calendars/catalog.md and the site's Calendars page. Edit here, then run node scripts/build.mjs.",
+  "snapshot_date": "2026-11-13",
+  "licenses": [
+    { "id": "permissive", "name": "Permissive", "meaning": "MIT, Apache-2.0 or BSD. Use in any project. Keep the license notice." },
+    { "id": "weak-copyleft", "name": "File copyleft", "meaning": "MPL-2.0. Use as a dependency freely; changes to its own files must stay open." },
+    { "id": "copyleft", "name": "Copyleft", "meaning": "GPL or AGPL. Study it, run it as a separate service, or fork it as open source. Do not paste its code into a closed client app." },
+    { "id": "look-only", "name": "Look only", "meaning": "No license or all rights reserved. Read it for ideas; do not copy code." }
+  ],
+  "statuses": [
+    { "id": "active", "meaning": "Commits in the last 6 months." },
+    { "id": "stable", "meaning": "Works, slow or occasional updates." },
+    { "id": "stale", "meaning": "No meaningful updates for 2+ years. Learn from it; prefer a maintained option for production." },
+    { "id": "retired", "meaning": "Officially shut down or replaced by its authors." }
+  ],
+  "platforms": [
+    { "id": "web", "name": "Web (React / Next.js)" },
+    { "id": "react-native", "name": "React Native" },
+    { "id": "android", "name": "Android" },
+    { "id": "ios", "name": "iOS" },
+    { "id": "php", "name": "PHP / Laravel" },
+    { "id": "self-hosted", "name": "Self-hosted server" },
+    { "id": "cli", "name": "Command line" },
+    { "id": "agent", "name": "AI agent (MCP)" },
+    { "id": "browser-ext", "name": "Browser extension" },
+    { "id": "desktop", "name": "Desktop (Windows)" },
+    { "id": "api", "name": "API definitions" }
+  ],
+  "categories": [
+    { "id": "ui", "name": "Calendar UI components", "blurb": "Draw month, week, agenda and picker views inside your own app." },
+    { "id": "app", "name": "Complete calendar apps", "blurb": "Finished calendar products to study, self-host or fork." },
+    { "id": "provider", "name": "Provider APIs & SDKs", "blurb": "Read and write real calendars (Google, CalDAV, Outlook) from your backend." },
+    { "id": "agent", "name": "Agent & automation", "blurb": "Let an AI agent or a script check availability and manage events." },
+    { "id": "sync", "name": "Sync & interoperability", "blurb": "Move events between systems: ICS files, recurrence rules, Outlook to Google." },
+    { "id": "meetings", "name": "Meetings & video", "blurb": "Video rooms, meeting grids and join links that attach to events." }
+  ],
+  "styles": [
+    { "id": "month", "name": "Month grid", "pattern": "Overview", "summary": "Six-week grid with event chips. The default answer to 'show me my month'.", "use_when": ["Planning across weeks", "Events are mostly all-day or few per day"], "avoid_when": ["More than 3 timed events a day; use Week"], "rules": ["Show 6 rows so the grid never jumps height", "Today gets a filled marker, selected day a ring", "Overflow becomes '+2 more', never a scroll inside a cell", "Arrow keys move between days (roving tabindex)"] },
+    { "id": "week", "name": "Week time grid", "pattern": "Detail over time", "summary": "Hours down the side, days across. Overlapping events sit side by side.", "use_when": ["Timed meetings and calls", "Finding gaps in a day"], "avoid_when": ["Phones under 400px wide; switch to 3-day or Agenda"], "rules": ["All-day lane above the hours", "Current-time line only on today, updated once a minute while visible", "Event height = duration; min height fits one line", "Scroll to working hours on open"] },
+    { "id": "agenda", "name": "Agenda list", "pattern": "List", "summary": "Upcoming events grouped by day. Best on phones and in a Today view.", "use_when": ["Phones", "Today / This week cards on a dashboard", "Screen readers (a list is the most accessible calendar)"], "avoid_when": ["Spotting free time; use Week"], "rules": ["Sticky day headers", "Time, title, who: in that order", "Empty days are skipped, with 'Nothing else this week' at the end"] },
+    { "id": "picker", "name": "Date and range picker", "pattern": "Form control", "summary": "Mini month for choosing a date or a range inside a form.", "use_when": ["Due dates, follow-up dates, report ranges", "Booking check-in / check-out"], "avoid_when": ["Dates far in the past (birthdays); a typed field is faster"], "rules": ["Typed input always works too", "Range shows start, end and the days between", "Disabled dates explain why on focus", "Enter selects, Escape closes, focus returns to the field"] },
+    { "id": "heatmap", "name": "Year heatmap", "pattern": "Data viz", "summary": "One square per day, shaded by activity. Shows rhythm over a year.", "use_when": ["Activity history (calls, sessions, sales) over months"], "avoid_when": ["Exact values matter; pair with a number or a tooltip"], "rules": ["Sequential palette from one hue", "Every square focusable or summarized in text", "Legend with the actual ranges"] },
+    { "id": "booking", "name": "Booking slots", "pattern": "Flow", "summary": "Pick a day, then a free time. The visitor's time zone is shown and changeable.", "use_when": ["Clients booking a call with you", "Discovery calls from a website"], "avoid_when": ["Internal scheduling between colleagues; use free/busy in Week"], "rules": ["Only free slots are shown; nothing to fail later", "Time zone visible and editable", "Confirm step summarizes before booking", "Sends a calendar invite with the video link"] },
+    { "id": "strip", "name": "Week strip", "pattern": "Mobile navigation", "summary": "A swipeable row of days with dots, above a list of that day's events.", "use_when": ["Phone-first apps", "Day-at-a-time workflows (appointments, classes)"], "avoid_when": ["Desktop planning; use Month or Week"], "rules": ["Dots show 'has events', not counts", "Selected day stays centred", "Buttons for previous / next week as well as swipe"] },
+    { "id": "meetgrid", "name": "Meeting grid", "pattern": "Live view", "summary": "Equal tiles for every participant, speaker highlighted. For video meeting UIs.", "use_when": ["Building a video room or a meeting recap screen"], "avoid_when": ["Meetings are better handled by Meet or Zoom links; don't build video unless it is the product"], "rules": ["Tiles keep 16:9 and reflow by count", "Speaker highlight uses a ring, not size change (no layout shift)", "Names always visible; initials when video is off"] }
+  ],
+  "approaches": [
+    { "id": "own-ui", "name": "Build the view from tokens", "when": "You need one simple view (agenda card, mini month) in a dashboard and want it to match the theme exactly.", "not_when": "You need drag-to-reschedule, recurring events or resource views; use a library.", "picks": ["react-day-picker"], "effort": "low" },
+    { "id": "ui-library", "name": "Calendar UI library", "when": "You need full Month/Week/Day views with drag and drop in a web or mobile app.", "not_when": "A small read-only list is enough.", "picks": ["fullcalendar", "schedule-x", "react-native-calendars", "kizitonwose-calendar", "jtapplecalendar"], "effort": "medium" },
+    { "id": "provider-api", "name": "Provider API (Google Calendar v3)", "when": "Events must appear in the client's real Google calendar, with invites and Meet links.", "not_when": "Calendar data never leaves your app; store it in your own database.", "picks": ["google-calendar-api", "laravel-google-calendar", "googleapis"], "effort": "medium" },
+    { "id": "agent-connector", "name": "Agent connector (MCP)", "when": "An AI assistant should check availability, draft events or summarize the week.", "not_when": "The action must run unattended without a human approving it.", "picks": ["google-calendar-mcp", "gcalcli"], "effort": "low" },
+    { "id": "caldav", "name": "Self-hosted CalDAV", "when": "The client wants their calendar off Google, on their own server.", "not_when": "Nobody will maintain a server.", "picks": ["nextcloud-calendar", "fossify-calendar"], "effort": "high" },
+    { "id": "ics-feed", "name": "ICS feed or file", "when": "People should subscribe to your app's events in any calendar app (Google, Apple, Outlook) with no login.", "not_when": "Changes must sync both ways; feeds are read-only and refresh slowly.", "picks": ["ical-generator", "ical-js", "rrule"], "effort": "low" },
+    { "id": "sync-bridge", "name": "Sync bridge", "when": "Someone lives in Outlook at work and Google at home and needs both to match.", "not_when": "You control both sides; write to one calendar and invite the other.", "picks": ["outlook-google-sync"], "effort": "low" },
+    { "id": "booking", "name": "Booking page", "when": "Clients pick their own time for a call.", "not_when": "Only internal scheduling.", "picks": ["cal-com"], "effort": "medium" },
+    { "id": "meetings", "name": "Video meetings", "when": "Each event needs a join link.", "not_when": "Never build your own video stack for a CRM. Attach a Google Meet link through the Calendar API.", "picks": ["google-calendar-api", "video-meeting", "google-meet-clone"], "effort": "low" }
+  ],
+  "repos": [
+    {
+      "id": "kizitonwose-calendar", "name": "Calendar (kizitonwose)", "repo": "https://github.com/kizitonwose/Calendar", "source": "user",
+      "category": "ui", "platforms": ["android"], "language": "Kotlin", "license": "MIT", "license_class": "permissive", "status": "active", "last_commit": "2026-08-13",
+      "styles": ["month", "strip", "heatmap", "picker"],
+      "summary": "Logic-only calendar for Android Views and Compose Multiplatform. You draw every cell; it handles weeks, months, years, ranges and a heatmap mode.",
+      "use_when": ["Native Android or Compose Multiplatform app", "You want a fully custom look (week strip, heatmap, range picker)"],
+      "avoid_when": ["Web or React Native projects"],
+      "integrate": ["Add the compose or view artifact from Maven Central", "Start from the sample app's closest example (week, month, heatmap)", "Map design tokens to Compose theme colors; draw day cells with them"],
+      "learn_from": "Separate date logic from rendering. The library owns the calendar math, you own every pixel.",
+      "tool_id": null
+    },
+    {
+      "id": "huanghaibin-calendarview", "name": "CalendarView (huanghaibin)", "repo": "https://github.com/huanghaibin-dev/CalendarView", "source": "user",
+      "category": "ui", "platforms": ["android"], "language": "Java", "license": "Apache-2.0", "license_class": "permissive", "status": "stable", "last_commit": "2025-12-04",
+      "styles": ["month", "strip", "picker"],
+      "summary": "Canvas-drawn Android calendar built for speed and low memory, with many prebuilt styles (Chinese lunar dates, ranges, multi-select).",
+      "use_when": ["Android app that needs a fast, styled month view with lunar or marker support"],
+      "avoid_when": ["You need the iOS-style vertical/horizontal switch: that part is closed source after 3.7.1", "Compose-first apps; prefer kizitonwose"],
+      "integrate": ["implementation 'com.haibin:calendarview:3.7.1' (AndroidX)", "Subclass MonthView / WeekView and draw with Canvas", "Follow QUESTION.md for the English docs"],
+      "learn_from": "Drawing on a canvas instead of nested views keeps scrolling smooth with many markers.",
+      "tool_id": null
+    },
+    {
+      "id": "jtapplecalendar", "name": "JTAppleCalendar", "repo": "https://github.com/patchthecode/JTAppleCalendar", "source": "user",
+      "category": "ui", "platforms": ["ios"], "language": "Swift", "license": "MIT", "license_class": "permissive", "status": "stale", "last_commit": "2024-07-23",
+      "styles": ["month", "strip", "picker"],
+      "summary": "UIKit calendar where you design every date cell. Range selection, month/week switching, custom headers.",
+      "use_when": ["UIKit iOS app needing a custom calendar"],
+      "avoid_when": ["SwiftUI-first apps (use SwiftUI's DatePicker or a SwiftUI calendar)", "Cross-platform projects; use react-native-calendars"],
+      "integrate": ["Swift Package Manager or CocoaPods", "Read docs/get-started in the repo (the wiki link is down)", "Build a cell class that reads colors from your token mapping"],
+      "learn_from": "Week and month are the same grid with a different row count; switch by changing rows, not views.",
+      "tool_id": null
+    },
+    {
+      "id": "react-native-calendars", "name": "React Native Calendars (Wix)", "repo": "https://github.com/wix/react-native-calendars", "source": "user",
+      "category": "ui", "platforms": ["react-native"], "language": "TypeScript", "license": "MIT", "license_class": "permissive", "status": "active", "last_commit": "2026-01-29",
+      "styles": ["month", "agenda", "strip", "picker", "week"],
+      "summary": "Pure-JS calendar, agenda, week strip and timeline components for iOS and Android with dot, multi-dot and period marking.",
+      "use_when": ["Expo or React Native app", "Mobile companion to a web CRM (Today agenda, week strip)"],
+      "avoid_when": ["Web-only projects (it targets native)"],
+      "integrate": ["npm i react-native-calendars", "Pass a theme object built from tokens (calendarBackground, todayTextColor, selectedDayBackgroundColor…)", "Use AgendaList + ExpandableCalendar for a Today screen; markedDates for status dots"],
+      "learn_from": "Marking styles (dot, multi-dot, period) cover almost every 'what's on this day' need without custom cells.",
+      "tool_id": "react-native-calendars"
+    },
+    {
+      "id": "rc-calendar", "name": "rc-calendar", "repo": "https://github.com/react-component/calendar", "source": "user",
+      "category": "ui", "platforms": ["web"], "language": "JavaScript", "license": "MIT", "license_class": "permissive", "status": "stale", "last_commit": "2025-11-13",
+      "styles": ["picker", "month"],
+      "summary": "The React calendar and picker that older Ant Design versions used. Date, month, year and decade panels, week numbers. Built on moment.js.",
+      "use_when": ["Maintaining an existing app that already depends on it"],
+      "avoid_when": ["New projects: it depends on moment.js; use react-day-picker (shadcn Calendar) instead"],
+      "integrate": ["Prefer migrating to react-day-picker", "If you must keep it: wrap it and restyle with token CSS variables"],
+      "learn_from": "Panel drill-down (day → month → year → decade) is a fast way to jump far in time.",
+      "tool_id": null
+    },
+    {
+      "id": "nextcloud-calendar", "name": "Nextcloud Calendar", "repo": "https://github.com/nextcloud/calendar", "source": "user",
+      "category": "app", "platforms": ["self-hosted", "web"], "language": "Vue / PHP", "license": "AGPL-3.0", "license_class": "copyleft", "status": "active", "last_commit": "2026-11-13",
+      "styles": ["month", "week", "agenda"],
+      "summary": "Full calendar app for Nextcloud: CalDAV sync, attendees, free/busy, reminders, appointment booking and Talk rooms. Built on FullCalendar and ical.js.",
+      "use_when": ["Client wants a self-hosted calendar off Google", "Studying a complete, accessible calendar UX (free/busy, attendees, booking)"],
+      "avoid_when": ["Embedding code into a closed client app (AGPL)", "Nobody can maintain a Nextcloud server"],
+      "integrate": ["Install from the Nextcloud app store on the client's server", "Your app talks to it over CalDAV (tsdav or cdav-library), not by importing its code"],
+      "learn_from": "Free/busy next to the attendee list is the clearest way to pick a meeting time.",
+      "tool_id": null
+    },
+    {
+      "id": "fossify-calendar", "name": "Fossify Calendar", "repo": "https://github.com/FossifyOrg/Calendar", "source": "user",
+      "category": "app", "platforms": ["android"], "language": "Kotlin", "license": "GPL-3.0", "license_class": "copyleft", "status": "active", "last_commit": "2026-11-12",
+      "styles": ["month", "week", "agenda", "strip"],
+      "summary": "Private, ad-free Android calendar: day, week, month, year and event-list views, CalDAV sync, widgets and themes.",
+      "use_when": ["Studying a polished mobile calendar with every view", "Recommending a private calendar app to a client"],
+      "avoid_when": ["Copying code into a closed-source app (GPL)"],
+      "integrate": ["Use as a reference for view switching and widget design", "Clients can sync it with Google or Nextcloud via CalDAV"],
+      "learn_from": "One app, five views, one consistent event chip. The chip design carries across every view.",
+      "tool_id": null
+    },
+    {
+      "id": "google-calendar-mcp", "name": "Google Calendar MCP (nspady)", "repo": "https://github.com/nspady/google-calendar-mcp", "source": "user",
+      "category": "agent", "platforms": ["agent"], "language": "TypeScript", "license": "MIT", "license_class": "permissive", "status": "active", "last_commit": "2026-10-29",
+      "styles": ["agenda", "week"],
+      "summary": "MCP server that gives an AI assistant Google Calendar tools: multi-account, multi-calendar listing, conflict detection, free/busy, recurring edits and event import from images or PDFs.",
+      "use_when": ["An agent should check availability or draft events across several Google accounts", "Building or testing calendar features with Claude"],
+      "avoid_when": ["The hosted Google Calendar connector already covers the need", "Unattended writes; keep a human approval step"],
+      "integrate": ["Create a Google Cloud project, enable Calendar API, make a Desktop OAuth client", "Add the server to your MCP config with the credentials path", "Start read-only; allow create/update once the approval flow is in place"],
+      "learn_from": "Conflict detection across accounts is the feature people actually want from a calendar assistant.",
+      "tool_id": "google-calendar-mcp"
+    },
+    {
+      "id": "gcalcli", "name": "gcalcli", "repo": "https://github.com/insanum/gcalcli", "source": "user",
+      "category": "agent", "platforms": ["cli"], "language": "Python", "license": "MIT", "license_class": "permissive", "status": "active", "last_commit": "2025-10-24",
+      "styles": ["agenda", "week", "month"],
+      "summary": "Google Calendar from the terminal: agenda, week and month text views, search, quick-add, ICS import, conflict finding and reminder hooks.",
+      "use_when": ["Scripts and agents in a terminal need calendar access", "Seeding test events or importing ICS during development"],
+      "avoid_when": ["Production app features; call the API from your backend instead"],
+      "integrate": ["pipx install gcalcli; run gcalcli init for OAuth", "gcalcli agenda --tsv for machine-readable output", "Use in dev scripts, not in the deployed app"],
+      "learn_from": "A text agenda proves the minimum useful calendar: time, title, calendar color.",
+      "tool_id": "gcalcli"
+    },
+    {
+      "id": "laravel-google-calendar", "name": "laravel-google-calendar (Spatie)", "repo": "https://github.com/spatie/laravel-google-calendar", "source": "user",
+      "category": "provider", "platforms": ["php"], "language": "PHP", "license": "MIT", "license_class": "permissive", "status": "active", "last_commit": "2026-11-05",
+      "styles": [],
+      "summary": "Eloquent-style Event model for Google Calendar in Laravel: create, list, update, delete, add attendees and a Meet link in a few lines.",
+      "use_when": ["The backend is Laravel", "A service account or OAuth calendar should mirror app bookings"],
+      "avoid_when": ["Next.js / Node stacks (use googleapis for Node)"],
+      "integrate": ["composer require spatie/laravel-google-calendar", "Service account JSON in env, share the calendar with the service account email", "$event->addMeetLink() for video calls"],
+      "learn_from": "Treat the external calendar like a model: new Event, set fields, save(). That's the API shape to copy in any stack.",
+      "tool_id": null
+    },
+    {
+      "id": "googleapis", "name": "googleapis (API definitions)", "repo": "https://github.com/googleapis/googleapis", "source": "user",
+      "category": "provider", "platforms": ["api"], "language": "Protocol Buffers", "license": "Apache-2.0", "license_class": "permissive", "status": "active", "last_commit": "2026-11-12",
+      "styles": [],
+      "summary": "Google's public API definitions. Has the Meet REST API (google/apps/meet/v2: spaces, conference records, transcripts) and the Workspace Events API (google/apps/events) for push subscriptions. Calendar v3 itself is a REST API documented separately, not in this repo.",
+      "use_when": ["Reading Meet conference records, participants or transcripts after a call", "Subscribing to Workspace events instead of polling"],
+      "avoid_when": ["Plain calendar work; use the Calendar v3 REST client (googleapis npm package)"],
+      "integrate": ["Don't clone it into the app; use the generated client libraries", "Read google/apps/meet/v2/resource.proto to learn the conference record shape", "Use the Workspace Events API to get pushed meeting events"],
+      "learn_from": "Meeting data (who joined, transcript) and calendar data (when, who's invited) are separate APIs. Join them on the event's Meet code.",
+      "tool_id": null
+    },
+    {
+      "id": "outlook-google-sync", "name": "Outlook Google Calendar Sync", "repo": "https://github.com/phw198/OutlookGoogleCalendarSync", "source": "user",
+      "category": "sync", "platforms": ["desktop"], "language": "C#", "license": "MPL-2.0", "license_class": "weak-copyleft", "status": "active", "last_commit": "2026-11-01",
+      "styles": [],
+      "summary": "Free Windows tool that syncs Outlook and Google calendars one or both ways, including attendees and reminders. Works behind proxies, no install required.",
+      "use_when": ["A client keeps a work Outlook and a personal Google calendar and the CRM reads Google"],
+      "avoid_when": ["Mac-only users", "You can use Microsoft Graph directly from the backend"],
+      "integrate": ["Client installs it on their Windows PC", "Point it at the Google calendar your app reads", "Document it in the handover guide; it's a user tool, not app code"],
+      "learn_from": "Sync tools need clear direction (one-way vs two-way) and a dry-run. Show both in any sync settings UI.",
+      "tool_id": null
+    },
+    {
+      "id": "google-calendar-crx", "name": "Google Calendar for Chrome", "repo": "https://github.com/chimbori/google-calendar-crx", "source": "user",
+      "category": "app", "platforms": ["browser-ext"], "language": "JavaScript", "license": "Apache-2.0", "license_class": "permissive", "status": "retired", "last_commit": "2021-09-07",
+      "styles": ["agenda"],
+      "summary": "Retired extension (5M+ users) that showed upcoming events in a toolbar popup and added events from any page. Source kept for forking.",
+      "use_when": ["Studying the quick-glance popup pattern for 'what's next'"],
+      "avoid_when": ["Shipping it as-is: it is retired and uses an old extension manifest"],
+      "integrate": ["Use as a design reference only", "If a client wants a 'next meeting' popup, build it on Manifest V3 with the Calendar API"],
+      "learn_from": "The most-used calendar view is 'next 3 events'. Put that on the dashboard's Today panel.",
+      "tool_id": null
+    },
+    {
+      "id": "video-meeting", "name": "Video Meeting (0x5eba)", "repo": "https://github.com/0x5eba/Video-Meeting", "source": "user",
+      "category": "meetings", "platforms": ["web"], "language": "JavaScript", "license": "None", "license_class": "look-only", "status": "stale", "last_commit": "2021-02-26",
+      "styles": ["meetgrid"],
+      "summary": "Small peer-to-peer video room (React, Node, Socket.IO, WebRTC) with chat and screen sharing, no accounts.",
+      "use_when": ["Learning how WebRTC signalling works"],
+      "avoid_when": ["Production meetings: no license, no TURN server setup, peer-to-peer breaks past a few people", "A CRM: attach Google Meet or Zoom links instead"],
+      "integrate": ["Read only. For real video use a hosted SDK (Zoom Video SDK, LiveKit, Daily) or Meet links"],
+      "learn_from": "Equal tiles plus a chat drawer is the minimum meeting layout.",
+      "tool_id": null
+    },
+    {
+      "id": "google-meet-clone", "name": "Google Meet clone (ckalgos)", "repo": "https://github.com/ckalgos/google-meet-clone", "source": "user",
+      "category": "meetings", "platforms": ["web"], "language": "JavaScript", "license": "None", "license_class": "look-only", "status": "stale", "last_commit": "2022-09-02",
+      "styles": ["meetgrid"],
+      "summary": "Tutorial video-conference app with Firebase signalling, screen sharing and a responsive grid for 8 to 12 people.",
+      "use_when": ["Studying responsive meeting grids for desktop and mobile"],
+      "avoid_when": ["Copying code (no license)", "Production video"],
+      "integrate": ["Reference only for grid layout at different participant counts"],
+      "learn_from": "Grid columns step with participant count (1, 2, 4, 9, 12) so tiles stay large.",
+      "tool_id": null
+    },
+    {
+      "id": "google-meet-grid-view", "name": "Google Meet Grid View", "repo": "https://github.com/FugiTech/google-meet-grid-view", "source": "user",
+      "category": "meetings", "platforms": ["browser-ext"], "language": "JavaScript", "license": "All rights reserved", "license_class": "look-only", "status": "retired", "last_commit": "2020-06-17",
+      "styles": ["meetgrid"],
+      "summary": "Former extension that forced an equal-tile grid in Google Meet, with speaker highlight and 'hide no-video' options. Meet now has this built in.",
+      "use_when": ["Reference for meeting-grid options: include yourself, highlight speaker, hide tiles without video"],
+      "avoid_when": ["Using the code (all rights reserved)", "Modern Meet already has tiled layout"],
+      "integrate": ["Copy the ideas, not the code: the three toggles make a good meeting-recap view"],
+      "learn_from": "Highlight the speaker with a border, never by resizing, so nothing jumps.",
+      "tool_id": null
+    },
+    {
+      "id": "google-meet-scheduler", "name": "Google Meet Scheduler", "repo": "https://github.com/AmanRaj1608/Google-Meet-Scheduler", "source": "user",
+      "category": "meetings", "platforms": ["web"], "language": "JavaScript", "license": "None", "license_class": "look-only", "status": "stale", "last_commit": "2021-07-23",
+      "styles": [],
+      "summary": "Bot that logs into Google with a stored password and joins Meet calls on a schedule using browser automation. Windows only.",
+      "use_when": ["As an example of what not to build"],
+      "avoid_when": ["Always for client work: it stores a Google password in a file, automates login (against Google's terms) and acts without a person"],
+      "integrate": ["Don't. To get meeting notes, use a recorder connector (Fathom, Fireflies) or the Meet REST API with OAuth"],
+      "learn_from": "Automation must use OAuth and an approval step, never stored passwords.",
+      "tool_id": null
+    },
+    {
+      "id": "react-day-picker", "name": "React DayPicker (shadcn Calendar)", "repo": "https://github.com/gpbl/react-day-picker", "source": "added",
+      "category": "ui", "platforms": ["web"], "language": "TypeScript", "license": "MIT", "license_class": "permissive", "status": "active", "last_commit": "2026-10-21",
+      "styles": ["picker", "month"],
+      "summary": "Accessible date and range picker. It is what shadcn/ui's Calendar component wraps, so it fits this toolkit's stack with no extra styling work.",
+      "use_when": ["Any date or range input in a Next.js + shadcn app", "A mini month on a dashboard sidebar"],
+      "avoid_when": ["Full week/day scheduling with drag; use FullCalendar or Schedule-X"],
+      "integrate": ["npx shadcn@latest add calendar (installs react-day-picker)", "It already reads the shadcn CSS variables mapped in design-system/tailwind.preset.js", "Use mode=\"range\" for report filters; disabled for past dates"],
+      "learn_from": "Keyboard grid navigation and ARIA come built in. Don't rebuild them by hand.",
+      "tool_id": "shadcn-calendar"
+    },
+    {
+      "id": "fullcalendar", "name": "FullCalendar", "repo": "https://github.com/fullcalendar/fullcalendar", "source": "added",
+      "category": "ui", "platforms": ["web"], "language": "TypeScript", "license": "MIT", "license_class": "permissive", "status": "active", "last_commit": "2026-11-12",
+      "styles": ["month", "week", "agenda"],
+      "summary": "The most widely used web calendar: month, week, day and list views, drag to move or resize, Google Calendar and ICS sources. Resource timelines are a paid add-on.",
+      "use_when": ["Full scheduling screen in a web app (bookings, team calendar)", "Showing a Google calendar or ICS feed inside the app"],
+      "avoid_when": ["You need resource/timeline views and no budget for the premium license", "A simple agenda card"],
+      "integrate": ["npm i @fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/interaction", "Theme it by setting its --fc-* CSS variables from design tokens", "Load events on open and on change (eventSources function), never on a timer"],
+      "learn_from": "Event sources as functions (fetch for the visible range) keep big calendars fast.",
+      "tool_id": "fullcalendar"
+    },
+    {
+      "id": "schedule-x", "name": "Schedule-X", "repo": "https://github.com/schedule-x/schedule-x", "source": "added",
+      "category": "ui", "platforms": ["web"], "language": "TypeScript", "license": "MIT", "license_class": "permissive", "status": "active", "last_commit": "2026-10-06",
+      "styles": ["month", "week", "agenda"],
+      "summary": "Modern Material-style event calendar for React, Vue, Svelte, Angular or plain JS, with drag and drop, dark mode and plugins.",
+      "use_when": ["You want a clean modern look with less CSS work than FullCalendar"],
+      "avoid_when": ["You depend on FullCalendar's larger plugin ecosystem"],
+      "integrate": ["npm i @schedule-x/react @schedule-x/calendar @schedule-x/theme-default", "Override its CSS variables with design tokens", "Use the events service plugin to add or update events from your store"],
+      "learn_from": "Good defaults for dark mode come from one set of variables. Same idea as our themes.",
+      "tool_id": "schedule-x"
+    },
+    {
+      "id": "google-calendar-api", "name": "Google Calendar API v3", "repo": "https://developers.google.com/calendar/api/guides/overview", "source": "added",
+      "category": "provider", "platforms": ["web", "api"], "language": "REST", "license": "Google API terms", "license_class": "permissive", "status": "active", "last_commit": null,
+      "styles": [],
+      "summary": "The official API behind every Google calendar integration: events, free/busy, incremental sync with sync tokens, push notifications via watch channels, and Meet links via conferenceData.",
+      "use_when": ["Two-way sync between the CRM and the client's Google calendar", "Creating meetings with a Meet link from the app"],
+      "avoid_when": ["Read-only sharing to many people; an ICS feed is simpler"],
+      "integrate": ["Follow docs/calendars/01-integration-playbook.md: OAuth scopes, sync tokens, watch channels", "Use the googleapis npm package from a server route; never call it from the browser with a secret"],
+      "learn_from": "Sync tokens plus push channels means you never poll.",
+      "tool_id": "google-calendar-api"
+    },
+    {
+      "id": "cal-com", "name": "Cal.com", "repo": "https://github.com/calcom/cal.com", "source": "added",
+      "category": "app", "platforms": ["web", "self-hosted"], "language": "TypeScript", "license": "MIT", "license_class": "permissive", "status": "active", "last_commit": "2026-11-11",
+      "styles": ["booking"],
+      "summary": "Open scheduling platform: booking pages, availability rules, round-robin, embeds and calendar sync. Hosted or self-hosted.",
+      "use_when": ["Clients should book discovery calls themselves", "You want an embeddable booking widget instead of building one"],
+      "avoid_when": ["Self-hosting it just for one booking link; use the hosted version or a Calendly link"],
+      "integrate": ["Embed the booking page with its embed snippet or React embed", "Receive bookings by webhook into the CRM (creates or updates the client)", "Check folder-level licenses before copying any code"],
+      "learn_from": "Booking = availability rules + free/busy + a confirmation step. That's the whole Booking slots style.",
+      "tool_id": null
+    },
+    {
+      "id": "ical-generator", "name": "ical-generator", "repo": "https://github.com/sebbo2002/ical-generator", "source": "added",
+      "category": "sync", "platforms": ["web"], "language": "TypeScript", "license": "MIT", "license_class": "permissive", "status": "active", "last_commit": "2026-11-10",
+      "styles": [],
+      "summary": "Generates ICS calendar files and feeds in Node. The quickest way to let anyone subscribe to your app's events.",
+      "use_when": ["'Add to calendar' buttons", "A private subscribe link for the client's follow-ups"],
+      "avoid_when": ["Two-way sync; use the provider API"],
+      "integrate": ["npm i ical-generator", "Serve from a route like /api/calendar/[token].ics with a long random token", "Set a stable UID per event so updates replace instead of duplicating"],
+      "learn_from": "A stable UID is what makes calendar updates work everywhere.",
+      "tool_id": "ics-tools"
+    },
+    {
+      "id": "ical-js", "name": "ical.js", "repo": "https://github.com/kewisch/ical.js", "source": "added",
+      "category": "sync", "platforms": ["web"], "language": "JavaScript", "license": "MPL-2.0", "license_class": "weak-copyleft", "status": "active", "last_commit": "2026-11-06",
+      "styles": [],
+      "summary": "Parses and writes iCalendar (ICS) and vCard, with time zones and recurrence. Used by Thunderbird and Nextcloud.",
+      "use_when": ["Importing ICS files or invites into the app", "Expanding recurring events from a CalDAV server"],
+      "avoid_when": ["You only need to generate feeds; ical-generator is simpler"],
+      "integrate": ["npm i ical.js", "ICAL.parse → new ICAL.Component → iterate vevent", "Use its recurrence iterator for expanding occurrences in a date range"],
+      "learn_from": "Always expand recurrence for the visible range only, never forever.",
+      "tool_id": "ics-tools"
+    },
+    {
+      "id": "rrule", "name": "rrule.js", "repo": "https://github.com/jkbrzt/rrule", "source": "added",
+      "category": "sync", "platforms": ["web"], "language": "TypeScript", "license": "BSD-3-Clause", "license_class": "permissive", "status": "stale", "last_commit": "2023-11-10",
+      "styles": [],
+      "summary": "Recurrence rules (RFC 5545 RRULE) in JS, with plain-English output like 'every week on Monday'.",
+      "use_when": ["Repeating follow-ups ('every 2 weeks') stored as an RRULE string", "Showing a human description of a repeat rule"],
+      "avoid_when": ["Time zone-heavy recurrence; check DST behavior or use ical.js"],
+      "integrate": ["npm i rrule", "Store the RRULE string in the database, expand on read for the visible range", "rule.toText() for the label in the UI"],
+      "learn_from": "Store the rule, not the occurrences.",
+      "tool_id": "ics-tools"
+    }
+  ]
+}

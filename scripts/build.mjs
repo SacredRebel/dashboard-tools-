@@ -4,8 +4,8 @@
  *
  *   node scripts/build.mjs
  *
- * Reads   catalog/tools.json, catalog/inventory.json, design-system/themes.json, docs, templates
- * Writes  docs/tools/*.md, site/data/data.js, site/assets/tokens.css
+ * Reads   catalog/tools.json, catalog/calendars.json, catalog/inventory.json, design-system/themes.json, docs, templates
+ * Writes  docs/tools/*.md, docs/calendars/catalog.md, site/data/data.js, site/assets/tokens.css
  * Exits 1 if the catalog is invalid (duplicate ids, broken pairs_with, missing fallback files…).
  * No dependencies: plain Node >= 18.
  */
@@ -43,6 +43,25 @@ for (const t of catalog.tools) {
   if (t.fallback && !existsSync(join(root, t.fallback.split('#')[0]))) errors.push(`${where}: fallback file not found ${t.fallback}`);
 }
 for (const t of catalog.tools) for (const p of t.pairs_with || []) if (!ids.has(p)) errors.push(`tool "${t.id}": pairs_with unknown id ${p}`);
+
+// calendars.json: repos, styles, approaches
+const cal = json('catalog/calendars.json');
+const calSets = Object.fromEntries(['licenses', 'statuses', 'platforms', 'categories', 'styles', 'approaches', 'repos'].map((k) => [k, new Set(cal[k].map((x) => x.id))]));
+const calIds = new Set();
+for (const r of cal.repos) {
+  const where = `calendar repo "${r.id}"`;
+  if (calIds.has(r.id)) errors.push(`${where}: duplicate id`);
+  calIds.add(r.id);
+  for (const k of ['name', 'repo', 'category', 'license', 'license_class', 'status', 'summary']) if (!r[k]) errors.push(`${where}: missing ${k}`);
+  if (!calSets.categories.has(r.category)) errors.push(`${where}: unknown category ${r.category}`);
+  if (!calSets.licenses.has(r.license_class)) errors.push(`${where}: unknown license_class ${r.license_class}`);
+  if (!calSets.statuses.has(r.status)) errors.push(`${where}: unknown status ${r.status}`);
+  for (const p of r.platforms || []) if (!calSets.platforms.has(p)) errors.push(`${where}: unknown platform ${p}`);
+  for (const st of r.styles || []) if (!calSets.styles.has(st)) errors.push(`${where}: unknown style ${st}`);
+  if (!r.use_when?.length || !r.avoid_when?.length || !r.integrate?.length) errors.push(`${where}: use_when, avoid_when and integrate are required`);
+  if (r.tool_id && !ids.has(r.tool_id)) errors.push(`${where}: tool_id ${r.tool_id} not in tools.json`);
+}
+for (const a of cal.approaches) for (const p of a.picks) if (!calSets.repos.has(p)) errors.push(`calendar approach "${a.id}": unknown pick ${p}`);
 
 const themeCss = rd('design-system/tokens.css');
 for (const th of themes.themes) {
@@ -95,12 +114,39 @@ for (const c of catalog.categories) {
   writeFileSync(join(root, `docs/tools/${c.id}.md`), md);
 }
 
+// ---------------------------------------------------------------- docs/calendars/catalog.md
+{
+  const lic = Object.fromEntries(cal.licenses.map((l) => [l.id, l]));
+  const plat = Object.fromEntries(cal.platforms.map((p) => [p.id, p.name]));
+  const sty = Object.fromEntries(cal.styles.map((p) => [p.id, p.name]));
+  let md = header.replace('catalog/tools.json', 'catalog/calendars.json') + `# Calendar repo catalog\n\n${cal.repos.length} repos and APIs, ${cal.styles.length} styles, ${cal.approaches.length} approaches. Source: [catalog/calendars.json](../../catalog/calendars.json) (snapshot ${cal.snapshot_date}). Start with the [hub](README.md) to choose an approach.\n\n`;
+  md += '## Approaches\n\n| Approach | Use when | Not when | Picks |\n|---|---|---|---|\n';
+  for (const a of cal.approaches) md += `| **${a.name}** | ${a.when} | ${a.not_when} | ${a.picks.map((p) => `[${cal.repos.find((r) => r.id === p).name}](#${p})`).join(', ')} |\n`;
+  md += '\n## At a glance\n\n| Repo | Category | Platforms | License | Status |\n|---|---|---|---|---|\n';
+  for (const r of cal.repos) md += `| [${r.name}](#${r.id}) | ${cal.categories.find((c) => c.id === r.category).name} | ${r.platforms.map((p) => plat[p]).join(', ')} | ${r.license} (${lic[r.license_class].name}) | ${r.status} |\n`;
+  for (const c of cal.categories) {
+    md += `\n## ${c.name}\n\n${c.blurb}\n\n`;
+    for (const r of cal.repos.filter((x) => x.category === c.id)) {
+      md += `<a id="${r.id}"></a>\n### ${r.name}\n\n${r.repo} · ${r.language} · **${r.license}** (${lic[r.license_class].name}: ${lic[r.license_class].meaning}) · ${r.status}${r.last_commit ? ` (last commit ${r.last_commit})` : ''}${r.source === 'added' ? ' · added by the toolkit' : ''}\n\n${r.summary}\n\n`;
+      if (r.styles.length) md += `**Styles:** ${r.styles.map((s) => sty[s]).join(', ')}\n\n`;
+      md += `**Use when**\n${r.use_when.map((x) => `- ${x}`).join('\n')}\n\n**Avoid when**\n${r.avoid_when.map((x) => `- ${x}`).join('\n')}\n\n**How to integrate**\n${r.integrate.map((x) => `1. ${x}`).join('\n')}\n\n**Lesson:** ${r.learn_from}\n\n`;
+      if (r.tool_id) md += `**Catalog entry:** [${r.tool_id}](../tools/calendar.md#${r.tool_id})\n\n`;
+      md += '---\n\n';
+    }
+  }
+  md += '## Styles\n\n';
+  for (const s2 of cal.styles) md += `### ${s2.name}\n\n${s2.summary} Pattern: ${s2.pattern}.\n\n- **Use when:** ${s2.use_when.join('; ')}\n- **Avoid when:** ${s2.avoid_when.join('; ')}\n- **Rules:** ${s2.rules.join('; ')}\n- **Repos:** ${cal.repos.filter((r) => r.styles.includes(s2.id)).map((r) => `[${r.name}](#${r.id})`).join(', ')}\n\n`;
+  mkdirSync(join(root, 'docs/calendars'), { recursive: true });
+  writeFileSync(join(root, 'docs/calendars/catalog.md'), md);
+}
+
 // ---------------------------------------------------------------- docs bundle for the site
 const docGroups = [
   ['Start', ['README.md', 'AGENTS.md', 'prompts/README.md']],
   ['Framework', listDir('docs/framework')],
   ['Design', [...listDir('docs/design'), 'design-system/README.md']],
   ['CRM', listDir('docs/crm')],
+  ['Calendars', ['docs/calendars/README.md', ...listDir('docs/calendars').filter((f) => !f.endsWith('README.md'))]],
   ['Stack', listDir('docs/stack')],
   ['Templates', listDir('templates')],
   ['Tools', ['docs/tools/README.md', ...catalog.categories.map((c) => `docs/tools/${c.id}.md`)]],
@@ -130,10 +176,11 @@ writeFileSync(
   banner +
     `window.CATALOG=${JSON.stringify(catalog)};\n` +
     `window.THEMES=${JSON.stringify(themes)};\n` +
+    `window.CALENDARS=${JSON.stringify(cal)};\n` +
     `window.INVENTORY=${JSON.stringify(inv)};\n` +
     `window.DOCS=${JSON.stringify(docs)};\n`,
 );
 mkdirSync(join(root, 'site/assets'), { recursive: true });
 copyFileSync(join(root, 'design-system/tokens.css'), join(root, 'site/assets/tokens.css'));
 
-console.log(`✔ ${catalog.tools.length} tools · ${catalog.categories.length} categories · ${themes.themes.length} themes · ${docs.length} docs · ${inv.total} inventoried skills`);
+console.log(`✔ ${catalog.tools.length} tools · ${catalog.categories.length} categories · ${cal.repos.length} calendar repos · ${themes.themes.length} themes · ${docs.length} docs · ${inv.total} inventoried skills`);

@@ -18,7 +18,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const base = process.argv[2] || pathToFileURL(join(root, 'site/index.html')).href;
 const out = process.argv[3] || join(root, 'screenshots');
 mkdirSync(out, { recursive: true });
-const routes = ['', 'framework', 'tools', 'themes', 'showcase', 'components', 'demo', 'docs/AGENTS.md'];
+const routes = ['', 'framework', 'tools', 'themes', 'showcase', 'calendars', 'components', 'demo', 'docs/AGENTS.md', 'docs/docs/calendars/catalog.md'];
 const widths = [375, 1280];
 
 const browser = await chromium.launch();

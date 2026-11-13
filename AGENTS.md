@@ -34,6 +34,7 @@ You are an AI agent asked to **design and build a dashboard** (for example a CRM
 | 4 | [docs/design/02-rulebook.md](docs/design/02-rulebook.md) | Hard design rules (before any UI work) |
 | 5 | [docs/crm/](docs/crm/) (if building a CRM) | Data model, views, features |
 | 6 | [docs/stack/](docs/stack/) (before Build) | Stack, data/auth, GitHub + Vercel workflow, performance & privacy contract |
+| 6a | [docs/calendars/README.md](docs/calendars/README.md) (anything with dates: meetings, follow-ups, booking, sync) | Approach chooser, calendar styles, repo licenses; machine-readable in `catalog/calendars.json` |
 | 6b | [docs/design/07-showcase-patterns.md](docs/design/07-showcase-patterns.md) (when presenting) | Story players, device frames, before/after, glass worlds, approval gates |
 | 7 | [catalog/tools.json](catalog/tools.json) | Every tool with use / avoid / how, filtered by phase |
 
@@ -133,10 +134,12 @@ CLAUDE.md                ← Claude Code entry; imports this file
 README.md                ← human overview
 catalog/
   tools.json             ← curated tools (source of truth)
+  calendars.json         ← calendar repos, styles, approaches, licenses (source of truth for docs/calendars/catalog.md)
   inventory.json         ← every installed skill, with relevance rating
 docs/
   framework/             ← 8 phases, step by step
   design/                ← principles, rulebook, page patterns, data viz, anti-patterns, themes, showcase patterns
+  calendars/             ← calendar hub, integration playbook, calendar UI rules, generated repo catalog
   crm/                   ← CRM data model, views, features
   stack/                 ← tech stack, data & auth, GitHub + Vercel, tokens → Tailwind, performance & privacy
   tools/                 ← generated: tools by category (do not edit; edit catalog)
@@ -153,5 +156,6 @@ scripts/build.mjs        ← validates catalog, regenerates site data + docs/too
 ## 8. Maintaining this repo
 
 - Add or change a tool: edit `catalog/tools.json`, then run `node scripts/build.mjs`. It validates ids, `pairs_with` links and `fallback` paths, and regenerates `docs/tools/` and `site/data/`.
+- Add a calendar repo: add an entry to `catalog/calendars.json` (license_class, status, use_when, avoid_when, integrate are required), then rebuild.
 - Add a theme: add a `[data-theme="…"]` block in `design-system/tokens.css` and an entry in `design-system/themes.json`, then rebuild.
 - Never paste third-party skill text into this repo. Summarize in your own words and link the source.

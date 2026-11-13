@@ -28,22 +28,6 @@ Search, read and draft email.
 
 ---
 
-<a id="google-calendar"></a>
-### Google Calendar connector
-
-`Google Calendar MCP` · connector · **recommended** · phases: Build
-
-List, create and update events; suggest times.
-
-**Use when**
-- Showing upcoming meetings on the Today view (v2)
-
-**Pairs with:** [Schedule Meeting](crm.md#schedule-meeting)
-
-**Requires:** Google account
-
----
-
 <a id="google-drive"></a>
 ### Google Drive connector
 

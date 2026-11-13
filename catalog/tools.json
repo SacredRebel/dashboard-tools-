@@ -117,6 +117,12 @@
       "blurb": "Gmail, Calendar, Drive, spreadsheets and meeting recorders that feed the CRM."
     },
     {
+      "id": "calendar",
+      "name": "Calendars & Scheduling",
+      "icon": "calendar",
+      "blurb": "Calendar views, provider APIs, agent connectors, ICS feeds and booking. Full repo directory: catalog/calendars.json."
+    },
+    {
       "id": "media",
       "name": "Media & Assets",
       "icon": "image",
@@ -3154,21 +3160,23 @@
       "invoke": "sales:schedule-meeting",
       "kind": "skill",
       "plugin": "sales",
-      "category": "crm",
+      "category": "calendar",
       "phases": [
         "build"
       ],
       "tier": "optional",
       "summary": "Finds a time, books it, and logs it to the CRM.",
       "use_when": [
-        "Calendar integration (v2)"
+        "Booking a meeting with a client and logging it to the CRM"
       ],
       "avoid_when": [],
-      "how_to_use": [],
+      "how_to_use": [
+        "Confirm the slot with the human before sending invites"
+      ],
       "pairs_with": [
         "google-calendar"
       ],
-      "fallback": null,
+      "fallback": "docs/calendars/01-integration-playbook.md",
       "requires": null,
       "url": null
     },
@@ -3955,21 +3963,28 @@
       "invoke": "Google Calendar MCP",
       "kind": "connector",
       "plugin": "google",
-      "category": "integrations",
+      "category": "calendar",
       "phases": [
         "build"
       ],
       "tier": "recommended",
-      "summary": "List, create and update events; suggest times.",
+      "summary": "Hosted Google Calendar connector for the agent: list, search, create and update events, suggest times.",
       "use_when": [
-        "Showing upcoming meetings on the Today view (v2)"
+        "The agent should read the week, find a slot or draft an event",
+        "Building and testing calendar features during development"
       ],
-      "avoid_when": [],
-      "how_to_use": [],
+      "avoid_when": [
+        "Product code: the deployed app uses the Calendar API, not the agent connector"
+      ],
+      "how_to_use": [
+        "Read first (list_events, suggest_time); write only after the human approves"
+      ],
       "pairs_with": [
-        "schedule-meeting"
+        "schedule-meeting",
+        "google-calendar-api",
+        "google-calendar-mcp"
       ],
-      "fallback": null,
+      "fallback": "docs/calendars/01-integration-playbook.md#agents",
       "requires": "Google account",
       "url": null
     },
@@ -5047,6 +5062,292 @@
       "fallback": "docs/stack/05-performance-and-privacy.md",
       "requires": null,
       "url": "https://developer.chrome.com/docs/lighthouse"
+    },
+    {
+      "plugin": null,
+      "requires": null,
+      "url": "https://github.com/SacredRebel/dashboard-tools-/blob/main/docs/calendars/README.md",
+      "id": "calendar-hub",
+      "name": "Calendar hub",
+      "invoke": "docs/calendars/README.md + catalog/calendars.json",
+      "kind": "reference",
+      "category": "calendar",
+      "phases": [
+        "define",
+        "direction",
+        "design",
+        "build"
+      ],
+      "tier": "core",
+      "summary": "Start here for anything with dates: picks the approach (own view, UI library, Google API, MCP, ICS, CalDAV, booking) and the visual style, with 25 vetted repos.",
+      "use_when": [
+        "The product shows, books, syncs or reminds about anything on a date",
+        "Choosing between a calendar library and a provider integration"
+      ],
+      "avoid_when": [
+        "A single due-date field; use the shadcn Calendar picker directly"
+      ],
+      "how_to_use": [
+        "Read docs/calendars/README.md and answer its decision table",
+        "Pick one style per screen from catalog/calendars.json styles",
+        "Follow docs/calendars/01-integration-playbook.md for sync, and 02-calendar-ui-rules.md for the view"
+      ],
+      "pairs_with": [
+        "google-calendar-api",
+        "shadcn-calendar",
+        "fullcalendar",
+        "google-calendar"
+      ],
+      "fallback": "docs/calendars/README.md"
+    },
+    {
+      "plugin": null,
+      "requires": "Google Cloud project with Calendar API enabled",
+      "url": "https://developers.google.com/calendar/api/guides/overview",
+      "id": "google-calendar-api",
+      "name": "Google Calendar API v3",
+      "invoke": "googleapis (npm) · calendar v3",
+      "kind": "library",
+      "category": "calendar",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Official API for two-way sync with the client’s Google calendar: events, free/busy, sync tokens, push channels and Meet links.",
+      "use_when": [
+        "CRM meetings must appear in the client’s real calendar",
+        "Creating events with a Google Meet link"
+      ],
+      "avoid_when": [
+        "Read-only sharing; an ICS feed is simpler",
+        "Calling it from the browser with secrets"
+      ],
+      "how_to_use": [
+        "OAuth with calendar.events scope; store refresh tokens encrypted server-side",
+        "Initial list, then incremental sync with syncToken",
+        "events.watch push channel to a webhook route: no polling",
+        "conferenceData.createRequest for Meet links"
+      ],
+      "pairs_with": [
+        "google-calendar",
+        "ics-tools",
+        "calendar-hub"
+      ],
+      "fallback": "docs/calendars/01-integration-playbook.md"
+    },
+    {
+      "plugin": null,
+      "requires": "Google Cloud OAuth client",
+      "url": "https://github.com/nspady/google-calendar-mcp",
+      "id": "google-calendar-mcp",
+      "name": "Google Calendar MCP (open source)",
+      "invoke": "github.com/nspady/google-calendar-mcp",
+      "kind": "connector",
+      "category": "calendar",
+      "phases": [
+        "build"
+      ],
+      "tier": "optional",
+      "summary": "Self-hosted MCP server: multi-account calendars, conflict detection, free/busy and recurring edits for an AI assistant.",
+      "use_when": [
+        "Several Google accounts need checking at once",
+        "The hosted connector is not available"
+      ],
+      "avoid_when": [
+        "The hosted Google Calendar connector already covers the task",
+        "Writes without a human approval step"
+      ],
+      "how_to_use": [
+        "Google Cloud project + Desktop OAuth client",
+        "Add to MCP config; start read-only"
+      ],
+      "pairs_with": [
+        "google-calendar",
+        "schedule-meeting"
+      ],
+      "fallback": "docs/calendars/01-integration-playbook.md#agents"
+    },
+    {
+      "plugin": null,
+      "requires": "Google account",
+      "url": "https://github.com/insanum/gcalcli",
+      "id": "gcalcli",
+      "name": "gcalcli",
+      "invoke": "gcalcli (pipx)",
+      "kind": "cli",
+      "category": "calendar",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Google Calendar from the terminal: agenda, search, quick-add, ICS import. Handy for seeding test events.",
+      "use_when": [
+        "Seeding or inspecting test calendars during development",
+        "An agent in a terminal needs a quick agenda"
+      ],
+      "avoid_when": [
+        "Production features; use the API from the backend"
+      ],
+      "how_to_use": [
+        "pipx install gcalcli && gcalcli init",
+        "gcalcli agenda --tsv for parseable output"
+      ],
+      "pairs_with": [
+        "google-calendar-api"
+      ],
+      "fallback": "docs/calendars/01-integration-playbook.md#agents"
+    },
+    {
+      "plugin": null,
+      "requires": null,
+      "url": "https://daypicker.dev",
+      "id": "shadcn-calendar",
+      "name": "shadcn Calendar (React DayPicker)",
+      "invoke": "npx shadcn@latest add calendar",
+      "kind": "library",
+      "category": "calendar",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Accessible date and range picker that already reads the toolkit’s shadcn token mapping.",
+      "use_when": [
+        "Any date or range input",
+        "A mini month on a dashboard"
+      ],
+      "avoid_when": [
+        "Week/day scheduling with drag; use FullCalendar or Schedule-X"
+      ],
+      "how_to_use": [
+        "Add via shadcn CLI; tokens map through tailwind.preset.js",
+        "mode=\"range\" for report filters; disabled for invalid dates"
+      ],
+      "pairs_with": [
+        "calendar-hub"
+      ],
+      "fallback": "docs/calendars/02-calendar-ui-rules.md"
+    },
+    {
+      "plugin": null,
+      "requires": null,
+      "url": "https://fullcalendar.io",
+      "id": "fullcalendar",
+      "name": "FullCalendar",
+      "invoke": "@fullcalendar/react",
+      "kind": "library",
+      "category": "calendar",
+      "phases": [
+        "build"
+      ],
+      "tier": "optional",
+      "summary": "Full month/week/day/list scheduler with drag and drop, Google and ICS sources. MIT core, paid resource views.",
+      "use_when": [
+        "A full scheduling screen in a web app"
+      ],
+      "avoid_when": [
+        "A simple agenda card; build it from tokens",
+        "Resource timelines without budget for the premium license"
+      ],
+      "how_to_use": [
+        "Theme via --fc-* CSS variables set from tokens",
+        "eventSources as a function for the visible range; refetch on change, not on a timer"
+      ],
+      "pairs_with": [
+        "google-calendar-api",
+        "ics-tools"
+      ],
+      "fallback": "docs/calendars/02-calendar-ui-rules.md"
+    },
+    {
+      "plugin": null,
+      "requires": null,
+      "url": "https://schedule-x.dev",
+      "id": "schedule-x",
+      "name": "Schedule-X",
+      "invoke": "@schedule-x/react",
+      "kind": "library",
+      "category": "calendar",
+      "phases": [
+        "build"
+      ],
+      "tier": "optional",
+      "summary": "Modern event calendar (React/Vue/Svelte/Angular/JS) with drag and drop and dark mode.",
+      "use_when": [
+        "You want a modern look with little CSS work"
+      ],
+      "avoid_when": [
+        "You need FullCalendar’s plugin ecosystem"
+      ],
+      "how_to_use": [
+        "Override its CSS variables with tokens",
+        "Use the events service plugin to sync with your store"
+      ],
+      "pairs_with": [
+        "google-calendar-api"
+      ],
+      "fallback": "docs/calendars/02-calendar-ui-rules.md"
+    },
+    {
+      "plugin": null,
+      "requires": null,
+      "url": "https://github.com/wix/react-native-calendars",
+      "id": "react-native-calendars",
+      "name": "React Native Calendars",
+      "invoke": "react-native-calendars",
+      "kind": "library",
+      "category": "calendar",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Calendar, agenda, week strip and timeline for iOS and Android in pure JS.",
+      "use_when": [
+        "A mobile companion app (Expo / React Native)"
+      ],
+      "avoid_when": [
+        "Web-only projects"
+      ],
+      "how_to_use": [
+        "Build its theme object from tokens",
+        "AgendaList + ExpandableCalendar for a Today screen"
+      ],
+      "pairs_with": [
+        "calendar-hub"
+      ],
+      "fallback": "docs/calendars/02-calendar-ui-rules.md"
+    },
+    {
+      "plugin": null,
+      "requires": null,
+      "url": "https://github.com/sebbo2002/ical-generator",
+      "id": "ics-tools",
+      "name": "ICS & recurrence (ical-generator, ical.js, rrule)",
+      "invoke": "npm i ical-generator ical.js rrule",
+      "kind": "library",
+      "category": "calendar",
+      "phases": [
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Subscribe links, Add-to-calendar files, ICS import and repeat rules without a provider account.",
+      "use_when": [
+        "Add to calendar buttons or a private subscribe feed",
+        "Repeating follow-ups stored as an RRULE"
+      ],
+      "avoid_when": [
+        "Two-way sync; use the provider API"
+      ],
+      "how_to_use": [
+        "Stable UID per event so updates replace, not duplicate",
+        "Store the rule, expand only the visible range",
+        "Feed URLs carry a long random token; revoke by rotating it"
+      ],
+      "pairs_with": [
+        "google-calendar-api",
+        "calendar-hub"
+      ],
+      "fallback": "docs/calendars/01-integration-playbook.md#ics"
     }
   ]
 }

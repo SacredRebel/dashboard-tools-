@@ -235,20 +235,6 @@ Finds lapsed customers and drafts win-back messages.
 
 ---
 
-<a id="schedule-meeting"></a>
-### Schedule Meeting
-
-`sales:schedule-meeting` · skill · **optional** · phases: Build
-
-Finds a time, books it, and logs it to the CRM.
-
-**Use when**
-- Calendar integration (v2)
-
-**Pairs with:** [Google Calendar connector](integrations.md#google-calendar)
-
----
-
 <a id="speed-to-lead"></a>
 ### Speed to Lead
 

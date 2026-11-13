@@ -1,0 +1,13 @@
+{
+  "change": "Calendar hub: catalog/calendars.json (25 repos, 8 styles, 9 approaches), docs/calendars/, Calendars page with 8 live themed calendar styles, calendar category in tools.json",
+  "date": "2026-11-13",
+  "replaces": "google-calendar and schedule-meeting moved from integrations/crm into the new calendar category (no duplicates kept)",
+  "checks": {
+    "build": "node scripts/build.mjs → 191 tools · 15 categories · 25 calendar repos · 10 themes · 55 docs (validation passes)",
+    "routes_375_1280": "scripts/screenshot.mjs over 10 routes incl. #/calendars and calendars catalog doc: no console errors, no horizontal overflow",
+    "interactions": "month arrow/PageDown/Enter keyboard, week event detail + 3-day mode under 560px, agenda filter, picker typed range + invalid message, booking validation → confirm → valid .ics download, time zone change, week strip, meeting grid add/hide, directory search/license filter, repo jump, snippet tabs with arrows, global theme: all pass",
+    "contrast": "calendar chips, event blocks, muted text, selected days, slots and tile labels ≥ 4.5:1 in all 10 themes",
+    "no_polling": "only timer is the week now-line (60 s), started/stopped by IntersectionObserver + visibilitychange, cleared on route change",
+    "licenses": "verified from each repo's LICENSE file via shallow clone on 2026-11-13"
+  }
+}
