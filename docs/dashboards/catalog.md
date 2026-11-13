@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-19 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+20 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -25,6 +25,7 @@
 | 17 | [Larchwood Lodge](#larchwood-lodge) | Bento grid | Hospitality & food, Smart home & IoT | dark | Plum, Birch, Pine | [site/dashboards/larchwood-lodge/](../../site/dashboards/larchwood-lodge/) |
 | 18 | [Hearth Nest](#hearth-nest) | Cinematic & atmospheric | Smart home & IoT | dark | Amber hearth, Cedar, Frost | [site/dashboards/hearth-nest/](../../site/dashboards/hearth-nest/) |
 | 19 | [Veil Rooms](#veil-rooms) | Glass & glow | Smart home & IoT | dark | Slate glass, Mist, Midnight | [site/dashboards/veil-rooms/](../../site/dashboards/veil-rooms/) |
+| 20 | [Atrium Living](#atrium-living) | Glass & glow | Smart home & IoT | light | Daylight, Dusk, Night | [site/dashboards/atrium-living/](../../site/dashboards/atrium-living/) |
 
 ## Cinematic & atmospheric
 
@@ -284,6 +285,34 @@ A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device ca
 - Brands that require a warm cinematic look
 
 **Components:** Slim icon rail with avatar · Environment status chips · Personal greeting · Room pill switcher with add · Main light dual sliders · AC temperature stepper · Media player card · Wifi speed card · Air purifier status card · Smart lock card · Right Light fixtures panel with stepped spotlight control
+
+---
+
+<a id="atrium-living"></a>
+### 20. Atrium Living
+
+![Atrium Living](../../site/dashboards/atrium-living/thumb.jpg)
+
+A glass smart-home room console over a code-drawn atrium living room: climate dial, energy wave, live camera, door lock, lighting, music and ambient LED on frosted panels.
+
+- **Use cases:** Smart home & IoT · **Mode:** light · **Mood:** airy, glassy, calm, contemporary, residential
+- **Signature:** Frosted glass panels floating over a hand-drawn atrium living room — teal walls, tall window light, wood floor and plants — with a warm energy chart and cool climate dial as twin accents.
+- **Layout:** Full-bleed SVG room backdrop · left pill icon rail · top room capsule nav · glass grid: climate column (weather, thermo dial, modes, members) · center (energy chart, TV strip, music) · right (camera, lighting, lock, ambient LED, speaker)
+- **Responsive:** ≤1180px: rail becomes top icon strip, glass grid 2 columns · ≤960px: single column stack, backdrop shortens · ≤640px: room pills scroll horizontally, sliders full width, tap targets ≥44px
+- **Fonts:** Sora / Manrope · **Palette:** bg `#d8e6ea`, surface `#f4f9fb`, text `#0f1c24`, muted `#5a6b75`, accent `#f5b942`, cool `#4ec3d9`, pink `#ff6bb5`, wood `#c48a4a`
+- **Variants:** Daylight, Dusk, Night · **Closest toolkit theme:** `coastal`
+
+**Best for**
+- Room-centric smart-home consoles with climate, security and media together
+- Glassmorphism demos that need a real room backdrop without stock photos
+- Light-mode gallery entries that still read premium
+
+**Avoid when**
+- Multi-home fleet monitoring or dense device inventories
+- Brands that need opaque cards or a dark cinematic mood
+- Screens where frost/blur would hide critical dense tables
+
+**Components:** Vertical icon rail · Room capsule nav · Weather chip · Thermostat dial with climate modes · Members avatar row · Energy area chart with range seg · Live camera SVG with controls · Lighting toggle and intensity slider · Door lock switch · Music transport · Ambient LED color and intensity · Smart speaker tile
 
 ---
 

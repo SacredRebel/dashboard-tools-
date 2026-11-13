@@ -629,6 +629,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied grey-glass smart-home screenshot. Brand (Veil Rooms), resident name, track titles and figures are fictional. Album art and lamp photos were replaced with SVG. The source image is not stored in the repo." },
       "path": "site/dashboards/veil-rooms/"
+    },
+    {
+      "id": "atrium-living",
+      "number": 20,
+      "name": "Atrium Living",
+      "style_family": "glass",
+      "use_cases": ["smart-home"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A glass smart-home room console over a code-drawn atrium living room: climate dial, energy wave, live camera, door lock, lighting, music and ambient LED on frosted panels.",
+      "mood": ["airy", "glassy", "calm", "contemporary", "residential"],
+      "best_for": ["Room-centric smart-home consoles with climate, security and media together", "Glassmorphism demos that need a real room backdrop without stock photos", "Light-mode gallery entries that still read premium"],
+      "avoid_when": ["Multi-home fleet monitoring or dense device inventories", "Brands that need opaque cards or a dark cinematic mood", "Screens where frost/blur would hide critical dense tables"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Full-bleed SVG room backdrop · left pill icon rail · top room capsule nav · glass grid: climate column (weather, thermo dial, modes, members) · center (energy chart, TV strip, music) · right (camera, lighting, lock, ambient LED, speaker)",
+        "responsive": "≤1180px: rail becomes top icon strip, glass grid 2 columns · ≤960px: single column stack, backdrop shortens · ≤640px: room pills scroll horizontally, sliders full width, tap targets ≥44px"
+      },
+      "components": ["Vertical icon rail", "Room capsule nav", "Weather chip", "Thermostat dial with climate modes", "Members avatar row", "Energy area chart with range seg", "Live camera SVG with controls", "Lighting toggle and intensity slider", "Door lock switch", "Music transport", "Ambient LED color and intensity", "Smart speaker tile"],
+      "signature": "Frosted glass panels floating over a hand-drawn atrium living room — teal walls, tall window light, wood floor and plants — with a warm energy chart and cool climate dial as twin accents.",
+      "palette": { "bg": "#d8e6ea", "surface": "#f4f9fb", "text": "#0f1c24", "muted": "#5a6b75", "accent": "#f5b942", "cool": "#4ec3d9", "pink": "#ff6bb5", "wood": "#c48a4a" },
+      "fonts": { "display": "Sora", "sans": "Manrope" },
+      "variants": [
+        { "id": "default", "name": "Daylight", "swatch": "#f5b942" },
+        { "id": "dusk", "name": "Dusk", "swatch": "#e8894a" },
+        { "id": "night", "name": "Night", "swatch": "#5ad0e8" }
+      ],
+      "maps_to_theme": "coastal",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass smart-home reference. Brand, room names and all data are invented. The living-room photograph was replaced with an SVG atrium scene. The source image is not stored in the repo." },
+      "path": "site/dashboards/atrium-living/"
     }
   ]
 }
