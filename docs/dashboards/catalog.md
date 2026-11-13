@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-23 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+24 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -29,6 +29,7 @@
 | 21 | [Glacier Ops](#glacier-ops) | Data-dense pro | Analytics & BI | dark | Glacier, Cobalt, Night | [site/dashboards/glacier-ops/](../../site/dashboards/glacier-ops/) |
 | 22 | [Folio Club](#folio-club) | Soft & friendly | Education, Music & media | dark | Ink, Parchment, Night | [site/dashboards/folio-club/](../../site/dashboards/folio-club/) |
 | 23 | [Citadel Wall](#citadel-wall) | Data-dense pro | Analytics & BI, Logistics & fleet | dark | Cyan, Ocean, Amber | [site/dashboards/citadel-wall/](../../site/dashboards/citadel-wall/) |
+| 24 | [Aether Pane](#aether-pane) | Glass & glow | Analytics & BI, SaaS admin | dark | Cyan, Violet, Daylight | [site/dashboards/aether-pane/](../../site/dashboards/aether-pane/) |
 
 ## Cinematic & atmospheric
 
@@ -316,6 +317,34 @@ A glass smart-home room console over a code-drawn atrium living room: climate di
 - Screens where frost/blur would hide critical dense tables
 
 **Components:** Vertical icon rail · Room capsule nav · Weather chip · Thermostat dial with climate modes · Members avatar row · Energy area chart with range seg · Live camera SVG with controls · Lighting toggle and intensity slider · Door lock switch · Music transport · Ambient LED color and intensity · Smart speaker tile
+
+---
+
+<a id="aether-pane"></a>
+### 24. Aether Pane
+
+![Aether Pane](../../site/dashboards/aether-pane/thumb.jpg)
+
+A dark cyan glass analytics HUD in one floating pane: Q4 revenue bars, a bold performance index, user-journey donut and neon area charts with soft frosted borders.
+
+- **Use cases:** Analytics & BI, SaaS admin · **Mode:** dark · **Mood:** futuristic, glassy, neon, precise, calm-tech
+- **Signature:** One frosted cyan glass pane floating over a dark blur field, centered on a huge 84.2% Performance Index with neon chart glow.
+- **Layout:** Centered floating glass shell · 3×2 module grid (horizontal revenue · spark + performance hero · journey donut / vertical revenue · dual area · large journey area)
+- **Responsive:** ≤1180px: 2-column modules · ≤960px: single column inside the pane · ≤640px: pane edge-to-edge, charts shorten
+- **Fonts:** Syne / IBM Plex Sans · **Palette:** bg `#061018`, surface `#0a1c28`, text `#e8f7ff`, muted `#7aa8b8`, accent `#00f0ff`, teal `#1a6a9a`, coral `#ff6b4a`, deep `#0d3a55`
+- **Variants:** Cyan, Violet, Daylight · **Closest toolkit theme:** `tide`
+
+**Best for**
+- SaaS analytics overviews that want a HUD feel
+- Executive glance boards with a few strong charts
+- Dark glass demos where the pane itself is the hero
+
+**Avoid when**
+- Dense tables or CRUD admin work
+- Brands that already use a competing glass workspace look
+- Print or low-contrast environments
+
+**Components:** Floating glass shell · Horizontal revenue bars · Vertical revenue bars · Spark bar strip · Performance index hero · Status dots · User journey donut · Dual and single area charts
 
 ---
 

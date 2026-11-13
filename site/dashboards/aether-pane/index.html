@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Aether Pane · Dashboard Tools gallery</title>
+  <meta name="description" content="Dark cyan glass analytics HUD: Q4 revenue bars, performance index, user-journey donut and neon area charts. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="ae">
+    <div class="ae-atmosphere" aria-hidden="true"></div>
+
+    <div class="ae-shell">
+      <header class="ae-top">
+        <a class="ae-brand" href="#" aria-label="Aether Pane home"><span class="ae-mark" aria-hidden="true"></span>Aether Pane</a>
+        <div class="ae-seg" role="group" aria-label="Time range" data-range>
+          <button data-v="q3" aria-pressed="false">Q3</button>
+          <button data-v="q4" aria-pressed="true">Q4</button>
+          <button data-v="ytd" aria-pressed="false">YTD</button>
+        </div>
+        <p class="ae-updated">Updated <time data-updated></time></p>
+      </header>
+
+      <main class="ae-grid" aria-label="Analytics modules">
+        <section class="ae-mod" aria-labelledby="ae-hbar-h">
+          <div class="ae-mod-h">
+            <h2 id="ae-hbar-h">Q4 Revenue</h2>
+            <span data-icon="settings" class="ae-mod-ic" aria-hidden="true"></span>
+          </div>
+          <div class="ae-hbars" data-hbars role="img" aria-label="Horizontal revenue by channel"></div>
+          <p class="ae-empty" data-hbar-empty hidden>No revenue channels for this range.</p>
+        </section>
+
+        <section class="ae-mod ae-mod-mid" aria-labelledby="ae-perf-h">
+          <div class="ae-sparkbars" data-sparkbars role="img" aria-label="Hourly pulse"></div>
+          <div class="ae-perf">
+            <p class="ae-perf-num num" data-perf>84.2%</p>
+            <h2 id="ae-perf-h">Performance Index</h2>
+            <div class="ae-dots" role="group" aria-label="Health signals" data-dots>
+              <button type="button" data-dot="ok" aria-pressed="true" aria-label="Healthy"></button>
+              <button type="button" data-dot="warn" aria-pressed="false" aria-label="Watch"></button>
+              <button type="button" data-dot="bad" aria-pressed="false" aria-label="Critical"></button>
+            </div>
+          </div>
+          <div data-mid-area></div>
+        </section>
+
+        <section class="ae-mod" aria-labelledby="ae-donut-h">
+          <div class="ae-mod-h">
+            <h2 id="ae-donut-h">User Journey</h2>
+            <span data-icon="clock" class="ae-mod-ic" aria-hidden="true"></span>
+          </div>
+          <div class="ae-journey">
+            <div class="ae-journey-copy">
+              <p class="ae-k">Expectation</p>
+              <p data-expect>Visitors should reach checkout within three steps of landing on the plan page.</p>
+            </div>
+            <div class="ae-donut-wrap" data-donut></div>
+            <div class="ae-journey-copy">
+              <p class="ae-k">Observed</p>
+              <p data-observe>Activation holds at the pricing step; most drop-offs recover after a trial nudge.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ae-mod" aria-labelledby="ae-vbar-h">
+          <div class="ae-mod-h"><h2 id="ae-vbar-h">Q4 Revenue</h2></div>
+          <div data-vbars></div>
+        </section>
+
+        <section class="ae-mod" aria-labelledby="ae-dual-h">
+          <div class="ae-mod-h"><h2 id="ae-dual-h">Signal mix</h2></div>
+          <div data-dual></div>
+        </section>
+
+        <section class="ae-mod" aria-labelledby="ae-area-h">
+          <div class="ae-mod-h"><h2 id="ae-area-h">User Journey</h2></div>
+          <div data-area></div>
+          <p class="ae-error" data-area-error hidden>Chart failed to render. Pick another range.</p>
+        </section>
+      </main>
+    </div>
+
+    <p class="db-sample ae-foot">Sample data · fictional</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

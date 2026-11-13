@@ -757,6 +757,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied big-screen HUD screenshot. Chinese labels were replaced with English fictional ops/logistics copy; the 3D hero became an SVG sphere and cube. The source image is not stored in the repo." },
       "path": "site/dashboards/citadel-wall/"
+    },
+    {
+      "id": "aether-pane",
+      "number": 24,
+      "name": "Aether Pane",
+      "style_family": "glass",
+      "use_cases": ["analytics", "saas-admin"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A dark cyan glass analytics HUD in one floating pane: Q4 revenue bars, a bold performance index, user-journey donut and neon area charts with soft frosted borders.",
+      "mood": ["futuristic", "glassy", "neon", "precise", "calm-tech"],
+      "best_for": ["SaaS analytics overviews that want a HUD feel", "Executive glance boards with a few strong charts", "Dark glass demos where the pane itself is the hero"],
+      "avoid_when": ["Dense tables or CRUD admin work", "Brands that already use a competing glass workspace look", "Print or low-contrast environments"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Centered floating glass shell · 3×2 module grid (horizontal revenue · spark + performance hero · journey donut / vertical revenue · dual area · large journey area)",
+        "responsive": "≤1180px: 2-column modules · ≤960px: single column inside the pane · ≤640px: pane edge-to-edge, charts shorten"
+      },
+      "components": ["Floating glass shell", "Horizontal revenue bars", "Vertical revenue bars", "Spark bar strip", "Performance index hero", "Status dots", "User journey donut", "Dual and single area charts"],
+      "signature": "One frosted cyan glass pane floating over a dark blur field, centered on a huge 84.2% Performance Index with neon chart glow.",
+      "palette": { "bg": "#061018", "surface": "#0a1c28", "text": "#e8f7ff", "muted": "#7aa8b8", "accent": "#00f0ff", "teal": "#1a6a9a", "coral": "#ff6b4a", "deep": "#0d3a55" },
+      "fonts": { "display": "Syne", "sans": "IBM Plex Sans" },
+      "variants": [
+        { "id": "default", "name": "Cyan", "swatch": "#00f0ff" },
+        { "id": "violet", "name": "Violet", "swatch": "#b48cff" },
+        { "id": "daylight", "name": "Daylight", "swatch": "#0a6a7a" }
+      ],
+      "maps_to_theme": "tide",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass analytics HUD screenshot. Brand is Aether Pane (not taken from other gallery brands). Charts and copy are invented; the blurred photo backdrop became CSS atmosphere. The source image is not stored in the repo." },
+      "path": "site/dashboards/aether-pane/"
     }
   ]
 }
