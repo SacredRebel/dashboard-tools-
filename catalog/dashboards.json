@@ -53,6 +53,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing", "screenshot-to-code (reference only)"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied concept screenshot. Brand name, photos and copy were replaced; the landscape is drawn in SVG. The source image is not stored in the repo." },
       "path": "site/dashboards/horizon-weather/"
+    },
+    {
+      "id": "pulsar-analytics",
+      "number": 2,
+      "name": "Pulsar Analytics",
+      "style_family": "dark-neon",
+      "use_cases": ["analytics", "saas-admin"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A dark neon product-analytics overview: glossy metric orbs that switch the main chart, layered violet and mint wave areas over a purple floor glow, a ticked uptime dial and gradient pillar bars.",
+      "mood": ["neon", "technical", "moody", "glossy", "futuristic"],
+      "best_for": ["Product, web or infrastructure analytics for a technical audience", "Wall displays and status pages that are read at a glance", "Brands that already live in dark mode"],
+      "avoid_when": ["Long tables or text-heavy admin screens: the glow tires the eye", "Conservative or regulated brands (banking, legal, healthcare)", "Print or export-first reporting"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Top bar (brand, 4-item nav, pill search, range toggle, bell, avatar) · 3 columns at 1440px: 288px left rail (uptime dial, health donut, hourly bars) · fluid centre (4 metric orbs, wave chart, 3 sparkline tiles) · 304px right rail (channel pillars, top events, regions) · 18px gaps",
+        "responsive": "≤1180px: centre column spans full width on top, rails sit side by side below, search hides · ≤960px: nav wraps under the bar, orbs 2×2 · ≤640px: single column, orbs stack, chart 200px tall"
+      },
+      "components": ["Metric orbs (toggle buttons that switch the chart)", "Two-series wave area chart with hover/focus values", "Segmented range toggle", "Ticked dial gauge with needle", "Segmented donut with legend", "Gradient pillar bars (selectable)", "Event list with progress bars", "Sparkline tiles", "Key-value list"],
+      "signature": "Violet and mint wave areas rising out of a blurred purple floor glow, with glossy sphere-like metric buttons above.",
+      "palette": { "bg": "#17161d", "surface": "#23222b", "text": "#f1eff7", "muted": "#b3afc2", "accent": "#b88cff", "violet": "#a06bff", "mint": "#3fe0a5", "peach": "#ff9d5c" },
+      "fonts": { "display": "Space Grotesk", "sans": "Inter" },
+      "variants": [
+        { "id": "default", "name": "Violet mint", "swatch": "#a06bff" },
+        { "id": "ember", "name": "Ember", "swatch": "#ff8a4c" },
+        { "id": "daylight", "name": "Daylight", "swatch": "#7c4dff" }
+      ],
+      "maps_to_theme": "aurora",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied concept render of a dark analytics board. The render had no readable text, so brand, labels, metrics and all data are invented. Charts, dial and orbs are drawn in SVG and CSS. The source image is not stored in the repo." },
+      "path": "site/dashboards/pulsar-analytics/"
     }
   ]
 }

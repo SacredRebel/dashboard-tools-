@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Pulsar Analytics · Dashboard Tools gallery</title>
+  <meta name="description" content="Dark neon product analytics dashboard: violet and mint wave chart, dial gauge, gradient pillar bars. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="pa">
+    <header class="pa-top">
+      <a class="pa-brand" href="#" aria-label="Pulsar home"><span class="pa-brand-mark" aria-hidden="true"></span>Pulsar</a>
+      <nav class="pa-nav" aria-label="Main">
+        <a href="#" aria-current="page">Overview</a><a href="#">Traffic</a><a href="#">Events</a><a href="#">Regions</a>
+      </nav>
+      <form class="pa-search" role="search" onsubmit="return false">
+        <span data-icon="search"></span>
+        <label class="vh" for="pa-q">Search events and pages</label>
+        <input id="pa-q" type="search" placeholder="Search events, pages…" autocomplete="off">
+      </form>
+      <div class="pa-seg" role="group" aria-label="Time range" data-range>
+        <button data-v="24h" aria-pressed="false">24h</button><button data-v="7d" aria-pressed="true">7d</button><button data-v="30d" aria-pressed="false">30d</button>
+      </div>
+      <button class="pa-iconbtn" aria-label="Notifications"><span data-icon="bell"></span></button>
+      <button class="pa-iconbtn pa-avatar" aria-label="Account">MO</button>
+    </header>
+
+    <main class="pa-main">
+      <div class="pa-stack pa-left">
+        <section class="pa-card" aria-labelledby="pa-up-h">
+          <div class="pa-card-head"><h2 id="pa-up-h">Uptime</h2><span class="pa-chip"><i></i>Live</span></div>
+          <div class="pa-dial" data-dial></div>
+          <dl class="pa-kv" data-kv></dl>
+        </section>
+        <section class="pa-card" aria-labelledby="pa-health-h">
+          <div class="pa-card-head"><h2 id="pa-health-h">Health score</h2></div>
+          <div class="pa-health" data-health></div>
+        </section>
+        <section class="pa-card" aria-labelledby="pa-hours-h">
+          <div class="pa-card-head"><h2 id="pa-hours-h">Sessions by hour</h2></div>
+          <div data-hours></div>
+        </section>
+      </div>
+
+      <div class="pa-stack pa-center">
+        <section class="pa-orbs" aria-label="Key metrics" data-orbs></section>
+        <section class="pa-card pa-hero" aria-labelledby="pa-hero-h">
+          <div class="pa-card-head">
+            <div><h1 id="pa-hero-h" data-hero-title>Active users</h1><p class="pa-sub" data-hero-sub></p></div>
+            <ul class="pa-legend"><li><i style="background:var(--chart-2)"></i>This period</li><li><i style="background:var(--chart-1)"></i>Previous</li></ul>
+          </div>
+          <div class="pa-hero-chart" data-hero></div>
+        </section>
+        <div class="pa-minis" data-minis></div>
+      </div>
+
+      <div class="pa-stack pa-right">
+        <section class="pa-card" aria-labelledby="pa-ch-h">
+          <div class="pa-card-head"><h2 id="pa-ch-h">Channels</h2><button class="pa-link">View all <span data-icon="arrowUpRight"></span></button></div>
+          <div class="pa-pillars" data-pillars></div>
+        </section>
+        <section class="pa-card" aria-labelledby="pa-ev-h">
+          <div class="pa-card-head"><h2 id="pa-ev-h">Top events</h2></div>
+          <ul class="pa-events" data-events></ul>
+        </section>
+        <section class="pa-card" aria-labelledby="pa-rg-h">
+          <div class="pa-card-head"><h2 id="pa-rg-h">Regions</h2></div>
+          <div data-regions></div>
+        </section>
+      </div>
+    </main>
+    <p class="db-sample pa-foot">Sample data · fictional</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

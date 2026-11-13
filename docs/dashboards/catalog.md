@@ -2,11 +2,12 @@
 
 # Dashboard gallery catalog
 
-1 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+2 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
 | 1 | [Horizon Weather](#horizon-weather) | Cinematic & atmospheric | Weather & climate, Travel & places | dark | Dusk, Dawn, Night | [site/dashboards/horizon-weather/](../../site/dashboards/horizon-weather/) |
+| 2 | [Pulsar Analytics](#pulsar-analytics) | Dark neon | Analytics & BI, SaaS admin | dark | Violet mint, Ember, Daylight | [site/dashboards/pulsar-analytics/](../../site/dashboards/pulsar-analytics/) |
 
 ## Cinematic & atmospheric
 
@@ -94,7 +95,33 @@ _No dashboards yet._
 
 Near-black canvas with vivid neon accents and gradients. Gaming, crypto, music, nightlife.
 
-_No dashboards yet._
+<a id="pulsar-analytics"></a>
+### 2. Pulsar Analytics
+
+![Pulsar Analytics](../../site/dashboards/pulsar-analytics/thumb.jpg)
+
+A dark neon product-analytics overview: glossy metric orbs that switch the main chart, layered violet and mint wave areas over a purple floor glow, a ticked uptime dial and gradient pillar bars.
+
+- **Use cases:** Analytics & BI, SaaS admin · **Mode:** dark · **Mood:** neon, technical, moody, glossy, futuristic
+- **Signature:** Violet and mint wave areas rising out of a blurred purple floor glow, with glossy sphere-like metric buttons above.
+- **Layout:** Top bar (brand, 4-item nav, pill search, range toggle, bell, avatar) · 3 columns at 1440px: 288px left rail (uptime dial, health donut, hourly bars) · fluid centre (4 metric orbs, wave chart, 3 sparkline tiles) · 304px right rail (channel pillars, top events, regions) · 18px gaps
+- **Responsive:** ≤1180px: centre column spans full width on top, rails sit side by side below, search hides · ≤960px: nav wraps under the bar, orbs 2×2 · ≤640px: single column, orbs stack, chart 200px tall
+- **Fonts:** Space Grotesk / Inter · **Palette:** bg `#17161d`, surface `#23222b`, text `#f1eff7`, muted `#b3afc2`, accent `#b88cff`, violet `#a06bff`, mint `#3fe0a5`, peach `#ff9d5c`
+- **Variants:** Violet mint, Ember, Daylight · **Closest toolkit theme:** `aurora`
+
+**Best for**
+- Product, web or infrastructure analytics for a technical audience
+- Wall displays and status pages that are read at a glance
+- Brands that already live in dark mode
+
+**Avoid when**
+- Long tables or text-heavy admin screens: the glow tires the eye
+- Conservative or regulated brands (banking, legal, healthcare)
+- Print or export-first reporting
+
+**Components:** Metric orbs (toggle buttons that switch the chart) · Two-series wave area chart with hover/focus values · Segmented range toggle · Ticked dial gauge with needle · Segmented donut with legend · Gradient pillar bars (selectable) · Event list with progress bars · Sparkline tiles · Key-value list
+
+---
 
 
 ## Tactile & neumorphic
