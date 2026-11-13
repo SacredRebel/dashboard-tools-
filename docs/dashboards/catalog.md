@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-33 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+34 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -39,6 +39,7 @@
 | 31 | [Pebble Studio](#pebble-studio) | Tactile & neumorphic | SaaS admin | light | Cream, Coral, Moss | [site/dashboards/pebble-studio/](../../site/dashboards/pebble-studio/) |
 | 32 | [Copper Radar](#copper-radar) | Soft & friendly | Analytics & BI | light | Copper, Slate, Ember | [site/dashboards/copper-radar/](../../site/dashboards/copper-radar/) |
 | 33 | [Orbit Clay](#orbit-clay) | Tactile & neumorphic | Music & media | light | Orbit, Moss, Dusk | [site/dashboards/orbit-clay/](../../site/dashboards/orbit-clay/) |
+| 34 | [Saffron Dusk](#saffron-dusk) | Glass & glow | Health & fitness, Education | light | Dusk, Dawn, Night | [site/dashboards/saffron-dusk/](../../site/dashboards/saffron-dusk/) |
 
 ## Cinematic & atmospheric
 
@@ -410,6 +411,34 @@ A light lilac glass finance desk: frosted KPI tiles over a soft lavender haze, a
 - Interfaces that must work without translucent surfaces
 
 **Components:** Pill top navigation · Greeting headline · Four frosted KPI cards · Average sales bar chart with channel deltas · Formation status progress · Segmented success gauge · Recent email list with urgency
+
+---
+
+<a id="saffron-dusk"></a>
+### 34. Saffron Dusk
+
+![Saffron Dusk](../../site/dashboards/saffron-dusk/thumb.jpg)
+
+A respectful fictional fasting-day wellness board in liquid glass: twin phones with a date strip, imsak→iftar sun arc, water segments, an evening gather card, plus a glass profile, daily progress bars and an upgrade row.
+
+- **Use cases:** Health & fitness, Education · **Mode:** light · **Mood:** serene, warm, reverent, airy, soft
+- **Signature:** Frosted cream and olive glass phones with a white fasting sun arc, teal water segments and warm saffron gather/progress panels under Fraunces headlines.
+- **Layout:** Stage · twin phones: Today (date strip, sun-arc card, water, gather, nav) · Profile (greeting, profile card, daily bars, upgrade, nav)
+- **Responsive:** ≤1100px: phones stack · ≤700px: single column, date strip scrolls inside its row, nav stays sticky to each phone
+- **Fonts:** Fraunces / Plus Jakarta Sans · **Palette:** bg `#e8efe8`, surface `#f4f7f2`, text `#1a2a24`, muted `#4a5c54`, accent `#c4783a`, teal `#2f6f6a`, olive `#3a4a38`, saffron `#e8a85a`
+- **Variants:** Dusk, Dawn, Night · **Closest toolkit theme:** `coastal`
+
+**Best for**
+- Health and education apps around daily ritual or wellness habits
+- Phone-first glass concepts shown as twin panels on desktop
+- Brands that want serif display type with calm frosted cards
+
+**Avoid when**
+- Clinical EMR or dense medical charts
+- Brands that forbid glass blur or serif display
+- Low-end devices where backdrop-filter is costly
+
+**Components:** Twin glass phone shells · Horizontal date strip · Imsak→iftar sun arc card · Water tracker with tappable segments · Evening gather card with silhouette avatar · Glass profile card with share action · Daily progress bar chart · Upgrade row · Glass bottom navigation
 
 ---
 

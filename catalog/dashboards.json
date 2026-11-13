@@ -2829,6 +2829,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied claymorphism twin-phone render. Layout rhythm, cream/forest/gold clay and the gold-ring helmet plus rail sphere were kept; any photo helmet or brand marks were replaced with abstract SVG and invented Orbit Clay copy. The source image is not stored in the repo." },
       "path": "site/dashboards/orbit-clay/"
+    },
+    {
+      "id": "saffron-dusk",
+      "number": 34,
+      "name": "Saffron Dusk",
+      "style_family": "glass",
+      "use_cases": ["health", "education"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A respectful fictional fasting-day wellness board in liquid glass: twin phones with a date strip, imsak→iftar sun arc, water segments, an evening gather card, plus a glass profile, daily progress bars and an upgrade row.",
+      "mood": ["serene", "warm", "reverent", "airy", "soft"],
+      "best_for": ["Health and education apps around daily ritual or wellness habits", "Phone-first glass concepts shown as twin panels on desktop", "Brands that want serif display type with calm frosted cards"],
+      "avoid_when": ["Clinical EMR or dense medical charts", "Brands that forbid glass blur or serif display", "Low-end devices where backdrop-filter is costly"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Stage · twin phones: Today (date strip, sun-arc card, water, gather, nav) · Profile (greeting, profile card, daily bars, upgrade, nav)",
+        "responsive": "≤1100px: phones stack · ≤700px: single column, date strip scrolls inside its row, nav stays sticky to each phone"
+      },
+      "components": ["Twin glass phone shells", "Horizontal date strip", "Imsak→iftar sun arc card", "Water tracker with tappable segments", "Evening gather card with silhouette avatar", "Glass profile card with share action", "Daily progress bar chart", "Upgrade row", "Glass bottom navigation"],
+      "signature": "Frosted cream and olive glass phones with a white fasting sun arc, teal water segments and warm saffron gather/progress panels under Fraunces headlines.",
+      "palette": { "bg": "#e8efe8", "surface": "#f4f7f2", "text": "#1a2a24", "muted": "#4a5c54", "accent": "#c4783a", "teal": "#2f6f6a", "olive": "#3a4a38", "saffron": "#e8a85a" },
+      "fonts": { "display": "Fraunces", "sans": "Plus Jakarta Sans" },
+      "variants": [
+        { "id": "default", "name": "Dusk", "swatch": "#c4783a" },
+        { "id": "dawn", "name": "Dawn", "swatch": "#2f6f6a" },
+        { "id": "night", "name": "Night", "swatch": "#e8a85a" }
+      ],
+      "maps_to_theme": "coastal",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass wellness twin-phone render. Layout rhythm, sun-arc fasting card, water tracker and profile/progress stack were kept; brand names, real people, photos and copy were replaced with invented Saffron Dusk content and abstract SVG silhouettes. The source image is not stored in the repo." },
+      "path": "site/dashboards/saffron-dusk/"
     }
   ]
 }

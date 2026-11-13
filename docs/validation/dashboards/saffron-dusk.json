@@ -1,0 +1,62 @@
+{
+  "id": "saffron-dusk",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/saffron-dusk/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/saffron-dusk/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/saffron-dusk/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/saffron-dusk/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/saffron-dusk/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn",
+      "width": 1440,
+      "variant": "dawn",
+      "final_path": "/dashboards/saffron-dusk/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night",
+      "width": 1440,
+      "variant": "night",
+      "final_path": "/dashboards/saffron-dusk/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/saffron-dusk",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

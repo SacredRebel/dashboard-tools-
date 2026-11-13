@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Saffron Dusk · Dashboard Tools gallery</title>
+  <meta name="description" content="Glass fasting-day wellness twin phones: sun arc, water tracker, evening gather and profile progress. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="sd">
+    <header class="sd-brandbar">
+      <a class="sd-brand" href="#" aria-label="Saffron Dusk home">
+        <span class="sd-logo" aria-hidden="true"></span>
+        Saffron Dusk
+      </a>
+      <p class="sd-tag">Fasting-day wellness · fictional</p>
+    </header>
+
+    <main class="sd-stage" aria-label="Twin phone wellness">
+      <!-- Today phone -->
+      <section class="sd-phone sd-today" aria-labelledby="sd-today-h" data-panel="today">
+        <header class="sd-head">
+          <div>
+            <p class="sd-dow" data-dow>Wed</p>
+            <h2 id="sd-today-h" class="sd-title"><span class="sd-serif">Fasting</span> <span class="num" data-daynum>9</span></h2>
+          </div>
+          <span class="sd-crescent" aria-hidden="true" data-crescent></span>
+        </header>
+
+        <div class="sd-dates" role="tablist" aria-label="Day of month" data-dates></div>
+
+        <article class="sd-card sd-arc-card" aria-labelledby="sd-arc-h">
+          <h3 id="sd-arc-h" class="vh">Fasting window</h3>
+          <div class="sd-arc-labels">
+            <div><span>Imsak</span><b class="num" data-imsak>4:15 AM</b></div>
+            <div class="sd-arc-end"><span>Iftar</span><b class="num" data-iftar>6:08 PM</b></div>
+          </div>
+          <div class="sd-arc" data-arc role="img" aria-label="Sun path from imsak to iftar"></div>
+          <p class="sd-countdown"><span data-countdown>Iftar in 1 hr 34 min</span><button type="button" class="sd-bell" aria-label="Remind me before iftar" data-remind><span data-icon="bell"></span></button></p>
+        </article>
+
+        <article class="sd-card sd-water" aria-labelledby="sd-water-h">
+          <div class="sd-water-top">
+            <h3 id="sd-water-h">Water</h3>
+            <p class="sd-meta num" data-water-label>6 of 8</p>
+          </div>
+          <div class="sd-water-row">
+            <span class="sd-drop" aria-hidden="true"><span data-icon="drop"></span></span>
+            <div class="sd-segs" role="group" aria-label="Glasses of water" data-segs></div>
+          </div>
+          <p class="sd-meta" data-liters>1.9 liters of 2.5 liters</p>
+        </article>
+
+        <article class="sd-card sd-gather" aria-labelledby="sd-gather-h">
+          <div>
+            <h3 id="sd-gather-h">Iftar at Cedar House</h3>
+            <p class="sd-meta num" data-gather-time>6:00 PM</p>
+          </div>
+          <span class="sd-avatar sd-avatar-sm" role="img" aria-label="Host Mira Nazari">MN</span>
+        </article>
+
+        <nav class="sd-nav" aria-label="Today phone">
+          <button type="button" aria-current="page" data-nav="today"><span data-icon="sun"></span><span>Today</span></button>
+          <button type="button" data-nav="progress"><span data-icon="hourglass"></span><span>Progress</span></button>
+          <button type="button" data-nav="sessions"><span data-icon="grid"></span><span>Sessions</span></button>
+          <button type="button" data-nav="profile"><span data-icon="sparkle"></span><span>Profile</span></button>
+        </nav>
+      </section>
+
+      <!-- Profile phone -->
+      <section class="sd-phone sd-profile" aria-labelledby="sd-prof-h" data-panel="profile">
+        <header class="sd-prof-head">
+          <h2 id="sd-prof-h" class="sd-serif sd-greet" data-greet>Good evening</h2>
+          <span class="sd-star" aria-hidden="true" data-star></span>
+          <button type="button" class="sd-gear" aria-label="Settings" data-settings><span data-icon="settings"></span></button>
+        </header>
+
+        <article class="sd-card sd-person" aria-labelledby="sd-person-h">
+          <div class="sd-person-top">
+            <span class="sd-avatar" role="img" aria-label="Noor El-Amin">NE</span>
+            <div>
+              <h3 id="sd-person-h">Noor El-Amin</h3>
+              <p class="sd-meta">noor@saffrondusk.example</p>
+            </div>
+          </div>
+          <div class="sd-stats">
+            <div><b class="num" data-sessions>8</b><span>Sessions</span></div>
+            <div><b class="num" data-journeys>2</b><span>Journeys</span></div>
+          </div>
+          <button type="button" class="sd-share" data-share><span data-icon="sparkle"></span> Share</button>
+        </article>
+
+        <article class="sd-card sd-daily" aria-labelledby="sd-daily-h">
+          <div class="sd-daily-top">
+            <span class="sd-tree" aria-hidden="true" data-tree></span>
+            <h3 id="sd-daily-h">Daily progress</h3>
+          </div>
+          <div class="sd-daybars" data-daybars role="img" aria-label="Daily progress this week"></div>
+          <p class="sd-empty" data-daily-empty hidden>No sessions this week. Open Today to log water or an evening gather.</p>
+        </article>
+
+        <button type="button" class="sd-card sd-upgrade" data-upgrade>
+          <span>Upgrade your experience</span>
+          <span data-icon="flame" aria-hidden="true"></span>
+        </button>
+
+        <nav class="sd-nav" aria-label="Profile phone">
+          <button type="button" data-nav="today"><span data-icon="sun"></span><span>Today</span></button>
+          <button type="button" data-nav="progress"><span data-icon="hourglass"></span><span>Progress</span></button>
+          <button type="button" data-nav="sessions"><span data-icon="grid"></span><span>Sessions</span></button>
+          <button type="button" aria-current="page" data-nav="profile"><span data-icon="sparkle"></span><span>Profile</span></button>
+        </nav>
+      </section>
+    </main>
+
+    <p class="sd-live" data-live aria-live="polite"></p>
+    <p class="db-sample sd-sample">Sample data · fictional · Saffron Dusk</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
