@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-16 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+17 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -22,6 +22,7 @@
 | 14 | [Prism Workspace](#prism-workspace) | Glass & glow | SaaS admin | light | Opal, Aqua, Obsidian | [site/dashboards/prism-workspace/](../../site/dashboards/prism-workspace/) |
 | 15 | [Plumage Bird Survey](#plumage-survey) | Cinematic & atmospheric | Analytics & BI | dark | Plume, Canopy, Ember | [site/dashboards/plumage-survey/](../../site/dashboards/plumage-survey/) |
 | 16 | [Hollow Vault](#hollow-vault) | Dark neon | Music & media | dark | Dusk, Moss, Crimson | [site/dashboards/hollow-vault/](../../site/dashboards/hollow-vault/) |
+| 17 | [Larchwood Lodge](#larchwood-lodge) | Bento grid | Hospitality & food, Smart home & IoT | dark | Plum, Birch, Pine | [site/dashboards/larchwood-lodge/](../../site/dashboards/larchwood-lodge/) |
 
 ## Cinematic & atmospheric
 
@@ -291,6 +292,34 @@ A bento-grid patient dashboard for a family clinic: a heart-rate tile with a cod
 - Brands that want a dark or dramatic look
 
 **Components:** Pill top bar with notification dot · Vital tiles in tinted colours · Heart-rate tile with pulse trace · Next-appointment tile · Doctor directory with search, chips, call and book · Week strip, time grid and booking summary · Steps / sleep bar chart toggle · Records list with add action
+
+---
+
+<a id="larchwood-lodge"></a>
+### 17. Larchwood Lodge
+
+![Larchwood Lodge](../../site/dashboards/larchwood-lodge/thumb.jpg)
+
+A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, drawn in SVG layers, greets the family. Around it sit tiles for cabin heat, daylight left, a five-day forecast, light scenes, activity booking, wake-up alarms and today's trail status.
+
+- **Use cases:** Hospitality & food, Smart home & IoT · **Mode:** dark · **Mood:** cosy, warm, seasonal, calm, atmospheric
+- **Signature:** A layered SVG autumn lake at sunset (plum ridges, gold and rust larches, reflected in the water) set inside dark plum bento tiles that pick up the same sunset orange.
+- **Layout:** Top bar: mark, name, stay dates · 12-column bento: landscape hero with greeting (8) + thermostat dial (4) · daylight arc (3) + forecast (5) + light scenes (4) · activity booking (6) + alarms (3) + trails (3)
+- **Responsive:** ≤1100px: 2 columns (hero full, dial + daylight, forecast full, scenes + alarms, bookings and trails full) · ≤700px: single column, greeting moves under the art
+- **Fonts:** Fraunces / Figtree · **Palette:** bg `#1c1720`, surface `#2a2230`, text `#f5eef3`, muted `#c4b4c1`, accent `#f29455`, sky `#a65a6a`, larch `#f0a03c`, lake `#3a4a6b`
+- **Variants:** Plum, Birch, Pine · **Closest toolkit theme:** `ember`
+
+**Best for**
+- Guest apps for cabins, boutique hotels and holiday rentals
+- In-room tablets that mix comfort controls with local info
+- Seasonal brands that want a scenic hero
+
+**Avoid when**
+- Back-office hotel management with dense tables
+- Bright, high-energy brands
+- Screens that must show many rooms at once
+
+**Components:** SVG landscape hero with greeting · Thermostat dial with step buttons · Daylight arc · Five-day forecast picker · Light-scene radio tiles · Activity booking list with filter and empty state · Alarm switches · Trail status list
 
 ---
 

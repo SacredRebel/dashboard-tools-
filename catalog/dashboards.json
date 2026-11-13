@@ -533,6 +533,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied dribbble-style shot of a crypto 'chest battle' game screen. The wheel-around-a-chest layout, sidebar, item row and chat column were kept. The witch illustration, 3D item renders, coin balance and buy button were dropped. It was reframed as a keys-earned-by-play rewards hub with open drop rates and no purchases. Relics are simple SVG shapes. The source image is not stored in the repo." },
       "path": "site/dashboards/hollow-vault/"
+    },
+    {
+      "id": "larchwood-lodge",
+      "number": 17,
+      "name": "Larchwood Lodge",
+      "style_family": "bento",
+      "use_cases": ["hospitality", "smart-home"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, drawn in SVG layers, greets the family. Around it sit tiles for cabin heat, daylight left, a five-day forecast, light scenes, activity booking, wake-up alarms and today's trail status.",
+      "mood": ["cosy", "warm", "seasonal", "calm", "atmospheric"],
+      "best_for": ["Guest apps for cabins, boutique hotels and holiday rentals", "In-room tablets that mix comfort controls with local info", "Seasonal brands that want a scenic hero"],
+      "avoid_when": ["Back-office hotel management with dense tables", "Bright, high-energy brands", "Screens that must show many rooms at once"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Top bar: mark, name, stay dates · 12-column bento: landscape hero with greeting (8) + thermostat dial (4) · daylight arc (3) + forecast (5) + light scenes (4) · activity booking (6) + alarms (3) + trails (3)",
+        "responsive": "≤1100px: 2 columns (hero full, dial + daylight, forecast full, scenes + alarms, bookings and trails full) · ≤700px: single column, greeting moves under the art"
+      },
+      "components": ["SVG landscape hero with greeting", "Thermostat dial with step buttons", "Daylight arc", "Five-day forecast picker", "Light-scene radio tiles", "Activity booking list with filter and empty state", "Alarm switches", "Trail status list"],
+      "signature": "A layered SVG autumn lake at sunset (plum ridges, gold and rust larches, reflected in the water) set inside dark plum bento tiles that pick up the same sunset orange.",
+      "palette": { "bg": "#1c1720", "surface": "#2a2230", "text": "#f5eef3", "muted": "#c4b4c1", "accent": "#f29455", "sky": "#a65a6a", "larch": "#f0a03c", "lake": "#3a4a6b" },
+      "fonts": { "display": "Fraunces", "sans": "Figtree" },
+      "variants": [
+        { "id": "default", "name": "Plum", "swatch": "#f29455" },
+        { "id": "birch", "name": "Birch", "swatch": "#a84f1e" },
+        { "id": "pine", "name": "Pine", "swatch": "#e7a447" }
+      ],
+      "maps_to_theme": "ember",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a small user-supplied render of plum widgets around an autumn mountain-lake painting. The widget-board feel, plum tones and central landscape were kept, and the widgets were given a cabin-guest job. The painting was redrawn as simple SVG shapes. The unreadable widget text was replaced with invented content. The source image is not stored in the repo." },
+      "path": "site/dashboards/larchwood-lodge/"
     }
   ]
 }

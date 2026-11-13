@@ -1,0 +1,110 @@
+/* =========================================================================
+   Larchwood Lodge · style family: bento · mode: dark
+   Token names match design-system/tokens.css. Variants: default (plum), birch (light), pine.
+   ========================================================================= */
+:root {
+  --bg: #1c1720;
+  --surface: #2a2230;
+  --surface-2: #362c3d;
+  --border: #45384d;
+  --text: #f5eef3;
+  --text-muted: #c4b4c1;
+  --text-subtle: #b3a3b0;
+  --accent: #f29455;
+  --accent-fg: #24130a;
+  --accent-soft: #4a3036;
+  --focus: #ffc39a;
+  --chart-1: #f29455;
+  --sky-1: #3d2b4d; --sky-2: #a65a6a; --sky-3: #f2a35e; --sun: #ffd38a; --mtn-1: #6c4a78; --mtn-2: #4d3459; --mtn-3: #2f2238; --lake: #3a4a6b;
+  --tree-1: #d9632f; --tree-2: #f0a03c; --tree-3: #a8402f; --pine: #263a33;
+  --ok: #8fd6a0; --warn: #f2c35e; --bad: #ff8e7e;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Figtree", system-ui, sans-serif;
+  --radius-sm: 12px; --radius-md: 18px; --radius-lg: 26px; --radius-pill: 999px;
+}
+[data-variant="birch"] {
+  --bg: #efe8e4; --surface: #fbf7f4; --surface-2: #f1e9e4; --border: #e2d6cf; --text: #2b2228; --text-muted: #62555e; --text-subtle: #6a5d66;
+  --accent: #a84f1e; --accent-fg: #ffffff; --accent-soft: #f6e0d2; --focus: #a84f1e; --chart-1: #a84f1e;
+  --sky-1: #f6d9c8; --sky-2: #f2b39a; --mtn-1: #a88aa8; --mtn-2: #86688a; --mtn-3: #5c4762; --ok: #276b3b; --warn: #8a6100; --bad: #b0402e;
+}
+[data-variant="pine"] {
+  --bg: #121b19; --surface: #1a2724; --surface-2: #22332f; --border: #2f4540; --accent: #e7a447; --accent-fg: #1f1405; --accent-soft: #3a3a26; --focus: #ffd08a; --chart-1: #e7a447;
+  --sky-1: #1f3a3a; --sky-2: #5a7a6a; --mtn-1: #3e5f58; --mtn-2: #2d4a44; --mtn-3: #1d332f;
+}
+body { background: var(--bg); }
+.lw { max-width: 1320px; margin: 0 auto; padding: 22px 28px 26px; }
+.lw-foot { margin-top: 18px; text-align: center; }
+.lw-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 18px; }
+.lw-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-family: var(--font-display); font-size: 22px; text-decoration: none; }
+.lw-mark { width: 26px; height: 30px; clip-path: polygon(50% 0, 100% 80%, 60% 80%, 60% 100%, 40% 100%, 40% 80%, 0 80%); background: linear-gradient(var(--tree-2), var(--tree-1)); }
+.lw-stay { font-size: 14px; color: var(--text-muted); }
+.lw-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; grid-template-areas:
+  "hero hero hero hero hero hero hero hero th th th th"
+  "sun sun sun wx wx wx wx wx sc sc sc sc"
+  "act act act act act act al al al tr tr tr"; }
+.lw-hero { grid-area: hero; } .lw-thermo { grid-area: th; } .lw-sun { grid-area: sun; } .lw-wx { grid-area: wx; } .lw-scenes { grid-area: sc; } .lw-acts { grid-area: act; } .lw-alarms { grid-area: al; } .lw-trails { grid-area: tr; }
+.lw-tile { min-width: 0; padding: 20px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--border); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04); }
+.lw-tile h2 { font-size: 17px; font-weight: 600; margin-bottom: 12px; }
+.lw-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 12px; } .lw-head h2 { margin: 0; }
+.lw-k { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.lw-meta { font-size: 13px; color: var(--text-muted); } .lw-meta b { color: var(--text); }
+/* signature: painted-style autumn lake made of SVG layers */
+.lw-hero { position: relative; min-height: 330px; padding: 0; overflow: hidden; }
+.lw-art { position: absolute; inset: 0; } .lw-art svg { width: 100%; height: 100%; display: block; }
+.lw-hero-copy { position: absolute; left: 20px; bottom: 20px; max-width: 420px; padding: 16px 18px; border-radius: var(--radius-md); background: var(--bg); }
+.lw-hero-copy h1 { margin: 2px 0 6px; font-family: var(--font-display); font-size: 28px; font-weight: 500; line-height: 1.15; }
+.lw-hero-copy p:last-child { font-size: 14px; color: var(--text-muted); } .lw-hero-copy b { color: var(--text); }
+.lw-thermo { display: grid; align-content: start; }
+.lw-dial { position: relative; width: 210px; margin: 4px auto 0; }
+.lw-dial svg { width: 100%; height: auto; display: block; }
+.lw-dial b { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; font-family: var(--font-display); font-size: 44px; font-weight: 500; }
+.lw-dial small { font-family: var(--font-sans); font-size: 13px; color: var(--text-muted); }
+.lw-steps { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 6px; }
+.lw-steps button { width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 50%; background: var(--surface-2); color: var(--text); font-size: 22px; box-shadow: 0 4px 10px rgb(0 0 0 / 0.25), inset 0 1px 0 rgb(255 255 255 / 0.06); }
+.lw-steps button:disabled { opacity: 0.45; cursor: not-allowed; }
+.lw-steps output { min-width: 110px; text-align: center; font-size: 14px; color: var(--text-muted); }
+.lw-sunarc svg { width: 100%; height: auto; display: block; }
+.lw-suntimes { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--text-muted); } .lw-suntimes b { display: block; font-size: 17px; color: var(--text); }
+.lw-days { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.lw-days button { display: grid; justify-items: center; gap: 4px; min-height: 112px; padding: 10px 4px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-2); color: var(--text); font-size: 14px; }
+.lw-days button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); }
+.lw-days svg { width: 24px; height: 24px; color: var(--sun); }
+.lw-days small { font-size: 13px; color: var(--text-muted); }
+.lw-wxdetail { margin-top: 12px; font-size: 14px; color: var(--text-muted); }
+.lw-scgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.lw-scgrid button { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-2); color: var(--text); font-size: 15px; text-align: left; }
+.lw-scgrid svg { width: 20px; height: 20px; color: var(--text-muted); }
+.lw-scgrid [aria-checked="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); } .lw-scgrid [aria-checked="true"] svg { color: var(--accent-fg); }
+.lw-scnote { margin-top: 10px; }
+.lw-seg { display: flex; gap: 4px; padding: 4px; border-radius: var(--radius-pill); background: var(--surface-2); }
+.lw-seg button { min-height: 36px; padding: 0 14px; border: 0; border-radius: var(--radius-pill); background: none; color: var(--text-muted); font-size: 14px; font-weight: 600; }
+.lw-seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); }
+.lw-actlist, .lw-allist, .lw-trlist { display: grid; gap: 8px; }
+.lw-actlist li { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 12px; border-radius: var(--radius-md); background: var(--surface-2); font-size: 15px; }
+.lw-ic { width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--radius-sm); background: var(--accent-soft); color: var(--accent); } .lw-ic svg { width: 20px; height: 20px; }
+[data-variant="birch"] .lw-ic { color: var(--accent); }
+.lw-actlist small, .lw-allist small, .lw-trlist small { display: block; font-size: 13px; color: var(--text-muted); }
+.lw-book { min-height: 44px; padding: 0 16px; border: 1px solid var(--accent); border-radius: var(--radius-pill); background: none; color: var(--text); font-size: 14px; font-weight: 600; }
+.lw-book[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); }
+.lw-book:disabled { border-color: var(--border); color: var(--text-muted); cursor: not-allowed; }
+.lw-none { padding: 14px; font-size: 14px; color: var(--text-muted); background: none !important; }
+.lw-allist li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 4px; border-bottom: 1px solid var(--border); }
+.lw-allist li:last-child { border-bottom: 0; }
+.lw-allist b { font-family: var(--font-display); font-size: 24px; font-weight: 500; }
+.lw-switch { position: relative; width: 60px; height: 44px; border: 6px solid transparent; border-radius: var(--radius-pill); background: var(--border); background-clip: padding-box; }
+.lw-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 50%; background: var(--text); transition: transform 180ms ease; }
+.lw-switch[aria-checked="true"] { background-color: var(--accent); } .lw-switch[aria-checked="true"]::after { transform: translateX(16px); background: var(--accent-fg); }
+.lw-trlist li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 10px 12px; border-radius: var(--radius-md); background: var(--surface-2); font-size: 15px; }
+.lw-st { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; }
+.lw-st::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+.lw-st.ok { color: var(--ok); } .lw-st.warn { color: var(--warn); } .lw-st.bad { color: var(--bad); }
+@media (max-width: 1100px) {
+  .lw-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "hero hero" "th sun" "wx wx" "sc al" "act act" "tr tr"; }
+}
+@media (max-width: 700px) {
+  .lw { padding: 12px; }
+  .lw-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; grid-template-areas: "hero" "th" "sun" "wx" "sc" "act" "al" "tr"; }
+  .lw-hero { min-height: 0; display: flex; flex-direction: column; } .lw-art { position: relative; height: 220px; } .lw-hero-copy { position: static; max-width: none; margin: 0; border-radius: 0; }
+  .lw-hero-copy h1 { font-size: 24px; } .lw-days { gap: 4px; } .lw-days button { min-height: 104px; font-size: 13px; }
+  .lw-seg button { min-height: 44px; } .lw-actlist li { grid-template-columns: 44px minmax(0, 1fr); } .lw-actlist .lw-book { grid-column: 1 / -1; }
+}

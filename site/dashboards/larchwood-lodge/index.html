@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Larchwood Lodge · Dashboard Tools gallery</title>
+  <meta name="description" content="Dusky plum bento guest hub for a mountain cabin: autumn lake hero, cabin thermostat, sun times, forecast, light scenes, activity booking, alarms and trail status. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Figtree:wght@400;600&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="lw">
+    <header class="lw-top">
+      <a class="lw-brand" href="#" aria-label="Larchwood Lodge home"><span class="lw-mark" aria-hidden="true"></span>Larchwood Lodge</a>
+      <p class="lw-stay" data-stay></p>
+    </header>
+    <main class="lw-grid">
+      <section class="lw-tile lw-hero" aria-labelledby="lw-hero-h">
+        <div class="lw-art" data-art aria-hidden="true"></div>
+        <div class="lw-hero-copy"><p class="lw-k">Cabin 4 · Lakeside</p><h1 id="lw-hero-h">Good afternoon, Okafor family</h1><p>The larches are turning gold. Sunset over the lake is at <b data-sunset></b>.</p></div>
+      </section>
+
+      <section class="lw-tile lw-thermo" aria-labelledby="lw-th-h">
+        <div class="lw-head"><h2 id="lw-th-h">Cabin heat</h2><span class="lw-meta">Inside <b data-inside>18.5°</b></span></div>
+        <div class="lw-dial" data-dial></div>
+        <div class="lw-steps"><button data-t="-1" aria-label="Lower target temperature">−</button><output class="num" data-target aria-live="polite"></output><button data-t="1" aria-label="Raise target temperature">+</button></div>
+      </section>
+
+      <section class="lw-tile lw-sun" aria-labelledby="lw-sun-h">
+        <h2 id="lw-sun-h">Daylight</h2>
+        <div class="lw-sunarc" data-sunarc></div>
+        <p class="lw-suntimes"><span>Sunrise <b class="num">07:12</b></span><span>Sunset <b class="num" data-sunset2></b></span></p>
+      </section>
+
+      <section class="lw-tile lw-wx" aria-labelledby="lw-wx-h">
+        <div class="lw-head"><h2 id="lw-wx-h">Forecast</h2><span class="lw-meta" data-wxnote></span></div>
+        <div class="lw-days" role="group" aria-label="Pick a day" data-days></div>
+        <p class="lw-wxdetail" data-wxdetail aria-live="polite"></p>
+      </section>
+
+      <section class="lw-tile lw-scenes" aria-labelledby="lw-sc-h">
+        <h2 id="lw-sc-h">Light scenes</h2>
+        <div class="lw-scgrid" role="radiogroup" aria-labelledby="lw-sc-h" data-scenes></div>
+        <p class="lw-meta lw-scnote" data-scnote aria-live="polite"></p>
+      </section>
+
+      <section class="lw-tile lw-acts" aria-labelledby="lw-act-h">
+        <div class="lw-head"><h2 id="lw-act-h">Book an activity</h2>
+          <div class="lw-seg" role="group" aria-label="Show" data-actf><button data-v="all" aria-pressed="true">All</button><button data-v="mine" aria-pressed="false">My bookings</button></div></div>
+        <ul class="lw-actlist" data-acts></ul>
+      </section>
+
+      <section class="lw-tile lw-alarms" aria-labelledby="lw-al-h">
+        <h2 id="lw-al-h">Wake-up</h2>
+        <ul class="lw-allist" data-alarms></ul>
+      </section>
+
+      <section class="lw-tile lw-trails" aria-labelledby="lw-tr-h">
+        <h2 id="lw-tr-h">Trails today</h2>
+        <ul class="lw-trlist" data-trails></ul>
+      </section>
+    </main>
+    <p class="db-sample lw-foot">Sample data · fictional lodge and guests</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
