@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Ridgeline Trails · Dashboard Tools gallery</title>
+  <meta name="description" content="Editorial trail-network dashboard: a pale upper half with misty code-drawn mountains flowing into a charcoal lower half of dials and gauges. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="rt">
+    <div class="rt-board">
+      <section class="rt-upper">
+        <div class="rt-art" data-art aria-hidden="true"></div>
+        <header class="rt-head">
+          <h1>Ridgeline</h1>
+          <p>Trail network · visitor report</p>
+          <div class="rt-seg" role="group" aria-label="Period" data-range>
+            <button data-v="week" aria-pressed="true">Week</button><button data-v="month" aria-pressed="false">Month</button><button data-v="season" aria-pressed="false">Season</button>
+          </div>
+        </header>
+        <div class="rt-facts">
+          <div class="rt-rings" data-rings></div>
+          <dl class="rt-nums" data-nums></dl>
+          <section class="rt-trend" aria-labelledby="rt-trend-h">
+            <h2 id="rt-trend-h">Visitors per day</h2>
+            <div data-trend></div>
+          </section>
+        </div>
+        <ul class="rt-cond" aria-label="Summit conditions" data-cond></ul>
+      </section>
+
+      <section class="rt-lower">
+        <svg class="rt-wave" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C120,70 240,88 380,84 S640,90 760,40 S900,-6 1010,34 S1150,70 1200,60 L1200,90 L0,90 Z"/></svg>
+        <div class="rt-grid">
+          <section class="rt-panel" aria-labelledby="rt-heads-h">
+            <h2 id="rt-heads-h">Trailhead counts</h2>
+            <ul class="rt-heads" data-heads></ul>
+          </section>
+          <section class="rt-panel rt-dialp" aria-labelledby="rt-d1-h">
+            <h2 id="rt-d1-h">Visitors by trail</h2>
+            <div data-dial="trail"></div>
+          </section>
+          <section class="rt-panel rt-dialp" aria-labelledby="rt-d2-h">
+            <h2 id="rt-d2-h">Visitors by activity</h2>
+            <div data-dial="act"></div>
+          </section>
+          <section class="rt-panel" aria-labelledby="rt-cap-h">
+            <h2 id="rt-cap-h">Parking in use</h2>
+            <div class="rt-cap" data-cap></div>
+            <table class="rt-table"><caption class="vh">Parking by lot</caption><thead><tr><th scope="col">Lot</th><th scope="col">Cars</th><th scope="col">Full</th></tr></thead><tbody data-lots></tbody></table>
+          </section>
+        </div>
+        <p class="db-sample rt-foot">Sample data · fictional</p>
+      </section>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

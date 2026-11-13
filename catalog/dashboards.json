@@ -181,6 +181,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied landing-page concept with placeholder text. It was turned into a dashboard (a reforestation tracker): brand, copy and all figures are invented. The leaf photography and the forest photo tile were replaced with SVG drawings themed by CSS variables. The source image is not stored in the repo." },
       "path": "site/dashboards/canopy-reforest/"
+    },
+    {
+      "id": "ridgeline-trails",
+      "number": 6,
+      "name": "Ridgeline Trails",
+      "style_family": "editorial",
+      "use_cases": ["travel", "analytics"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A two-tone visitor report for a trail network: a pale, quiet upper half where a misty code-drawn mountain range fades in from the right, then a wave edge into a charcoal lower half of raised pie dials, thin bars and a gold ring gauge.",
+      "mood": ["quiet", "editorial", "misty", "monochrome", "considered"],
+      "best_for": ["Parks, outdoor, travel or architecture brands that want restraint", "Weekly or seasonal reports shown on a tablet or wall display", "A small number of figures that should feel like a printed page"],
+      "avoid_when": ["Many KPIs or tables: the artwork takes the right half of the first screen", "Products that need a colourful, energetic brand", "Dense operational tools where every pixel carries data"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "One framed board, max 1280px, thick dark bezel · upper half (pale): centred title + period toggle, left column of 2 ring stats, 2 big numbers and a line chart, right column mountain art with a conditions card · wave-shaped edge · lower half (charcoal): 4 columns (thin bar list, 2 pie dials with legends, ring gauge + small table)",
+        "responsive": "≤1080px: upper half stacks and the mountains move to a 330px strip above the wave; lower half 2×2 · ≤640px: single column, 230px mountain strip, full-width period toggle, legends as 44px rows"
+      },
+      "components": ["Centred wordmark header with period toggle", "Small ring stats", "Large numbers with change", "Thin line chart with dashed comparison", "Conditions card with status dots", "Thin horizontal bar list", "Raised pie dial with tick ring and selectable legend", "Ring gauge with small table"],
+      "signature": "Grey mountain ridges separated by bands of mist, with an ochre forest on the front slope, dissolving into the page and cut off by a wave edge into the charcoal half.",
+      "palette": { "bg": "#cfcfcc", "surface": "#f1f1ec", "text": "#1c1e20", "muted": "#4d5154", "accent": "#a8742a", "charcoal": "#3d4144", "salmon": "#b9524a", "mint": "#8fd4b6" },
+      "fonts": { "display": "Sora", "sans": "Inter" },
+      "variants": [
+        { "id": "default", "name": "Mist", "swatch": "#3d4144" },
+        { "id": "dusk", "name": "Dusk", "swatch": "#a04a5a" },
+        { "id": "pine", "name": "Pine night", "swatch": "#8fd4b6" }
+      ],
+      "maps_to_theme": "linen",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied concept render with unreadable text. The domain (trail-network visitor report), name, labels and data are invented; the render's title wordmark was not reused. The mountain photograph was replaced with layered SVG ridges, mist gradients and triangle trees themed by CSS variables. The source image is not stored in the repo." },
+      "path": "site/dashboards/ridgeline-trails/"
     }
   ]
 }

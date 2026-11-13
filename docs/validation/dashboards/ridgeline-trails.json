@@ -1,0 +1,62 @@
+{
+  "id": "ridgeline-trails",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/ridgeline-trails/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/ridgeline-trails/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ridgeline-trails",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/ridgeline-trails/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ridgeline-trails/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/ridgeline-trails/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ridgeline-trails/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/ridgeline-trails/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ridgeline-trails/?variant=dusk",
+      "width": 1440,
+      "variant": "dusk",
+      "final_path": "/dashboards/ridgeline-trails/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ridgeline-trails/?variant=pine",
+      "width": 1440,
+      "variant": "pine",
+      "final_path": "/dashboards/ridgeline-trails/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/ridgeline-trails",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

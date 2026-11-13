@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-5 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+6 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -11,6 +11,7 @@
 | 3 | [Solstice Energy](#solstice-energy) | Cinematic & atmospheric | Analytics & BI, Smart home & IoT | dark | Ember, Glacier, Paper | [site/dashboards/solstice-energy/](../../site/dashboards/solstice-energy/) |
 | 4 | [Kumo Payroll](#kumo-payroll) | Cinematic & atmospheric | HR & people, Finance & banking | dark | Moonlit gold, Jade, Sakura | [site/dashboards/kumo-payroll/](../../site/dashboards/kumo-payroll/) |
 | 5 | [Canopy Reforest](#canopy-reforest) | Soft & friendly | Projects & tasks, Analytics & BI | dark | Forest, Autumn, Birch | [site/dashboards/canopy-reforest/](../../site/dashboards/canopy-reforest/) |
+| 6 | [Ridgeline Trails](#ridgeline-trails) | Editorial | Travel & places, Analytics & BI | light | Mist, Dusk, Pine night | [site/dashboards/ridgeline-trails/](../../site/dashboards/ridgeline-trails/) |
 
 ## Cinematic & atmospheric
 
@@ -166,7 +167,33 @@ An organic reforestation tracker in forest green, bark brown and tan: a leafy co
 
 Big serif headlines, magazine layout, image-led storytelling. Brands, content, luxury.
 
-_No dashboards yet._
+<a id="ridgeline-trails"></a>
+### 6. Ridgeline Trails
+
+![Ridgeline Trails](../../site/dashboards/ridgeline-trails/thumb.jpg)
+
+A two-tone visitor report for a trail network: a pale, quiet upper half where a misty code-drawn mountain range fades in from the right, then a wave edge into a charcoal lower half of raised pie dials, thin bars and a gold ring gauge.
+
+- **Use cases:** Travel & places, Analytics & BI · **Mode:** light · **Mood:** quiet, editorial, misty, monochrome, considered
+- **Signature:** Grey mountain ridges separated by bands of mist, with an ochre forest on the front slope, dissolving into the page and cut off by a wave edge into the charcoal half.
+- **Layout:** One framed board, max 1280px, thick dark bezel · upper half (pale): centred title + period toggle, left column of 2 ring stats, 2 big numbers and a line chart, right column mountain art with a conditions card · wave-shaped edge · lower half (charcoal): 4 columns (thin bar list, 2 pie dials with legends, ring gauge + small table)
+- **Responsive:** ≤1080px: upper half stacks and the mountains move to a 330px strip above the wave; lower half 2×2 · ≤640px: single column, 230px mountain strip, full-width period toggle, legends as 44px rows
+- **Fonts:** Sora / Inter · **Palette:** bg `#cfcfcc`, surface `#f1f1ec`, text `#1c1e20`, muted `#4d5154`, accent `#a8742a`, charcoal `#3d4144`, salmon `#b9524a`, mint `#8fd4b6`
+- **Variants:** Mist, Dusk, Pine night · **Closest toolkit theme:** `linen`
+
+**Best for**
+- Parks, outdoor, travel or architecture brands that want restraint
+- Weekly or seasonal reports shown on a tablet or wall display
+- A small number of figures that should feel like a printed page
+
+**Avoid when**
+- Many KPIs or tables: the artwork takes the right half of the first screen
+- Products that need a colourful, energetic brand
+- Dense operational tools where every pixel carries data
+
+**Components:** Centred wordmark header with period toggle · Small ring stats · Large numbers with change · Thin line chart with dashed comparison · Conditions card with status dots · Thin horizontal bar list · Raised pie dial with tick ring and selectable legend · Ring gauge with small table
+
+---
 
 
 ## Bold & graphic
