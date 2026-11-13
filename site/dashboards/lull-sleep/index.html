@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Lull Sleep · Dashboard Tools gallery</title>
+  <meta name="description" content="Soft pastel sleep report for one night: a stage timeline, stage split, a week of nights and habits that changed the result. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Figtree:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="ls">
+    <header class="ls-top">
+      <a class="ls-brand" href="#" aria-label="Lull home"><span data-icon="moon"></span>Lull</a>
+      <nav class="ls-nav" aria-label="Main"><a href="#" aria-current="page">Sleep</a><a href="#">Trends</a><a href="#">Routines</a><a href="#">Journal</a></nav>
+      <span class="ls-avatar" role="img" aria-label="Signed in as Ines Varga">IV</span>
+    </header>
+
+    <section class="ls-hero" aria-labelledby="ls-h">
+      <div class="ls-sky" data-sky aria-hidden="true"></div>
+      <div class="ls-hero-copy">
+        <p class="ls-eyebrow" data-date></p>
+        <h1 id="ls-h" data-headline></h1>
+        <div class="ls-chips" data-chips></div>
+      </div>
+      <div class="ls-score" data-score></div>
+    </section>
+
+    <main class="ls-grid">
+      <section class="ls-card ls-hyp" aria-labelledby="ls-hyp-h">
+        <div class="ls-head"><h2 id="ls-hyp-h">Night timeline</h2><div class="ls-legend" role="group" aria-label="Highlight a stage" data-legend></div></div>
+        <div class="ls-hypbox" data-hyp></div>
+      </section>
+
+      <section class="ls-card ls-split" aria-labelledby="ls-split-h">
+        <div class="ls-head"><h2 id="ls-split-h">Stage split</h2></div>
+        <div class="ls-splitbody" data-split></div>
+      </section>
+
+      <section class="ls-card ls-stats" aria-label="Night details"><dl data-stats></dl></section>
+
+      <section class="ls-card ls-week" aria-labelledby="ls-week-h">
+        <div class="ls-head"><h2 id="ls-week-h">Last seven nights</h2><span class="ls-meta">Pick a night</span></div>
+        <div data-week></div>
+      </section>
+
+      <section class="ls-card ls-habits" aria-labelledby="ls-hab-h">
+        <div class="ls-head"><h2 id="ls-hab-h">What you logged</h2></div>
+        <ul class="ls-tags" data-habits></ul>
+        <p class="ls-note" data-habit-note aria-live="polite"></p>
+      </section>
+
+      <section class="ls-card ls-room" aria-labelledby="ls-room-h">
+        <div class="ls-head"><h2 id="ls-room-h">Bedroom</h2><span class="ls-meta">From the bedside sensor</span></div>
+        <ul class="ls-env" data-room></ul>
+      </section>
+    </main>
+    <p class="db-sample ls-foot">Sample data · fictional · not medical advice</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

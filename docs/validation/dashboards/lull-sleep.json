@@ -1,0 +1,62 @@
+{
+  "id": "lull-sleep",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/lull-sleep/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/lull-sleep/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/lull-sleep/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/lull-sleep/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/lull-sleep/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=dawn",
+      "width": 1440,
+      "variant": "dawn",
+      "final_path": "/dashboards/lull-sleep/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=nightfall",
+      "width": 1440,
+      "variant": "nightfall",
+      "final_path": "/dashboards/lull-sleep/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/lull-sleep",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

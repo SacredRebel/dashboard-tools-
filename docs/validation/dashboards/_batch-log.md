@@ -16,3 +16,4 @@ One row per reference image in `inputs/dashboards/` (not stored in the repo), in
 | 10-colorpsych-light.jpg | | | | | | | skipped (not a dashboard: colour psychology chart) | |
 | 11-colorpsych-dark.jpg | | | | | | | skipped (not a dashboard: colour psychology chart) | |
 | 12-wellness-ring-tablet.jpg | 8 | aura-ring | Aura Ring | glass | health | dark | done | Product photo of a tablet: rebuilt the screen only. Ring photo, 3D body figure and brain render replaced with an SVG ring, a simple figure with selectable points and a CSS orb. Background darkened from the reference so white text passes contrast. |
+| 13-wellness-ring-flat.jpg | 9 | lull-sleep | Lull Sleep | soft | health | light | done | Same screen as 12. Built as a different dashboard (sleep detail page) using only its gradient, pills and two-weight headline, so the two are not copies. |

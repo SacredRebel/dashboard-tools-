@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-8 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+9 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -14,6 +14,7 @@
 | 6 | [Ridgeline Trails](#ridgeline-trails) | Editorial | Travel & places, Analytics & BI | light | Mist, Dusk, Pine night | [site/dashboards/ridgeline-trails/](../../site/dashboards/ridgeline-trails/) |
 | 7 | [Haven Listings](#haven-listings) | Glass & glow | Real estate | light | Dusk, Sunrise, Midnight | [site/dashboards/haven-listings/](../../site/dashboards/haven-listings/) |
 | 8 | [Aura Ring](#aura-ring) | Glass & glow | Health & fitness | dark | Haze, Lagoon, Pearl | [site/dashboards/aura-ring/](../../site/dashboards/aura-ring/) |
+| 9 | [Lull Sleep](#lull-sleep) | Soft & friendly | Health & fitness | light | Lavender, Dawn, Nightfall | [site/dashboards/lull-sleep/](../../site/dashboards/lull-sleep/) |
 
 ## Cinematic & atmospheric
 
@@ -215,6 +216,34 @@ An organic reforestation tracker in forest green, bark brown and tan: a leafy co
 - Products that need many chart colours: the palette is deliberately narrow
 
 **Components:** Hero with headline, lede and pill CTA · Site switcher (segmented) · Metrics band with ringed icons · Horizontal share bars · Bar chart with hover/focus values · Selectable capsule gauges · Illustrated landscape tile with caption · Checklist · Crew list with initials
+
+---
+
+<a id="lull-sleep"></a>
+### 9. Lull Sleep
+
+![Lull Sleep](../../site/dashboards/lull-sleep/thumb.jpg)
+
+A one-night sleep report in soft lavender: a pastel sky hero with a crescent moon and a round score, a stage timeline you can filter by stage, a stage-split donut, a week of nights to pick from, logged habits that move the score, and bedroom conditions.
+
+- **Use cases:** Health & fitness · **Mode:** light · **Mood:** calm, gentle, dreamy, reassuring, soft
+- **Signature:** A pastel blue-to-pink sky with a glowing crescent and white clouds, holding a white round score, above soft white cards with rounded lavender stage blocks.
+- **Layout:** Top bar (wordmark, centred pill nav, avatar) · 250px sky hero: date, serif headline with italic second half, 3 chips, 200px round score · 12-column grid: timeline (8) + stage split (4, two rows) · night stats strip (8) · bottom row: last seven nights bar chart (5), habits (4), bedroom (3)
+- **Responsive:** ≤1100px: 2 columns (timeline and stats full width, split + week, habits + bedroom) · ≤700px: single column, nav on its own row, score under the headline, stats 2×2, fewer time labels
+- **Fonts:** Fraunces / Figtree · **Palette:** bg `#ece9f6`, surface `#fbfaff`, text `#24224a`, muted `#57557a`, accent `#3b3a8f`, rem `#b47ad6`, light `#8fa6e8`, wake `#e98a8a`
+- **Variants:** Lavender, Dawn, Nightfall · **Closest toolkit theme:** `blush`
+
+**Best for**
+- Sleep, wearables and wellness apps with a nightly report
+- Detail screens that explain one record with a few linked views
+- Consumer products where tone matters as much as numbers
+
+**Avoid when**
+- Clinical sleep studies that need full hypnogram precision
+- Multi-user or admin views
+- Brands that need a crisp, technical feel
+
+**Components:** Pill navigation · Sky hero with round score dial and chips · Stage timeline with stage filter chips · Stage-split donut with legend · Stats strip with dividers · Bar chart that picks the night · Toggleable habit tags that change the score · Sensor list with icon tiles
 
 ---
 

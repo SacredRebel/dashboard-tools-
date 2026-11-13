@@ -277,6 +277,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied product shot of a wellness tablet app. The product and agency names, logo, avatar photo and copy were not reused; scores and text are invented. The ring photo, 3D body figure and brain render were replaced with an SVG ring, a simple SVG figure with selectable points and a CSS orb. The source image is not stored in the repo." },
       "path": "site/dashboards/aura-ring/"
+    },
+    {
+      "id": "lull-sleep",
+      "number": 9,
+      "name": "Lull Sleep",
+      "style_family": "soft",
+      "use_cases": ["health"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A one-night sleep report in soft lavender: a pastel sky hero with a crescent moon and a round score, a stage timeline you can filter by stage, a stage-split donut, a week of nights to pick from, logged habits that move the score, and bedroom conditions.",
+      "mood": ["calm", "gentle", "dreamy", "reassuring", "soft"],
+      "best_for": ["Sleep, wearables and wellness apps with a nightly report", "Detail screens that explain one record with a few linked views", "Consumer products where tone matters as much as numbers"],
+      "avoid_when": ["Clinical sleep studies that need full hypnogram precision", "Multi-user or admin views", "Brands that need a crisp, technical feel"],
+      "layout": {
+        "pattern": "Detail",
+        "structure": "Top bar (wordmark, centred pill nav, avatar) · 250px sky hero: date, serif headline with italic second half, 3 chips, 200px round score · 12-column grid: timeline (8) + stage split (4, two rows) · night stats strip (8) · bottom row: last seven nights bar chart (5), habits (4), bedroom (3)",
+        "responsive": "≤1100px: 2 columns (timeline and stats full width, split + week, habits + bedroom) · ≤700px: single column, nav on its own row, score under the headline, stats 2×2, fewer time labels"
+      },
+      "components": ["Pill navigation", "Sky hero with round score dial and chips", "Stage timeline with stage filter chips", "Stage-split donut with legend", "Stats strip with dividers", "Bar chart that picks the night", "Toggleable habit tags that change the score", "Sensor list with icon tiles"],
+      "signature": "A pastel blue-to-pink sky with a glowing crescent and white clouds, holding a white round score, above soft white cards with rounded lavender stage blocks.",
+      "palette": { "bg": "#ece9f6", "surface": "#fbfaff", "text": "#24224a", "muted": "#57557a", "accent": "#3b3a8f", "rem": "#b47ad6", "light": "#8fa6e8", "wake": "#e98a8a" },
+      "fonts": { "display": "Fraunces", "sans": "Figtree" },
+      "variants": [
+        { "id": "default", "name": "Lavender", "swatch": "#3b3a8f" },
+        { "id": "dawn", "name": "Dawn", "swatch": "#9a3b3b" },
+        { "id": "nightfall", "name": "Nightfall", "swatch": "#c7b8ff" }
+      ],
+      "maps_to_theme": "blush",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Built in original code from a user-supplied flat shot of the same wellness screen as Aura Ring. To avoid a second copy it takes only the pastel gradient, white pills and two-weight headline, and turns them into a sleep detail page with its own layout and data. No names, logos, photos or copy from the shot were reused; sky, moon and clouds are SVG. The source image is not stored in the repo." },
+      "path": "site/dashboards/lull-sleep/"
     }
   ]
 }
