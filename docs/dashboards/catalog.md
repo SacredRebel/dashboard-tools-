@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-24 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+25 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -30,6 +30,7 @@
 | 22 | [Folio Club](#folio-club) | Soft & friendly | Education, Music & media | dark | Ink, Parchment, Night | [site/dashboards/folio-club/](../../site/dashboards/folio-club/) |
 | 23 | [Citadel Wall](#citadel-wall) | Data-dense pro | Analytics & BI, Logistics & fleet | dark | Cyan, Ocean, Amber | [site/dashboards/citadel-wall/](../../site/dashboards/citadel-wall/) |
 | 24 | [Aether Pane](#aether-pane) | Glass & glow | Analytics & BI, SaaS admin | dark | Cyan, Violet, Daylight | [site/dashboards/aether-pane/](../../site/dashboards/aether-pane/) |
+| 25 | [Forge Fitness](#forge-fitness) | Cinematic & atmospheric | Health & fitness | dark | Forge, Ember, Ice | [site/dashboards/forge-fitness/](../../site/dashboards/forge-fitness/) |
 
 ## Cinematic & atmospheric
 
@@ -172,6 +173,34 @@ A cinematic dark smart-home board: amber accent, SVG living-room hero with devic
 - Screens that cannot spare space for a scenic hero
 
 **Components:** Icon rail navigation · Pill search and notification bell · Weather scene card with humidity/wind/AQI chips · AQI arc gauge with PM2.5 sparkline · Thermostat dial with ± and eco pill · Room segmented tabs · SVG living-room hero with device nodes · Vertical brightness slider · Device power toggle tiles · 7-day power bar chart
+
+---
+
+<a id="forge-fitness"></a>
+### 25. Forge Fitness
+
+![Forge Fitness](../../site/dashboards/forge-fitness/thumb.jpg)
+
+A cinematic dark fitness board: frosted glass cards for steps, sleep, heart, wellness and focus float over a code-drawn gym silhouette atmosphere, with an energy-and-recovery gauge on the right.
+
+- **Use cases:** Health & fitness · **Mode:** dark · **Mood:** cinematic, athletic, moody, focused, premium
+- **Signature:** Glass metric cards floating over an SVG athlete/gym silhouette with orange and lime accents — no photographic faces.
+- **Layout:** 64px icon rail · top bar (brand, ask-anything search, add, avatar) · toolbar (search, edit, date range, add wallet, create report) · 12-column glass grid: activity · sleep · heart · wellness + focus + tall energy/recovery gauge
+- **Responsive:** ≤1180px: energy gauge drops below wellness/focus · ≤960px: icon rail becomes top chips, cards 2-col · ≤640px: single column, toolbar scrolls
+- **Fonts:** Syne / Manrope · **Palette:** bg `#0c0d10`, surface `#1a1c24`, text `#f4f1ea`, muted `#a8a29a`, accent `#ff6a2a`, lime `#c8f05a`, gold `#f5d76e`, glass `#16181ecc`
+- **Variants:** Forge, Ember, Ice · **Closest toolkit theme:** `ember`
+
+**Best for**
+- Wearables and consumer fitness apps with a dramatic brand
+- Daily recovery overviews with a few bold scores
+- Dark-mode health products that want glass over atmosphere
+
+**Avoid when**
+- Clinical or coach tools with dense athlete tables
+- Brands that need a bright, clinical look
+- Screens that must work without large decorative backgrounds
+
+**Components:** Slim icon rail · Ask-anything search field · Date-range chip and report actions · Steps activity category grid · Dual-line sleep chart · Heart-rate barbell week bars · Wellness score with wave art · Focus soundwave meter · Energy recovery semi-gauge with metric pills
 
 ---
 

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Forge Fitness · Dashboard Tools gallery</title>
+  <meta name="description" content="Cinematic dark fitness dashboard with glass cards for steps, sleep, heart, wellness and energy over an SVG gym atmosphere. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="ff">
+    <div class="ff-scene" data-scene aria-hidden="true"></div>
+
+    <aside class="ff-rail" aria-label="Primary">
+      <a class="ff-rail-btn" href="#" aria-current="page" aria-label="Home"><span data-icon="home"></span></a>
+      <a class="ff-rail-btn" href="#" aria-label="Profile"><span data-icon="user"></span></a>
+      <a class="ff-rail-btn" href="#" aria-label="Statistics"><span data-icon="chart"></span></a>
+      <a class="ff-rail-btn" href="#" aria-label="Reports"><span data-icon="file"></span></a>
+      <a class="ff-rail-btn ff-rail-foot" href="#" aria-label="Settings"><span data-icon="settings"></span></a>
+    </aside>
+
+    <div class="ff-shell">
+      <header class="ff-top">
+        <a class="ff-brand" href="#" aria-label="Forge Fitness home"><span class="ff-mark" aria-hidden="true"></span><span>Forge Fitness</span></a>
+        <label class="ff-ask">
+          <span class="vh">Ask Forge</span>
+          <span data-icon="sparkle" aria-hidden="true"></span>
+          <input type="search" placeholder="Hey, need help? Just ask me anything." autocomplete="off" data-ask>
+        </label>
+        <div class="ff-top-actions">
+          <button class="ff-iconbtn" aria-label="Add"><span data-icon="plus"></span></button>
+          <span class="ff-who" role="img" aria-label="Signed in as Mira Okonkwo, coach"><span class="ff-avatar">MO</span><span><b>Mira Okonkwo</b><small>Coach</small></span></span>
+        </div>
+      </header>
+
+      <div class="ff-tools" role="toolbar" aria-label="Dashboard tools">
+        <button class="ff-iconbtn" aria-label="Search metrics"><span data-icon="search"></span></button>
+        <button class="ff-iconbtn" aria-label="Edit layout"><span data-icon="edit"></span></button>
+        <button class="ff-chip" data-range aria-label="Date range"><span data-icon="calendar"></span><span data-range-label></span></button>
+        <button class="ff-btn" data-wallet><span data-icon="wallet"></span> Add goal</button>
+        <button class="ff-btn ff-btn-accent" data-report>Create a report</button>
+      </div>
+
+      <main class="ff-grid">
+        <section class="ff-card ff-activity" aria-labelledby="ff-act-h" data-view="activity">
+          <div class="ff-card-head">
+            <div><p class="ff-k">Activity</p><h2 id="ff-act-h" class="ff-metric num" data-steps>19,840</h2><p class="ff-sub">Steps today</p></div>
+            <span class="ff-pill" data-icon="footprints" aria-hidden="true"></span>
+          </div>
+          <div class="ff-act-grid" data-act-grid role="img" aria-label="Activity by hour across browsing, conversation and phone"></div>
+          <div class="ff-act-legend" data-act-legend></div>
+          <p class="ff-state" data-act-state hidden></p>
+        </section>
+
+        <section class="ff-card ff-sleep" aria-labelledby="ff-sl-h">
+          <div class="ff-card-head">
+            <div><p class="ff-k">Sleep</p><h2 id="ff-sl-h" class="ff-metric num">7h 45m</h2><p class="ff-sub ff-up">+18m from last week</p></div>
+            <span class="ff-pill" data-icon="moon" aria-hidden="true"></span>
+          </div>
+          <div data-sleep-chart></div>
+        </section>
+
+        <section class="ff-card ff-heart" aria-labelledby="ff-hr-h">
+          <div class="ff-card-head">
+            <div><p class="ff-k">Heart</p><h2 id="ff-hr-h" class="ff-metric num">63 <small>BPM</small></h2><p class="ff-sub">Avg resting heart rate</p></div>
+            <span class="ff-pill" data-icon="heartPulse" aria-hidden="true"></span>
+          </div>
+          <div class="ff-barbells" data-heart role="img" aria-label="Resting heart rate by weekday"></div>
+        </section>
+
+        <section class="ff-card ff-well" aria-labelledby="ff-well-h">
+          <div class="ff-card-head">
+            <div><p class="ff-k">Wellness score</p><h2 id="ff-well-h" class="ff-metric ff-huge num" data-well>87</h2><p class="ff-sub">Good condition · <span class="ff-up">+5 vs weekly avg</span></p></div>
+          </div>
+          <div class="ff-waves" data-waves aria-hidden="true"></div>
+          <dl class="ff-footstats"><div><dt>Sleep avg</dt><dd class="num">7.2h</dd></div><div><dt>Recovery</dt><dd class="num">82%</dd></div></dl>
+        </section>
+
+        <section class="ff-card ff-focus" aria-labelledby="ff-fo-h">
+          <div class="ff-card-head">
+            <div><p class="ff-k">Focus activity</p><h2 id="ff-fo-h" class="ff-metric ff-huge num" data-focus>73</h2><p class="ff-sub">Focus score · Deep work 14.5h</p></div>
+          </div>
+          <div class="ff-wavebars" data-focus-wave role="img" aria-label="Focus intensity soundwave"></div>
+          <dl class="ff-footstats"><div><dt>Avg focus session</dt><dd class="num">42 min</dd></div><div><dt>Deep work</dt><dd class="num">14.5h</dd></div></dl>
+        </section>
+
+        <section class="ff-card ff-energy" aria-labelledby="ff-en-h">
+          <h2 id="ff-en-h" class="vh">Energy and recovery</h2>
+          <div class="ff-metric-pills" role="tablist" aria-label="Health metrics" data-pills></div>
+          <div class="ff-gauge-wrap">
+            <p class="ff-k">Energy</p>
+            <div class="ff-gauge" data-gauge></div>
+            <p class="ff-gauge-val num" data-energy>50%</p>
+            <div class="ff-gauge-waves" data-gauge-waves aria-hidden="true"></div>
+          </div>
+          <p class="ff-energy-copy"><b data-energy-title>Balanced energy &amp; recovery</b><span>Overall health stability index</span></p>
+        </section>
+      </main>
+
+      <p class="db-sample ff-foot">Sample data · fictional athlete and metrics</p>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

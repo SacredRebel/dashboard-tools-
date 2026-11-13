@@ -789,6 +789,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass analytics HUD screenshot. Brand is Aether Pane (not taken from other gallery brands). Charts and copy are invented; the blurred photo backdrop became CSS atmosphere. The source image is not stored in the repo." },
       "path": "site/dashboards/aether-pane/"
+    },
+    {
+      "id": "forge-fitness",
+      "number": 25,
+      "name": "Forge Fitness",
+      "style_family": "cinematic",
+      "use_cases": ["health"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A cinematic dark fitness board: frosted glass cards for steps, sleep, heart, wellness and focus float over a code-drawn gym silhouette atmosphere, with an energy-and-recovery gauge on the right.",
+      "mood": ["cinematic", "athletic", "moody", "focused", "premium"],
+      "best_for": ["Wearables and consumer fitness apps with a dramatic brand", "Daily recovery overviews with a few bold scores", "Dark-mode health products that want glass over atmosphere"],
+      "avoid_when": ["Clinical or coach tools with dense athlete tables", "Brands that need a bright, clinical look", "Screens that must work without large decorative backgrounds"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "64px icon rail · top bar (brand, ask-anything search, add, avatar) · toolbar (search, edit, date range, add wallet, create report) · 12-column glass grid: activity · sleep · heart · wellness + focus + tall energy/recovery gauge",
+        "responsive": "≤1180px: energy gauge drops below wellness/focus · ≤960px: icon rail becomes top chips, cards 2-col · ≤640px: single column, toolbar scrolls"
+      },
+      "components": ["Slim icon rail", "Ask-anything search field", "Date-range chip and report actions", "Steps activity category grid", "Dual-line sleep chart", "Heart-rate barbell week bars", "Wellness score with wave art", "Focus soundwave meter", "Energy recovery semi-gauge with metric pills"],
+      "signature": "Glass metric cards floating over an SVG athlete/gym silhouette with orange and lime accents — no photographic faces.",
+      "palette": { "bg": "#0c0d10", "surface": "#1a1c24", "text": "#f4f1ea", "muted": "#a8a29a", "accent": "#ff6a2a", "lime": "#c8f05a", "gold": "#f5d76e", "glass": "#16181ecc" },
+      "fonts": { "display": "Syne", "sans": "Manrope" },
+      "variants": [
+        { "id": "default", "name": "Forge", "swatch": "#ff6a2a" },
+        { "id": "ember", "name": "Ember", "swatch": "#ff8a3d" },
+        { "id": "ice", "name": "Ice", "swatch": "#5ad4ff" }
+      ],
+      "maps_to_theme": "ember",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied fitness dashboard screenshot. Brand, labels and figures are invented. The person photograph was replaced with an abstract SVG gym silhouette and vignette atmosphere. The source image is not stored in the repo." },
+      "path": "site/dashboards/forge-fitness/"
     }
   ]
 }
