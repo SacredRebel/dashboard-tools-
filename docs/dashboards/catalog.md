@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-34 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+35 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -40,6 +40,7 @@
 | 32 | [Copper Radar](#copper-radar) | Soft & friendly | Analytics & BI | light | Copper, Slate, Ember | [site/dashboards/copper-radar/](../../site/dashboards/copper-radar/) |
 | 33 | [Orbit Clay](#orbit-clay) | Tactile & neumorphic | Music & media | light | Orbit, Moss, Dusk | [site/dashboards/orbit-clay/](../../site/dashboards/orbit-clay/) |
 | 34 | [Saffron Dusk](#saffron-dusk) | Glass & glow | Health & fitness, Education | light | Dusk, Dawn, Night | [site/dashboards/saffron-dusk/](../../site/dashboards/saffron-dusk/) |
+| 35 | [Clima Pane](#clima-pane) | Glass & glow | Smart home & IoT | light | Amber pane, Sky, Dusk | [site/dashboards/clima-pane/](../../site/dashboards/clima-pane/) |
 
 ## Cinematic & atmospheric
 
@@ -439,6 +440,34 @@ A respectful fictional fasting-day wellness board in liquid glass: twin phones w
 - Low-end devices where backdrop-filter is costly
 
 **Components:** Twin glass phone shells · Horizontal date strip · Imsak→iftar sun arc card · Water tracker with tappable segments · Evening gather card with silhouette avatar · Glass profile card with share action · Daily progress bar chart · Upgrade row · Glass bottom navigation
+
+---
+
+<a id="clima-pane"></a>
+### 35. Clima Pane
+
+![Clima Pane](../../site/dashboards/clima-pane/thumb.jpg)
+
+A light glass climate console on a beige field with soft orange and blue orb blobs: orange↔blue thermostat dial, Heat/Cool, fan speed bars, living-room stats, schedule, rooms list and energy mode chips.
+
+- **Use cases:** Smart home & IoT · **Mode:** light · **Mood:** airy, warm, frosted, calm, tactile
+- **Signature:** Frosted glass cards floating over a beige canvas with soft orange and blue CSS orb blobs, centered on an orange↔blue thermostat dial.
+- **Layout:** Floating glass icon rail · top brand + outside chip + avatar · left: living-room stats + schedule · center: climate dial with Heat/Cool and fan bars · right: rooms list + mode chips
+- **Responsive:** ≤1180px: rooms and modes drop under dial · ≤960px: rail becomes top icon strip · ≤640px: single column, lists scroll inside cards
+- **Fonts:** Sora / Manrope · **Palette:** bg `#ebe4d8`, surface `#ffffff`, text `#1c1916`, muted `#5c564e`, accent `#ff8c42`, cool `#4aa3e8`, ok `#186040`
+- **Variants:** Amber pane, Sky, Dusk · **Closest toolkit theme:** `linen`
+
+**Best for**
+- HVAC and smart-thermostat companion apps
+- Tablet wall panels focused on climate rather than every device
+- Brands that want frosted glass over a warm beige field
+
+**Avoid when**
+- Full multi-device home consoles with cameras and media
+- Dark cinematic living-room heroes
+- Dense energy analytics tables
+
+**Components:** Floating glass icon rail · Outside temperature chip · Living-room comfort stats card · Orange-to-blue thermostat dial with ± · Heat and Cool mode pills · Fan speed segmented bars · Schedule list with active period · Rooms list with chevrons · Circular Comfort/Eco/Away/Sleep chips
 
 ---
 

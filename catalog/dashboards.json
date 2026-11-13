@@ -2861,6 +2861,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass wellness twin-phone render. Layout rhythm, sun-arc fasting card, water tracker and profile/progress stack were kept; brand names, real people, photos and copy were replaced with invented Saffron Dusk content and abstract SVG silhouettes. The source image is not stored in the repo." },
       "path": "site/dashboards/saffron-dusk/"
+    },
+    {
+      "id": "clima-pane",
+      "number": 35,
+      "name": "Clima Pane",
+      "style_family": "glass",
+      "use_cases": ["smart-home"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A light glass climate console on a beige field with soft orange and blue orb blobs: orange↔blue thermostat dial, Heat/Cool, fan speed bars, living-room stats, schedule, rooms list and energy mode chips.",
+      "mood": ["airy", "warm", "frosted", "calm", "tactile"],
+      "best_for": ["HVAC and smart-thermostat companion apps", "Tablet wall panels focused on climate rather than every device", "Brands that want frosted glass over a warm beige field"],
+      "avoid_when": ["Full multi-device home consoles with cameras and media", "Dark cinematic living-room heroes", "Dense energy analytics tables"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Floating glass icon rail · top brand + outside chip + avatar · left: living-room stats + schedule · center: climate dial with Heat/Cool and fan bars · right: rooms list + mode chips",
+        "responsive": "≤1180px: rooms and modes drop under dial · ≤960px: rail becomes top icon strip · ≤640px: single column, lists scroll inside cards"
+      },
+      "components": ["Floating glass icon rail", "Outside temperature chip", "Living-room comfort stats card", "Orange-to-blue thermostat dial with ±", "Heat and Cool mode pills", "Fan speed segmented bars", "Schedule list with active period", "Rooms list with chevrons", "Circular Comfort/Eco/Away/Sleep chips"],
+      "signature": "Frosted glass cards floating over a beige canvas with soft orange and blue CSS orb blobs, centered on an orange↔blue thermostat dial.",
+      "palette": { "bg": "#ebe4d8", "surface": "#ffffff", "text": "#1c1916", "muted": "#5c564e", "accent": "#ff8c42", "cool": "#4aa3e8", "ok": "#186040" },
+      "fonts": { "display": "Sora", "sans": "Manrope" },
+      "variants": [
+        { "id": "default", "name": "Amber pane", "swatch": "#ff8c42" },
+        { "id": "sky", "name": "Sky", "swatch": "#3b8fd4" },
+        { "id": "dusk", "name": "Dusk", "swatch": "#e07040" }
+      ],
+      "maps_to_theme": "linen",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass climate control concept. Brand renamed to Clima Pane; copy and figures are fictional. Background orbs are CSS; dial and icons are SVG. The source image is not stored in the repo." },
+      "path": "site/dashboards/clima-pane/"
     }
   ]
 }

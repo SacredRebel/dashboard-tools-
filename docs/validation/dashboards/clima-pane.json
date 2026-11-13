@@ -1,0 +1,62 @@
+{
+  "id": "clima-pane",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/clima-pane/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/clima-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/clima-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/clima-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/clima-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=sky",
+      "width": 1440,
+      "variant": "sky",
+      "final_path": "/dashboards/clima-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=dusk",
+      "width": 1440,
+      "variant": "dusk",
+      "final_path": "/dashboards/clima-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/clima-pane",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}
