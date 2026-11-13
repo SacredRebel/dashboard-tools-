@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-17 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+18 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -23,6 +23,7 @@
 | 15 | [Plumage Bird Survey](#plumage-survey) | Cinematic & atmospheric | Analytics & BI | dark | Plume, Canopy, Ember | [site/dashboards/plumage-survey/](../../site/dashboards/plumage-survey/) |
 | 16 | [Hollow Vault](#hollow-vault) | Dark neon | Music & media | dark | Dusk, Moss, Crimson | [site/dashboards/hollow-vault/](../../site/dashboards/hollow-vault/) |
 | 17 | [Larchwood Lodge](#larchwood-lodge) | Bento grid | Hospitality & food, Smart home & IoT | dark | Plum, Birch, Pine | [site/dashboards/larchwood-lodge/](../../site/dashboards/larchwood-lodge/) |
+| 18 | [Hearth Nest](#hearth-nest) | Cinematic & atmospheric | Smart home & IoT | dark | Amber hearth, Cedar, Frost | [site/dashboards/hearth-nest/](../../site/dashboards/hearth-nest/) |
 
 ## Cinematic & atmospheric
 
@@ -137,6 +138,34 @@ A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A co
 - Screens where the art would push data below the fold on small laptops
 
 **Components:** Season toggle · Region spark cards with gradient fills · Headline count with gradient text · Arc gauges · Mini habitat donuts · Ranked gradient bars that filter the log · Observation log with empty state
+
+---
+
+<a id="hearth-nest"></a>
+### 18. Hearth Nest
+
+![Hearth Nest](../../site/dashboards/hearth-nest/thumb.jpg)
+
+A cinematic dark smart-home board: amber accent, SVG living-room hero with device nodes, weather and AQI arc, thermostat dial, device toggles and a 7-day power chart.
+
+- **Use cases:** Smart home & IoT · **Mode:** dark · **Mood:** cinematic, warm, cosy, premium, amber
+- **Signature:** Warm amber glow on a code-drawn living room with sofa, lamp and plant, linked by glowing device constellation nodes.
+- **Layout:** 64px icon rail · top bar (brand, search, bell, avatar) · left stack (weather, AQI arc + spark, thermostat dial) · right hero (room tabs, SVG living room with device nodes, vertical brightness) · bottom row (2×2 device toggles · 7-day power bars) · eco footer
+- **Responsive:** ≤1180px: left stack and hero stack; power full width · ≤960px: rail becomes top icon strip · ≤640px: single column, room tabs scroll, brightness becomes horizontal
+- **Fonts:** Syne / Outfit · **Palette:** bg `#12151c`, surface `#1a1f2a`, text `#f4ebe0`, muted `#b8aea2`, accent `#f0a04b`, aqi `#3ecf8e`, cool `#5b8def`, violet `#a78bfa`
+- **Variants:** Amber hearth, Cedar, Frost · **Closest toolkit theme:** `ember`
+
+**Best for**
+- Consumer smart-home or HVAC brands that want atmosphere over grids
+- In-home tablets and wall panels with a living-room hero
+- Energy glance views paired with climate and lighting
+
+**Avoid when**
+- Dense device tables or installer tooling
+- Light-mode-only brands
+- Screens that cannot spare space for a scenic hero
+
+**Components:** Icon rail navigation · Pill search and notification bell · Weather scene card with humidity/wind/AQI chips · AQI arc gauge with PM2.5 sparkline · Thermostat dial with ± and eco pill · Room segmented tabs · SVG living-room hero with device nodes · Vertical brightness slider · Device power toggle tiles · 7-day power bar chart
 
 ---
 

@@ -565,6 +565,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a small user-supplied render of plum widgets around an autumn mountain-lake painting. The widget-board feel, plum tones and central landscape were kept, and the widgets were given a cabin-guest job. The painting was redrawn as simple SVG shapes. The unreadable widget text was replaced with invented content. The source image is not stored in the repo." },
       "path": "site/dashboards/larchwood-lodge/"
+    },
+    {
+      "id": "hearth-nest",
+      "number": 18,
+      "name": "Hearth Nest",
+      "style_family": "cinematic",
+      "use_cases": ["smart-home"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A cinematic dark smart-home board: amber accent, SVG living-room hero with device nodes, weather and AQI arc, thermostat dial, device toggles and a 7-day power chart.",
+      "mood": ["cinematic", "warm", "cosy", "premium", "amber"],
+      "best_for": ["Consumer smart-home or HVAC brands that want atmosphere over grids", "In-home tablets and wall panels with a living-room hero", "Energy glance views paired with climate and lighting"],
+      "avoid_when": ["Dense device tables or installer tooling", "Light-mode-only brands", "Screens that cannot spare space for a scenic hero"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "64px icon rail · top bar (brand, search, bell, avatar) · left stack (weather, AQI arc + spark, thermostat dial) · right hero (room tabs, SVG living room with device nodes, vertical brightness) · bottom row (2×2 device toggles · 7-day power bars) · eco footer",
+        "responsive": "≤1180px: left stack and hero stack; power full width · ≤960px: rail becomes top icon strip · ≤640px: single column, room tabs scroll, brightness becomes horizontal"
+      },
+      "components": ["Icon rail navigation", "Pill search and notification bell", "Weather scene card with humidity/wind/AQI chips", "AQI arc gauge with PM2.5 sparkline", "Thermostat dial with ± and eco pill", "Room segmented tabs", "SVG living-room hero with device nodes", "Vertical brightness slider", "Device power toggle tiles", "7-day power bar chart"],
+      "signature": "Warm amber glow on a code-drawn living room with sofa, lamp and plant, linked by glowing device constellation nodes.",
+      "palette": { "bg": "#12151c", "surface": "#1a1f2a", "text": "#f4ebe0", "muted": "#b8aea2", "accent": "#f0a04b", "aqi": "#3ecf8e", "cool": "#5b8def", "violet": "#a78bfa" },
+      "fonts": { "display": "Syne", "sans": "Outfit" },
+      "variants": [
+        { "id": "default", "name": "Amber hearth", "swatch": "#f0a04b" },
+        { "id": "cedar", "name": "Cedar", "swatch": "#e0893a" },
+        { "id": "frost", "name": "Frost", "swatch": "#7eb6d9" }
+      ],
+      "maps_to_theme": "ember",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied smart-home concept screenshot. Brand (Hearth Nest), copy and figures are fictional. The living-room photo and decorative plant were replaced with SVG themed by CSS variables. The source image is not stored in the repo." },
+      "path": "site/dashboards/hearth-nest/"
     }
   ]
 }

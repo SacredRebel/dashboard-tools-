@@ -1,0 +1,62 @@
+{
+  "id": "hearth-nest",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/hearth-nest/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/hearth-nest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/hearth-nest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/hearth-nest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/hearth-nest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=cedar",
+      "width": 1440,
+      "variant": "cedar",
+      "final_path": "/dashboards/hearth-nest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=frost",
+      "width": 1440,
+      "variant": "frost",
+      "final_path": "/dashboards/hearth-nest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/hearth-nest",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}
