@@ -693,6 +693,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied blue radial HUD reference. Brand, sector names and all data are invented English fiction. The central 3D topo was replaced with SVG contour art. The source image is not stored in the repo." },
       "path": "site/dashboards/glacier-ops/"
+    },
+    {
+      "id": "folio-club",
+      "number": 22,
+      "name": "Folio Club",
+      "style_family": "soft",
+      "use_cases": ["education", "media"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A soft dark reading club: book shelf and friends on the left, a current-book hero with five colorful metric tiles (progress, time, level, streak, badges), a friends/club/global leaderboard, and a live activity feed.",
+      "mood": ["cosy", "social", "playful", "soft", "dark"],
+      "best_for": ["Reading clubs, learning streaks, or media progress trackers", "Social dashboards that mix personal stats with a friend feed", "Products that want friendly color tiles without a loud neon look"],
+      "avoid_when": ["Enterprise ops or dense tabular analytics", "Brands that need a strictly corporate or light editorial look", "Screens where every tile must meet the same muted palette"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Left rail (profile, books, friends, settings) · center stack (current book hero, metric tile grid, leaderboard) · right activity feed",
+        "responsive": "≤1180px: activity under center, rail stays · ≤960px: rail becomes horizontal strip · ≤640px: single column, tiles 1-wide, feed last"
+      },
+      "components": ["Profile avatar chip", "Book list with SVG covers", "Friends list with see-more", "Current book hero", "Color metric tiles (progress, time, level, streak, badges)", "Leaderboard segmented tabs", "Activity feed with reply"],
+      "signature": "Five saturated pastel metric tiles — gold progress with overlapping friend avatars on the bar, orange time, purple level, green streak, sky badges — floating on soft charcoal glass.",
+      "palette": { "bg": "#1a1b1f", "surface": "#25262c", "text": "#f2f0eb", "muted": "#a8a59c", "accent": "#e8c547", "tile-time": "#e8894a", "tile-level": "#a78bdb", "tile-streak": "#7dcf5a", "tile-badges": "#5ec4e8" },
+      "fonts": { "display": "Libre Baskerville", "sans": "DM Sans" },
+      "variants": [
+        { "id": "default", "name": "Ink", "swatch": "#e8c547" },
+        { "id": "parchment", "name": "Parchment", "swatch": "#8a5a2b" },
+        { "id": "night", "name": "Night", "swatch": "#7eb8ff" }
+      ],
+      "maps_to_theme": "noir",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied reading-tracker screenshot. Brand, book titles, people and numbers are invented; cover photos became flat SVG covers and initial avatars. The source image is not stored in the repo." },
+      "path": "site/dashboards/folio-club/"
     }
   ]
 }

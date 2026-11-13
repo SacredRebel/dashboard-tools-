@@ -1,0 +1,62 @@
+{
+  "id": "folio-club",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/folio-club/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/folio-club/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/folio-club/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/folio-club/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/folio-club/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=parchment",
+      "width": 1440,
+      "variant": "parchment",
+      "final_path": "/dashboards/folio-club/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=night",
+      "width": 1440,
+      "variant": "night",
+      "final_path": "/dashboards/folio-club/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/folio-club",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

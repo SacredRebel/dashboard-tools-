@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-21 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+22 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -27,6 +27,7 @@
 | 19 | [Veil Rooms](#veil-rooms) | Glass & glow | Smart home & IoT | dark | Slate glass, Mist, Midnight | [site/dashboards/veil-rooms/](../../site/dashboards/veil-rooms/) |
 | 20 | [Atrium Living](#atrium-living) | Glass & glow | Smart home & IoT | light | Daylight, Dusk, Night | [site/dashboards/atrium-living/](../../site/dashboards/atrium-living/) |
 | 21 | [Glacier Ops](#glacier-ops) | Data-dense pro | Analytics & BI | dark | Glacier, Cobalt, Night | [site/dashboards/glacier-ops/](../../site/dashboards/glacier-ops/) |
+| 22 | [Folio Club](#folio-club) | Soft & friendly | Education, Music & media | dark | Ink, Parchment, Night | [site/dashboards/folio-club/](../../site/dashboards/folio-club/) |
 
 ## Cinematic & atmospheric
 
@@ -530,6 +531,34 @@ A soft mint patient portal for a dental clinic: one saturated next-visit card wi
 - Brands that need a dark or dramatic look
 
 **Components:** Sidebar navigation with emergency note · Saturated next-visit card with actions · Score ring with explanation · Month calendar with closed days · Time-slot grid with taken slots · Dentist picker · Category chips and searchable price list · Interactive tooth chart with notes
+
+---
+
+<a id="folio-club"></a>
+### 22. Folio Club
+
+![Folio Club](../../site/dashboards/folio-club/thumb.jpg)
+
+A soft dark reading club: book shelf and friends on the left, a current-book hero with five colorful metric tiles (progress, time, level, streak, badges), a friends/club/global leaderboard, and a live activity feed.
+
+- **Use cases:** Education, Music & media · **Mode:** dark · **Mood:** cosy, social, playful, soft, dark
+- **Signature:** Five saturated pastel metric tiles — gold progress with overlapping friend avatars on the bar, orange time, purple level, green streak, sky badges — floating on soft charcoal glass.
+- **Layout:** Left rail (profile, books, friends, settings) · center stack (current book hero, metric tile grid, leaderboard) · right activity feed
+- **Responsive:** ≤1180px: activity under center, rail stays · ≤960px: rail becomes horizontal strip · ≤640px: single column, tiles 1-wide, feed last
+- **Fonts:** Libre Baskerville / DM Sans · **Palette:** bg `#1a1b1f`, surface `#25262c`, text `#f2f0eb`, muted `#a8a59c`, accent `#e8c547`, tile-time `#e8894a`, tile-level `#a78bdb`, tile-streak `#7dcf5a`, tile-badges `#5ec4e8`
+- **Variants:** Ink, Parchment, Night · **Closest toolkit theme:** `noir`
+
+**Best for**
+- Reading clubs, learning streaks, or media progress trackers
+- Social dashboards that mix personal stats with a friend feed
+- Products that want friendly color tiles without a loud neon look
+
+**Avoid when**
+- Enterprise ops or dense tabular analytics
+- Brands that need a strictly corporate or light editorial look
+- Screens where every tile must meet the same muted palette
+
+**Components:** Profile avatar chip · Book list with SVG covers · Friends list with see-more · Current book hero · Color metric tiles (progress, time, level, streak, badges) · Leaderboard segmented tabs · Activity feed with reply
 
 ---
 
