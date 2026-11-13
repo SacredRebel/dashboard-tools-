@@ -1,0 +1,62 @@
+{
+  "id": "kumo-payroll",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/kumo-payroll/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/kumo-payroll/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/kumo-payroll/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/kumo-payroll/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/kumo-payroll/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=jade",
+      "width": 1440,
+      "variant": "jade",
+      "final_path": "/dashboards/kumo-payroll/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=sakura",
+      "width": 1440,
+      "variant": "sakura",
+      "final_path": "/dashboards/kumo-payroll/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/kumo-payroll",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

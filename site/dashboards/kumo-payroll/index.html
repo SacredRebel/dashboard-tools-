@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Kumo Payroll · Dashboard Tools gallery</title>
+  <meta name="description" content="Cinematic payroll dashboard: a moonlit, code-drawn ink landscape with blossoms behind a dark gold-edged panel. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="kp-scene" data-scene aria-hidden="true"></div>
+  <div class="kp">
+    <div class="kp-panel">
+      <aside class="kp-side">
+        <a class="kp-brand" href="#" aria-label="Kumo Payroll home"><span data-icon="lotus"></span><b>Kumo Payroll</b><small>People · Pay · Time off</small></a>
+        <nav class="kp-nav" aria-label="Main" data-nav>
+          <a href="#" aria-current="page"><span data-icon="home"></span><span>Overview</span></a>
+          <a href="#"><span data-icon="calendar"></span><span>Pay runs</span></a>
+          <a href="#"><span data-icon="shield"></span><span>Deductions</span></a>
+          <a href="#"><span data-icon="umbrella"></span><span>Time off</span></a>
+          <a href="#"><span data-icon="users"></span><span>People</span></a>
+          <a href="#"><span data-icon="chart"></span><span>Reports</span></a>
+          <a href="#"><span data-icon="settings"></span><span>Settings</span></a>
+        </nav>
+      </aside>
+
+      <main class="kp-main">
+        <header class="kp-head">
+          <div><h1>Overview</h1><p class="kp-sub" data-sub></p></div>
+          <div class="kp-period" role="group" aria-label="Pay period">
+            <button aria-label="Previous pay period" data-step="-1"><span data-icon="chevLeft"></span></button>
+            <span class="kp-period-label" aria-live="polite"><span data-icon="calendar"></span><span data-period></span></span>
+            <button aria-label="Next pay period" data-step="1"><span data-icon="chevRight"></span></button>
+          </div>
+        </header>
+
+        <section class="kp-kpis" aria-label="Key figures" data-kpis></section>
+
+        <section class="kp-card kp-trend" aria-labelledby="kp-trend-h">
+          <div class="kp-card-head"><h2 id="kp-trend-h"><span data-icon="chart"></span>Payroll trend</h2>
+            <ul class="kp-legend"><li><i style="background:var(--chart-1)"></i>Gross pay</li><li><i style="background:var(--chart-2)"></i>Net pay</li></ul></div>
+          <div data-trend></div>
+        </section>
+
+        <section class="kp-card kp-ded" aria-labelledby="kp-ded-h">
+          <div class="kp-card-head"><h2 id="kp-ded-h"><span data-icon="receipt"></span>Deductions breakdown</h2></div>
+          <div class="kp-ded-body" data-ded></div>
+        </section>
+
+        <section class="kp-card kp-pto" aria-labelledby="kp-pto-h">
+          <div class="kp-card-head"><h2 id="kp-pto-h"><span data-icon="umbrella"></span>Time off</h2></div>
+          <div class="kp-pto-body" data-pto></div>
+        </section>
+
+        <section class="kp-card kp-runs" aria-labelledby="kp-runs-h">
+          <div class="kp-card-head"><h2 id="kp-runs-h"><span data-icon="clock"></span>Next steps</h2></div>
+          <ul class="kp-steps" data-steps></ul>
+          <p class="kp-quote">Steady pay, rested people, calm water.</p>
+        </section>
+      </main>
+    </div>
+    <p class="db-sample kp-foot">Sample data · fictional</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

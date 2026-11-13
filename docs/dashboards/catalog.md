@@ -2,13 +2,14 @@
 
 # Dashboard gallery catalog
 
-3 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+4 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
 | 1 | [Horizon Weather](#horizon-weather) | Cinematic & atmospheric | Weather & climate, Travel & places | dark | Dusk, Dawn, Night | [site/dashboards/horizon-weather/](../../site/dashboards/horizon-weather/) |
 | 2 | [Pulsar Analytics](#pulsar-analytics) | Dark neon | Analytics & BI, SaaS admin | dark | Violet mint, Ember, Daylight | [site/dashboards/pulsar-analytics/](../../site/dashboards/pulsar-analytics/) |
 | 3 | [Solstice Energy](#solstice-energy) | Cinematic & atmospheric | Analytics & BI, Smart home & IoT | dark | Ember, Glacier, Paper | [site/dashboards/solstice-energy/](../../site/dashboards/solstice-energy/) |
+| 4 | [Kumo Payroll](#kumo-payroll) | Cinematic & atmospheric | HR & people, Finance & banking | dark | Moonlit gold, Jade, Sakura | [site/dashboards/kumo-payroll/](../../site/dashboards/kumo-payroll/) |
 
 ## Cinematic & atmospheric
 
@@ -67,6 +68,34 @@ A cinematic solar-monitoring board: a thick gradient sun-path arc rises over a c
 - Data with no natural day cycle or location
 
 **Components:** Sun-path arc scene with movable sun · Two-series hourly line chart (pick an hour) · Readout strip (6 values) · Hero number with unit · Status table with state dots · Progress rings and liquid-fill dial · Bar chart with range toggle · Round landscape site picker
+
+---
+
+<a id="kumo-payroll"></a>
+### 4. Kumo Payroll
+
+![Kumo Payroll](../../site/dashboards/kumo-payroll/thumb.jpg)
+
+A moonlit payroll overview: a code-drawn ink landscape with a gold moon, layered hills and a blossom branch sits behind one dark, gold-edged panel holding KPI tiles, a gross/net bar chart, a deductions donut and time-off ring.
+
+- **Use cases:** HR & people, Finance & banking · **Mode:** dark · **Mood:** cinematic, serene, luxurious, eastern, warm
+- **Signature:** A glowing gold moon, ink-line hills and a cherry-blossom branch drawn in SVG behind a dark panel with a thin gold edge.
+- **Layout:** Fixed illustrated scene behind the page · one centred panel, max 1240px, offset 210px from the top so the moon shows · inside: 216px sidebar (brand, 7-item nav, wave pattern) + 12-column main grid, 16px gaps: header with pay-period stepper · 4 KPI tiles · trend chart (7 cols) + deductions (5 cols) · time off (6) + next steps (6)
+- **Responsive:** ≤1080px: sidebar becomes a scrolling top nav, KPIs 2×2, cards stack · ≤640px: panel offset 130px, icon-only nav, period stepper full width, donut and legend stack
+- **Fonts:** Marcellus / Mulish · **Palette:** bg `#0b0d14`, surface `#151823`, text `#f5ecdc`, muted `#bdb3a2`, accent `#e2bd7a`, gold `#d9a95a`, petal `#f3a2ae`, indigo `#6f86b8`
+- **Variants:** Moonlit gold, Jade, Sakura · **Closest toolkit theme:** `noir`
+
+**Best for**
+- HR, payroll or people tools that want a calm, premium feeling
+- Hospitality, wellness or boutique brands with an illustrated identity
+- Monthly summaries with a handful of headline figures
+
+**Avoid when**
+- Dense employee tables or bulk editing: the single framed panel limits width
+- Brands that need a neutral enterprise look
+- Screens that must fill a wide monitor edge to edge
+
+**Components:** Sidebar nav with gold active pill · Pay-period stepper · Tinted KPI tiles with change vs. last month · Grouped bar chart (pick a month) · Donut with selectable legend · Progress ring with stat grid · Dated task list · Serif pull quote
 
 ---
 
