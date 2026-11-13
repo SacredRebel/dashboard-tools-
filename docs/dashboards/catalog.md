@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-4 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+5 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -10,6 +10,7 @@
 | 2 | [Pulsar Analytics](#pulsar-analytics) | Dark neon | Analytics & BI, SaaS admin | dark | Violet mint, Ember, Daylight | [site/dashboards/pulsar-analytics/](../../site/dashboards/pulsar-analytics/) |
 | 3 | [Solstice Energy](#solstice-energy) | Cinematic & atmospheric | Analytics & BI, Smart home & IoT | dark | Ember, Glacier, Paper | [site/dashboards/solstice-energy/](../../site/dashboards/solstice-energy/) |
 | 4 | [Kumo Payroll](#kumo-payroll) | Cinematic & atmospheric | HR & people, Finance & banking | dark | Moonlit gold, Jade, Sakura | [site/dashboards/kumo-payroll/](../../site/dashboards/kumo-payroll/) |
+| 5 | [Canopy Reforest](#canopy-reforest) | Soft & friendly | Projects & tasks, Analytics & BI | dark | Forest, Autumn, Birch | [site/dashboards/canopy-reforest/](../../site/dashboards/canopy-reforest/) |
 
 ## Cinematic & atmospheric
 
@@ -132,7 +133,33 @@ _No dashboards yet._
 
 Rounded shapes, pastel fills, playful illustration-free warmth. Health, education, personal apps.
 
-_No dashboards yet._
+<a id="canopy-reforest"></a>
+### 5. Canopy Reforest
+
+![Canopy Reforest](../../site/dashboards/canopy-reforest/thumb.jpg)
+
+An organic reforestation tracker in forest green, bark brown and tan: a leafy code-drawn hero with a big rounded headline, a deep green band of four site figures and six soft, colour-blocked tiles for species, planting, soil, tasks and crews.
+
+- **Use cases:** Projects & tasks, Analytics & BI · **Mode:** dark · **Mood:** organic, calm, earthy, friendly, soft
+- **Signature:** Overlapping green and tan leaves with fine veins, drawn from one SVG path, spilling over a bark-brown wedge in the hero.
+- **Layout:** Centred 1240px column, 20px gaps · top bar (brand, 4-item nav, bell) · 380px hero (copy left, leaf artwork right, CTA + site switcher) · 4-column metrics band · 3×2 grid of colour-blocked tiles (species bars, monthly planting bars, soil gauges, landscape tile, checklist, crews)
+- **Responsive:** ≤980px: tiles 2 columns, metrics band 2×2 · ≤640px: single column, leaves move above the headline, site switcher and CTA full width
+- **Fonts:** Outfit / Nunito Sans · **Palette:** bg `#1f3a2b`, surface `#2c5a44`, text `#f6efdc`, muted `#d3d9c4`, accent `#ecc79a`, leaf `#3f7a40`, bark `#6a4130`, tan `#dcb98c`
+- **Variants:** Forest, Autumn, Birch · **Closest toolkit theme:** `grove`
+
+**Best for**
+- Sustainability, conservation, farming or garden projects
+- Public-facing progress pages that mix a landing-page hero with live figures
+- Community or volunteer tools that should feel welcoming
+
+**Avoid when**
+- Dense operational data or long tables
+- Finance, security or other serious, high-precision domains
+- Products that need many chart colours: the palette is deliberately narrow
+
+**Components:** Hero with headline, lede and pill CTA · Site switcher (segmented) · Metrics band with ringed icons · Horizontal share bars · Bar chart with hover/focus values · Selectable capsule gauges · Illustrated landscape tile with caption · Checklist · Crew list with initials
+
+---
 
 
 ## Editorial

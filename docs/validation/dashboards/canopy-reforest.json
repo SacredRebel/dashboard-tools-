@@ -1,0 +1,62 @@
+{
+  "id": "canopy-reforest",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/canopy-reforest/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/canopy-reforest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/canopy-reforest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/canopy-reforest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/canopy-reforest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=autumn",
+      "width": 1440,
+      "variant": "autumn",
+      "final_path": "/dashboards/canopy-reforest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=birch",
+      "width": 1440,
+      "variant": "birch",
+      "final_path": "/dashboards/canopy-reforest/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/canopy-reforest",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

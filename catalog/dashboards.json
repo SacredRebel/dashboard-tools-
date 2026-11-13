@@ -149,6 +149,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied concept illustration of a payroll dashboard. Brand name, labels, copy and figures were rewritten. The painted moon, hills and blossoms are redrawn as SVG themed by CSS variables; the pagoda, koi and lotus artwork were left out. The source image is not stored in the repo." },
       "path": "site/dashboards/kumo-payroll/"
+    },
+    {
+      "id": "canopy-reforest",
+      "number": 5,
+      "name": "Canopy Reforest",
+      "style_family": "soft",
+      "use_cases": ["project", "analytics"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "An organic reforestation tracker in forest green, bark brown and tan: a leafy code-drawn hero with a big rounded headline, a deep green band of four site figures and six soft, colour-blocked tiles for species, planting, soil, tasks and crews.",
+      "mood": ["organic", "calm", "earthy", "friendly", "soft"],
+      "best_for": ["Sustainability, conservation, farming or garden projects", "Public-facing progress pages that mix a landing-page hero with live figures", "Community or volunteer tools that should feel welcoming"],
+      "avoid_when": ["Dense operational data or long tables", "Finance, security or other serious, high-precision domains", "Products that need many chart colours: the palette is deliberately narrow"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Centred 1240px column, 20px gaps · top bar (brand, 4-item nav, bell) · 380px hero (copy left, leaf artwork right, CTA + site switcher) · 4-column metrics band · 3×2 grid of colour-blocked tiles (species bars, monthly planting bars, soil gauges, landscape tile, checklist, crews)",
+        "responsive": "≤980px: tiles 2 columns, metrics band 2×2 · ≤640px: single column, leaves move above the headline, site switcher and CTA full width"
+      },
+      "components": ["Hero with headline, lede and pill CTA", "Site switcher (segmented)", "Metrics band with ringed icons", "Horizontal share bars", "Bar chart with hover/focus values", "Selectable capsule gauges", "Illustrated landscape tile with caption", "Checklist", "Crew list with initials"],
+      "signature": "Overlapping green and tan leaves with fine veins, drawn from one SVG path, spilling over a bark-brown wedge in the hero.",
+      "palette": { "bg": "#1f3a2b", "surface": "#2c5a44", "text": "#f6efdc", "muted": "#d3d9c4", "accent": "#ecc79a", "leaf": "#3f7a40", "bark": "#6a4130", "tan": "#dcb98c" },
+      "fonts": { "display": "Outfit", "sans": "Nunito Sans" },
+      "variants": [
+        { "id": "default", "name": "Forest", "swatch": "#3f7a40" },
+        { "id": "autumn", "name": "Autumn", "swatch": "#f5c26b" },
+        { "id": "birch", "name": "Birch", "swatch": "#2f6b4d" }
+      ],
+      "maps_to_theme": "grove",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied landing-page concept with placeholder text. It was turned into a dashboard (a reforestation tracker): brand, copy and all figures are invented. The leaf photography and the forest photo tile were replaced with SVG drawings themed by CSS variables. The source image is not stored in the repo." },
+      "path": "site/dashboards/canopy-reforest/"
     }
   ]
 }

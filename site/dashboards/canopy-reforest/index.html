@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Canopy Reforest · Dashboard Tools gallery</title>
+  <meta name="description" content="Soft, organic reforestation tracker: a leafy code-drawn hero, a deep green metrics band and green, brown and tan tiles. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Nunito+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="cr">
+    <header class="cr-top">
+      <a class="cr-brand" href="#" aria-label="Canopy home"><span data-icon="leaf"></span>Canopy</a>
+      <nav class="cr-nav" aria-label="Main"><a href="#" aria-current="page">Overview</a><a href="#">Plots</a><a href="#">Species</a><a href="#">Volunteers</a></nav>
+      <button class="cr-iconbtn" aria-label="Notifications"><span data-icon="bell"></span></button>
+    </header>
+
+    <section class="cr-hero" aria-labelledby="cr-h1">
+      <div class="cr-hero-art" data-art aria-hidden="true"></div>
+      <div class="cr-hero-copy">
+        <p class="cr-eyebrow">Season 4 · <span data-site-name></span></p>
+        <h1 id="cr-h1">Regrow<br>the ridge</h1>
+        <p class="cr-lede" data-lede></p>
+        <div class="cr-hero-actions">
+          <button class="cr-cta">Log a planting</button>
+          <div class="cr-seg" role="group" aria-label="Site" data-sites></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cr-band" aria-label="Site figures" data-band></section>
+
+    <main class="cr-tiles">
+      <section class="cr-tile green" aria-labelledby="cr-sp-h">
+        <span class="cr-badge"><span data-icon="leaf"></span></span>
+        <h2 id="cr-sp-h">Species mix</h2>
+        <ul class="cr-species" data-species></ul>
+      </section>
+      <section class="cr-tile brown" aria-labelledby="cr-gr-h">
+        <span class="cr-badge dark"><span data-icon="trendUp"></span></span>
+        <h2 id="cr-gr-h">Trees planted by month</h2>
+        <div data-growth></div>
+      </section>
+      <section class="cr-tile clay" aria-labelledby="cr-so-h">
+        <span class="cr-badge"><span data-icon="drop"></span></span>
+        <h2 id="cr-so-h">Soil moisture</h2>
+        <div class="cr-soil" data-soil></div>
+      </section>
+      <section class="cr-tile scene" aria-labelledby="cr-sc-h">
+        <div class="cr-scene" data-scene aria-hidden="true"></div>
+        <div class="cr-scene-cap"><h2 id="cr-sc-h" data-scene-title></h2><p data-scene-note></p></div>
+      </section>
+      <section class="cr-tile dark" aria-labelledby="cr-ta-h">
+        <span class="cr-badge dark"><span data-icon="list"></span></span>
+        <h2 id="cr-ta-h">This week</h2>
+        <ul class="cr-tasks" data-tasks></ul>
+      </section>
+      <section class="cr-tile tan" aria-labelledby="cr-vo-h">
+        <span class="cr-badge hex"><span data-icon="users"></span></span>
+        <h2 id="cr-vo-h">Volunteer crews</h2>
+        <ul class="cr-crews" data-crews></ul>
+      </section>
+    </main>
+    <p class="db-sample cr-foot">Sample data · fictional</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
