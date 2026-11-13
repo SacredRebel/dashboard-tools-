@@ -2,12 +2,13 @@
 
 # Dashboard gallery catalog
 
-2 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+3 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
 | 1 | [Horizon Weather](#horizon-weather) | Cinematic & atmospheric | Weather & climate, Travel & places | dark | Dusk, Dawn, Night | [site/dashboards/horizon-weather/](../../site/dashboards/horizon-weather/) |
 | 2 | [Pulsar Analytics](#pulsar-analytics) | Dark neon | Analytics & BI, SaaS admin | dark | Violet mint, Ember, Daylight | [site/dashboards/pulsar-analytics/](../../site/dashboards/pulsar-analytics/) |
+| 3 | [Solstice Energy](#solstice-energy) | Cinematic & atmospheric | Analytics & BI, Smart home & IoT | dark | Ember, Glacier, Paper | [site/dashboards/solstice-energy/](../../site/dashboards/solstice-energy/) |
 
 ## Cinematic & atmospheric
 
@@ -38,6 +39,34 @@ A cinematic weather home: painted sunset landscape behind glass panels, an edito
 - Low-end devices that struggle with backdrop blur
 
 **Components:** Pill search with accent button · Hero metric (big thin temperature) · Selectable forecast cards (listbox, arrow keys) · Area chart with range toggle and hover/focus values · Key-value details list with icons · Image story card with serif quote · Circular location thumbnails · Ghost button
+
+---
+
+<a id="solstice-energy"></a>
+### 3. Solstice Energy
+
+![Solstice Energy](../../site/dashboards/solstice-energy/thumb.jpg)
+
+A cinematic solar-monitoring board: a thick gradient sun-path arc rises over a code-drawn mountain range, with generation and load curves on a teal grid, a readout strip, storage dials and round site thumbnails.
+
+- **Use cases:** Analytics & BI, Smart home & IoT · **Mode:** dark · **Mood:** cinematic, warm, technical, atmospheric, instrument-like
+- **Signature:** A thick yellow-to-orange-to-pink arc tracing the sun's path, cut by faceted orange mountains drawn in SVG; the sun dot moves to the hour you pick.
+- **Layout:** Slim top bar (brand, 4-item nav, date, 2 icon buttons) · 12-column grid at 1440px, 18px gaps: 3-column rail (today's total, strings table, self-powered ring) + 9-column hero (sun arc scene, hourly chart, 6-item readout strip) · then 2×2 half-width panels (output bars with range toggle, 4 storage dials, hourly load bars, 4 site thumbnails)
+- **Responsive:** ≤1180px: hero full width on top, rail becomes a two-column panel below · ≤760px: single column, hero chart 130px, readout strip 3×2, dials and sites 2×2
+- **Fonts:** Chakra Petch / IBM Plex Sans · **Palette:** bg `#17181c`, surface `#24252a`, text `#f3eee7`, muted `#b5afa6`, accent `#ff9a4a`, teal `#3fd6c0`, coral `#ff6a5c`, pink `#f08ad0`
+- **Variants:** Ember, Glacier, Paper · **Closest toolkit theme:** `ember`
+
+**Best for**
+- Energy, solar, climate or outdoor-equipment monitoring
+- A single hero metric that follows the time of day
+- Control-room or kiosk screens with a strong visual identity
+
+**Avoid when**
+- Many records to scan or edit: the hero scene takes most of the first screen
+- Brands that need a neutral, corporate look
+- Data with no natural day cycle or location
+
+**Components:** Sun-path arc scene with movable sun · Two-series hourly line chart (pick an hour) · Readout strip (6 values) · Hero number with unit · Status table with state dots · Progress rings and liquid-fill dial · Bar chart with range toggle · Round landscape site picker
 
 ---
 

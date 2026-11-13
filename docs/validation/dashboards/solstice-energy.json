@@ -1,0 +1,62 @@
+{
+  "id": "solstice-energy",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/solstice-energy/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/solstice-energy/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/solstice-energy/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/solstice-energy/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/solstice-energy/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=glacier",
+      "width": 1440,
+      "variant": "glacier",
+      "final_path": "/dashboards/solstice-energy/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=paper",
+      "width": 1440,
+      "variant": "paper",
+      "final_path": "/dashboards/solstice-energy/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/solstice-energy",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

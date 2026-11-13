@@ -85,6 +85,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied concept render of a dark analytics board. The render had no readable text, so brand, labels, metrics and all data are invented. Charts, dial and orbs are drawn in SVG and CSS. The source image is not stored in the repo." },
       "path": "site/dashboards/pulsar-analytics/"
+    },
+    {
+      "id": "solstice-energy",
+      "number": 3,
+      "name": "Solstice Energy",
+      "style_family": "cinematic",
+      "use_cases": ["analytics", "smart-home"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A cinematic solar-monitoring board: a thick gradient sun-path arc rises over a code-drawn mountain range, with generation and load curves on a teal grid, a readout strip, storage dials and round site thumbnails.",
+      "mood": ["cinematic", "warm", "technical", "atmospheric", "instrument-like"],
+      "best_for": ["Energy, solar, climate or outdoor-equipment monitoring", "A single hero metric that follows the time of day", "Control-room or kiosk screens with a strong visual identity"],
+      "avoid_when": ["Many records to scan or edit: the hero scene takes most of the first screen", "Brands that need a neutral, corporate look", "Data with no natural day cycle or location"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Slim top bar (brand, 4-item nav, date, 2 icon buttons) · 12-column grid at 1440px, 18px gaps: 3-column rail (today's total, strings table, self-powered ring) + 9-column hero (sun arc scene, hourly chart, 6-item readout strip) · then 2×2 half-width panels (output bars with range toggle, 4 storage dials, hourly load bars, 4 site thumbnails)",
+        "responsive": "≤1180px: hero full width on top, rail becomes a two-column panel below · ≤760px: single column, hero chart 130px, readout strip 3×2, dials and sites 2×2"
+      },
+      "components": ["Sun-path arc scene with movable sun", "Two-series hourly line chart (pick an hour)", "Readout strip (6 values)", "Hero number with unit", "Status table with state dots", "Progress rings and liquid-fill dial", "Bar chart with range toggle", "Round landscape site picker"],
+      "signature": "A thick yellow-to-orange-to-pink arc tracing the sun's path, cut by faceted orange mountains drawn in SVG; the sun dot moves to the hour you pick.",
+      "palette": { "bg": "#17181c", "surface": "#24252a", "text": "#f3eee7", "muted": "#b5afa6", "accent": "#ff9a4a", "teal": "#3fd6c0", "coral": "#ff6a5c", "pink": "#f08ad0" },
+      "fonts": { "display": "Chakra Petch", "sans": "IBM Plex Sans" },
+      "variants": [
+        { "id": "default", "name": "Ember", "swatch": "#ff9a4a" },
+        { "id": "glacier", "name": "Glacier", "swatch": "#5cc8f5" },
+        { "id": "paper", "name": "Paper", "swatch": "#984008" }
+      ],
+      "maps_to_theme": "ember",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied concept render with no readable text. The domain (solar monitoring), brand, labels and all data are invented. The mountain photo-style art and the round thumbnails were replaced with SVG and CSS landscapes themed by variables. The source image is not stored in the repo." },
+      "path": "site/dashboards/solstice-energy/"
     }
   ]
 }
