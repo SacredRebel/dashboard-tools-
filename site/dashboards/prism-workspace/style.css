@@ -93,6 +93,7 @@ body { background: var(--bg); min-height: 100vh; }
 .pw-list { display: grid; gap: 4px; margin-top: 4px; }
 .pw-list li { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto auto; gap: 10px; align-items: center; min-height: 52px; padding: 4px 6px; border-radius: var(--radius-sm); font-size: 15px; }
 .pw-list li:hover { background: var(--surface-2); }
+.pw-list li > span { min-width: 0; overflow-wrap: anywhere; }
 .pw-role { padding: 4px 10px; border-radius: var(--radius-pill); background: var(--surface-2); font-size: 13px; font-weight: 600; }
 .pw-x { width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; background: none; color: var(--text-muted); }
 .pw-x svg { width: 16px; height: 16px; } .pw-x:hover { background: var(--surface-2); color: var(--text); }
