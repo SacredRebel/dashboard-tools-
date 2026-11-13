@@ -661,6 +661,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass smart-home reference. Brand, room names and all data are invented. The living-room photograph was replaced with an SVG atrium scene. The source image is not stored in the repo." },
       "path": "site/dashboards/atrium-living/"
+    },
+    {
+      "id": "glacier-ops",
+      "number": 21,
+      "name": "Glacier Ops",
+      "style_family": "data-dense",
+      "use_cases": ["analytics"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A data-dense dark-blue radial HUD for cold-ops monitoring: a multi-ring dial with SVG glacier topography, cyan accents, and a ring of compact charts, gauges and a viewfinder.",
+      "mood": ["tactical", "icy", "technical", "dense", "nocturnal"],
+      "best_for": ["Operations or telemetry walls that need a heroic central radial", "Cyan-on-navy analytical showcases", "Dashboards where many small charts surround one signature dial"],
+      "avoid_when": ["Simple consumer apps or sparse KPI boards", "Light-mode brand systems", "Editable record workflows — this screen is for monitoring, not forms"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Top bar (brand, sector tabs, 4 status orbs) · 12-column body: left chart stack · center multi-ring topo dial · right viewfinder + lines + dual gauges · full-width bottom area wave",
+        "responsive": "≤1180px: dial full width on top, side stacks become two columns below · ≤960px: single column, dial scales down, bottom chart first after dial · ≤640px: status orbs wrap, tabs scroll"
+      },
+      "components": ["Sector tab nav", "Status orbs", "Multi-ring radial dial with SVG topo", "Lock segment ring", "Donut breakdown", "Vertical bar mini-charts", "Horizontal progress meters", "Spark / area waves", "Multi-line series", "Viewfinder frame", "Dual arc gauges", "Bottom range area chart"],
+      "signature": "A cyan-rimmed multi-ring dial whose core is a hand-drawn glacier topographic sphere, ringed by lock segments and flanked by dense miniature charts.",
+      "palette": { "bg": "#070d18", "surface": "#0f1a2c", "text": "#d7f4ff", "muted": "#7fa8bf", "accent": "#3de0ff", "alert": "#ff4d6a", "panel": "#1a3350" },
+      "fonts": { "display": "Rajdhani", "sans": "IBM Plex Sans" },
+      "variants": [
+        { "id": "default", "name": "Glacier", "swatch": "#3de0ff" },
+        { "id": "cobalt", "name": "Cobalt", "swatch": "#4d7cff" },
+        { "id": "night", "name": "Night", "swatch": "#5cffc8" }
+      ],
+      "maps_to_theme": "midnight",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied blue radial HUD reference. Brand, sector names and all data are invented English fiction. The central 3D topo was replaced with SVG contour art. The source image is not stored in the repo." },
+      "path": "site/dashboards/glacier-ops/"
     }
   ]
 }

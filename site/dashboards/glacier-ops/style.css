@@ -1,0 +1,286 @@
+/* =========================================================================
+   Glacier Ops · style family: data-dense · mode: dark
+   Token names match design-system/tokens.css. Variants: default (glacier), cobalt, night.
+   ========================================================================= */
+:root {
+  --bg: #070d18;
+  --surface: #0f1a2c;
+  --surface-2: #152338;
+  --border: rgb(61 224 255 / 0.16);
+  --text: #d7f4ff;
+  --text-muted: #7fa8bf;
+  --text-subtle: #5f8499;
+  --accent: #3de0ff;
+  --accent-fg: #031018;
+  --accent-soft: rgb(61 224 255 / 0.14);
+  --focus: #9cf0ff;
+  --chart-1: #3de0ff;
+  --chart-2: #6ef0d0;
+  --chart-3: #7aa8ff;
+  --chart-4: #c8e8ff;
+  --alert: #ff4d6a;
+  --panel: #1a3350;
+  --glow: rgb(61 224 255 / 0.35);
+  --topo-1: #b9e9ff;
+  --topo-2: #4aa8c8;
+  --topo-3: #1d4f6e;
+  --topo-4: #0c2438;
+  --font-display: "Rajdhani", system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --shadow: 0 12px 32px rgb(0 0 0 / 0.45), inset 0 1px 0 rgb(255 255 255 / 0.04);
+}
+[data-variant="cobalt"] {
+  --bg: #060a16;
+  --surface: #0d152c;
+  --surface-2: #141f3a;
+  --border: rgb(122 159 255 / 0.28);
+  --text: #e0e8ff;
+  --text-muted: #a8b8e0;
+  --text-subtle: #8a9cc8;
+  --accent: #8aafff;
+  --accent-fg: #040812;
+  --accent-soft: rgb(138 175 255 / 0.2);
+  --focus: #c0d4ff;
+  --chart-1: #8aafff;
+  --chart-2: #5ad0ff;
+  --chart-3: #9b7dff;
+  --chart-4: #d0dcff;
+  --alert: #ff5a7a;
+  --panel: #1a2850;
+  --glow: rgb(77 124 255 / 0.4);
+  --topo-1: #c8d6ff;
+  --topo-2: #5a78d8;
+  --topo-3: #243878;
+  --topo-4: #0e1634;
+}
+[data-variant="night"] {
+  --bg: #040c10;
+  --surface: #0a181c;
+  --surface-2: #102428;
+  --border: rgb(92 255 200 / 0.18);
+  --text: #d8fff2;
+  --text-muted: #7fb8a8;
+  --text-subtle: #5e9288;
+  --accent: #5cffc8;
+  --accent-fg: #02140e;
+  --accent-soft: rgb(92 255 200 / 0.14);
+  --focus: #b6ffe6;
+  --chart-1: #5cffc8;
+  --chart-2: #4dd0ff;
+  --chart-3: #8affd0;
+  --chart-4: #d0fff0;
+  --alert: #ff6b7a;
+  --panel: #143830;
+  --glow: rgb(92 255 200 / 0.35);
+  --topo-1: #c8ffe8;
+  --topo-2: #3cb896;
+  --topo-3: #1a5648;
+  --topo-4: #0a241e;
+}
+
+/* ---------------------------------------------------------------- charts (plumbing: SVG shape + HTML labels) */
+.go-plot { position: relative; margin-left: var(--y-w, 44px); padding-bottom: 26px; min-width: 0; }
+.go-plot svg { display: block; width: 100%; height: var(--plot-h, 200px); overflow: visible; }
+.go-plot .grid line { stroke: var(--border); }
+.go-plot .line { fill: none; stroke-width: 2; }
+.go-y, .go-x { position: absolute; font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+.go-y { right: calc(100% + 8px); transform: translateY(-50%); }
+.go-x { bottom: 0; transform: translateX(-50%); }
+.go-dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--chart-1); transform: translate(-50%, -50%); pointer-events: none; }
+.go-dot.on { background: var(--chart-1); box-shadow: 0 0 0 5px var(--accent-soft); }
+.go-hit { position: absolute; inset: 0 0 26px 0; display: flex; }
+.go-hit button { flex: 1; min-width: 0; border: 0; background: none; padding: 0; }
+.go-hit button:focus-visible, .go-col:focus-visible { outline-offset: -2px; }
+.go-cursor { position: absolute; top: 0; width: 1px; height: var(--plot-h, 200px); background: var(--text-subtle); opacity: 0.6; pointer-events: none; }
+.go-tip { position: absolute; z-index: 3; transform: translate(-50%, -130%); padding: 4px 8px; border-radius: var(--radius-sm); background: var(--accent); color: var(--accent-fg); font-size: 12px; font-weight: 500; pointer-events: none; white-space: nowrap; }
+.go-tip b { font-weight: 600; margin-right: 4px; }
+.go-tip.l { transform: translate(-12%, -130%); } .go-tip.r { transform: translate(-88%, -130%); }
+.go-barplot { padding-bottom: 0; }
+.go-cols { position: relative; display: flex; align-items: flex-end; gap: var(--bar-gap, 10px); height: var(--plot-h, 200px); }
+.go-col { flex: 1; min-width: 0; height: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 3px; border: 0; background: none; padding: 0; }
+.go-col.stack { flex-direction: column; justify-content: flex-end; align-items: center; gap: 2px; }
+.go-bar { flex: 1 1 auto; width: 100%; max-width: var(--bar-w, 22px); min-height: 2px; border-radius: var(--bar-r, 6px) var(--bar-r, 6px) 0 0; background: var(--bar, var(--chart-1)); transition: opacity 160ms ease; }
+.go-col.stack .go-bar { flex: none; }
+.go-cols:hover .go-col:not(:hover) .go-bar { opacity: 0.55; }
+.go-gl { position: absolute; left: 0; right: 0; height: 1px; background: var(--border); }
+.go-xs { display: flex; gap: var(--bar-gap, 10px); padding-top: 8px; }
+.go-xs span { flex: 1; min-width: 0; text-align: center; font-size: 12px; color: var(--text-muted); white-space: nowrap; overflow: hidden; }
+.go-spark { width: 100%; height: 100%; overflow: visible; }
+@media (max-width: 640px) { .go-x.alt { display: none; } }
+
+body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 14px; }
+.go {
+  max-width: 1480px; margin: 0 auto; padding: 16px 20px 20px;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgb(61 224 255 / 0.07), transparent 55%),
+    var(--bg);
+}
+.go-foot { text-align: center; margin-top: 10px; }
+.vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+.go-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+.go-brand {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px;
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text); text-decoration: none;
+}
+.go-mark {
+  width: 18px; height: 18px;
+  background: linear-gradient(145deg, var(--accent), var(--topo-3));
+  clip-path: polygon(50% 0, 100% 38%, 82% 100%, 18% 100%, 0 38%);
+  box-shadow: 0 0 16px var(--glow);
+}
+.go-tabs {
+  display: flex; gap: 4px; padding: 4px; border-radius: var(--radius-pill);
+  background: var(--surface); border: 1px solid var(--border); overflow-x: auto; max-width: 100%;
+}
+.go-tabs button {
+  flex: none; min-height: 44px; padding: 0 14px; border: 0; border-radius: var(--radius-pill);
+  background: transparent; color: var(--text-muted); font-size: 13px; font-weight: 600; white-space: nowrap;
+}
+.go-tabs button[aria-pressed="true"] {
+  background: var(--accent-soft); color: var(--accent);
+  box-shadow: 0 0 18px var(--glow), inset 0 0 0 1px var(--accent);
+}
+.go-orbs { display: flex; gap: 10px; margin-left: auto; list-style: none; padding: 0; }
+.go-orb {
+  width: 56px; height: 56px; display: grid; place-items: center; align-content: center;
+  border-radius: 50%; border: 1px solid var(--border); background: var(--surface);
+  box-shadow: inset 0 0 18px var(--accent-soft); text-align: center;
+}
+.go-orb b { font-family: var(--font-display); font-size: 18px; font-weight: 700; line-height: 1; color: var(--accent); }
+.go-orb.bad b { color: var(--alert); }
+.go-orb span { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+
+.go-main {
+  display: grid; gap: 12px;
+  grid-template-columns: minmax(200px, 1fr) minmax(280px, 1.4fr) minmax(200px, 1fr);
+  grid-template-areas:
+    "left center right"
+    "bot bot bot";
+}
+.go-left { grid-area: left; }
+.go-center { grid-area: center; }
+.go-right { grid-area: right; }
+.go-bottom { grid-area: bot; }
+.go-stack { display: grid; gap: 10px; align-content: start; min-width: 0; }
+
+.go-panel {
+  min-width: 0; padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.go-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.go-head h2 {
+  margin: 0; font-family: var(--font-display); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+}
+.go-tag { font-size: 12px; color: var(--text-muted); }
+.go-tag.alert { color: var(--alert); }
+
+.go-seg { display: inline-flex; gap: 2px; padding: 3px; border-radius: var(--radius-sm); background: var(--panel); border: 1px solid var(--border); }
+.go-seg button {
+  min-height: 44px; min-width: 44px; padding: 0 10px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--text-muted); font-size: 12px; font-weight: 600;
+}
+.go-seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); }
+
+.go-mix { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 10px; align-items: center; }
+.go-mixlist { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+.go-mixlist li { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--text-muted); }
+.go-mixlist i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+.go-mix .track { stroke: var(--panel); }
+
+.go-meters { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.go-meters li { display: grid; gap: 4px; }
+.go-meters span { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
+.go-meters b { color: var(--text); font-weight: 600; }
+.go-metertrack { height: 8px; border-radius: 8px; background: var(--panel); overflow: hidden; }
+.go-meterfill { display: block; height: 100%; border-radius: 8px; background: linear-gradient(90deg, var(--chart-2), var(--accent)); }
+
+.go-pulse { height: 48px; }
+.go-pulse .go-spark, .go-osc .go-spark { width: 100%; height: 100%; display: block; }
+
+.go-center {
+  display: grid; justify-items: center; align-content: center; gap: 10px;
+  padding: 12px; border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 50% 50%, var(--accent-soft), transparent 60%),
+    linear-gradient(180deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow), 0 0 40px var(--glow);
+  min-width: 0;
+}
+.go-dial { position: relative; width: min(100%, 420px); aspect-ratio: 1; }
+.go-dial svg { width: 100%; height: 100%; display: block; }
+.go-dialnote { font-size: 13px; color: var(--text-muted); text-align: center; min-height: 1.2em; }
+.go-seglocks { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.go-seglocks button {
+  min-height: 44px; padding: 0 10px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--panel); color: var(--text-muted);
+  font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;
+}
+.go-seglocks button svg { width: 14px; height: 14px; }
+.go-seglocks button[aria-pressed="true"] {
+  color: var(--accent); border-color: var(--accent); box-shadow: 0 0 12px var(--glow);
+}
+
+.go-viewfinder {
+  position: relative; aspect-ratio: 16 / 10; border-radius: var(--radius-sm);
+  background: var(--panel); overflow: hidden;
+}
+.go-viewfinder svg { width: 100%; height: 100%; display: block; }
+.go-osc { height: 44px; }
+
+.go-twin { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.go-gauge {
+  position: relative; display: grid; justify-items: center; padding: 4px;
+}
+.go-gauge svg { width: 100%; max-width: 110px; height: auto; display: block; }
+.go-gauge .track { stroke: var(--panel); }
+.go-gauge b {
+  position: absolute; inset: 18% 0 auto; text-align: center;
+  font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--accent);
+}
+.go-gauge span { font-size: 12px; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 2px; }
+
+.go-bottom .go-plot { --plot-h: 120px; }
+.go-botnote { margin-top: 6px; font-size: 12px; color: var(--text-muted); min-height: 1.2em; }
+
+.go-left .go-plot, .go-right .go-plot { --plot-h: 72px; }
+.go-left .go-y, .go-right .go-y, .go-left .go-x, .go-right .go-x, .go-bottom .go-y, .go-bottom .go-x { font-size: 12px; }
+.go-cols { overflow-x: auto; }
+.go-col { min-width: 44px; }
+.go-plot { overflow: hidden; }
+.go-hit button { min-width: 44px; }
+
+@media (max-width: 1180px) {
+  .go-main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "center center"
+      "left right"
+      "bot bot";
+  }
+  .go-dial { width: min(100%, 360px); }
+}
+@media (max-width: 960px) {
+  .go-main {
+    grid-template-columns: 1fr;
+    grid-template-areas: "center" "bot" "left" "right";
+  }
+  .go-orbs { margin-left: 0; width: 100%; justify-content: flex-start; }
+}
+@media (max-width: 640px) {
+  .go { padding: 12px; }
+  .go-tabs { width: 100%; }
+  .go-brand { font-size: 18px; }
+  .go-orb { width: 48px; height: 48px; }
+  .go-orb b { font-size: 15px; }
+}

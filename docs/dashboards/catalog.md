@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-20 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+21 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -26,6 +26,7 @@
 | 18 | [Hearth Nest](#hearth-nest) | Cinematic & atmospheric | Smart home & IoT | dark | Amber hearth, Cedar, Frost | [site/dashboards/hearth-nest/](../../site/dashboards/hearth-nest/) |
 | 19 | [Veil Rooms](#veil-rooms) | Glass & glow | Smart home & IoT | dark | Slate glass, Mist, Midnight | [site/dashboards/veil-rooms/](../../site/dashboards/veil-rooms/) |
 | 20 | [Atrium Living](#atrium-living) | Glass & glow | Smart home & IoT | light | Daylight, Dusk, Night | [site/dashboards/atrium-living/](../../site/dashboards/atrium-living/) |
+| 21 | [Glacier Ops](#glacier-ops) | Data-dense pro | Analytics & BI | dark | Glacier, Cobalt, Night | [site/dashboards/glacier-ops/](../../site/dashboards/glacier-ops/) |
 
 ## Cinematic & atmospheric
 
@@ -415,7 +416,33 @@ A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, dra
 
 Compact tables, many small charts, tight spacing, monospace numbers. Trading, ops, analytics power users.
 
-_No dashboards yet._
+<a id="glacier-ops"></a>
+### 21. Glacier Ops
+
+![Glacier Ops](../../site/dashboards/glacier-ops/thumb.jpg)
+
+A data-dense dark-blue radial HUD for cold-ops monitoring: a multi-ring dial with SVG glacier topography, cyan accents, and a ring of compact charts, gauges and a viewfinder.
+
+- **Use cases:** Analytics & BI · **Mode:** dark · **Mood:** tactical, icy, technical, dense, nocturnal
+- **Signature:** A cyan-rimmed multi-ring dial whose core is a hand-drawn glacier topographic sphere, ringed by lock segments and flanked by dense miniature charts.
+- **Layout:** Top bar (brand, sector tabs, 4 status orbs) · 12-column body: left chart stack · center multi-ring topo dial · right viewfinder + lines + dual gauges · full-width bottom area wave
+- **Responsive:** ≤1180px: dial full width on top, side stacks become two columns below · ≤960px: single column, dial scales down, bottom chart first after dial · ≤640px: status orbs wrap, tabs scroll
+- **Fonts:** Rajdhani / IBM Plex Sans · **Palette:** bg `#070d18`, surface `#0f1a2c`, text `#d7f4ff`, muted `#7fa8bf`, accent `#3de0ff`, alert `#ff4d6a`, panel `#1a3350`
+- **Variants:** Glacier, Cobalt, Night · **Closest toolkit theme:** `midnight`
+
+**Best for**
+- Operations or telemetry walls that need a heroic central radial
+- Cyan-on-navy analytical showcases
+- Dashboards where many small charts surround one signature dial
+
+**Avoid when**
+- Simple consumer apps or sparse KPI boards
+- Light-mode brand systems
+- Editable record workflows — this screen is for monitoring, not forms
+
+**Components:** Sector tab nav · Status orbs · Multi-ring radial dial with SVG topo · Lock segment ring · Donut breakdown · Vertical bar mini-charts · Horizontal progress meters · Spark / area waves · Multi-line series · Viewfinder frame · Dual arc gauges · Bottom range area chart
+
+---
 
 
 ## Soft & friendly

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Glacier Ops · Dashboard Tools gallery</title>
+  <meta name="description" content="Data-dense dark blue radial HUD with a multi-ring glacier topo dial, cyan accents and satellite charts. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="go">
+    <header class="go-top">
+      <a class="go-brand" href="#" aria-label="Glacier Ops home"><span class="go-mark" aria-hidden="true"></span>Glacier Ops</a>
+      <nav class="go-tabs" aria-label="Sectors" data-sectors>
+        <button type="button" data-v="alpha" aria-pressed="true">Sector Alpha</button>
+        <button type="button" data-v="bravo" aria-pressed="false">Sector Bravo</button>
+        <button type="button" data-v="charlie" aria-pressed="false">Sector Charlie</button>
+        <button type="button" data-v="delta" aria-pressed="false">Sector Delta</button>
+      </nav>
+      <ul class="go-orbs" data-orbs aria-label="Status"></ul>
+    </header>
+
+    <main class="go-main">
+      <div class="go-stack go-left">
+        <section class="go-panel" aria-labelledby="go-mix-h">
+          <div class="go-head"><h2 id="go-mix-h">Signal mix</h2><span class="go-tag" data-mix-tag></span></div>
+          <div class="go-mix" data-mix></div>
+        </section>
+        <section class="go-panel" aria-labelledby="go-load-h">
+          <div class="go-head"><h2 id="go-load-h">Load bands</h2></div>
+          <div data-load></div>
+        </section>
+        <section class="go-panel" aria-labelledby="go-meter-h">
+          <div class="go-head"><h2 id="go-meter-h">Channel depth</h2></div>
+          <ul class="go-meters" data-meters></ul>
+        </section>
+        <section class="go-panel" aria-labelledby="go-pulse-h">
+          <div class="go-head"><h2 id="go-pulse-h">Pulse</h2></div>
+          <div class="go-pulse" data-pulse></div>
+        </section>
+      </div>
+
+      <section class="go-center" aria-labelledby="go-core-h">
+        <h2 class="vh" id="go-core-h">Core dial</h2>
+        <div class="go-dial" data-dial></div>
+        <p class="go-dialnote" data-dialnote aria-live="polite"></p>
+        <div class="go-seglocks" role="group" aria-label="Rim locks" data-rim></div>
+      </section>
+
+      <div class="go-stack go-right">
+        <section class="go-panel go-finder" aria-labelledby="go-vf-h">
+          <div class="go-head"><h2 id="go-vf-h">Viewfinder</h2><span class="go-tag alert" data-vf-tag>Armed</span></div>
+          <div class="go-viewfinder" data-finder role="img" aria-label="Optical viewfinder overlay"></div>
+        </section>
+        <section class="go-panel" aria-labelledby="go-tiny-h">
+          <div class="go-head"><h2 id="go-tiny-h">Short bars</h2></div>
+          <div data-tiny></div>
+        </section>
+        <section class="go-panel" aria-labelledby="go-wave-h">
+          <div class="go-head"><h2 id="go-wave-h">Oscillator</h2></div>
+          <div class="go-osc" data-osc></div>
+        </section>
+        <section class="go-panel" aria-labelledby="go-series-h">
+          <div class="go-head"><h2 id="go-series-h">Multi-track</h2></div>
+          <div data-series></div>
+        </section>
+        <section class="go-panel" aria-labelledby="go-ridge-h">
+          <div class="go-head"><h2 id="go-ridge-h">Ridge stack</h2></div>
+          <div data-ridge></div>
+        </section>
+        <section class="go-panel go-gauges" aria-labelledby="go-g-h">
+          <h2 class="vh" id="go-g-h">Twin gauges</h2>
+          <div class="go-twin" data-gauges></div>
+        </section>
+      </div>
+
+      <section class="go-panel go-bottom" aria-labelledby="go-bot-h">
+        <div class="go-head">
+          <h2 id="go-bot-h">Elevation delta</h2>
+          <div class="go-seg" role="group" aria-label="Window" data-window>
+            <button type="button" data-v="6h" aria-pressed="false">6h</button>
+            <button type="button" data-v="24h" aria-pressed="true">24h</button>
+            <button type="button" data-v="7d" aria-pressed="false">7d</button>
+          </div>
+        </div>
+        <div data-bottom></div>
+        <p class="go-botnote" data-botnote aria-live="polite"></p>
+      </section>
+    </main>
+    <p class="db-sample go-foot">Sample data · fictional</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
