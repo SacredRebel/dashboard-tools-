@@ -373,6 +373,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied concept sheet of six medical phone screens (same set as Pearlwell Dental, different clinic). The screens were merged into a bento desktop layout that differs from Pearlwell's sidebar portal. Names, photos and copy were not reused; doctors, readings and records are invented and phone links use 555 numbers. 3D props were replaced with an SVG heart and charts. The source image is not stored in the repo." },
       "path": "site/dashboards/vitalis-care/"
+    },
+    {
+      "id": "mallow-music",
+      "number": 12,
+      "name": "Mallow Music",
+      "style_family": "skeuo",
+      "use_cases": ["media"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A claymorphic listening dashboard for a music app: puffy pastel tiles with soft inner highlights, a peach hero with code-drawn clay headphones and a plant, a now-playing bar you can scrub, colourful weekly listening bars, a genre donut, recently played songs and a daily mix drawn as a cosy room.",
+      "mood": ["cosy", "playful", "warm", "soft", "friendly"],
+      "best_for": ["Music, podcast and audiobook apps with a personal home screen", "Consumer products aimed at a young or casual audience", "Dashboards where personality matters more than density"],
+      "avoid_when": ["Professional or financial tools", "Dense data that needs flat, sharp charts", "Brands that want a serious or premium feel"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "220px clay sidebar (avatar, 6 links, Plus card) · main: title + search + bell · peach hero (art 220px, greeting, plant) · now-playing bar · 4 stat tiles · listening bars (1.25fr) + top genres (1fr) · recently played + daily mix",
+        "responsive": "≤1100px: sidebar becomes a top block, stats 2×2 · ≤700px: single column, nav in 3×2 grid, hero art above copy, player wraps to two rows"
+      },
+      "components": ["Clay sidebar with avatar and upgrade card", "Hero with greeting and play action", "Now-playing bar with play/pause and scrubber", "Pastel stat tiles", "Multicolour bar chart with week toggle", "Genre donut with selectable legend", "Track list with favourite and play", "Daily mix card with switchable SVG room"],
+      "signature": "Puffy clay surfaces with an outer shadow and an inner highlight, in cream, sage, peach, butter and sky, with glossy SVG headphones on the hero shelf.",
+      "palette": { "bg": "#f4ece1", "surface": "#fbf6ef", "text": "#3a2a20", "muted": "#6b5546", "accent": "#b04a2f", "sage": "#cfe1d8", "peach": "#f7d3c1", "butter": "#f8e2b0" },
+      "fonts": { "display": "Fredoka", "sans": "Fredoka" },
+      "variants": [
+        { "id": "default", "name": "Cream", "swatch": "#b04a2f" },
+        { "id": "berry", "name": "Berry", "swatch": "#a03a64" },
+        { "id": "cocoa", "name": "Cocoa", "swatch": "#f3a47f" }
+      ],
+      "maps_to_theme": "blush",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied claymorphism music-app render. Layout and mood were kept; the cartoon girl, photos, artist names and copy were not reused. Artists and songs are invented. Characters and photos were replaced with SVG headphones, a plant, a crown, generated cover art and a room scene. The source image is not stored in the repo." },
+      "path": "site/dashboards/mallow-music/"
     }
   ]
 }

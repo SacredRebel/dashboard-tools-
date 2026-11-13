@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Mallow Music · Dashboard Tools gallery</title>
+  <meta name="description" content="Claymorphic listening dashboard for a music app: puffy pastel tiles, a now-playing bar, weekly listening, top genres and a daily mix. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="mm">
+    <aside class="mm-side">
+      <div class="mm-me"><span class="mm-avatar" aria-hidden="true" data-avatar></span><p>Hi, Juno</p></div>
+      <nav aria-label="Main">
+        <a href="#" aria-current="page"><span data-icon="home"></span>Dashboard</a>
+        <a href="#"><span data-icon="music"></span>My music</a>
+        <a href="#"><span data-icon="heart"></span>Favourites</a>
+        <a href="#"><span data-icon="list"></span>Playlists</a>
+        <a href="#"><span data-icon="mic"></span>Podcasts</a>
+        <a href="#"><span data-icon="settings"></span>Settings</a>
+      </nav>
+      <div class="mm-plus"><span data-crown aria-hidden="true"></span><b>Mallow Plus</b><p>No ads, offline mixes and lossless sound.</p><button data-plus>Try Plus free</button></div>
+    </aside>
+
+    <main class="mm-main">
+      <header class="mm-top">
+        <h1>Dashboard</h1>
+        <label class="mm-search"><span data-icon="search"></span><span class="vh">Search recently played</span><input type="search" placeholder="Search songs or artists" data-q></label>
+        <button class="mm-round" aria-label="Notifications, 3 new"><span data-icon="bell"></span><i class="num">3</i></button>
+      </header>
+
+      <section class="mm-hero" aria-labelledby="mm-hero-h">
+        <div class="mm-heroart" data-hero aria-hidden="true"></div>
+        <div class="mm-herocopy"><h2 id="mm-hero-h" data-greet></h2><p>Your Sunday slow-down mix is ready.</p><button class="mm-btn" data-playmix><span data-icon="play"></span>Play the mix</button></div>
+        <div class="mm-plant" data-plant aria-hidden="true"></div>
+      </section>
+
+      <section class="mm-player" aria-label="Now playing">
+        <span class="mm-cover" data-cover aria-hidden="true"></span>
+        <span class="mm-now"><b data-now-t></b><small data-now-a></small></span>
+        <button class="mm-round mm-play" data-toggle aria-label="Play"><span data-icon="play"></span></button>
+        <label class="mm-scrub"><span class="vh">Position in song</span><input type="range" min="0" max="100" value="22" data-pos></label>
+        <span class="mm-time num" data-time></span>
+      </section>
+      <section class="mm-stats" aria-label="This week">
+        <div class="mm-stat t1"><span data-icon="music"></span><p>Songs played</p><b class="num">1,312</b><small>+14% this week</small></div>
+        <div class="mm-stat t2"><span data-icon="heart"></span><p>Favourites</p><b class="num" data-favs>0</b><small>Tap a heart to add</small></div>
+        <div class="mm-stat t3"><span data-icon="clock"></span><p>Hours listened</p><b class="num">31.8</b><small>+4.2 this week</small></div>
+        <div class="mm-stat t4"><span data-icon="flame"></span><p>Listening streak</p><b class="num">9</b><small>days in a row</small></div>
+      </section>
+
+      <div class="mm-row">
+        <section class="mm-card mm-listen" aria-labelledby="mm-l-h">
+          <div class="mm-head"><h2 id="mm-l-h">Listening this week</h2>
+            <div class="mm-seg" role="group" aria-label="Week" data-week><button data-v="this" aria-pressed="true">This week</button><button data-v="last" aria-pressed="false">Last week</button></div></div>
+          <div data-bars></div>
+        </section>
+        <section class="mm-card mm-genres" aria-labelledby="mm-g-h">
+          <h2 id="mm-g-h">Top genres</h2>
+          <div class="mm-gbody"><div class="mm-donut" data-donut></div><ul class="mm-legend" data-legend></ul></div>
+        </section>
+      </div>
+
+      <div class="mm-row">
+        <section class="mm-card mm-recent" aria-labelledby="mm-r-h">
+          <div class="mm-head"><h2 id="mm-r-h">Recently played</h2><span class="mm-meta" data-count></span></div>
+          <ul class="mm-tracks" data-tracks></ul>
+        </section>
+        <section class="mm-card mm-mix" aria-labelledby="mm-m-h">
+          <div class="mm-head"><h2 id="mm-m-h">Daily mix</h2><button class="mm-chip" data-nextmix>Next mix</button></div>
+          <div class="mm-room" data-room aria-hidden="true"></div>
+          <div class="mm-mixcap"><span><b data-mixname></b><small data-mixcount></small></span><button class="mm-round mm-play" data-playroom aria-label="Play this mix"><span data-icon="play"></span></button></div>
+        </section>
+      </div>
+
+      <p class="db-sample mm-foot">Sample data · fictional artists and songs</p>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

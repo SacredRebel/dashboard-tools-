@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-11 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+12 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -17,6 +17,7 @@
 | 9 | [Lull Sleep](#lull-sleep) | Soft & friendly | Health & fitness | light | Lavender, Dawn, Nightfall | [site/dashboards/lull-sleep/](../../site/dashboards/lull-sleep/) |
 | 10 | [Pearlwell Dental](#smile-dental) | Soft & friendly | Health & fitness | light | Mint, Coral, Deep sea | [site/dashboards/smile-dental/](../../site/dashboards/smile-dental/) |
 | 11 | [Vitalis Care](#vitalis-care) | Bento grid | Health & fitness | light | Teal, Sage, Night | [site/dashboards/vitalis-care/](../../site/dashboards/vitalis-care/) |
+| 12 | [Mallow Music](#mallow-music) | Tactile & neumorphic | Music & media | light | Cream, Berry, Cocoa | [site/dashboards/mallow-music/](../../site/dashboards/mallow-music/) |
 
 ## Cinematic & atmospheric
 
@@ -381,5 +382,31 @@ A dark neon product-analytics overview: glossy metric orbs that switch the main 
 
 Soft extruded surfaces, depth, physical-feeling controls. Smart home, devices, audio.
 
-_No dashboards yet._
+<a id="mallow-music"></a>
+### 12. Mallow Music
+
+![Mallow Music](../../site/dashboards/mallow-music/thumb.jpg)
+
+A claymorphic listening dashboard for a music app: puffy pastel tiles with soft inner highlights, a peach hero with code-drawn clay headphones and a plant, a now-playing bar you can scrub, colourful weekly listening bars, a genre donut, recently played songs and a daily mix drawn as a cosy room.
+
+- **Use cases:** Music & media · **Mode:** light · **Mood:** cosy, playful, warm, soft, friendly
+- **Signature:** Puffy clay surfaces with an outer shadow and an inner highlight, in cream, sage, peach, butter and sky, with glossy SVG headphones on the hero shelf.
+- **Layout:** 220px clay sidebar (avatar, 6 links, Plus card) · main: title + search + bell · peach hero (art 220px, greeting, plant) · now-playing bar · 4 stat tiles · listening bars (1.25fr) + top genres (1fr) · recently played + daily mix
+- **Responsive:** ≤1100px: sidebar becomes a top block, stats 2×2 · ≤700px: single column, nav in 3×2 grid, hero art above copy, player wraps to two rows
+- **Fonts:** Fredoka / Fredoka · **Palette:** bg `#f4ece1`, surface `#fbf6ef`, text `#3a2a20`, muted `#6b5546`, accent `#b04a2f`, sage `#cfe1d8`, peach `#f7d3c1`, butter `#f8e2b0`
+- **Variants:** Cream, Berry, Cocoa · **Closest toolkit theme:** `blush`
+
+**Best for**
+- Music, podcast and audiobook apps with a personal home screen
+- Consumer products aimed at a young or casual audience
+- Dashboards where personality matters more than density
+
+**Avoid when**
+- Professional or financial tools
+- Dense data that needs flat, sharp charts
+- Brands that want a serious or premium feel
+
+**Components:** Clay sidebar with avatar and upgrade card · Hero with greeting and play action · Now-playing bar with play/pause and scrubber · Pastel stat tiles · Multicolour bar chart with week toggle · Genre donut with selectable legend · Track list with favourite and play · Daily mix card with switchable SVG room
+
+---
 
