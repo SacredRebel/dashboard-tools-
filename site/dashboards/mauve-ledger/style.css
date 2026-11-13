@@ -4,8 +4,10 @@
    ========================================================================= */
 :root {
   --bg: #ddd6f3;
-  --surface: rgb(255 255 255 / 0.72);
-  --surface-2: rgb(255 255 255 / 0.88);
+  --surface: #f7f4ff;
+  --glass: rgb(255 255 255 / 0.72);
+  --surface-2: #fbfaff;
+  --glass-2: rgb(255 255 255 / 0.88);
   --border: rgb(255 255 255 / 0.55);
   --text: #2a2740;
   --text-muted: #6e6890;
@@ -100,7 +102,7 @@ body {
 .ml-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
 .ml-brand { text-decoration: none; }
 .ml-logo { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-fg); font-family: var(--font-display); font-weight: 600; font-size: 18px; box-shadow: 0 8px 24px var(--accent-soft); }
-.ml-nav { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); backdrop-filter: blur(16px); overflow-x: auto; }
+.ml-nav { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(16px); overflow-x: auto; }
 .ml-nav button { min-height: 44px; padding: 0 14px; border: 0; border-radius: 999px; background: none; color: var(--text-muted); font: inherit; font-size: 13px; font-weight: 600; white-space: nowrap; }
 .ml-nav button[aria-pressed="true"] { background: var(--surface-2); color: var(--text); box-shadow: 0 2px 8px rgb(42 39 64 / 0.08); }
 .ml-utils { margin-left: auto; display: flex; align-items: center; gap: 6px; }
@@ -113,13 +115,13 @@ body {
 .ml-hello h1 { font-family: var(--font-display); font-size: 34px; font-weight: 600; margin: 0 0 4px; }
 .ml-lead { font-size: 15px; color: var(--text-muted); }
 .ml-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
-.ml-kpi { display: flex; gap: 12px; align-items: flex-start; padding: 16px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--border); backdrop-filter: blur(18px); box-shadow: 0 10px 30px rgb(42 39 64 / 0.06); min-width: 0; }
+.ml-kpi { display: flex; gap: 12px; align-items: flex-start; padding: 16px; border-radius: var(--radius-lg); background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(18px); box-shadow: 0 10px 30px rgb(42 39 64 / 0.06); min-width: 0; }
 .ml-kpi-ic { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-fg); flex-shrink: 0; }
 .ml-kpi-ic svg { width: 20px; height: 20px; }
 .ml-kpi b { display: block; font-family: var(--font-display); font-size: 22px; font-weight: 600; }
 .ml-kpi span { font-size: 13px; color: var(--text-muted); }
 .ml-body { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 14px; margin-bottom: 14px; }
-.ml-card { padding: 18px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--border); backdrop-filter: blur(18px); box-shadow: 0 10px 30px rgb(42 39 64 / 0.06); min-width: 0; }
+.ml-card { padding: 18px; border-radius: var(--radius-lg); background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(18px); box-shadow: 0 10px 30px rgb(42 39 64 / 0.06); min-width: 0; }
 .ml-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
 .ml-card h2 { font-size: 17px; font-weight: 600; margin: 0; }
 .ml-sub { font-size: 13px; color: var(--text-muted); margin-top: 4px; }

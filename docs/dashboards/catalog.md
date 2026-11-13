@@ -190,7 +190,7 @@ A cinematic dark fitness board: frosted glass cards for steps, sleep, heart, wel
 - **Signature:** Glass metric cards floating over an SVG athlete/gym silhouette with orange and lime accents — no photographic faces.
 - **Layout:** 64px icon rail · top bar (brand, ask-anything search, add, avatar) · toolbar (search, edit, date range, add wallet, create report) · 12-column glass grid: activity · sleep · heart · wellness + focus + tall energy/recovery gauge
 - **Responsive:** ≤1180px: energy gauge drops below wellness/focus · ≤960px: icon rail becomes top chips, cards 2-col · ≤640px: single column, toolbar scrolls
-- **Fonts:** Syne / Manrope · **Palette:** bg `#0c0d10`, surface `#1a1c24`, text `#f4f1ea`, muted `#a8a29a`, accent `#ff6a2a`, lime `#c8f05a`, gold `#f5d76e`, glass `#16181ecc`
+- **Fonts:** Syne / Manrope · **Palette:** bg `#0c0d10`, surface `#1a1c24`, text `#f4f1ea`, muted `#cfc8be`, accent `#ff6a2a`, lime `#c8f05a`, gold `#f5d76e`
 - **Variants:** Forge, Ember, Ice · **Closest toolkit theme:** `ember`
 
 **Best for**
@@ -391,7 +391,7 @@ A light lilac glass finance desk: frosted KPI tiles over a soft lavender haze, a
 - **Signature:** Frosted lilac glass cards on a soft lavender–pink haze, anchored by a segmented 51.2% success gauge.
 - **Layout:** Top bar (logo, pill nav, utility icons, avatar) · greeting · 4 KPI glass cards · 12-col: average sales (8) + formation status + success gauge (4) · recent emails full width
 - **Responsive:** ≤1180px: KPIs 2×2, sales full width above side stack · ≤960px: nav scrolls · ≤640px: single column, email rows compact
-- **Fonts:** Fraunces / Outfit · **Palette:** bg `#ddd6f3`, surface `#ffffff`, text `#2a2740`, muted `#6e6890`, accent `#9b87f5`, good `#22c55e`, bad `#ef4444`, haze `#f3e8ff`
+- **Fonts:** Fraunces / Outfit · **Palette:** bg `#ddd6f3`, surface `#f7f4ff`, text `#2a2740`, muted `#6e6890`, accent `#6a58c8`, good `#16a34a`, bad `#dc2626`, haze `#c4b5fd`
 - **Variants:** Lilac, Blush, Slate · **Closest toolkit theme:** `blush`
 
 **Best for**
@@ -513,7 +513,7 @@ A light black-and-lime sales bento: slim icon rail, pill nav, a tall product her
 - **Signature:** A tall product tile with a lime sphere cluster, frosted advantages glass, and thick lime growth bars.
 - **Layout:** 56px dark icon rail · top bar with pill nav and avatars · breadcrumb + title + date/actions · 12-col bento: product hero (3, tall) · activity (5) · revenue (4) · spend (5) · virtual cards (4)
 - **Responsive:** ≤1180px: rail becomes bottom or top chips · ≤960px: product full width, charts 2-col · ≤640px: single column, action chips scroll
-- **Fonts:** Sora / IBM Plex Sans · **Palette:** bg `#eceff1`, surface `#ffffff`, text `#0f1110`, muted `#6b716c`, accent `#c6f000`, ink `#141414`, rail `#171917`, hatch `#d5d9d6`
+- **Fonts:** Sora / IBM Plex Sans · **Palette:** bg `#eceff1`, surface `#ffffff`, text `#0f1110`, muted `#3f4742`, accent `#c6f000`, ink `#141414`, rail `#171917`, hatch `#d5d9d6`
 - **Variants:** Orchard, Citrus, Graphite · **Closest toolkit theme:** `atelier`
 
 **Best for**
@@ -757,7 +757,7 @@ A bold lime health overview with a charcoal sidebar, overlapping energy bubbles,
 - **Signature:** Three overlapping kcal bubbles (lilac, charcoal, lime) beside a charcoal sleep panel with hatched month bars and one highlighted month.
 - **Layout:** 240px dark sidebar (brand, nav with badges, upgrade card) · main: profile + search header · title row with date · bento: energy bubbles (tall) · heart · activity · wellness dot index (tall) · sleep analysis (wide dark)
 - **Responsive:** ≤1180px: sidebar collapses to top nav, bento 2 columns · ≤960px: upgrade hidden · ≤640px: single column, bubbles stack
-- **Fonts:** Space Grotesk / Manrope · **Palette:** bg `#dcefb0`, surface `#f4f5f7`, text `#111411`, muted `#5c655c`, accent `#b8f000`, sidebar `#121412`, lilac `#c4b5fd`, ink `#1a1c1a`
+- **Fonts:** Space Grotesk / Manrope · **Palette:** bg `#dcefb0`, surface `#f4f5f7`, text `#111411`, muted `#3a453a`, accent `#b8f000`, sidebar `#121412`, lilac `#c4b5fd`, ink `#1a1c1a`
 - **Variants:** Lime, Grape, Night · **Closest toolkit theme:** `atelier`
 
 **Best for**
