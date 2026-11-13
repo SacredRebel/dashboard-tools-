@@ -1,0 +1,62 @@
+{
+  "id": "meridian-labs",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/meridian-labs/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/meridian-labs/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/meridian-labs/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/meridian-labs/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/meridian-labs/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=citrus",
+      "width": 1440,
+      "variant": "citrus",
+      "final_path": "/dashboards/meridian-labs/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=night",
+      "width": 1440,
+      "variant": "night",
+      "final_path": "/dashboards/meridian-labs/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/meridian-labs",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

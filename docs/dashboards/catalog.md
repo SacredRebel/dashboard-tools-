@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-35 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+36 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -41,6 +41,7 @@
 | 33 | [Orbit Clay](#orbit-clay) | Tactile & neumorphic | Music & media | light | Orbit, Moss, Dusk | [site/dashboards/orbit-clay/](../../site/dashboards/orbit-clay/) |
 | 34 | [Saffron Dusk](#saffron-dusk) | Glass & glow | Health & fitness, Education | light | Dusk, Dawn, Night | [site/dashboards/saffron-dusk/](../../site/dashboards/saffron-dusk/) |
 | 35 | [Clima Pane](#clima-pane) | Glass & glow | Smart home & IoT | light | Amber pane, Sky, Dusk | [site/dashboards/clima-pane/](../../site/dashboards/clima-pane/) |
+| 36 | [Meridian Labs](#meridian-labs) | Soft & friendly | Health & fitness | light | Soft blue, Citrus, Night | [site/dashboards/meridian-labs/](../../site/dashboards/meridian-labs/) |
 
 ## Cinematic & atmospheric
 
@@ -824,6 +825,34 @@ A soft-light SOC ops board: copper accents on white, concentric radar arcs with 
 - Brands that cannot use warm copper accents
 
 **Components:** Soft pill navigation tabs · Data-injection spark card · Open-incident severity chips · Concentric radar arcs with fictional vendor nodes · Live feed with filter and states · Dashed severity bars · Automation step list · Incident timeline footer with copper CTA
+
+---
+
+<a id="meridian-labs"></a>
+### 36. Meridian Labs
+
+![Meridian Labs](../../site/dashboards/meridian-labs/thumb.jpg)
+
+A soft health diagnostics board: filterable doctor test cards, a code-drawn DNA helix centerpiece, a vitamin supplement grid with SVG bottles, and a week schedule strip with an orange highlight day.
+
+- **Use cases:** Health & fitness · **Mode:** light · **Mood:** soft, clinical, calm, airy, reassuring
+- **Signature:** A soft off-white diagnostics layout centered on a code-drawn DNA helix, with an orange-highlighted day on the week strip and SVG vitamin bottles instead of product photos.
+- **Layout:** Top bar: brand · circular icon nav · profile · three columns: personal tests + filter pills · DNA helix · vitamin grid · full-width week schedule strip
+- **Responsive:** ≤1180px: vitamins under tests, DNA stays · ≤960px: single column, DNA shortens · ≤640px: test cards and week strip scroll horizontally inside
+- **Fonts:** Plus Jakarta Sans / Plus Jakarta Sans · **Palette:** bg `#f3f4f6`, surface `#ffffff`, text `#1a1d24`, muted `#6b7280`, accent `#5b7cfa`, highlight `#ff8a48`, lavender `#e8ecff`, ok `#1f7a4c`
+- **Variants:** Soft blue, Citrus, Night · **Closest toolkit theme:** `blush`
+
+**Best for**
+- Consumer lab and diagnostics portals
+- Supplement and wellness apps with a gentle clinical look
+- Screens that need a memorable DNA or science visual without photos
+
+**Avoid when**
+- Dense EHR tables or clinician worklists
+- Wearable ring UIs (see Aura Ring)
+- Bold lime consumer fitness brands (see Zest Health)
+
+**Components:** Circular icon navigation · Profile with initials avatar · Test filter pills · Doctor test card carousel with charts · SVG DNA double helix · Floating helix utility orbs · Vitamin supplement 2×2 grid · Week schedule strip with highlight day
 
 ---
 

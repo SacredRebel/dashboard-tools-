@@ -2893,6 +2893,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass climate control concept. Brand renamed to Clima Pane; copy and figures are fictional. Background orbs are CSS; dial and icons are SVG. The source image is not stored in the repo." },
       "path": "site/dashboards/clima-pane/"
+    },
+    {
+      "id": "meridian-labs",
+      "number": 36,
+      "name": "Meridian Labs",
+      "style_family": "soft",
+      "use_cases": ["health"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A soft health diagnostics board: filterable doctor test cards, a code-drawn DNA helix centerpiece, a vitamin supplement grid with SVG bottles, and a week schedule strip with an orange highlight day.",
+      "mood": ["soft", "clinical", "calm", "airy", "reassuring"],
+      "best_for": ["Consumer lab and diagnostics portals", "Supplement and wellness apps with a gentle clinical look", "Screens that need a memorable DNA or science visual without photos"],
+      "avoid_when": ["Dense EHR tables or clinician worklists", "Wearable ring UIs (see Aura Ring)", "Bold lime consumer fitness brands (see Zest Health)"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Top bar: brand · circular icon nav · profile · three columns: personal tests + filter pills · DNA helix · vitamin grid · full-width week schedule strip",
+        "responsive": "≤1180px: vitamins under tests, DNA stays · ≤960px: single column, DNA shortens · ≤640px: test cards and week strip scroll horizontally inside"
+      },
+      "components": ["Circular icon navigation", "Profile with initials avatar", "Test filter pills", "Doctor test card carousel with charts", "SVG DNA double helix", "Floating helix utility orbs", "Vitamin supplement 2×2 grid", "Week schedule strip with highlight day"],
+      "signature": "A soft off-white diagnostics layout centered on a code-drawn DNA helix, with an orange-highlighted day on the week strip and SVG vitamin bottles instead of product photos.",
+      "palette": { "bg": "#f3f4f6", "surface": "#ffffff", "text": "#1a1d24", "muted": "#6b7280", "accent": "#5b7cfa", "highlight": "#ff8a48", "lavender": "#e8ecff", "ok": "#1f7a4c" },
+      "fonts": { "display": "Plus Jakarta Sans", "sans": "Plus Jakarta Sans" },
+      "variants": [
+        { "id": "default", "name": "Soft blue", "swatch": "#5b7cfa" },
+        { "id": "citrus", "name": "Citrus", "swatch": "#ff8a48" },
+        { "id": "night", "name": "Night", "swatch": "#8aa0ff" }
+      ],
+      "maps_to_theme": "blush",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft medical diagnostics concept. Brand renamed to Meridian Labs; photos replaced with initials and SVG bottles/DNA. Copy and figures are fictional. The source image is not stored in the repo." },
+      "path": "site/dashboards/meridian-labs/"
     }
   ]
 }
