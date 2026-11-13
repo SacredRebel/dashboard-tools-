@@ -1,0 +1,144 @@
+/* =========================================================================
+   Taffy Analytics · style family: minimal · mode: light
+   Token names match design-system/tokens.css. Variants: default (taffy), mint, dusk.
+   ========================================================================= */
+:root {
+  --bg: #f4ebe4;
+  --surface: #fbf8f5;
+  --surface-2: #f1e9e2;
+  --border: #e7dbd1;
+  --text: #2e2633;
+  --text-muted: #625866;
+  --text-subtle: #6c6270;
+  --accent: #5d55b8;
+  --accent-fg: #ffffff;
+  --accent-soft: #e4e1f6;
+  --focus: #5d55b8;
+  --chart-1: #8d86dc;
+  --c1: #f3c3ae; --c2: #c9c2ee; --c3: #f5b6a7; --c4: #f6eadf; --c5: #b9e0dd; --c6: #f4d9a4;
+  --c1-d: #d99a82; --c2-d: #9f97d6; --c3-d: #e08b78; --c4-d: #dccbbb; --c5-d: #86c2bd; --c6-d: #dcb871;
+  --up: #2f7a52; --down: #a8442f;
+  --shadow: 0 2px 4px rgb(90 60 50 / 0.05), 0 18px 40px rgb(90 60 50 / 0.08);
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --radius-sm: 14px; --radius-md: 22px; --radius-lg: 30px; --radius-pill: 999px;
+}
+[data-variant="mint"] {
+  --bg: #e9f2ee; --surface: #f8fbf9; --surface-2: #e5efea; --border: #d5e4dc; --text: #1f332b; --text-muted: #4f6359; --text-subtle: #586d62;
+  --accent: #2f7563; --accent-soft: #d3ebe3; --focus: #2f7563; --chart-1: #5fa892; --c2: #b9e0d2; --c2-d: #7fbfa8;
+}
+[data-variant="dusk"] {
+  --bg: #1d1a24; --surface: #26222f; --surface-2: #302b3b; --border: #3c364a; --text: #f3eef6; --text-muted: #bfb6c8; --text-subtle: #ada4b7;
+  --accent: #b8b0ff; --accent-fg: #1d1a24; --accent-soft: #3a3556; --focus: #d5d0ff; --chart-1: #b8b0ff; --up: #8be0b1; --down: #ffa58f;
+  --c4: #4a4250; --c4-d: #5c5366; --shadow: 0 18px 40px rgb(0 0 0 / 0.35);
+}
+body { background: var(--bg); }
+.tf { max-width: 1320px; margin: 0 auto; padding: 22px 28px 26px; }
+.tf-foot { margin-top: 18px; text-align: center; }
+.tf-top { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+.tf-brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 30px; color: var(--text); text-decoration: none; }
+.tf-blob { width: 30px; height: 30px; border-radius: 40% 60% 55% 45%; background: radial-gradient(circle at 30% 30%, var(--c4), var(--c1) 55%, var(--c1-d)); box-shadow: inset -3px -4px 6px rgb(0 0 0 / 0.08); }
+.tf-apps { display: flex; gap: 10px; margin: 0 auto; padding: 8px; border-radius: var(--radius-pill); background: var(--surface); box-shadow: var(--shadow); }
+.tf-apps button { width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; color: var(--text); box-shadow: inset -3px -4px 8px rgb(0 0 0 / 0.08), inset 3px 3px 6px rgb(255 255 255 / 0.55); }
+.tf-apps button svg { width: 18px; height: 18px; }
+.tf-apps button[aria-pressed="true"] { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tf-avatar { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--accent-soft); font-size: 14px; font-weight: 700; }
+.tf-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; grid-template-areas:
+  "hero hero hero hero hero hero hero pills pills pills pills pills"
+  "kpis kpis kpis kpis kpis kpis kpis pills pills pills pills pills"
+  "mix mix mix mix flags flags flags flags rel rel rel rel"; }
+.tf-hero { grid-area: hero; } .tf-pills { grid-area: pills; } .tf-kpis { grid-area: kpis; } .tf-mix { grid-area: mix; } .tf-flags { grid-area: flags; } .tf-release { grid-area: rel; }
+.tf-card { min-width: 0; padding: 22px; border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
+.tf-head { display: flex; align-items: start; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.tf-card h2 { font-family: var(--font-display); font-size: 26px; font-weight: 400; line-height: 1.1; }
+.tf-k { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.tf-meta { font-size: 13px; color: var(--text-muted); }
+.tf-hero h1 { font-family: var(--font-display); font-size: 52px; font-weight: 400; line-height: 1; }
+.tf-hero h1 em { font-family: var(--font-sans); font-style: normal; font-size: 15px; font-weight: 600; color: var(--up); vertical-align: middle; }
+.tf-seg { display: flex; gap: 4px; padding: 4px; border-radius: var(--radius-pill); background: var(--surface-2); }
+.tf-seg button { min-height: 36px; padding: 0 14px; border: 0; border-radius: var(--radius-pill); background: none; color: var(--text); font-size: 14px; font-weight: 600; }
+.tf-seg button[aria-pressed="true"] { background: var(--surface); box-shadow: var(--shadow); }
+.tf-wave .tf-y { display: none; } .tf-wave .tf-plot { --y-w: 0px; }
+/* signature: soft 3D capsules */
+.tf-capsules { display: flex; align-items: end; justify-content: space-between; gap: 12px; height: 300px; padding: 10px 6px 0; border-bottom: 6px solid var(--c1); border-radius: 0 0 6px 6px; }
+.tf-capsules button { position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; padding: 0; border: 0; background: none; color: var(--text); }
+.tf-capsules i { display: block; width: 100%; border-radius: var(--radius-pill); background: linear-gradient(90deg, var(--cap-d) 0%, var(--cap) 38%, var(--cap) 62%, var(--cap-d) 100%); box-shadow: inset 0 10px 14px rgb(255 255 255 / 0.45), 0 12px 18px rgb(90 60 50 / 0.12); transition: transform 200ms ease; transform-origin: bottom; }
+.tf-capsules button:hover i, .tf-capsules button[aria-pressed="true"] i { transform: scaleY(1.03); }
+.tf-capsules button[aria-pressed="true"] i { outline: 3px solid var(--accent); outline-offset: 3px; }
+.tf-capsules span { position: absolute; left: 50%; bottom: 14px; translate: -50% 0; font-size: 13px; font-weight: 700; color: var(--text); }
+.tf-capnames { display: flex; justify-content: space-between; gap: 12px; }
+.tf-capnote { margin-top: 14px; min-height: 42px; font-size: 14px; color: var(--text-muted); } .tf-capnote b { color: var(--text); }
+.tf-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: 18px 22px; }
+.tf-kpis div + div { padding-left: 20px; border-left: 1px solid var(--border); }
+.tf-kpis b { display: block; margin: 4px 0 2px; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+.tf-kpis small { font-size: 13px; font-weight: 600; } .up { color: var(--up); } .down { color: var(--down); }
+.tf-ring { position: relative; width: 190px; margin: 14px auto 10px; }
+.tf-ring svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 10px 12px rgb(90 60 50 / 0.15)); } .tf-ring .track { stroke: var(--surface-2); }
+.tf-ring b { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; font-family: var(--font-display); font-size: 34px; font-weight: 400; }
+.tf-ring b small { font-family: var(--font-sans); font-size: 13px; color: var(--text-muted); }
+.tf-legend { display: grid; gap: 2px; }
+.tf-legend li { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; gap: 10px; align-items: center; min-height: 32px; font-size: 14px; }
+.tf-legend i { width: 12px; height: 12px; border-radius: 50%; }
+.tf-search { display: flex; align-items: center; gap: 8px; min-height: 44px; width: 180px; padding: 0 14px; border-radius: var(--radius-pill); background: var(--surface-2); color: var(--text-muted); }
+.tf-search svg { width: 16px; height: 16px; }
+.tf-search input { flex: 1; min-width: 0; border: 0; background: none; color: var(--text); font: inherit; font-size: 14px; outline: none; }
+.tf-search:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
+.tf-flaglist { display: grid; gap: 6px; }
+.tf-flaglist li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--surface-2); }
+.tf-flaglist b { display: block; font-size: 15px; } .tf-flaglist small { font-size: 13px; color: var(--text-muted); }
+.tf-switch { position: relative; width: 70px; height: 44px; border: 5px solid transparent; background-clip: padding-box; border-radius: var(--radius-pill); background: var(--c4-d); box-shadow: inset 2px 3px 6px rgb(0 0 0 / 0.12); }
+.tf-switch::after { content: ""; position: absolute; top: 4px; left: 4px; width: 26px; height: 26px; border-radius: 50%; background: var(--surface); box-shadow: 0 3px 6px rgb(0 0 0 / 0.18), inset -2px -3px 4px rgb(0 0 0 / 0.06); transition: transform 220ms cubic-bezier(.3, 1.3, .5, 1); }
+.tf-switch[aria-checked="true"] { background: var(--accent); }
+.tf-switch[aria-checked="true"]::after { transform: translateX(26px); }
+.tf-none { padding: 14px; font-size: 14px; color: var(--text-muted); }
+.tf-msg { margin-top: 8px; min-height: 21px; font-size: 14px; color: var(--text-muted); }
+.tf-progress { height: 12px; border-radius: var(--radius-pill); background: var(--surface-2); overflow: hidden; margin-bottom: 12px; }
+.tf-progress i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--c1), var(--c2-d)); transition: width 220ms ease; }
+.tf-checks { display: grid; gap: 4px; }
+.tf-checks button { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: center; width: 100%; min-height: 46px; padding: 6px 8px; border: 0; border-radius: var(--radius-sm); background: none; color: var(--text); font-size: 15px; text-align: left; }
+.tf-checks button:hover { background: var(--surface-2); }
+.tf-checks i { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--surface-2); box-shadow: inset 1px 2px 3px rgb(0 0 0 / 0.08); color: var(--accent-fg); }
+.tf-checks i svg { width: 15px; height: 15px; }
+.tf-checks [aria-pressed="true"] i { background: var(--accent); }
+.tf-checks [aria-pressed="true"] span { color: var(--text-muted); text-decoration: line-through; }
+.tf-checks small { display: block; font-size: 13px; color: var(--text-muted); text-decoration: none; }
+/* ---------------------------------------------------------------- charts (plumbing: SVG shape + HTML labels) */
+.tf-plot { position: relative; margin-left: var(--y-w, 44px); padding-bottom: 26px; min-width: 0; }
+.tf-plot svg { display: block; width: 100%; height: var(--plot-h, 200px); overflow: visible; }
+.tf-plot .grid line { stroke: var(--border); }
+.tf-plot .line { fill: none; stroke-width: 2; }
+.tf-y, .tf-x { position: absolute; font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+.tf-y { right: calc(100% + 8px); transform: translateY(-50%); }
+.tf-x { bottom: 0; transform: translateX(-50%); }
+.tf-dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--chart-1); transform: translate(-50%, -50%); pointer-events: none; }
+.tf-dot.on { background: var(--chart-1); box-shadow: 0 0 0 5px var(--accent-soft); }
+.tf-hit { position: absolute; inset: 0 0 26px 0; display: flex; }
+.tf-hit button { flex: 1; min-width: 0; border: 0; background: none; padding: 0; }
+.tf-hit button:focus-visible, .tf-col:focus-visible { outline-offset: -2px; }
+.tf-cursor { position: absolute; top: 0; width: 1px; height: var(--plot-h, 200px); background: var(--text-subtle); opacity: 0.6; pointer-events: none; }
+.tf-tip { position: absolute; z-index: 3; transform: translate(-50%, -130%); padding: 4px 8px; border-radius: var(--radius-sm); background: var(--accent); color: var(--accent-fg); font-size: 12px; font-weight: 500; pointer-events: none; white-space: nowrap; }
+.tf-tip b { font-weight: 600; margin-right: 4px; }
+.tf-tip.l { transform: translate(-12%, -130%); } .tf-tip.r { transform: translate(-88%, -130%); }
+.tf-barplot { padding-bottom: 0; }
+.tf-cols { position: relative; display: flex; align-items: flex-end; gap: var(--bar-gap, 10px); height: var(--plot-h, 200px); }
+.tf-col { flex: 1; min-width: 0; height: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 3px; border: 0; background: none; padding: 0; }
+.tf-col.stack { flex-direction: column; justify-content: flex-end; align-items: center; gap: 2px; }
+.tf-bar { flex: 1 1 auto; width: 100%; max-width: var(--bar-w, 22px); min-height: 2px; border-radius: var(--bar-r, 6px) var(--bar-r, 6px) 0 0; background: var(--bar, var(--chart-1)); transition: opacity 160ms ease; }
+.tf-col.stack .tf-bar { flex: none; }
+.tf-cols:hover .tf-col:not(:hover) .tf-bar { opacity: 0.55; }
+.tf-gl { position: absolute; left: 0; right: 0; height: 1px; background: var(--border); }
+.tf-xs { display: flex; gap: var(--bar-gap, 10px); padding-top: 8px; }
+.tf-xs span { flex: 1; min-width: 0; text-align: center; font-size: 12px; color: var(--text-muted); white-space: nowrap; overflow: hidden; }
+.tf-spark { width: 100%; height: 100%; overflow: visible; }
+@media (max-width: 640px) { .tf-x.alt { display: none; } }
+@media (max-width: 1100px) {
+  .tf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "hero hero" "kpis kpis" "pills mix" "flags rel"; }
+}
+@media (max-width: 700px) {
+  .tf { padding: 12px; }
+  .tf-top { flex-wrap: wrap; gap: 12px; } .tf-apps { order: 3; flex: 0 0 100%; justify-content: space-between; gap: 4px; } .tf-avatar { margin-left: auto; }
+  .tf-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; grid-template-areas: "hero" "kpis" "pills" "mix" "flags" "rel"; }
+  .tf-hero h1 { font-size: 42px; } .tf-capsules { height: 220px; gap: 6px; }
+  .tf-kpis { grid-template-columns: minmax(0, 1fr); gap: 12px; } .tf-kpis div + div { padding: 12px 0 0; border-left: 0; border-top: 1px solid var(--border); }
+  .tf-search { width: 100%; } .tf-seg button { min-height: 44px; }
+}

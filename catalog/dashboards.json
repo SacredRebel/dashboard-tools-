@@ -405,6 +405,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied claymorphism music-app render. Layout and mood were kept; the cartoon girl, photos, artist names and copy were not reused. Artists and songs are invented. Characters and photos were replaced with SVG headphones, a plant, a crown, generated cover art and a room scene. The source image is not stored in the repo." },
       "path": "site/dashboards/mallow-music/"
+    },
+    {
+      "id": "taffy-analytics",
+      "number": 13,
+      "name": "Taffy Analytics",
+      "style_family": "minimal",
+      "use_cases": ["saas-admin", "analytics"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A calm pastel product-analytics dashboard for a design-tool startup: a serif headline number over a soft area chart, a row of glossy 3D capsules for sign-ups by channel, a rounded plan-mix ring, springy feature-flag switches and a release checklist.",
+      "mood": ["calm", "tactile", "light", "friendly", "modern"],
+      "best_for": ["Product and growth overviews for small SaaS teams", "Internal admin pages with flags and checklists", "Brands that want soft, tactile charts instead of hard lines"],
+      "avoid_when": ["Dense reporting with many series", "Finance or ops tools that need exact gridlines", "Dark, technical brands"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Top bar: serif wordmark, centred pill of 5 round workspace buttons, avatar · 12-column grid: weekly active teams area chart (7) + capsule chart (5, two rows) · KPI strip (7) · plan mix (4) + feature flags (4) + release checklist (4)",
+        "responsive": "≤1100px: 2 columns (hero and KPIs full width, capsules + mix, flags + checklist) · ≤700px: single column, workspace pill on its own row, KPIs stacked"
+      },
+      "components": ["Round workspace switcher", "Headline number with area chart and range toggle", "3D capsule bar chart with selectable channels", "KPI strip with dividers", "Rounded donut ring with legend", "Feature-flag list with springy switches and filter", "Checklist with progress bar"],
+      "signature": "Glossy pastel capsules standing on a peach shelf, shaded with a left-to-right gradient and an inner highlight so they read as soft 3D pills.",
+      "palette": { "bg": "#f4ebe4", "surface": "#fbf8f5", "text": "#2e2633", "muted": "#625866", "accent": "#5d55b8", "peach": "#f3c3ae", "lilac": "#c9c2ee", "mint": "#b9e0dd" },
+      "fonts": { "display": "Instrument Serif", "sans": "Manrope" },
+      "variants": [
+        { "id": "default", "name": "Taffy", "swatch": "#5d55b8" },
+        { "id": "mint", "name": "Mint", "swatch": "#2f7563" },
+        { "id": "dusk", "name": "Dusk", "swatch": "#b8b0ff" }
+      ],
+      "maps_to_theme": "blush",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied render of a pastel 3D UI kit with no real content (placeholder text). The capsule bars, round icon buttons, elastic switches and wave card were turned into a working analytics page with invented data. No artwork was copied; all shapes are CSS and SVG. The source image is not stored in the repo." },
+      "path": "site/dashboards/taffy-analytics/"
     }
   ]
 }

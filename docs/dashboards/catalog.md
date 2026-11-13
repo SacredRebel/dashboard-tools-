@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-12 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+13 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -18,6 +18,7 @@
 | 10 | [Pearlwell Dental](#smile-dental) | Soft & friendly | Health & fitness | light | Mint, Coral, Deep sea | [site/dashboards/smile-dental/](../../site/dashboards/smile-dental/) |
 | 11 | [Vitalis Care](#vitalis-care) | Bento grid | Health & fitness | light | Teal, Sage, Night | [site/dashboards/vitalis-care/](../../site/dashboards/vitalis-care/) |
 | 12 | [Mallow Music](#mallow-music) | Tactile & neumorphic | Music & media | light | Cream, Berry, Cocoa | [site/dashboards/mallow-music/](../../site/dashboards/mallow-music/) |
+| 13 | [Taffy Analytics](#taffy-analytics) | Minimal & airy | SaaS admin, Analytics & BI | light | Taffy, Mint, Dusk | [site/dashboards/taffy-analytics/](../../site/dashboards/taffy-analytics/) |
 
 ## Cinematic & atmospheric
 
@@ -173,7 +174,33 @@ A wellness overview for a smart ring: frosted, softly bordered cards float over 
 
 Lots of white space, hairlines, one accent, quiet type. Calm tools people use all day.
 
-_No dashboards yet._
+<a id="taffy-analytics"></a>
+### 13. Taffy Analytics
+
+![Taffy Analytics](../../site/dashboards/taffy-analytics/thumb.jpg)
+
+A calm pastel product-analytics dashboard for a design-tool startup: a serif headline number over a soft area chart, a row of glossy 3D capsules for sign-ups by channel, a rounded plan-mix ring, springy feature-flag switches and a release checklist.
+
+- **Use cases:** SaaS admin, Analytics & BI · **Mode:** light · **Mood:** calm, tactile, light, friendly, modern
+- **Signature:** Glossy pastel capsules standing on a peach shelf, shaded with a left-to-right gradient and an inner highlight so they read as soft 3D pills.
+- **Layout:** Top bar: serif wordmark, centred pill of 5 round workspace buttons, avatar · 12-column grid: weekly active teams area chart (7) + capsule chart (5, two rows) · KPI strip (7) · plan mix (4) + feature flags (4) + release checklist (4)
+- **Responsive:** ≤1100px: 2 columns (hero and KPIs full width, capsules + mix, flags + checklist) · ≤700px: single column, workspace pill on its own row, KPIs stacked
+- **Fonts:** Instrument Serif / Manrope · **Palette:** bg `#f4ebe4`, surface `#fbf8f5`, text `#2e2633`, muted `#625866`, accent `#5d55b8`, peach `#f3c3ae`, lilac `#c9c2ee`, mint `#b9e0dd`
+- **Variants:** Taffy, Mint, Dusk · **Closest toolkit theme:** `blush`
+
+**Best for**
+- Product and growth overviews for small SaaS teams
+- Internal admin pages with flags and checklists
+- Brands that want soft, tactile charts instead of hard lines
+
+**Avoid when**
+- Dense reporting with many series
+- Finance or ops tools that need exact gridlines
+- Dark, technical brands
+
+**Components:** Round workspace switcher · Headline number with area chart and range toggle · 3D capsule bar chart with selectable channels · KPI strip with dividers · Rounded donut ring with legend · Feature-flag list with springy switches and filter · Checklist with progress bar
+
+---
 
 
 ## Bento grid

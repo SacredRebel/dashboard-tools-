@@ -1,0 +1,62 @@
+{
+  "id": "taffy-analytics",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/taffy-analytics/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/taffy-analytics/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/taffy-analytics/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/taffy-analytics/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/taffy-analytics/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=mint",
+      "width": 1440,
+      "variant": "mint",
+      "final_path": "/dashboards/taffy-analytics/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=dusk",
+      "width": 1440,
+      "variant": "dusk",
+      "final_path": "/dashboards/taffy-analytics/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/taffy-analytics",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

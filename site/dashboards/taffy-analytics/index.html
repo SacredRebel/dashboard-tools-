@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Taffy Analytics · Dashboard Tools gallery</title>
+  <meta name="description" content="Minimal pastel product-analytics dashboard with soft 3D capsule charts, elastic feature-flag switches and a plan-mix ring. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="tf">
+    <header class="tf-top">
+      <a class="tf-brand" href="#" aria-label="Taffy home"><span class="tf-blob" aria-hidden="true"></span>Taffy</a>
+      <div class="tf-apps" role="group" aria-label="Workspace" data-apps></div>
+      <span class="tf-avatar" role="img" aria-label="Signed in as Rosa Lindqvist">RL</span>
+    </header>
+
+    <main class="tf-grid">
+      <section class="tf-card tf-hero" aria-labelledby="tf-hero-h">
+        <div class="tf-head"><div><p class="tf-k">Weekly active teams</p><h1 id="tf-hero-h"><span class="num" data-wat></span> <em data-wat-delta></em></h1></div>
+          <div class="tf-seg" role="group" aria-label="Range" data-range><button data-v="8" aria-pressed="false">8 weeks</button><button data-v="16" aria-pressed="true">16 weeks</button></div></div>
+        <div class="tf-wave" data-wave></div>
+      </section>
+
+      <section class="tf-card tf-pills" aria-labelledby="tf-pill-h">
+        <div class="tf-head"><h2 id="tf-pill-h">New sign-ups by channel</h2><span class="tf-meta">Last 30 days</span></div>
+        <div class="tf-capsules" role="group" aria-label="Pick a channel" data-caps></div>
+        <p class="tf-capnote" data-capnote aria-live="polite"></p>
+      </section>
+
+      <section class="tf-card tf-kpis" aria-label="Key numbers">
+        <div><p class="tf-k">Monthly revenue</p><b class="num">$84.2k</b><small class="up">+6.1% vs last month</small></div>
+        <div><p class="tf-k">Trial to paid</p><b class="num">18.4%</b><small class="up">+1.2 pts</small></div>
+        <div><p class="tf-k">Logo churn</p><b class="num">1.9%</b><small class="down">+0.3 pts</small></div>
+      </section>
+
+      <section class="tf-card tf-mix" aria-labelledby="tf-mix-h">
+        <h2 id="tf-mix-h">Plan mix</h2>
+        <div class="tf-ring" data-ring></div>
+        <ul class="tf-legend" data-legend></ul>
+      </section>
+
+      <section class="tf-card tf-flags" aria-labelledby="tf-flag-h">
+        <div class="tf-head"><h2 id="tf-flag-h">Feature flags</h2>
+          <label class="tf-search"><span data-icon="search"></span><span class="vh">Filter flags</span><input type="search" placeholder="Filter flags" data-q></label></div>
+        <ul class="tf-flaglist" data-flags></ul>
+        <p class="tf-msg" data-msg aria-live="polite"></p>
+      </section>
+
+      <section class="tf-card tf-release" aria-labelledby="tf-rel-h">
+        <div class="tf-head"><h2 id="tf-rel-h">Release 4.2 checklist</h2><span class="tf-meta num" data-relcount></span></div>
+        <div class="tf-progress" aria-hidden="true"><i data-relbar></i></div>
+        <ul class="tf-checks" data-checks></ul>
+      </section>
+    </main>
+    <p class="db-sample tf-foot">Sample data · fictional</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
