@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-13 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+14 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -19,6 +19,7 @@
 | 11 | [Vitalis Care](#vitalis-care) | Bento grid | Health & fitness | light | Teal, Sage, Night | [site/dashboards/vitalis-care/](../../site/dashboards/vitalis-care/) |
 | 12 | [Mallow Music](#mallow-music) | Tactile & neumorphic | Music & media | light | Cream, Berry, Cocoa | [site/dashboards/mallow-music/](../../site/dashboards/mallow-music/) |
 | 13 | [Taffy Analytics](#taffy-analytics) | Minimal & airy | SaaS admin, Analytics & BI | light | Taffy, Mint, Dusk | [site/dashboards/taffy-analytics/](../../site/dashboards/taffy-analytics/) |
+| 14 | [Prism Workspace](#prism-workspace) | Glass & glow | SaaS admin | light | Opal, Aqua, Obsidian | [site/dashboards/prism-workspace/](../../site/dashboards/prism-workspace/) |
 
 ## Cinematic & atmospheric
 
@@ -166,6 +167,34 @@ A wellness overview for a smart ring: frosted, softly bordered cards float over 
 - Interfaces that must work without colour gradients (print, e-ink)
 
 **Components:** Centred pill tabs that switch the score · Two-weight headline with tip chip · Score card with arc dial and state chip · Thin line charts with point markers · Device card with battery bar and status rows · Body map with selectable points · Summary card with glossy orb · White pill buttons with round arrow
+
+---
+
+<a id="prism-workspace"></a>
+### 14. Prism Workspace
+
+![Prism Workspace](../../site/dashboards/prism-workspace/thumb.jpg)
+
+Workspace settings in a light liquid-glass style: thick translucent pills with bright rims over soft pastel blobs. Invite people through a keyboard-friendly suggestion list, filter and remove members, tick permissions, flip notification switches and watch seats fill a folder-shaped plan card.
+
+- **Use cases:** SaaS admin · **Mode:** light · **Mood:** airy, polished, calm, modern, tactile
+- **Signature:** Thick liquid-glass pills and orbs: a pastel fill fading to white at the top, a bright inner rim and a soft outer glow, floating over blurred pastel blobs.
+- **Layout:** Top bar: gem wordmark, glass tab pill, lock and bell orbs · title row with Create workspace pill · 12-column grid: invite (4) + members (5) + folder plan card (3) · permissions (6) + notifications (6)
+- **Responsive:** ≤1100px: 2 columns (invite + members, plan under invite, permissions and notifications full width) · ≤700px: single column, tabs scroll on their own row, permissions in one column
+- **Fonts:** Inter Tight / Inter Tight · **Palette:** bg `#eceef3`, surface `#ffffff`, text `#1f2330`, muted `#525a6c`, accent `#4f4fb0`, lilac `#d9dcff`, mint `#cdeedd`, peach `#ffdcc4`
+- **Variants:** Opal, Aqua, Obsidian · **Closest toolkit theme:** `aurora`
+
+**Best for**
+- Settings and admin pages for team or collaboration tools
+- Products that want an Apple-like glass look without hurting readability
+- Onboarding steps such as inviting a team
+
+**Avoid when**
+- Data-dense screens or tables
+- Low-end devices where backdrop blur is costly
+- Brands that want flat or high-contrast UI
+
+**Components:** Glass tab bar and icon orbs · Invite combobox with suggestions (arrow keys, Enter, Esc) · Role radio group · Member list with filter and remove · Permission checkboxes · Notification switches · Folder-shaped plan card with seat meter · Speech-bubble tip
 
 ---
 

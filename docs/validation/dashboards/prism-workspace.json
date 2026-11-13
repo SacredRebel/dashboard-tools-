@@ -1,0 +1,62 @@
+{
+  "id": "prism-workspace",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/prism-workspace/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/prism-workspace/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/prism-workspace/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/prism-workspace/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/prism-workspace/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=aqua",
+      "width": 1440,
+      "variant": "aqua",
+      "final_path": "/dashboards/prism-workspace/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=obsidian",
+      "width": 1440,
+      "variant": "obsidian",
+      "final_path": "/dashboards/prism-workspace/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/prism-workspace",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

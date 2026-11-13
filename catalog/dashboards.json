@@ -437,6 +437,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied render of a pastel 3D UI kit with no real content (placeholder text). The capsule bars, round icon buttons, elastic switches and wave card were turned into a working analytics page with invented data. No artwork was copied; all shapes are CSS and SVG. The source image is not stored in the repo." },
       "path": "site/dashboards/taffy-analytics/"
+    },
+    {
+      "id": "prism-workspace",
+      "number": 14,
+      "name": "Prism Workspace",
+      "style_family": "glass",
+      "use_cases": ["saas-admin"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "Workspace settings in a light liquid-glass style: thick translucent pills with bright rims over soft pastel blobs. Invite people through a keyboard-friendly suggestion list, filter and remove members, tick permissions, flip notification switches and watch seats fill a folder-shaped plan card.",
+      "mood": ["airy", "polished", "calm", "modern", "tactile"],
+      "best_for": ["Settings and admin pages for team or collaboration tools", "Products that want an Apple-like glass look without hurting readability", "Onboarding steps such as inviting a team"],
+      "avoid_when": ["Data-dense screens or tables", "Low-end devices where backdrop blur is costly", "Brands that want flat or high-contrast UI"],
+      "layout": {
+        "pattern": "Settings",
+        "structure": "Top bar: gem wordmark, glass tab pill, lock and bell orbs · title row with Create workspace pill · 12-column grid: invite (4) + members (5) + folder plan card (3) · permissions (6) + notifications (6)",
+        "responsive": "≤1100px: 2 columns (invite + members, plan under invite, permissions and notifications full width) · ≤700px: single column, tabs scroll on their own row, permissions in one column"
+      },
+      "components": ["Glass tab bar and icon orbs", "Invite combobox with suggestions (arrow keys, Enter, Esc)", "Role radio group", "Member list with filter and remove", "Permission checkboxes", "Notification switches", "Folder-shaped plan card with seat meter", "Speech-bubble tip"],
+      "signature": "Thick liquid-glass pills and orbs: a pastel fill fading to white at the top, a bright inner rim and a soft outer glow, floating over blurred pastel blobs.",
+      "palette": { "bg": "#eceef3", "surface": "#ffffff", "text": "#1f2330", "muted": "#525a6c", "accent": "#4f4fb0", "lilac": "#d9dcff", "mint": "#cdeedd", "peach": "#ffdcc4" },
+      "fonts": { "display": "Inter Tight", "sans": "Inter Tight" },
+      "variants": [
+        { "id": "default", "name": "Opal", "swatch": "#4f4fb0" },
+        { "id": "aqua", "name": "Aqua", "swatch": "#146a7a" },
+        { "id": "obsidian", "name": "Obsidian", "swatch": "#b3b6ff" }
+      ],
+      "maps_to_theme": "aurora",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied render of a liquid-glass UI kit with placeholder text. Its pill buttons, round icon buttons, suggestion list, switches, checkboxes, speech bubble and folder card became a working workspace-settings page with invented people and data. All shapes are CSS. The source image is not stored in the repo." },
+      "path": "site/dashboards/prism-workspace/"
     }
   ]
 }
