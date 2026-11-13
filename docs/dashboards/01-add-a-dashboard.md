@@ -37,8 +37,11 @@ site/dashboards/<id>/
   index.html   ← markup
   style.css    ← tokens (:root + [data-variant]) and component styles
   app.js       ← sample data, icons, code-drawn art, interactions (optional but usual)
-  thumb.jpg    ← generated in step 6, never hand-made
+  thumb.jpg    ← generated in step 6 (720×450 gallery card), never hand-made
+  shot.jpg     ← generated in step 6 (1440×900 1:1 desktop reference), never hand-made
 ```
+
+Never commit the owner's original reference images from `inputs/dashboards/` — those stay gitignored. `shot.jpg` is **our** recreation screenshot and is the canonical visual reference in the repo.
 
 ### index.html skeleton (copy and adapt)
 
@@ -145,7 +148,7 @@ It validates the entry: enums, required fields, palette hex, variant blocks pres
 node scripts/dashboards-check.mjs <id>
 ```
 
-It serves `site/` over HTTP with worst-case clean-URL rules (not file://), then loads `/dashboards/<id>/`, `/dashboards/<id>` and `/dashboards/<id>/index.html` at 1440×900, the folder URL at 375×812, every variant, and the gallery preview iframe at `#/dashboards/<id>`. It fails on console errors, any 404, an unstyled page, a missing `data-ready`, or horizontal overflow. It writes `thumb.jpg` (720×450) and `docs/validation/dashboards/<id>.json`. Then run `node scripts/build.mjs` again so the catalog picks up the thumbnail. Open the thumbnail and look at it: it is what people see in the gallery.
+It serves `site/` over HTTP with worst-case clean-URL rules (not file://), then loads `/dashboards/<id>/`, `/dashboards/<id>` and `/dashboards/<id>/index.html` at 1440×900, the folder URL at 375×812, every variant, and the gallery preview iframe at `#/dashboards/<id>`. It fails on console errors, any 404, an unstyled page, a missing `data-ready`, or horizontal overflow. It writes `thumb.jpg` (720×450 gallery card), `shot.jpg` (1440×900 1:1 desktop reference), and `docs/validation/dashboards/<id>.json`. Then run `node scripts/build.mjs` again so the catalog picks up the assets. Open `shot.jpg` and look at it side by side with the (gitignored) source reference — that is the fidelity check.
 
 ## 7. Verify in the gallery
 

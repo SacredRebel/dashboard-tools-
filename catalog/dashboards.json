@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "description": "Dashboard style gallery: complete, themeable reference dashboards an agent can pick from by style family, use case or mode. Each entry lives in site/dashboards/<id>/ (index.html + style.css + app.js + thumb.jpg). Edit here, then run node scripts/build.mjs and node scripts/dashboards-check.mjs.",
+  "description": "Dashboard style gallery: complete, themeable reference dashboards an agent can pick from by style family, use case or mode. Each entry lives in site/dashboards/<id>/ (index.html + style.css + app.js + thumb.jpg + shot.jpg 1440×900). Edit here, then run node scripts/build.mjs and node scripts/dashboards-check.mjs.",
   "style_families": [
     {
       "id": "cinematic",

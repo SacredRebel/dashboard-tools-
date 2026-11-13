@@ -83,16 +83,16 @@
   function detail(main, d, list, fam, uc, swatches) {
     if (!d) { main.innerHTML = `<div class="s-wrap"><div class="s-empty" style="margin:64px 0">That dashboard doesn't exist. <a class="s-btn s-btn-sm" href="#/dashboards">See all dashboards</a></div></div>`; return; }
     const i = list.indexOf(d), prev = list[i - 1], next = list[i + 1];
-    let device = 'desktop', variant = 'default';
+    let device = 'desktop', variant = 'default', view = 'live';
     const src = () => `${dashUrl(d.id)}?embed=1${variant === 'default' ? '' : `&variant=${variant}`}`;
     const prompt = `Use the "${d.name}" dashboard style from the Dashboard Tools gallery for <project>.
-1. Read catalog/dashboards.json → entry "${d.id}" and open site/dashboards/${d.id}/ (index.html, style.css, app.js).
+1. Read catalog/dashboards.json → entry "${d.id}" and open site/dashboards/${d.id}/ (index.html, style.css, app.js, shot.jpg).
 2. Copy the :root tokens from style.css into the project theme (token names match design-system/tokens.css).${d.variants.length > 1 ? ` Variants available: ${d.variants.map((v) => v.id).join(', ')}.` : ''}
 3. Rebuild the layout (${d.layout.pattern}): ${d.layout.structure}.
 4. Keep the signature: ${d.signature}
 5. Replace all sample copy and data with the client's real words and fields; follow AGENTS.md and the rulebook.
 Show me the screen plan before building.`;
-    const files = ['index.html', 'style.css', 'app.js'];
+    const files = ['index.html', 'style.css', 'app.js', 'thumb.jpg', 'shot.jpg'];
     main.innerHTML = `
       <div class="s-wrap dg-detail">
         <nav class="dg-crumbs" aria-label="Breadcrumb"><a class="s-link" href="#/dashboards">← All dashboards</a><span class="s-muted s-small">${esc(fam[d.style_family].name)}</span></nav>
@@ -101,10 +101,17 @@ Show me the screen plan before building.`;
           <div class="cx-head-actions"><a class="s-btn" href="${dashUrl(d.id)}" target="_blank" rel="noopener">${icon('external')}Open full page</a><button class="s-btn s-btn-primary" data-copy-prompt>${icon('agent')}Copy agent prompt</button></div>
         </div>
         <div class="dg-toolbar">
-          <div class="dg-seg" role="group" aria-label="Device">${Object.entries(DEVICES).map(([k, [, , l]]) => `<button data-device="${k}" aria-pressed="${k === device}">${l}</button>`).join('')}</div>
+          <div class="dg-seg" role="group" aria-label="View"><button data-view="live" aria-pressed="true">Live</button><button data-view="shot" aria-pressed="false">Reference shot</button></div>
+          <div class="dg-seg" role="group" aria-label="Device" data-device-seg>${Object.entries(DEVICES).map(([k, [, , l]]) => `<button data-device="${k}" aria-pressed="${k === device}">${l}</button>`).join('')}</div>
           <div class="dg-variants" role="group" aria-label="Variant">${d.variants.map((v) => `<button data-variant="${v.id}" aria-pressed="${v.id === variant}"><i style="background:${v.swatch || d.palette.accent}"></i>${esc(v.name)}</button>`).join('')}</div>
         </div>
-        <div class="dg-stage" data-stage><div class="dg-frame" data-frame><iframe title="${esc(d.name)} live preview" src="${src()}" loading="lazy"></iframe></div></div>
+        <div class="dg-stage" data-stage>
+          <div class="dg-frame" data-frame><iframe title="${esc(d.name)} live preview" src="${src()}" loading="lazy"></iframe></div>
+          <figure class="dg-shot" data-shot hidden>
+            <img src="dashboards/${d.id}/shot.jpg" alt="${esc(d.name)} 1440×900 reference screenshot" width="1440" height="900" loading="lazy" decoding="async">
+            <figcaption class="s-small s-muted">1:1 desktop reference · 1440×900 · <a class="s-link" href="dashboards/${d.id}/shot.jpg" target="_blank" rel="noopener">Open shot.jpg</a></figcaption>
+          </figure>
+        </div>
         <div class="dg-info">
           <section class="s-panel dg-pad"><h2 class="s-h3">Style</h2>
             <dl class="dg-dl"><div><dt>Use cases</dt><dd>${d.use_cases.map((u) => esc(uc[u].name)).join(', ')}</dd></div><div><dt>Mood</dt><dd>${d.mood.map(esc).join(', ')}</dd></div>
@@ -123,7 +130,17 @@ Show me the screen plan before building.`;
       </div>`;
     document.title = d.name + ' · Dashboards · Dashboard Tools';
     const stage = main.querySelector('[data-stage]'), frame = main.querySelector('[data-frame]'), ifr = frame.querySelector('iframe');
+    const shot = main.querySelector('[data-shot]');
+    const deviceSeg = main.querySelector('[data-device-seg]');
+    function syncView() {
+      const live = view === 'live';
+      frame.hidden = !live; shot.hidden = live;
+      deviceSeg.hidden = !live;
+      main.querySelectorAll('[data-view]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === view)));
+      if (live) fit();
+    }
     function fit() {
+      if (view !== 'live') return;
       const [w, h] = DEVICES[device];
       const avail = stage.clientWidth - 2;
       const maxH = device === 'desktop' ? Infinity : Math.max(520, Math.min(window.innerHeight * 0.82, 900));
@@ -133,8 +150,9 @@ Show me the screen plan before building.`;
       frame.dataset.device = device;
     }
     const ro = new ResizeObserver(fit); ro.observe(stage); cleanups.push(() => ro.disconnect());
-    fit();
+    syncView();
     main.addEventListener('click', (e) => {
+      const vw = e.target.closest('[data-view]'); if (vw) { view = vw.dataset.view; syncView(); return; }
       const dv = e.target.closest('[data-device]'); if (dv) { device = dv.dataset.device; main.querySelectorAll('[data-device]').forEach((b) => b.setAttribute('aria-pressed', String(b === dv))); fit(); return; }
       const v = e.target.closest('[data-variant]'); if (v) { variant = v.dataset.variant; main.querySelectorAll('[data-variant]').forEach((b) => b.setAttribute('aria-pressed', String(b === v))); ifr.src = src(); return; }
       const hx = e.target.closest('[data-hex]'); if (hx) { copy(hx.dataset.hex, `Copied ${hx.dataset.hex}`); return; }

@@ -22,7 +22,10 @@
  *   the gallery detail page /#/dashboards/<id> and inspects the preview iframe
  * and fails on: console/page errors, any HTTP response >= 400, unstyled page (body background
  * transparent), app.js not finished (<html data-ready="true"> missing), horizontal overflow.
- * Writes site/dashboards/<id>/thumb.jpg (720×450) and docs/validation/dashboards/<id>.json.
+ * Writes:
+ *   site/dashboards/<id>/thumb.jpg  — 720×450 gallery card (viewport 1440×900 @ 0.5× DPR)
+ *   site/dashboards/<id>/shot.jpg   — 1440×900 1:1 desktop reference screenshot (@ 1× DPR)
+ *   docs/validation/dashboards/<id>.json — check evidence
  * Exit 1 on any problem. Requires Playwright (preinstalled in Claude cloud sessions; elsewhere:
  * npm install --no-save playwright && npx playwright install chromium).
  */
@@ -111,7 +114,18 @@ for (const d of list) {
     const info = await inspect(page);
     judge(info, errs);
     if (variant !== 'default' && !(await page.evaluate((v) => document.documentElement.dataset.variant === v, variant))) errs.push(`variant ${variant} not applied`);
-    if (thumb && !errs.length) await page.screenshot({ path: join(dir, 'thumb.jpg'), type: 'jpeg', quality: 82 });
+    if (thumb && !errs.length) {
+      // Gallery card: half-res JPEG. Canonical 1:1 reference: full 1440×900 JPEG of the same viewport.
+      await page.screenshot({ path: join(dir, 'thumb.jpg'), type: 'jpeg', quality: 82 });
+      const full = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+      const ferrs = []; watch(full, ferrs);
+      await full.goto(base + url, { waitUntil: 'load' });
+      await full.waitForTimeout(700);
+      judge(await inspect(full), ferrs);
+      if (!ferrs.length) await full.screenshot({ path: join(dir, 'shot.jpg'), type: 'jpeg', quality: 88 });
+      else problems.push(...ferrs.map((e) => `[shot ${url}] ${e}`));
+      await full.close();
+    }
     runs.push({ url, width: w, variant, final_path: info.path, overflow_px: info.overflow, errors: errs });
     problems.push(...errs.map((e) => `[${w} ${url}] ${e}`));
     await page.close();
@@ -131,7 +145,7 @@ for (const d of list) {
   }
   writeFileSync(join(root, 'docs/validation/dashboards', `${d.id}.json`), JSON.stringify({ id: d.id, checked: new Date().toISOString().slice(0, 10), ok: !problems.length, server: 'worst-case clean URLs (see scripts/dashboards-check.mjs)', runs }, null, 2) + '\n');
   if (problems.length) { failed++; console.error(`✖ ${d.id}\n  ${problems.join('\n  ')}`); }
-  else console.log(`✔ ${d.id}: ${runs.length} renders clean (3 URL forms, phone, ${d.variants.length - 1} variants, gallery preview) · thumb.jpg written`);
+  else console.log(`✔ ${d.id}: ${runs.length} renders clean (3 URL forms, phone, ${d.variants.length - 1} variants, gallery preview) · thumb.jpg + shot.jpg written`);
 }
 await browser.close();
 server.close();
