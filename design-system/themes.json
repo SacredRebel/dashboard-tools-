@@ -1,72 +1,311 @@
 {
-  "description": "Metadata for the themes defined in tokens.css. Used by the showcase and by agents choosing a direction.",
-  "google_fonts_url": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&family=Manrope:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap",
+  "description": "Metadata for the themes defined in tokens.css. 'classic' themes suit data-dense daily tools; 'cinematic' themes are dark glass worlds suited to showcase layers, client presentations and premium dark dashboards. Used by the showcase and by agents choosing a direction.",
+  "google_fonts_url": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&family=Manrope:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&family=Sora:wght@400;500;600&family=Urbanist:wght@500;600&display=swap",
   "themes": [
     {
       "id": "atelier",
       "name": "Atelier",
       "mode": "light",
-      "mood": ["warm", "editorial", "crafted"],
+      "mood": [
+        "warm",
+        "editorial",
+        "crafted"
+      ],
       "description": "Warm paper canvas with a whisper of grain, ink-dark text and a terracotta accent. Serif page titles give it a studio feel.",
-      "best_for": ["Interior design", "Architecture", "Creative studios", "Consultants"],
-      "fonts": { "display": "Fraunces", "sans": "Instrument Sans" },
+      "best_for": [
+        "Interior design",
+        "Architecture",
+        "Creative studios",
+        "Consultants"
+      ],
+      "fonts": {
+        "display": "Fraunces",
+        "sans": "Instrument Sans"
+      },
       "signature": "Paper-grain canvas + Fraunces page titles and numerals",
-      "swatches": ["#f6f2ea", "#fffdf8", "#231d17", "#a84b26", "#3f6e7a", "#c4943c"]
+      "swatches": [
+        "#f6f2ea",
+        "#fffdf8",
+        "#231d17",
+        "#a84b26",
+        "#3f6e7a",
+        "#c4943c"
+      ],
+      "family": "classic"
     },
     {
       "id": "linen",
       "name": "Linen",
       "mode": "light",
-      "mood": ["calm", "natural", "gentle"],
+      "mood": [
+        "calm",
+        "natural",
+        "gentle"
+      ],
       "description": "Soft linen neutrals with a sage accent and rounder corners. Quiet and reassuring.",
-      "best_for": ["Wellness", "Coaching", "Therapy", "Hospitality"],
-      "fonts": { "display": "Manrope", "sans": "Manrope" },
+      "best_for": [
+        "Wellness",
+        "Coaching",
+        "Therapy",
+        "Hospitality"
+      ],
+      "fonts": {
+        "display": "Manrope",
+        "sans": "Manrope"
+      },
       "signature": "Generous radius and soft sage highlights",
-      "swatches": ["#f2f3ee", "#fbfbf8", "#1d231f", "#3f6b4c", "#b07d4f", "#5b7fa0"]
+      "swatches": [
+        "#f2f3ee",
+        "#fbfbf8",
+        "#1d231f",
+        "#3f6b4c",
+        "#b07d4f",
+        "#5b7fa0"
+      ],
+      "family": "classic"
     },
     {
       "id": "coastal",
       "name": "Coastal",
       "mode": "light",
-      "mood": ["fresh", "clear", "trustworthy"],
+      "mood": [
+        "fresh",
+        "clear",
+        "trustworthy"
+      ],
       "description": "Crisp whites, cool grey-blue neutrals and an ocean accent. The most universal of the six.",
-      "best_for": ["Real estate", "Agencies", "Professional services", "Finance-lite"],
-      "fonts": { "display": "Plus Jakarta Sans", "sans": "Plus Jakarta Sans" },
+      "best_for": [
+        "Real estate",
+        "Agencies",
+        "Professional services",
+        "Finance-lite"
+      ],
+      "fonts": {
+        "display": "Plus Jakarta Sans",
+        "sans": "Plus Jakarta Sans"
+      },
       "signature": "High clarity, tight display tracking",
-      "swatches": ["#f2f6f8", "#ffffff", "#10212c", "#1c6a86", "#e07a5f", "#3d9a7a"]
+      "swatches": [
+        "#f2f6f8",
+        "#ffffff",
+        "#10212c",
+        "#1c6a86",
+        "#e07a5f",
+        "#3d9a7a"
+      ],
+      "family": "classic"
     },
     {
       "id": "blush",
       "name": "Blush",
       "mode": "light",
-      "mood": ["soft", "elegant", "personal"],
+      "mood": [
+        "soft",
+        "elegant",
+        "personal"
+      ],
       "description": "Rosy off-whites with a deep rose accent and an editorial serif for titles.",
-      "best_for": ["Beauty", "Events & weddings", "Fashion", "Boutique brands"],
-      "fonts": { "display": "Instrument Serif", "sans": "DM Sans" },
+      "best_for": [
+        "Beauty",
+        "Events & weddings",
+        "Fashion",
+        "Boutique brands"
+      ],
+      "fonts": {
+        "display": "Instrument Serif",
+        "sans": "DM Sans"
+      },
       "signature": "Instrument Serif titles, rounded soft cards",
-      "swatches": ["#faf4f2", "#fffcfb", "#2a1e21", "#a8445e", "#6c8ea4", "#c58f5a"]
+      "swatches": [
+        "#faf4f2",
+        "#fffcfb",
+        "#2a1e21",
+        "#a8445e",
+        "#6c8ea4",
+        "#c58f5a"
+      ],
+      "family": "classic"
     },
     {
       "id": "noir",
       "name": "Noir",
       "mode": "dark",
-      "mood": ["luxurious", "exclusive", "quiet"],
+      "mood": [
+        "luxurious",
+        "exclusive",
+        "quiet"
+      ],
       "description": "Near-black surfaces, champagne gold accent and a classic Garamond for titles. Sharp corners, low noise.",
-      "best_for": ["Luxury services", "Private clients", "High-end real estate", "Jewellery"],
-      "fonts": { "display": "Cormorant Garamond", "sans": "Manrope" },
+      "best_for": [
+        "Luxury services",
+        "Private clients",
+        "High-end real estate",
+        "Jewellery"
+      ],
+      "fonts": {
+        "display": "Cormorant Garamond",
+        "sans": "Manrope"
+      },
       "signature": "Gold on black, Garamond numerals, edge-lit surfaces",
-      "swatches": ["#0d0d0f", "#151517", "#eeebe4", "#cfae72", "#8fa8c8", "#b98a9e"]
+      "swatches": [
+        "#0d0d0f",
+        "#151517",
+        "#eeebe4",
+        "#cfae72",
+        "#8fa8c8",
+        "#b98a9e"
+      ],
+      "family": "classic"
     },
     {
       "id": "midnight",
       "name": "Midnight",
       "mode": "dark",
-      "mood": ["focused", "technical", "crisp"],
+      "mood": [
+        "focused",
+        "technical",
+        "crisp"
+      ],
       "description": "Deep navy with a periwinkle accent and Geist throughout. Feels like a pro tool.",
-      "best_for": ["Tech-savvy users", "Agencies", "Late-night workers"],
-      "fonts": { "display": "Geist", "sans": "Geist" },
+      "best_for": [
+        "Tech-savvy users",
+        "Agencies",
+        "Late-night workers"
+      ],
+      "fonts": {
+        "display": "Geist",
+        "sans": "Geist"
+      },
       "signature": "Dense, precise, keyboard-first feel",
-      "swatches": ["#0a0e1a", "#111727", "#e7ebf5", "#8ea6ff", "#5cc2b0", "#e5a35c"]
+      "swatches": [
+        "#0a0e1a",
+        "#111727",
+        "#e7ebf5",
+        "#8ea6ff",
+        "#5cc2b0",
+        "#e5a35c"
+      ],
+      "family": "classic"
+    },
+    {
+      "id": "grove",
+      "name": "Grove",
+      "mode": "dark",
+      "family": "cinematic",
+      "mood": [
+        "grounded",
+        "calm",
+        "alive"
+      ],
+      "description": "Deep forest ground with soft radial glows, liquid-glass showcase panels and a lime-to-mint accent thread that marks lines, focus and the active state.",
+      "best_for": [
+        "Landscaping & outdoor trades",
+        "Wellness & nature brands",
+        "Field-service dashboards"
+      ],
+      "fonts": {
+        "display": "Urbanist",
+        "sans": "Manrope"
+      },
+      "signature": "Lime → mint thread on forest glass",
+      "swatches": [
+        "#11241f",
+        "#17302a",
+        "#f3f6f1",
+        "#b9ef85",
+        "#7edbc2",
+        "#e8c26a"
+      ]
+    },
+    {
+      "id": "tide",
+      "name": "Tide",
+      "mode": "dark",
+      "family": "cinematic",
+      "mood": [
+        "precise",
+        "cool",
+        "modern"
+      ],
+      "description": "Near-black graphite with a teal-to-sky thread. Quiet, technical and very legible after dark.",
+      "best_for": [
+        "AI & automation tools",
+        "Operations consoles",
+        "Tech-forward services"
+      ],
+      "fonts": {
+        "display": "Sora",
+        "sans": "Manrope"
+      },
+      "signature": "Teal glow at the horizon, crisp Sora headings",
+      "swatches": [
+        "#090c0e",
+        "#101417",
+        "#ecf0f3",
+        "#6ee7d8",
+        "#9ec5ff",
+        "#e8c26a"
+      ]
+    },
+    {
+      "id": "ember",
+      "name": "Ember",
+      "mode": "dark",
+      "family": "cinematic",
+      "mood": [
+        "warm",
+        "confident",
+        "crafted"
+      ],
+      "description": "Warm charcoal with an orange-to-apricot thread and Fraunces numerals. Feels like a workshop at golden hour.",
+      "best_for": [
+        "Construction & craft trades",
+        "Hospitality",
+        "Food & beverage"
+      ],
+      "fonts": {
+        "display": "Fraunces",
+        "sans": "Manrope"
+      },
+      "signature": "Orange glow, serif numerals on charcoal",
+      "swatches": [
+        "#0e0b09",
+        "#171311",
+        "#f3efed",
+        "#ff9f5a",
+        "#ffd29a",
+        "#8fc7c0"
+      ]
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora",
+      "mode": "dark",
+      "family": "cinematic",
+      "mood": [
+        "dreamy",
+        "creative",
+        "premium"
+      ],
+      "description": "Violet night with a lavender-to-pink thread. Expressive without losing structure.",
+      "best_for": [
+        "Creative studios",
+        "Beauty & events",
+        "Personal brands"
+      ],
+      "fonts": {
+        "display": "Sora",
+        "sans": "DM Sans"
+      },
+      "signature": "Lavender → pink thread, nebula glows",
+      "swatches": [
+        "#0b090e",
+        "#131018",
+        "#efecf3",
+        "#b89cff",
+        "#ff9bd2",
+        "#7fd8d0"
+      ]
     }
   ]
 }

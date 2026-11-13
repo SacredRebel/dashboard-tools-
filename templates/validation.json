@@ -1,0 +1,21 @@
+{
+  "$comment": "Evidence file template. Copy to docs/validation/<date>-<pass>.json after each significant pass. Record what you actually ran and saw; never fill in results you did not check.",
+  "pass": "pipeline-board-v1",
+  "date": "2026-11-13",
+  "commit": "<git sha>",
+  "preview_url": "https://<project>-<hash>.vercel.app",
+  "widths": [375, 1280],
+  "checks": [
+    { "name": "no horizontal overflow", "result": "pass", "evidence": "scrollWidth - clientWidth = 0 at 375 and 1280" },
+    { "name": "console errors", "result": "pass", "evidence": "0 errors across 6 routes" },
+    { "name": "keyboard: move card via Move to…", "result": "pass", "evidence": "Tab → Enter → ArrowDown → Enter moved c1 to Discovery call; focus returned to trigger" },
+    { "name": "empty + filtered-empty states", "result": "pass", "evidence": "screenshots/clients-empty-375.png" },
+    { "name": "CLS", "result": "pass", "evidence": "0.02 (Lighthouse mobile)" },
+    { "name": "60 fps at 4x CPU throttle during card move", "result": "pass", "evidence": "Performance trace: no long frames > 16.7 ms" },
+    { "name": "RLS: user B cannot read user A rows", "result": "pass", "evidence": "select returned 0 rows" },
+    { "name": "contrast AA", "result": "pass", "evidence": "axe: 0 serious issues" }
+  ],
+  "screenshots": ["screenshots/pipeline-1280.png", "screenshots/pipeline-375.png"],
+  "known_issues": [],
+  "removed_in_this_pass": ["old list-only pipeline view (replaced, not kept as fallback)"]
+}

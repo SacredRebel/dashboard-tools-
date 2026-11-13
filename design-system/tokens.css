@@ -1,8 +1,8 @@
 /* =========================================================================
    Dashboard Tools: design tokens
    -------------------------------------------------------------------------
-   One set of token NAMES, six themes. Components must only use these vars.
-   Switch theme:  <html data-theme="atelier|linen|coastal|blush|noir|midnight">
+   One set of token NAMES, ten themes (6 classic + 4 cinematic glass). Components must only use these vars.
+   Switch theme:  <html data-theme="atelier|linen|coastal|blush|noir|midnight|grove|tide|ember|aurora">
    Themes also work on any container element (scoped previews).
    Rules for using them: docs/design/02-rulebook.md
    ========================================================================= */
@@ -52,6 +52,22 @@
   --z-dropdown: 30;
   --z-overlay: 40;
   --z-toast: 50;
+}
+
+/* ---- Presentation tokens (defaults for every theme) ------------------
+   Glass, glow and the accent "thread" are for SHOWCASE layers (hero, story
+   players, device frames). Data UI stays on opaque --surface. See
+   docs/design/07-showcase-patterns.md.                                     */
+:root,
+[data-theme] {
+  --glass-fill: var(--surface);
+  --glass-edge: var(--border);
+  --glass-blur: 0px;
+  --glow-1: transparent;
+  --glow-2: transparent;
+  --thread: linear-gradient(90deg, var(--accent), var(--accent));
+  --accent-2: var(--chart-2);
+  --danger-fg: #ffffff;
 }
 
 /* ===================================================================== */
@@ -288,6 +304,7 @@
   --success: #74b98e;  --success-soft: #16261c;
   --warning: #dcaa52;  --warning-soft: #2a2213;
   --danger: #e5837a;   --danger-soft: #2e1817;
+  --danger-fg: #1a0b0a;
   --info: #86acd4;     --info-soft: #172230;
 
   --chart-1: #cfae72;
@@ -340,6 +357,7 @@
   --success: #5cc28f;  --success-soft: #11291f;
   --warning: #e5b454;  --warning-soft: #2b2312;
   --danger: #f07b7b;   --danger-soft: #2f1619;
+  --danger-fg: #1a0b0a;
   --info: #6cc3e6;     --info-soft: #102835;
 
   --chart-1: #8ea6ff;
@@ -365,6 +383,250 @@
   --edge: inset 0 1px 0 rgb(255 255 255 / 0.05);
   --scrim: rgb(2 4 10 / 0.6);
   --canvas-texture: none;
+}
+
+/* ===================================================================== */
+/* GROVE: forest ground, liquid glass, lime → mint thread (dark) */
+/* ===================================================================== */
+[data-theme="grove"] {
+  color-scheme: dark;
+  --bg: #11241f;
+  --surface: #17302a;
+  --surface-2: #1d3832;
+  --surface-sunken: #0e1e1a;
+  --border: #2b4640;
+  --control-border: #628078; /* >= 3:1 for inputs */
+  --border-strong: #3c5a53;
+  --text: #f3f6f1;
+  --text-muted: #bccbc4;
+  --text-subtle: #a1b5ac;
+
+  --accent: #b9ef85;
+  --accent-hover: #cbf5a0;
+  --accent-fg: #10241c;
+  --accent-soft: #25402d;
+  --accent-2: #7edbc2;
+  --focus: #b9ef85;
+
+  --success: #8fd99a;  --success-soft: #173726;
+  --warning: #e8c26a;  --warning-soft: #33301a;
+  --danger: #f39a91;   --danger-soft: #3a2421;
+  --danger-fg: #1a0b0a;
+  --info: #8ec9e8;     --info-soft: #173444;
+
+  --chart-1: #b9ef85;
+  --chart-2: #7edbc2;
+  --chart-3: #e8c26a;
+  --chart-4: #8ec9e8;
+  --chart-5: #f0a98b;
+
+  --font-display: "Urbanist", system-ui, sans-serif;
+  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --display-weight: 600;
+  --display-tracking: -0.035em;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
+  --shadow-md: 0 10px 30px rgb(0 0 0 / 0.38);
+  --shadow-lg: 0 24px 60px rgb(0 0 0 / 0.5);
+  --edge: inset 0 1px 0 rgb(255 255 255 / 0.06);
+  --scrim: rgb(0 0 0 / 0.6);
+
+  --glass-fill: rgb(255 255 255 / 0.055);
+  --glass-edge: rgb(185 239 133 / 0.28);
+  --glass-blur: 14px;
+  --glow-1: rgb(185 239 133 / 0.18);
+  --glow-2: rgb(126 219 194 / 0.16);
+  --thread: linear-gradient(90deg, #b9ef85, #7edbc2);
+  --canvas-texture: radial-gradient(900px 520px at 88% -12%, var(--glow-1), transparent 62%), radial-gradient(760px 520px at -12% 112%, var(--glow-2), transparent 62%);
+}
+
+/* ===================================================================== */
+/* TIDE: near-black glass, teal → sky thread (dark) */
+/* ===================================================================== */
+[data-theme="tide"] {
+  color-scheme: dark;
+  --bg: #090c0e;
+  --surface: #101417;
+  --surface-2: #151a1e;
+  --surface-sunken: #0b0f11;
+  --border: #262d33;
+  --control-border: #5f6970; /* >= 3:1 for inputs */
+  --border-strong: #364149;
+  --text: #ecf0f3;
+  --text-muted: #a6b0b7;
+  --text-subtle: #8e989f;
+
+  --accent: #6ee7d8;
+  --accent-hover: #95efe4;
+  --accent-fg: #06201b;
+  --accent-soft: #12292a;
+  --accent-2: #9ec5ff;
+  --focus: #6ee7d8;
+
+  --success: #6fd39a;  --success-soft: #11291d;
+  --warning: #e8c26a;  --warning-soft: #2b2513;
+  --danger: #f28b82;   --danger-soft: #2f1818;
+  --danger-fg: #1a0b0a;
+  --info: #9ec5ff;     --info-soft: #16233a;
+
+  --chart-1: #6ee7d8;
+  --chart-2: #9ec5ff;
+  --chart-3: #e8c26a;
+  --chart-4: #c7a2ff;
+  --chart-5: #f2a07b;
+
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --display-weight: 600;
+  --display-tracking: -0.03em;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
+  --shadow-md: 0 10px 30px rgb(0 0 0 / 0.38);
+  --shadow-lg: 0 24px 60px rgb(0 0 0 / 0.5);
+  --edge: inset 0 1px 0 rgb(255 255 255 / 0.06);
+  --scrim: rgb(0 0 0 / 0.6);
+
+  --glass-fill: rgb(255 255 255 / 0.055);
+  --glass-edge: rgb(110 231 216 / 0.28);
+  --glass-blur: 14px;
+  --glow-1: rgb(110 231 216 / 0.18);
+  --glow-2: rgb(158 197 255 / 0.14);
+  --thread: linear-gradient(90deg, #6ee7d8, #9ec5ff);
+  --canvas-texture: radial-gradient(900px 520px at 88% -12%, var(--glow-1), transparent 62%), radial-gradient(760px 520px at -12% 112%, var(--glow-2), transparent 62%);
+}
+
+/* ===================================================================== */
+/* EMBER: warm charcoal, orange → apricot thread (dark) */
+/* ===================================================================== */
+[data-theme="ember"] {
+  color-scheme: dark;
+  --bg: #0e0b09;
+  --surface: #171311;
+  --surface-2: #1d1815;
+  --surface-sunken: #120e0c;
+  --border: #322a26;
+  --control-border: #716660; /* >= 3:1 for inputs */
+  --border-strong: #493d37;
+  --text: #f3efed;
+  --text-muted: #b3a9a2;
+  --text-subtle: #9a908a;
+
+  --accent: #ff9f5a;
+  --accent-hover: #ffb680;
+  --accent-fg: #2a1405;
+  --accent-soft: #2e1d12;
+  --accent-2: #ffd29a;
+  --focus: #ff9f5a;
+
+  --success: #86cf98;  --success-soft: #16271b;
+  --warning: #ffd29a;  --warning-soft: #2f2416;
+  --danger: #f28b82;   --danger-soft: #311816;
+  --danger-fg: #1a0b0a;
+  --info: #9ec5ff;     --info-soft: #17233a;
+
+  --chart-1: #ff9f5a;
+  --chart-2: #ffd29a;
+  --chart-3: #8fc7c0;
+  --chart-4: #c6a0e8;
+  --chart-5: #e07a6a;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --display-weight: 560;
+  --display-tracking: -0.02em;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
+  --shadow-md: 0 10px 30px rgb(0 0 0 / 0.38);
+  --shadow-lg: 0 24px 60px rgb(0 0 0 / 0.5);
+  --edge: inset 0 1px 0 rgb(255 255 255 / 0.06);
+  --scrim: rgb(0 0 0 / 0.6);
+
+  --glass-fill: rgb(255 255 255 / 0.055);
+  --glass-edge: rgb(255 159 90 / 0.28);
+  --glass-blur: 14px;
+  --glow-1: rgb(255 159 90 / 0.18);
+  --glow-2: rgb(255 210 154 / 0.12);
+  --thread: linear-gradient(90deg, #ff9f5a, #ffd29a);
+  --canvas-texture: radial-gradient(900px 520px at 88% -12%, var(--glow-1), transparent 62%), radial-gradient(760px 520px at -12% 112%, var(--glow-2), transparent 62%);
+}
+
+/* ===================================================================== */
+/* AURORA: violet night, lavender → pink thread (dark) */
+/* ===================================================================== */
+[data-theme="aurora"] {
+  color-scheme: dark;
+  --bg: #0b090e;
+  --surface: #131018;
+  --surface-2: #18141e;
+  --surface-sunken: #0e0c12;
+  --border: #2a2533;
+  --control-border: #665f72; /* >= 3:1 for inputs */
+  --border-strong: #3d364a;
+  --text: #efecf3;
+  --text-muted: #aca5b7;
+  --text-subtle: #948d9f;
+
+  --accent: #b89cff;
+  --accent-hover: #ccb8ff;
+  --accent-fg: #150d2a;
+  --accent-soft: #241c3a;
+  --accent-2: #ff9bd2;
+  --focus: #b89cff;
+
+  --success: #7fd3a0;  --success-soft: #14281d;
+  --warning: #ecc46c;  --warning-soft: #2c2513;
+  --danger: #f28b9b;   --danger-soft: #31181d;
+  --danger-fg: #1a0b0a;
+  --info: #9ec5ff;     --info-soft: #17233a;
+
+  --chart-1: #b89cff;
+  --chart-2: #ff9bd2;
+  --chart-3: #7fd8d0;
+  --chart-4: #ecc46c;
+  --chart-5: #9ec5ff;
+
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --display-weight: 600;
+  --display-tracking: -0.03em;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
+  --shadow-md: 0 10px 30px rgb(0 0 0 / 0.38);
+  --shadow-lg: 0 24px 60px rgb(0 0 0 / 0.5);
+  --edge: inset 0 1px 0 rgb(255 255 255 / 0.06);
+  --scrim: rgb(0 0 0 / 0.6);
+
+  --glass-fill: rgb(255 255 255 / 0.055);
+  --glass-edge: rgb(184 156 255 / 0.2);
+  --glass-blur: 14px;
+  --glow-1: rgb(184 156 255 / 0.2);
+  --glow-2: rgb(255 155 210 / 0.12);
+  --thread: linear-gradient(90deg, #b89cff, #ff9bd2);
+  --canvas-texture: radial-gradient(900px 520px at 88% -12%, var(--glow-1), transparent 62%), radial-gradient(760px 520px at -12% 112%, var(--glow-2), transparent 62%);
 }
 
 /* Reduced motion: collapse durations globally */

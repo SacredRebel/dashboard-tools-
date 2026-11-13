@@ -58,6 +58,7 @@ Postgres database, auth and storage with row-level security; generous free tier.
 
 **How to use**
 - Enable RLS on every table; owner-only policies
+- Use Realtime subscriptions or refresh on visibilitychange, never polling timers
 
 **Docs:** https://supabase.com/docs
 
@@ -205,6 +206,77 @@ Schema validation and form state.
 
 ---
 
+<a id="view-transitions"></a>
+### View Transitions API
+
+`document.startViewTransition()` · library · **optional** · phases: Build, Polish & QA
+
+Native browser API that morphs matching elements between two states or pages (list card → detail).
+
+**Use when**
+- Continuity between list and detail, tile and analytics view
+
+**Avoid when**
+- Critical flows that must look identical in every browser (it is progressive enhancement)
+
+**How to use**
+- Give the source and destination the same view-transition-name
+- Skip under prefers-reduced-motion
+
+**Pairs with:** [Showcase patterns (this repo)](uiux.md#showcase-patterns) · [Motion (Framer Motion)](libraries.md#motion-lib)
+
+**If not installed:** follow [docs/design/07-showcase-patterns.md](../../docs/design/07-showcase-patterns.md)
+
+**Docs:** https://developer.mozilla.org/docs/Web/API/View_Transition_API
+
+---
+
+<a id="web-animations"></a>
+### Web Animations API
+
+`element.animate()` · library · **optional** · phases: Build, Polish & QA
+
+Native, scriptable animations you can pause, seek and cancel. One rAF clock can seek many paused animations.
+
+**Use when**
+- Story players and micro-loops that must pause offscreen and resume without jumps
+
+**Avoid when**
+- Simple hover/focus transitions (use CSS)
+
+**How to use**
+- Drive with one visible-time clock; cancel animations when the view is destroyed
+
+**Pairs with:** [Showcase patterns (this repo)](uiux.md#showcase-patterns)
+
+**If not installed:** follow [docs/design/07-showcase-patterns.md](../../docs/design/07-showcase-patterns.md)
+
+**Docs:** https://developer.mozilla.org/docs/Web/API/Web_Animations_API
+
+---
+
+<a id="gsap"></a>
+### GSAP + ScrollTrigger
+
+`gsap (npm)` · library · **situational** · phases: Build
+
+Timeline animation engine with scroll-linked triggers, for choreographed showcase entrances.
+
+**Use when**
+- Complex multi-element showcase timelines on marketing/handover pages
+
+**Avoid when**
+- Product UI (CSS + Motion is enough); scroll hijacking or pinning that blocks native scroll
+
+**How to use**
+- Use one animation library per project; entrances run once, ≤ 600 ms
+
+**Pairs with:** [Web Animations API](libraries.md#web-animations)
+
+**Docs:** https://gsap.com/docs/
+
+---
+
 <a id="resend"></a>
 ### Resend
 
@@ -219,6 +291,30 @@ Transactional email API.
 - v1
 
 **Docs:** https://resend.com/docs
+
+---
+
+<a id="threejs"></a>
+### Three.js
+
+`three (npm)` · library · **situational** · phases: Direction, Build
+
+WebGL 3D for hero objects and product sculptures in showcase layers.
+
+**Use when**
+- A landing or handover page needs one meaningful 3D object tied to the workflow
+
+**Avoid when**
+- The daily-use dashboard; decorative objects unrelated to the product; phones without a CSS fallback
+
+**How to use**
+- One bounded canvas per page, ~30 fps ambient, pause offscreen, dispose on close, CSS fallback when WebGL fails
+
+**Pairs with:** [Showcase patterns (this repo)](uiux.md#showcase-patterns)
+
+**If not installed:** follow [docs/stack/05-performance-and-privacy.md](../../docs/stack/05-performance-and-privacy.md)
+
+**Docs:** https://threejs.org/docs/
 
 ---
 

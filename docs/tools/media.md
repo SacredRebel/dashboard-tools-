@@ -6,6 +6,32 @@ Images, icons, illustrations, sound and video for a polished product.
 
 [← All categories](README.md)
 
+<a id="brag-storyboard"></a>
+### Brag storyboard method (latent-spaces/brag)
+
+`github.com/latent-spaces/brag` · reference · **recommended** · phases: Design, Handover
+
+Inspect → plan → compose → deliver workflow for product stories: concrete input → action → result storyboards with readable holds.
+
+**Use when**
+- Planning a workflow story player or a short launch/handover video
+- Turning a product into a 15–25 s story
+
+**Avoid when**
+- Generic brand films with no product in them
+
+**How to use**
+- Write one input, one action, one result per step, all about the same customer or record
+- Hold steps ~5 s, the result 6–8 s
+
+**Pairs with:** [Showcase patterns (this repo)](uiux.md#showcase-patterns) · [CoDesign: Launch Video](media.md#codesign-launch-video) · [Remotion (video in React)](media.md#remotion)
+
+**If not installed:** follow [docs/design/07-showcase-patterns.md](../../docs/design/07-showcase-patterns.md)
+
+**Docs:** https://github.com/latent-spaces/brag
+
+---
+
 <a id="canvas-design"></a>
 ### Canvas Design
 
@@ -74,6 +100,28 @@ Programmatic video: walkthroughs and tutorials.
 
 **Use when**
 - A narrated tutorial video for the client
+
+---
+
+<a id="scrollcraft"></a>
+### Scroll frame storytelling (ScrollCraft-style)
+
+`github.com/singhharsh1708/scrollcraft` · reference · **situational** · phases: Handover
+
+Scroll-scrubbed frame sequences for a cinematic product tour on a landing page.
+
+**Use when**
+- A public landing page needs a scroll-driven tour
+
+**Avoid when**
+- Inside the app; anything that hijacks native scrolling
+
+**How to use**
+- Generate desktop and portrait frame sets; reduced motion shows a static poster
+
+**Pairs with:** [Brag storyboard method (latent-spaces/brag)](media.md#brag-storyboard)
+
+**Docs:** https://github.com/singhharsh1708/scrollcraft
 
 ---
 

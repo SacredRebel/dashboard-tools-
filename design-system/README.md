@@ -2,7 +2,7 @@
 
 | File | What |
 |---|---|
-| [tokens.css](tokens.css) | All design tokens. Base scales (space, type, motion, layout) + 6 themes (`[data-theme="…"]`) |
+| [tokens.css](tokens.css) | All design tokens. Base scales (space, type, motion, layout) + 10 themes (`[data-theme="…"]`): 6 classic, 4 cinematic glass |
 | [themes.json](themes.json) | Theme metadata: mood, fonts, best-for, swatches, Google Fonts URL |
 | [tailwind.preset.js](tailwind.preset.js) | Tailwind v3 preset mapping tokens to utilities (v4: see docs/stack/04-tokens-to-tailwind.md) |
 
@@ -21,6 +21,7 @@
 | Shape | `--radius-sm/md/lg/pill`, `--shadow-sm/md/lg`, `--edge` | Border first, soft shadow second |
 | Motion | `--dur-1…4` (100–300ms), `--ease-out`, `--ease-in` | transform/opacity only |
 | Layout | `--content-max`, `--sidebar-w`, `--header-h`, `--slideover-w`, `--hit`, `--row-h` | |
+| Presentation | `--glass-fill`, `--glass-edge`, `--glass-blur`, `--glow-1`, `--glow-2`, `--accent-2`, `--thread`, `--danger-fg` | Glass only for showcase chrome; thread never behind text |
 
 ## Use in a project
 

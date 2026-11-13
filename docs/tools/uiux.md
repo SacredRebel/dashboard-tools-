@@ -75,6 +75,30 @@ Microinteractions, state machines, gestures, error prevention and product behavi
 
 ---
 
+<a id="showcase-patterns"></a>
+### Showcase patterns (this repo)
+
+`docs/design/07-showcase-patterns.md` · reference · **core** · phases: Design, Polish & QA, Handover
+
+Ten honest ways to present a working dashboard: story player, one-record machine, device frames, before/after, glass worlds, approval gate, spring, view transitions, sticky nav, feature cards.
+
+**Use when**
+- Presenting the product at handover, on a landing page or in a pitch
+- Explaining a workflow in 15–25 seconds
+
+**Avoid when**
+- Inside the daily-use app itself (keep the app calm and functional)
+
+**How to use**
+- The working app is the hero; every sequence is visitor-controlled and pauses offscreen
+- AI steps stop at an approval gate
+
+**Pairs with:** [Brag storyboard method (latent-spaces/brag)](media.md#brag-storyboard) · [OpenDesign (nexu-io/open-design)](uiux.md#open-design) · [View Transitions API](libraries.md#view-transitions) · [Damped spring (Framer-style RK4)](uiux.md#spring-physics)
+
+**If not installed:** follow [docs/design/07-showcase-patterns.md](../../docs/design/07-showcase-patterns.md)
+
+---
+
 <a id="ux-writing"></a>
 ### UX Writing
 
@@ -182,6 +206,33 @@ Creates and versions tokens, components and patterns.
 **Pairs with:** [Design Systems (deep)](uiux.md#design-systems) · [Design System Audit](uiux.md#design-system-audit)
 
 **If not installed:** follow [design-system/README.md](../../design-system/README.md)
+
+---
+
+<a id="open-design"></a>
+### OpenDesign (nexu-io/open-design)
+
+`github.com/nexu-io/open-design` · reference · **recommended** · phases: Direction, Design, Polish & QA
+
+Open design-system playbook with taste and design-review checklists, ui-animation choreography, device-3D showcase guidance and a reusable DESIGN.md contract.
+
+**Use when**
+- Writing an art direction / DESIGN.md file
+- Choreographing UI animation (lead/lag, stagger, settling)
+- Presenting real HTML inside device frames
+
+**Avoid when**
+- You need an installable component library (it is guidance, not a package)
+
+**How to use**
+- Use its review checklist before client demos
+- Apply ui-animation rules with the motion tokens in this repo
+
+**Pairs with:** [Showcase patterns (this repo)](uiux.md#showcase-patterns) · [Frontend Design](uiux.md#frontend-design)
+
+**If not installed:** follow [docs/design/07-showcase-patterns.md](../../docs/design/07-showcase-patterns.md)
+
+**Docs:** https://github.com/nexu-io/open-design
 
 ---
 
@@ -295,6 +346,31 @@ Builds multi-component React + Tailwind + shadcn HTML artifacts on claude.ai.
 - The production app (use the Next.js repo)
 
 **Pairs with:** [Frontend Design](uiux.md#frontend-design)
+
+---
+
+<a id="spring-physics"></a>
+### Damped spring (Framer-style RK4)
+
+`~30 lines of JS; see site/assets/showcase.js` · reference · **situational** · phases: Build, Polish & QA
+
+Physical damped-spring motion (tension ~100, friction ~20) for things the user drags or presses: sheets, knobs, released cards.
+
+**Use when**
+- Direct manipulation: drag-to-dismiss, toggles, released cards
+
+**Avoid when**
+- Ambient or automatic motion; standard UI transitions (use 100–300 ms tokens, no overshoot)
+
+**How to use**
+- Integrate with RK4 at display rate; settle when velocity and offset are tiny
+- Respect reduced motion: jump to the end state
+
+**Pairs with:** [Showcase patterns (this repo)](uiux.md#showcase-patterns) · [Motion (Framer Motion)](libraries.md#motion-lib)
+
+**If not installed:** follow [docs/design/07-showcase-patterns.md](../../docs/design/07-showcase-patterns.md)
+
+**Docs:** https://github.com/koenbok/Framer
 
 ---
 

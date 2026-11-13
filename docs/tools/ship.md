@@ -57,6 +57,7 @@ Hosting: create projects, deploy, preview URLs, env vars, domains, logs, rollbac
 **How to use**
 - Connect the GitHub repo once: every push makes a preview, merge to main = production
 - Debug prod with get_runtime_errors then get_runtime_logs
+- Set a Content-Security-Policy and security headers in vercel.json (see docs/stack/05-performance-and-privacy.md)
 
 **Pairs with:** [GitHub (gh CLI / MCP)](ship.md#github) · [Shipping & Launch](ship.md#shipping-and-launch)
 

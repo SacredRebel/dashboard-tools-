@@ -43,6 +43,10 @@
     {
       "id": "library",
       "meaning": "An open-source library or hosted service used in the code."
+    },
+    {
+      "id": "reference",
+      "meaning": "An open-source repository or method to study and apply (not installed as a dependency)."
     }
   ],
   "categories": [
@@ -3780,7 +3784,8 @@
       ],
       "how_to_use": [
         "Connect the GitHub repo once: every push makes a preview, merge to main = production",
-        "Debug prod with get_runtime_errors then get_runtime_logs"
+        "Debug prod with get_runtime_errors then get_runtime_logs",
+        "Set a Content-Security-Policy and security headers in vercel.json (see docs/stack/05-performance-and-privacy.md)"
       ],
       "pairs_with": [
         "github",
@@ -4329,7 +4334,8 @@
         "You only need a Google Sheet"
       ],
       "how_to_use": [
-        "Enable RLS on every table; owner-only policies"
+        "Enable RLS on every table; owner-only policies",
+        "Use Realtime subscriptions or refresh on visibilitychange, never polling timers"
       ],
       "pairs_with": [],
       "fallback": null,
@@ -4704,6 +4710,343 @@
       "fallback": null,
       "requires": null,
       "url": null
+    },
+    {
+      "id": "showcase-patterns",
+      "name": "Showcase patterns (this repo)",
+      "invoke": "docs/design/07-showcase-patterns.md",
+      "kind": "reference",
+      "plugin": null,
+      "category": "uiux",
+      "phases": [
+        "design",
+        "polish",
+        "handover"
+      ],
+      "tier": "core",
+      "summary": "Ten honest ways to present a working dashboard: story player, one-record machine, device frames, before/after, glass worlds, approval gate, spring, view transitions, sticky nav, feature cards.",
+      "use_when": [
+        "Presenting the product at handover, on a landing page or in a pitch",
+        "Explaining a workflow in 15–25 seconds"
+      ],
+      "avoid_when": [
+        "Inside the daily-use app itself (keep the app calm and functional)"
+      ],
+      "how_to_use": [
+        "The working app is the hero; every sequence is visitor-controlled and pauses offscreen",
+        "AI steps stop at an approval gate"
+      ],
+      "pairs_with": [
+        "brag-storyboard",
+        "open-design",
+        "view-transitions",
+        "spring-physics"
+      ],
+      "fallback": "docs/design/07-showcase-patterns.md",
+      "requires": null,
+      "url": null
+    },
+    {
+      "id": "open-design",
+      "name": "OpenDesign (nexu-io/open-design)",
+      "invoke": "github.com/nexu-io/open-design",
+      "kind": "reference",
+      "plugin": null,
+      "category": "uiux",
+      "phases": [
+        "direction",
+        "design",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Open design-system playbook with taste and design-review checklists, ui-animation choreography, device-3D showcase guidance and a reusable DESIGN.md contract.",
+      "use_when": [
+        "Writing an art direction / DESIGN.md file",
+        "Choreographing UI animation (lead/lag, stagger, settling)",
+        "Presenting real HTML inside device frames"
+      ],
+      "avoid_when": [
+        "You need an installable component library (it is guidance, not a package)"
+      ],
+      "how_to_use": [
+        "Use its review checklist before client demos",
+        "Apply ui-animation rules with the motion tokens in this repo"
+      ],
+      "pairs_with": [
+        "showcase-patterns",
+        "frontend-design"
+      ],
+      "fallback": "docs/design/07-showcase-patterns.md",
+      "requires": null,
+      "url": "https://github.com/nexu-io/open-design"
+    },
+    {
+      "id": "brag-storyboard",
+      "name": "Brag storyboard method (latent-spaces/brag)",
+      "invoke": "github.com/latent-spaces/brag",
+      "kind": "reference",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "design",
+        "handover"
+      ],
+      "tier": "recommended",
+      "summary": "Inspect → plan → compose → deliver workflow for product stories: concrete input → action → result storyboards with readable holds.",
+      "use_when": [
+        "Planning a workflow story player or a short launch/handover video",
+        "Turning a product into a 15–25 s story"
+      ],
+      "avoid_when": [
+        "Generic brand films with no product in them"
+      ],
+      "how_to_use": [
+        "Write one input, one action, one result per step, all about the same customer or record",
+        "Hold steps ~5 s, the result 6–8 s"
+      ],
+      "pairs_with": [
+        "showcase-patterns",
+        "codesign-launch-video",
+        "remotion"
+      ],
+      "fallback": "docs/design/07-showcase-patterns.md",
+      "requires": null,
+      "url": "https://github.com/latent-spaces/brag"
+    },
+    {
+      "id": "view-transitions",
+      "name": "View Transitions API",
+      "invoke": "document.startViewTransition()",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Native browser API that morphs matching elements between two states or pages (list card → detail).",
+      "use_when": [
+        "Continuity between list and detail, tile and analytics view"
+      ],
+      "avoid_when": [
+        "Critical flows that must look identical in every browser (it is progressive enhancement)"
+      ],
+      "how_to_use": [
+        "Give the source and destination the same view-transition-name",
+        "Skip under prefers-reduced-motion"
+      ],
+      "pairs_with": [
+        "showcase-patterns",
+        "motion-lib"
+      ],
+      "fallback": "docs/design/07-showcase-patterns.md",
+      "requires": null,
+      "url": "https://developer.mozilla.org/docs/Web/API/View_Transition_API"
+    },
+    {
+      "id": "web-animations",
+      "name": "Web Animations API",
+      "invoke": "element.animate()",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Native, scriptable animations you can pause, seek and cancel. One rAF clock can seek many paused animations.",
+      "use_when": [
+        "Story players and micro-loops that must pause offscreen and resume without jumps"
+      ],
+      "avoid_when": [
+        "Simple hover/focus transitions (use CSS)"
+      ],
+      "how_to_use": [
+        "Drive with one visible-time clock; cancel animations when the view is destroyed"
+      ],
+      "pairs_with": [
+        "showcase-patterns"
+      ],
+      "fallback": "docs/design/07-showcase-patterns.md",
+      "requires": null,
+      "url": "https://developer.mozilla.org/docs/Web/API/Web_Animations_API"
+    },
+    {
+      "id": "spring-physics",
+      "name": "Damped spring (Framer-style RK4)",
+      "invoke": "~30 lines of JS; see site/assets/showcase.js",
+      "kind": "reference",
+      "plugin": null,
+      "category": "uiux",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Physical damped-spring motion (tension ~100, friction ~20) for things the user drags or presses: sheets, knobs, released cards.",
+      "use_when": [
+        "Direct manipulation: drag-to-dismiss, toggles, released cards"
+      ],
+      "avoid_when": [
+        "Ambient or automatic motion; standard UI transitions (use 100–300 ms tokens, no overshoot)"
+      ],
+      "how_to_use": [
+        "Integrate with RK4 at display rate; settle when velocity and offset are tiny",
+        "Respect reduced motion: jump to the end state"
+      ],
+      "pairs_with": [
+        "showcase-patterns",
+        "motion-lib"
+      ],
+      "fallback": "docs/design/07-showcase-patterns.md",
+      "requires": null,
+      "url": "https://github.com/koenbok/Framer"
+    },
+    {
+      "id": "threejs",
+      "name": "Three.js",
+      "invoke": "three (npm)",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "direction",
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "WebGL 3D for hero objects and product sculptures in showcase layers.",
+      "use_when": [
+        "A landing or handover page needs one meaningful 3D object tied to the workflow"
+      ],
+      "avoid_when": [
+        "The daily-use dashboard; decorative objects unrelated to the product; phones without a CSS fallback"
+      ],
+      "how_to_use": [
+        "One bounded canvas per page, ~30 fps ambient, pause offscreen, dispose on close, CSS fallback when WebGL fails"
+      ],
+      "pairs_with": [
+        "showcase-patterns"
+      ],
+      "fallback": "docs/stack/05-performance-and-privacy.md",
+      "requires": null,
+      "url": "https://threejs.org/docs/"
+    },
+    {
+      "id": "gsap",
+      "name": "GSAP + ScrollTrigger",
+      "invoke": "gsap (npm)",
+      "kind": "library",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Timeline animation engine with scroll-linked triggers, for choreographed showcase entrances.",
+      "use_when": [
+        "Complex multi-element showcase timelines on marketing/handover pages"
+      ],
+      "avoid_when": [
+        "Product UI (CSS + Motion is enough); scroll hijacking or pinning that blocks native scroll"
+      ],
+      "how_to_use": [
+        "Use one animation library per project; entrances run once, ≤ 600 ms"
+      ],
+      "pairs_with": [
+        "web-animations"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": "https://gsap.com/docs/"
+    },
+    {
+      "id": "scrollcraft",
+      "name": "Scroll frame storytelling (ScrollCraft-style)",
+      "invoke": "github.com/singhharsh1708/scrollcraft",
+      "kind": "reference",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "handover"
+      ],
+      "tier": "situational",
+      "summary": "Scroll-scrubbed frame sequences for a cinematic product tour on a landing page.",
+      "use_when": [
+        "A public landing page needs a scroll-driven tour"
+      ],
+      "avoid_when": [
+        "Inside the app; anything that hijacks native scrolling"
+      ],
+      "how_to_use": [
+        "Generate desktop and portrait frame sets; reduced motion shows a static poster"
+      ],
+      "pairs_with": [
+        "brag-storyboard"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": "https://github.com/singhharsh1708/scrollcraft"
+    },
+    {
+      "id": "axe-core",
+      "name": "axe accessibility engine",
+      "invoke": "npx @axe-core/cli <url> / @axe-core/playwright",
+      "kind": "cli",
+      "plugin": null,
+      "category": "quality",
+      "phases": [
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Automated WCAG checks in the browser or in Playwright tests.",
+      "use_when": [
+        "Every polish pass and in CI for critical pages"
+      ],
+      "avoid_when": [
+        "As the only check (keyboard and screen-reader runs still matter)"
+      ],
+      "how_to_use": [
+        "Zero serious/critical issues before handover; save the result in docs/validation/"
+      ],
+      "pairs_with": [
+        "ux-ui-audit",
+        "accessibility-audit",
+        "playwright"
+      ],
+      "fallback": null,
+      "requires": null,
+      "url": "https://github.com/dequelabs/axe-core"
+    },
+    {
+      "id": "lighthouse",
+      "name": "Lighthouse (CLS & performance)",
+      "invoke": "npx lighthouse <url> --preset=desktop | mobile",
+      "kind": "cli",
+      "plugin": null,
+      "category": "quality",
+      "phases": [
+        "polish",
+        "ship"
+      ],
+      "tier": "recommended",
+      "summary": "Measures layout shift, load performance and best practices.",
+      "use_when": [
+        "Checking the CLS < 0.1 budget and phone load time before ship"
+      ],
+      "avoid_when": [
+        "Micro-optimizing scores at the expense of features"
+      ],
+      "how_to_use": [
+        "Run on the deployed preview, mobile preset; record CLS in the evidence file"
+      ],
+      "pairs_with": [
+        "performance-optimization"
+      ],
+      "fallback": "docs/stack/05-performance-and-privacy.md",
+      "requires": null,
+      "url": "https://developer.chrome.com/docs/lighthouse"
     }
   ]
 }

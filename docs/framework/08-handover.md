@@ -37,6 +37,10 @@
 - `docs/spec.md`, `docs/screens.md`, `docs/decisions/` (why things are the way they are)
 - `AGENTS.md` (project-specific: stack, tokens, patterns, don'ts)
 
+## 4b. Present it like a product
+
+Open the handover with a short **story player** of their own workflow (inquiry → call → proposal → won) on their real dashboard, inside a device frame, using [07-showcase-patterns.md](../design/07-showcase-patterns.md). People remember the journey of one client better than a tour of menus.
+
 ## 5. Walkthrough session (1 hour)
 
 1. Daily use: Today → Pipeline → log a call → move a card (10 min)

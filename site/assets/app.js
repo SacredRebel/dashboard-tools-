@@ -6,7 +6,7 @@
   const REPO = 'https://github.com/SacredRebel/dashboard-tools-';
   const $ = (s, el = document) => el.querySelector(s);
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const main = $('#main');
+  let main = $('#main');
   const docPaths = new Set(DOCS.map((d) => d.path));
   const toolById = Object.fromEntries(C.tools.map((t) => [t.id, t]));
   const catById = Object.fromEntries(C.categories.map((c) => [c.id, c]));
@@ -47,6 +47,7 @@
       ['package', 'Tool catalog', `${C.tools.length} skills, connectors and libraries with when to use, when not to, and how.`, '#/tools', 'Browse tools'],
       ['palette', 'Themes', 'Six complete visual directions built on one token set. See them on a real dashboard.', '#/themes', 'Compare themes'],
       ['layout', 'Components', 'Buttons to pipeline boards: every building block with its rules, in every theme.', '#/components', 'Open the library'],
+      ['sparkles', 'Showcase patterns', 'Story players, device frames, before/after, approval gates: ways to present a working product.', '#/showcase', 'See the patterns'],
       ['kanban', 'Live demo', 'A working CRM built with the framework: drag, keyboard, empty states, undo.', '#/demo', 'Try the demo'],
     ];
     main.innerHTML = `
@@ -67,7 +68,7 @@
         <div class="s-stats">${stats.map(([n, l]) => `<div class="s-stat"><b>${n}</b><span>${l}</span></div>`).join('')}</div>
       </div>
       <section class="s-section"><div class="s-wrap">
-        <p class="s-eyebrow">Start here</p><h2 class="s-h2">Six ways in</h2>
+        <p class="s-eyebrow">Start here</p><h2 class="s-h2">Seven ways in</h2>
         <div class="s-grid s-grid-3" style="margin-top:24px">${starts.map(([ic, t, d, href, cta]) => `
           <a class="s-panel s-start" href="${href}"><span class="s-start-icon">${icon(ic)}</span><h3 class="s-h3">${t}</h3><p class="s-muted s-small" style="margin:0">${d}</p><span class="s-arrow">${cta} →</span></a>`).join('')}</div>
       </div></section>
@@ -253,7 +254,8 @@ Inputs I have: &lt;voice memo / meeting notes / playbook&gt;.</code></pre>
       <div class="s-pagehead"><div><p class="s-eyebrow">Design system · ${TH.length} themes, one token set</p><h1 class="s-h1" style="font-size:clamp(36px,5vw,56px)">Themes</h1>
       <p class="s-lead">Each theme is a block of CSS variables in <code class="s-code">design-system/tokens.css</code>. Same components, same layout, different personality. Show clients the real dashboard, not mood adjectives.</p></div>
       <a class="s-btn" href="#/docs/docs/design/06-themes.md">${icon('book')}How to make a custom theme</a></div>
-      <div class="s-grid s-grid-2" style="padding-bottom:64px">${TH.map((t) => `
+      ${['classic', 'cinematic'].map((fam) => `<div class="s-cathead" style="margin-top:8px"><h2>${fam === 'classic' ? 'Classic' : 'Cinematic glass'}</h2><p>${fam === 'classic' ? 'Calm, data-dense themes for daily tools, light and dark.' : 'Dark grounds, radial glows, glass showcase chrome and a two-color accent thread.'}</p></div>
+      <div class="s-grid s-grid-2" style="padding-bottom:40px">${TH.filter((t) => (t.family || 'classic') === fam).map((t) => `
         <article class="s-panel s-theme-card">
           <div class="s-theme-preview"><div data-preview="${t.id}"></div></div>
           <div class="s-theme-info">
@@ -262,9 +264,9 @@ Inputs I have: &lt;voice memo / meeting notes / playbook&gt;.</code></pre>
             <div class="s-theme-meta"><span class="s-tag">${t.mode}</span>${t.mood.map((m) => `<span class="s-tag">${m}</span>`).join('')}<span class="s-tag">${esc(t.fonts.display)}${t.fonts.display !== t.fonts.sans ? ' + ' + esc(t.fonts.sans) : ''}</span></div>
             <p class="s-small" style="margin:0"><b>Best for:</b> <span class="s-muted">${t.best_for.join(', ')}</span></p>
             <p class="s-small" style="margin:0"><b>Signature:</b> <span class="s-muted">${esc(t.signature)}</span></p>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px"><a class="s-btn s-btn-sm s-btn-primary" href="#/demo" data-use-theme="${t.id}">Open in demo</a><a class="s-btn s-btn-sm" href="#/components" data-use-theme="${t.id}">See components</a></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px"><a class="s-btn s-btn-sm s-btn-primary" href="#/demo" data-use-theme="${t.id}">Open in demo</a><a class="s-btn s-btn-sm" href="#/components" data-use-theme="${t.id}">See components</a>${t.family === 'cinematic' ? `<a class="s-btn s-btn-sm" href="#/showcase" data-use-theme="${t.id}">See showcase</a>` : ''}</div>
           </div>
-        </article>`).join('')}</div></div>`;
+        </article>`).join('')}</div>`).join('')}</div>`;
     main.querySelectorAll('[data-preview]').forEach((el) => CRM.mount(el, { theme: el.dataset.preview, static: true }));
     main.querySelectorAll('[data-use-theme]').forEach((a) => a.addEventListener('click', () => saveTheme(a.dataset.useTheme)));
   }
@@ -429,7 +431,7 @@ Inputs I have: &lt;voice memo / meeting notes / playbook&gt;.</code></pre>
   }
 
   // ---------------------------------------------------------------- router
-  const titles = { '': 'Dashboard Tools', tools: 'Tools', framework: 'Framework', themes: 'Themes', components: 'Components', demo: 'Demo', docs: 'Docs', inventory: 'Inventory' };
+  const titles = { '': 'Dashboard Tools', showcase: 'Showcase', tools: 'Tools', framework: 'Framework', themes: 'Themes', components: 'Components', demo: 'Demo', docs: 'Docs', inventory: 'Inventory' };
   let lastPage = null;
   function route() {
     const raw = location.hash.replace(/^#\/?/, '');
@@ -438,7 +440,7 @@ Inputs I have: &lt;voice memo / meeting notes / playbook&gt;.</code></pre>
     const sub = rest.join('/');
     if (page !== 'tools') closeDrawer(true);
     const samePage = lastPage === page && (page === 'tools' || page === 'docs');
-    if (!samePage) main.innerHTML = '';
+    if (!samePage) { window.Showcase && Showcase.destroy(); const fresh = main.cloneNode(false); main.replaceWith(fresh); main = fresh; }
     lastPage = page;
     document.querySelectorAll('.s-nav a').forEach((a) => a.setAttribute('aria-current', a.dataset.page === (page || 'home') ? 'page' : 'false'));
     document.title = (titles[page] && page ? titles[page] + ' · ' : '') + 'Dashboard Tools';
@@ -448,6 +450,7 @@ Inputs I have: &lt;voice memo / meeting notes / playbook&gt;.</code></pre>
       case 'themes': pageThemes(); break;
       case 'components': pageComponents(); break;
       case 'demo': pageDemo(); break;
+      case 'showcase': Showcase.render(main, { theme: (TH.find((t) => t.id === current.theme) || {}).family === 'cinematic' ? current.theme : 'grove', themes: TH, onTheme: saveTheme }); break;
       case 'docs': pageDocs(sub || 'README.md', anchor); break;
       case 'inventory': pageInventory(); break;
       default: pageHome();

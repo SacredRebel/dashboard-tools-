@@ -117,6 +117,28 @@ WCAG 2.2 audit with severity and code fixes.
 
 ---
 
+<a id="axe-core"></a>
+### axe accessibility engine
+
+`npx @axe-core/cli <url> / @axe-core/playwright` · cli · **recommended** · phases: Polish & QA
+
+Automated WCAG checks in the browser or in Playwright tests.
+
+**Use when**
+- Every polish pass and in CI for critical pages
+
+**Avoid when**
+- As the only check (keyboard and screen-reader runs still matter)
+
+**How to use**
+- Zero serious/critical issues before handover; save the result in docs/validation/
+
+**Pairs with:** [UX/UI Audit (measured)](quality.md#ux-ui-audit) · [Accessibility Audit (WCAG 2.2)](quality.md#accessibility-audit) · [Playwright](quality.md#playwright)
+
+**Docs:** https://github.com/dequelabs/axe-core
+
+---
+
 <a id="code-review-and-quality"></a>
 ### Code Review & Quality
 
@@ -142,6 +164,30 @@ Authors critical user journeys as replayable step files.
 - Writing the 5 journeys the CRM must never break
 
 **Pairs with:** [UX Audit Suite (usability + a11y + journeys)](quality.md#ux-audit-suite)
+
+---
+
+<a id="lighthouse"></a>
+### Lighthouse (CLS & performance)
+
+`npx lighthouse <url> --preset=desktop | mobile` · cli · **recommended** · phases: Polish & QA, Ship
+
+Measures layout shift, load performance and best practices.
+
+**Use when**
+- Checking the CLS < 0.1 budget and phone load time before ship
+
+**Avoid when**
+- Micro-optimizing scores at the expense of features
+
+**How to use**
+- Run on the deployed preview, mobile preset; record CLS in the evidence file
+
+**Pairs with:** [Performance Optimization](build.md#performance-optimization)
+
+**If not installed:** follow [docs/stack/05-performance-and-privacy.md](../../docs/stack/05-performance-and-privacy.md)
+
+**Docs:** https://developer.chrome.com/docs/lighthouse
 
 ---
 

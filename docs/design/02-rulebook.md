@@ -38,6 +38,8 @@ Units assume a 16px root. Token names refer to [design-system/tokens.css](../../
 - Elevation: 1px subtle border first; shadow optional and soft (light mode alpha < 0.08, large blur, 1–4px y-offset). MUST NOT use hard drop shadows.
 - Dark mode: depth from slightly lighter surfaces + inset top highlight (`inset 0 1px 0 rgb(255 255 255 / .05)`), not glows.
 - Semantic colors (`--success`, `--warning`, `--danger`, `--info`) only for meaning, with text labels (never color alone).
+- **Role colors** (e.g. client · team · money) carry meaning across the whole product. Define them once and never restyle them for decoration.
+- At most **two accents** (`--accent` + `--accent-2`). The accent gradient (`--thread`) is for lines, progress, active markers and focus, never as a fill behind text.
 - Contrast: text ≥ 4.5:1 (large text ≥ 3:1); UI boundaries and focus rings ≥ 3:1.
 
 <a id="typography"></a>
@@ -131,3 +133,13 @@ See [05-anti-patterns.md](05-anti-patterns.md). Delete decoration, never structu
 ## 13. Data viz
 
 See [04-data-viz.md](04-data-viz.md).
+
+<a id="showcase"></a>
+## 14. Showcasing & presentation
+
+See [07-showcase-patterns.md](07-showcase-patterns.md): visitor-controlled sequences, readable holds (~5 s steps, 6–8 s results), approval gates, pause offscreen, flat text inside physical frames, spring physics only for direct manipulation.
+
+<a id="engineering"></a>
+## 15. Engineering contract
+
+See [docs/stack/05-performance-and-privacy.md](../stack/05-performance-and-privacy.md): no polling, replace-don't-fork, 60 fps at 4× CPU throttle, CLS < 0.1, self-hosted fonts, CSP, neutral demo data.

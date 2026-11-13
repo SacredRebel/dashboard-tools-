@@ -18,6 +18,9 @@ You are an AI agent asked to **design and build a dashboard** (for example a CRM
 8. **Client data is private.** Login is required, row-level security is on, and secrets live in Vercel env vars, never in the repo. Never use real client data in demos, screenshots or this repo.
 9. **Use the client's words.** Pipeline stages, field names and button labels come from the client's playbook and vocabulary, not generic sales jargon.
 10. **Small slices.** One slice = one branch = one Vercel preview the human can click. Never a 3,000-line drop.
+11. **No polling. Subscribe to events.** Never fetch on a timer. Load on open, on user action, on `visibilitychange`, or via realtime/webhooks. UI timers stop offscreen and in background tabs. See [docs/stack/05-performance-and-privacy.md](docs/stack/05-performance-and-privacy.md).
+12. **Replace, don't fork.** When you change a feature, delete what it replaces in the same change. No "v2 next to v1", no `-old` classes or kill switches. Then verify and record evidence in `docs/validation/`.
+13. **Showcase honestly.** When presenting the product (handover, landing page, pitch), the working app is the hero, every sequence is visitor-controlled and pauses offscreen, and AI actions stop at an approval gate. See [docs/design/07-showcase-patterns.md](docs/design/07-showcase-patterns.md).
 
 ---
 
@@ -30,7 +33,8 @@ You are an AI agent asked to **design and build a dashboard** (for example a CRM
 | 3 | The phase doc for the phase you are in: `docs/framework/0N-*.md` | Step-by-step instructions, inputs, outputs, tools |
 | 4 | [docs/design/02-rulebook.md](docs/design/02-rulebook.md) | Hard design rules (before any UI work) |
 | 5 | [docs/crm/](docs/crm/) (if building a CRM) | Data model, views, features |
-| 6 | [docs/stack/](docs/stack/) (before Build) | Stack, data/auth, GitHub + Vercel workflow |
+| 6 | [docs/stack/](docs/stack/) (before Build) | Stack, data/auth, GitHub + Vercel workflow, performance & privacy contract |
+| 6b | [docs/design/07-showcase-patterns.md](docs/design/07-showcase-patterns.md) (when presenting) | Story players, device frames, before/after, glass worlds, approval gates |
 | 7 | [catalog/tools.json](catalog/tools.json) | Every tool with use / avoid / how, filtered by phase |
 
 Don't load everything at once. Read the phase doc when you enter that phase.
@@ -108,13 +112,14 @@ Human-readable versions grouped by category: [docs/tools/](docs/tools/README.md)
 - [ ] Verb-first button labels; errors say what to do next; destructive confirms name the item
 - [ ] Contrast WCAG AA (4.5:1 text, 3:1 UI)
 - [ ] Screenshot reviewed at both widths; no console errors
-- [ ] Deployed to a preview URL and the human has seen it
+- [ ] No polling; timers pause offscreen; CLS < 0.1; smooth at 4× CPU throttle
+- [ ] Deployed to a preview URL and the human has seen it; evidence saved in `docs/validation/`
 
 ---
 
 ## 6. Anti-patterns that are always wrong
 
-Rainbow or multi-hue gradient buttons · glassmorphism · cartoon people in empty states · decorative pills around plain metadata · icons inside every input · more than 5 KPI tiles · editable records on the overview dashboard · full-page spinners · bouncy/elastic UI motion · hover-only actions · 12px table text · all-caps labels everywhere · one accented word in a headline · stacked modals · "Are you sure?" confirmations · "Submit"/"OK" buttons · placeholder-as-label · fake numbers in demos presented as real.
+Rainbow or multi-hue gradient buttons · glass behind data or body text · cartoon people in empty states · decorative pills around plain metadata · icons inside every input · more than 5 KPI tiles · editable records on the overview dashboard · full-page spinners · bouncy/elastic UI motion · hover-only actions · 12px table text · all-caps labels everywhere · one accented word in a headline · stacked modals · "Are you sure?" confirmations · "Submit"/"OK" buttons · placeholder-as-label · fake numbers in demos presented as real · polling timers · auto-advancing carousels · AI demos that act without approval · keeping a dead "v1" next to the new version.
 
 Details and the reasoning: [docs/design/05-anti-patterns.md](docs/design/05-anti-patterns.md).
 
@@ -131,15 +136,15 @@ catalog/
   inventory.json         ← every installed skill, with relevance rating
 docs/
   framework/             ← 8 phases, step by step
-  design/                ← principles, rulebook, page patterns, data viz, anti-patterns, themes
+  design/                ← principles, rulebook, page patterns, data viz, anti-patterns, themes, showcase patterns
   crm/                   ← CRM data model, views, features
-  stack/                 ← tech stack, data & auth, GitHub + Vercel, tokens → Tailwind
+  stack/                 ← tech stack, data & auth, GitHub + Vercel, tokens → Tailwind, performance & privacy
   tools/                 ← generated: tools by category (do not edit; edit catalog)
 design-system/
-  tokens.css             ← all tokens + 6 themes (data-theme="…")
+  tokens.css             ← all tokens + 10 themes (6 classic, 4 cinematic glass)
   themes.json            ← theme metadata (fonts, mood, best for)
   tailwind.preset.js     ← maps tokens to Tailwind / shadcn
-templates/               ← spec, discovery questions, design direction, QA, handover…
+templates/               ← spec, discovery, design direction, art direction, QA, validation evidence, handover…
 prompts/                 ← copy-paste prompts for each phase
 site/                    ← showcase site (static; deployed on Vercel)
 scripts/build.mjs        ← validates catalog, regenerates site data + docs/tools

@@ -16,6 +16,8 @@
 8. **Design review** with fresh eyes (`design-superpowers:design-review` or `design-skills:design-critique`).
 9. **Code review** (`/code-review`, `agent-protocols:code-review-and-quality`).
 10. **Elevation pass** (`design-skills:design-elevation`): one signature detail, consistent rhythm, chart polish.
+11. **Performance:** CLS < 0.1, 60 fps at 4× CPU throttle, no polling, timers pause offscreen ([05-performance-and-privacy.md](../stack/05-performance-and-privacy.md)).
+12. **Record evidence** in `docs/validation/<date>-<pass>.json` ([templates/validation.json](../../templates/validation.json)).
 
 ## Severity scale
 

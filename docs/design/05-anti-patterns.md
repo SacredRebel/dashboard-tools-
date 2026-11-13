@@ -5,7 +5,11 @@ Agents fall into these by default. Check every screen against this list before s
 | Anti-pattern | Why it's bad | Do instead |
 |---|---|---|
 | Rainbow / multi-hue gradient buttons | Screams template; competes with content | Solid accent fill, hover one step darker |
-| Glassmorphism (`backdrop-filter` blur panels) | Low contrast, muddy, dated | Opaque surface + 1px border |
+| Glass behind data or body text | Contrast changes as content scrolls under it; blur drops frames | Data on opaque `--surface`. Glass only for showcase chrome (frames, captions, nav) in cinematic themes, with a visible edge |
+| Auto-advancing carousels / sliders | People can't read or control them | Visitor-controlled story player with readable holds |
+| AI demo that "sends" by itself | Teaches distrust | Approval gate: the sequence waits for a person |
+| Polling timers (`setInterval` + fetch) | Drains battery, burns frames | Events: open, action, `visibilitychange`, realtime |
+| Keeping v1 "just in case" next to v2 | Confuses the next session about what's live | Replace, delete, verify, record evidence |
 | Cartoon people / mascots in empty states | Patronizing, off-brand | Headline + sentence + primary action |
 | Pastel pills around every piece of metadata | Visual noise, no meaning | Plain text; chips only for interactive filters or real status |
 | Decorative icons in every input | Clutter; hurts scanning | Only functional icons (search, clear, show password) |

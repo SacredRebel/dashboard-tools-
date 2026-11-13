@@ -1,0 +1,22 @@
+{
+  "pass": "showcase-patterns-and-cinematic-themes",
+  "date": "2026-11-13",
+  "widths": [375, 1280],
+  "checks": [
+    { "name": "all routes: console errors and horizontal overflow", "result": "pass", "evidence": "scripts/screenshot.mjs: 8 routes x 2 widths, 0 errors, 0px overflow" },
+    { "name": "story player auto-advances after a readable hold", "result": "pass", "evidence": "step 1 -> step 2 after 5.2 s" },
+    { "name": "approval gate stops the sequence", "result": "pass", "evidence": "still on step 4 after 9 s; status 'Waiting for your approval'" },
+    { "name": "approve advances and the record card moves", "result": "pass", "evidence": "step 5, card translate(341px, 0px)" },
+    { "name": "clocks pause offscreen", "result": "pass", "evidence": "step unchanged over 7 s while scrolled away" },
+    { "name": "before/after keyboard", "result": "pass", "evidence": "15 x ArrowRight -> --pos 65%" },
+    { "name": "agent deck: paused assistant cannot approve; log records approval", "result": "pass", "evidence": "approve disabled when paused; log 'You approved 1 reminder'" },
+    { "name": "spring drag and settle", "result": "pass", "evidence": "dragged to translate(200px, 80px); settled to 0,0 within 1.5 s" },
+    { "name": "view transition focus management", "result": "pass", "evidence": "focus to 'Back to overview', then back to the 'won' tile" },
+    { "name": "feature card opens the story step", "result": "pass", "evidence": "click -> step 6 'Won, invoice ready'" },
+    { "name": "cinematic theme contrast (AA)", "result": "pass", "evidence": "grove/tide/ember/aurora: text >= 14.8:1, muted >= 7.9:1, subtle >= 5.9:1, accent-fg/accent >= 8.2:1, control-border >= 3.09:1" },
+    { "name": "danger button contrast in dark themes", "result": "fixed", "evidence": "new --danger-fg token (dark text on light danger fill)" },
+    { "name": "demo CRM regression (add, move, undo, archive, drawer, docs)", "result": "pass", "evidence": "interaction script, 0 errors" }
+  ],
+  "known_issues": ["Drag-and-drop is pointer-only by nature; the keyboard path is the Move to… menu (tested)."],
+  "removed_in_this_pass": ["Accumulating click listeners on <main> across route changes (main is now replaced on navigation)"]
+}
