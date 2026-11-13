@@ -1,0 +1,62 @@
+{
+  "id": "copper-radar",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/copper-radar/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/copper-radar/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/copper-radar/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/copper-radar/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/copper-radar/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=slate",
+      "width": 1440,
+      "variant": "slate",
+      "final_path": "/dashboards/copper-radar/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=ember",
+      "width": 1440,
+      "variant": "ember",
+      "final_path": "/dashboards/copper-radar/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/copper-radar",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

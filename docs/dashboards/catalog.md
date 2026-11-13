@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-31 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+32 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -37,6 +37,7 @@
 | 29 | [Tidebath Showroom](#tidebath-showroom) | Soft & friendly | E-commerce & retail, Hospitality & food | light | Porcelain, Mist, Dusk | [site/dashboards/tidebath-showroom/](../../site/dashboards/tidebath-showroom/) |
 | 30 | [Dune Panels](#dune-panels) | Tactile & neumorphic | Analytics & BI | light | Sand, Coastal, Ember | [site/dashboards/dune-panels/](../../site/dashboards/dune-panels/) |
 | 31 | [Pebble Studio](#pebble-studio) | Tactile & neumorphic | SaaS admin | light | Cream, Coral, Moss | [site/dashboards/pebble-studio/](../../site/dashboards/pebble-studio/) |
+| 32 | [Copper Radar](#copper-radar) | Soft & friendly | Analytics & BI | light | Copper, Slate, Ember | [site/dashboards/copper-radar/](../../site/dashboards/copper-radar/) |
 
 ## Cinematic & atmospheric
 
@@ -736,6 +737,34 @@ A soft-light bathroom showroom: curved SVG 3-bay room carousel with hotspot mark
 - Dashboards that need many KPIs on first paint
 
 **Components:** Centered brand mark with wave logo · Text navigation links · Curved 3-bay SVG room carousel · Prev/next carousel controls · Hotspot markers with look-closer tip · Recessed 6m² size badge · Inspirations column with social icons · Product icon strip with download link · Store city search field · Downloads link list · Contact phone and email
+
+---
+
+<a id="copper-radar"></a>
+### 32. Copper Radar
+
+![Copper Radar](../../site/dashboards/copper-radar/thumb.jpg)
+
+A soft-light SOC ops board: copper accents on white, concentric radar arcs with invented vendor chips, a live incident feed, dashed severity bars, automation steps and a timeline footer.
+
+- **Use cases:** Analytics & BI · **Mode:** light · **Mood:** alert, clean, soft, operational, focused
+- **Signature:** Soft white SOC shell with copper accents and a large semi-circular radar of concentric arcs dotted with invented vendor chips.
+- **Layout:** Top bar (brand · soft pill tabs · utilities) · Dynamic View (injection + incidents · radar · live feed) · 4-card row (Sources, Assets, Alerts, Automation) · timeline footer
+- **Responsive:** ≤1180px: feed under radar · ≤960px: side cards stack, 2×2 bottom grid · ≤640px: single column, tabs scroll, timeline wraps
+- **Fonts:** Sora / DM Sans · **Palette:** bg `#f5f7f9`, surface `#ffffff`, text `#1c232b`, muted `#5a6570`, accent `#c45f1a`, copper `#e07a2f`, sev-high `#d97706`, sev-med `#c0267a`
+- **Variants:** Copper, Slate, Ember · **Closest toolkit theme:** `atelier`
+
+**Best for**
+- Security and observability overview screens that stay light and calm
+- Ops dashboards centred on a radar or topology hero
+- Incident triage boards with feed + severity + timeline
+
+**Avoid when**
+- Dark SOC walls that need neon HUD density
+- Compliance tools with long tabular evidence
+- Brands that cannot use warm copper accents
+
+**Components:** Soft pill navigation tabs · Data-injection spark card · Open-incident severity chips · Concentric radar arcs with fictional vendor nodes · Live feed with filter and states · Dashed severity bars · Automation step list · Incident timeline footer with copper CTA
 
 ---
 

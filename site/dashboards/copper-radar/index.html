@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Copper Radar · Dashboard Tools gallery</title>
+  <meta name="description" content="Soft-light SOC ops dashboard with copper accents, concentric radar arcs, live feed, severity bars and timeline. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="cp">
+    <header class="cp-top">
+      <a class="cp-brand" href="#" aria-label="Copper Radar home">
+        <span class="cp-logo" aria-hidden="true"></span>
+        <span>Copper Radar</span>
+      </a>
+      <nav class="cp-tabs" aria-label="Views" data-tabs>
+        <button data-v="overview" aria-pressed="true">Data Overview</button>
+        <button data-v="alerts" aria-pressed="false">Key Alerts</button>
+        <button data-v="insights" aria-pressed="false">Insights</button>
+        <button data-v="exec" aria-pressed="false">Executions</button>
+        <button data-v="more" aria-pressed="false" aria-label="More views"><span data-icon="plus"></span></button>
+      </nav>
+      <div class="cp-utils">
+        <button type="button" class="cp-ghost" data-alerts-table>Alerts Table</button>
+        <button type="button" class="cp-iconbtn" aria-label="Files"><span data-icon="file"></span></button>
+        <button type="button" class="cp-iconbtn" aria-label="About"><span data-icon="info"></span></button>
+        <button type="button" class="cp-iconbtn" aria-label="Settings"><span data-icon="settings"></span></button>
+      </div>
+    </header>
+
+    <section class="cp-hero" aria-labelledby="cp-dyn-h">
+      <div class="cp-sideleft">
+        <article class="cp-panel cp-inject" aria-labelledby="cp-inj-h">
+          <div class="cp-panelhead">
+            <h2 id="cp-inj-h">Data Injection</h2>
+            <span class="cp-meta">24h</span>
+          </div>
+          <p class="cp-k">Total events</p>
+          <b class="cp-big num" data-inject-total>78</b>
+          <div class="cp-sparkbox" data-inject-spark></div>
+        </article>
+        <article class="cp-panel cp-open" aria-labelledby="cp-open-h">
+          <h2 id="cp-open-h">Open Incidents</h2>
+          <ul class="cp-sevchips" data-sevchips></ul>
+        </article>
+      </div>
+
+      <div class="cp-radarwrap" aria-labelledby="cp-dyn-h">
+        <div class="cp-radarhead">
+          <h2 id="cp-dyn-h">Dynamic View</h2>
+          <b class="cp-endpoints num" data-endpoints>8.6K End Points</b>
+        </div>
+        <div class="cp-radar" data-radar role="img" aria-label="Concentric security radar with vendor nodes"></div>
+        <div class="cp-resolved" data-resolved>
+          <b class="num" data-resolved-pct>15%</b>
+          <span>Manually Resolved</span>
+        </div>
+      </div>
+
+      <aside class="cp-panel cp-feed" aria-labelledby="cp-feed-h">
+        <div class="cp-panelhead">
+          <h2 id="cp-feed-h">Live Feed <i class="cp-live" aria-hidden="true"></i><span class="vh">active</span></h2>
+          <div class="cp-seg" role="group" aria-label="Feed window" data-feedwin>
+            <button data-v="24h" aria-pressed="true">24h</button>
+            <button data-v="7d" aria-pressed="false">7d</button>
+          </div>
+        </div>
+        <ul class="cp-feedlist" data-feed></ul>
+        <p class="cp-msg" data-feedmsg hidden></p>
+      </aside>
+    </section>
+
+    <section class="cp-cards" aria-label="Operations breakdown">
+      <article class="cp-panel cp-sources" aria-labelledby="cp-src-h">
+        <h2 id="cp-src-h">Sources</h2>
+        <ul class="cp-list" data-sources></ul>
+      </article>
+      <article class="cp-panel cp-assets" aria-labelledby="cp-ast-h">
+        <h2 id="cp-ast-h">Assets</h2>
+        <ul class="cp-list" data-assets></ul>
+      </article>
+      <article class="cp-panel cp-alerts" aria-labelledby="cp-al-h">
+        <div class="cp-panelhead">
+          <h2 id="cp-al-h">Alerts</h2>
+          <span class="cp-meta num" data-alert-total></span>
+        </div>
+        <ul class="cp-sevbars" data-sevbars></ul>
+      </article>
+      <article class="cp-panel cp-auto" aria-labelledby="cp-au-h">
+        <h2 id="cp-au-h">Automation</h2>
+        <ol class="cp-steps" data-steps></ol>
+      </article>
+    </section>
+
+    <footer class="cp-timeline" aria-label="Incident timeline">
+      <ol class="cp-tltrack" data-timeline></ol>
+      <button type="button" class="cp-cta" data-view-tl>View Timeline <span data-icon="arrowRight"></span></button>
+    </footer>
+    <p class="db-sample cp-foot">Sample data · fictional</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

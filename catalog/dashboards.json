@@ -2765,6 +2765,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft-UI / neumorphic kit render. Brand (Pebble Studio), copy and metrics are fictional. Product photos and original marks were replaced with SVG blobs, dunes, torus and knobs. The source image is not stored in the repo." },
       "path": "site/dashboards/pebble-studio/"
+    },
+    {
+      "id": "copper-radar",
+      "number": 32,
+      "name": "Copper Radar",
+      "style_family": "soft",
+      "use_cases": ["analytics"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A soft-light SOC ops board: copper accents on white, concentric radar arcs with invented vendor chips, a live incident feed, dashed severity bars, automation steps and a timeline footer.",
+      "mood": ["alert", "clean", "soft", "operational", "focused"],
+      "best_for": ["Security and observability overview screens that stay light and calm", "Ops dashboards centred on a radar or topology hero", "Incident triage boards with feed + severity + timeline"],
+      "avoid_when": ["Dark SOC walls that need neon HUD density", "Compliance tools with long tabular evidence", "Brands that cannot use warm copper accents"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Top bar (brand · soft pill tabs · utilities) · Dynamic View (injection + incidents · radar · live feed) · 4-card row (Sources, Assets, Alerts, Automation) · timeline footer",
+        "responsive": "≤1180px: feed under radar · ≤960px: side cards stack, 2×2 bottom grid · ≤640px: single column, tabs scroll, timeline wraps"
+      },
+      "components": ["Soft pill navigation tabs", "Data-injection spark card", "Open-incident severity chips", "Concentric radar arcs with fictional vendor nodes", "Live feed with filter and states", "Dashed severity bars", "Automation step list", "Incident timeline footer with copper CTA"],
+      "signature": "Soft white SOC shell with copper accents and a large semi-circular radar of concentric arcs dotted with invented vendor chips.",
+      "palette": { "bg": "#f5f7f9", "surface": "#ffffff", "text": "#1c232b", "muted": "#5a6570", "accent": "#c45f1a", "copper": "#e07a2f", "sev-high": "#d97706", "sev-med": "#c0267a" },
+      "fonts": { "display": "Sora", "sans": "DM Sans" },
+      "variants": [
+        { "id": "default", "name": "Copper", "swatch": "#c45f1a" },
+        { "id": "slate", "name": "Slate", "swatch": "#3d5a80" },
+        { "id": "ember", "name": "Ember", "swatch": "#b91c1c" }
+      ],
+      "maps_to_theme": "atelier",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft-light SOC dashboard render. Brand (Copper Radar), vendor names and copy are fictional. Real vendor logos (Okta, AWS, Alibaba and others) were replaced with invented chips such as NimbusID and RidgeHost. The source image is not stored in the repo." },
+      "path": "site/dashboards/copper-radar/"
     }
   ]
 }
