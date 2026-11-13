@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-25 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+26 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -31,6 +31,7 @@
 | 23 | [Citadel Wall](#citadel-wall) | Data-dense pro | Analytics & BI, Logistics & fleet | dark | Cyan, Ocean, Amber | [site/dashboards/citadel-wall/](../../site/dashboards/citadel-wall/) |
 | 24 | [Aether Pane](#aether-pane) | Glass & glow | Analytics & BI, SaaS admin | dark | Cyan, Violet, Daylight | [site/dashboards/aether-pane/](../../site/dashboards/aether-pane/) |
 | 25 | [Forge Fitness](#forge-fitness) | Cinematic & atmospheric | Health & fitness | dark | Forge, Ember, Ice | [site/dashboards/forge-fitness/](../../site/dashboards/forge-fitness/) |
+| 26 | [Zest Health](#zest-health) | Bold & graphic | Health & fitness | light | Lime, Grape, Night | [site/dashboards/zest-health/](../../site/dashboards/zest-health/) |
 
 ## Cinematic & atmospheric
 
@@ -687,7 +688,33 @@ A two-tone visitor report for a trail network: a pale, quiet upper half where a 
 
 High contrast, saturated blocks, heavy type, brutalist or neo-brutalist edges. Creative tools, youth brands.
 
-_No dashboards yet._
+<a id="zest-health"></a>
+### 26. Zest Health
+
+![Zest Health](../../site/dashboards/zest-health/thumb.jpg)
+
+A bold lime health overview with a charcoal sidebar, overlapping energy bubbles, heart and activity tiles, a wellness dot-matrix index, and a dark sleep-analysis panel with hatched month bars.
+
+- **Use cases:** Health & fitness · **Mode:** light · **Mood:** bold, fresh, energetic, playful, clear
+- **Signature:** Three overlapping kcal bubbles (lilac, charcoal, lime) beside a charcoal sleep panel with hatched month bars and one highlighted month.
+- **Layout:** 240px dark sidebar (brand, nav with badges, upgrade card) · main: profile + search header · title row with date · bento: energy bubbles (tall) · heart · activity · wellness dot index (tall) · sleep analysis (wide dark)
+- **Responsive:** ≤1180px: sidebar collapses to top nav, bento 2 columns · ≤960px: upgrade hidden · ≤640px: single column, bubbles stack
+- **Fonts:** Space Grotesk / Manrope · **Palette:** bg `#dcefb0`, surface `#f4f5f7`, text `#111411`, muted `#5c655c`, accent `#b8f000`, sidebar `#121412`, lilac `#c4b5fd`, ink `#1a1c1a`
+- **Variants:** Lime, Grape, Night · **Closest toolkit theme:** `atelier`
+
+**Best for**
+- Consumer wellness apps that want a high-contrast lime brand
+- Daily health overviews with a few vivid metrics
+- Products that mix light workspace cards with one dark chart panel
+
+**Avoid when**
+- Clinical EHR tools needing dense tables
+- Brands that avoid saturated lime accents
+- Wearable ring UIs that need a glass, dreamy look (see Aura Ring)
+
+**Components:** Dark sidebar with badge counts · Upgrade callout with SVG rocket · Profile and search header · Energy bubbles with category bars · Heart rate and activity mini cards · Wellness index dot matrix · Dark sleep analysis with hatched bars
+
+---
 
 
 ## Dark neon

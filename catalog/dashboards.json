@@ -821,6 +821,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied fitness dashboard screenshot. Brand, labels and figures are invented. The person photograph was replaced with an abstract SVG gym silhouette and vignette atmosphere. The source image is not stored in the repo." },
       "path": "site/dashboards/forge-fitness/"
+    },
+    {
+      "id": "zest-health",
+      "number": 26,
+      "name": "Zest Health",
+      "style_family": "bold",
+      "use_cases": ["health"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A bold lime health overview with a charcoal sidebar, overlapping energy bubbles, heart and activity tiles, a wellness dot-matrix index, and a dark sleep-analysis panel with hatched month bars.",
+      "mood": ["bold", "fresh", "energetic", "playful", "clear"],
+      "best_for": ["Consumer wellness apps that want a high-contrast lime brand", "Daily health overviews with a few vivid metrics", "Products that mix light workspace cards with one dark chart panel"],
+      "avoid_when": ["Clinical EHR tools needing dense tables", "Brands that avoid saturated lime accents", "Wearable ring UIs that need a glass, dreamy look (see Aura Ring)"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "240px dark sidebar (brand, nav with badges, upgrade card) · main: profile + search header · title row with date · bento: energy bubbles (tall) · heart · activity · wellness dot index (tall) · sleep analysis (wide dark)",
+        "responsive": "≤1180px: sidebar collapses to top nav, bento 2 columns · ≤960px: upgrade hidden · ≤640px: single column, bubbles stack"
+      },
+      "components": ["Dark sidebar with badge counts", "Upgrade callout with SVG rocket", "Profile and search header", "Energy bubbles with category bars", "Heart rate and activity mini cards", "Wellness index dot matrix", "Dark sleep analysis with hatched bars"],
+      "signature": "Three overlapping kcal bubbles (lilac, charcoal, lime) beside a charcoal sleep panel with hatched month bars and one highlighted month.",
+      "palette": { "bg": "#dcefb0", "surface": "#f4f5f7", "text": "#111411", "muted": "#5c655c", "accent": "#b8f000", "sidebar": "#121412", "lilac": "#c4b5fd", "ink": "#1a1c1a" },
+      "fonts": { "display": "Space Grotesk", "sans": "Manrope" },
+      "variants": [
+        { "id": "default", "name": "Lime", "swatch": "#b8f000" },
+        { "id": "grape", "name": "Grape", "swatch": "#a78bfa" },
+        { "id": "night", "name": "Night", "swatch": "#c8f060" }
+      ],
+      "maps_to_theme": "atelier",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied lime health overview. Brand renamed to Zest Health; flux logo and photo avatars were not reused. Bubbles and charts are SVG/CSS. The source image is not stored in the repo." },
+      "path": "site/dashboards/zest-health/"
     }
   ]
 }

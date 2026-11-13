@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Zest Health · Dashboard Tools gallery</title>
+  <meta name="description" content="Bold lime health overview with dark sidebar, energy bubbles, wellness dots and sleep analysis. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="zh">
+    <aside class="zh-side" aria-label="Zest navigation">
+      <a class="zh-brand" href="#" aria-label="Zest Health home"><span class="zh-logo" aria-hidden="true"></span>zest</a>
+      <nav class="zh-nav">
+        <a href="#" aria-current="page"><span data-icon="grid"></span>Dashboard<span class="zh-badge">2</span></a>
+        <a href="#"><span data-icon="home"></span>Home</a>
+        <a href="#"><span data-icon="apple"></span>Nutrition</a>
+        <a href="#"><span data-icon="file"></span>Reports<span class="zh-badge">1</span></a>
+        <a href="#"><span data-icon="users"></span>People</a>
+        <a href="#"><span data-icon="mail"></span>Messages</a>
+      </nav>
+      <div class="zh-upgrade">
+        <div class="zh-rocket" data-rocket aria-hidden="true"></div>
+        <p><b>Upgrade to Pro</b>Unlock coaching plans and weekly labs.</p>
+        <button type="button" data-upgrade>Upgrade now</button>
+      </div>
+    </aside>
+
+    <div class="zh-main">
+      <header class="zh-top">
+        <div class="zh-user">
+          <span class="zh-avatar" role="img" aria-label="Lucas Bennett">LB</span>
+          <span><b>Lucas Bennett</b><small>lucas@zest.example</small></span>
+        </div>
+        <label class="zh-search">
+          <span class="vh">Search</span>
+          <span data-icon="search" aria-hidden="true"></span>
+          <input type="search" placeholder="Search metrics, reports…" autocomplete="off" data-search>
+        </label>
+        <button class="zh-bell" aria-label="Notifications"><span data-icon="bell"></span><i class="zh-dot" aria-hidden="true"></i></button>
+      </header>
+
+      <div class="zh-title-row">
+        <div>
+          <h1>Health Overview</h1>
+          <p class="zh-lead">Take control of your health today.</p>
+        </div>
+        <div class="zh-date">
+          <span data-icon="calendar" aria-hidden="true"></span>
+          <span data-today></span>
+          <div class="zh-seg" role="group" aria-label="Range" data-range>
+            <button data-v="today" aria-pressed="true">Today</button>
+            <button data-v="week" aria-pressed="false">Week</button>
+            <button data-v="month" aria-pressed="false">Month</button>
+          </div>
+        </div>
+      </div>
+
+      <main class="zh-grid">
+        <section class="zh-card zh-energy" aria-labelledby="zh-en-h">
+          <div class="zh-card-top">
+            <h2 id="zh-en-h">Energy used</h2>
+            <span class="zh-delta">+5%</span>
+          </div>
+          <p class="zh-big num" data-kcal>4.3k <small>kcal today</small></p>
+          <div class="zh-bubbles" data-bubbles role="img" aria-label="Energy breakdown bubbles"></div>
+          <ul class="zh-bars" data-energy-bars></ul>
+          <p class="zh-empty" data-energy-empty hidden>No energy logged for this range. Switch to Today.</p>
+        </section>
+
+        <section class="zh-card zh-hr" aria-labelledby="zh-hr-h">
+          <span class="zh-ic" data-icon="heart" aria-hidden="true"></span>
+          <h2 id="zh-hr-h">Heart rate</h2>
+          <p class="zh-val num" data-hr>62 <small>bpm</small></p>
+          <p class="zh-meta">Avg <span class="num">78</span> bpm</p>
+        </section>
+
+        <section class="zh-card zh-act" aria-labelledby="zh-act-h">
+          <span class="zh-ic" data-icon="run" aria-hidden="true"></span>
+          <h2 id="zh-act-h">Activity</h2>
+          <p class="zh-val num" data-km>5.8 <small>km</small></p>
+          <p class="zh-meta">Active <span class="num">75</span> min</p>
+        </section>
+
+        <section class="zh-card zh-well" aria-labelledby="zh-well-h">
+          <div class="zh-card-top">
+            <h2 id="zh-well-h">Wellness index</h2>
+            <span class="zh-delta">+10%</span>
+          </div>
+          <p class="zh-big num" data-well>78%</p>
+          <div class="zh-dots" data-dots role="img" aria-label="Wellness trend as a dot matrix"></div>
+        </section>
+
+        <section class="zh-card zh-sleep" aria-labelledby="zh-sl-h">
+          <div class="zh-card-top">
+            <h2 id="zh-sl-h"><span data-icon="moon" aria-hidden="true"></span> Sleep analysis</h2>
+            <div class="zh-seg zh-seg-dark" role="group" aria-label="Sleep range" data-sleep-range>
+              <button data-v="monthly" aria-pressed="true">Monthly</button>
+              <button data-v="weekly" aria-pressed="false">Weekly</button>
+            </div>
+          </div>
+          <div class="zh-sleep-kpis">
+            <div><i class="zh-vbar lime" aria-hidden="true"></i><p><b class="num" data-eff>85%</b><span>Sleep efficiency</span></p></div>
+            <div><i class="zh-vbar lilac" aria-hidden="true"></i><p><b class="num" data-dur>7h 15m</b><span>Sleep duration</span></p></div>
+          </div>
+          <div class="zh-sleep-chart" data-sleep-chart></div>
+          <p class="zh-err" data-sleep-err hidden>Couldn’t load sleep history. Try Weekly instead.</p>
+        </section>
+      </main>
+
+      <p class="db-sample zh-foot">Sample data · fictional member and metrics</p>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
