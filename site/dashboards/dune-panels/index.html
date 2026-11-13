@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Dune Panels · Dashboard Tools gallery</title>
+  <meta name="description" content="Skeuomorphic soft-UI analytics in sand, sage and slate with a blue fabric wave, dual donuts and a recessed neumorphic well. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="du-wave" data-wave aria-hidden="true"></div>
+  <div class="du">
+    <header class="du-top">
+      <a class="du-brand" href="#" aria-label="Dune Panels home">
+        <span class="du-mark" aria-hidden="true"></span>
+        <span>Dune Panels</span>
+      </a>
+      <label class="du-search">
+        <span class="vh">Search metrics</span>
+        <input type="search" placeholder="Search panels, metrics…" data-q>
+        <span data-icon="search"></span>
+      </label>
+      <div class="du-range" role="group" aria-label="Time range" data-range>
+        <button type="button" data-v="24" aria-pressed="true">24h</button>
+        <button type="button" data-v="48" aria-pressed="false">48h</button>
+        <button type="button" data-v="72" aria-pressed="false">72h</button>
+      </div>
+    </header>
+
+    <main class="du-grid">
+      <section class="du-panel du-sand" aria-labelledby="du-mix-h">
+        <header class="du-ph">
+          <span data-icon="layers"></span>
+          <div>
+            <p class="du-crumb">Analytics · Mix</p>
+            <h2 id="du-mix-h">Traffic mix</h2>
+          </div>
+        </header>
+        <div class="du-dual" data-dual></div>
+        <p class="du-note" data-dual-note aria-live="polite"></p>
+      </section>
+
+      <section class="du-panel du-sage" aria-labelledby="du-well-h">
+        <header class="du-ph">
+          <span data-icon="pie"></span>
+          <div>
+            <p class="du-crumb">Focus · Share</p>
+            <h2 id="du-well-h">Share well</h2>
+          </div>
+        </header>
+        <div class="du-wellwrap">
+          <div class="du-well" data-well role="img" aria-label="Share breakdown donut"></div>
+        </div>
+        <ul class="du-legend" data-well-legend></ul>
+      </section>
+
+      <section class="du-panel du-sage du-icons" aria-labelledby="du-ico-h">
+        <header class="du-ph">
+          <span data-icon="grid"></span>
+          <div>
+            <p class="du-crumb">Shortcuts</p>
+            <h2 id="du-ico-h">Quick shelves</h2>
+          </div>
+        </header>
+        <div class="du-igrid" role="group" aria-label="Quick actions" data-icons></div>
+        <p class="du-note" data-icon-note aria-live="polite"></p>
+      </section>
+
+      <section class="du-panel du-slate" aria-labelledby="du-grid-h">
+        <header class="du-ph du-ph-light">
+          <span data-icon="chart"></span>
+          <div>
+            <p class="du-crumb">Health · Quad</p>
+            <h2 id="du-grid-h">Signal grid</h2>
+          </div>
+        </header>
+        <div class="du-quad" data-quad></div>
+        <p class="du-note du-note-light" data-quad-note aria-live="polite"></p>
+      </section>
+
+      <section class="du-panel du-sand du-feed" aria-labelledby="du-feed-h">
+        <header class="du-ph">
+          <span data-icon="activity"></span>
+          <div>
+            <p class="du-crumb">Feed</p>
+            <h2 id="du-feed-h">Recent pulses</h2>
+          </div>
+        </header>
+        <ul class="du-pulses" data-pulses></ul>
+        <p class="du-note" data-feed-msg aria-live="polite"></p>
+      </section>
+    </main>
+
+    <p class="db-sample du-foot">Sample data · fictional metrics</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

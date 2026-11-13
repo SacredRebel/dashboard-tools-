@@ -1,0 +1,62 @@
+{
+  "id": "dune-panels",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/dune-panels/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/dune-panels/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/dune-panels/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/dune-panels/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/dune-panels/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=coastal",
+      "width": 1440,
+      "variant": "coastal",
+      "final_path": "/dashboards/dune-panels/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=ember",
+      "width": 1440,
+      "variant": "ember",
+      "final_path": "/dashboards/dune-panels/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/dune-panels",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

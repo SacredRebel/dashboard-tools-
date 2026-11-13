@@ -2701,6 +2701,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft bathroom showroom render. Brand (Tidebath), copy and fixtures are fictional. Photoreal rooms and original logos were replaced with SVG bathrooms and abstract hotspot markers. The source image is not stored in the repo." },
       "path": "site/dashboards/tidebath-showroom/"
+    },
+    {
+      "id": "dune-panels",
+      "number": 30,
+      "name": "Dune Panels",
+      "style_family": "skeuo",
+      "use_cases": ["analytics"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A skeuomorphic soft-UI analytics board in sand, sage and slate: blue fabric wave backdrop, dual donuts, a recessed neumorphic donut well, pill search, icon shelves and a 2×2 analytics grid under dark headers.",
+      "mood": ["tactile", "calm", "organic", "matte", "soft"],
+      "best_for": ["Analytics or ops glance boards that want a tactile, non-flat look", "Product demos showcasing neumorphic depth and soft materials", "Light-mode dashboards with a natural sand-and-sage palette"],
+      "avoid_when": ["Dense tabular reporting or spreadsheet-like tools", "Brands that need sharp glass or high-chroma charts", "Dark-only or neon cyber aesthetics"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Fabric wave backdrop · top search on slate strip · dual donut sand panel · sage recessed donut well · 3×3 icon grid · range pills · slate 2×2 analytics donut grid with dark headers throughout",
+        "responsive": "≤1100px: two-column wrap, wave softens · ≤700px: single column, icon grid 3×3 retained, search full width, analytics 2×2 stacks"
+      },
+      "components": ["Blue fabric wave SVG backdrop", "Dark slate panel headers with icons", "Dual side-by-side donut charts", "Recessed neumorphic donut well", "Pill search field", "3×3 raised icon shelf grid", "24h / 48h / 72h range pills", "2×2 analytics donut grid"],
+      "signature": "Sand, sage and slate panels with multi-layer neumorphic shadows, a draped blue fabric wave, and a large donut seated in a deeply recessed circular well.",
+      "palette": { "bg": "#c5cfc9", "surface": "#e8d9c4", "text": "#2d3e4e", "muted": "#3d4e5c", "accent": "#4a9b8e", "sage": "#9db8ae", "slate": "#2d3e4e", "wave": "#7a93a8" },
+      "fonts": { "display": "Outfit", "sans": "Outfit" },
+      "variants": [
+        { "id": "default", "name": "Sand", "swatch": "#4a9b8e" },
+        { "id": "coastal", "name": "Coastal", "swatch": "#3d7a9e" },
+        { "id": "ember", "name": "Ember", "swatch": "#c4784a" }
+      ],
+      "maps_to_theme": "atelier",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft-UI / neumorphic mood board. Brand (Dune Panels), metrics and labels are fictional. The fabric wave and charts were redrawn as SVG. The source image is not stored in the repo." },
+      "path": "site/dashboards/dune-panels/"
     }
   ]
 }

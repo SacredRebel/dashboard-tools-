@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-29 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+30 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -35,6 +35,7 @@
 | 27 | [Orchard Sales](#orchard-sales) | Bento grid | CRM & sales, Analytics & BI | light | Orchard, Citrus, Graphite | [site/dashboards/orchard-sales/](../../site/dashboards/orchard-sales/) |
 | 28 | [Mauve Ledger](#mauve-ledger) | Glass & glow | Finance & banking | light | Lilac, Blush, Slate | [site/dashboards/mauve-ledger/](../../site/dashboards/mauve-ledger/) |
 | 29 | [Tidebath Showroom](#tidebath-showroom) | Soft & friendly | E-commerce & retail, Hospitality & food | light | Porcelain, Mist, Dusk | [site/dashboards/tidebath-showroom/](../../site/dashboards/tidebath-showroom/) |
+| 30 | [Dune Panels](#dune-panels) | Tactile & neumorphic | Analytics & BI | light | Sand, Coastal, Ember | [site/dashboards/dune-panels/](../../site/dashboards/dune-panels/) |
 
 ## Cinematic & atmospheric
 
@@ -894,6 +895,34 @@ A claymorphic listening dashboard for a music app: puffy pastel tiles with soft 
 - Brands that want a serious or premium feel
 
 **Components:** Clay sidebar with avatar and upgrade card · Hero with greeting and play action · Now-playing bar with play/pause and scrubber · Pastel stat tiles · Multicolour bar chart with week toggle · Genre donut with selectable legend · Track list with favourite and play · Daily mix card with switchable SVG room
+
+---
+
+<a id="dune-panels"></a>
+### 30. Dune Panels
+
+![Dune Panels](../../site/dashboards/dune-panels/thumb.jpg)
+
+A skeuomorphic soft-UI analytics board in sand, sage and slate: blue fabric wave backdrop, dual donuts, a recessed neumorphic donut well, pill search, icon shelves and a 2×2 analytics grid under dark headers.
+
+- **Use cases:** Analytics & BI · **Mode:** light · **Mood:** tactile, calm, organic, matte, soft
+- **Signature:** Sand, sage and slate panels with multi-layer neumorphic shadows, a draped blue fabric wave, and a large donut seated in a deeply recessed circular well.
+- **Layout:** Fabric wave backdrop · top search on slate strip · dual donut sand panel · sage recessed donut well · 3×3 icon grid · range pills · slate 2×2 analytics donut grid with dark headers throughout
+- **Responsive:** ≤1100px: two-column wrap, wave softens · ≤700px: single column, icon grid 3×3 retained, search full width, analytics 2×2 stacks
+- **Fonts:** Outfit / Outfit · **Palette:** bg `#c5cfc9`, surface `#e8d9c4`, text `#2d3e4e`, muted `#3d4e5c`, accent `#4a9b8e`, sage `#9db8ae`, slate `#2d3e4e`, wave `#7a93a8`
+- **Variants:** Sand, Coastal, Ember · **Closest toolkit theme:** `atelier`
+
+**Best for**
+- Analytics or ops glance boards that want a tactile, non-flat look
+- Product demos showcasing neumorphic depth and soft materials
+- Light-mode dashboards with a natural sand-and-sage palette
+
+**Avoid when**
+- Dense tabular reporting or spreadsheet-like tools
+- Brands that need sharp glass or high-chroma charts
+- Dark-only or neon cyber aesthetics
+
+**Components:** Blue fabric wave SVG backdrop · Dark slate panel headers with icons · Dual side-by-side donut charts · Recessed neumorphic donut well · Pill search field · 3×3 raised icon shelf grid · 24h / 48h / 72h range pills · 2×2 analytics donut grid
 
 ---
 
