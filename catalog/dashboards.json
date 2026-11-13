@@ -597,6 +597,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied smart-home concept screenshot. Brand (Hearth Nest), copy and figures are fictional. The living-room photo and decorative plant were replaced with SVG themed by CSS variables. The source image is not stored in the repo." },
       "path": "site/dashboards/hearth-nest/"
+    },
+    {
+      "id": "veil-rooms",
+      "number": 19,
+      "name": "Veil Rooms",
+      "style_family": "glass",
+      "use_cases": ["smart-home"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device cards, and a right Light panel for fixture toggles and stepped spotlights.",
+      "mood": ["glassy", "calm", "modern", "cool", "precise"],
+      "best_for": ["Apartment or multi-room lighting-first control apps", "Tablet dashboards that keep climate and media beside lights", "Brands that want frosted glass without a scenic photo hero"],
+      "avoid_when": ["Energy analytics that need large charts", "Installer or device-fleet admin screens", "Brands that require a warm cinematic look"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "56px icon rail · centre column (status chips, greeting, room pills, 3×2 device cards) · 320px right Light panel (header, time, 2×2 fixture cards with toggles and sliders)",
+        "responsive": "≤1180px: Light panel drops under the device grid · ≤960px: rail becomes a top strip · ≤640px: device cards single column, room pills scroll"
+      },
+      "components": ["Slim icon rail with avatar", "Environment status chips", "Personal greeting", "Room pill switcher with add", "Main light dual sliders", "AC temperature stepper", "Media player card", "Wifi speed card", "Air purifier status card", "Smart lock card", "Right Light fixtures panel with stepped spotlight control"],
+      "signature": "Frosted grey glass device cards beside a dedicated Light fixtures column with green on-toggles and three-step spotlight rails.",
+      "palette": { "bg": "#1a1d24", "surface": "#2a2e38", "text": "#f2f4f8", "muted": "#a8aeb8", "accent": "#6ecf9a", "cool": "#5b9cf0", "warm": "#f0b35a", "glass": "#343944" },
+      "fonts": { "display": "Plus Jakarta Sans", "sans": "Plus Jakarta Sans" },
+      "variants": [
+        { "id": "default", "name": "Slate glass", "swatch": "#6ecf9a" },
+        { "id": "mist", "name": "Mist", "swatch": "#7eb8e8" },
+        { "id": "midnight", "name": "Midnight", "swatch": "#5ad4b0" }
+      ],
+      "maps_to_theme": "noir",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied grey-glass smart-home screenshot. Brand (Veil Rooms), resident name, track titles and figures are fictional. Album art and lamp photos were replaced with SVG. The source image is not stored in the repo." },
+      "path": "site/dashboards/veil-rooms/"
     }
   ]
 }

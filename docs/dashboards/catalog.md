@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-18 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+19 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -24,6 +24,7 @@
 | 16 | [Hollow Vault](#hollow-vault) | Dark neon | Music & media | dark | Dusk, Moss, Crimson | [site/dashboards/hollow-vault/](../../site/dashboards/hollow-vault/) |
 | 17 | [Larchwood Lodge](#larchwood-lodge) | Bento grid | Hospitality & food, Smart home & IoT | dark | Plum, Birch, Pine | [site/dashboards/larchwood-lodge/](../../site/dashboards/larchwood-lodge/) |
 | 18 | [Hearth Nest](#hearth-nest) | Cinematic & atmospheric | Smart home & IoT | dark | Amber hearth, Cedar, Frost | [site/dashboards/hearth-nest/](../../site/dashboards/hearth-nest/) |
+| 19 | [Veil Rooms](#veil-rooms) | Glass & glow | Smart home & IoT | dark | Slate glass, Mist, Midnight | [site/dashboards/veil-rooms/](../../site/dashboards/veil-rooms/) |
 
 ## Cinematic & atmospheric
 
@@ -255,6 +256,34 @@ Workspace settings in a light liquid-glass style: thick translucent pills with b
 - Brands that want flat or high-contrast UI
 
 **Components:** Glass tab bar and icon orbs · Invite combobox with suggestions (arrow keys, Enter, Esc) · Role radio group · Member list with filter and remove · Permission checkboxes · Notification switches · Folder-shaped plan card with seat meter · Speech-bubble tip
+
+---
+
+<a id="veil-rooms"></a>
+### 19. Veil Rooms
+
+![Veil Rooms](../../site/dashboards/veil-rooms/thumb.jpg)
+
+A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device cards, and a right Light panel for fixture toggles and stepped spotlights.
+
+- **Use cases:** Smart home & IoT · **Mode:** dark · **Mood:** glassy, calm, modern, cool, precise
+- **Signature:** Frosted grey glass device cards beside a dedicated Light fixtures column with green on-toggles and three-step spotlight rails.
+- **Layout:** 56px icon rail · centre column (status chips, greeting, room pills, 3×2 device cards) · 320px right Light panel (header, time, 2×2 fixture cards with toggles and sliders)
+- **Responsive:** ≤1180px: Light panel drops under the device grid · ≤960px: rail becomes a top strip · ≤640px: device cards single column, room pills scroll
+- **Fonts:** Plus Jakarta Sans / Plus Jakarta Sans · **Palette:** bg `#1a1d24`, surface `#2a2e38`, text `#f2f4f8`, muted `#a8aeb8`, accent `#6ecf9a`, cool `#5b9cf0`, warm `#f0b35a`, glass `#343944`
+- **Variants:** Slate glass, Mist, Midnight · **Closest toolkit theme:** `noir`
+
+**Best for**
+- Apartment or multi-room lighting-first control apps
+- Tablet dashboards that keep climate and media beside lights
+- Brands that want frosted glass without a scenic photo hero
+
+**Avoid when**
+- Energy analytics that need large charts
+- Installer or device-fleet admin screens
+- Brands that require a warm cinematic look
+
+**Components:** Slim icon rail with avatar · Environment status chips · Personal greeting · Room pill switcher with add · Main light dual sliders · AC temperature stepper · Media player card · Wifi speed card · Air purifier status card · Smart lock card · Right Light fixtures panel with stepped spotlight control
 
 ---
 

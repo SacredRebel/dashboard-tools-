@@ -26,13 +26,13 @@ One row per reference image in `inputs/dashboards/` (not stored in the repo), in
 | 20-gaming-chest.jpg | 16 | hollow-vault | Hollow Vault | dark-neon | media | dark | done | Reframed from paid crypto chests to keys earned by play, with drop rates shown and no purchases. Witch art and 3D items replaced with SVG relics. |
 | 21-autumn-widgets.jpg | 17 | larchwood-lodge | Larchwood Lodge | bento | hospitality | dark | done | Small, unreadable widget sheet; given a cabin guest-hub job. Landscape painting redrawn as SVG layers. |
 | 22-smarthome-amber.jpg | 18 | hearth-nest | Hearth Nest | cinematic | smart-home | dark | done | Warm amber smart-home: SVG living-room hero with device nodes, weather, AQI arc, thermostat, device toggles, power bars, brightness slider. NexHome brand dropped. |
-| 23-smarthome-grey-glass.jpg | | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
-| 24-smarthome-room-glass.jpg | | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
-| 25-blue-radial.png | | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
-| 26-reading-tracker.png | | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
-| 27-bigscreen-blue.png | | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
-| 28-glass-panels.png | | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
-| 29-fitness-photo.png | | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
-| 30-health-lime.png | | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
-| 31-sales-lime.png | | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
-| 32-finance-lilac.png | | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
+| 23-smarthome-grey-glass.jpg | 19 | veil-rooms | Veil Rooms | glass | smart-home | dark | done | Grey glass lighting-first smart home; distinct from Hearth Nest. Fixture panel + device cards. | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
+| 24-smarthome-room-glass.jpg | 20 | atrium-living | Atrium Living | glass | smart-home | light | done | Glass panels over SVG atrium room; energy/climate/security angle. | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
+| 25-blue-radial.png | 21 | glacier-ops | Glacier Ops | data-dense | analytics | dark | done | Blue radial HUD with central topo dial and dense satellite charts. | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
+| 26-reading-tracker.png | 22 | folio-club | Folio Club | soft | education, media | dark | done | Reading tracker with metric tiles, leaderboard and activity; fictional books. | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
+| 27-bigscreen-blue.png | 23 | citadel-wall | Citadel Wall | data-dense | analytics, logistics | dark | done | Navy big-screen wall display with cyan glow and SVG core; English ops copy. | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
+| 28-glass-panels.png | 24 | aether-pane | Aether Pane | glass | analytics, saas-admin | dark | done | Cyan glass analytics HUD with revenue, performance and journey charts. | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
+| 29-fitness-photo.png | 25 | forge-fitness | Forge Fitness | cinematic | health | dark | done | Fitness over SVG gym silhouette (no real people); steps, sleep, heart, focus. | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
+| 30-health-lime.png | 26 | zest-health | Zest Health | bold | health | light | done | Lime health overview; distinct from Aura/Lull/Pearlwell/Vitalis. | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
+| 31-sales-lime.png | 27 | orchard-sales | Orchard Sales | bento | crm, analytics | light | done | Lime sales bento; distinct from Zest Health. | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
+| 32-finance-lilac.png | 28 | mauve-ledger | Mauve Ledger | glass | finance | light | done | Lilac finance glass; distinct from Kumo Payroll. | | | | | | needs review (not built yet: session ended) | See HANDOFF.md. |
