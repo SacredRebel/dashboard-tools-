@@ -885,6 +885,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied lime sales dashboard. Brand renamed to Orchard Sales; 3D sphere props became SVG gradients. The source image is not stored in the repo." },
       "path": "site/dashboards/orchard-sales/"
+    },
+    {
+      "id": "mauve-ledger",
+      "number": 28,
+      "name": "Mauve Ledger",
+      "style_family": "glass",
+      "use_cases": ["finance"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A light lilac glass finance desk: frosted KPI tiles over a soft lavender haze, average sales bars, formation status, a segmented success gauge and a recent-email list.",
+      "mood": ["airy", "soft", "premium", "calm", "lilac"],
+      "best_for": ["Small-business finance overviews", "Founder dashboards that mix money KPIs with ops status", "Brands that want glassmorphism without going dark"],
+      "avoid_when": ["Payroll-first HR tools with illustrated night scenes (see Kumo Payroll)", "Dense general ledgers or multi-entity books", "Interfaces that must work without translucent surfaces"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Top bar (logo, pill nav, utility icons, avatar) · greeting · 4 KPI glass cards · 12-col: average sales (8) + formation status + success gauge (4) · recent emails full width",
+        "responsive": "≤1180px: KPIs 2×2, sales full width above side stack · ≤960px: nav scrolls · ≤640px: single column, email rows compact"
+      },
+      "components": ["Pill top navigation", "Greeting headline", "Four frosted KPI cards", "Average sales bar chart with channel deltas", "Formation status progress", "Segmented success gauge", "Recent email list with urgency"],
+      "signature": "Frosted lilac glass cards on a soft lavender–pink haze, anchored by a segmented 51.2% success gauge.",
+      "palette": { "bg": "#ddd6f3", "surface": "#ffffff", "text": "#2a2740", "muted": "#6e6890", "accent": "#9b87f5", "good": "#22c55e", "bad": "#ef4444", "haze": "#f3e8ff" },
+      "fonts": { "display": "Fraunces", "sans": "Outfit" },
+      "variants": [
+        { "id": "default", "name": "Lilac", "swatch": "#9b87f5" },
+        { "id": "blush", "name": "Blush", "swatch": "#e8a0bf" },
+        { "id": "slate", "name": "Slate", "swatch": "#7c8cff" }
+      ],
+      "maps_to_theme": "blush",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied lilac finance glass concept. Brand renamed to Mauve Ledger; photo avatars became initials. The source image is not stored in the repo." },
+      "path": "site/dashboards/mauve-ledger/"
     }
   ]
 }

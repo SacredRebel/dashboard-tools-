@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Mauve Ledger · Dashboard Tools gallery</title>
+  <meta name="description" content="Light lilac glass finance dashboard with KPIs, sales bars, formation status, success gauge and emails. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600&family=Outfit:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="ml">
+    <header class="ml-top">
+      <a class="ml-brand" href="#" aria-label="Mauve Ledger home"><span class="ml-logo" aria-hidden="true">M</span></a>
+      <nav class="ml-nav" aria-label="Sections" data-nav>
+        <button data-v="dashboard" aria-pressed="true">Dashboard</button>
+        <button data-v="finance" aria-pressed="false">Finance</button>
+        <button data-v="accounts" aria-pressed="false">Accounts</button>
+        <button data-v="hr" aria-pressed="false">HR and payroll</button>
+        <button data-v="people" aria-pressed="false">People</button>
+        <button data-v="contracts" aria-pressed="false">Contracts</button>
+      </nav>
+      <div class="ml-utils">
+        <button class="ml-iconbtn" aria-label="Call"><span data-icon="phone"></span></button>
+        <button class="ml-iconbtn" aria-label="Calendar"><span data-icon="calendar"></span></button>
+        <button class="ml-iconbtn" aria-label="Search"><span data-icon="search"></span></button>
+        <button class="ml-iconbtn" aria-label="Notifications"><span data-icon="bell"></span></button>
+        <button class="ml-who" type="button" aria-label="Account menu for James Okoro"><span class="ml-avatar">JO</span><span data-icon="chevDown"></span></button>
+      </div>
+    </header>
+
+    <div class="ml-hello">
+      <h1>Good morning, James!</h1>
+      <p class="ml-lead" data-lead>Here’s your ledger for <span data-today></span>.</p>
+    </div>
+
+    <section class="ml-kpis" aria-label="Key figures" data-kpis></section>
+
+    <div class="ml-body">
+      <section class="ml-card ml-sales" aria-labelledby="ml-sales-h">
+        <div class="ml-card-head">
+          <div>
+            <h2 id="ml-sales-h">Average sales</h2>
+            <p class="ml-sub">Sales overview from all channels</p>
+          </div>
+          <div class="ml-sales-tools">
+            <div class="ml-seg" role="group" aria-label="Period" data-period>
+              <button data-v="current" aria-pressed="true">Current month</button>
+              <button data-v="last" aria-pressed="false">Last month</button>
+            </div>
+            <button class="ml-iconbtn" aria-label="Expand chart"><span data-icon="expand"></span></button>
+          </div>
+        </div>
+        <div class="ml-channels" data-channels></div>
+        <div data-sales-chart></div>
+        <p class="ml-note" data-sales-note aria-live="polite"></p>
+      </section>
+
+      <aside class="ml-side">
+        <section class="ml-card ml-form" aria-labelledby="ml-form-h">
+          <h2 id="ml-form-h">Formation status</h2>
+          <p class="ml-status">In progress</p>
+          <div class="ml-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="62" aria-label="Formation 62 percent complete"><i style="width:62%"></i></div>
+          <p class="ml-sub">Estimated processing: 4–5 business days</p>
+          <button class="ml-linkbtn" type="button" data-status>View status</button>
+        </section>
+
+        <section class="ml-card ml-success" aria-labelledby="ml-suc-h">
+          <h2 id="ml-suc-h">Success rate</h2>
+          <p class="ml-sub">Share of closed invoices this week</p>
+          <div class="ml-gauge-wrap">
+            <div class="ml-gauge" data-gauge></div>
+            <p class="ml-gauge-val"><b class="num" data-suc>51.2%</b><span class="ml-delta good">+5%</span></p>
+          </div>
+          <p class="ml-cheer" data-cheer>Hooray — you earned $150 today and $1,470 this week. Keep it up.</p>
+          <dl class="ml-suc-stats"><div><dt>People</dt><dd class="num">15,110</dd></div><div><dt>New users</dt><dd class="num">91,130</dd></div></dl>
+        </section>
+      </aside>
+    </div>
+
+    <section class="ml-card ml-mail" aria-labelledby="ml-mail-h">
+      <div class="ml-card-head">
+        <h2 id="ml-mail-h">Recent emails</h2>
+        <div class="ml-seg" role="group" aria-label="Filter emails" data-mail-filter>
+          <button data-v="all" aria-pressed="true">All</button>
+          <button data-v="urgent" aria-pressed="false">Urgent</button>
+        </div>
+      </div>
+      <ul class="ml-mails" data-mails></ul>
+      <p class="ml-empty" data-mail-empty hidden>No urgent emails right now.</p>
+    </section>
+
+    <p class="db-sample ml-foot">Sample data · fictional company and inbox</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

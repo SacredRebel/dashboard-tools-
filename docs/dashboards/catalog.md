@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-27 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+28 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -33,6 +33,7 @@
 | 25 | [Forge Fitness](#forge-fitness) | Cinematic & atmospheric | Health & fitness | dark | Forge, Ember, Ice | [site/dashboards/forge-fitness/](../../site/dashboards/forge-fitness/) |
 | 26 | [Zest Health](#zest-health) | Bold & graphic | Health & fitness | light | Lime, Grape, Night | [site/dashboards/zest-health/](../../site/dashboards/zest-health/) |
 | 27 | [Orchard Sales](#orchard-sales) | Bento grid | CRM & sales, Analytics & BI | light | Orchard, Citrus, Graphite | [site/dashboards/orchard-sales/](../../site/dashboards/orchard-sales/) |
+| 28 | [Mauve Ledger](#mauve-ledger) | Glass & glow | Finance & banking | light | Lilac, Blush, Slate | [site/dashboards/mauve-ledger/](../../site/dashboards/mauve-ledger/) |
 
 ## Cinematic & atmospheric
 
@@ -376,6 +377,34 @@ A dark cyan glass analytics HUD in one floating pane: Q4 revenue bars, a bold pe
 - Print or low-contrast environments
 
 **Components:** Floating glass shell · Horizontal revenue bars · Vertical revenue bars · Spark bar strip · Performance index hero · Status dots · User journey donut · Dual and single area charts
+
+---
+
+<a id="mauve-ledger"></a>
+### 28. Mauve Ledger
+
+![Mauve Ledger](../../site/dashboards/mauve-ledger/thumb.jpg)
+
+A light lilac glass finance desk: frosted KPI tiles over a soft lavender haze, average sales bars, formation status, a segmented success gauge and a recent-email list.
+
+- **Use cases:** Finance & banking · **Mode:** light · **Mood:** airy, soft, premium, calm, lilac
+- **Signature:** Frosted lilac glass cards on a soft lavender–pink haze, anchored by a segmented 51.2% success gauge.
+- **Layout:** Top bar (logo, pill nav, utility icons, avatar) · greeting · 4 KPI glass cards · 12-col: average sales (8) + formation status + success gauge (4) · recent emails full width
+- **Responsive:** ≤1180px: KPIs 2×2, sales full width above side stack · ≤960px: nav scrolls · ≤640px: single column, email rows compact
+- **Fonts:** Fraunces / Outfit · **Palette:** bg `#ddd6f3`, surface `#ffffff`, text `#2a2740`, muted `#6e6890`, accent `#9b87f5`, good `#22c55e`, bad `#ef4444`, haze `#f3e8ff`
+- **Variants:** Lilac, Blush, Slate · **Closest toolkit theme:** `blush`
+
+**Best for**
+- Small-business finance overviews
+- Founder dashboards that mix money KPIs with ops status
+- Brands that want glassmorphism without going dark
+
+**Avoid when**
+- Payroll-first HR tools with illustrated night scenes (see Kumo Payroll)
+- Dense general ledgers or multi-entity books
+- Interfaces that must work without translucent surfaces
+
+**Components:** Pill top navigation · Greeting headline · Four frosted KPI cards · Average sales bar chart with channel deltas · Formation status progress · Segmented success gauge · Recent email list with urgency
 
 ---
 
