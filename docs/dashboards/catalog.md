@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-15 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+16 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -21,6 +21,7 @@
 | 13 | [Taffy Analytics](#taffy-analytics) | Minimal & airy | SaaS admin, Analytics & BI | light | Taffy, Mint, Dusk | [site/dashboards/taffy-analytics/](../../site/dashboards/taffy-analytics/) |
 | 14 | [Prism Workspace](#prism-workspace) | Glass & glow | SaaS admin | light | Opal, Aqua, Obsidian | [site/dashboards/prism-workspace/](../../site/dashboards/prism-workspace/) |
 | 15 | [Plumage Bird Survey](#plumage-survey) | Cinematic & atmospheric | Analytics & BI | dark | Plume, Canopy, Ember | [site/dashboards/plumage-survey/](../../site/dashboards/plumage-survey/) |
+| 16 | [Hollow Vault](#hollow-vault) | Dark neon | Music & media | dark | Dusk, Moss, Crimson | [site/dashboards/hollow-vault/](../../site/dashboards/hollow-vault/) |
 
 ## Cinematic & atmospheric
 
@@ -459,6 +460,34 @@ A dark neon product-analytics overview: glossy metric orbs that switch the main 
 - Print or export-first reporting
 
 **Components:** Metric orbs (toggle buttons that switch the chart) · Two-series wave area chart with hover/focus values · Segmented range toggle · Ticked dial gauge with needle · Segmented donut with legend · Gradient pillar bars (selectable) · Event list with progress bars · Sparkline tiles · Key-value list
+
+---
+
+<a id="hollow-vault"></a>
+### 16. Hollow Vault
+
+![Hollow Vault](../../site/dashboards/hollow-vault/thumb.jpg)
+
+A dark-neon rewards hub for a fantasy game. Eight code-drawn relics ring a glowing chest; open it with keys earned from quests and see what you win. Drop rates are shown openly, your haul fills in below, and guild chat runs down the right.
+
+- **Use cases:** Music & media · **Mode:** dark · **Mood:** playful, magical, vivid, immersive, dark
+- **Signature:** A wheel of eight glowing SVG relics around a brass-bound chest, with a soft indigo glow and rarity-coloured card tops.
+- **Layout:** 3 columns: 240px menu (realm nav, today's quests that award keys) · main: title + key balance, relic wheel with chest core, chest contents with rarity filter, your haul · 320px guild chat with composer
+- **Responsive:** ≤1180px: chat moves under the main column · ≤760px: single column, nav 2×2, wheel labels hidden, chest copy trimmed
+- **Fonts:** Outfit / Outfit · **Palette:** bg `#12132a`, surface `#1b1d3a`, text `#f0f1fb`, muted `#b0b3d6`, accent `#5858e0`, rare `#5fb0ff`, epic `#c18bff`, legendary `#ffc44d`
+- **Variants:** Dusk, Moss, Crimson · **Closest toolkit theme:** `midnight`
+
+**Best for**
+- Game, community and fan-club hubs
+- Reward, loyalty or achievement pages
+- Products that want a show-piece centre element
+
+**Avoid when**
+- Anything involving real-money loot boxes or gambling
+- Business tools and serious reporting
+- Light, minimal brands
+
+**Components:** Relic wheel around a chest · Open-chest action with key cost · Quest list that awards keys · Rarity filter and drop-rate cards · Inventory grid with empty state · Guild chat with message composer
 
 ---
 

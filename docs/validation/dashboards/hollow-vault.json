@@ -1,0 +1,62 @@
+{
+  "id": "hollow-vault",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/hollow-vault/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/hollow-vault/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/hollow-vault/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/hollow-vault/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/hollow-vault/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=moss",
+      "width": 1440,
+      "variant": "moss",
+      "final_path": "/dashboards/hollow-vault/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=crimson",
+      "width": 1440,
+      "variant": "crimson",
+      "final_path": "/dashboards/hollow-vault/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/hollow-vault",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

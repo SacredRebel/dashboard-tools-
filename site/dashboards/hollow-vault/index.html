@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Hollow Vault · Dashboard Tools gallery</title>
+  <meta name="description" content="Dark neon game-rewards hub: open a quest chest with keys earned in play, see honest drop rates, your inventory, guild drops and guild chat. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="hv">
+    <aside class="hv-side" aria-label="Game menu">
+      <a class="hv-brand" href="#" aria-label="Hollow home"><span class="hv-crest" aria-hidden="true"></span>HOLLOW</a>
+      <p class="hv-k">Realm</p>
+      <nav class="hv-nav" aria-label="Realm"><a href="#"><span data-icon="map"></span>Quest board</a><a href="#"><span data-icon="shield"></span>Arena</a><a href="#" aria-current="page"><span data-icon="box"></span>Quest vault</a><a href="#"><span data-icon="users"></span>Guild hall</a></nav>
+      <p class="hv-k">Today</p>
+      <ul class="hv-quests" data-quests></ul>
+      <p class="hv-side-foot">Keys are earned by playing. Nothing here costs real money.</p>
+    </aside>
+
+    <div class="hv-main">
+      <header class="hv-top">
+        <h1>Quest vault</h1>
+        <p class="hv-keys" aria-live="polite"><span data-icon="lock"></span><b class="num" data-keys></b> keys</p>
+      </header>
+
+      <section class="hv-wheelcard" aria-labelledby="hv-chest-h">
+        <div class="hv-wheel" data-wheel>
+          <div class="hv-core">
+            <div class="hv-chest" aria-hidden="true" data-chest></div>
+            <h2 id="hv-chest-h">Moonwell chest</h2>
+            <p>Eight relics from the Moonwell quest line. Each open uses one key.</p>
+            <button class="hv-open" data-open>Open chest</button>
+            <p class="hv-result" data-result aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="hv-card" aria-labelledby="hv-items-h">
+        <div class="hv-head"><h2 id="hv-items-h">In this chest</h2>
+          <div class="hv-seg" role="group" aria-label="Filter by rarity" data-rarity><button data-v="all" aria-pressed="true">All</button><button data-v="rare" aria-pressed="false">Rare+</button><button data-v="legend" aria-pressed="false">Legendary</button></div></div>
+        <ul class="hv-items" data-items></ul>
+      </section>
+
+      <section class="hv-card" aria-labelledby="hv-inv-h">
+        <div class="hv-head"><h2 id="hv-inv-h">Your haul</h2><span class="hv-meta" data-invcount></span></div>
+        <ul class="hv-inv" data-inv></ul>
+      </section>
+    </div>
+
+    <aside class="hv-chat" aria-labelledby="hv-chat-h">
+      <div class="hv-head"><h2 id="hv-chat-h">Guild chat</h2><span class="hv-meta"><i class="hv-on" aria-hidden="true"></i>14 online</span></div>
+      <ol class="hv-msgs" data-msgs></ol>
+      <form class="hv-say" data-say><label class="vh" for="hv-msg">Message the guild</label><input id="hv-msg" placeholder="Message the guild" autocomplete="off" data-msg><button aria-label="Send message"><span data-icon="send"></span></button></form>
+    </aside>
+  </div>
+  <p class="db-sample hv-foot">Sample data · fictional game, guild and players</p>
+  <script src="app.js"></script>
+</body>
+</html>

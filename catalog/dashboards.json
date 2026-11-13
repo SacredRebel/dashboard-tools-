@@ -501,6 +501,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied AI render of a dark dashboard with a painted parrot and leaves. The colour story, rings, gradient area charts and bars were kept. The painted bird and foliage were redrawn from scratch as simple SVG shapes, and the unreadable chart labels were replaced with an invented bird-survey dataset. The source image is not stored in the repo." },
       "path": "site/dashboards/plumage-survey/"
+    },
+    {
+      "id": "hollow-vault",
+      "number": 16,
+      "name": "Hollow Vault",
+      "style_family": "dark-neon",
+      "use_cases": ["media"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A dark-neon rewards hub for a fantasy game. Eight code-drawn relics ring a glowing chest; open it with keys earned from quests and see what you win. Drop rates are shown openly, your haul fills in below, and guild chat runs down the right.",
+      "mood": ["playful", "magical", "vivid", "immersive", "dark"],
+      "best_for": ["Game, community and fan-club hubs", "Reward, loyalty or achievement pages", "Products that want a show-piece centre element"],
+      "avoid_when": ["Anything involving real-money loot boxes or gambling", "Business tools and serious reporting", "Light, minimal brands"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "3 columns: 240px menu (realm nav, today's quests that award keys) · main: title + key balance, relic wheel with chest core, chest contents with rarity filter, your haul · 320px guild chat with composer",
+        "responsive": "≤1180px: chat moves under the main column · ≤760px: single column, nav 2×2, wheel labels hidden, chest copy trimmed"
+      },
+      "components": ["Relic wheel around a chest", "Open-chest action with key cost", "Quest list that awards keys", "Rarity filter and drop-rate cards", "Inventory grid with empty state", "Guild chat with message composer"],
+      "signature": "A wheel of eight glowing SVG relics around a brass-bound chest, with a soft indigo glow and rarity-coloured card tops.",
+      "palette": { "bg": "#12132a", "surface": "#1b1d3a", "text": "#f0f1fb", "muted": "#b0b3d6", "accent": "#5858e0", "rare": "#5fb0ff", "epic": "#c18bff", "legendary": "#ffc44d" },
+      "fonts": { "display": "Outfit", "sans": "Outfit" },
+      "variants": [
+        { "id": "default", "name": "Dusk", "swatch": "#5858e0" },
+        { "id": "moss", "name": "Moss", "swatch": "#2fb487" },
+        { "id": "crimson", "name": "Crimson", "swatch": "#ff5f7e" }
+      ],
+      "maps_to_theme": "midnight",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied dribbble-style shot of a crypto 'chest battle' game screen. The wheel-around-a-chest layout, sidebar, item row and chat column were kept. The witch illustration, 3D item renders, coin balance and buy button were dropped. It was reframed as a keys-earned-by-play rewards hub with open drop rates and no purchases. Relics are simple SVG shapes. The source image is not stored in the repo." },
+      "path": "site/dashboards/hollow-vault/"
     }
   ]
 }
