@@ -36,6 +36,23 @@ If either check fails before you've changed anything, stop and report the output
 
 Optional: run **screenshot-to-code** locally (`git clone https://github.com/abi/screenshot-to-code`, `docker compose up`, needs your own OpenAI/Anthropic/Gemini key) to get a rough HTML draft of a screenshot. Use it **only as a structural sketch**. Its output hard-codes colors and sizes and must be rebuilt in our format. Don't commit anything it produces directly, and never commit that tool's repo.
 
+## Lesson from dashboard #1: the bug you must not repeat
+
+The first version of Horizon Weather **rendered as a black screen with bare inputs** in the gallery preview and on "Open full page" on Vercel, even though it looked perfect when opened from disk.
+
+- **Cause:** Vercel's clean URLs served it at `/dashboards/horizon-weather`, without the trailing slash. Relative paths then resolved one folder too high (`/dashboards/style.css`, `/_shared/base.css`), all 404, so no CSS and no JS.
+- **Fix, now mandatory in every dashboard:**
+  1. **URL guard first in `<head>`**, right after the viewport meta and before any `<link>`/`<script src>`, copied exactly from `site/dashboards/horizon-weather/index.html`:
+     ```html
+     <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+     ```
+  2. **Relative paths only** inside a dashboard (`style.css`, `app.js`, `../_shared/base.css`, `../_shared/frame.js`). Never `/dashboards/...` or `/_shared/...`.
+  3. **`app.js` ends with** `document.documentElement.dataset.ready = 'true';` (last line inside the IIFE).
+  4. **Never trust file://.** Always verify over HTTP: `node scripts/dashboards-check.mjs <id>` (it uses a worst-case clean-URL server and checks every URL form plus the gallery iframe) **and** `npx serve site` → open `http://localhost:3000/#/dashboards/<id>` and look at the preview in Desktop, Tablet and Phone.
+- `node scripts/build.mjs` rejects a dashboard missing the guard or `data-ready`, or using root-absolute paths. Don't edit `vercel.json`: `"trailingSlash": true` is part of the fix.
+
+**If the preview ever shows a black frame with bare form controls, the dashboard's CSS/JS didn't load. Stop and fix it before committing.**
+
 ## The loop: do this for every image, in filename order
 
 Images are in `inputs/dashboards/` (gitignored, **never commit them**). Skip `01-*` (that's Horizon Weather, already built). For each image:
@@ -60,7 +77,7 @@ Keep these notes. They go in the commit body.
 
 ### Step 3: Build `site/dashboards/<id>/`
 Create `index.html`, `style.css` and `app.js` following the skeleton and rules in `01-add-a-dashboard.md` §2, the same way `horizon-weather` does:
-- **index.html:** viewport meta, Google Fonts link, `../_shared/base.css`, `style.css`, `../_shared/frame.js` in `<head>`, `app.js` at the end. Semantic landmarks (`aside`/`nav`, `header`, `main`, `section` + `aria-labelledby`). A visible `Sample data · fictional` label (`class="db-sample"`).
+- **index.html:** viewport meta, then the **URL guard script** (see "Lesson from dashboard #1"), then Google Fonts link, `../_shared/base.css`, `style.css`, `../_shared/frame.js` in `<head>`, `app.js` at the end. Semantic landmarks (`aside`/`nav`, `header`, `main`, `section` + `aria-labelledby`). A visible `Sample data · fictional` label (`class="db-sample"`).
 - **style.css:**
   - `:root` defines at least `--bg --surface --surface-2 --border --text --text-muted --text-subtle --accent --accent-fg --accent-soft --focus --chart-1 --font-display --font-sans --radius-sm --radius-md --radius-lg`, plus extras the design needs.
   - Then exactly one `[data-variant="<id>"]` block per extra variant, **overriding tokens only**.
@@ -74,6 +91,7 @@ Create `index.html`, `style.css` and `app.js` following the skeleton and rules i
   - Charts are hand-built SVG with HTML labels positioned over them (copy the approach of `renderChart` in horizon-weather). Hover **and** keyboard focus show values, and each chart has an `aria-label` summary.
   - Interactive where the design implies it: tabs, segmented controls, selectable rows or cards update related panels. Every control does something.
   - No network calls, no data timers. Any animation pauses offscreen via `DB.onVisible`.
+  - Last line inside the IIFE: `document.documentElement.dataset.ready = 'true';`
 - **Images:** recreate photos and illustrations as **code-drawn SVG/CSS** (gradients, shapes, silhouettes), as Horizon does with its sunset landscape. Only if impossible, use a photo whose license allows reuse (Unsplash or Pexels license), save it into the folder (max 300 KB, `.jpg`/`.webp`) and credit it in the catalog `source.note`. Never hotlink. Never copy the screenshot's own images, logos or icons.
 - **Variants:** 3 total (`default` + 2). Make at least one noticeably different, such as a light version of a dark design, a different accent, or a seasonal palette.
 
@@ -95,10 +113,11 @@ node scripts/build.mjs                       # again, after thumb.jpg exists
 Then **open `site/dashboards/<id>/thumb.jpg` and look at it**. It's the gallery card. If it looks empty, broken or cut off at the top, fix the dashboard.
 
 ### Step 7: Check it in the gallery
-`npx serve site` (or open `site/index.html`). Go to `#/dashboards`:
+`npx serve site` (**HTTP, not file://**). Go to `http://localhost:3000/#/dashboards`:
 - the card appears in the right style group
 - the search and filters find it
-- `#/dashboards/<id>` previews it in Desktop, Tablet and Phone
+- `#/dashboards/<id>` previews the **full styled dashboard** (not a black frame with bare inputs) in Desktop, Tablet and Phone
+- "Open full page" opens it styled, and so does `http://localhost:3000/dashboards/<id>` typed without the trailing slash
 - every variant button switches the preview
 - no console errors
 
@@ -133,7 +152,8 @@ Status is `done`, `skipped (reason)` or `needs review (reason)`.
 4. **No frameworks, no build step, no npm dependencies, no CDNs** except Google Fonts. Plain HTML/CSS/JS.
 5. **Never edit generated files by hand.** `docs/dashboards/catalog.md` and `site/data/data.js` come from `node scripts/build.mjs`.
 6. **Quality gates per dashboard:**
-   - `build.mjs` passes and `dashboards-check.mjs <id>` passes (no console errors, no horizontal overflow at 375 or 1440, every variant renders)
+   - `build.mjs` passes and `dashboards-check.mjs <id>` passes (no console errors, no 404s, styled from every URL form, gallery preview renders, no horizontal overflow at 375 or 1440, every variant renders)
+   - URL guard first in `<head>`, relative paths only, `data-ready` set at the end of `app.js`
    - body text ≥ 14px, labels ≥ 12px, tap targets ≥ 44px on phone
    - visible focus on every control
    - text contrast ≥ 4.5:1 in every variant (check muted text on surfaces in light variants especially)

@@ -11,6 +11,9 @@
   const state = { q: '', group: 'family', mode: '', uc: '', fam: '' };
   try { Object.assign(state, JSON.parse(sessionStorage.getItem('dt-dash') || '{}')); } catch (e) { /* storage blocked */ }
   const save = () => { try { sessionStorage.setItem('dt-dash', JSON.stringify(state)); } catch (e) { /* ignore */ } };
+  // Folder URL with a trailing slash so relative CSS/JS inside the dashboard resolve on any host;
+  // file:// can't serve a folder, so it gets index.html explicitly.
+  const dashUrl = (id) => `dashboards/${id}/${location.protocol === 'file:' ? 'index.html' : ''}`;
   const DEVICES = { desktop: [1440, 900, 'Desktop'], tablet: [834, 1112, 'Tablet'], phone: [390, 844, 'Phone'] };
 
   function toast(msg) { const t = document.createElement('div'); t.className = 's-toast'; t.setAttribute('role', 'status'); t.textContent = msg; document.body.append(t); setTimeout(() => t.remove(), 1800); }
@@ -81,7 +84,7 @@
     if (!d) { main.innerHTML = `<div class="s-wrap"><div class="s-empty" style="margin:64px 0">That dashboard doesn't exist. <a class="s-btn s-btn-sm" href="#/dashboards">See all dashboards</a></div></div>`; return; }
     const i = list.indexOf(d), prev = list[i - 1], next = list[i + 1];
     let device = 'desktop', variant = 'default';
-    const src = () => `dashboards/${d.id}/index.html?embed=1${variant === 'default' ? '' : `&variant=${variant}`}`;
+    const src = () => `${dashUrl(d.id)}?embed=1${variant === 'default' ? '' : `&variant=${variant}`}`;
     const prompt = `Use the "${d.name}" dashboard style from the Dashboard Tools gallery for <project>.
 1. Read catalog/dashboards.json → entry "${d.id}" and open site/dashboards/${d.id}/ (index.html, style.css, app.js).
 2. Copy the :root tokens from style.css into the project theme (token names match design-system/tokens.css).${d.variants.length > 1 ? ` Variants available: ${d.variants.map((v) => v.id).join(', ')}.` : ''}
@@ -95,7 +98,7 @@ Show me the screen plan before building.`;
         <nav class="dg-crumbs" aria-label="Breadcrumb"><a class="s-link" href="#/dashboards">← All dashboards</a><span class="s-muted s-small">${esc(fam[d.style_family].name)}</span></nav>
         <div class="dg-head">
           <div><p class="s-eyebrow">Dashboard ${String(d.number).padStart(2, '0')} · ${esc(fam[d.style_family].name)} · ${d.mode}</p><h1 class="s-h1" style="font-size:clamp(34px,4.6vw,52px)">${esc(d.name)}</h1><p class="s-lead">${esc(d.summary)}</p></div>
-          <div class="cx-head-actions"><a class="s-btn" href="dashboards/${d.id}/" target="_blank" rel="noopener">${icon('external')}Open full page</a><button class="s-btn s-btn-primary" data-copy-prompt>${icon('agent')}Copy agent prompt</button></div>
+          <div class="cx-head-actions"><a class="s-btn" href="${dashUrl(d.id)}" target="_blank" rel="noopener">${icon('external')}Open full page</a><button class="s-btn s-btn-primary" data-copy-prompt>${icon('agent')}Copy agent prompt</button></div>
         </div>
         <div class="dg-toolbar">
           <div class="dg-seg" role="group" aria-label="Device">${Object.entries(DEVICES).map(([k, [, , l]]) => `<button data-device="${k}" aria-pressed="${k === device}">${l}</button>`).join('')}</div>

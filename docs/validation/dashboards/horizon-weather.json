@@ -2,29 +2,60 @@
   "id": "horizon-weather",
   "checked": "2026-11-13",
   "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
+      "url": "/dashboards/horizon-weather/",
       "width": 1440,
       "variant": "default",
+      "final_path": "/dashboards/horizon-weather/",
       "overflow_px": 0,
       "errors": []
     },
     {
+      "url": "/dashboards/horizon-weather",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/horizon-weather/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/horizon-weather/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/",
       "width": 375,
       "variant": "default",
+      "final_path": "/dashboards/horizon-weather/",
       "overflow_px": 0,
       "errors": []
     },
     {
+      "url": "/dashboards/horizon-weather/?variant=dawn",
       "width": 1440,
       "variant": "dawn",
+      "final_path": "/dashboards/horizon-weather/",
       "overflow_px": 0,
       "errors": []
     },
     {
+      "url": "/dashboards/horizon-weather/?variant=night",
       "width": 1440,
       "variant": "night",
+      "final_path": "/dashboards/horizon-weather/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/horizon-weather",
+      "width": 1280,
+      "variant": "gallery preview",
       "errors": []
     }
   ]

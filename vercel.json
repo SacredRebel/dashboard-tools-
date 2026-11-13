@@ -4,5 +4,6 @@
   "outputDirectory": "site",
   "installCommand": "",
   "framework": null,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "trailingSlash": true
 }

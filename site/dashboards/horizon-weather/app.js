@@ -160,4 +160,5 @@
   }));
   selectDay(0, false);
   window.scrollTo(0, 0);
+  document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end
 })();

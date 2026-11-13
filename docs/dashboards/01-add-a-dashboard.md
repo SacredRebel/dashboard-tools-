@@ -48,6 +48,8 @@ site/dashboards/<id>/
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>{Name} · Dashboard Tools gallery</title>
   <meta name="description" content="{one line: style + domain}. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +67,16 @@ site/dashboards/<id>/
 </body>
 </html>
 ```
+
+#### URL guard: why it's mandatory (a real bug we shipped once)
+
+Vercel's clean URLs turn `/dashboards/<id>/index.html` into `/dashboards/<id>`, **without the trailing slash**. Without the slash, every relative path resolves one folder too high: `style.css` becomes `/dashboards/style.css` and `../_shared/base.css` becomes `/_shared/base.css`, all 404. The page then shows as a black screen with bare inputs, and that's what the gallery preview showed for Horizon Weather. Opening the file from disk (file://) never shows this bug, which is why it slipped through. Three defenses, all required:
+
+1. `vercel.json` has `"trailingSlash": true` (already set; don't change it).
+2. The **URL guard** `<script>` above is the first thing in `<head>`, before any `<link>` or `<script src>`, so the page fixes its own URL on any host.
+3. All paths inside a dashboard are **relative** (`style.css`, `../_shared/base.css`, `app.js`), never root-absolute (`/dashboards/…`). Links to a dashboard always use the folder form with a slash: `dashboards/<id>/`.
+
+`node scripts/build.mjs` rejects a dashboard without the guard or with root-absolute paths. `node scripts/dashboards-check.mjs` serves the site with worst-case clean-URL rules and loads every URL form plus the gallery preview iframe, so this bug can't pass again.
 
 `_shared/frame.js` applies `?variant=<id>` to `<html data-variant>` and gives you `DB.onVisible(el, cb)` for pausing animations. **Do not edit `_shared/` files** unless every dashboard benefits; if you do, re-run the check for all dashboards.
 
@@ -86,6 +98,7 @@ site/dashboards/<id>/
 - Charts: hand-drawn SVG (see `renderChart` in horizon-weather): `viewBox` + `preserveAspectRatio="none"` for the shape, `vector-effect="non-scaling-stroke"` for lines, **HTML labels positioned over it** (so text never scales below 12px), hover **and** focus show values, an `aria-label` summarizing the series.
 - Interactive where the reference implies it: selecting tabs/days/rows updates the related panels. Every control does something or is clearly decorative.
 - **No timers fetching data, no network calls.** Animations only while visible (`DB.onVisible`).
+- **Last line inside the IIFE:** `document.documentElement.dataset.ready = 'true';`. The check uses it to prove the script loaded and ran to the end. The build rejects an `app.js` without it.
 
 ## 3. Build it, then compare to the reference
 
@@ -132,7 +145,7 @@ It validates the entry: enums, required fields, palette hex, variant blocks pres
 node scripts/dashboards-check.mjs <id>
 ```
 
-It renders 1440×900, 375×812 and every variant; fails on console errors, missing files or horizontal overflow; writes `thumb.jpg` (720×450) and `docs/validation/dashboards/<id>.json`. Then run `node scripts/build.mjs` again so the catalog picks up the thumbnail. Open the thumbnail and look at it: it is what people see in the gallery.
+It serves `site/` over HTTP with worst-case clean-URL rules (not file://), then loads `/dashboards/<id>/`, `/dashboards/<id>` and `/dashboards/<id>/index.html` at 1440×900, the folder URL at 375×812, every variant, and the gallery preview iframe at `#/dashboards/<id>`. It fails on console errors, any 404, an unstyled page, a missing `data-ready`, or horizontal overflow. It writes `thumb.jpg` (720×450) and `docs/validation/dashboards/<id>.json`. Then run `node scripts/build.mjs` again so the catalog picks up the thumbnail. Open the thumbnail and look at it: it is what people see in the gallery.
 
 ## 7. Verify in the gallery
 
@@ -140,7 +153,7 @@ It renders 1440×900, 375×812 and every variant; fails on console errors, missi
 npx serve site   # or open site/index.html
 ```
 
-Go to **#/dashboards**: the card shows, filters find it, the detail page previews it in Desktop, Tablet and Phone, and the variant buttons switch the preview.
+Go to **#/dashboards**: the card shows, filters find it, the detail page previews it in Desktop, Tablet and Phone, and the variant buttons switch the preview. Use `npx serve site` (HTTP), not file://. **The preview must show the full styled dashboard.** A black frame with bare inputs and buttons means its CSS/JS didn't load (see URL guard).
 
 ## 8. Commit
 
@@ -153,6 +166,8 @@ One commit per dashboard, message: `Add dashboard <number>: <Name> (<style famil
 - [ ] Tokens on `:root` + 2 extra `[data-variant]` blocks, components use `var(--…)` only
 - [ ] Fictional sample data, labeled
 - [ ] Interactive parts work by mouse and keyboard; focus visible
+- [ ] URL guard first in `<head>`, relative paths only, `app.js` ends with `dataset.ready = 'true'`
 - [ ] `node scripts/build.mjs` passes, `node scripts/dashboards-check.mjs <id>` passes
+- [ ] Gallery preview at `#/dashboards/<id>` (over HTTP) shows the full styled dashboard in Desktop, Tablet and Phone
 - [ ] Thumbnail looked at; gallery card and detail preview work
 - [ ] One commit, nothing from `inputs/`

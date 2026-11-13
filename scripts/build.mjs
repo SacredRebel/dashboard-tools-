@@ -95,6 +95,12 @@ const dash = json('catalog/dashboards.json');
     if (existsSync(join(root, d.path, 'index.html'))) {
       const html = rd(d.path + 'index.html');
       for (const need of ['../_shared/base.css', '../_shared/frame.js', 'style.css', 'name="viewport"']) if (!html.includes(need)) errors.push(`${where}: index.html must include ${need}`);
+      const guardAt = html.indexOf("location.replace(location.pathname + '/'"), firstLink = html.search(/<link|<script src/);
+      if (guardAt < 0 || (firstLink >= 0 && guardAt > firstLink)) errors.push(`${where}: index.html needs the URL guard script before any <link>/<script src> (copy it from horizon-weather; see docs/dashboards/01-add-a-dashboard.md "URL guard")`);
+      if (/(href|src)="\/(?!\/)/.test(html)) errors.push(`${where}: index.html uses root-absolute paths (href="/…"); use relative paths like style.css and ../_shared/`);
+    }
+    if (existsSync(join(root, d.path, 'app.js'))) {
+      if (!rd(d.path + 'app.js').includes("dataset.ready = 'true'")) errors.push(`${where}: app.js must end with document.documentElement.dataset.ready = 'true'`);
     }
   }
 }
