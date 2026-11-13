@@ -853,6 +853,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied lime health overview. Brand renamed to Zest Health; flux logo and photo avatars were not reused. Bubbles and charts are SVG/CSS. The source image is not stored in the repo." },
       "path": "site/dashboards/zest-health/"
+    },
+    {
+      "id": "orchard-sales",
+      "number": 27,
+      "name": "Orchard Sales",
+      "style_family": "bento",
+      "use_cases": ["crm", "analytics"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A light black-and-lime sales bento: slim icon rail, pill nav, a tall product hero with sphere art and frosted advantages, activity bars, hatched revenue area, spend line and virtual-card balances.",
+      "mood": ["crisp", "modern", "commercial", "bright", "precise"],
+      "best_for": ["Sales or product-performance overviews", "CRM analytics with a bold lime brand", "Bento layouts that mix a hero tile with a few charts"],
+      "avoid_when": ["Dense opportunity pipelines or editable deal tables", "Health or wellness products (use Zest Health instead)", "Brands that need soft pastels instead of high-contrast lime"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "56px dark icon rail · top bar with pill nav and avatars · breadcrumb + title + date/actions · 12-col bento: product hero (3, tall) · activity (5) · revenue (4) · spend (5) · virtual cards (4)",
+        "responsive": "≤1180px: rail becomes bottom or top chips · ≤960px: product full width, charts 2-col · ≤640px: single column, action chips scroll"
+      },
+      "components": ["Slim dark icon rail", "Pill navigation", "Avatar stack and share", "Date range chips", "Product hero with sphere SVG and glass advantages", "Weekly activity bar chart", "Hatched revenue area chart", "Spend line chart", "Virtual card progress bars"],
+      "signature": "A tall product tile with a lime sphere cluster, frosted advantages glass, and thick lime growth bars.",
+      "palette": { "bg": "#eceff1", "surface": "#ffffff", "text": "#0f1110", "muted": "#6b716c", "accent": "#c6f000", "ink": "#141414", "rail": "#171917", "hatch": "#d5d9d6" },
+      "fonts": { "display": "Sora", "sans": "IBM Plex Sans" },
+      "variants": [
+        { "id": "default", "name": "Orchard", "swatch": "#c6f000" },
+        { "id": "citrus", "name": "Citrus", "swatch": "#ffe14a" },
+        { "id": "graphite", "name": "Graphite", "swatch": "#9ae600" }
+      ],
+      "maps_to_theme": "atelier",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied lime sales dashboard. Brand renamed to Orchard Sales; 3D sphere props became SVG gradients. The source image is not stored in the repo." },
+      "path": "site/dashboards/orchard-sales/"
     }
   ]
 }

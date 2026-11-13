@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-26 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+27 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -32,6 +32,7 @@
 | 24 | [Aether Pane](#aether-pane) | Glass & glow | Analytics & BI, SaaS admin | dark | Cyan, Violet, Daylight | [site/dashboards/aether-pane/](../../site/dashboards/aether-pane/) |
 | 25 | [Forge Fitness](#forge-fitness) | Cinematic & atmospheric | Health & fitness | dark | Forge, Ember, Ice | [site/dashboards/forge-fitness/](../../site/dashboards/forge-fitness/) |
 | 26 | [Zest Health](#zest-health) | Bold & graphic | Health & fitness | light | Lime, Grape, Night | [site/dashboards/zest-health/](../../site/dashboards/zest-health/) |
+| 27 | [Orchard Sales](#orchard-sales) | Bento grid | CRM & sales, Analytics & BI | light | Orchard, Citrus, Graphite | [site/dashboards/orchard-sales/](../../site/dashboards/orchard-sales/) |
 
 ## Cinematic & atmospheric
 
@@ -469,6 +470,34 @@ A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, dra
 - Screens that must show many rooms at once
 
 **Components:** SVG landscape hero with greeting · Thermostat dial with step buttons · Daylight arc · Five-day forecast picker · Light-scene radio tiles · Activity booking list with filter and empty state · Alarm switches · Trail status list
+
+---
+
+<a id="orchard-sales"></a>
+### 27. Orchard Sales
+
+![Orchard Sales](../../site/dashboards/orchard-sales/thumb.jpg)
+
+A light black-and-lime sales bento: slim icon rail, pill nav, a tall product hero with sphere art and frosted advantages, activity bars, hatched revenue area, spend line and virtual-card balances.
+
+- **Use cases:** CRM & sales, Analytics & BI · **Mode:** light · **Mood:** crisp, modern, commercial, bright, precise
+- **Signature:** A tall product tile with a lime sphere cluster, frosted advantages glass, and thick lime growth bars.
+- **Layout:** 56px dark icon rail · top bar with pill nav and avatars · breadcrumb + title + date/actions · 12-col bento: product hero (3, tall) · activity (5) · revenue (4) · spend (5) · virtual cards (4)
+- **Responsive:** ≤1180px: rail becomes bottom or top chips · ≤960px: product full width, charts 2-col · ≤640px: single column, action chips scroll
+- **Fonts:** Sora / IBM Plex Sans · **Palette:** bg `#eceff1`, surface `#ffffff`, text `#0f1110`, muted `#6b716c`, accent `#c6f000`, ink `#141414`, rail `#171917`, hatch `#d5d9d6`
+- **Variants:** Orchard, Citrus, Graphite · **Closest toolkit theme:** `atelier`
+
+**Best for**
+- Sales or product-performance overviews
+- CRM analytics with a bold lime brand
+- Bento layouts that mix a hero tile with a few charts
+
+**Avoid when**
+- Dense opportunity pipelines or editable deal tables
+- Health or wellness products (use Zest Health instead)
+- Brands that need soft pastels instead of high-contrast lime
+
+**Components:** Slim dark icon rail · Pill navigation · Avatar stack and share · Date range chips · Product hero with sphere SVG and glass advantages · Weekly activity bar chart · Hatched revenue area chart · Spend line chart · Virtual card progress bars
 
 ---
 
