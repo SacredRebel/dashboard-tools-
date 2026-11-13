@@ -36,3 +36,13 @@ One row per reference image in `inputs/dashboards/` (not stored in the repo), in
 | 30-health-lime.png | 26 | zest-health | Zest Health | bold | health | light | done | Lime health overview; distinct from Aura/Lull/Pearlwell/Vitalis. |
 | 31-sales-lime.png | 27 | orchard-sales | Orchard Sales | bento | crm, analytics | light | done | Lime sales bento; distinct from Zest Health. |
 | 32-finance-lilac.png | 28 | mauve-ledger | Mauve Ledger | glass | finance | light | done | Lilac finance glass; distinct from Kumo Payroll. |
+| 33-cersanit-bath.jpg | 29 | tidebath-showroom | Tidebath | soft | ecommerce, hospitality | light | done | Landing reframed as bathroom showroom; SVG carousel rooms; brand not Cersanit. |
+| 34-softui-dune.jpg | 30 | dune-panels | Dune Panels | skeuo | analytics | light | done | Soft-UI sand/sage board with fabric wave SVG and recessed donut well. |
+| 35-softui-pebble.jpg | 31 | pebble-studio | Pebble Studio | skeuo | saas-admin | light | done | Cream/pink soft UI with blobs, knobs and torus dial. |
+| 36-adroid-soc.jpg | 32 | copper-radar | Copper Radar | soft | analytics | light | done | Copper SOC radar; fictional vendors only. |
+| 37-orbit-clay.jpg | 33 | orbit-clay | Orbit Clay | skeuo | media | light | done | Clay astronaut helmet + calibration landscape twin phones. |
+| 38-ramadan-glass.jpg | 34 | saffron-dusk | Saffron Dusk | glass | health, education | light | done | Fasting-day wellness glass; invented people. |
+| 39-climate-glass.jpg | 35 | clima-pane | Clima Pane | glass | smart-home | light | done | Glass climate dial distinct from prior smart-home boards. |
+| 40-medit-soft.jpg | 36 | meridian-labs | Meridian Labs | soft | health | light | done | Soft diagnostics with SVG DNA; not medit brand. |
+| 41-core-brain.jpg | 37 | cortex-well | Cortex Well | glass | health | light | done | Lilac glass health with SVG brain bowl. |
+| 42-ahk-indoor.jpg | 38 | ember-rooms | Ember Rooms | skeuo | smart-home | light | done | Neumorphic lighting control; English invented copy. |

@@ -1,0 +1,62 @@
+{
+  "id": "tidebath-showroom",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/tidebath-showroom/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/tidebath-showroom/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/tidebath-showroom/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/tidebath-showroom/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/tidebath-showroom/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=mist",
+      "width": 1440,
+      "variant": "mist",
+      "final_path": "/dashboards/tidebath-showroom/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=dusk",
+      "width": 1440,
+      "variant": "dusk",
+      "final_path": "/dashboards/tidebath-showroom/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/tidebath-showroom",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

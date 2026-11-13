@@ -2669,6 +2669,38 @@
         "note": "Recreated in original code from a user-supplied lilac finance glass concept. Brand renamed to Mauve Ledger; photo avatars became initials. The source image is not stored in the repo."
       },
       "path": "site/dashboards/mauve-ledger/"
+    },
+    {
+      "id": "tidebath-showroom",
+      "number": 29,
+      "name": "Tidebath Showroom",
+      "style_family": "soft",
+      "use_cases": ["ecommerce", "hospitality"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A soft-light bathroom showroom: curved SVG 3-bay room carousel with hotspot markers and a 6m² badge, above a four-column board for inspirations, product icons, store search and contact.",
+      "mood": ["airy", "minimal", "clean", "sculptural", "calm"],
+      "best_for": ["Bathroom, kitchen or furniture brands that sell through a visual showroom", "Landing pages that lead into a configurator or store locator", "Hospitality or retail spaces showcasing compact room layouts"],
+      "avoid_when": ["Dense product tables or wholesale order tooling", "Dark cinematic brands", "Dashboards that need many KPIs on first paint"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Centered Tidebath mark + 4 nav links · curved 3-bay SVG carousel with prev/next, hotspots and 6m² badge · 4-column lower board (inspirations + social · product icons + store search · downloads · contact)",
+        "responsive": "≤1100px: carousel scales, board becomes 2×2 · ≤700px: nav wraps under brand, carousel full-bleed with stacked arrows, board single column"
+      },
+      "components": ["Centered brand mark with wave logo", "Text navigation links", "Curved 3-bay SVG room carousel", "Prev/next carousel controls", "Hotspot markers with look-closer tip", "Recessed 6m² size badge", "Inspirations column with social icons", "Product icon strip with download link", "Store city search field", "Downloads link list", "Contact phone and email"],
+      "signature": "A soft white cylindrical stage holding three angled bathroom bays drawn in SVG, with blue tide-wave hotspot markers and a recessed circular 6m² badge.",
+      "palette": { "bg": "#f4f5f7", "surface": "#ffffff", "text": "#2c333d", "muted": "#4a5560", "accent": "#2f6fed", "orange": "#e8793a", "stage": "#e8eaee", "hotspot": "#3b82f6" },
+      "fonts": { "display": "DM Serif Display", "sans": "DM Sans" },
+      "variants": [
+        { "id": "default", "name": "Porcelain", "swatch": "#2f6fed" },
+        { "id": "mist", "name": "Mist", "swatch": "#0d9488" },
+        { "id": "dusk", "name": "Dusk", "swatch": "#c45c26" }
+      ],
+      "maps_to_theme": "linen",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft bathroom showroom render. Brand (Tidebath), copy and fixtures are fictional. Photoreal rooms and original logos were replaced with SVG bathrooms and abstract hotspot markers. The source image is not stored in the repo." },
+      "path": "site/dashboards/tidebath-showroom/"
     }
   ]
 }

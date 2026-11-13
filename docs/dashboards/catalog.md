@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-28 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+29 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -34,6 +34,7 @@
 | 26 | [Zest Health](#zest-health) | Bold & graphic | Health & fitness | light | Lime, Grape, Night | [site/dashboards/zest-health/](../../site/dashboards/zest-health/) |
 | 27 | [Orchard Sales](#orchard-sales) | Bento grid | CRM & sales, Analytics & BI | light | Orchard, Citrus, Graphite | [site/dashboards/orchard-sales/](../../site/dashboards/orchard-sales/) |
 | 28 | [Mauve Ledger](#mauve-ledger) | Glass & glow | Finance & banking | light | Lilac, Blush, Slate | [site/dashboards/mauve-ledger/](../../site/dashboards/mauve-ledger/) |
+| 29 | [Tidebath Showroom](#tidebath-showroom) | Soft & friendly | E-commerce & retail, Hospitality & food | light | Porcelain, Mist, Dusk | [site/dashboards/tidebath-showroom/](../../site/dashboards/tidebath-showroom/) |
 
 ## Cinematic & atmospheric
 
@@ -705,6 +706,34 @@ A soft dark reading club: book shelf and friends on the left, a current-book her
 - Screens where every tile must meet the same muted palette
 
 **Components:** Profile avatar chip · Book list with SVG covers · Friends list with see-more · Current book hero · Color metric tiles (progress, time, level, streak, badges) · Leaderboard segmented tabs · Activity feed with reply
+
+---
+
+<a id="tidebath-showroom"></a>
+### 29. Tidebath Showroom
+
+![Tidebath Showroom](../../site/dashboards/tidebath-showroom/thumb.jpg)
+
+A soft-light bathroom showroom: curved SVG 3-bay room carousel with hotspot markers and a 6m² badge, above a four-column board for inspirations, product icons, store search and contact.
+
+- **Use cases:** E-commerce & retail, Hospitality & food · **Mode:** light · **Mood:** airy, minimal, clean, sculptural, calm
+- **Signature:** A soft white cylindrical stage holding three angled bathroom bays drawn in SVG, with blue tide-wave hotspot markers and a recessed circular 6m² badge.
+- **Layout:** Centered Tidebath mark + 4 nav links · curved 3-bay SVG carousel with prev/next, hotspots and 6m² badge · 4-column lower board (inspirations + social · product icons + store search · downloads · contact)
+- **Responsive:** ≤1100px: carousel scales, board becomes 2×2 · ≤700px: nav wraps under brand, carousel full-bleed with stacked arrows, board single column
+- **Fonts:** DM Serif Display / DM Sans · **Palette:** bg `#f4f5f7`, surface `#ffffff`, text `#2c333d`, muted `#4a5560`, accent `#2f6fed`, orange `#e8793a`, stage `#e8eaee`, hotspot `#3b82f6`
+- **Variants:** Porcelain, Mist, Dusk · **Closest toolkit theme:** `linen`
+
+**Best for**
+- Bathroom, kitchen or furniture brands that sell through a visual showroom
+- Landing pages that lead into a configurator or store locator
+- Hospitality or retail spaces showcasing compact room layouts
+
+**Avoid when**
+- Dense product tables or wholesale order tooling
+- Dark cinematic brands
+- Dashboards that need many KPIs on first paint
+
+**Components:** Centered brand mark with wave logo · Text navigation links · Curved 3-bay SVG room carousel · Prev/next carousel controls · Hotspot markers with look-closer tip · Recessed 6m² size badge · Inspirations column with social icons · Product icon strip with download link · Store city search field · Downloads link list · Contact phone and email
 
 ---
 
