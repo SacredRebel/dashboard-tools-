@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Citadel Wall · Dashboard Tools gallery</title>
+  <meta name="description" content="Data-dense navy big-screen ops wall with cyan glow, central sphere hologram, KPI panels and logistics gauges. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="cw">
+    <header class="cw-top">
+      <div class="cw-top-side" aria-hidden="true"><i></i><i></i><i></i></div>
+      <h1 class="cw-title" id="cw-title">Citadel Wall · Orbital Ops</h1>
+      <div class="cw-top-meta">
+        <span class="cw-live"><i></i>Live</span>
+        <time data-clock></time>
+      </div>
+    </header>
+
+    <main class="cw-grid" aria-labelledby="cw-title">
+      <div class="cw-stack cw-left">
+        <section class="cw-panel cw-id" aria-labelledby="cw-id-h">
+          <h2 id="cw-id-h" class="vh">Sector officer</h2>
+          <div class="cw-id-body">
+            <div class="cw-sil" aria-hidden="true"></div>
+            <div>
+              <p class="cw-k">Clearance</p>
+              <p class="num cw-big" data-clearance>A-7</p>
+              <dl class="cw-kv" data-id-kv></dl>
+            </div>
+          </div>
+          <div class="cw-bars" data-id-bars></div>
+        </section>
+
+        <section class="cw-panel" aria-labelledby="cw-flow-h">
+          <div class="cw-panel-h"><h2 id="cw-flow-h">Lane throughput</h2>
+            <div class="cw-seg" role="group" aria-label="Throughput range" data-flow-tabs>
+              <button data-v="6h" aria-pressed="true">6h</button>
+              <button data-v="24h" aria-pressed="false">24h</button>
+            </div>
+          </div>
+          <div data-flow></div>
+        </section>
+
+        <section class="cw-panel" aria-labelledby="cw-load-h">
+          <div class="cw-panel-h"><h2 id="cw-load-h">Bay load</h2></div>
+          <div data-load></div>
+        </section>
+
+        <section class="cw-panel" aria-labelledby="cw-status-h">
+          <div class="cw-panel-h"><h2 id="cw-status-h">Sector status</h2></div>
+          <ul class="cw-status" data-status></ul>
+          <p class="cw-empty" data-status-empty hidden>No sectors reporting.</p>
+        </section>
+      </div>
+
+      <section class="cw-center" aria-labelledby="cw-hero-h">
+        <h2 id="cw-hero-h" class="vh">Core hologram</h2>
+        <div class="cw-holo" data-holo></div>
+        <p class="cw-holo-cap"><span data-sector>Sector Meridian</span> · <b class="num" data-stability>98.4%</b> stability</p>
+        <div class="cw-rays" data-rays></div>
+      </section>
+
+      <div class="cw-stack cw-right">
+        <section class="cw-panel" aria-labelledby="cw-kpi-h">
+          <h2 id="cw-kpi-h" class="vh">Key metrics</h2>
+          <div class="cw-kpis" data-kpis></div>
+        </section>
+
+        <section class="cw-panel" aria-labelledby="cw-gauge-h">
+          <div class="cw-panel-h"><h2 id="cw-gauge-h">Grid levels</h2></div>
+          <div class="cw-gauges" data-gauges></div>
+        </section>
+
+        <section class="cw-panel" aria-labelledby="cw-cargo-h">
+          <div class="cw-panel-h"><h2 id="cw-cargo-h">Orbital cargo</h2>
+            <div class="cw-seg" role="group" aria-label="Cargo series" data-cargo-tabs>
+              <button data-v="in" aria-pressed="true">Inbound</button>
+              <button data-v="out" aria-pressed="false">Outbound</button>
+            </div>
+          </div>
+          <div data-cargo></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="cw-foot-strip" aria-label="Shift summary" data-strip></footer>
+    <p class="db-sample cw-sample">Sample data · fictional</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

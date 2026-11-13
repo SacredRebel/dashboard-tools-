@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-22 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+23 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -28,6 +28,7 @@
 | 20 | [Atrium Living](#atrium-living) | Glass & glow | Smart home & IoT | light | Daylight, Dusk, Night | [site/dashboards/atrium-living/](../../site/dashboards/atrium-living/) |
 | 21 | [Glacier Ops](#glacier-ops) | Data-dense pro | Analytics & BI | dark | Glacier, Cobalt, Night | [site/dashboards/glacier-ops/](../../site/dashboards/glacier-ops/) |
 | 22 | [Folio Club](#folio-club) | Soft & friendly | Education, Music & media | dark | Ink, Parchment, Night | [site/dashboards/folio-club/](../../site/dashboards/folio-club/) |
+| 23 | [Citadel Wall](#citadel-wall) | Data-dense pro | Analytics & BI, Logistics & fleet | dark | Cyan, Ocean, Amber | [site/dashboards/citadel-wall/](../../site/dashboards/citadel-wall/) |
 
 ## Cinematic & atmospheric
 
@@ -301,7 +302,7 @@ A glass smart-home room console over a code-drawn atrium living room: climate di
 - **Signature:** Frosted glass panels floating over a hand-drawn atrium living room — teal walls, tall window light, wood floor and plants — with a warm energy chart and cool climate dial as twin accents.
 - **Layout:** Full-bleed SVG room backdrop · left pill icon rail · top room capsule nav · glass grid: climate column (weather, thermo dial, modes, members) · center (energy chart, TV strip, music) · right (camera, lighting, lock, ambient LED, speaker)
 - **Responsive:** ≤1180px: rail becomes top icon strip, glass grid 2 columns · ≤960px: single column stack, backdrop shortens · ≤640px: room pills scroll horizontally, sliders full width, tap targets ≥44px
-- **Fonts:** Sora / Manrope · **Palette:** bg `#d8e6ea`, surface `#f4f9fb`, text `#0f1c24`, muted `#5a6b75`, accent `#f5b942`, cool `#4ec3d9`, pink `#ff6bb5`, wood `#c48a4a`
+- **Fonts:** Sora / Manrope · **Palette:** bg `#d8e6ea`, surface `#f4f9fb`, text `#0f1c24`, muted `#3f515c`, accent `#f5b942`, cool `#4ec3d9`, pink `#ff6bb5`, wood `#c48a4a`
 - **Variants:** Daylight, Dusk, Night · **Closest toolkit theme:** `coastal`
 
 **Best for**
@@ -445,6 +446,34 @@ A data-dense dark-blue radial HUD for cold-ops monitoring: a multi-ring dial wit
 
 ---
 
+<a id="citadel-wall"></a>
+### 23. Citadel Wall
+
+![Citadel Wall](../../site/dashboards/citadel-wall/thumb.jpg)
+
+A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central SVG sphere-and-cube hologram, arc gauges, dense charts and a four-block spark footer for fictional orbital logistics.
+
+- **Use cases:** Analytics & BI, Logistics & fleet · **Mode:** dark · **Mood:** tactical, glowing, dense, command-center, futuristic
+- **Signature:** A cyan-glow cube locked inside a translucent sphere on a scan-line pedestal, framed by HUD brackets on a deep navy wall.
+- **Layout:** Tech title bar · three columns (left identity/charts/status · center hologram · right KPI grid/gauges/bars) · bottom four-metric spark strip
+- **Responsive:** ≤1180px: hologram on top, side columns two-up below · ≤960px: single column stacks · ≤640px: gauges wrap, footer 2×2
+- **Fonts:** Share Tech Mono / Exo 2 · **Palette:** bg `#050b18`, surface `#0a1528`, text `#d8f4ff`, muted `#7aa8c4`, accent `#00e5ff`, blue `#3a9fff`, warn `#ff9f43`, ok `#7dffb3`
+- **Variants:** Cyan, Ocean, Amber · **Closest toolkit theme:** `midnight`
+
+**Best for**
+- Control-room or wall displays for logistics and ops
+- Demo HUDs that need a sci-fi big-screen feel
+- Dashboards where a central 3D-ish focal point carries the brand
+
+**Avoid when**
+- Consumer apps or soft education products
+- Light themes as the primary look
+- Editing workflows — this is monitor-first, not form-first
+
+**Components:** Tech-frame header · Identity silhouette panel · Line and bar charts · Status list with mini bars · 2×2 KPI tiles with cube icons · Three arc gauges · Central sphere/cube SVG hologram · Bottom spark metric strip
+
+---
+
 
 ## Soft & friendly
 
@@ -545,7 +574,7 @@ A soft dark reading club: book shelf and friends on the left, a current-book her
 - **Signature:** Five saturated pastel metric tiles — gold progress with overlapping friend avatars on the bar, orange time, purple level, green streak, sky badges — floating on soft charcoal glass.
 - **Layout:** Left rail (profile, books, friends, settings) · center stack (current book hero, metric tile grid, leaderboard) · right activity feed
 - **Responsive:** ≤1180px: activity under center, rail stays · ≤960px: rail becomes horizontal strip · ≤640px: single column, tiles 1-wide, feed last
-- **Fonts:** Libre Baskerville / DM Sans · **Palette:** bg `#1a1b1f`, surface `#25262c`, text `#f2f0eb`, muted `#a8a59c`, accent `#e8c547`, tile-time `#e8894a`, tile-level `#a78bdb`, tile-streak `#7dcf5a`, tile-badges `#5ec4e8`
+- **Fonts:** Libre Baskerville / DM Sans · **Palette:** bg `#1a1b1f`, surface `#25262c`, text `#f2f0eb`, muted `#c4c0b6`, accent `#e8c547`, tile-time `#e8894a`, tile-level `#a78bdb`, tile-streak `#7dcf5a`, tile-badges `#5ec4e8`
 - **Variants:** Ink, Parchment, Night · **Closest toolkit theme:** `noir`
 
 **Best for**

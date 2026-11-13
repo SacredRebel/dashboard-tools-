@@ -650,7 +650,7 @@
       },
       "components": ["Vertical icon rail", "Room capsule nav", "Weather chip", "Thermostat dial with climate modes", "Members avatar row", "Energy area chart with range seg", "Live camera SVG with controls", "Lighting toggle and intensity slider", "Door lock switch", "Music transport", "Ambient LED color and intensity", "Smart speaker tile"],
       "signature": "Frosted glass panels floating over a hand-drawn atrium living room — teal walls, tall window light, wood floor and plants — with a warm energy chart and cool climate dial as twin accents.",
-      "palette": { "bg": "#d8e6ea", "surface": "#f4f9fb", "text": "#0f1c24", "muted": "#5a6b75", "accent": "#f5b942", "cool": "#4ec3d9", "pink": "#ff6bb5", "wood": "#c48a4a" },
+      "palette": { "bg": "#d8e6ea", "surface": "#f4f9fb", "text": "#0f1c24", "muted": "#3f515c", "accent": "#f5b942", "cool": "#4ec3d9", "pink": "#ff6bb5", "wood": "#c48a4a" },
       "fonts": { "display": "Sora", "sans": "Manrope" },
       "variants": [
         { "id": "default", "name": "Daylight", "swatch": "#f5b942" },
@@ -714,7 +714,7 @@
       },
       "components": ["Profile avatar chip", "Book list with SVG covers", "Friends list with see-more", "Current book hero", "Color metric tiles (progress, time, level, streak, badges)", "Leaderboard segmented tabs", "Activity feed with reply"],
       "signature": "Five saturated pastel metric tiles — gold progress with overlapping friend avatars on the bar, orange time, purple level, green streak, sky badges — floating on soft charcoal glass.",
-      "palette": { "bg": "#1a1b1f", "surface": "#25262c", "text": "#f2f0eb", "muted": "#a8a59c", "accent": "#e8c547", "tile-time": "#e8894a", "tile-level": "#a78bdb", "tile-streak": "#7dcf5a", "tile-badges": "#5ec4e8" },
+      "palette": { "bg": "#1a1b1f", "surface": "#25262c", "text": "#f2f0eb", "muted": "#c4c0b6", "accent": "#e8c547", "tile-time": "#e8894a", "tile-level": "#a78bdb", "tile-streak": "#7dcf5a", "tile-badges": "#5ec4e8" },
       "fonts": { "display": "Libre Baskerville", "sans": "DM Sans" },
       "variants": [
         { "id": "default", "name": "Ink", "swatch": "#e8c547" },
@@ -725,6 +725,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied reading-tracker screenshot. Brand, book titles, people and numbers are invented; cover photos became flat SVG covers and initial avatars. The source image is not stored in the repo." },
       "path": "site/dashboards/folio-club/"
+    },
+    {
+      "id": "citadel-wall",
+      "number": 23,
+      "name": "Citadel Wall",
+      "style_family": "data-dense",
+      "use_cases": ["analytics", "logistics"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central SVG sphere-and-cube hologram, arc gauges, dense charts and a four-block spark footer for fictional orbital logistics.",
+      "mood": ["tactical", "glowing", "dense", "command-center", "futuristic"],
+      "best_for": ["Control-room or wall displays for logistics and ops", "Demo HUDs that need a sci-fi big-screen feel", "Dashboards where a central 3D-ish focal point carries the brand"],
+      "avoid_when": ["Consumer apps or soft education products", "Light themes as the primary look", "Editing workflows — this is monitor-first, not form-first"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Tech title bar · three columns (left identity/charts/status · center hologram · right KPI grid/gauges/bars) · bottom four-metric spark strip",
+        "responsive": "≤1180px: hologram on top, side columns two-up below · ≤960px: single column stacks · ≤640px: gauges wrap, footer 2×2"
+      },
+      "components": ["Tech-frame header", "Identity silhouette panel", "Line and bar charts", "Status list with mini bars", "2×2 KPI tiles with cube icons", "Three arc gauges", "Central sphere/cube SVG hologram", "Bottom spark metric strip"],
+      "signature": "A cyan-glow cube locked inside a translucent sphere on a scan-line pedestal, framed by HUD brackets on a deep navy wall.",
+      "palette": { "bg": "#050b18", "surface": "#0a1528", "text": "#d8f4ff", "muted": "#7aa8c4", "accent": "#00e5ff", "blue": "#3a9fff", "warn": "#ff9f43", "ok": "#7dffb3" },
+      "fonts": { "display": "Share Tech Mono", "sans": "Exo 2" },
+      "variants": [
+        { "id": "default", "name": "Cyan", "swatch": "#00e5ff" },
+        { "id": "ocean", "name": "Ocean", "swatch": "#2ec4b6" },
+        { "id": "amber", "name": "Amber", "swatch": "#ffb020" }
+      ],
+      "maps_to_theme": "midnight",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied big-screen HUD screenshot. Chinese labels were replaced with English fictional ops/logistics copy; the 3D hero became an SVG sphere and cube. The source image is not stored in the repo." },
+      "path": "site/dashboards/citadel-wall/"
     }
   ]
 }
