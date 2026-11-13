@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Aura Ring · Dashboard Tools gallery</title>
+  <meta name="description" content="Glass wellness dashboard for a smart ring: frosted cards over a blue-to-pink haze, with a code-drawn ring and body map. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="ar">
+    <header class="ar-top">
+      <a class="ar-brand" href="#" aria-label="Aura home"><span data-icon="sparkle"></span>Aura</a>
+      <div class="ar-tabs" role="group" aria-label="View" data-tabs>
+        <button data-v="overview" aria-pressed="true">Overview</button><button data-v="sleep" aria-pressed="false">Sleep</button><button data-v="recovery" aria-pressed="false">Recovery</button><button data-v="activity" aria-pressed="false">Activity</button><button data-v="stress" aria-pressed="false">Stress</button>
+      </div>
+      <button class="ar-iconbtn" aria-label="Notifications"><span data-icon="bell"></span></button>
+      <span class="ar-avatar" role="img" aria-label="Signed in as Noor Adeyemi">NA</span>
+    </header>
+
+    <main class="ar-grid">
+      <section class="ar-hero">
+        <h1 data-headline></h1>
+        <p class="ar-chip" data-tip></p>
+      </section>
+
+      <section class="ar-card ar-score" aria-labelledby="ar-score-h">
+        <div><h2 id="ar-score-h" data-score-name></h2><p class="ar-sub">Based on last night and today</p>
+          <p class="ar-big num"><b data-score></b><span>/100</span></p><p class="ar-state" data-state></p></div>
+        <div class="ar-gauge" data-gauge></div>
+      </section>
+
+      <section class="ar-card ar-hr" aria-labelledby="ar-hr-h">
+        <div class="ar-card-head"><div><h2 id="ar-hr-h">Heart rate</h2><p class="ar-sub">Today</p></div><p class="ar-val num"><b>62</b> bpm</p></div>
+        <div data-hr></div>
+      </section>
+
+      <section class="ar-card ar-mini" aria-labelledby="ar-st-h">
+        <div class="ar-card-head"><div><h2 id="ar-st-h">Stress level</h2><p class="ar-sub">Medium</p></div><p class="ar-val num"><b>46</b>%</p></div>
+        <div data-stress></div>
+      </section>
+      <section class="ar-card ar-mini" aria-labelledby="ar-sl-h">
+        <div class="ar-card-head"><div><h2 id="ar-sl-h">Sleep</h2><p class="ar-sub">Last night</p></div><p class="ar-val num"><b>7 h 24</b></p></div>
+        <div data-sleep></div>
+      </section>
+
+      <section class="ar-card ar-device" aria-labelledby="ar-dev-h">
+        <div class="ar-card-head"><div><h2 id="ar-dev-h">Aura ring</h2><p class="ar-sub"><i class="ar-live"></i>Connected</p></div></div>
+        <div class="ar-ringart" data-ring aria-hidden="true"></div>
+        <div class="ar-batt"><span>Battery</span><b class="num">84%</b><i role="img" aria-label="Battery 84%"><i style="width:84%"></i></i></div>
+        <dl class="ar-rows"><div><dt>Sensors</dt><dd>All active</dd></div><div><dt>Skin temperature</dt><dd>Normal</dd></div><div><dt>Connection</dt><dd>Strong</dd></div></dl>
+        <button class="ar-pill">Open device settings<span data-icon="chevRight"></span></button>
+      </section>
+
+      <section class="ar-card ar-body" aria-labelledby="ar-body-h">
+        <div class="ar-card-head"><div><h2 id="ar-body-h">Body map</h2><p class="ar-sub">Pick a point</p></div></div>
+        <div class="ar-figure" data-figure></div>
+        <p class="ar-note" data-body-note aria-live="polite"></p>
+      </section>
+
+      <section class="ar-card ar-sum" aria-labelledby="ar-sum-h">
+        <div><h2 id="ar-sum-h"><span data-icon="sparkle"></span>Daily summary</h2><p data-summary></p>
+          <button class="ar-pill">Read the full analysis<span data-icon="chevRight"></span></button></div>
+        <div class="ar-orb" aria-hidden="true"></div>
+      </section>
+    </main>
+    <p class="db-sample ar-foot">Sample data · fictional · not medical advice</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

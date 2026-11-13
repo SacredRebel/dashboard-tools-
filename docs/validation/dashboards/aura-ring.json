@@ -1,0 +1,64 @@
+{
+  "id": "aura-ring",
+  "checked": "2026-11-13",
+  "ok": false,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/aura-ring/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/aura-ring/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/aura-ring/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/aura-ring/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/aura-ring/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=lagoon",
+      "width": 1440,
+      "variant": "lagoon",
+      "final_path": "/dashboards/aura-ring/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=pearl",
+      "width": 1440,
+      "variant": "pearl",
+      "final_path": "/dashboards/aura-ring/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/aura-ring",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": [
+        "gallery preview iframe did not load"
+      ]
+    }
+  ]
+}

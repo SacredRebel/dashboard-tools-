@@ -245,6 +245,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied design shot of a real-estate landing screen. The studio and product names, logo mark, headline, listing text and avatar were not reused; all homes, addresses and prices are invented. The rendered villa photo was replaced with an SVG house and sky themed by CSS variables. The source image is not stored in the repo." },
       "path": "site/dashboards/haven-listings/"
+    },
+    {
+      "id": "aura-ring",
+      "number": 8,
+      "name": "Aura Ring",
+      "style_family": "glass",
+      "use_cases": ["health"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A wellness overview for a smart ring: frosted, softly bordered cards float over a periwinkle-to-pink haze, with a two-weight headline, a score dial, thin white line charts, a code-drawn metal ring and a tappable body map.",
+      "mood": ["serene", "dreamy", "premium", "soft", "futuristic"],
+      "best_for": ["Wearables, sleep, wellness and other consumer health products", "Tablet-first overviews with a few scores and one device", "Brands that want a calm, ambient feeling"],
+      "avoid_when": ["Clinical tools where precision and density matter more than mood", "Long tables or many KPIs", "Interfaces that must work without colour gradients (print, e-ink)"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Top bar (brand, centred pill tabs, bell, avatar) · 12-column grid, 18px gaps: row 1 headline (5) + score card (4) + heart-rate card (3) · rows 2–3: two small chart cards and a summary card on the left (5), device card (4) and body-map card (3) spanning both rows",
+        "responsive": "≤1100px: 2 columns (headline, score + heart rate, stress + sleep, device + body, summary) and tabs scroll · ≤680px: single column, tabs on their own scrolling row"
+      },
+      "components": ["Centred pill tabs that switch the score", "Two-weight headline with tip chip", "Score card with arc dial and state chip", "Thin line charts with point markers", "Device card with battery bar and status rows", "Body map with selectable points", "Summary card with glossy orb", "White pill buttons with round arrow"],
+      "signature": "Frosted cards with a hairline white edge over a deep periwinkle field that blooms pink on the right, and solid white pills as the only opaque elements.",
+      "palette": { "bg": "#3f4f8f", "text": "#ffffff", "muted": "#e3e4f5", "accent": "#ffffff", "periwinkle": "#6079c4", "pink": "#ffc4dd", "lilac": "#b9a4ff", "mint": "#8ef0b4" },
+      "fonts": { "display": "Red Hat Display", "sans": "Red Hat Display" },
+      "variants": [
+        { "id": "default", "name": "Haze", "swatch": "#6079c4" },
+        { "id": "lagoon", "name": "Lagoon", "swatch": "#1f8a8c" },
+        { "id": "pearl", "name": "Pearl", "swatch": "#2d2a55" }
+      ],
+      "maps_to_theme": "aurora",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied product shot of a wellness tablet app. The product and agency names, logo, avatar photo and copy were not reused; scores and text are invented. The ring photo, 3D body figure and brain render were replaced with an SVG ring, a simple SVG figure with selectable points and a CSS orb. The source image is not stored in the repo." },
+      "path": "site/dashboards/aura-ring/"
     }
   ]
 }
