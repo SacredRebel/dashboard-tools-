@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-37 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+38 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -43,6 +43,7 @@
 | 35 | [Clima Pane](#clima-pane) | Glass & glow | Smart home & IoT | light | Amber pane, Sky, Dusk | [site/dashboards/clima-pane/](../../site/dashboards/clima-pane/) |
 | 36 | [Meridian Labs](#meridian-labs) | Soft & friendly | Health & fitness | light | Soft blue, Citrus, Night | [site/dashboards/meridian-labs/](../../site/dashboards/meridian-labs/) |
 | 37 | [Cortex Well](#cortex-well) | Glass & glow | Health & fitness | light | Lilac haze, Rose mist, Dusk violet | [site/dashboards/cortex-well/](../../site/dashboards/cortex-well/) |
+| 38 | [Ember Rooms](#ember-rooms) | Tactile & neumorphic | Smart home & IoT | light | Ember, Mist, Dusk | [site/dashboards/ember-rooms/](../../site/dashboards/ember-rooms/) |
 
 ## Cinematic & atmospheric
 
@@ -1126,6 +1127,34 @@ Cream, forest and gold claymorphism for an immersive media console: twin phone p
 - Flat material or neon dark-neon brands
 
 **Components:** Twin clay phone shells · Gold-ring astronaut hero SVG · Mission pager dots and house markers · Pressable START pill · Vertical gold-sphere calibration slider · Clay mountain terrain SVG · Stacked gold KPI numbers · Foot icon strip
+
+---
+
+<a id="ember-rooms"></a>
+### 38. Ember Rooms
+
+![Ember Rooms](../../site/dashboards/ember-rooms/thumb.jpg)
+
+A soft neumorphic indoor lighting console: orange accent, left icon rail, pill search, and a large centre stage with an SVG pendant lamp, orbiting room dots, intensity slider, schedule, line charts and a video-sim room panel.
+
+- **Use cases:** Smart home & IoT · **Mode:** light · **Mood:** tactile, soft, warm, calm, orange
+- **Signature:** A soft extruded well with a grey SVG pendant lamp hanging inside concentric orbit rings, orange room dots and a bright orange power control.
+- **Layout:** 64px icon rail · top (search, brand, undo/redo/settings) · soft main well: left stack (intensity, schedule, arc dial) · centre pendant stage with orbit room dots · right stack (line chart, spark, video-sim)
+- **Responsive:** ≤1180px: right stack drops under centre · ≤960px: rail becomes top strip · ≤640px: single column, room dots scroll, charts full width
+- **Fonts:** Outfit / Outfit · **Palette:** bg `#f2f1ef`, surface `#f7f6f4`, text `#2a2622`, muted `#5c564f`, accent `#c45500`, blue `#4a8fd8`, lamp `#9a9a9e`, well `#ecebe8`
+- **Variants:** Ember, Mist, Dusk · **Closest toolkit theme:** `linen`
+
+**Best for**
+- Lighting-first smart-home or hospitality room tablets
+- Products that want soft extruded controls without heavy glass
+- Single-room focus with a clear power and dimmer story
+
+**Avoid when**
+- Climate-first HVAC dashboards (use a dial twin instead)
+- Dense multi-device fleet admin
+- Dark cinematic brands that need scenic photography
+
+**Components:** Slim icon rail for home systems · Pill search field · Undo / redo / settings orb buttons · Horizontal intensity slider · Schedule start–end row · Circular brightness dial · SVG pendant lamp hero · Orbiting room picker dots · Power toggle and lights fraction · Multi-line energy chart · Secondary spark line · Video-sim panel with SVG room and play
 
 ---
 
