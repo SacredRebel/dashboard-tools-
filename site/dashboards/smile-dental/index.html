@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Pearlwell Dental · Dashboard Tools gallery</title>
+  <meta name="description" content="Soft mint patient portal for a dental clinic: next visit, booking calendar, treatments and a tooth-health chart. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="pd">
+    <aside class="pd-side">
+      <a class="pd-brand" href="#" aria-label="Pearlwell home"><span data-icon="tooth"></span>Pearlwell</a>
+      <nav aria-label="Main">
+        <a href="#" aria-current="page"><span data-icon="home"></span>Home</a>
+        <a href="#"><span data-icon="calendar"></span>Appointments</a>
+        <a href="#"><span data-icon="file"></span>Records</a>
+        <a href="#"><span data-icon="card"></span>Payments</a>
+        <a href="#"><span data-icon="user"></span>Profile</a>
+      </nav>
+      <div class="pd-help"><b>Tooth pain?</b><p>Call the clinic on 555-0148. Same-day slots are kept for emergencies.</p></div>
+    </aside>
+
+    <main class="pd-main">
+      <header class="pd-top">
+        <div><p class="pd-hi" data-greet></p><h1>Your smile, this month</h1></div>
+        <label class="pd-search"><span data-icon="search"></span><span class="vh">Search treatments</span><input type="search" placeholder="Search treatments" data-q></label>
+        <span class="pd-avatar" role="img" aria-label="Signed in as Theo Brandt">TB</span>
+      </header>
+
+      <div class="pd-grid">
+        <section class="pd-card pd-next" aria-labelledby="pd-next-h">
+          <div><p class="pd-k" id="pd-next-h">Your next visit</p><div data-next></div></div>
+          <div class="pd-toothart" data-tooth aria-hidden="true"></div>
+        </section>
+
+        <section class="pd-card pd-score" aria-labelledby="pd-score-h">
+          <h2 id="pd-score-h">Dental health score</h2>
+          <div class="pd-scorebody"><div class="pd-ring" data-ring></div><p data-score-note></p></div>
+        </section>
+
+        <section class="pd-card pd-book" aria-labelledby="pd-book-h">
+          <div class="pd-head"><h2 id="pd-book-h">Book a visit</h2>
+            <div class="pd-month"><button data-mon="-1" aria-label="Previous month"><span data-icon="chevLeft"></span></button><b data-month></b><button data-mon="1" aria-label="Next month"><span data-icon="chevRight"></span></button></div></div>
+          <div class="pd-bookbody">
+            <div class="pd-cal" role="grid" aria-label="Pick a day" data-cal></div>
+            <div>
+              <p class="pd-k">Available times</p>
+              <div class="pd-slots" role="group" aria-label="Pick a time" data-slots></div>
+              <p class="pd-k">Dentist</p>
+              <div class="pd-docs" role="group" aria-label="Pick a dentist" data-docs></div>
+              <button class="pd-cta" data-confirm>Confirm visit</button>
+              <p class="pd-msg" data-msg aria-live="polite"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="pd-card pd-treat" aria-labelledby="pd-treat-h">
+          <div class="pd-head"><h2 id="pd-treat-h">Treatments</h2></div>
+          <div class="pd-chips" role="group" aria-label="Filter treatments" data-cats></div>
+          <ul class="pd-list" data-treat></ul>
+        </section>
+
+        <section class="pd-card pd-health" aria-labelledby="pd-h-h">
+          <div class="pd-head"><h2 id="pd-h-h">Tooth chart</h2><span class="pd-meta">Tap a tooth</span></div>
+          <div class="pd-arch" data-arch></div>
+          <p class="pd-toothnote" data-tooth-note aria-live="polite"></p>
+          <dl class="pd-stats"><div><dt>Cavities</dt><dd class="num">1</dd></div><div><dt>Plaque</dt><dd>Low</dd></div><div><dt>Gums</dt><dd>Healthy</dd></div></dl>
+        </section>
+      </div>
+      <p class="db-sample pd-foot">Sample data · fictional</p>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

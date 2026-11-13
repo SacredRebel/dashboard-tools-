@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-9 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+10 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -15,6 +15,7 @@
 | 7 | [Haven Listings](#haven-listings) | Glass & glow | Real estate | light | Dusk, Sunrise, Midnight | [site/dashboards/haven-listings/](../../site/dashboards/haven-listings/) |
 | 8 | [Aura Ring](#aura-ring) | Glass & glow | Health & fitness | dark | Haze, Lagoon, Pearl | [site/dashboards/aura-ring/](../../site/dashboards/aura-ring/) |
 | 9 | [Lull Sleep](#lull-sleep) | Soft & friendly | Health & fitness | light | Lavender, Dawn, Nightfall | [site/dashboards/lull-sleep/](../../site/dashboards/lull-sleep/) |
+| 10 | [Pearlwell Dental](#smile-dental) | Soft & friendly | Health & fitness | light | Mint, Coral, Deep sea | [site/dashboards/smile-dental/](../../site/dashboards/smile-dental/) |
 
 ## Cinematic & atmospheric
 
@@ -244,6 +245,34 @@ A one-night sleep report in soft lavender: a pastel sky hero with a crescent moo
 - Brands that need a crisp, technical feel
 
 **Components:** Pill navigation · Sky hero with round score dial and chips · Stage timeline with stage filter chips · Stage-split donut with legend · Stats strip with dividers · Bar chart that picks the night · Toggleable habit tags that change the score · Sensor list with icon tiles
+
+---
+
+<a id="smile-dental"></a>
+### 10. Pearlwell Dental
+
+![Pearlwell Dental](../../site/dashboards/smile-dental/thumb.jpg)
+
+A soft mint patient portal for a dental clinic: one saturated next-visit card with a code-drawn tooth and shield, a health-score ring, a booking calendar with times and dentists, a searchable treatment price list and a tappable tooth chart.
+
+- **Use cases:** Health & fitness · **Mode:** light · **Mood:** clean, friendly, reassuring, fresh, soft
+- **Signature:** One deep-teal next-visit card holding a glossy white SVG tooth with a shield, set among white cards on a mint field that warms to peach in the corner.
+- **Layout:** 230px sticky sidebar (brand, 5 nav links, emergency note) · main: greeting header with search and avatar · 12-column grid: next visit (5) + score (3) + treatments (4, two rows) · booking card (8, two rows: month calendar left, times, dentists and confirm right) · tooth chart (4)
+- **Responsive:** ≤1180px: sidebar becomes a top bar, grid 2 columns · ≤700px: icon tab bar with labels, single column, calendar above times
+- **Fonts:** Nunito / Nunito · **Palette:** bg `#eaf5f2`, surface `#ffffff`, text `#173836`, muted `#4a6663`, accent `#0f7f75`, teal `#18a596`, peach `#fbe3d4`, warn `#b4542e`
+- **Variants:** Mint, Coral, Deep sea · **Closest toolkit theme:** `coastal`
+
+**Best for**
+- Clinics, dentists, physio and other appointment-led health services
+- Patient or client portals that centre on booking
+- Brands that want a calm, clinical-but-friendly feel
+
+**Avoid when**
+- Clinic staff tools with schedules for many patients
+- Dense reporting or finance views
+- Brands that need a dark or dramatic look
+
+**Components:** Sidebar navigation with emergency note · Saturated next-visit card with actions · Score ring with explanation · Month calendar with closed days · Time-slot grid with taken slots · Dentist picker · Category chips and searchable price list · Interactive tooth chart with notes
 
 ---
 

@@ -1,0 +1,62 @@
+{
+  "id": "smile-dental",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/smile-dental/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/smile-dental/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/smile-dental",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/smile-dental/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/smile-dental/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/smile-dental/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/smile-dental/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/smile-dental/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/smile-dental/?variant=coral",
+      "width": 1440,
+      "variant": "coral",
+      "final_path": "/dashboards/smile-dental/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/smile-dental/?variant=deepsea",
+      "width": 1440,
+      "variant": "deepsea",
+      "final_path": "/dashboards/smile-dental/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/smile-dental",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

@@ -309,6 +309,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Built in original code from a user-supplied flat shot of the same wellness screen as Aura Ring. To avoid a second copy it takes only the pastel gradient, white pills and two-weight headline, and turns them into a sleep detail page with its own layout and data. No names, logos, photos or copy from the shot were reused; sky, moon and clouds are SVG. The source image is not stored in the repo." },
       "path": "site/dashboards/lull-sleep/"
+    },
+    {
+      "id": "smile-dental",
+      "number": 10,
+      "name": "Pearlwell Dental",
+      "style_family": "soft",
+      "use_cases": ["health"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A soft mint patient portal for a dental clinic: one saturated next-visit card with a code-drawn tooth and shield, a health-score ring, a booking calendar with times and dentists, a searchable treatment price list and a tappable tooth chart.",
+      "mood": ["clean", "friendly", "reassuring", "fresh", "soft"],
+      "best_for": ["Clinics, dentists, physio and other appointment-led health services", "Patient or client portals that centre on booking", "Brands that want a calm, clinical-but-friendly feel"],
+      "avoid_when": ["Clinic staff tools with schedules for many patients", "Dense reporting or finance views", "Brands that need a dark or dramatic look"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "230px sticky sidebar (brand, 5 nav links, emergency note) · main: greeting header with search and avatar · 12-column grid: next visit (5) + score (3) + treatments (4, two rows) · booking card (8, two rows: month calendar left, times, dentists and confirm right) · tooth chart (4)",
+        "responsive": "≤1180px: sidebar becomes a top bar, grid 2 columns · ≤700px: icon tab bar with labels, single column, calendar above times"
+      },
+      "components": ["Sidebar navigation with emergency note", "Saturated next-visit card with actions", "Score ring with explanation", "Month calendar with closed days", "Time-slot grid with taken slots", "Dentist picker", "Category chips and searchable price list", "Interactive tooth chart with notes"],
+      "signature": "One deep-teal next-visit card holding a glossy white SVG tooth with a shield, set among white cards on a mint field that warms to peach in the corner.",
+      "palette": { "bg": "#eaf5f2", "surface": "#ffffff", "text": "#173836", "muted": "#4a6663", "accent": "#0f7f75", "teal": "#18a596", "peach": "#fbe3d4", "warn": "#b4542e" },
+      "fonts": { "display": "Nunito", "sans": "Nunito" },
+      "variants": [
+        { "id": "default", "name": "Mint", "swatch": "#0f7f75" },
+        { "id": "coral", "name": "Coral", "swatch": "#b2482c" },
+        { "id": "deepsea", "name": "Deep sea", "swatch": "#5fdcc8" }
+      ],
+      "maps_to_theme": "coastal",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied concept sheet of six dental phone screens. The screens were merged into one responsive desktop portal; names, photos and copy were not reused and all patients, dentists and prices are invented. 3D tooth renders and props were replaced with an SVG tooth, shield and tooth chart. The source image is not stored in the repo." },
+      "path": "site/dashboards/smile-dental/"
     }
   ]
 }
