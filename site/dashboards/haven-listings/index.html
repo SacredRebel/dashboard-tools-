@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Haven Listings · Dashboard Tools gallery</title>
+  <meta name="description" content="Glass real-estate browser: a dusk scene with a code-drawn curved house, notched white filter tabs and frosted listing cards. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="hl">
+    <section class="hl-stage" aria-label="Featured home">
+      <div class="hl-scene" data-scene aria-hidden="true"></div>
+
+      <header class="hl-top">
+        <div class="hl-mode" role="group" aria-label="Buy or rent" data-mode>
+          <button data-v="buy" aria-pressed="true"><span data-icon="arrowUpRight"></span>Buy</button>
+          <button data-v="rent" aria-pressed="false">Rent<span data-icon="arrowUpRight"></span></button>
+        </div>
+        <form class="hl-filters" aria-label="Filters" data-filters>
+          <label><span><span data-icon="pin"></span>Location</span><select name="place"></select></label>
+          <label><span><span data-icon="building"></span>Home type</span><select name="type"></select></label>
+          <label><span><span data-icon="wallet"></span>Max price</span><select name="max"></select></label>
+        </form>
+      </header>
+
+      <nav class="hl-rail" aria-label="Main">
+        <a href="#" aria-current="page" aria-label="Home"><span data-icon="home"></span></a>
+        <a href="#" aria-label="Search"><span data-icon="search"></span></a>
+        <a href="#" aria-label="Collections"><span data-icon="grid"></span></a>
+        <a href="#" aria-label="Messages"><span data-icon="mail"></span></a>
+        <a href="#" aria-label="Alerts"><span data-icon="bell"></span></a>
+        <a href="#" aria-label="Settings"><span data-icon="settings"></span></a>
+      </nav>
+
+      <div class="hl-copy">
+        <h1>A calmer way<br>to find home</h1>
+        <p>Browse homes for sale or rent, compare them side by side and book a viewing without a single phone call.</p>
+      </div>
+
+      <article class="hl-find">
+        <h2>Homes that match</h2>
+        <p data-find-note></p>
+        <div class="hl-find-row"><b class="num" data-count></b><button class="hl-round" data-next aria-label="Show next matching home"><span data-icon="arrowRight"></span></button></div>
+      </article>
+
+      <article class="hl-detail" data-detail aria-live="polite"></article>
+    </section>
+
+    <main class="hl-below">
+      <section class="hl-card hl-list" aria-labelledby="hl-list-h">
+        <div class="hl-card-head"><h2 id="hl-list-h">Matching homes</h2><button class="hl-link" data-clear>Clear filters</button></div>
+        <ul class="hl-homes" data-homes></ul>
+      </section>
+      <section class="hl-card" aria-labelledby="hl-price-h">
+        <div class="hl-card-head"><h2 id="hl-price-h">Price history</h2><span class="hl-meta" data-price-meta></span></div>
+        <div data-price></div>
+      </section>
+      <section class="hl-card" aria-labelledby="hl-view-h">
+        <div class="hl-card-head"><h2 id="hl-view-h">Your viewings</h2></div>
+        <ul class="hl-views" data-views></ul>
+        <button class="hl-book" data-book>Book a viewing</button>
+      </section>
+    </main>
+    <p class="db-sample hl-foot">Sample data · fictional</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

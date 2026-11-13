@@ -1,0 +1,62 @@
+{
+  "id": "haven-listings",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/haven-listings/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/haven-listings/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/haven-listings",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/haven-listings/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/haven-listings/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/haven-listings/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/haven-listings/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/haven-listings/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/haven-listings/?variant=sunrise",
+      "width": 1440,
+      "variant": "sunrise",
+      "final_path": "/dashboards/haven-listings/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/haven-listings/?variant=midnight",
+      "width": 1440,
+      "variant": "midnight",
+      "final_path": "/dashboards/haven-listings/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/haven-listings",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

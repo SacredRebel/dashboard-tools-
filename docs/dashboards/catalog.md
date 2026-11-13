@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-6 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+7 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -12,6 +12,7 @@
 | 4 | [Kumo Payroll](#kumo-payroll) | Cinematic & atmospheric | HR & people, Finance & banking | dark | Moonlit gold, Jade, Sakura | [site/dashboards/kumo-payroll/](../../site/dashboards/kumo-payroll/) |
 | 5 | [Canopy Reforest](#canopy-reforest) | Soft & friendly | Projects & tasks, Analytics & BI | dark | Forest, Autumn, Birch | [site/dashboards/canopy-reforest/](../../site/dashboards/canopy-reforest/) |
 | 6 | [Ridgeline Trails](#ridgeline-trails) | Editorial | Travel & places, Analytics & BI | light | Mist, Dusk, Pine night | [site/dashboards/ridgeline-trails/](../../site/dashboards/ridgeline-trails/) |
+| 7 | [Haven Listings](#haven-listings) | Glass & glow | Real estate | light | Dusk, Sunrise, Midnight | [site/dashboards/haven-listings/](../../site/dashboards/haven-listings/) |
 
 ## Cinematic & atmospheric
 
@@ -106,7 +107,33 @@ A moonlit payroll overview: a code-drawn ink landscape with a gold moon, layered
 
 Frosted translucent panels over gradients or blurred color fields, soft glows. Modern, techy, premium.
 
-_No dashboards yet._
+<a id="haven-listings"></a>
+### 7. Haven Listings
+
+![Haven Listings](../../site/dashboards/haven-listings/thumb.jpg)
+
+A property browser built around one large dusk scene: a code-drawn curved house glows under a blue sky, white filter tabs notch into the top edge, and a frosted card shows the selected home. Listings, price history and viewings sit below.
+
+- **Use cases:** Real estate · **Mode:** light · **Mood:** airy, premium, calm, architectural, soft
+- **Signature:** White tabs that notch into the rounded edge of a full-bleed dusk scene, where a curved white house glows orange from inside.
+- **Layout:** 600px rounded stage with a full-bleed scene: top row (Buy pill, notched filter tab with 3 selects, Rent pill) · left 60px pill rail of 6 icons · headline and lede · white match-count card bottom-left · frosted detail card bottom-right (340px) · below: 3 cards (matching homes list, price-history line chart, viewings with a book button)
+- **Responsive:** ≤1100px: detail card moves under the match card, lower cards 2 columns · ≤700px: single column, filters become a stacked white card, rail turns into a horizontal pill, scene stays behind the top 470px
+- **Fonts:** Urbanist / Urbanist · **Palette:** bg `#ebe7e1`, surface `#f7f5f8`, text `#1d1b33`, muted `#55526b`, accent `#2a2470`, sky `#3f5a96`, glow `#e8743a`, rust `#c2562f`
+- **Variants:** Dusk, Sunrise, Midnight · **Closest toolkit theme:** `tide`
+
+**Best for**
+- Real-estate, hospitality or travel products that sell one hero item at a time
+- Browse-and-shortlist flows with a few filters
+- Brands that want a showroom feeling rather than a data tool
+
+**Avoid when**
+- Agents managing hundreds of listings: there is no table or map
+- Dense analytics: only one chart fits naturally
+- Low-end devices where backdrop blur is costly (the card falls back to a near-opaque fill)
+
+**Components:** Buy / Rent toggle pills · Notched filter tab with selects · Vertical icon rail in a pill · Match count card with step-through arrow · Frosted detail card with specs and save, compare, share · Selectable listing rows with drawn thumbnails · Line chart with hover/focus values · Viewings list with date chips
+
+---
 
 
 ## Minimal & airy
