@@ -33,6 +33,7 @@ You are an AI agent asked to **design and build a dashboard** (for example a CRM
 | 3 | The phase doc for the phase you are in: `docs/framework/0N-*.md` | Step-by-step instructions, inputs, outputs, tools |
 | 4 | [docs/design/02-rulebook.md](docs/design/02-rulebook.md) | Hard design rules (before any UI work) |
 | 5 | [docs/crm/](docs/crm/) (if building a CRM) | Data model, views, features |
+| 5a | [docs/dashboards/README.md](docs/dashboards/README.md) (Direction phase, or "make it look like this") | Pick a complete reference dashboard by style and use case from `catalog/dashboards.json`; add new ones with [01-add-a-dashboard.md](docs/dashboards/01-add-a-dashboard.md) |
 | 6 | [docs/stack/](docs/stack/) (before Build) | Stack, data/auth, GitHub + Vercel workflow, performance & privacy contract |
 | 6a | [docs/calendars/README.md](docs/calendars/README.md) (anything with dates: meetings, follow-ups, booking, sync) | Approach chooser, calendar styles, repo licenses; machine-readable in `catalog/calendars.json` |
 | 6b | [docs/design/07-showcase-patterns.md](docs/design/07-showcase-patterns.md) (when presenting) | Story players, device frames, before/after, glass worlds, approval gates |
@@ -134,11 +135,13 @@ CLAUDE.md                ← Claude Code entry; imports this file
 README.md                ← human overview
 catalog/
   tools.json             ← curated tools (source of truth)
+  dashboards.json        ← gallery dashboards: style family, use cases, palette, layout, variants
   calendars.json         ← calendar repos, styles, approaches, licenses (source of truth for docs/calendars/catalog.md)
   inventory.json         ← every installed skill, with relevance rating
 docs/
   framework/             ← 8 phases, step by step
   design/                ← principles, rulebook, page patterns, data viz, anti-patterns, themes, showcase patterns
+  dashboards/            ← gallery guide, add-a-dashboard workflow, generated catalog
   calendars/             ← calendar hub, integration playbook, calendar UI rules, generated repo catalog
   crm/                   ← CRM data model, views, features
   stack/                 ← tech stack, data & auth, GitHub + Vercel, tokens → Tailwind, performance & privacy
@@ -149,13 +152,14 @@ design-system/
   tailwind.preset.js     ← maps tokens to Tailwind / shadcn
 templates/               ← spec, discovery, design direction, art direction, QA, validation evidence, handover…
 prompts/                 ← copy-paste prompts for each phase
-site/                    ← showcase site (static; deployed on Vercel)
+site/                    ← showcase site (static; deployed on Vercel); site/dashboards/<id>/ = gallery dashboards
 scripts/build.mjs        ← validates catalog, regenerates site data + docs/tools
 ```
 
 ## 8. Maintaining this repo
 
 - Add or change a tool: edit `catalog/tools.json`, then run `node scripts/build.mjs`. It validates ids, `pairs_with` links and `fallback` paths, and regenerates `docs/tools/` and `site/data/`.
+- Add a gallery dashboard: follow docs/dashboards/01-add-a-dashboard.md exactly (folder + catalog entry + `node scripts/build.mjs` + `node scripts/dashboards-check.mjs <id>`).
 - Add a calendar repo: add an entry to `catalog/calendars.json` (license_class, status, use_when, avoid_when, integrate are required), then rebuild.
 - Add a theme: add a `[data-theme="…"]` block in `design-system/tokens.css` and an entry in `design-system/themes.json`, then rebuild.
 - Never paste third-party skill text into this repo. Summarize in your own words and link the source.

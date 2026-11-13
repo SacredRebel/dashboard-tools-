@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "description": "Dashboard style gallery: complete, themeable reference dashboards an agent can pick from by style family, use case or mode. Each entry lives in site/dashboards/<id>/ (index.html + style.css + app.js + thumb.jpg). Edit here, then run node scripts/build.mjs and node scripts/dashboards-check.mjs.",
+  "style_families": [
+    { "id": "cinematic", "name": "Cinematic & atmospheric", "blurb": "Dark, moody, scenic backdrops (painted or photographic) with glass panels and one warm accent. For consumer products that should feel like an experience." },
+    { "id": "glass", "name": "Glass & glow", "blurb": "Frosted translucent panels over gradients or blurred color fields, soft glows. Modern, techy, premium." },
+    { "id": "minimal", "name": "Minimal & airy", "blurb": "Lots of white space, hairlines, one accent, quiet type. Calm tools people use all day." },
+    { "id": "bento", "name": "Bento grid", "blurb": "Tiles of different sizes in a tight grid, each tile one idea. Great for overviews and product showcases." },
+    { "id": "data-dense", "name": "Data-dense pro", "blurb": "Compact tables, many small charts, tight spacing, monospace numbers. Trading, ops, analytics power users." },
+    { "id": "soft", "name": "Soft & friendly", "blurb": "Rounded shapes, pastel fills, playful illustration-free warmth. Health, education, personal apps." },
+    { "id": "editorial", "name": "Editorial", "blurb": "Big serif headlines, magazine layout, image-led storytelling. Brands, content, luxury." },
+    { "id": "bold", "name": "Bold & graphic", "blurb": "High contrast, saturated blocks, heavy type, brutalist or neo-brutalist edges. Creative tools, youth brands." },
+    { "id": "dark-neon", "name": "Dark neon", "blurb": "Near-black canvas with vivid neon accents and gradients. Gaming, crypto, music, nightlife." },
+    { "id": "skeuo", "name": "Tactile & neumorphic", "blurb": "Soft extruded surfaces, depth, physical-feeling controls. Smart home, devices, audio." }
+  ],
+  "use_cases": [
+    { "id": "weather", "name": "Weather & climate" }, { "id": "travel", "name": "Travel & places" }, { "id": "crm", "name": "CRM & sales" },
+    { "id": "analytics", "name": "Analytics & BI" }, { "id": "finance", "name": "Finance & banking" }, { "id": "crypto", "name": "Crypto & trading" },
+    { "id": "ecommerce", "name": "E-commerce & retail" }, { "id": "saas-admin", "name": "SaaS admin" }, { "id": "project", "name": "Projects & tasks" },
+    { "id": "health", "name": "Health & fitness" }, { "id": "education", "name": "Education" }, { "id": "smart-home", "name": "Smart home & IoT" },
+    { "id": "real-estate", "name": "Real estate" }, { "id": "hr", "name": "HR & people" }, { "id": "marketing", "name": "Marketing & social" },
+    { "id": "media", "name": "Music & media" }, { "id": "logistics", "name": "Logistics & fleet" }, { "id": "hospitality", "name": "Hospitality & food" }
+  ],
+  "dashboards": [
+    {
+      "id": "horizon-weather",
+      "number": 1,
+      "name": "Horizon Weather",
+      "style_family": "cinematic",
+      "use_cases": ["weather", "travel"],
+      "mode": "dark",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A cinematic weather home: painted sunset landscape behind glass panels, an editorial serif headline, a 7-day forecast strip with a glowing selected day, a smooth gold temperature curve and a mood card.",
+      "mood": ["cinematic", "calm", "premium", "warm", "editorial"],
+      "best_for": ["Consumer apps where the feeling matters as much as the numbers", "Travel, outdoor, hospitality or lifestyle dashboards", "Landing-page heroes for a data product"],
+      "avoid_when": ["Dense business data (tables, many KPIs): the scenery competes with numbers", "Light-mode-only brands", "Low-end devices that struggle with backdrop blur"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Fixed left sidebar (brand, 5-item nav, quote) · top bar (pill search, bell, avatar) · hero (headline left, current conditions right) over a painted scene · 7-day strip · 3 columns: area chart, details list, story card · popular-locations row",
+        "responsive": "≤1180px: chart spans full width above details + story · ≤960px: sidebar becomes a top bar, hero stacks · ≤640px: single column, icon-only nav, day strip scrolls horizontally"
+      },
+      "components": ["Pill search with accent button", "Hero metric (big thin temperature)", "Selectable forecast cards (listbox, arrow keys)", "Area chart with range toggle and hover/focus values", "Key-value details list with icons", "Image story card with serif quote", "Circular location thumbnails", "Ghost button"],
+      "signature": "Code-drawn sunset landscape (SVG, themed by CSS variables) fading into the dark UI, with a gold glow ring on the selected day.",
+      "palette": { "bg": "#0b0f17", "surface": "#121722", "text": "#f4efe6", "muted": "#b7b2a8", "accent": "#e2b26a", "sky": "#6b4a5a", "glow": "#e59a5c" },
+      "fonts": { "display": "Cormorant Garamond", "sans": "Manrope" },
+      "variants": [
+        { "id": "default", "name": "Dusk", "swatch": "#e2b26a" },
+        { "id": "dawn", "name": "Dawn", "swatch": "#f0a48c" },
+        { "id": "night", "name": "Night", "swatch": "#a9c3f0" }
+      ],
+      "maps_to_theme": "ember",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing", "screenshot-to-code (reference only)"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied concept screenshot. Brand name, photos and copy were replaced; the landscape is drawn in SVG. The source image is not stored in the repo." },
+      "path": "site/dashboards/horizon-weather/"
+    }
+  ]
+}

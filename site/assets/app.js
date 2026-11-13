@@ -12,7 +12,7 @@
   const catById = Object.fromEntries(C.categories.map((c) => [c.id, c]));
   const phaseById = Object.fromEntries(C.phases.map((p) => [p.id, p]));
   const tierRank = { core: 0, recommended: 1, optional: 2, situational: 3 };
-  const catIcon = { process: 'compass', research: 'search', brand: 'palette', uiux: 'layout', polish: 'sparkles', dataviz: 'chart', crm: 'users', build: 'code', quality: 'shield', ship: 'rocket', integrations: 'plug', calendar: 'calendar', media: 'image', libraries: 'package', handover: 'book' };
+  const catIcon = { process: 'compass', research: 'search', brand: 'palette', uiux: 'layout', polish: 'sparkles', dataviz: 'chart', crm: 'users', build: 'code', quality: 'shield', ship: 'rocket', integrations: 'plug', calendar: 'calendar', 'design-to-code': 'image', media: 'image', libraries: 'package', handover: 'book' };
   let current = { theme: 'atelier' };
   try { current.theme = localStorage.getItem('dt-theme') || 'atelier'; } catch (e) { /* storage blocked */ }
   const saveTheme = (t) => { current.theme = t; try { localStorage.setItem('dt-theme', t); } catch (e) { /* ignore */ } };
@@ -47,6 +47,7 @@
       ['package', 'Tool catalog', `${C.tools.length} skills, connectors and libraries with when to use, when not to, and how.`, '#/tools', 'Browse tools'],
       ['palette', 'Themes', 'Ten complete visual directions (six classic, four cinematic glass) built on one token set. See them on a real dashboard.', '#/themes', 'Compare themes'],
       ['layout', 'Components', 'Buttons to pipeline boards: every building block with its rules, in every theme.', '#/components', 'Open the library'],
+      ['image', 'Dashboard gallery', `${window.DASHBOARDS.dashboards.length} complete reference ${window.DASHBOARDS.dashboards.length === 1 ? 'dashboard' : 'dashboards'} by style and use case, each with its own theme and variants, previewed live.`, '#/dashboards', 'Browse dashboards'],
       ['sparkles', 'Showcase patterns', 'Story players, device frames, before/after, approval gates: ways to present a working product.', '#/showcase', 'See the patterns'],
       ['calendar', 'Calendars', `${window.CALENDARS.repos.length} calendar repos, eight live calendar styles in every theme, and how to integrate Google, ICS, booking and agents.`, '#/calendars', 'Explore calendars'],
       ['kanban', 'Live demo', 'A working CRM built with the framework: drag, keyboard, empty states, undo.', '#/demo', 'Try the demo'],
@@ -69,7 +70,7 @@
         <div class="s-stats">${stats.map(([n, l]) => `<div class="s-stat"><b>${n}</b><span>${l}</span></div>`).join('')}</div>
       </div>
       <section class="s-section"><div class="s-wrap">
-        <p class="s-eyebrow">Start here</p><h2 class="s-h2">Eight ways in</h2>
+        <p class="s-eyebrow">Start here</p><h2 class="s-h2">Nine ways in</h2>
         <div class="s-grid s-grid-3" style="margin-top:24px">${starts.map(([ic, t, d, href, cta]) => `
           <a class="s-panel s-start" href="${href}"><span class="s-start-icon">${icon(ic)}</span><h3 class="s-h3">${t}</h3><p class="s-muted s-small" style="margin:0">${d}</p><span class="s-arrow">${cta} →</span></a>`).join('')}</div>
       </div></section>
@@ -432,7 +433,7 @@ Inputs I have: &lt;voice memo / meeting notes / playbook&gt;.</code></pre>
   }
 
   // ---------------------------------------------------------------- router
-  const titles = { '': 'Dashboard Tools', showcase: 'Showcase', calendars: 'Calendars', tools: 'Tools', framework: 'Framework', themes: 'Themes', components: 'Components', demo: 'Demo', docs: 'Docs', inventory: 'Inventory' };
+  const titles = { '': 'Dashboard Tools', dashboards: 'Dashboards', showcase: 'Showcase', calendars: 'Calendars', tools: 'Tools', framework: 'Framework', themes: 'Themes', components: 'Components', demo: 'Demo', docs: 'Docs', inventory: 'Inventory' };
   let lastPage = null;
   function route() {
     const raw = location.hash.replace(/^#\/?/, '');
@@ -441,7 +442,7 @@ Inputs I have: &lt;voice memo / meeting notes / playbook&gt;.</code></pre>
     const sub = rest.join('/');
     if (page !== 'tools') closeDrawer(true);
     const samePage = lastPage === page && (page === 'tools' || page === 'docs');
-    if (!samePage) { window.Showcase && Showcase.destroy(); window.Calendars && Calendars.destroy(); const fresh = main.cloneNode(false); main.replaceWith(fresh); main = fresh; }
+    if (!samePage) { window.Showcase && Showcase.destroy(); window.Calendars && Calendars.destroy(); window.Dashboards && Dashboards.destroy(); const fresh = main.cloneNode(false); main.replaceWith(fresh); main = fresh; }
     lastPage = page;
     document.querySelectorAll('.s-nav a').forEach((a) => a.setAttribute('aria-current', a.dataset.page === (page || 'home') ? 'page' : 'false'));
     document.title = (titles[page] && page ? titles[page] + ' · ' : '') + 'Dashboard Tools';
@@ -452,6 +453,7 @@ Inputs I have: &lt;voice memo / meeting notes / playbook&gt;.</code></pre>
       case 'components': pageComponents(); break;
       case 'demo': pageDemo(); break;
       case 'showcase': Showcase.render(main, { theme: (TH.find((t) => t.id === current.theme) || {}).family === 'cinematic' ? current.theme : 'grove', themes: TH, onTheme: saveTheme }); break;
+      case 'dashboards': Dashboards.render(main, sub); break;
       case 'calendars': Calendars.render(main, { themes: TH, onTheme: saveTheme }); break;
       case 'docs': pageDocs(sub || 'README.md', anchor); break;
       case 'inventory': pageInventory(); break;

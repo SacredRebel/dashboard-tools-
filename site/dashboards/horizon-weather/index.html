@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Horizon Weather · Dashboard Tools gallery</title>
+  <meta name="description" content="Cinematic dark weather dashboard: painted sunset landscape, glass forecast cards, gold accent. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="hw">
+    <!-- ============ sidebar ============ -->
+    <aside class="hw-side">
+      <a class="hw-brand" href="#" aria-label="Horizon home">
+        <span class="hw-brand-mark" data-icon="sunrise"></span>
+        <span class="hw-brand-name">Horizon</span>
+        <span class="hw-brand-tag">weather, reimagined</span>
+      </a>
+      <nav class="hw-nav" aria-label="Main">
+        <a href="#" aria-current="page"><span data-icon="home"></span>Home</a>
+        <a href="#"><span data-icon="forecast"></span>Forecast</a>
+        <a href="#"><span data-icon="map"></span>Maps</a>
+        <a href="#"><span data-icon="heart"></span>Favorites</a>
+        <a href="#"><span data-icon="settings"></span>Settings</a>
+      </nav>
+      <div class="hw-side-foot">
+        <p class="hw-side-quote">Different skies.<br>Same beautiful planet.</p>
+        <span class="hw-rule" aria-hidden="true"></span>
+        <svg class="hw-ridge" viewBox="0 0 160 48" aria-hidden="true"><path d="M0 46 L28 22 L40 30 L62 8 L84 32 L98 22 L122 40 L140 28 L160 46" fill="none" stroke="currentColor" stroke-width="1"/><path d="M52 18 L62 8 L72 18" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+        <p class="db-sample">Sample data · fictional</p>
+      </div>
+    </aside>
+
+    <!-- ============ main ============ -->
+    <main class="hw-main">
+      <div class="hw-scene" aria-hidden="true" data-scene></div>
+
+      <header class="hw-top">
+        <form class="hw-search" role="search" onsubmit="return false">
+          <span data-icon="pin"></span>
+          <label class="vh" for="hw-q">Search for a city, place or location</label>
+          <input id="hw-q" type="search" placeholder="Search for a city, place or location…" autocomplete="off">
+          <button class="hw-search-go" aria-label="Search"><span data-icon="search"></span></button>
+        </form>
+        <div class="hw-top-actions">
+          <button class="hw-iconbtn" aria-label="Notifications"><span data-icon="bell"></span></button>
+          <button class="hw-iconbtn hw-avatar" aria-label="Account">JR</button>
+        </div>
+      </header>
+
+      <section class="hw-hero" aria-labelledby="hw-h1">
+        <div class="hw-hero-copy">
+          <p class="hw-kicker">Today's weather</p>
+          <h1 id="hw-h1" class="hw-display">Discover the weather around you</h1>
+          <p class="hw-lead">Accurate forecasts, beautiful insights, and a clearer view of what's ahead.</p>
+        </div>
+        <div class="hw-now" aria-live="polite" data-now></div>
+      </section>
+
+      <section class="hw-week" aria-label="7-day forecast">
+        <button class="hw-arrow" data-scroll="-1" aria-label="Earlier days"><span data-icon="chevLeft"></span></button>
+        <div class="hw-days" role="listbox" aria-label="Pick a day" data-days></div>
+        <button class="hw-arrow" data-scroll="1" aria-label="Later days"><span data-icon="chevRight"></span></button>
+      </section>
+
+      <div class="hw-grid">
+        <section class="hw-card hw-trend" aria-labelledby="hw-trend-h">
+          <div class="hw-card-head">
+            <h2 id="hw-trend-h"><span data-icon="thermo"></span>Temperature trend</h2>
+            <div class="hw-seg" role="group" aria-label="Range">
+              <button aria-pressed="true" data-range="day">Today</button><button aria-pressed="false" data-range="week">Week</button><button aria-pressed="false" data-range="month">Month</button>
+            </div>
+          </div>
+          <div class="hw-chart" data-chart></div>
+        </section>
+
+        <section class="hw-card hw-details" aria-labelledby="hw-details-h">
+          <div class="hw-card-head"><h2 id="hw-details-h"><span data-icon="info"></span>Weather details</h2></div>
+          <dl data-details></dl>
+        </section>
+
+        <figure class="hw-story">
+          <div class="hw-story-art" aria-hidden="true" data-story></div>
+          <figcaption>
+            <p class="hw-kicker">Good weather, good mood</p>
+            <blockquote class="hw-display">“The best view comes after the storm.”</blockquote>
+            <span class="hw-rule" aria-hidden="true"></span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <section class="hw-card hw-places" aria-labelledby="hw-places-h">
+        <h2 id="hw-places-h" class="vh">Popular locations</h2>
+        <div class="hw-places-head"><span data-icon="pin"></span>Popular locations</div>
+        <ul data-places></ul>
+        <button class="hw-ghost">See all locations <span data-icon="arrowRight"></span></button>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

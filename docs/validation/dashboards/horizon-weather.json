@@ -1,0 +1,31 @@
+{
+  "id": "horizon-weather",
+  "checked": "2026-11-13",
+  "ok": true,
+  "runs": [
+    {
+      "width": 1440,
+      "variant": "default",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "width": 375,
+      "variant": "default",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "variant": "dawn",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "variant": "night",
+      "overflow_px": 0,
+      "errors": []
+    }
+  ]
+}

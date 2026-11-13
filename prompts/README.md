@@ -85,3 +85,7 @@ Here is a screenshot/URL of a dashboard. Using docs/design/02-rulebook.md and
 05-anti-patterns.md, list every violation by severity with the exact fix
 (token, size, pattern). Then show the improved version.
 ```
+
+## Delegating the dashboard gallery to another agent
+
+[devin-dashboard-gallery.md](devin-dashboard-gallery.md) is a complete, self-contained prompt for an external coding agent (Devin or similar) that turns a folder of reference screenshots into gallery dashboards, one commit each, following [docs/dashboards/01-add-a-dashboard.md](../docs/dashboards/01-add-a-dashboard.md).

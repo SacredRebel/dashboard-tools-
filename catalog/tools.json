@@ -75,6 +75,12 @@
       "blurb": "Screen design, interaction design, design systems and critique, from flows to finished screens."
     },
     {
+      "id": "design-to-code",
+      "name": "Screenshot & Design to Code",
+      "icon": "image",
+      "blurb": "Turn screenshots and mockups into code, give text-only agents eyes, and present code nicely. Plus the dashboard style gallery to pick a look from."
+    },
+    {
       "id": "polish",
       "name": "UX Polish Rules",
       "icon": "sparkles",
@@ -5348,6 +5354,223 @@
         "calendar-hub"
       ],
       "fallback": "docs/calendars/01-integration-playbook.md#ics"
+    },
+    {
+      "plugin": null,
+      "requires": null,
+      "url": "https://github.com/SacredRebel/dashboard-tools-/blob/main/docs/dashboards/README.md",
+      "id": "dashboard-gallery",
+      "name": "Dashboard style gallery",
+      "invoke": "docs/dashboards/README.md + catalog/dashboards.json",
+      "kind": "reference",
+      "phases": [
+        "direction",
+        "design",
+        "build"
+      ],
+      "tier": "core",
+      "summary": "Complete, themeable reference dashboards grouped by style family and use case. Pick one as the starting look, then map it onto the toolkit tokens.",
+      "use_when": [
+        "Choosing a visual direction for any dashboard",
+        "The client points at a screenshot and says “like this”",
+        "Adding a new reference dashboard from a screenshot"
+      ],
+      "avoid_when": [
+        "Copying a gallery dashboard 1:1 into a client product without adapting words, data and brand"
+      ],
+      "how_to_use": [
+        "Filter catalog/dashboards.json by use_cases, style_family and mode; show the human 2–3 thumbnails",
+        "Read the chosen entry’s layout, components and signature; reuse its style.css tokens as the project’s theme",
+        "To add one: follow docs/dashboards/01-add-a-dashboard.md exactly"
+      ],
+      "pairs_with": [
+        "screenshot-to-code",
+        "frontend-design",
+        "creative-direction"
+      ],
+      "fallback": "docs/dashboards/README.md",
+      "category": "design-to-code"
+    },
+    {
+      "plugin": null,
+      "requires": "Vision model API key",
+      "url": "https://github.com/abi/screenshot-to-code",
+      "id": "screenshot-to-code",
+      "name": "screenshot-to-code",
+      "invoke": "github.com/abi/screenshot-to-code (local app, docker compose)",
+      "kind": "cli",
+      "phases": [
+        "design",
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Turns a screenshot, mockup or screen recording into HTML/Tailwind, React or Vue with a vision model. MIT.",
+      "use_when": [
+        "Getting a fast first draft of a layout from a screenshot",
+        "Measuring structure (grid, spacing) before hand-building"
+      ],
+      "avoid_when": [
+        "Shipping its raw output: it hard-codes colors and sizes; always refactor to tokens",
+        "No model API key available (it needs OpenAI, Anthropic or Gemini keys)"
+      ],
+      "how_to_use": [
+        "Run locally (docker compose up) with your own API key in backend/.env",
+        "Choose “HTML + CSS” for gallery dashboards; treat the result as a sketch",
+        "Rebuild the result in site/dashboards/<id>/ with token variables, original copy and code-drawn art"
+      ],
+      "pairs_with": [
+        "dashboard-gallery",
+        "design2code",
+        "screencoder"
+      ],
+      "fallback": "docs/dashboards/01-add-a-dashboard.md",
+      "category": "design-to-code"
+    },
+    {
+      "plugin": null,
+      "requires": "Python + model API key",
+      "url": "https://github.com/leigest519/ScreenCoder",
+      "id": "screencoder",
+      "name": "ScreenCoder",
+      "invoke": "github.com/leigest519/ScreenCoder (Python)",
+      "kind": "cli",
+      "phases": [
+        "design",
+        "build"
+      ],
+      "tier": "optional",
+      "summary": "Research multi-agent UI-to-code pipeline: detects layout blocks, maps components, generates HTML/CSS. Apache-2.0.",
+      "use_when": [
+        "Complex screenshots where block detection helps get the grid right"
+      ],
+      "avoid_when": [
+        "Quick jobs; setup is heavier than screenshot-to-code"
+      ],
+      "how_to_use": [
+        "Use its block detection output as a layout map; hand-build the dashboard on tokens"
+      ],
+      "pairs_with": [
+        "screenshot-to-code"
+      ],
+      "fallback": "docs/dashboards/01-add-a-dashboard.md",
+      "category": "design-to-code"
+    },
+    {
+      "plugin": null,
+      "requires": "OpenAI API key",
+      "url": "https://github.com/mostafasadeghi97/design2code",
+      "id": "design2code",
+      "name": "Design2Code",
+      "invoke": "github.com/mostafasadeghi97/design2code (Next.js app)",
+      "kind": "cli",
+      "phases": [
+        "design",
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Next.js app that converts sketches, wireframes and design exports to HTML/CSS/JS with GPT vision. MIT.",
+      "use_when": [
+        "Wireframes or rough sketches rather than polished screenshots"
+      ],
+      "avoid_when": [
+        "You already run screenshot-to-code"
+      ],
+      "how_to_use": [
+        "Deploy or run locally with an OpenAI key; use output as a draft only"
+      ],
+      "pairs_with": [
+        "screenshot-to-code"
+      ],
+      "fallback": "docs/dashboards/01-add-a-dashboard.md",
+      "category": "design-to-code"
+    },
+    {
+      "plugin": null,
+      "requires": null,
+      "url": "https://github.com/Anionex/agent-vision-toolkit",
+      "id": "agent-vision-toolkit",
+      "name": "agent-vision-toolkit",
+      "invoke": "github.com/Anionex/agent-vision-toolkit",
+      "kind": "cli",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Vision CLIs plus a skill that give text-only coding agents image Q&A, long-screenshot OCR, UI restoration and GUI automation. MIT.",
+      "use_when": [
+        "Your coding agent runs on a text-only model and must read screenshots"
+      ],
+      "avoid_when": [
+        "The agent already sees images (Claude, Devin with vision)"
+      ],
+      "how_to_use": [
+        "Install its CLIs; ask it to describe layout, colors and text of each screenshot before building"
+      ],
+      "pairs_with": [
+        "screenshot-to-code"
+      ],
+      "fallback": "docs/dashboards/01-add-a-dashboard.md",
+      "category": "design-to-code"
+    },
+    {
+      "plugin": null,
+      "requires": null,
+      "url": "https://github.com/oil-oil/draw-ui",
+      "id": "draw-ui",
+      "name": "draw-ui (skill, reference)",
+      "invoke": "github.com/oil-oil/draw-ui",
+      "kind": "reference",
+      "phases": [
+        "direction",
+        "design"
+      ],
+      "tier": "situational",
+      "summary": "Agent skill that settles page goal and visual direction before generating a UI design, then rebuilds it as HTML. No license file: study the workflow, don’t copy its text.",
+      "use_when": [
+        "Learning a design-first workflow: confirm page goal, references and locked regions before drawing"
+      ],
+      "avoid_when": [
+        "Copying its prompts or files into this repo (no license)"
+      ],
+      "how_to_use": [
+        "Borrow the three opening questions: what page and core job, which references, which regions can’t change"
+      ],
+      "pairs_with": [
+        "dashboard-gallery",
+        "brainstorming"
+      ],
+      "fallback": "docs/dashboards/01-add-a-dashboard.md",
+      "category": "design-to-code"
+    },
+    {
+      "plugin": null,
+      "requires": null,
+      "url": "https://github.com/riccardoperra/codeimage",
+      "id": "codeimage",
+      "name": "CodeImage",
+      "invoke": "codeimage.dev · github.com/riccardoperra/codeimage",
+      "kind": "library",
+      "phases": [
+        "handover"
+      ],
+      "tier": "situational",
+      "summary": "Makes polished screenshots of code for docs, handover guides and social posts. MIT.",
+      "use_when": [
+        "Showing a snippet (token file, config) in a handover deck or post"
+      ],
+      "avoid_when": [
+        "In-app code display; use a real code block"
+      ],
+      "how_to_use": [
+        "Paste the snippet at codeimage.dev, pick a theme that matches the dashboard, export PNG"
+      ],
+      "pairs_with": [
+        "dashboard-gallery"
+      ],
+      "fallback": "docs/dashboards/README.md",
+      "category": "design-to-code"
     }
   ]
 }

@@ -4,8 +4,8 @@
  *
  *   node scripts/build.mjs
  *
- * Reads   catalog/tools.json, catalog/calendars.json, catalog/inventory.json, design-system/themes.json, docs, templates
- * Writes  docs/tools/*.md, docs/calendars/catalog.md, site/data/data.js, site/assets/tokens.css
+ * Reads   catalog/tools.json, catalog/calendars.json, catalog/dashboards.json, catalog/inventory.json, design-system/themes.json, docs, templates
+ * Writes  docs/tools/*.md, docs/calendars/catalog.md, docs/dashboards/catalog.md, site/data/data.js, site/assets/tokens.css
  * Exits 1 if the catalog is invalid (duplicate ids, broken pairs_with, missing fallback files…).
  * No dependencies: plain Node >= 18.
  */
@@ -62,6 +62,42 @@ for (const r of cal.repos) {
   if (r.tool_id && !ids.has(r.tool_id)) errors.push(`${where}: tool_id ${r.tool_id} not in tools.json`);
 }
 for (const a of cal.approaches) for (const p of a.picks) if (!calSets.repos.has(p)) errors.push(`calendar approach "${a.id}": unknown pick ${p}`);
+
+// dashboards.json: gallery dashboards
+const dash = json('catalog/dashboards.json');
+{
+  const fam = new Set(dash.style_families.map((x) => x.id)), uc = new Set(dash.use_cases.map((x) => x.id));
+  const seen = new Set(), nums = new Set();
+  for (const d of dash.dashboards) {
+    const where = `dashboard "${d.id}"`;
+    if (!/^[a-z0-9-]+$/.test(d.id)) errors.push(`${where}: id must be kebab-case`);
+    if (seen.has(d.id)) errors.push(`${where}: duplicate id`); seen.add(d.id);
+    if (nums.has(d.number)) errors.push(`${where}: duplicate number ${d.number}`); nums.add(d.number);
+    for (const k of ['name', 'style_family', 'mode', 'status', 'summary', 'signature', 'path']) if (!d[k]) errors.push(`${where}: missing ${k}`);
+    if (!fam.has(d.style_family)) errors.push(`${where}: unknown style_family ${d.style_family}`);
+    if (!['dark', 'light'].includes(d.mode)) errors.push(`${where}: mode must be dark or light`);
+    if (!['ready', 'draft'].includes(d.status)) errors.push(`${where}: status must be ready or draft`);
+    if (!d.use_cases?.length) errors.push(`${where}: use_cases is empty`);
+    for (const u of d.use_cases || []) if (!uc.has(u)) errors.push(`${where}: unknown use_case ${u}`);
+    for (const k of ['best_for', 'avoid_when', 'components', 'mood']) if (!d[k]?.length) errors.push(`${where}: ${k} is empty`);
+    for (const k of ['pattern', 'structure', 'responsive']) if (!d.layout?.[k]) errors.push(`${where}: layout.${k} missing`);
+    for (const k of ['bg', 'surface', 'text', 'muted', 'accent']) if (!/^#[0-9a-f]{6}$/i.test(d.palette?.[k] || '')) errors.push(`${where}: palette.${k} must be a #rrggbb hex`);
+    if (!d.fonts?.display || !d.fonts?.sans) errors.push(`${where}: fonts.display and fonts.sans required`);
+    if (!d.variants?.length || d.variants[0].id !== 'default') errors.push(`${where}: variants must start with {"id":"default"}`);
+    if (d.maps_to_theme && !themes.themes.some((t) => t.id === d.maps_to_theme)) errors.push(`${where}: maps_to_theme ${d.maps_to_theme} is not a toolkit theme`);
+    if (d.path !== `site/dashboards/${d.id}/`) errors.push(`${where}: path must be site/dashboards/${d.id}/`);
+    for (const f of ['index.html', 'style.css', 'thumb.jpg']) if (!existsSync(join(root, d.path, f))) errors.push(`${where}: ${d.path}${f} missing${f === 'thumb.jpg' ? ' (run node scripts/dashboards-check.mjs ' + d.id + ')' : ''}`);
+    if (existsSync(join(root, d.path, 'style.css'))) {
+      const css = rd(d.path + 'style.css');
+      for (const v of (d.variants || []).slice(1)) if (!css.includes(`[data-variant="${v.id}"]`)) errors.push(`${where}: style.css has no [data-variant="${v.id}"] block`);
+      for (const t of ['--bg', '--surface', '--text', '--text-muted', '--accent', '--font-sans']) if (!css.includes(t + ':')) errors.push(`${where}: style.css must define ${t}`);
+    }
+    if (existsSync(join(root, d.path, 'index.html'))) {
+      const html = rd(d.path + 'index.html');
+      for (const need of ['../_shared/base.css', '../_shared/frame.js', 'style.css', 'name="viewport"']) if (!html.includes(need)) errors.push(`${where}: index.html must include ${need}`);
+    }
+  }
+}
 
 const themeCss = rd('design-system/tokens.css');
 for (const th of themes.themes) {
@@ -140,12 +176,33 @@ for (const c of catalog.categories) {
   writeFileSync(join(root, 'docs/calendars/catalog.md'), md);
 }
 
+// ---------------------------------------------------------------- docs/dashboards/catalog.md
+{
+  const famName = Object.fromEntries(dash.style_families.map((f) => [f.id, f.name]));
+  const ucName = Object.fromEntries(dash.use_cases.map((u) => [u.id, u.name]));
+  let md = header.replace('catalog/tools.json', 'catalog/dashboards.json') + `# Dashboard gallery catalog\n\n${dash.dashboards.length} dashboards in ${dash.style_families.length} style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).\n\n`;
+  md += '| # | Dashboard | Style | Use cases | Mode | Variants | Folder |\n|---|---|---|---|---|---|---|\n';
+  for (const d of [...dash.dashboards].sort((a, b) => a.number - b.number)) md += `| ${d.number} | [${d.name}](#${d.id}) | ${famName[d.style_family]} | ${d.use_cases.map((u) => ucName[u]).join(', ')} | ${d.mode} | ${d.variants.map((v) => v.name).join(', ')} | [${d.path}](../../${d.path}) |\n`;
+  for (const f of dash.style_families) {
+    const list = dash.dashboards.filter((d) => d.style_family === f.id);
+    md += `\n## ${f.name}\n\n${f.blurb}\n\n${list.length ? '' : '_No dashboards yet._\n\n'}`;
+    for (const d of list) {
+      md += `<a id="${d.id}"></a>\n### ${d.number}. ${d.name}\n\n![${d.name}](../../${d.path}thumb.jpg)\n\n${d.summary}\n\n`;
+      md += `- **Use cases:** ${d.use_cases.map((u) => ucName[u]).join(', ')} · **Mode:** ${d.mode} · **Mood:** ${d.mood.join(', ')}\n- **Signature:** ${d.signature}\n- **Layout:** ${d.layout.structure}\n- **Responsive:** ${d.layout.responsive}\n- **Fonts:** ${d.fonts.display} / ${d.fonts.sans} · **Palette:** ${Object.entries(d.palette).map(([k, v]) => `${k} \`${v}\``).join(', ')}\n- **Variants:** ${d.variants.map((v) => v.name).join(', ')}${d.maps_to_theme ? ` · **Closest toolkit theme:** \`${d.maps_to_theme}\`` : ''}\n\n`;
+      md += `**Best for**\n${d.best_for.map((x) => `- ${x}`).join('\n')}\n\n**Avoid when**\n${d.avoid_when.map((x) => `- ${x}`).join('\n')}\n\n**Components:** ${d.components.join(' · ')}\n\n---\n\n`;
+    }
+  }
+  mkdirSync(join(root, 'docs/dashboards'), { recursive: true });
+  writeFileSync(join(root, 'docs/dashboards/catalog.md'), md);
+}
+
 // ---------------------------------------------------------------- docs bundle for the site
 const docGroups = [
   ['Start', ['README.md', 'AGENTS.md', 'prompts/README.md']],
   ['Framework', listDir('docs/framework')],
   ['Design', [...listDir('docs/design'), 'design-system/README.md']],
   ['CRM', listDir('docs/crm')],
+  ['Dashboards', ['docs/dashboards/README.md', ...listDir('docs/dashboards').filter((f) => !f.endsWith('README.md'))]],
   ['Calendars', ['docs/calendars/README.md', ...listDir('docs/calendars').filter((f) => !f.endsWith('README.md'))]],
   ['Stack', listDir('docs/stack')],
   ['Templates', listDir('templates')],
@@ -177,10 +234,11 @@ writeFileSync(
     `window.CATALOG=${JSON.stringify(catalog)};\n` +
     `window.THEMES=${JSON.stringify(themes)};\n` +
     `window.CALENDARS=${JSON.stringify(cal)};\n` +
+    `window.DASHBOARDS=${JSON.stringify(dash)};\n` +
     `window.INVENTORY=${JSON.stringify(inv)};\n` +
     `window.DOCS=${JSON.stringify(docs)};\n`,
 );
 mkdirSync(join(root, 'site/assets'), { recursive: true });
 copyFileSync(join(root, 'design-system/tokens.css'), join(root, 'site/assets/tokens.css'));
 
-console.log(`✔ ${catalog.tools.length} tools · ${catalog.categories.length} categories · ${cal.repos.length} calendar repos · ${themes.themes.length} themes · ${docs.length} docs · ${inv.total} inventoried skills`);
+console.log(`✔ ${catalog.tools.length} tools · ${catalog.categories.length} categories · ${cal.repos.length} calendar repos · ${dash.dashboards.length} gallery dashboards · ${themes.themes.length} themes · ${docs.length} docs · ${inv.total} inventoried skills`);
