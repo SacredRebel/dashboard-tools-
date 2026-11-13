@@ -1,0 +1,100 @@
+/* =========================================================================
+   Plumage Bird Survey · style family: cinematic · mode: dark
+   Token names match design-system/tokens.css. Variants: default (plume), canopy, ember.
+   ========================================================================= */
+:root {
+  --bg: #171b20;
+  --surface: #20262d;
+  --surface-2: #2a3139;
+  --border: #343c46;
+  --text: #eef2f4;
+  --text-muted: #a9b4bd;
+  --text-subtle: #97a3ad;
+  --accent: #3ccbb0;
+  --accent-fg: #0d1a17;
+  --accent-soft: #1d3a36;
+  --focus: #8ff0dc;
+  --chart-1: #3ccbb0;
+  --p1: #2bb5a0; --p2: #8bd36b; --p3: #f2b43c; --p4: #f07a3a; --p5: #e2504b; --p6: #8a63ff;
+  --leaf-1: #1f8f7f; --leaf-2: #2fb69a; --leaf-3: #d9762d; --leaf-4: #f0a23a; --beak: #f2a531; --eye: #0d1114;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Sora", system-ui, sans-serif;
+  --radius-sm: 10px; --radius-md: 16px; --radius-lg: 24px; --radius-pill: 999px;
+}
+[data-variant="canopy"] {
+  --bg: #0f1c19; --surface: #162723; --surface-2: #1e332e; --border: #2a443d; --accent: #9be36f; --accent-fg: #10200b; --accent-soft: #24401f; --focus: #c4f5a6; --chart-1: #9be36f;
+  --p4: #c9d85a; --p5: #67c98a; --p6: #2fa6b8; --leaf-3: #4a9d58; --leaf-4: #8fcf62;
+}
+[data-variant="ember"] {
+  --bg: #1d1714; --surface: #28201b; --surface-2: #332922; --border: #45372e; --accent: #ff9a52; --accent-fg: #251106; --accent-soft: #46291a; --focus: #ffc597; --chart-1: #ff9a52;
+  --p1: #f2b43c; --p2: #f58d3a; --p6: #c94a63; --leaf-1: #a3402c; --leaf-2: #d0633a;
+}
+body { background: radial-gradient(1200px 600px at 50% 30%, var(--surface), var(--bg) 70%) fixed, var(--bg); }
+.pl { max-width: 1380px; margin: 0 auto; padding: 22px 28px 26px; }
+.pl-foot { margin-top: 18px; text-align: center; }
+.pl-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.pl-brand { display: inline-flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 22px; }
+.pl-brand small { display: block; font-family: var(--font-sans); font-size: 13px; color: var(--text-muted); }
+.pl-mark { width: 36px; height: 36px; border-radius: 50% 50% 50% 8px; background: conic-gradient(from 200deg, var(--p1), var(--p2), var(--p3), var(--p4), var(--p5), var(--p6), var(--p1)); }
+.pl-seg { display: flex; gap: 4px; padding: 4px; border-radius: var(--radius-pill); background: var(--surface); border: 1px solid var(--border); }
+.pl-seg button { min-height: 40px; padding: 0 18px; border: 0; border-radius: var(--radius-pill); background: none; color: var(--text-muted); font-size: 14px; font-weight: 600; }
+.pl-seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); }
+.pl-regions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+.pl-reg { min-width: 0; padding: 16px 16px 8px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--border); }
+.pl-reg p { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 14px; color: var(--text-muted); }
+.pl-reg b { font-family: var(--font-display); font-size: 26px; font-weight: 500; color: var(--text); }
+.pl-reg svg { width: 100%; height: 70px; display: block; margin-top: 6px; }
+.pl-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; grid-template-areas:
+  "kpi kpi kpi art art art art art art ring ring ring"
+  "bar bar bar bar bar bar log log log log log log"; }
+.pl-kpi { grid-area: kpi; } .pl-art { grid-area: art; } .pl-rings { grid-area: ring; } .pl-bars { grid-area: bar; } .pl-log { grid-area: log; }
+.pl-card { min-width: 0; padding: 20px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--border); }
+.pl-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 12px; }
+.pl-card h2:not(.pl-k) { font-size: 18px; font-weight: 600; }
+.pl-k { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.pl-meta { font-size: 13px; color: var(--text-muted); }
+.pl-center { text-align: center; } .pl-gap { margin-top: 16px; }
+.pl-big { margin-top: 6px; font-family: var(--font-display); font-size: 64px; font-weight: 500; line-height: 1; background: linear-gradient(90deg, var(--p3), var(--p4)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pl-sub { margin-top: 6px; font-size: 14px; color: var(--text-muted); }
+.pl-ring { position: relative; width: 150px; margin: 18px auto 6px; }
+.pl-ring svg { width: 100%; height: auto; display: block; }
+.pl-ring b { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-display); font-size: 32px; font-weight: 500; }
+/* signature: code-drawn feathered hero between leaf walls */
+.pl-art { position: relative; min-width: 0; min-height: 420px; border-radius: var(--radius-lg); overflow: hidden; background: radial-gradient(circle at 60% 40%, var(--surface-2), var(--surface) 70%); border: 1px solid var(--border); }
+.pl-artbox { position: absolute; inset: 0; }
+.pl-artbox svg { width: 100%; height: 100%; display: block; }
+.pl-artcap { position: absolute; left: 16px; bottom: 16px; max-width: 320px; padding: 14px 16px; border-radius: var(--radius-md); background: var(--bg); border: 1px solid var(--border); }
+.pl-artcap h1 { font-family: var(--font-display); font-size: 24px; font-weight: 500; }
+.pl-artcap p:last-child { margin-top: 4px; font-size: 14px; color: var(--text-muted); }
+.pl-donuts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 10px; text-align: center; }
+.pl-donuts div { position: relative; width: 64px; margin: 0 auto 6px; }
+.pl-donuts svg { width: 100%; height: auto; display: block; }
+.pl-donuts b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 13px; font-weight: 600; }
+.pl-donuts span { font-size: 13px; color: var(--text-muted); }
+.pl-blist { display: grid; gap: 4px; }
+.pl-blist button { display: grid; grid-template-columns: 170px minmax(0, 1fr) 48px; gap: 12px; align-items: center; width: 100%; min-height: 44px; padding: 4px 8px; border: 0; border-radius: var(--radius-sm); background: none; color: var(--text); font-size: 14px; text-align: left; }
+.pl-blist button:hover, .pl-blist button[aria-pressed="true"] { background: var(--surface-2); }
+.pl-blist button[aria-pressed="true"] { box-shadow: inset 3px 0 0 var(--accent); }
+.pl-track { height: 12px; border-radius: var(--radius-pill); background: var(--surface-2); overflow: hidden; }
+.pl-track i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--p1), var(--p3) 60%, var(--p5)); }
+.pl-blist .num { text-align: right; font-weight: 600; }
+.pl-clear { min-height: 40px; padding: 0 14px; border: 1px solid var(--border); border-radius: var(--radius-pill); background: var(--surface-2); color: var(--text); font-size: 14px; }
+.pl-clear[hidden] { display: none; }
+.pl-entries { display: grid; gap: 6px; margin-top: 10px; }
+.pl-entries li { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 12px; border-radius: var(--radius-md); background: var(--surface-2); font-size: 14px; }
+.pl-entries i { width: 12px; height: 12px; border-radius: 50%; }
+.pl-entries small { display: block; font-size: 13px; color: var(--text-muted); }
+.pl-entries .num { font-family: var(--font-display); font-size: 18px; }
+.pl-none { padding: 14px; color: var(--text-muted); }
+@media (max-width: 1100px) {
+  .pl-regions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "art art" "kpi ring" "bar bar" "log log"; }
+}
+@media (max-width: 700px) {
+  .pl { padding: 12px; }
+  .pl-top { flex-wrap: wrap; } .pl-seg button { min-height: 44px; }
+  .pl-regions { gap: 10px; } .pl-reg b { font-size: 22px; }
+  .pl-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; grid-template-areas: "art" "kpi" "ring" "bar" "log"; }
+  .pl-art { min-height: 0; display: flex; flex-direction: column; } .pl-artbox { position: relative; height: 280px; } .pl-artcap { position: static; max-width: none; margin: 0 12px 12px; }
+  .pl-blist button { grid-template-columns: minmax(0, 1fr) 44px; } .pl-blist .pl-track { grid-column: 1 / -1; grid-row: 2; }
+}

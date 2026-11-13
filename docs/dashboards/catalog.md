@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-14 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+15 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -20,6 +20,7 @@
 | 12 | [Mallow Music](#mallow-music) | Tactile & neumorphic | Music & media | light | Cream, Berry, Cocoa | [site/dashboards/mallow-music/](../../site/dashboards/mallow-music/) |
 | 13 | [Taffy Analytics](#taffy-analytics) | Minimal & airy | SaaS admin, Analytics & BI | light | Taffy, Mint, Dusk | [site/dashboards/taffy-analytics/](../../site/dashboards/taffy-analytics/) |
 | 14 | [Prism Workspace](#prism-workspace) | Glass & glow | SaaS admin | light | Opal, Aqua, Obsidian | [site/dashboards/prism-workspace/](../../site/dashboards/prism-workspace/) |
+| 15 | [Plumage Bird Survey](#plumage-survey) | Cinematic & atmospheric | Analytics & BI | dark | Plume, Canopy, Ember | [site/dashboards/plumage-survey/](../../site/dashboards/plumage-survey/) |
 
 ## Cinematic & atmospheric
 
@@ -106,6 +107,34 @@ A moonlit payroll overview: a code-drawn ink landscape with a gold moon, layered
 - Screens that must fill a wide monitor edge to edge
 
 **Components:** Sidebar nav with gold active pill · Pay-period stepper · Tinted KPI tiles with change vs. last month · Grouped bar chart (pick a month) · Donut with selectable legend · Progress ring with stat grid · Dated task list · Serif pull quote
+
+---
+
+<a id="plumage-survey"></a>
+### 15. Plumage Bird Survey
+
+![Plumage Bird Survey](../../site/dashboards/plumage-survey/thumb.jpg)
+
+A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A code-drawn, rainbow-feathered bird sits between walls of teal and amber leaves, framed by gradient region charts, coverage and nesting rings, habitat donuts, ranked species bars and an observation log you can filter by species.
+
+- **Use cases:** Analytics & BI · **Mode:** dark · **Mood:** vivid, natural, dramatic, rich, lively
+- **Signature:** A code-drawn bird in a teal-to-violet feather gradient between leaf walls, with every chart reusing the same feather colours.
+- **Layout:** Top bar: mark, name, season toggle · 4 region spark cards · 12-column grid: species KPI + coverage ring (3) + hero art with caption (6) + nesting ring and habitat donuts (3) · species bars (6) + observation log (6)
+- **Responsive:** ≤1100px: regions 2×2, art full width, KPI and rings side by side, bars and log full width · ≤700px: single column, caption moves under the art
+- **Fonts:** Space Grotesk / Sora · **Palette:** bg `#171b20`, surface `#20262d`, text `#eef2f4`, muted `#a9b4bd`, accent `#3ccbb0`, amber `#f2b43c`, orange `#f07a3a`, violet `#8a63ff`
+- **Variants:** Plume, Canopy, Ember · **Closest toolkit theme:** `ember`
+
+**Best for**
+- Ecology, conservation and citizen-science reporting
+- Public-facing impact dashboards that need a memorable hero
+- Seasonal monitoring with a few headline numbers
+
+**Avoid when**
+- Dense operational tools used all day
+- Calm or corporate brands
+- Screens where the art would push data below the fold on small laptops
+
+**Components:** Season toggle · Region spark cards with gradient fills · Headline count with gradient text · Arc gauges · Mini habitat donuts · Ranked gradient bars that filter the log · Observation log with empty state
 
 ---
 

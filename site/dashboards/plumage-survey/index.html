@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Plumage Bird Survey · Dashboard Tools gallery</title>
+  <meta name="description" content="Cinematic dark bird-survey dashboard with a code-drawn feathered hero, gradient region charts, coverage rings, species bars and an observation log. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600&family=Space+Grotesk:wght@500&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="pl">
+    <header class="pl-top">
+      <a class="pl-brand" href="#" aria-label="Plumage home"><span class="pl-mark" aria-hidden="true"></span><span>Plumage<small>Coastal bird survey</small></span></a>
+      <div class="pl-seg" role="group" aria-label="Season" data-season><button data-v="spring" aria-pressed="true">Spring</button><button data-v="autumn" aria-pressed="false">Autumn</button></div>
+    </header>
+
+    <section class="pl-regions" aria-label="Species counted by region, last 12 weeks" data-regions></section>
+
+    <main class="pl-grid">
+      <section class="pl-card pl-kpi" aria-labelledby="pl-kpi-h">
+        <h2 id="pl-kpi-h" class="pl-k">Species recorded</h2>
+        <p class="pl-big num" data-total></p>
+        <p class="pl-sub" data-totalnote></p>
+        <div class="pl-ring" data-ring1></div>
+        <p class="pl-k pl-center">Transects surveyed</p>
+      </section>
+
+      <section class="pl-art" aria-labelledby="pl-art-h">
+        <div class="pl-artbox" data-art aria-hidden="true"></div>
+        <div class="pl-artcap"><p class="pl-k">Bird of the season</p><h1 id="pl-art-h">Ember lorikeet</h1><p>Fictional species · first nesting pair on the estuary since the survey began.</p></div>
+      </section>
+
+      <section class="pl-card pl-rings" aria-labelledby="pl-hab-h">
+        <h2 id="pl-hab-h" class="pl-k">Nesting success</h2>
+        <div class="pl-ring" data-ring2></div>
+        <h2 class="pl-k pl-gap">Habitat split</h2>
+        <ul class="pl-donuts" data-donuts></ul>
+      </section>
+
+      <section class="pl-card pl-bars" aria-labelledby="pl-bar-h">
+        <div class="pl-head"><h2 id="pl-bar-h">Sightings by species</h2><span class="pl-meta">Select one to filter the log</span></div>
+        <ul class="pl-blist" data-bars></ul>
+      </section>
+
+      <section class="pl-card pl-log" aria-labelledby="pl-log-h">
+        <div class="pl-head"><h2 id="pl-log-h">Observation log</h2><button class="pl-clear" data-clear hidden>Show all species</button></div>
+        <p class="pl-meta" data-logstate aria-live="polite"></p>
+        <ul class="pl-entries" data-log></ul>
+      </section>
+    </main>
+    <p class="db-sample pl-foot">Sample data · fictional survey, observers and the Ember lorikeet</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

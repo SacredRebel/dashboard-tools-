@@ -1,0 +1,62 @@
+{
+  "id": "plumage-survey",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/plumage-survey/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/plumage-survey/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/plumage-survey/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/plumage-survey/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/plumage-survey/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=canopy",
+      "width": 1440,
+      "variant": "canopy",
+      "final_path": "/dashboards/plumage-survey/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=ember",
+      "width": 1440,
+      "variant": "ember",
+      "final_path": "/dashboards/plumage-survey/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/plumage-survey",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}
