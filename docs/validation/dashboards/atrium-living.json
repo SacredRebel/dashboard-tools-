@@ -1,0 +1,62 @@
+{
+  "id": "atrium-living",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/atrium-living/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/atrium-living/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/atrium-living/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/atrium-living/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/atrium-living/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=dusk",
+      "width": 1440,
+      "variant": "dusk",
+      "final_path": "/dashboards/atrium-living/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=night",
+      "width": 1440,
+      "variant": "night",
+      "final_path": "/dashboards/atrium-living/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/atrium-living",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

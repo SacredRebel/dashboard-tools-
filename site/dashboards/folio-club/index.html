@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Folio Club · Dashboard Tools gallery</title>
+  <meta name="description" content="Soft dark reading tracker: book list, friends, current book hero, colorful metric tiles, leaderboard and activity feed. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="fc">
+    <aside class="fc-rail" aria-label="Library and friends">
+      <div class="fc-me">
+        <span class="fc-av fc-av-lg" style="--av:var(--av-1)" aria-hidden="true">AQ</span>
+        <div>
+          <p class="fc-me-name">Avery Quinn</p>
+          <p class="fc-me-meta">Level 2 · 12 books</p>
+        </div>
+      </div>
+
+      <div class="fc-rail-block">
+        <div class="fc-rail-h">
+          <h2 id="fc-books-h">Books</h2>
+          <button class="fc-iconbtn" aria-label="Add a book"><span data-icon="plus"></span></button>
+        </div>
+        <ul class="fc-books" role="listbox" aria-labelledby="fc-books-h" data-books></ul>
+      </div>
+
+      <div class="fc-rail-block">
+        <div class="fc-rail-h">
+          <h2 id="fc-friends-h">Friends</h2>
+          <button class="fc-iconbtn" aria-label="Add a friend"><span data-icon="plus"></span></button>
+        </div>
+        <ul class="fc-friends" data-friends></ul>
+        <button class="fc-link" type="button" data-more-friends>See more</button>
+      </div>
+
+      <a class="fc-settings" href="#"><span data-icon="settings"></span>Settings</a>
+    </aside>
+
+    <main class="fc-main">
+      <section class="fc-hero" aria-labelledby="fc-hero-h">
+        <div class="fc-hero-cover" data-cover aria-hidden="true"></div>
+        <div class="fc-hero-copy">
+          <div class="fc-hero-actions">
+            <button class="fc-iconbtn" aria-label="Add related book"><span data-icon="plus"></span></button>
+            <button class="fc-iconbtn" aria-label="Share progress"><span data-icon="upload"></span></button>
+          </div>
+          <h1 id="fc-hero-h" data-title></h1>
+          <p class="fc-author" data-author></p>
+          <button class="fc-link" type="button">Related books</button>
+        </div>
+      </section>
+
+      <section class="fc-metrics" aria-label="Reading metrics" data-metrics></section>
+
+      <section class="fc-board" aria-labelledby="fc-board-h">
+        <div class="fc-board-top">
+          <h2 id="fc-board-h" class="vh">Leaderboard</h2>
+          <div class="fc-seg" role="group" aria-label="Leaderboard scope" data-board-tabs>
+            <button data-v="friends" aria-pressed="false">Friends</button>
+            <button data-v="club" aria-pressed="false">Bookclub</button>
+            <button data-v="global" aria-pressed="true">Global</button>
+          </div>
+        </div>
+        <div class="fc-board-body" data-board>
+          <div class="fc-board-rank">
+            <span class="fc-av" style="--av:var(--av-1)" aria-hidden="true">AQ</span>
+            <div>
+              <p class="fc-board-label">Rank <b class="num" data-rank></b></p>
+              <p class="fc-board-pts"><b class="num" data-points></b> points</p>
+            </div>
+          </div>
+          <div class="fc-board-pct">
+            <span data-icon="globe"></span>
+            <p><b data-pct></b> <span data-out-of></span></p>
+          </div>
+        </div>
+        <p class="fc-empty" data-board-empty hidden>No readers in this scope yet. Switch tabs or invite a friend.</p>
+        <p class="fc-error" data-board-error hidden>Couldn’t load ranks. Try another tab.</p>
+      </section>
+    </main>
+
+    <aside class="fc-feed" aria-labelledby="fc-act-h">
+      <h2 id="fc-act-h">Activity</h2>
+      <ul class="fc-feed-list" data-feed></ul>
+      <p class="fc-empty" data-feed-empty hidden>Quiet for now. Check back after your next chapter.</p>
+    </aside>
+
+    <p class="db-sample fc-foot">Sample data · fictional</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

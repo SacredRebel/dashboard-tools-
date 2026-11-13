@@ -1,0 +1,62 @@
+{
+  "id": "aether-pane",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/aether-pane/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/aether-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aether-pane",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/aether-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aether-pane/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/aether-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aether-pane/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/aether-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aether-pane/?variant=violet",
+      "width": 1440,
+      "variant": "violet",
+      "final_path": "/dashboards/aether-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aether-pane/?variant=daylight",
+      "width": 1440,
+      "variant": "daylight",
+      "final_path": "/dashboards/aether-pane/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/aether-pane",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

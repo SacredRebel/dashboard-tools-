@@ -1,0 +1,62 @@
+{
+  "id": "citadel-wall",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/citadel-wall/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/citadel-wall/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/citadel-wall",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/citadel-wall/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/citadel-wall/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/citadel-wall/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/citadel-wall/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/citadel-wall/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/citadel-wall/?variant=ocean",
+      "width": 1440,
+      "variant": "ocean",
+      "final_path": "/dashboards/citadel-wall/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/citadel-wall/?variant=amber",
+      "width": 1440,
+      "variant": "amber",
+      "final_path": "/dashboards/citadel-wall/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/citadel-wall",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

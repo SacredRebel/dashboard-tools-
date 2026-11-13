@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-17 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+28 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -23,6 +23,17 @@
 | 15 | [Plumage Bird Survey](#plumage-survey) | Cinematic & atmospheric | Analytics & BI | dark | Plume, Canopy, Ember | [site/dashboards/plumage-survey/](../../site/dashboards/plumage-survey/) |
 | 16 | [Hollow Vault](#hollow-vault) | Dark neon | Music & media | dark | Dusk, Moss, Crimson | [site/dashboards/hollow-vault/](../../site/dashboards/hollow-vault/) |
 | 17 | [Larchwood Lodge](#larchwood-lodge) | Bento grid | Hospitality & food, Smart home & IoT | dark | Plum, Birch, Pine | [site/dashboards/larchwood-lodge/](../../site/dashboards/larchwood-lodge/) |
+| 18 | [Hearth Nest](#hearth-nest) | Cinematic & atmospheric | Smart home & IoT | dark | Amber hearth, Cedar, Frost | [site/dashboards/hearth-nest/](../../site/dashboards/hearth-nest/) |
+| 19 | [Veil Rooms](#veil-rooms) | Glass & glow | Smart home & IoT | dark | Slate glass, Mist, Midnight | [site/dashboards/veil-rooms/](../../site/dashboards/veil-rooms/) |
+| 20 | [Atrium Living](#atrium-living) | Glass & glow | Smart home & IoT | light | Daylight, Dusk, Night | [site/dashboards/atrium-living/](../../site/dashboards/atrium-living/) |
+| 21 | [Glacier Ops](#glacier-ops) | Data-dense pro | Analytics & BI | dark | Glacier, Cobalt, Night | [site/dashboards/glacier-ops/](../../site/dashboards/glacier-ops/) |
+| 22 | [Folio Club](#folio-club) | Soft & friendly | Education, Music & media | dark | Ink, Parchment, Night | [site/dashboards/folio-club/](../../site/dashboards/folio-club/) |
+| 23 | [Citadel Wall](#citadel-wall) | Data-dense pro | Analytics & BI, Logistics & fleet | dark | Cyan, Ocean, Amber | [site/dashboards/citadel-wall/](../../site/dashboards/citadel-wall/) |
+| 24 | [Aether Pane](#aether-pane) | Glass & glow | Analytics & BI, SaaS admin | dark | Cyan, Violet, Daylight | [site/dashboards/aether-pane/](../../site/dashboards/aether-pane/) |
+| 25 | [Forge Fitness](#forge-fitness) | Cinematic & atmospheric | Health & fitness | dark | Forge, Ember, Ice | [site/dashboards/forge-fitness/](../../site/dashboards/forge-fitness/) |
+| 26 | [Zest Health](#zest-health) | Bold & graphic | Health & fitness | light | Lime, Grape, Night | [site/dashboards/zest-health/](../../site/dashboards/zest-health/) |
+| 27 | [Orchard Sales](#orchard-sales) | Bento grid | CRM & sales, Analytics & BI | light | Orchard, Citrus, Graphite | [site/dashboards/orchard-sales/](../../site/dashboards/orchard-sales/) |
+| 28 | [Mauve Ledger](#mauve-ledger) | Glass & glow | Finance & banking | light | Lilac, Blush, Slate | [site/dashboards/mauve-ledger/](../../site/dashboards/mauve-ledger/) |
 
 ## Cinematic & atmospheric
 
@@ -140,6 +151,62 @@ A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A co
 
 ---
 
+<a id="hearth-nest"></a>
+### 18. Hearth Nest
+
+![Hearth Nest](../../site/dashboards/hearth-nest/thumb.jpg)
+
+A cinematic dark smart-home board: amber accent, SVG living-room hero with device nodes, weather and AQI arc, thermostat dial, device toggles and a 7-day power chart.
+
+- **Use cases:** Smart home & IoT · **Mode:** dark · **Mood:** cinematic, warm, cosy, premium, amber
+- **Signature:** Warm amber glow on a code-drawn living room with sofa, lamp and plant, linked by glowing device constellation nodes.
+- **Layout:** 64px icon rail · top bar (brand, search, bell, avatar) · left stack (weather, AQI arc + spark, thermostat dial) · right hero (room tabs, SVG living room with device nodes, vertical brightness) · bottom row (2×2 device toggles · 7-day power bars) · eco footer
+- **Responsive:** ≤1180px: left stack and hero stack; power full width · ≤960px: rail becomes top icon strip · ≤640px: single column, room tabs scroll, brightness becomes horizontal
+- **Fonts:** Syne / Outfit · **Palette:** bg `#12151c`, surface `#1a1f2a`, text `#f4ebe0`, muted `#b8aea2`, accent `#f0a04b`, aqi `#3ecf8e`, cool `#5b8def`, violet `#a78bfa`
+- **Variants:** Amber hearth, Cedar, Frost · **Closest toolkit theme:** `ember`
+
+**Best for**
+- Consumer smart-home or HVAC brands that want atmosphere over grids
+- In-home tablets and wall panels with a living-room hero
+- Energy glance views paired with climate and lighting
+
+**Avoid when**
+- Dense device tables or installer tooling
+- Light-mode-only brands
+- Screens that cannot spare space for a scenic hero
+
+**Components:** Icon rail navigation · Pill search and notification bell · Weather scene card with humidity/wind/AQI chips · AQI arc gauge with PM2.5 sparkline · Thermostat dial with ± and eco pill · Room segmented tabs · SVG living-room hero with device nodes · Vertical brightness slider · Device power toggle tiles · 7-day power bar chart
+
+---
+
+<a id="forge-fitness"></a>
+### 25. Forge Fitness
+
+![Forge Fitness](../../site/dashboards/forge-fitness/thumb.jpg)
+
+A cinematic dark fitness board: frosted glass cards for steps, sleep, heart, wellness and focus float over a code-drawn gym silhouette atmosphere, with an energy-and-recovery gauge on the right.
+
+- **Use cases:** Health & fitness · **Mode:** dark · **Mood:** cinematic, athletic, moody, focused, premium
+- **Signature:** Glass metric cards floating over an SVG athlete/gym silhouette with orange and lime accents — no photographic faces.
+- **Layout:** 64px icon rail · top bar (brand, ask-anything search, add, avatar) · toolbar (search, edit, date range, add wallet, create report) · 12-column glass grid: activity · sleep · heart · wellness + focus + tall energy/recovery gauge
+- **Responsive:** ≤1180px: energy gauge drops below wellness/focus · ≤960px: icon rail becomes top chips, cards 2-col · ≤640px: single column, toolbar scrolls
+- **Fonts:** Syne / Manrope · **Palette:** bg `#0c0d10`, surface `#1a1c24`, text `#f4f1ea`, muted `#cfc8be`, accent `#ff6a2a`, lime `#c8f05a`, gold `#f5d76e`
+- **Variants:** Forge, Ember, Ice · **Closest toolkit theme:** `ember`
+
+**Best for**
+- Wearables and consumer fitness apps with a dramatic brand
+- Daily recovery overviews with a few bold scores
+- Dark-mode health products that want glass over atmosphere
+
+**Avoid when**
+- Clinical or coach tools with dense athlete tables
+- Brands that need a bright, clinical look
+- Screens that must work without large decorative backgrounds
+
+**Components:** Slim icon rail · Ask-anything search field · Date-range chip and report actions · Steps activity category grid · Dual-line sleep chart · Heart-rate barbell week bars · Wellness score with wave art · Focus soundwave meter · Energy recovery semi-gauge with metric pills
+
+---
+
 
 ## Glass & glow
 
@@ -226,6 +293,118 @@ Workspace settings in a light liquid-glass style: thick translucent pills with b
 - Brands that want flat or high-contrast UI
 
 **Components:** Glass tab bar and icon orbs · Invite combobox with suggestions (arrow keys, Enter, Esc) · Role radio group · Member list with filter and remove · Permission checkboxes · Notification switches · Folder-shaped plan card with seat meter · Speech-bubble tip
+
+---
+
+<a id="veil-rooms"></a>
+### 19. Veil Rooms
+
+![Veil Rooms](../../site/dashboards/veil-rooms/thumb.jpg)
+
+A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device cards, and a right Light panel for fixture toggles and stepped spotlights.
+
+- **Use cases:** Smart home & IoT · **Mode:** dark · **Mood:** glassy, calm, modern, cool, precise
+- **Signature:** Frosted grey glass device cards beside a dedicated Light fixtures column with green on-toggles and three-step spotlight rails.
+- **Layout:** 56px icon rail · centre column (status chips, greeting, room pills, 3×2 device cards) · 320px right Light panel (header, time, 2×2 fixture cards with toggles and sliders)
+- **Responsive:** ≤1180px: Light panel drops under the device grid · ≤960px: rail becomes a top strip · ≤640px: device cards single column, room pills scroll
+- **Fonts:** Plus Jakarta Sans / Plus Jakarta Sans · **Palette:** bg `#1a1d24`, surface `#2a2e38`, text `#f2f4f8`, muted `#a8aeb8`, accent `#6ecf9a`, cool `#5b9cf0`, warm `#f0b35a`, glass `#343944`
+- **Variants:** Slate glass, Mist, Midnight · **Closest toolkit theme:** `noir`
+
+**Best for**
+- Apartment or multi-room lighting-first control apps
+- Tablet dashboards that keep climate and media beside lights
+- Brands that want frosted glass without a scenic photo hero
+
+**Avoid when**
+- Energy analytics that need large charts
+- Installer or device-fleet admin screens
+- Brands that require a warm cinematic look
+
+**Components:** Slim icon rail with avatar · Environment status chips · Personal greeting · Room pill switcher with add · Main light dual sliders · AC temperature stepper · Media player card · Wifi speed card · Air purifier status card · Smart lock card · Right Light fixtures panel with stepped spotlight control
+
+---
+
+<a id="atrium-living"></a>
+### 20. Atrium Living
+
+![Atrium Living](../../site/dashboards/atrium-living/thumb.jpg)
+
+A glass smart-home room console over a code-drawn atrium living room: climate dial, energy wave, live camera, door lock, lighting, music and ambient LED on frosted panels.
+
+- **Use cases:** Smart home & IoT · **Mode:** light · **Mood:** airy, glassy, calm, contemporary, residential
+- **Signature:** Frosted glass panels floating over a hand-drawn atrium living room — teal walls, tall window light, wood floor and plants — with a warm energy chart and cool climate dial as twin accents.
+- **Layout:** Full-bleed SVG room backdrop · left pill icon rail · top room capsule nav · glass grid: climate column (weather, thermo dial, modes, members) · center (energy chart, TV strip, music) · right (camera, lighting, lock, ambient LED, speaker)
+- **Responsive:** ≤1180px: rail becomes top icon strip, glass grid 2 columns · ≤960px: single column stack, backdrop shortens · ≤640px: room pills scroll horizontally, sliders full width, tap targets ≥44px
+- **Fonts:** Sora / Manrope · **Palette:** bg `#d8e6ea`, surface `#f4f9fb`, text `#0f1c24`, muted `#3f515c`, accent `#f5b942`, cool `#4ec3d9`, pink `#ff6bb5`, wood `#c48a4a`
+- **Variants:** Daylight, Dusk, Night · **Closest toolkit theme:** `coastal`
+
+**Best for**
+- Room-centric smart-home consoles with climate, security and media together
+- Glassmorphism demos that need a real room backdrop without stock photos
+- Light-mode gallery entries that still read premium
+
+**Avoid when**
+- Multi-home fleet monitoring or dense device inventories
+- Brands that need opaque cards or a dark cinematic mood
+- Screens where frost/blur would hide critical dense tables
+
+**Components:** Vertical icon rail · Room capsule nav · Weather chip · Thermostat dial with climate modes · Members avatar row · Energy area chart with range seg · Live camera SVG with controls · Lighting toggle and intensity slider · Door lock switch · Music transport · Ambient LED color and intensity · Smart speaker tile
+
+---
+
+<a id="aether-pane"></a>
+### 24. Aether Pane
+
+![Aether Pane](../../site/dashboards/aether-pane/thumb.jpg)
+
+A dark cyan glass analytics HUD in one floating pane: Q4 revenue bars, a bold performance index, user-journey donut and neon area charts with soft frosted borders.
+
+- **Use cases:** Analytics & BI, SaaS admin · **Mode:** dark · **Mood:** futuristic, glassy, neon, precise, calm-tech
+- **Signature:** One frosted cyan glass pane floating over a dark blur field, centered on a huge 84.2% Performance Index with neon chart glow.
+- **Layout:** Centered floating glass shell · 3×2 module grid (horizontal revenue · spark + performance hero · journey donut / vertical revenue · dual area · large journey area)
+- **Responsive:** ≤1180px: 2-column modules · ≤960px: single column inside the pane · ≤640px: pane edge-to-edge, charts shorten
+- **Fonts:** Syne / IBM Plex Sans · **Palette:** bg `#061018`, surface `#0a1c28`, text `#e8f7ff`, muted `#7aa8b8`, accent `#00f0ff`, teal `#1a6a9a`, coral `#ff6b4a`, deep `#0d3a55`
+- **Variants:** Cyan, Violet, Daylight · **Closest toolkit theme:** `tide`
+
+**Best for**
+- SaaS analytics overviews that want a HUD feel
+- Executive glance boards with a few strong charts
+- Dark glass demos where the pane itself is the hero
+
+**Avoid when**
+- Dense tables or CRUD admin work
+- Brands that already use a competing glass workspace look
+- Print or low-contrast environments
+
+**Components:** Floating glass shell · Horizontal revenue bars · Vertical revenue bars · Spark bar strip · Performance index hero · Status dots · User journey donut · Dual and single area charts
+
+---
+
+<a id="mauve-ledger"></a>
+### 28. Mauve Ledger
+
+![Mauve Ledger](../../site/dashboards/mauve-ledger/thumb.jpg)
+
+A light lilac glass finance desk: frosted KPI tiles over a soft lavender haze, average sales bars, formation status, a segmented success gauge and a recent-email list.
+
+- **Use cases:** Finance & banking · **Mode:** light · **Mood:** airy, soft, premium, calm, lilac
+- **Signature:** Frosted lilac glass cards on a soft lavender–pink haze, anchored by a segmented 51.2% success gauge.
+- **Layout:** Top bar (logo, pill nav, utility icons, avatar) · greeting · 4 KPI glass cards · 12-col: average sales (8) + formation status + success gauge (4) · recent emails full width
+- **Responsive:** ≤1180px: KPIs 2×2, sales full width above side stack · ≤960px: nav scrolls · ≤640px: single column, email rows compact
+- **Fonts:** Fraunces / Outfit · **Palette:** bg `#ddd6f3`, surface `#f7f4ff`, text `#2a2740`, muted `#6e6890`, accent `#6a58c8`, good `#16a34a`, bad `#dc2626`, haze `#c4b5fd`
+- **Variants:** Lilac, Blush, Slate · **Closest toolkit theme:** `blush`
+
+**Best for**
+- Small-business finance overviews
+- Founder dashboards that mix money KPIs with ops status
+- Brands that want glassmorphism without going dark
+
+**Avoid when**
+- Payroll-first HR tools with illustrated night scenes (see Kumo Payroll)
+- Dense general ledgers or multi-entity books
+- Interfaces that must work without translucent surfaces
+
+**Components:** Pill top navigation · Greeting headline · Four frosted KPI cards · Average sales bar chart with channel deltas · Formation status progress · Segmented success gauge · Recent email list with urgency
 
 ---
 
@@ -323,12 +502,94 @@ A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, dra
 
 ---
 
+<a id="orchard-sales"></a>
+### 27. Orchard Sales
+
+![Orchard Sales](../../site/dashboards/orchard-sales/thumb.jpg)
+
+A light black-and-lime sales bento: slim icon rail, pill nav, a tall product hero with sphere art and frosted advantages, activity bars, hatched revenue area, spend line and virtual-card balances.
+
+- **Use cases:** CRM & sales, Analytics & BI · **Mode:** light · **Mood:** crisp, modern, commercial, bright, precise
+- **Signature:** A tall product tile with a lime sphere cluster, frosted advantages glass, and thick lime growth bars.
+- **Layout:** 56px dark icon rail · top bar with pill nav and avatars · breadcrumb + title + date/actions · 12-col bento: product hero (3, tall) · activity (5) · revenue (4) · spend (5) · virtual cards (4)
+- **Responsive:** ≤1180px: rail becomes bottom or top chips · ≤960px: product full width, charts 2-col · ≤640px: single column, action chips scroll
+- **Fonts:** Sora / IBM Plex Sans · **Palette:** bg `#eceff1`, surface `#ffffff`, text `#0f1110`, muted `#3f4742`, accent `#c6f000`, ink `#141414`, rail `#171917`, hatch `#d5d9d6`
+- **Variants:** Orchard, Citrus, Graphite · **Closest toolkit theme:** `atelier`
+
+**Best for**
+- Sales or product-performance overviews
+- CRM analytics with a bold lime brand
+- Bento layouts that mix a hero tile with a few charts
+
+**Avoid when**
+- Dense opportunity pipelines or editable deal tables
+- Health or wellness products (use Zest Health instead)
+- Brands that need soft pastels instead of high-contrast lime
+
+**Components:** Slim dark icon rail · Pill navigation · Avatar stack and share · Date range chips · Product hero with sphere SVG and glass advantages · Weekly activity bar chart · Hatched revenue area chart · Spend line chart · Virtual card progress bars
+
+---
+
 
 ## Data-dense pro
 
 Compact tables, many small charts, tight spacing, monospace numbers. Trading, ops, analytics power users.
 
-_No dashboards yet._
+<a id="glacier-ops"></a>
+### 21. Glacier Ops
+
+![Glacier Ops](../../site/dashboards/glacier-ops/thumb.jpg)
+
+A data-dense dark-blue radial HUD for cold-ops monitoring: a multi-ring dial with SVG glacier topography, cyan accents, and a ring of compact charts, gauges and a viewfinder.
+
+- **Use cases:** Analytics & BI · **Mode:** dark · **Mood:** tactical, icy, technical, dense, nocturnal
+- **Signature:** A cyan-rimmed multi-ring dial whose core is a hand-drawn glacier topographic sphere, ringed by lock segments and flanked by dense miniature charts.
+- **Layout:** Top bar (brand, sector tabs, 4 status orbs) · 12-column body: left chart stack · center multi-ring topo dial · right viewfinder + lines + dual gauges · full-width bottom area wave
+- **Responsive:** ≤1180px: dial full width on top, side stacks become two columns below · ≤960px: single column, dial scales down, bottom chart first after dial · ≤640px: status orbs wrap, tabs scroll
+- **Fonts:** Rajdhani / IBM Plex Sans · **Palette:** bg `#070d18`, surface `#0f1a2c`, text `#d7f4ff`, muted `#7fa8bf`, accent `#3de0ff`, alert `#ff4d6a`, panel `#1a3350`
+- **Variants:** Glacier, Cobalt, Night · **Closest toolkit theme:** `midnight`
+
+**Best for**
+- Operations or telemetry walls that need a heroic central radial
+- Cyan-on-navy analytical showcases
+- Dashboards where many small charts surround one signature dial
+
+**Avoid when**
+- Simple consumer apps or sparse KPI boards
+- Light-mode brand systems
+- Editable record workflows — this screen is for monitoring, not forms
+
+**Components:** Sector tab nav · Status orbs · Multi-ring radial dial with SVG topo · Lock segment ring · Donut breakdown · Vertical bar mini-charts · Horizontal progress meters · Spark / area waves · Multi-line series · Viewfinder frame · Dual arc gauges · Bottom range area chart
+
+---
+
+<a id="citadel-wall"></a>
+### 23. Citadel Wall
+
+![Citadel Wall](../../site/dashboards/citadel-wall/thumb.jpg)
+
+A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central SVG sphere-and-cube hologram, arc gauges, dense charts and a four-block spark footer for fictional orbital logistics.
+
+- **Use cases:** Analytics & BI, Logistics & fleet · **Mode:** dark · **Mood:** tactical, glowing, dense, command-center, futuristic
+- **Signature:** A cyan-glow cube locked inside a translucent sphere on a scan-line pedestal, framed by HUD brackets on a deep navy wall.
+- **Layout:** Tech title bar · three columns (left identity/charts/status · center hologram · right KPI grid/gauges/bars) · bottom four-metric spark strip
+- **Responsive:** ≤1180px: hologram on top, side columns two-up below · ≤960px: single column stacks · ≤640px: gauges wrap, footer 2×2
+- **Fonts:** Share Tech Mono / Exo 2 · **Palette:** bg `#050b18`, surface `#0a1528`, text `#d8f4ff`, muted `#7aa8c4`, accent `#00e5ff`, blue `#3a9fff`, warn `#ff9f43`, ok `#7dffb3`
+- **Variants:** Cyan, Ocean, Amber · **Closest toolkit theme:** `midnight`
+
+**Best for**
+- Control-room or wall displays for logistics and ops
+- Demo HUDs that need a sci-fi big-screen feel
+- Dashboards where a central 3D-ish focal point carries the brand
+
+**Avoid when**
+- Consumer apps or soft education products
+- Light themes as the primary look
+- Editing workflows — this is monitor-first, not form-first
+
+**Components:** Tech-frame header · Identity silhouette panel · Line and bar charts · Status list with mini bars · 2×2 KPI tiles with cube icons · Three arc gauges · Central sphere/cube SVG hologram · Bottom spark metric strip
+
+---
 
 
 ## Soft & friendly
@@ -419,6 +680,34 @@ A soft mint patient portal for a dental clinic: one saturated next-visit card wi
 
 ---
 
+<a id="folio-club"></a>
+### 22. Folio Club
+
+![Folio Club](../../site/dashboards/folio-club/thumb.jpg)
+
+A soft dark reading club: book shelf and friends on the left, a current-book hero with five colorful metric tiles (progress, time, level, streak, badges), a friends/club/global leaderboard, and a live activity feed.
+
+- **Use cases:** Education, Music & media · **Mode:** dark · **Mood:** cosy, social, playful, soft, dark
+- **Signature:** Five saturated pastel metric tiles — gold progress with overlapping friend avatars on the bar, orange time, purple level, green streak, sky badges — floating on soft charcoal glass.
+- **Layout:** Left rail (profile, books, friends, settings) · center stack (current book hero, metric tile grid, leaderboard) · right activity feed
+- **Responsive:** ≤1180px: activity under center, rail stays · ≤960px: rail becomes horizontal strip · ≤640px: single column, tiles 1-wide, feed last
+- **Fonts:** Libre Baskerville / DM Sans · **Palette:** bg `#1a1b1f`, surface `#25262c`, text `#f2f0eb`, muted `#c4c0b6`, accent `#e8c547`, tile-time `#e8894a`, tile-level `#a78bdb`, tile-streak `#7dcf5a`, tile-badges `#5ec4e8`
+- **Variants:** Ink, Parchment, Night · **Closest toolkit theme:** `noir`
+
+**Best for**
+- Reading clubs, learning streaks, or media progress trackers
+- Social dashboards that mix personal stats with a friend feed
+- Products that want friendly color tiles without a loud neon look
+
+**Avoid when**
+- Enterprise ops or dense tabular analytics
+- Brands that need a strictly corporate or light editorial look
+- Screens where every tile must meet the same muted palette
+
+**Components:** Profile avatar chip · Book list with SVG covers · Friends list with see-more · Current book hero · Color metric tiles (progress, time, level, streak, badges) · Leaderboard segmented tabs · Activity feed with reply
+
+---
+
 
 ## Editorial
 
@@ -457,7 +746,33 @@ A two-tone visitor report for a trail network: a pale, quiet upper half where a 
 
 High contrast, saturated blocks, heavy type, brutalist or neo-brutalist edges. Creative tools, youth brands.
 
-_No dashboards yet._
+<a id="zest-health"></a>
+### 26. Zest Health
+
+![Zest Health](../../site/dashboards/zest-health/thumb.jpg)
+
+A bold lime health overview with a charcoal sidebar, overlapping energy bubbles, heart and activity tiles, a wellness dot-matrix index, and a dark sleep-analysis panel with hatched month bars.
+
+- **Use cases:** Health & fitness · **Mode:** light · **Mood:** bold, fresh, energetic, playful, clear
+- **Signature:** Three overlapping kcal bubbles (lilac, charcoal, lime) beside a charcoal sleep panel with hatched month bars and one highlighted month.
+- **Layout:** 240px dark sidebar (brand, nav with badges, upgrade card) · main: profile + search header · title row with date · bento: energy bubbles (tall) · heart · activity · wellness dot index (tall) · sleep analysis (wide dark)
+- **Responsive:** ≤1180px: sidebar collapses to top nav, bento 2 columns · ≤960px: upgrade hidden · ≤640px: single column, bubbles stack
+- **Fonts:** Space Grotesk / Manrope · **Palette:** bg `#dcefb0`, surface `#f4f5f7`, text `#111411`, muted `#3a453a`, accent `#b8f000`, sidebar `#121412`, lilac `#c4b5fd`, ink `#1a1c1a`
+- **Variants:** Lime, Grape, Night · **Closest toolkit theme:** `atelier`
+
+**Best for**
+- Consumer wellness apps that want a high-contrast lime brand
+- Daily health overviews with a few vivid metrics
+- Products that mix light workspace cards with one dark chart panel
+
+**Avoid when**
+- Clinical EHR tools needing dense tables
+- Brands that avoid saturated lime accents
+- Wearable ring UIs that need a glass, dreamy look (see Aura Ring)
+
+**Components:** Dark sidebar with badge counts · Upgrade callout with SVG rocket · Profile and search header · Energy bubbles with category bars · Heart rate and activity mini cards · Wellness index dot matrix · Dark sleep analysis with hatched bars
+
+---
 
 
 ## Dark neon

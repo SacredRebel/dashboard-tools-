@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Orchard Sales · Dashboard Tools gallery</title>
+  <meta name="description" content="Bento light lime sales performance dashboard with product hero, activity, revenue, spend and virtual cards. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="os">
+    <aside class="os-rail" aria-label="Primary">
+      <a class="os-rail-btn" href="#" aria-label="Search"><span data-icon="search"></span></a>
+      <a class="os-rail-btn" href="#" aria-current="page" aria-label="Home"><span data-icon="home"></span></a>
+      <a class="os-rail-btn" href="#" aria-label="Messages"><span data-icon="mail"></span></a>
+      <a class="os-rail-btn" href="#" aria-label="Analytics"><span data-icon="chart"></span></a>
+      <a class="os-rail-btn os-rail-foot" href="#" aria-label="Support"><span data-icon="headphones"></span></a>
+      <a class="os-rail-btn" href="#" aria-label="Settings"><span data-icon="settings"></span></a>
+    </aside>
+
+    <div class="os-shell">
+      <header class="os-top">
+        <a class="os-mark" href="#" aria-label="Orchard Sales home" data-mark></a>
+        <nav class="os-pills" aria-label="Sections" data-nav>
+          <button data-v="dashboard" aria-pressed="true">Dashboard</button>
+          <button data-v="analytics" aria-pressed="false">Analytics</button>
+          <button data-v="pulse" aria-pressed="false">Pulse</button>
+          <button data-v="data" aria-pressed="false">Data</button>
+        </nav>
+        <div class="os-top-right">
+          <div class="os-avatars" aria-label="Team" data-avatars></div>
+          <button class="os-ghost" type="button">Shared</button>
+          <button class="os-iconbtn" aria-label="Notifications"><span data-icon="bell"></span></button>
+          <span class="os-me" role="img" aria-label="Nora Hale">NH</span>
+        </div>
+      </header>
+
+      <p class="os-crumb">Sales / Teach Products</p>
+      <div class="os-title-row">
+        <h1>Product Sales Performance</h1>
+        <div class="os-actions">
+          <button class="os-iconbtn" aria-label="Search"><span data-icon="search"></span></button>
+          <button class="os-iconbtn" aria-label="Filter"><span data-icon="filter"></span></button>
+          <button class="os-iconbtn" aria-label="Calendar"><span data-icon="calendar"></span></button>
+          <button class="os-chip" data-from></button>
+          <button class="os-chip" data-to></button>
+          <button class="os-btn" data-add-widget><span data-icon="plus"></span> Add widget</button>
+          <button class="os-btn os-btn-ink" data-report>Create a report</button>
+        </div>
+      </div>
+
+      <main class="os-grid">
+        <section class="os-card os-product" aria-labelledby="os-pro-h">
+          <div class="os-spheres" data-spheres aria-hidden="true"></div>
+          <div class="os-glass">
+            <p class="os-k">Advantages</p>
+            <dl class="os-adv"><div><dt>30–45 age</dt><dd class="num" data-a1>42%</dd></div><div><dt>12–21 age</dt><dd class="num" data-a2>27%</dd></div></dl>
+          </div>
+          <h2 id="os-pro-h" class="vh">Pro version sales</h2>
+          <div class="os-growth">
+            <div><p class="num" data-g1>12,233</p><span>sale · <b class="os-up">6% growth</b></span><i class="os-gbar" style="--p:72%"></i></div>
+            <div><p class="num" data-g2>33,337</p><span>sale · <b class="os-up">9% growth</b></span><i class="os-gbar" style="--p:92%"></i></div>
+          </div>
+        </section>
+
+        <section class="os-card os-activity" aria-labelledby="os-act-h">
+          <div class="os-card-head">
+            <h2 id="os-act-h">Activity</h2>
+            <button class="os-iconbtn" aria-label="Filter activity"><span data-icon="filter"></span></button>
+          </div>
+          <p class="os-sub">Worked this week: <b class="num" data-worked>186</b></p>
+          <div data-act-chart></div>
+          <p class="os-note" data-act-note aria-live="polite"></p>
+        </section>
+
+        <section class="os-card os-rev" aria-labelledby="os-rev-h">
+          <div class="os-card-head">
+            <h2 id="os-rev-h">Comparison of revenue</h2>
+            <button class="os-iconbtn" data-rev-toggle aria-label="Toggle fill style" aria-pressed="true"><span data-icon="layers"></span></button>
+          </div>
+          <p class="os-sub">For all time <b class="num">29.48m</b></p>
+          <div class="os-rev-wrap">
+            <div data-rev-chart></div>
+            <span class="os-rev-badge num" data-rev-badge>12%</span>
+          </div>
+        </section>
+
+        <section class="os-card os-spend" aria-labelledby="os-sp-h">
+          <div class="os-card-head">
+            <h2 id="os-sp-h">Total spend</h2>
+            <span data-icon="line" aria-hidden="true"></span>
+          </div>
+          <p class="os-metric num">$<span data-spend>278.86</span></p>
+          <p class="os-sub">Spend this week · was $<span class="num">432.00</span></p>
+          <dl class="os-side-stats"><div><dt>Wallets</dt><dd class="num">34</dd></div><div><dt>Assets</dt><dd class="num">28</dd></div></dl>
+          <div data-spend-chart></div>
+        </section>
+
+        <section class="os-card os-cards" aria-labelledby="os-vc-h">
+          <h2 id="os-vc-h">Virtual cards</h2>
+          <p class="os-metric num">$<span data-balance>6,010.27</span></p>
+          <p class="os-sub">Total balance · float $<span class="num">432.00</span></p>
+          <ul class="os-vc" data-vc></ul>
+          <p class="os-empty" data-vc-empty hidden>No virtual cards in this view.</p>
+        </section>
+      </main>
+
+      <p class="db-sample os-foot">Sample data · fictional catalog and figures</p>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

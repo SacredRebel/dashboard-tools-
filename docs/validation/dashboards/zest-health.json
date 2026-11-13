@@ -1,0 +1,62 @@
+{
+  "id": "zest-health",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/zest-health/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/zest-health/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/zest-health/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/zest-health/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/zest-health/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=grape",
+      "width": 1440,
+      "variant": "grape",
+      "final_path": "/dashboards/zest-health/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=night",
+      "width": 1440,
+      "variant": "night",
+      "final_path": "/dashboards/zest-health/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/zest-health",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

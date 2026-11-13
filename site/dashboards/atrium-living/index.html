@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Atrium Living · Dashboard Tools gallery</title>
+  <meta name="description" content="Glass smart-home room console over an SVG atrium living room: climate dial, energy chart, camera, lock, lighting, music and ambient LED. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="al">
+    <div class="al-scene" data-scene aria-hidden="true"></div>
+
+    <aside class="al-rail" aria-label="Primary">
+      <a class="al-brand" href="#" aria-label="Atrium Living home"><span class="al-mark" aria-hidden="true"></span></a>
+      <nav class="al-railnav" aria-label="Sections">
+        <button type="button" class="al-railbtn" aria-current="page" aria-label="Overview"><span data-icon="grid"></span></button>
+        <button type="button" class="al-railbtn" aria-label="Lighting"><span data-icon="bulb"></span></button>
+        <button type="button" class="al-railbtn" aria-label="Alerts"><span data-icon="bell"></span></button>
+        <button type="button" class="al-railbtn" aria-label="Settings"><span data-icon="settings"></span></button>
+      </nav>
+    </aside>
+
+    <div class="al-shell">
+      <header class="al-top">
+        <div>
+          <p class="al-k">Atrium Living</p>
+          <h1 class="al-title" data-room-title>Living Room</h1>
+        </div>
+        <nav class="al-rooms" aria-label="Rooms" data-rooms>
+          <button type="button" data-v="living" aria-pressed="true">Living Room</button>
+          <button type="button" data-v="bed" aria-pressed="false">Bedroom</button>
+          <button type="button" data-v="kitchen" aria-pressed="false">Kitchen</button>
+          <button type="button" data-v="yard" aria-pressed="false">Courtyard</button>
+          <button type="button" data-v="garage" aria-pressed="false">Garage</button>
+        </nav>
+      </header>
+
+      <main class="al-main">
+        <section class="al-glass al-climate" aria-labelledby="al-cl-h">
+          <div class="al-wx">
+            <div>
+              <p class="al-k" id="al-cl-h">Outside</p>
+              <p class="al-wxnum num" data-outside>24°</p>
+              <p class="al-muted" data-place>Portland, OR</p>
+            </div>
+            <span class="al-wxicon" data-icon="cloud" aria-hidden="true"></span>
+          </div>
+          <div class="al-dialwrap">
+            <div class="al-dial" data-dial></div>
+            <div class="al-modes" role="group" aria-label="Climate mode" data-modes>
+              <button type="button" data-mode="hot" aria-pressed="false"><span data-icon="flame"></span>Heat</button>
+              <button type="button" data-mode="cold" aria-pressed="true"><span data-icon="snow"></span>Cool</button>
+              <button type="button" data-mode="fan" aria-pressed="false"><span data-icon="fan"></span>Fan</button>
+              <button type="button" data-mode="timer" aria-pressed="false"><span data-icon="clock"></span>Timer</button>
+            </div>
+          </div>
+          <div class="al-members">
+            <p class="al-k">Household</p>
+            <div class="al-avatars" data-members role="list"></div>
+          </div>
+        </section>
+
+        <section class="al-glass al-energy" aria-labelledby="al-en-h">
+          <div class="al-head">
+            <div>
+              <h2 id="al-en-h">Energy</h2>
+              <p class="al-muted">kWh · this home</p>
+            </div>
+            <div class="al-seg" role="group" aria-label="Energy range" data-range>
+              <button type="button" data-v="week" aria-pressed="false">Week</button>
+              <button type="button" data-v="month" aria-pressed="true">Month</button>
+              <button type="button" data-v="year" aria-pressed="false">Year</button>
+            </div>
+          </div>
+          <p class="al-en-total"><b class="num" data-en-total></b><span data-en-unit></span></p>
+          <div data-energy></div>
+          <p class="al-state al-muted" data-en-state aria-live="polite"></p>
+        </section>
+
+        <section class="al-glass al-camera" aria-labelledby="al-cam-h">
+          <div class="al-head">
+            <h2 id="al-cam-h">Live camera</h2>
+            <span class="al-online"><i></i>Online</span>
+          </div>
+          <div class="al-camview" data-camera role="img" aria-label="Foyer camera view, fictional"></div>
+          <div class="al-camtools" role="group" aria-label="Camera controls">
+            <button type="button" aria-label="Power" data-cam="power"><span data-icon="power"></span></button>
+            <button type="button" aria-label="Record" data-cam="record" aria-pressed="false"><span data-icon="camera"></span></button>
+            <button type="button" aria-label="Capture still" data-cam="shot"><span data-icon="expand"></span></button>
+            <button type="button" aria-label="Zoom" data-cam="zoom"><span data-icon="search"></span></button>
+          </div>
+          <p class="al-muted al-camnote" data-camnote aria-live="polite"></p>
+        </section>
+
+        <section class="al-glass al-media" aria-labelledby="al-tv-h">
+          <div class="al-head">
+            <h2 id="al-tv-h">Living display</h2>
+            <span class="al-muted" data-tv-note>Atrium Stream</span>
+          </div>
+          <div class="al-posters" data-posters role="list"></div>
+          <div class="al-apps" data-apps role="group" aria-label="Apps"></div>
+        </section>
+
+        <section class="al-glass al-light" aria-labelledby="al-li-h">
+          <div class="al-head">
+            <h2 id="al-li-h">Ceiling lights</h2>
+            <button type="button" class="al-switch" role="switch" aria-checked="true" aria-labelledby="al-li-h" data-light></button>
+          </div>
+          <div class="al-lightface">
+            <span class="al-bulbg" data-icon="bulb" aria-hidden="true"></span>
+            <label class="al-sliderlab" for="al-intensity">Intensity <b class="num" data-intensity-val>52%</b></label>
+            <input class="al-slider" id="al-intensity" type="range" min="0" max="100" value="52" data-intensity>
+          </div>
+        </section>
+
+        <section class="al-glass al-lock" aria-labelledby="al-lk-h">
+          <div class="al-head">
+            <h2 id="al-lk-h">Front door</h2>
+            <span class="al-muted" data-lock-state>Locked</span>
+          </div>
+          <div class="al-lockface">
+            <span class="al-lockicon" data-icon="lock" aria-hidden="true"></span>
+            <div class="al-lockseg" role="group" aria-label="Door lock">
+              <button type="button" data-lock="open" aria-pressed="false"><span data-icon="unlock"></span>Unlock</button>
+              <button type="button" data-lock="shut" aria-pressed="true"><span data-icon="lock"></span>Lock</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="al-glass al-music" aria-labelledby="al-mu-h">
+          <h2 class="vh" id="al-mu-h">Now playing</h2>
+          <div class="al-track">
+            <span class="al-cover" aria-hidden="true"></span>
+            <div>
+              <p class="al-trackname" data-track>Cedar Light</p>
+              <p class="al-muted" data-artist>Mira Vale</p>
+            </div>
+            <div class="al-transport" role="group" aria-label="Playback">
+              <button type="button" aria-label="Previous" data-play="prev"><span data-icon="skipB"></span></button>
+              <button type="button" aria-label="Pause" data-play="toggle" aria-pressed="true"><span data-icon="pause"></span></button>
+              <button type="button" aria-label="Next" data-play="next"><span data-icon="skipF"></span></button>
+            </div>
+          </div>
+          <div class="al-progress" aria-hidden="true"><i style="width:38%"></i></div>
+        </section>
+
+        <section class="al-glass al-ambient" aria-labelledby="al-amb-h">
+          <div class="al-head">
+            <h2 id="al-amb-h">Ambient LED</h2>
+            <span class="al-muted">Ribbon 1</span>
+          </div>
+          <label class="al-sliderlab" for="al-hue">Color</label>
+          <input class="al-slider al-hue" id="al-hue" type="range" min="0" max="100" value="72" data-hue aria-valuetext="Magenta">
+          <div class="al-ambrow">
+            <span class="al-swatch" data-swatch aria-hidden="true"></span>
+            <div class="al-ambint">
+              <label class="al-sliderlab" for="al-amb-int">Intensity <b class="num" data-amb-val>76%</b></label>
+              <input class="al-slider" id="al-amb-int" type="range" min="0" max="100" value="76" data-amb>
+            </div>
+          </div>
+        </section>
+
+        <section class="al-glass al-speaker" aria-labelledby="al-sp-h">
+          <div class="al-head">
+            <h2 id="al-sp-h">Nook speaker</h2>
+            <button type="button" class="al-switch" role="switch" aria-checked="true" aria-labelledby="al-sp-h" data-speaker></button>
+          </div>
+          <div class="al-speakart" data-speakart aria-hidden="true"></div>
+          <p class="al-muted" data-speaknote>On since 06:30</p>
+        </section>
+      </main>
+      <p class="db-sample al-foot">Sample data · fictional</p>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
