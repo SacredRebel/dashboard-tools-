@@ -38,7 +38,7 @@
 .dg-variants i { width: 12px; height: 12px; border-radius: 50%; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15); }
 .dg-stage { display: grid; justify-items: center; padding: 16px; border-radius: 20px; background: var(--s-sunken); border: 1px solid var(--s-line); margin-bottom: 24px; }
 .dg-shot { margin: 0; width: min(100%, 1440px); display: grid; gap: 10px; justify-items: center; }
-.dg-shot img { width: 100%; height: auto; aspect-ratio: 1440 / 900; object-fit: cover; object-position: top left; border-radius: 12px; box-shadow: 0 2px 6px rgb(0 0 0 / 0.08), 0 24px 60px rgb(0 0 0 / 0.18); background: #000; display: block; }
+.dg-shot img { width: 100%; height: auto; max-height: min(80vh, 900px); object-fit: contain; object-position: center top; border-radius: 12px; box-shadow: 0 2px 6px rgb(0 0 0 / 0.08), 0 24px 60px rgb(0 0 0 / 0.18); background: #111; display: block; }
 .dg-shot figcaption { text-align: center; }
 .dg-frame { position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 2px 6px rgb(0 0 0 / 0.08), 0 24px 60px rgb(0 0 0 / 0.18); background: #000; }
 .dg-frame[data-device="phone"], .dg-frame[data-device="tablet"] { border-radius: 28px; outline: 8px solid #16161a; outline-offset: -1px; }

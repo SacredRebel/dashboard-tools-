@@ -52,9 +52,9 @@ Dark, moody, scenic backdrops (painted or photographic) with glass panels and on
 <a id="horizon-weather"></a>
 ### 1. Horizon Weather
 
-![Horizon Weather reference shot](../../site/dashboards/horizon-weather/shot.jpg)
+![Horizon Weather recreation shot](../../site/dashboards/horizon-weather/shot.jpg)
 
-_Horizon Weather · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Horizon Weather · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A cinematic weather home: painted sunset landscape behind glass panels, an editorial serif headline, a 7-day forecast strip with a glowing selected day, a smooth gold temperature curve and a mood card.
 
@@ -82,9 +82,9 @@ A cinematic weather home: painted sunset landscape behind glass panels, an edito
 <a id="solstice-energy"></a>
 ### 3. Solstice Energy
 
-![Solstice Energy reference shot](../../site/dashboards/solstice-energy/shot.jpg)
+![Solstice Energy recreation shot](../../site/dashboards/solstice-energy/shot.jpg)
 
-_Solstice Energy · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Solstice Energy · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A cinematic solar-monitoring board: a thick gradient sun-path arc rises over a code-drawn mountain range, with generation and load curves on a teal grid, a readout strip, storage dials and round site thumbnails.
 
@@ -112,9 +112,9 @@ A cinematic solar-monitoring board: a thick gradient sun-path arc rises over a c
 <a id="kumo-payroll"></a>
 ### 4. Kumo Payroll
 
-![Kumo Payroll reference shot](../../site/dashboards/kumo-payroll/shot.jpg)
+![Kumo Payroll recreation shot](../../site/dashboards/kumo-payroll/shot.jpg)
 
-_Kumo Payroll · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Kumo Payroll · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A moonlit payroll overview: a code-drawn ink landscape with a gold moon, layered hills and a blossom branch sits behind one dark, gold-edged panel holding KPI tiles, a gross/net bar chart, a deductions donut and time-off ring.
 
@@ -142,9 +142,9 @@ A moonlit payroll overview: a code-drawn ink landscape with a gold moon, layered
 <a id="plumage-survey"></a>
 ### 15. Plumage Bird Survey
 
-![Plumage Bird Survey reference shot](../../site/dashboards/plumage-survey/shot.jpg)
+![Plumage Bird Survey recreation shot](../../site/dashboards/plumage-survey/shot.jpg)
 
-_Plumage Bird Survey · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Plumage Bird Survey · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A code-drawn, rainbow-feathered bird sits between walls of teal and amber leaves, framed by gradient region charts, coverage and nesting rings, habitat donuts, ranked species bars and an observation log you can filter by species.
 
@@ -172,9 +172,9 @@ A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A co
 <a id="hearth-nest"></a>
 ### 18. Hearth Nest
 
-![Hearth Nest reference shot](../../site/dashboards/hearth-nest/shot.jpg)
+![Hearth Nest original reference](../../site/dashboards/hearth-nest/reference.jpg)
 
-_Hearth Nest · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Hearth Nest · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A cinematic dark smart-home board: amber accent, SVG living-room hero with device nodes, weather and AQI arc, thermostat dial, device toggles and a 7-day power chart.
 
@@ -202,9 +202,9 @@ A cinematic dark smart-home board: amber accent, SVG living-room hero with devic
 <a id="forge-fitness"></a>
 ### 25. Forge Fitness
 
-![Forge Fitness reference shot](../../site/dashboards/forge-fitness/shot.jpg)
+![Forge Fitness original reference](../../site/dashboards/forge-fitness/reference.png)
 
-_Forge Fitness · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Forge Fitness · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A cinematic dark fitness board: frosted glass cards for steps, sleep, heart, wellness and focus float over a code-drawn gym silhouette atmosphere, with an energy-and-recovery gauge on the right.
 
@@ -237,9 +237,9 @@ Frosted translucent panels over gradients or blurred color fields, soft glows. M
 <a id="haven-listings"></a>
 ### 7. Haven Listings
 
-![Haven Listings reference shot](../../site/dashboards/haven-listings/shot.jpg)
+![Haven Listings recreation shot](../../site/dashboards/haven-listings/shot.jpg)
 
-_Haven Listings · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Haven Listings · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A property browser built around one large dusk scene: a code-drawn curved house glows under a blue sky, white filter tabs notch into the top edge, and a frosted card shows the selected home. Listings, price history and viewings sit below.
 
@@ -267,9 +267,9 @@ A property browser built around one large dusk scene: a code-drawn curved house 
 <a id="aura-ring"></a>
 ### 8. Aura Ring
 
-![Aura Ring reference shot](../../site/dashboards/aura-ring/shot.jpg)
+![Aura Ring recreation shot](../../site/dashboards/aura-ring/shot.jpg)
 
-_Aura Ring · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Aura Ring · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A wellness overview for a smart ring: frosted, softly bordered cards float over a periwinkle-to-pink haze, with a two-weight headline, a score dial, thin white line charts, a code-drawn metal ring and a tappable body map.
 
@@ -297,9 +297,9 @@ A wellness overview for a smart ring: frosted, softly bordered cards float over 
 <a id="prism-workspace"></a>
 ### 14. Prism Workspace
 
-![Prism Workspace reference shot](../../site/dashboards/prism-workspace/shot.jpg)
+![Prism Workspace recreation shot](../../site/dashboards/prism-workspace/shot.jpg)
 
-_Prism Workspace · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Prism Workspace · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 Workspace settings in a light liquid-glass style: thick translucent pills with bright rims over soft pastel blobs. Invite people through a keyboard-friendly suggestion list, filter and remove members, tick permissions, flip notification switches and watch seats fill a folder-shaped plan card.
 
@@ -327,9 +327,9 @@ Workspace settings in a light liquid-glass style: thick translucent pills with b
 <a id="veil-rooms"></a>
 ### 19. Veil Rooms
 
-![Veil Rooms reference shot](../../site/dashboards/veil-rooms/shot.jpg)
+![Veil Rooms original reference](../../site/dashboards/veil-rooms/reference.jpg)
 
-_Veil Rooms · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Veil Rooms · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device cards, and a right Light panel for fixture toggles and stepped spotlights.
 
@@ -357,9 +357,9 @@ A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device ca
 <a id="atrium-living"></a>
 ### 20. Atrium Living
 
-![Atrium Living reference shot](../../site/dashboards/atrium-living/shot.jpg)
+![Atrium Living original reference](../../site/dashboards/atrium-living/reference.jpg)
 
-_Atrium Living · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Atrium Living · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A glass smart-home room console over a code-drawn atrium living room: climate dial, energy wave, live camera, door lock, lighting, music and ambient LED on frosted panels.
 
@@ -387,9 +387,9 @@ A glass smart-home room console over a code-drawn atrium living room: climate di
 <a id="aether-pane"></a>
 ### 24. Aether Pane
 
-![Aether Pane reference shot](../../site/dashboards/aether-pane/shot.jpg)
+![Aether Pane original reference](../../site/dashboards/aether-pane/reference.png)
 
-_Aether Pane · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Aether Pane · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A dark cyan glass analytics HUD in one floating pane: Q4 revenue bars, a bold performance index, user-journey donut and neon area charts with soft frosted borders.
 
@@ -417,9 +417,9 @@ A dark cyan glass analytics HUD in one floating pane: Q4 revenue bars, a bold pe
 <a id="mauve-ledger"></a>
 ### 28. Mauve Ledger
 
-![Mauve Ledger reference shot](../../site/dashboards/mauve-ledger/shot.jpg)
+![Mauve Ledger original reference](../../site/dashboards/mauve-ledger/reference.png)
 
-_Mauve Ledger · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Mauve Ledger · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A light lilac glass finance desk: frosted KPI tiles over a soft lavender haze, average sales bars, formation status, a segmented success gauge and a recent-email list.
 
@@ -447,9 +447,9 @@ A light lilac glass finance desk: frosted KPI tiles over a soft lavender haze, a
 <a id="saffron-dusk"></a>
 ### 34. Saffron Dusk
 
-![Saffron Dusk reference shot](../../site/dashboards/saffron-dusk/shot.jpg)
+![Saffron Dusk original reference](../../site/dashboards/saffron-dusk/reference.jpg)
 
-_Saffron Dusk · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Saffron Dusk · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A respectful fictional fasting-day wellness board in liquid glass: twin phones with a date strip, imsak→iftar sun arc, water segments, an evening gather card, plus a glass profile, daily progress bars and an upgrade row.
 
@@ -477,9 +477,9 @@ A respectful fictional fasting-day wellness board in liquid glass: twin phones w
 <a id="clima-pane"></a>
 ### 35. Clima Pane
 
-![Clima Pane reference shot](../../site/dashboards/clima-pane/shot.jpg)
+![Clima Pane original reference](../../site/dashboards/clima-pane/reference.jpg)
 
-_Clima Pane · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Clima Pane · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A light glass climate console on a beige field with soft orange and blue orb blobs: orange↔blue thermostat dial, Heat/Cool, fan speed bars, living-room stats, schedule, rooms list and energy mode chips.
 
@@ -507,9 +507,9 @@ A light glass climate console on a beige field with soft orange and blue orb blo
 <a id="cortex-well"></a>
 ### 37. Cortex Well
 
-![Cortex Well reference shot](../../site/dashboards/cortex-well/shot.jpg)
+![Cortex Well original reference](../../site/dashboards/cortex-well/reference.jpg)
 
-_Cortex Well · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Cortex Well · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A lilac-glass wellness overview: frosted cards float over a soft pink–lilac haze around an SVG brain in a glass bowl, with lead lines to Heart, Breath, Brain and All activity pills, sleep bars and a multi-line heart chart.
 
@@ -542,9 +542,9 @@ Lots of white space, hairlines, one accent, quiet type. Calm tools people use al
 <a id="taffy-analytics"></a>
 ### 13. Taffy Analytics
 
-![Taffy Analytics reference shot](../../site/dashboards/taffy-analytics/shot.jpg)
+![Taffy Analytics recreation shot](../../site/dashboards/taffy-analytics/shot.jpg)
 
-_Taffy Analytics · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Taffy Analytics · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A calm pastel product-analytics dashboard for a design-tool startup: a serif headline number over a soft area chart, a row of glossy 3D capsules for sign-ups by channel, a rounded plan-mix ring, springy feature-flag switches and a release checklist.
 
@@ -577,9 +577,9 @@ Tiles of different sizes in a tight grid, each tile one idea. Great for overview
 <a id="vitalis-care"></a>
 ### 11. Vitalis Care
 
-![Vitalis Care reference shot](../../site/dashboards/vitalis-care/shot.jpg)
+![Vitalis Care recreation shot](../../site/dashboards/vitalis-care/shot.jpg)
 
-_Vitalis Care · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Vitalis Care · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A bento-grid patient dashboard for a family clinic: a heart-rate tile with a code-drawn heart and pulse trace, coloured vital tiles, a deep-teal next-appointment tile, a searchable doctor directory that feeds a week-strip booking panel, a steps and sleep chart, and a records list.
 
@@ -607,9 +607,9 @@ A bento-grid patient dashboard for a family clinic: a heart-rate tile with a cod
 <a id="larchwood-lodge"></a>
 ### 17. Larchwood Lodge
 
-![Larchwood Lodge reference shot](../../site/dashboards/larchwood-lodge/shot.jpg)
+![Larchwood Lodge recreation shot](../../site/dashboards/larchwood-lodge/shot.jpg)
 
-_Larchwood Lodge · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Larchwood Lodge · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, drawn in SVG layers, greets the family. Around it sit tiles for cabin heat, daylight left, a five-day forecast, light scenes, activity booking, wake-up alarms and today's trail status.
 
@@ -637,9 +637,9 @@ A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, dra
 <a id="orchard-sales"></a>
 ### 27. Orchard Sales
 
-![Orchard Sales reference shot](../../site/dashboards/orchard-sales/shot.jpg)
+![Orchard Sales original reference](../../site/dashboards/orchard-sales/reference.png)
 
-_Orchard Sales · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Orchard Sales · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A light black-and-lime sales bento: slim icon rail, pill nav, a tall product hero with sphere art and frosted advantages, activity bars, hatched revenue area, spend line and virtual-card balances.
 
@@ -672,9 +672,9 @@ Compact tables, many small charts, tight spacing, monospace numbers. Trading, op
 <a id="glacier-ops"></a>
 ### 21. Glacier Ops
 
-![Glacier Ops reference shot](../../site/dashboards/glacier-ops/shot.jpg)
+![Glacier Ops original reference](../../site/dashboards/glacier-ops/reference.png)
 
-_Glacier Ops · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Glacier Ops · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A data-dense dark-blue radial HUD for cold-ops monitoring: a multi-ring dial with SVG glacier topography, cyan accents, and a ring of compact charts, gauges and a viewfinder.
 
@@ -702,9 +702,9 @@ A data-dense dark-blue radial HUD for cold-ops monitoring: a multi-ring dial wit
 <a id="citadel-wall"></a>
 ### 23. Citadel Wall
 
-![Citadel Wall reference shot](../../site/dashboards/citadel-wall/shot.jpg)
+![Citadel Wall original reference](../../site/dashboards/citadel-wall/reference.png)
 
-_Citadel Wall · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Citadel Wall · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central SVG sphere-and-cube hologram, arc gauges, dense charts and a four-block spark footer for fictional orbital logistics.
 
@@ -737,9 +737,9 @@ Rounded shapes, pastel fills, playful illustration-free warmth. Health, educatio
 <a id="canopy-reforest"></a>
 ### 5. Canopy Reforest
 
-![Canopy Reforest reference shot](../../site/dashboards/canopy-reforest/shot.jpg)
+![Canopy Reforest recreation shot](../../site/dashboards/canopy-reforest/shot.jpg)
 
-_Canopy Reforest · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Canopy Reforest · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 An organic reforestation tracker in forest green, bark brown and tan: a leafy code-drawn hero with a big rounded headline, a deep green band of four site figures and six soft, colour-blocked tiles for species, planting, soil, tasks and crews.
 
@@ -767,9 +767,9 @@ An organic reforestation tracker in forest green, bark brown and tan: a leafy co
 <a id="lull-sleep"></a>
 ### 9. Lull Sleep
 
-![Lull Sleep reference shot](../../site/dashboards/lull-sleep/shot.jpg)
+![Lull Sleep recreation shot](../../site/dashboards/lull-sleep/shot.jpg)
 
-_Lull Sleep · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Lull Sleep · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A one-night sleep report in soft lavender: a pastel sky hero with a crescent moon and a round score, a stage timeline you can filter by stage, a stage-split donut, a week of nights to pick from, logged habits that move the score, and bedroom conditions.
 
@@ -797,9 +797,9 @@ A one-night sleep report in soft lavender: a pastel sky hero with a crescent moo
 <a id="smile-dental"></a>
 ### 10. Pearlwell Dental
 
-![Pearlwell Dental reference shot](../../site/dashboards/smile-dental/shot.jpg)
+![Pearlwell Dental recreation shot](../../site/dashboards/smile-dental/shot.jpg)
 
-_Pearlwell Dental · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Pearlwell Dental · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A soft mint patient portal for a dental clinic: one saturated next-visit card with a code-drawn tooth and shield, a health-score ring, a booking calendar with times and dentists, a searchable treatment price list and a tappable tooth chart.
 
@@ -827,9 +827,9 @@ A soft mint patient portal for a dental clinic: one saturated next-visit card wi
 <a id="folio-club"></a>
 ### 22. Folio Club
 
-![Folio Club reference shot](../../site/dashboards/folio-club/shot.jpg)
+![Folio Club original reference](../../site/dashboards/folio-club/reference.png)
 
-_Folio Club · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Folio Club · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A soft dark reading club: book shelf and friends on the left, a current-book hero with five colorful metric tiles (progress, time, level, streak, badges), a friends/club/global leaderboard, and a live activity feed.
 
@@ -857,9 +857,9 @@ A soft dark reading club: book shelf and friends on the left, a current-book her
 <a id="tidebath-showroom"></a>
 ### 29. Tidebath Showroom
 
-![Tidebath Showroom reference shot](../../site/dashboards/tidebath-showroom/shot.jpg)
+![Tidebath Showroom original reference](../../site/dashboards/tidebath-showroom/reference.jpg)
 
-_Tidebath Showroom · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Tidebath Showroom · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A soft-light bathroom showroom: curved SVG 3-bay room carousel with hotspot markers and a 6m² badge, above a four-column board for inspirations, product icons, store search and contact.
 
@@ -887,9 +887,9 @@ A soft-light bathroom showroom: curved SVG 3-bay room carousel with hotspot mark
 <a id="copper-radar"></a>
 ### 32. Copper Radar
 
-![Copper Radar reference shot](../../site/dashboards/copper-radar/shot.jpg)
+![Copper Radar original reference](../../site/dashboards/copper-radar/reference.jpg)
 
-_Copper Radar · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Copper Radar · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A soft-light SOC ops board: copper accents on white, concentric radar arcs with invented vendor chips, a live incident feed, dashed severity bars, automation steps and a timeline footer.
 
@@ -917,9 +917,9 @@ A soft-light SOC ops board: copper accents on white, concentric radar arcs with 
 <a id="meridian-labs"></a>
 ### 36. Meridian Labs
 
-![Meridian Labs reference shot](../../site/dashboards/meridian-labs/shot.jpg)
+![Meridian Labs original reference](../../site/dashboards/meridian-labs/reference.jpg)
 
-_Meridian Labs · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Meridian Labs · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A soft health diagnostics board: filterable doctor test cards, a code-drawn DNA helix centerpiece, a vitamin supplement grid with SVG bottles, and a week schedule strip with an orange highlight day.
 
@@ -952,9 +952,9 @@ Big serif headlines, magazine layout, image-led storytelling. Brands, content, l
 <a id="ridgeline-trails"></a>
 ### 6. Ridgeline Trails
 
-![Ridgeline Trails reference shot](../../site/dashboards/ridgeline-trails/shot.jpg)
+![Ridgeline Trails recreation shot](../../site/dashboards/ridgeline-trails/shot.jpg)
 
-_Ridgeline Trails · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Ridgeline Trails · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A two-tone visitor report for a trail network: a pale, quiet upper half where a misty code-drawn mountain range fades in from the right, then a wave edge into a charcoal lower half of raised pie dials, thin bars and a gold ring gauge.
 
@@ -987,9 +987,9 @@ High contrast, saturated blocks, heavy type, brutalist or neo-brutalist edges. C
 <a id="zest-health"></a>
 ### 26. Zest Health
 
-![Zest Health reference shot](../../site/dashboards/zest-health/shot.jpg)
+![Zest Health original reference](../../site/dashboards/zest-health/reference.png)
 
-_Zest Health · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Zest Health · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A bold lime health overview with a charcoal sidebar, overlapping energy bubbles, heart and activity tiles, a wellness dot-matrix index, and a dark sleep-analysis panel with hatched month bars.
 
@@ -1022,9 +1022,9 @@ Near-black canvas with vivid neon accents and gradients. Gaming, crypto, music, 
 <a id="pulsar-analytics"></a>
 ### 2. Pulsar Analytics
 
-![Pulsar Analytics reference shot](../../site/dashboards/pulsar-analytics/shot.jpg)
+![Pulsar Analytics recreation shot](../../site/dashboards/pulsar-analytics/shot.jpg)
 
-_Pulsar Analytics · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Pulsar Analytics · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A dark neon product-analytics overview: glossy metric orbs that switch the main chart, layered violet and mint wave areas over a purple floor glow, a ticked uptime dial and gradient pillar bars.
 
@@ -1052,9 +1052,9 @@ A dark neon product-analytics overview: glossy metric orbs that switch the main 
 <a id="hollow-vault"></a>
 ### 16. Hollow Vault
 
-![Hollow Vault reference shot](../../site/dashboards/hollow-vault/shot.jpg)
+![Hollow Vault recreation shot](../../site/dashboards/hollow-vault/shot.jpg)
 
-_Hollow Vault · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Hollow Vault · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A dark-neon rewards hub for a fantasy game. Eight code-drawn relics ring a glowing chest; open it with keys earned from quests and see what you win. Drop rates are shown openly, your haul fills in below, and guild chat runs down the right.
 
@@ -1087,9 +1087,9 @@ Soft extruded surfaces, depth, physical-feeling controls. Smart home, devices, a
 <a id="mallow-music"></a>
 ### 12. Mallow Music
 
-![Mallow Music reference shot](../../site/dashboards/mallow-music/shot.jpg)
+![Mallow Music recreation shot](../../site/dashboards/mallow-music/shot.jpg)
 
-_Mallow Music · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Mallow Music · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
 
 A claymorphic listening dashboard for a music app: puffy pastel tiles with soft inner highlights, a peach hero with code-drawn clay headphones and a plant, a now-playing bar you can scrub, colourful weekly listening bars, a genre donut, recently played songs and a daily mix drawn as a cosy room.
 
@@ -1117,9 +1117,9 @@ A claymorphic listening dashboard for a music app: puffy pastel tiles with soft 
 <a id="dune-panels"></a>
 ### 30. Dune Panels
 
-![Dune Panels reference shot](../../site/dashboards/dune-panels/shot.jpg)
+![Dune Panels original reference](../../site/dashboards/dune-panels/reference.jpg)
 
-_Dune Panels · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Dune Panels · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A skeuomorphic soft-UI analytics board in sand, sage and slate: blue fabric wave backdrop, dual donuts, a recessed neumorphic donut well, pill search, icon shelves and a 2×2 analytics grid under dark headers.
 
@@ -1147,9 +1147,9 @@ A skeuomorphic soft-UI analytics board in sand, sage and slate: blue fabric wave
 <a id="pebble-studio"></a>
 ### 31. Pebble Studio
 
-![Pebble Studio reference shot](../../site/dashboards/pebble-studio/shot.jpg)
+![Pebble Studio original reference](../../site/dashboards/pebble-studio/reference.jpg)
 
-_Pebble Studio · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Pebble Studio · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A cream-and-pink soft-UI studio admin: extruded nav pills, overlapping peach/pink SVG pebble blobs, circular knobs, layered wave dunes, and a gradient torus beside a tick-mark dial — all on neumorphic clay surfaces.
 
@@ -1177,9 +1177,9 @@ A cream-and-pink soft-UI studio admin: extruded nav pills, overlapping peach/pin
 <a id="orbit-clay"></a>
 ### 33. Orbit Clay
 
-![Orbit Clay reference shot](../../site/dashboards/orbit-clay/shot.jpg)
+![Orbit Clay original reference](../../site/dashboards/orbit-clay/reference.jpg)
 
-_Orbit Clay · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Orbit Clay · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 Cream, forest and gold claymorphism for an immersive media console: twin phone panels with a gold-ring astronaut helmet, a START pill, and a calibration landscape where a gold sphere rides a vertical rail beside stacked KPIs.
 
@@ -1207,9 +1207,9 @@ Cream, forest and gold claymorphism for an immersive media console: twin phone p
 <a id="ember-rooms"></a>
 ### 38. Ember Rooms
 
-![Ember Rooms reference shot](../../site/dashboards/ember-rooms/shot.jpg)
+![Ember Rooms original reference](../../site/dashboards/ember-rooms/reference.jpg)
 
-_Ember Rooms · 1440×900 reference screenshot (also `thumb.jpg` for cards)._
+_Ember Rooms · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A soft neumorphic indoor lighting console: orange accent, left icon rail, pill search, and a large centre stage with an SVG pendant lamp, orbiting room dots, intensity slider, schedule, line charts and a video-sim room panel.
 

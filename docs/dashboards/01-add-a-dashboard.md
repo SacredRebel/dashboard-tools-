@@ -8,7 +8,7 @@ The exact workflow for turning **one reference screenshot** into **one gallery d
 
 ## 0. Inputs and naming
 
-- Reference images live **outside git** in `inputs/dashboards/` (that folder is in `.gitignore`). **Never commit the reference images.** They belong to their original designers.
+- Working copies of reference images live in `inputs/dashboards/` (gitignored). While building, keep them there. When the owner wants the original in the gallery for 1:1 comparison, copy it to `site/dashboards/<id>/reference.jpg` (or `.png`) and set `"reference"` on the catalog entry — that file **is** committed.
 - Process images in filename order. Give each dashboard:
   - `number`: next free integer in `catalog/dashboards.json`
   - `id`: kebab-case, `<original-name>-<domain>`, e.g. `horizon-weather`, `ledger-finance`, `pulse-fitness`
@@ -37,11 +37,12 @@ site/dashboards/<id>/
   index.html   ← markup
   style.css    ← tokens (:root + [data-variant]) and component styles
   app.js       ← sample data, icons, code-drawn art, interactions (optional but usual)
-  thumb.jpg    ← generated in step 6 (720×450 gallery card), never hand-made
-  shot.jpg     ← generated in step 6 (1440×900 1:1 desktop reference), never hand-made
+  thumb.jpg      ← generated in step 6 (720×450 gallery card), never hand-made
+  shot.jpg       ← generated in step 6 (1440×900 recreation screenshot), never hand-made
+  reference.jpg  ← (or .png) the owner's original reference image, copied in for 1:1 comparison
 ```
 
-Never commit the owner's original reference images from `inputs/dashboards/` — those stay gitignored. `shot.jpg` is **our** recreation screenshot and is the canonical visual reference in the repo.
+Working copies of owner-supplied references live in `inputs/dashboards/` (gitignored while building). When the owner asks to keep them in the gallery, copy each into `site/dashboards/<id>/reference.jpg` (or `.png`) and set `"reference": "reference.jpg"` on the catalog entry. `shot.jpg` is our recreation screenshot; `reference.*` is the original for side-by-side fidelity checks.
 
 ### index.html skeleton (copy and adapt)
 
@@ -148,7 +149,7 @@ It validates the entry: enums, required fields, palette hex, variant blocks pres
 node scripts/dashboards-check.mjs <id>
 ```
 
-It serves `site/` over HTTP with worst-case clean-URL rules (not file://), then loads `/dashboards/<id>/`, `/dashboards/<id>` and `/dashboards/<id>/index.html` at 1440×900, the folder URL at 375×812, every variant, and the gallery preview iframe at `#/dashboards/<id>`. It fails on console errors, any 404, an unstyled page, a missing `data-ready`, or horizontal overflow. It writes `thumb.jpg` (720×450 gallery card), `shot.jpg` (1440×900 1:1 desktop reference), and `docs/validation/dashboards/<id>.json`. Then run `node scripts/build.mjs` again so the catalog picks up the assets. Open `shot.jpg` and look at it side by side with the (gitignored) source reference — that is the fidelity check.
+It serves `site/` over HTTP with worst-case clean-URL rules (not file://), then loads `/dashboards/<id>/`, `/dashboards/<id>` and `/dashboards/<id>/index.html` at 1440×900, the folder URL at 375×812, every variant, and the gallery preview iframe at `#/dashboards/<id>`. It fails on console errors, any 404, an unstyled page, a missing `data-ready`, or horizontal overflow. It writes `thumb.jpg` (720×450 gallery card), `shot.jpg` (1440×900 recreation screenshot), and `docs/validation/dashboards/<id>.json`. Then run `node scripts/build.mjs` again so the catalog picks up the assets. Fidelity check: open Live vs **Original reference** (`reference.*`) in the gallery; use `shot.jpg` only as our recreation capture.
 
 ## 7. Verify in the gallery
 

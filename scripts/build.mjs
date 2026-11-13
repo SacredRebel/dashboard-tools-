@@ -87,6 +87,10 @@ const dash = json('catalog/dashboards.json');
     if (d.maps_to_theme && !themes.themes.some((t) => t.id === d.maps_to_theme)) errors.push(`${where}: maps_to_theme ${d.maps_to_theme} is not a toolkit theme`);
     if (d.path !== `site/dashboards/${d.id}/`) errors.push(`${where}: path must be site/dashboards/${d.id}/`);
     for (const f of ['index.html', 'style.css', 'thumb.jpg', 'shot.jpg']) if (!existsSync(join(root, d.path, f))) errors.push(`${where}: ${d.path}${f} missing${f === 'thumb.jpg' || f === 'shot.jpg' ? ' (run node scripts/dashboards-check.mjs ' + d.id + ')' : ''}`);
+    if (d.reference) {
+      if (!/^reference\.(jpe?g|png|webp)$/i.test(d.reference)) errors.push(`${where}: reference must be reference.jpg|jpeg|png|webp (got ${d.reference})`);
+      else if (!existsSync(join(root, d.path, d.reference))) errors.push(`${where}: ${d.path}${d.reference} missing`);
+    }
     if (existsSync(join(root, d.path, 'style.css'))) {
       const css = rd(d.path + 'style.css');
       for (const v of (d.variants || []).slice(1)) if (!css.includes(`[data-variant="${v.id}"]`)) errors.push(`${where}: style.css has no [data-variant="${v.id}"] block`);
@@ -193,7 +197,11 @@ for (const c of catalog.categories) {
     const list = dash.dashboards.filter((d) => d.style_family === f.id);
     md += `\n## ${f.name}\n\n${f.blurb}\n\n${list.length ? '' : '_No dashboards yet._\n\n'}`;
     for (const d of list) {
-      md += `<a id="${d.id}"></a>\n### ${d.number}. ${d.name}\n\n![${d.name} reference shot](../../${d.path}shot.jpg)\n\n_${d.name} · 1440×900 reference screenshot (also \`thumb.jpg\` for cards)._\n\n${d.summary}\n\n`;
+      const heroImg = d.reference ? `${d.path}${d.reference}` : `${d.path}shot.jpg`;
+      const heroCap = d.reference
+        ? `_${d.name} · original owner reference (\`${d.reference}\`; recreation \`shot.jpg\`, card \`thumb.jpg\`)._`
+        : `_${d.name} · 1440×900 recreation screenshot (also \`thumb.jpg\` for cards)._`;
+      md += `<a id="${d.id}"></a>\n### ${d.number}. ${d.name}\n\n![${d.name} ${d.reference ? 'original reference' : 'recreation shot'}](../../${heroImg})\n\n${heroCap}\n\n${d.summary}\n\n`;
       md += `- **Use cases:** ${d.use_cases.map((u) => ucName[u]).join(', ')} · **Mode:** ${d.mode} · **Mood:** ${d.mood.join(', ')}\n- **Signature:** ${d.signature}\n- **Layout:** ${d.layout.structure}\n- **Responsive:** ${d.layout.responsive}\n- **Fonts:** ${d.fonts.display} / ${d.fonts.sans} · **Palette:** ${Object.entries(d.palette).map(([k, v]) => `${k} \`${v}\``).join(', ')}\n- **Variants:** ${d.variants.map((v) => v.name).join(', ')}${d.maps_to_theme ? ` · **Closest toolkit theme:** \`${d.maps_to_theme}\`` : ''}\n\n`;
       md += `**Best for**\n${d.best_for.map((x) => `- ${x}`).join('\n')}\n\n**Avoid when**\n${d.avoid_when.map((x) => `- ${x}`).join('\n')}\n\n**Components:** ${d.components.join(' · ')}\n\n---\n\n`;
     }

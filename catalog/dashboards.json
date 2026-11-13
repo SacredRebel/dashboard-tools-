@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "description": "Dashboard style gallery: complete, themeable reference dashboards an agent can pick from by style family, use case or mode. Each entry lives in site/dashboards/<id>/ (index.html + style.css + app.js + thumb.jpg + shot.jpg 1440×900). Edit here, then run node scripts/build.mjs and node scripts/dashboards-check.mjs.",
+  "description": "Dashboard style gallery: complete, themeable reference dashboards an agent can pick from by style family, use case or mode. Each entry lives in site/dashboards/<id>/ (index.html + style.css + app.js + thumb.jpg + shot.jpg 1440×900 + optional reference.* original). Edit here, then run node scripts/build.mjs and node scripts/dashboards-check.mjs.",
   "style_families": [
     {
       "id": "cinematic",
@@ -160,8 +160,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Fixed left sidebar (brand, 5-item nav, quote) \u00b7 top bar (pill search, bell, avatar) \u00b7 hero (headline left, current conditions right) over a painted scene \u00b7 7-day strip \u00b7 3 columns: area chart, details list, story card \u00b7 popular-locations row",
-        "responsive": "\u22641180px: chart spans full width above details + story \u00b7 \u2264960px: sidebar becomes a top bar, hero stacks \u00b7 \u2264640px: single column, icon-only nav, day strip scrolls horizontally"
+        "structure": "Fixed left sidebar (brand, 5-item nav, quote) · top bar (pill search, bell, avatar) · hero (headline left, current conditions right) over a painted scene · 7-day strip · 3 columns: area chart, details list, story card · popular-locations row",
+        "responsive": "≤1180px: chart spans full width above details + story · ≤960px: sidebar becomes a top bar, hero stacks · ≤640px: single column, icon-only nav, day strip scrolls horizontally"
       },
       "components": [
         "Pill search with accent button",
@@ -251,8 +251,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Top bar (brand, 4-item nav, pill search, range toggle, bell, avatar) \u00b7 3 columns at 1440px: 288px left rail (uptime dial, health donut, hourly bars) \u00b7 fluid centre (4 metric orbs, wave chart, 3 sparkline tiles) \u00b7 304px right rail (channel pillars, top events, regions) \u00b7 18px gaps",
-        "responsive": "\u22641180px: centre column spans full width on top, rails sit side by side below, search hides \u00b7 \u2264960px: nav wraps under the bar, orbs 2\u00d72 \u00b7 \u2264640px: single column, orbs stack, chart 200px tall"
+        "structure": "Top bar (brand, 4-item nav, pill search, range toggle, bell, avatar) · 3 columns at 1440px: 288px left rail (uptime dial, health donut, hourly bars) · fluid centre (4 metric orbs, wave chart, 3 sparkline tiles) · 304px right rail (channel pillars, top events, regions) · 18px gaps",
+        "responsive": "≤1180px: centre column spans full width on top, rails sit side by side below, search hides · ≤960px: nav wraps under the bar, orbs 2×2 · ≤640px: single column, orbs stack, chart 200px tall"
       },
       "components": [
         "Metric orbs (toggle buttons that switch the chart)",
@@ -343,8 +343,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Slim top bar (brand, 4-item nav, date, 2 icon buttons) \u00b7 12-column grid at 1440px, 18px gaps: 3-column rail (today's total, strings table, self-powered ring) + 9-column hero (sun arc scene, hourly chart, 6-item readout strip) \u00b7 then 2\u00d72 half-width panels (output bars with range toggle, 4 storage dials, hourly load bars, 4 site thumbnails)",
-        "responsive": "\u22641180px: hero full width on top, rail becomes a two-column panel below \u00b7 \u2264760px: single column, hero chart 130px, readout strip 3\u00d72, dials and sites 2\u00d72"
+        "structure": "Slim top bar (brand, 4-item nav, date, 2 icon buttons) · 12-column grid at 1440px, 18px gaps: 3-column rail (today's total, strings table, self-powered ring) + 9-column hero (sun arc scene, hourly chart, 6-item readout strip) · then 2×2 half-width panels (output bars with range toggle, 4 storage dials, hourly load bars, 4 site thumbnails)",
+        "responsive": "≤1180px: hero full width on top, rail becomes a two-column panel below · ≤760px: single column, hero chart 130px, readout strip 3×2, dials and sites 2×2"
       },
       "components": [
         "Sun-path arc scene with movable sun",
@@ -434,8 +434,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Fixed illustrated scene behind the page \u00b7 one centred panel, max 1240px, offset 210px from the top so the moon shows \u00b7 inside: 216px sidebar (brand, 7-item nav, wave pattern) + 12-column main grid, 16px gaps: header with pay-period stepper \u00b7 4 KPI tiles \u00b7 trend chart (7 cols) + deductions (5 cols) \u00b7 time off (6) + next steps (6)",
-        "responsive": "\u22641080px: sidebar becomes a scrolling top nav, KPIs 2\u00d72, cards stack \u00b7 \u2264640px: panel offset 130px, icon-only nav, period stepper full width, donut and legend stack"
+        "structure": "Fixed illustrated scene behind the page · one centred panel, max 1240px, offset 210px from the top so the moon shows · inside: 216px sidebar (brand, 7-item nav, wave pattern) + 12-column main grid, 16px gaps: header with pay-period stepper · 4 KPI tiles · trend chart (7 cols) + deductions (5 cols) · time off (6) + next steps (6)",
+        "responsive": "≤1080px: sidebar becomes a scrolling top nav, KPIs 2×2, cards stack · ≤640px: panel offset 130px, icon-only nav, period stepper full width, donut and legend stack"
       },
       "components": [
         "Sidebar nav with gold active pill",
@@ -525,8 +525,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Centred 1240px column, 20px gaps \u00b7 top bar (brand, 4-item nav, bell) \u00b7 380px hero (copy left, leaf artwork right, CTA + site switcher) \u00b7 4-column metrics band \u00b7 3\u00d72 grid of colour-blocked tiles (species bars, monthly planting bars, soil gauges, landscape tile, checklist, crews)",
-        "responsive": "\u2264980px: tiles 2 columns, metrics band 2\u00d72 \u00b7 \u2264640px: single column, leaves move above the headline, site switcher and CTA full width"
+        "structure": "Centred 1240px column, 20px gaps · top bar (brand, 4-item nav, bell) · 380px hero (copy left, leaf artwork right, CTA + site switcher) · 4-column metrics band · 3×2 grid of colour-blocked tiles (species bars, monthly planting bars, soil gauges, landscape tile, checklist, crews)",
+        "responsive": "≤980px: tiles 2 columns, metrics band 2×2 · ≤640px: single column, leaves move above the headline, site switcher and CTA full width"
       },
       "components": [
         "Hero with headline, lede and pill CTA",
@@ -617,8 +617,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "One framed board, max 1280px, thick dark bezel \u00b7 upper half (pale): centred title + period toggle, left column of 2 ring stats, 2 big numbers and a line chart, right column mountain art with a conditions card \u00b7 wave-shaped edge \u00b7 lower half (charcoal): 4 columns (thin bar list, 2 pie dials with legends, ring gauge + small table)",
-        "responsive": "\u22641080px: upper half stacks and the mountains move to a 330px strip above the wave; lower half 2\u00d72 \u00b7 \u2264640px: single column, 230px mountain strip, full-width period toggle, legends as 44px rows"
+        "structure": "One framed board, max 1280px, thick dark bezel · upper half (pale): centred title + period toggle, left column of 2 ring stats, 2 big numbers and a line chart, right column mountain art with a conditions card · wave-shaped edge · lower half (charcoal): 4 columns (thin bar list, 2 pie dials with legends, ring gauge + small table)",
+        "responsive": "≤1080px: upper half stacks and the mountains move to a 330px strip above the wave; lower half 2×2 · ≤640px: single column, 230px mountain strip, full-width period toggle, legends as 44px rows"
       },
       "components": [
         "Centred wordmark header with period toggle",
@@ -707,8 +707,8 @@
       ],
       "layout": {
         "pattern": "Detail",
-        "structure": "600px rounded stage with a full-bleed scene: top row (Buy pill, notched filter tab with 3 selects, Rent pill) \u00b7 left 60px pill rail of 6 icons \u00b7 headline and lede \u00b7 white match-count card bottom-left \u00b7 frosted detail card bottom-right (340px) \u00b7 below: 3 cards (matching homes list, price-history line chart, viewings with a book button)",
-        "responsive": "\u22641100px: detail card moves under the match card, lower cards 2 columns \u00b7 \u2264700px: single column, filters become a stacked white card, rail turns into a horizontal pill, scene stays behind the top 470px"
+        "structure": "600px rounded stage with a full-bleed scene: top row (Buy pill, notched filter tab with 3 selects, Rent pill) · left 60px pill rail of 6 icons · headline and lede · white match-count card bottom-left · frosted detail card bottom-right (340px) · below: 3 cards (matching homes list, price-history line chart, viewings with a book button)",
+        "responsive": "≤1100px: detail card moves under the match card, lower cards 2 columns · ≤700px: single column, filters become a stacked white card, rail turns into a horizontal pill, scene stays behind the top 470px"
       },
       "components": [
         "Buy / Rent toggle pills",
@@ -797,8 +797,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Top bar (brand, centred pill tabs, bell, avatar) \u00b7 12-column grid, 18px gaps: row 1 headline (5) + score card (4) + heart-rate card (3) \u00b7 rows 2\u20133: two small chart cards and a summary card on the left (5), device card (4) and body-map card (3) spanning both rows",
-        "responsive": "\u22641100px: 2 columns (headline, score + heart rate, stress + sleep, device + body, summary) and tabs scroll \u00b7 \u2264680px: single column, tabs on their own scrolling row"
+        "structure": "Top bar (brand, centred pill tabs, bell, avatar) · 12-column grid, 18px gaps: row 1 headline (5) + score card (4) + heart-rate card (3) · rows 2–3: two small chart cards and a summary card on the left (5), device card (4) and body-map card (3) spanning both rows",
+        "responsive": "≤1100px: 2 columns (headline, score + heart rate, stress + sleep, device + body, summary) and tabs scroll · ≤680px: single column, tabs on their own scrolling row"
       },
       "components": [
         "Centred pill tabs that switch the score",
@@ -888,8 +888,8 @@
       ],
       "layout": {
         "pattern": "Detail",
-        "structure": "Top bar (wordmark, centred pill nav, avatar) \u00b7 250px sky hero: date, serif headline with italic second half, 3 chips, 200px round score \u00b7 12-column grid: timeline (8) + stage split (4, two rows) \u00b7 night stats strip (8) \u00b7 bottom row: last seven nights bar chart (5), habits (4), bedroom (3)",
-        "responsive": "\u22641100px: 2 columns (timeline and stats full width, split + week, habits + bedroom) \u00b7 \u2264700px: single column, nav on its own row, score under the headline, stats 2\u00d72, fewer time labels"
+        "structure": "Top bar (wordmark, centred pill nav, avatar) · 250px sky hero: date, serif headline with italic second half, 3 chips, 200px round score · 12-column grid: timeline (8) + stage split (4, two rows) · night stats strip (8) · bottom row: last seven nights bar chart (5), habits (4), bedroom (3)",
+        "responsive": "≤1100px: 2 columns (timeline and stats full width, split + week, habits + bedroom) · ≤700px: single column, nav on its own row, score under the headline, stats 2×2, fewer time labels"
       },
       "components": [
         "Pill navigation",
@@ -978,8 +978,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "230px sticky sidebar (brand, 5 nav links, emergency note) \u00b7 main: greeting header with search and avatar \u00b7 12-column grid: next visit (5) + score (3) + treatments (4, two rows) \u00b7 booking card (8, two rows: month calendar left, times, dentists and confirm right) \u00b7 tooth chart (4)",
-        "responsive": "\u22641180px: sidebar becomes a top bar, grid 2 columns \u00b7 \u2264700px: icon tab bar with labels, single column, calendar above times"
+        "structure": "230px sticky sidebar (brand, 5 nav links, emergency note) · main: greeting header with search and avatar · 12-column grid: next visit (5) + score (3) + treatments (4, two rows) · booking card (8, two rows: month calendar left, times, dentists and confirm right) · tooth chart (4)",
+        "responsive": "≤1180px: sidebar becomes a top bar, grid 2 columns · ≤700px: icon tab bar with labels, single column, calendar above times"
       },
       "components": [
         "Sidebar navigation with emergency note",
@@ -1068,8 +1068,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Pill top bar (brand, 4 links, bell, avatar) \u00b7 greeting row \u00b7 12-column bento: heart rate (4) + blood pressure (2) + blood sugar (2) + next appointment (4) \u00b7 doctor directory (5, two rows) + booking (4, two rows) + this week chart (3) + records (3)",
-        "responsive": "\u22641100px: 4-column bento (vitals pair, directory + booking side by side) \u00b7 \u2264700px: 2-column bento with vitals side by side, everything else full width, nav on its own row"
+        "structure": "Pill top bar (brand, 4 links, bell, avatar) · greeting row · 12-column bento: heart rate (4) + blood pressure (2) + blood sugar (2) + next appointment (4) · doctor directory (5, two rows) + booking (4, two rows) + this week chart (3) + records (3)",
+        "responsive": "≤1100px: 4-column bento (vitals pair, directory + booking side by side) · ≤700px: 2-column bento with vitals side by side, everything else full width, nav on its own row"
       },
       "components": [
         "Pill top bar with notification dot",
@@ -1158,8 +1158,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "220px clay sidebar (avatar, 6 links, Plus card) \u00b7 main: title + search + bell \u00b7 peach hero (art 220px, greeting, plant) \u00b7 now-playing bar \u00b7 4 stat tiles \u00b7 listening bars (1.25fr) + top genres (1fr) \u00b7 recently played + daily mix",
-        "responsive": "\u22641100px: sidebar becomes a top block, stats 2\u00d72 \u00b7 \u2264700px: single column, nav in 3\u00d72 grid, hero art above copy, player wraps to two rows"
+        "structure": "220px clay sidebar (avatar, 6 links, Plus card) · main: title + search + bell · peach hero (art 220px, greeting, plant) · now-playing bar · 4 stat tiles · listening bars (1.25fr) + top genres (1fr) · recently played + daily mix",
+        "responsive": "≤1100px: sidebar becomes a top block, stats 2×2 · ≤700px: single column, nav in 3×2 grid, hero art above copy, player wraps to two rows"
       },
       "components": [
         "Clay sidebar with avatar and upgrade card",
@@ -1249,8 +1249,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Top bar: serif wordmark, centred pill of 5 round workspace buttons, avatar \u00b7 12-column grid: weekly active teams area chart (7) + capsule chart (5, two rows) \u00b7 KPI strip (7) \u00b7 plan mix (4) + feature flags (4) + release checklist (4)",
-        "responsive": "\u22641100px: 2 columns (hero and KPIs full width, capsules + mix, flags + checklist) \u00b7 \u2264700px: single column, workspace pill on its own row, KPIs stacked"
+        "structure": "Top bar: serif wordmark, centred pill of 5 round workspace buttons, avatar · 12-column grid: weekly active teams area chart (7) + capsule chart (5, two rows) · KPI strip (7) · plan mix (4) + feature flags (4) + release checklist (4)",
+        "responsive": "≤1100px: 2 columns (hero and KPIs full width, capsules + mix, flags + checklist) · ≤700px: single column, workspace pill on its own row, KPIs stacked"
       },
       "components": [
         "Round workspace switcher",
@@ -1338,8 +1338,8 @@
       ],
       "layout": {
         "pattern": "Settings",
-        "structure": "Top bar: gem wordmark, glass tab pill, lock and bell orbs \u00b7 title row with Create workspace pill \u00b7 12-column grid: invite (4) + members (5) + folder plan card (3) \u00b7 permissions (6) + notifications (6)",
-        "responsive": "\u22641100px: 2 columns (invite + members, plan under invite, permissions and notifications full width) \u00b7 \u2264700px: single column, tabs scroll on their own row, permissions in one column"
+        "structure": "Top bar: gem wordmark, glass tab pill, lock and bell orbs · title row with Create workspace pill · 12-column grid: invite (4) + members (5) + folder plan card (3) · permissions (6) + notifications (6)",
+        "responsive": "≤1100px: 2 columns (invite + members, plan under invite, permissions and notifications full width) · ≤700px: single column, tabs scroll on their own row, permissions in one column"
       },
       "components": [
         "Glass tab bar and icon orbs",
@@ -1428,8 +1428,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Top bar: mark, name, season toggle \u00b7 4 region spark cards \u00b7 12-column grid: species KPI + coverage ring (3) + hero art with caption (6) + nesting ring and habitat donuts (3) \u00b7 species bars (6) + observation log (6)",
-        "responsive": "\u22641100px: regions 2\u00d72, art full width, KPI and rings side by side, bars and log full width \u00b7 \u2264700px: single column, caption moves under the art"
+        "structure": "Top bar: mark, name, season toggle · 4 region spark cards · 12-column grid: species KPI + coverage ring (3) + hero art with caption (6) + nesting ring and habitat donuts (3) · species bars (6) + observation log (6)",
+        "responsive": "≤1100px: regions 2×2, art full width, KPI and rings side by side, bars and log full width · ≤700px: single column, caption moves under the art"
       },
       "components": [
         "Season toggle",
@@ -1517,8 +1517,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "3 columns: 240px menu (realm nav, today's quests that award keys) \u00b7 main: title + key balance, relic wheel with chest core, chest contents with rarity filter, your haul \u00b7 320px guild chat with composer",
-        "responsive": "\u22641180px: chat moves under the main column \u00b7 \u2264760px: single column, nav 2\u00d72, wheel labels hidden, chest copy trimmed"
+        "structure": "3 columns: 240px menu (realm nav, today's quests that award keys) · main: title + key balance, relic wheel with chest core, chest contents with rarity filter, your haul · 320px guild chat with composer",
+        "responsive": "≤1180px: chat moves under the main column · ≤760px: single column, nav 2×2, wheel labels hidden, chest copy trimmed"
       },
       "components": [
         "Relic wheel around a chest",
@@ -1606,8 +1606,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Top bar: mark, name, stay dates \u00b7 12-column bento: landscape hero with greeting (8) + thermostat dial (4) \u00b7 daylight arc (3) + forecast (5) + light scenes (4) \u00b7 activity booking (6) + alarms (3) + trails (3)",
-        "responsive": "\u22641100px: 2 columns (hero full, dial + daylight, forecast full, scenes + alarms, bookings and trails full) \u00b7 \u2264700px: single column, greeting moves under the art"
+        "structure": "Top bar: mark, name, stay dates · 12-column bento: landscape hero with greeting (8) + thermostat dial (4) · daylight arc (3) + forecast (5) + light scenes (4) · activity booking (6) + alarms (3) + trails (3)",
+        "responsive": "≤1100px: 2 columns (hero full, dial + daylight, forecast full, scenes + alarms, bookings and trails full) · ≤700px: single column, greeting moves under the art"
       },
       "components": [
         "SVG landscape hero with greeting",
@@ -1696,15 +1696,15 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "64px icon rail \u00b7 top bar (brand, search, bell, avatar) \u00b7 left stack (weather, AQI arc + spark, thermostat dial) \u00b7 right hero (room tabs, SVG living room with device nodes, vertical brightness) \u00b7 bottom row (2\u00d72 device toggles \u00b7 7-day power bars) \u00b7 eco footer",
-        "responsive": "\u22641180px: left stack and hero stack; power full width \u00b7 \u2264960px: rail becomes top icon strip \u00b7 \u2264640px: single column, room tabs scroll, brightness becomes horizontal"
+        "structure": "64px icon rail · top bar (brand, search, bell, avatar) · left stack (weather, AQI arc + spark, thermostat dial) · right hero (room tabs, SVG living room with device nodes, vertical brightness) · bottom row (2×2 device toggles · 7-day power bars) · eco footer",
+        "responsive": "≤1180px: left stack and hero stack; power full width · ≤960px: rail becomes top icon strip · ≤640px: single column, room tabs scroll, brightness becomes horizontal"
       },
       "components": [
         "Icon rail navigation",
         "Pill search and notification bell",
         "Weather scene card with humidity/wind/AQI chips",
         "AQI arc gauge with PM2.5 sparkline",
-        "Thermostat dial with \u00b1 and eco pill",
+        "Thermostat dial with ± and eco pill",
         "Room segmented tabs",
         "SVG living-room hero with device nodes",
         "Vertical brightness slider",
@@ -1753,9 +1753,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied smart-home concept screenshot. Brand (Hearth Nest), copy and figures are fictional. The living-room photo and decorative plant were replaced with SVG themed by CSS variables. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied smart-home concept screenshot. Brand (Hearth Nest), copy and figures are fictional. The living-room photo and decorative plant were replaced with SVG themed by CSS variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/hearth-nest/"
+      "path": "site/dashboards/hearth-nest/",
+      "reference": "reference.jpg"
     },
     {
       "id": "veil-rooms",
@@ -1768,7 +1769,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A grey-glass smart-home board: greeting and room pills, a 2\u00d73 grid of device cards, and a right Light panel for fixture toggles and stepped spotlights.",
+      "summary": "A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device cards, and a right Light panel for fixture toggles and stepped spotlights.",
       "mood": [
         "glassy",
         "calm",
@@ -1788,8 +1789,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "56px icon rail \u00b7 centre column (status chips, greeting, room pills, 3\u00d72 device cards) \u00b7 320px right Light panel (header, time, 2\u00d72 fixture cards with toggles and sliders)",
-        "responsive": "\u22641180px: Light panel drops under the device grid \u00b7 \u2264960px: rail becomes a top strip \u00b7 \u2264640px: device cards single column, room pills scroll"
+        "structure": "56px icon rail · centre column (status chips, greeting, room pills, 3×2 device cards) · 320px right Light panel (header, time, 2×2 fixture cards with toggles and sliders)",
+        "responsive": "≤1180px: Light panel drops under the device grid · ≤960px: rail becomes a top strip · ≤640px: device cards single column, room pills scroll"
       },
       "components": [
         "Slim icon rail with avatar",
@@ -1846,9 +1847,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied grey-glass smart-home screenshot. Brand (Veil Rooms), resident name, track titles and figures are fictional. Album art and lamp photos were replaced with SVG. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied grey-glass smart-home screenshot. Brand (Veil Rooms), resident name, track titles and figures are fictional. Album art and lamp photos were replaced with SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/veil-rooms/"
+      "path": "site/dashboards/veil-rooms/",
+      "reference": "reference.jpg"
     },
     {
       "id": "atrium-living",
@@ -1881,8 +1883,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Full-bleed SVG room backdrop \u00b7 left pill icon rail \u00b7 top room capsule nav \u00b7 glass grid: climate column (weather, thermo dial, modes, members) \u00b7 center (energy chart, TV strip, music) \u00b7 right (camera, lighting, lock, ambient LED, speaker)",
-        "responsive": "\u22641180px: rail becomes top icon strip, glass grid 2 columns \u00b7 \u2264960px: single column stack, backdrop shortens \u00b7 \u2264640px: room pills scroll horizontally, sliders full width, tap targets \u226544px"
+        "structure": "Full-bleed SVG room backdrop · left pill icon rail · top room capsule nav · glass grid: climate column (weather, thermo dial, modes, members) · center (energy chart, TV strip, music) · right (camera, lighting, lock, ambient LED, speaker)",
+        "responsive": "≤1180px: rail becomes top icon strip, glass grid 2 columns · ≤960px: single column stack, backdrop shortens · ≤640px: room pills scroll horizontally, sliders full width, tap targets ≥44px"
       },
       "components": [
         "Vertical icon rail",
@@ -1898,7 +1900,7 @@
         "Ambient LED color and intensity",
         "Smart speaker tile"
       ],
-      "signature": "Frosted glass panels floating over a hand-drawn atrium living room \u2014 teal walls, tall window light, wood floor and plants \u2014 with a warm energy chart and cool climate dial as twin accents.",
+      "signature": "Frosted glass panels floating over a hand-drawn atrium living room — teal walls, tall window light, wood floor and plants — with a warm energy chart and cool climate dial as twin accents.",
       "palette": {
         "bg": "#d8e6ea",
         "surface": "#f4f9fb",
@@ -1940,9 +1942,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied glass smart-home reference. Brand, room names and all data are invented. The living-room photograph was replaced with an SVG atrium scene. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied glass smart-home reference. Brand, room names and all data are invented. The living-room photograph was replaced with an SVG atrium scene. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/atrium-living/"
+      "path": "site/dashboards/atrium-living/",
+      "reference": "reference.jpg"
     },
     {
       "id": "glacier-ops",
@@ -1971,12 +1974,12 @@
       "avoid_when": [
         "Simple consumer apps or sparse KPI boards",
         "Light-mode brand systems",
-        "Editable record workflows \u2014 this screen is for monitoring, not forms"
+        "Editable record workflows — this screen is for monitoring, not forms"
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Top bar (brand, sector tabs, 4 status orbs) \u00b7 12-column body: left chart stack \u00b7 center multi-ring topo dial \u00b7 right viewfinder + lines + dual gauges \u00b7 full-width bottom area wave",
-        "responsive": "\u22641180px: dial full width on top, side stacks become two columns below \u00b7 \u2264960px: single column, dial scales down, bottom chart first after dial \u00b7 \u2264640px: status orbs wrap, tabs scroll"
+        "structure": "Top bar (brand, sector tabs, 4 status orbs) · 12-column body: left chart stack · center multi-ring topo dial · right viewfinder + lines + dual gauges · full-width bottom area wave",
+        "responsive": "≤1180px: dial full width on top, side stacks become two columns below · ≤960px: single column, dial scales down, bottom chart first after dial · ≤640px: status orbs wrap, tabs scroll"
       },
       "components": [
         "Sector tab nav",
@@ -2033,9 +2036,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied blue radial HUD reference. Brand, sector names and all data are invented English fiction. The central 3D topo was replaced with SVG contour art. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied blue radial HUD reference. Brand, sector names and all data are invented English fiction. The central 3D topo was replaced with SVG contour art. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/glacier-ops/"
+      "path": "site/dashboards/glacier-ops/",
+      "reference": "reference.png"
     },
     {
       "id": "folio-club",
@@ -2069,8 +2073,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Left rail (profile, books, friends, settings) \u00b7 center stack (current book hero, metric tile grid, leaderboard) \u00b7 right activity feed",
-        "responsive": "\u22641180px: activity under center, rail stays \u00b7 \u2264960px: rail becomes horizontal strip \u00b7 \u2264640px: single column, tiles 1-wide, feed last"
+        "structure": "Left rail (profile, books, friends, settings) · center stack (current book hero, metric tile grid, leaderboard) · right activity feed",
+        "responsive": "≤1180px: activity under center, rail stays · ≤960px: rail becomes horizontal strip · ≤640px: single column, tiles 1-wide, feed last"
       },
       "components": [
         "Profile avatar chip",
@@ -2081,7 +2085,7 @@
         "Leaderboard segmented tabs",
         "Activity feed with reply"
       ],
-      "signature": "Five saturated pastel metric tiles \u2014 gold progress with overlapping friend avatars on the bar, orange time, purple level, green streak, sky badges \u2014 floating on soft charcoal glass.",
+      "signature": "Five saturated pastel metric tiles — gold progress with overlapping friend avatars on the bar, orange time, purple level, green streak, sky badges — floating on soft charcoal glass.",
       "palette": {
         "bg": "#1a1b1f",
         "surface": "#25262c",
@@ -2124,9 +2128,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied reading-tracker screenshot. Brand, book titles, people and numbers are invented; cover photos became flat SVG covers and initial avatars. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied reading-tracker screenshot. Brand, book titles, people and numbers are invented; cover photos became flat SVG covers and initial avatars. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/folio-club/"
+      "path": "site/dashboards/folio-club/",
+      "reference": "reference.png"
     },
     {
       "id": "citadel-wall",
@@ -2156,19 +2161,19 @@
       "avoid_when": [
         "Consumer apps or soft education products",
         "Light themes as the primary look",
-        "Editing workflows \u2014 this is monitor-first, not form-first"
+        "Editing workflows — this is monitor-first, not form-first"
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Tech title bar \u00b7 three columns (left identity/charts/status \u00b7 center hologram \u00b7 right KPI grid/gauges/bars) \u00b7 bottom four-metric spark strip",
-        "responsive": "\u22641180px: hologram on top, side columns two-up below \u00b7 \u2264960px: single column stacks \u00b7 \u2264640px: gauges wrap, footer 2\u00d72"
+        "structure": "Tech title bar · three columns (left identity/charts/status · center hologram · right KPI grid/gauges/bars) · bottom four-metric spark strip",
+        "responsive": "≤1180px: hologram on top, side columns two-up below · ≤960px: single column stacks · ≤640px: gauges wrap, footer 2×2"
       },
       "components": [
         "Tech-frame header",
         "Identity silhouette panel",
         "Line and bar charts",
         "Status list with mini bars",
-        "2\u00d72 KPI tiles with cube icons",
+        "2×2 KPI tiles with cube icons",
         "Three arc gauges",
         "Central sphere/cube SVG hologram",
         "Bottom spark metric strip"
@@ -2215,9 +2220,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied big-screen HUD screenshot. Chinese labels were replaced with English fictional ops/logistics copy; the 3D hero became an SVG sphere and cube. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied big-screen HUD screenshot. Chinese labels were replaced with English fictional ops/logistics copy; the 3D hero became an SVG sphere and cube. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/citadel-wall/"
+      "path": "site/dashboards/citadel-wall/",
+      "reference": "reference.png"
     },
     {
       "id": "aether-pane",
@@ -2251,8 +2257,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Centered floating glass shell \u00b7 3\u00d72 module grid (horizontal revenue \u00b7 spark + performance hero \u00b7 journey donut / vertical revenue \u00b7 dual area \u00b7 large journey area)",
-        "responsive": "\u22641180px: 2-column modules \u00b7 \u2264960px: single column inside the pane \u00b7 \u2264640px: pane edge-to-edge, charts shorten"
+        "structure": "Centered floating glass shell · 3×2 module grid (horizontal revenue · spark + performance hero · journey donut / vertical revenue · dual area · large journey area)",
+        "responsive": "≤1180px: 2-column modules · ≤960px: single column inside the pane · ≤640px: pane edge-to-edge, charts shorten"
       },
       "components": [
         "Floating glass shell",
@@ -2306,9 +2312,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied glass analytics HUD screenshot. Brand is Aether Pane (not taken from other gallery brands). Charts and copy are invented; the blurred photo backdrop became CSS atmosphere. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied glass analytics HUD screenshot. Brand is Aether Pane (not taken from other gallery brands). Charts and copy are invented; the blurred photo backdrop became CSS atmosphere. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/aether-pane/"
+      "path": "site/dashboards/aether-pane/",
+      "reference": "reference.png"
     },
     {
       "id": "forge-fitness",
@@ -2341,8 +2348,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "64px icon rail \u00b7 top bar (brand, ask-anything search, add, avatar) \u00b7 toolbar (search, edit, date range, add wallet, create report) \u00b7 12-column glass grid: activity \u00b7 sleep \u00b7 heart \u00b7 wellness + focus + tall energy/recovery gauge",
-        "responsive": "\u22641180px: energy gauge drops below wellness/focus \u00b7 \u2264960px: icon rail becomes top chips, cards 2-col \u00b7 \u2264640px: single column, toolbar scrolls"
+        "structure": "64px icon rail · top bar (brand, ask-anything search, add, avatar) · toolbar (search, edit, date range, add wallet, create report) · 12-column glass grid: activity · sleep · heart · wellness + focus + tall energy/recovery gauge",
+        "responsive": "≤1180px: energy gauge drops below wellness/focus · ≤960px: icon rail becomes top chips, cards 2-col · ≤640px: single column, toolbar scrolls"
       },
       "components": [
         "Slim icon rail",
@@ -2355,7 +2362,7 @@
         "Focus soundwave meter",
         "Energy recovery semi-gauge with metric pills"
       ],
-      "signature": "Glass metric cards floating over an SVG athlete/gym silhouette with orange and lime accents \u2014 no photographic faces.",
+      "signature": "Glass metric cards floating over an SVG athlete/gym silhouette with orange and lime accents — no photographic faces.",
       "palette": {
         "bg": "#0c0d10",
         "surface": "#1a1c24",
@@ -2396,9 +2403,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied fitness dashboard screenshot. Brand, labels and figures are invented. The person photograph was replaced with an abstract SVG gym silhouette and vignette atmosphere. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied fitness dashboard screenshot. Brand, labels and figures are invented. The person photograph was replaced with an abstract SVG gym silhouette and vignette atmosphere. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/forge-fitness/"
+      "path": "site/dashboards/forge-fitness/",
+      "reference": "reference.png"
     },
     {
       "id": "zest-health",
@@ -2431,8 +2439,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "240px dark sidebar (brand, nav with badges, upgrade card) \u00b7 main: profile + search header \u00b7 title row with date \u00b7 bento: energy bubbles (tall) \u00b7 heart \u00b7 activity \u00b7 wellness dot index (tall) \u00b7 sleep analysis (wide dark)",
-        "responsive": "\u22641180px: sidebar collapses to top nav, bento 2 columns \u00b7 \u2264960px: upgrade hidden \u00b7 \u2264640px: single column, bubbles stack"
+        "structure": "240px dark sidebar (brand, nav with badges, upgrade card) · main: profile + search header · title row with date · bento: energy bubbles (tall) · heart · activity · wellness dot index (tall) · sleep analysis (wide dark)",
+        "responsive": "≤1180px: sidebar collapses to top nav, bento 2 columns · ≤960px: upgrade hidden · ≤640px: single column, bubbles stack"
       },
       "components": [
         "Dark sidebar with badge counts",
@@ -2485,9 +2493,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied lime health overview. Brand renamed to Zest Health; flux logo and photo avatars were not reused. Bubbles and charts are SVG/CSS. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied lime health overview. Brand renamed to Zest Health; flux logo and photo avatars were not reused. Bubbles and charts are SVG/CSS. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/zest-health/"
+      "path": "site/dashboards/zest-health/",
+      "reference": "reference.png"
     },
     {
       "id": "orchard-sales",
@@ -2521,8 +2530,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "56px dark icon rail \u00b7 top bar with pill nav and avatars \u00b7 breadcrumb + title + date/actions \u00b7 12-col bento: product hero (3, tall) \u00b7 activity (5) \u00b7 revenue (4) \u00b7 spend (5) \u00b7 virtual cards (4)",
-        "responsive": "\u22641180px: rail becomes bottom or top chips \u00b7 \u2264960px: product full width, charts 2-col \u00b7 \u2264640px: single column, action chips scroll"
+        "structure": "56px dark icon rail · top bar with pill nav and avatars · breadcrumb + title + date/actions · 12-col bento: product hero (3, tall) · activity (5) · revenue (4) · spend (5) · virtual cards (4)",
+        "responsive": "≤1180px: rail becomes bottom or top chips · ≤960px: product full width, charts 2-col · ≤640px: single column, action chips scroll"
       },
       "components": [
         "Slim dark icon rail",
@@ -2577,9 +2586,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied lime sales dashboard. Brand renamed to Orchard Sales; 3D sphere props became SVG gradients. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied lime sales dashboard. Brand renamed to Orchard Sales; 3D sphere props became SVG gradients. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/orchard-sales/"
+      "path": "site/dashboards/orchard-sales/",
+      "reference": "reference.png"
     },
     {
       "id": "mauve-ledger",
@@ -2612,8 +2622,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Top bar (logo, pill nav, utility icons, avatar) \u00b7 greeting \u00b7 4 KPI glass cards \u00b7 12-col: average sales (8) + formation status + success gauge (4) \u00b7 recent emails full width",
-        "responsive": "\u22641180px: KPIs 2\u00d72, sales full width above side stack \u00b7 \u2264960px: nav scrolls \u00b7 \u2264640px: single column, email rows compact"
+        "structure": "Top bar (logo, pill nav, utility icons, avatar) · greeting · 4 KPI glass cards · 12-col: average sales (8) + formation status + success gauge (4) · recent emails full width",
+        "responsive": "≤1180px: KPIs 2×2, sales full width above side stack · ≤960px: nav scrolls · ≤640px: single column, email rows compact"
       },
       "components": [
         "Pill top navigation",
@@ -2624,7 +2634,7 @@
         "Segmented success gauge",
         "Recent email list with urgency"
       ],
-      "signature": "Frosted lilac glass cards on a soft lavender\u2013pink haze, anchored by a segmented 51.2% success gauge.",
+      "signature": "Frosted lilac glass cards on a soft lavender–pink haze, anchored by a segmented 51.2% success gauge.",
       "palette": {
         "bg": "#ddd6f3",
         "surface": "#f7f4ff",
@@ -2666,329 +2676,934 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied lilac finance glass concept. Brand renamed to Mauve Ledger; photo avatars became initials. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied lilac finance glass concept. Brand renamed to Mauve Ledger; photo avatars became initials. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/mauve-ledger/"
+      "path": "site/dashboards/mauve-ledger/",
+      "reference": "reference.png"
     },
     {
       "id": "tidebath-showroom",
       "number": 29,
       "name": "Tidebath Showroom",
       "style_family": "soft",
-      "use_cases": ["ecommerce", "hospitality"],
+      "use_cases": [
+        "ecommerce",
+        "hospitality"
+      ],
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
       "summary": "A soft-light bathroom showroom: curved SVG 3-bay room carousel with hotspot markers and a 6m² badge, above a four-column board for inspirations, product icons, store search and contact.",
-      "mood": ["airy", "minimal", "clean", "sculptural", "calm"],
-      "best_for": ["Bathroom, kitchen or furniture brands that sell through a visual showroom", "Landing pages that lead into a configurator or store locator", "Hospitality or retail spaces showcasing compact room layouts"],
-      "avoid_when": ["Dense product tables or wholesale order tooling", "Dark cinematic brands", "Dashboards that need many KPIs on first paint"],
+      "mood": [
+        "airy",
+        "minimal",
+        "clean",
+        "sculptural",
+        "calm"
+      ],
+      "best_for": [
+        "Bathroom, kitchen or furniture brands that sell through a visual showroom",
+        "Landing pages that lead into a configurator or store locator",
+        "Hospitality or retail spaces showcasing compact room layouts"
+      ],
+      "avoid_when": [
+        "Dense product tables or wholesale order tooling",
+        "Dark cinematic brands",
+        "Dashboards that need many KPIs on first paint"
+      ],
       "layout": {
         "pattern": "Dashboard",
         "structure": "Centered Tidebath mark + 4 nav links · curved 3-bay SVG carousel with prev/next, hotspots and 6m² badge · 4-column lower board (inspirations + social · product icons + store search · downloads · contact)",
         "responsive": "≤1100px: carousel scales, board becomes 2×2 · ≤700px: nav wraps under brand, carousel full-bleed with stacked arrows, board single column"
       },
-      "components": ["Centered brand mark with wave logo", "Text navigation links", "Curved 3-bay SVG room carousel", "Prev/next carousel controls", "Hotspot markers with look-closer tip", "Recessed 6m² size badge", "Inspirations column with social icons", "Product icon strip with download link", "Store city search field", "Downloads link list", "Contact phone and email"],
+      "components": [
+        "Centered brand mark with wave logo",
+        "Text navigation links",
+        "Curved 3-bay SVG room carousel",
+        "Prev/next carousel controls",
+        "Hotspot markers with look-closer tip",
+        "Recessed 6m² size badge",
+        "Inspirations column with social icons",
+        "Product icon strip with download link",
+        "Store city search field",
+        "Downloads link list",
+        "Contact phone and email"
+      ],
       "signature": "A soft white cylindrical stage holding three angled bathroom bays drawn in SVG, with blue tide-wave hotspot markers and a recessed circular 6m² badge.",
-      "palette": { "bg": "#f4f5f7", "surface": "#ffffff", "text": "#2c333d", "muted": "#4a5560", "accent": "#2f6fed", "orange": "#e8793a", "stage": "#e8eaee", "hotspot": "#3b82f6" },
-      "fonts": { "display": "DM Serif Display", "sans": "DM Sans" },
+      "palette": {
+        "bg": "#f4f5f7",
+        "surface": "#ffffff",
+        "text": "#2c333d",
+        "muted": "#4a5560",
+        "accent": "#2f6fed",
+        "orange": "#e8793a",
+        "stage": "#e8eaee",
+        "hotspot": "#3b82f6"
+      },
+      "fonts": {
+        "display": "DM Serif Display",
+        "sans": "DM Sans"
+      },
       "variants": [
-        { "id": "default", "name": "Porcelain", "swatch": "#2f6fed" },
-        { "id": "mist", "name": "Mist", "swatch": "#0d9488" },
-        { "id": "dusk", "name": "Dusk", "swatch": "#c45c26" }
+        {
+          "id": "default",
+          "name": "Porcelain",
+          "swatch": "#2f6fed"
+        },
+        {
+          "id": "mist",
+          "name": "Mist",
+          "swatch": "#0d9488"
+        },
+        {
+          "id": "dusk",
+          "name": "Dusk",
+          "swatch": "#c45c26"
+        }
       ],
       "maps_to_theme": "linen",
-      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
-      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft bathroom showroom render. Brand (Tidebath), copy and fixtures are fictional. Photoreal rooms and original logos were replaced with SVG bathrooms and abstract hotspot markers. The source image is not stored in the repo." },
-      "path": "site/dashboards/tidebath-showroom/"
+      "tools_used": [
+        "frontend-design",
+        "dataviz",
+        "page-patterns",
+        "surfaces",
+        "browser-testing"
+      ],
+      "source": {
+        "type": "screenshot",
+        "note": "Recreated in original code from a user-supplied soft bathroom showroom render. Brand (Tidebath), copy and fixtures are fictional. Photoreal rooms and original logos were replaced with SVG bathrooms and abstract hotspot markers. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+      },
+      "path": "site/dashboards/tidebath-showroom/",
+      "reference": "reference.jpg"
     },
     {
       "id": "dune-panels",
       "number": 30,
       "name": "Dune Panels",
       "style_family": "skeuo",
-      "use_cases": ["analytics"],
+      "use_cases": [
+        "analytics"
+      ],
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
       "summary": "A skeuomorphic soft-UI analytics board in sand, sage and slate: blue fabric wave backdrop, dual donuts, a recessed neumorphic donut well, pill search, icon shelves and a 2×2 analytics grid under dark headers.",
-      "mood": ["tactile", "calm", "organic", "matte", "soft"],
-      "best_for": ["Analytics or ops glance boards that want a tactile, non-flat look", "Product demos showcasing neumorphic depth and soft materials", "Light-mode dashboards with a natural sand-and-sage palette"],
-      "avoid_when": ["Dense tabular reporting or spreadsheet-like tools", "Brands that need sharp glass or high-chroma charts", "Dark-only or neon cyber aesthetics"],
+      "mood": [
+        "tactile",
+        "calm",
+        "organic",
+        "matte",
+        "soft"
+      ],
+      "best_for": [
+        "Analytics or ops glance boards that want a tactile, non-flat look",
+        "Product demos showcasing neumorphic depth and soft materials",
+        "Light-mode dashboards with a natural sand-and-sage palette"
+      ],
+      "avoid_when": [
+        "Dense tabular reporting or spreadsheet-like tools",
+        "Brands that need sharp glass or high-chroma charts",
+        "Dark-only or neon cyber aesthetics"
+      ],
       "layout": {
         "pattern": "Dashboard",
         "structure": "Fabric wave backdrop · top search on slate strip · dual donut sand panel · sage recessed donut well · 3×3 icon grid · range pills · slate 2×2 analytics donut grid with dark headers throughout",
         "responsive": "≤1100px: two-column wrap, wave softens · ≤700px: single column, icon grid 3×3 retained, search full width, analytics 2×2 stacks"
       },
-      "components": ["Blue fabric wave SVG backdrop", "Dark slate panel headers with icons", "Dual side-by-side donut charts", "Recessed neumorphic donut well", "Pill search field", "3×3 raised icon shelf grid", "24h / 48h / 72h range pills", "2×2 analytics donut grid"],
+      "components": [
+        "Blue fabric wave SVG backdrop",
+        "Dark slate panel headers with icons",
+        "Dual side-by-side donut charts",
+        "Recessed neumorphic donut well",
+        "Pill search field",
+        "3×3 raised icon shelf grid",
+        "24h / 48h / 72h range pills",
+        "2×2 analytics donut grid"
+      ],
       "signature": "Sand, sage and slate panels with multi-layer neumorphic shadows, a draped blue fabric wave, and a large donut seated in a deeply recessed circular well.",
-      "palette": { "bg": "#c5cfc9", "surface": "#e8d9c4", "text": "#2d3e4e", "muted": "#3d4e5c", "accent": "#4a9b8e", "sage": "#9db8ae", "slate": "#2d3e4e", "wave": "#7a93a8" },
-      "fonts": { "display": "Outfit", "sans": "Outfit" },
+      "palette": {
+        "bg": "#c5cfc9",
+        "surface": "#e8d9c4",
+        "text": "#2d3e4e",
+        "muted": "#3d4e5c",
+        "accent": "#4a9b8e",
+        "sage": "#9db8ae",
+        "slate": "#2d3e4e",
+        "wave": "#7a93a8"
+      },
+      "fonts": {
+        "display": "Outfit",
+        "sans": "Outfit"
+      },
       "variants": [
-        { "id": "default", "name": "Sand", "swatch": "#4a9b8e" },
-        { "id": "coastal", "name": "Coastal", "swatch": "#3d7a9e" },
-        { "id": "ember", "name": "Ember", "swatch": "#c4784a" }
+        {
+          "id": "default",
+          "name": "Sand",
+          "swatch": "#4a9b8e"
+        },
+        {
+          "id": "coastal",
+          "name": "Coastal",
+          "swatch": "#3d7a9e"
+        },
+        {
+          "id": "ember",
+          "name": "Ember",
+          "swatch": "#c4784a"
+        }
       ],
       "maps_to_theme": "atelier",
-      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
-      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft-UI / neumorphic mood board. Brand (Dune Panels), metrics and labels are fictional. The fabric wave and charts were redrawn as SVG. The source image is not stored in the repo." },
-      "path": "site/dashboards/dune-panels/"
+      "tools_used": [
+        "frontend-design",
+        "dataviz",
+        "page-patterns",
+        "surfaces",
+        "browser-testing"
+      ],
+      "source": {
+        "type": "screenshot",
+        "note": "Recreated in original code from a user-supplied soft-UI / neumorphic mood board. Brand (Dune Panels), metrics and labels are fictional. The fabric wave and charts were redrawn as SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+      },
+      "path": "site/dashboards/dune-panels/",
+      "reference": "reference.jpg"
     },
     {
       "id": "pebble-studio",
       "number": 31,
       "name": "Pebble Studio",
       "style_family": "skeuo",
-      "use_cases": ["saas-admin"],
+      "use_cases": [
+        "saas-admin"
+      ],
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
       "summary": "A cream-and-pink soft-UI studio admin: extruded nav pills, overlapping peach/pink SVG pebble blobs, circular knobs, layered wave dunes, and a gradient torus beside a tick-mark dial — all on neumorphic clay surfaces.",
-      "mood": ["tactile", "playful", "soft", "warm", "calm"],
-      "best_for": ["Creative or design SaaS homes that want a kit-like soft-UI feel", "Admin overviews where tactile dials and pills carry the brand", "Light-mode products that lean skeuomorphic without heavy chrome"],
-      "avoid_when": ["Dense tables or finance-grade precision charts", "Dark, technical security brands", "Brands that need flat, sharp corners"],
+      "mood": [
+        "tactile",
+        "playful",
+        "soft",
+        "warm",
+        "calm"
+      ],
+      "best_for": [
+        "Creative or design SaaS homes that want a kit-like soft-UI feel",
+        "Admin overviews where tactile dials and pills carry the brand",
+        "Light-mode products that lean skeuomorphic without heavy chrome"
+      ],
+      "avoid_when": [
+        "Dense tables or finance-grade precision charts",
+        "Dark, technical security brands",
+        "Brands that need flat, sharp corners"
+      ],
       "layout": {
         "pattern": "Dashboard",
         "structure": "Top extruded pill nav · blob stage + torus/dial analytics · wave dunes + knobs + lite slider · pastel activity feed + KPI pill strip",
         "responsive": "≤1180px: two-column bento · ≤960px: nav wraps, torus under blobs · ≤640px: single column, knobs in a row, feed last"
       },
-      "components": ["Extruded soft nav pills", "Overlapping peach/pink SVG pebble blobs", "Floating circular knobs with ± controls", "Wave-dune SVG analytics card", "Gradient torus + tick dial card", "Neumorphic KPI pills", "Lite range slider card", "Pastel activity feed with loading/empty/error/populated"],
+      "components": [
+        "Extruded soft nav pills",
+        "Overlapping peach/pink SVG pebble blobs",
+        "Floating circular knobs with ± controls",
+        "Wave-dune SVG analytics card",
+        "Gradient torus + tick dial card",
+        "Neumorphic KPI pills",
+        "Lite range slider card",
+        "Pastel activity feed with loading/empty/error/populated"
+      ],
       "signature": "Cream soft-UI board with extruded pills, overlapping peach/pink pebble blobs, circular knobs, layered wave dunes, and a rainbow torus beside a tick-mark dial.",
-      "palette": { "bg": "#efe6df", "surface": "#f7f1eb", "text": "#3a2c28", "muted": "#6a564e", "accent": "#a84f42", "peach": "#f0b49a", "candy": "#e9a6b5", "mint": "#9fcfbe" },
-      "fonts": { "display": "Nunito", "sans": "Nunito" },
+      "palette": {
+        "bg": "#efe6df",
+        "surface": "#f7f1eb",
+        "text": "#3a2c28",
+        "muted": "#6a564e",
+        "accent": "#a84f42",
+        "peach": "#f0b49a",
+        "candy": "#e9a6b5",
+        "mint": "#9fcfbe"
+      },
+      "fonts": {
+        "display": "Nunito",
+        "sans": "Nunito"
+      },
       "variants": [
-        { "id": "default", "name": "Cream", "swatch": "#a84f42" },
-        { "id": "coral", "name": "Coral", "swatch": "#b03d52" },
-        { "id": "moss", "name": "Moss", "swatch": "#3d735f" }
+        {
+          "id": "default",
+          "name": "Cream",
+          "swatch": "#a84f42"
+        },
+        {
+          "id": "coral",
+          "name": "Coral",
+          "swatch": "#b03d52"
+        },
+        {
+          "id": "moss",
+          "name": "Moss",
+          "swatch": "#3d735f"
+        }
       ],
       "maps_to_theme": "blush",
-      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
-      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft-UI / neumorphic kit render. Brand (Pebble Studio), copy and metrics are fictional. Product photos and original marks were replaced with SVG blobs, dunes, torus and knobs. The source image is not stored in the repo." },
-      "path": "site/dashboards/pebble-studio/"
+      "tools_used": [
+        "frontend-design",
+        "dataviz",
+        "page-patterns",
+        "surfaces",
+        "browser-testing"
+      ],
+      "source": {
+        "type": "screenshot",
+        "note": "Recreated in original code from a user-supplied soft-UI / neumorphic kit render. Brand (Pebble Studio), copy and metrics are fictional. Product photos and original marks were replaced with SVG blobs, dunes, torus and knobs. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+      },
+      "path": "site/dashboards/pebble-studio/",
+      "reference": "reference.jpg"
     },
     {
       "id": "copper-radar",
       "number": 32,
       "name": "Copper Radar",
       "style_family": "soft",
-      "use_cases": ["analytics"],
+      "use_cases": [
+        "analytics"
+      ],
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
       "summary": "A soft-light SOC ops board: copper accents on white, concentric radar arcs with invented vendor chips, a live incident feed, dashed severity bars, automation steps and a timeline footer.",
-      "mood": ["alert", "clean", "soft", "operational", "focused"],
-      "best_for": ["Security and observability overview screens that stay light and calm", "Ops dashboards centred on a radar or topology hero", "Incident triage boards with feed + severity + timeline"],
-      "avoid_when": ["Dark SOC walls that need neon HUD density", "Compliance tools with long tabular evidence", "Brands that cannot use warm copper accents"],
+      "mood": [
+        "alert",
+        "clean",
+        "soft",
+        "operational",
+        "focused"
+      ],
+      "best_for": [
+        "Security and observability overview screens that stay light and calm",
+        "Ops dashboards centred on a radar or topology hero",
+        "Incident triage boards with feed + severity + timeline"
+      ],
+      "avoid_when": [
+        "Dark SOC walls that need neon HUD density",
+        "Compliance tools with long tabular evidence",
+        "Brands that cannot use warm copper accents"
+      ],
       "layout": {
         "pattern": "Dashboard",
         "structure": "Top bar (brand · soft pill tabs · utilities) · Dynamic View (injection + incidents · radar · live feed) · 4-card row (Sources, Assets, Alerts, Automation) · timeline footer",
         "responsive": "≤1180px: feed under radar · ≤960px: side cards stack, 2×2 bottom grid · ≤640px: single column, tabs scroll, timeline wraps"
       },
-      "components": ["Soft pill navigation tabs", "Data-injection spark card", "Open-incident severity chips", "Concentric radar arcs with fictional vendor nodes", "Live feed with filter and states", "Dashed severity bars", "Automation step list", "Incident timeline footer with copper CTA"],
+      "components": [
+        "Soft pill navigation tabs",
+        "Data-injection spark card",
+        "Open-incident severity chips",
+        "Concentric radar arcs with fictional vendor nodes",
+        "Live feed with filter and states",
+        "Dashed severity bars",
+        "Automation step list",
+        "Incident timeline footer with copper CTA"
+      ],
       "signature": "Soft white SOC shell with copper accents and a large semi-circular radar of concentric arcs dotted with invented vendor chips.",
-      "palette": { "bg": "#f5f7f9", "surface": "#ffffff", "text": "#1c232b", "muted": "#5a6570", "accent": "#c45f1a", "copper": "#e07a2f", "sev-high": "#d97706", "sev-med": "#c0267a" },
-      "fonts": { "display": "Sora", "sans": "DM Sans" },
+      "palette": {
+        "bg": "#f5f7f9",
+        "surface": "#ffffff",
+        "text": "#1c232b",
+        "muted": "#5a6570",
+        "accent": "#c45f1a",
+        "copper": "#e07a2f",
+        "sev-high": "#d97706",
+        "sev-med": "#c0267a"
+      },
+      "fonts": {
+        "display": "Sora",
+        "sans": "DM Sans"
+      },
       "variants": [
-        { "id": "default", "name": "Copper", "swatch": "#c45f1a" },
-        { "id": "slate", "name": "Slate", "swatch": "#3d5a80" },
-        { "id": "ember", "name": "Ember", "swatch": "#b91c1c" }
+        {
+          "id": "default",
+          "name": "Copper",
+          "swatch": "#c45f1a"
+        },
+        {
+          "id": "slate",
+          "name": "Slate",
+          "swatch": "#3d5a80"
+        },
+        {
+          "id": "ember",
+          "name": "Ember",
+          "swatch": "#b91c1c"
+        }
       ],
       "maps_to_theme": "atelier",
-      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
-      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft-light SOC dashboard render. Brand (Copper Radar), vendor names and copy are fictional. Real vendor logos (Okta, AWS, Alibaba and others) were replaced with invented chips such as NimbusID and RidgeHost. The source image is not stored in the repo." },
-      "path": "site/dashboards/copper-radar/"
+      "tools_used": [
+        "frontend-design",
+        "dataviz",
+        "page-patterns",
+        "surfaces",
+        "browser-testing"
+      ],
+      "source": {
+        "type": "screenshot",
+        "note": "Recreated in original code from a user-supplied soft-light SOC dashboard render. Brand (Copper Radar), vendor names and copy are fictional. Real vendor logos (Okta, AWS, Alibaba and others) were replaced with invented chips such as NimbusID and RidgeHost. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+      },
+      "path": "site/dashboards/copper-radar/",
+      "reference": "reference.jpg"
     },
     {
       "id": "orbit-clay",
       "number": 33,
       "name": "Orbit Clay",
       "style_family": "skeuo",
-      "use_cases": ["media"],
+      "use_cases": [
+        "media"
+      ],
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
       "summary": "Cream, forest and gold claymorphism for an immersive media console: twin phone panels with a gold-ring astronaut helmet, a START pill, and a calibration landscape where a gold sphere rides a vertical rail beside stacked KPIs.",
-      "mood": ["tactile", "playful", "premium", "earthy", "curious"],
-      "best_for": ["Media, game or experiential apps that want a toy-like clay interface", "Phone-first concepts shown as twin panels on desktop", "Brand explorations that need soft depth without glass"],
-      "avoid_when": ["Dense analytics or financial tools", "Clinical or high-contrast accessibility-first UIs", "Flat material or neon dark-neon brands"],
+      "mood": [
+        "tactile",
+        "playful",
+        "premium",
+        "earthy",
+        "curious"
+      ],
+      "best_for": [
+        "Media, game or experiential apps that want a toy-like clay interface",
+        "Phone-first concepts shown as twin panels on desktop",
+        "Brand explorations that need soft depth without glass"
+      ],
+      "avoid_when": [
+        "Dense analytics or financial tools",
+        "Clinical or high-contrast accessibility-first UIs",
+        "Flat material or neon dark-neon brands"
+      ],
       "layout": {
         "pattern": "Dashboard",
         "structure": "Split stage · twin phone panels: mission phone (score, gold-ring helmet, pager, START) · calibration phone (KPI stack, clay terrain, gold sphere rail, foot icons)",
         "responsive": "≤1100px: panels stack centred · ≤700px: single phone width, stage padding shrinks, foot icons wrap"
       },
-      "components": ["Twin clay phone shells", "Gold-ring astronaut hero SVG", "Mission pager dots and house markers", "Pressable START pill", "Vertical gold-sphere calibration slider", "Clay mountain terrain SVG", "Stacked gold KPI numbers", "Foot icon strip"],
+      "components": [
+        "Twin clay phone shells",
+        "Gold-ring astronaut hero SVG",
+        "Mission pager dots and house markers",
+        "Pressable START pill",
+        "Vertical gold-sphere calibration slider",
+        "Clay mountain terrain SVG",
+        "Stacked gold KPI numbers",
+        "Foot icon strip"
+      ],
       "signature": "Soft cream clay phones with a thick gold ring framing an abstract forest-green astronaut helmet, and a gold sphere on a vertical rail over clay mountains.",
-      "palette": { "bg": "#f3ebe0", "surface": "#f7f0e6", "text": "#1f3a2e", "muted": "#4a6356", "accent": "#c9a24a", "forest": "#1f3a2e", "gold": "#c9a24a", "cream": "#f7f0e6" },
-      "fonts": { "display": "Outfit", "sans": "Outfit" },
+      "palette": {
+        "bg": "#f3ebe0",
+        "surface": "#f7f0e6",
+        "text": "#1f3a2e",
+        "muted": "#4a6356",
+        "accent": "#c9a24a",
+        "forest": "#1f3a2e",
+        "gold": "#c9a24a",
+        "cream": "#f7f0e6"
+      },
+      "fonts": {
+        "display": "Outfit",
+        "sans": "Outfit"
+      },
       "variants": [
-        { "id": "default", "name": "Orbit", "swatch": "#c9a24a" },
-        { "id": "moss", "name": "Moss", "swatch": "#2f6b4f" },
-        { "id": "dusk", "name": "Dusk", "swatch": "#d4b06a" }
+        {
+          "id": "default",
+          "name": "Orbit",
+          "swatch": "#c9a24a"
+        },
+        {
+          "id": "moss",
+          "name": "Moss",
+          "swatch": "#2f6b4f"
+        },
+        {
+          "id": "dusk",
+          "name": "Dusk",
+          "swatch": "#d4b06a"
+        }
       ],
       "maps_to_theme": "linen",
-      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
-      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied claymorphism twin-phone render. Layout rhythm, cream/forest/gold clay and the gold-ring helmet plus rail sphere were kept; any photo helmet or brand marks were replaced with abstract SVG and invented Orbit Clay copy. The source image is not stored in the repo." },
-      "path": "site/dashboards/orbit-clay/"
+      "tools_used": [
+        "frontend-design",
+        "dataviz",
+        "page-patterns",
+        "surfaces",
+        "browser-testing"
+      ],
+      "source": {
+        "type": "screenshot",
+        "note": "Recreated in original code from a user-supplied claymorphism twin-phone render. Layout rhythm, cream/forest/gold clay and the gold-ring helmet plus rail sphere were kept; any photo helmet or brand marks were replaced with abstract SVG and invented Orbit Clay copy. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+      },
+      "path": "site/dashboards/orbit-clay/",
+      "reference": "reference.jpg"
     },
     {
       "id": "saffron-dusk",
       "number": 34,
       "name": "Saffron Dusk",
       "style_family": "glass",
-      "use_cases": ["health", "education"],
+      "use_cases": [
+        "health",
+        "education"
+      ],
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
       "summary": "A respectful fictional fasting-day wellness board in liquid glass: twin phones with a date strip, imsak→iftar sun arc, water segments, an evening gather card, plus a glass profile, daily progress bars and an upgrade row.",
-      "mood": ["serene", "warm", "reverent", "airy", "soft"],
-      "best_for": ["Health and education apps around daily ritual or wellness habits", "Phone-first glass concepts shown as twin panels on desktop", "Brands that want serif display type with calm frosted cards"],
-      "avoid_when": ["Clinical EMR or dense medical charts", "Brands that forbid glass blur or serif display", "Low-end devices where backdrop-filter is costly"],
+      "mood": [
+        "serene",
+        "warm",
+        "reverent",
+        "airy",
+        "soft"
+      ],
+      "best_for": [
+        "Health and education apps around daily ritual or wellness habits",
+        "Phone-first glass concepts shown as twin panels on desktop",
+        "Brands that want serif display type with calm frosted cards"
+      ],
+      "avoid_when": [
+        "Clinical EMR or dense medical charts",
+        "Brands that forbid glass blur or serif display",
+        "Low-end devices where backdrop-filter is costly"
+      ],
       "layout": {
         "pattern": "Dashboard",
         "structure": "Stage · twin phones: Today (date strip, sun-arc card, water, gather, nav) · Profile (greeting, profile card, daily bars, upgrade, nav)",
         "responsive": "≤1100px: phones stack · ≤700px: single column, date strip scrolls inside its row, nav stays sticky to each phone"
       },
-      "components": ["Twin glass phone shells", "Horizontal date strip", "Imsak→iftar sun arc card", "Water tracker with tappable segments", "Evening gather card with silhouette avatar", "Glass profile card with share action", "Daily progress bar chart", "Upgrade row", "Glass bottom navigation"],
+      "components": [
+        "Twin glass phone shells",
+        "Horizontal date strip",
+        "Imsak→iftar sun arc card",
+        "Water tracker with tappable segments",
+        "Evening gather card with silhouette avatar",
+        "Glass profile card with share action",
+        "Daily progress bar chart",
+        "Upgrade row",
+        "Glass bottom navigation"
+      ],
       "signature": "Frosted cream and olive glass phones with a white fasting sun arc, teal water segments and warm saffron gather/progress panels under Fraunces headlines.",
-      "palette": { "bg": "#e8efe8", "surface": "#f4f7f2", "text": "#1a2a24", "muted": "#4a5c54", "accent": "#c4783a", "teal": "#2f6f6a", "olive": "#3a4a38", "saffron": "#e8a85a" },
-      "fonts": { "display": "Fraunces", "sans": "Plus Jakarta Sans" },
+      "palette": {
+        "bg": "#e8efe8",
+        "surface": "#f4f7f2",
+        "text": "#1a2a24",
+        "muted": "#4a5c54",
+        "accent": "#c4783a",
+        "teal": "#2f6f6a",
+        "olive": "#3a4a38",
+        "saffron": "#e8a85a"
+      },
+      "fonts": {
+        "display": "Fraunces",
+        "sans": "Plus Jakarta Sans"
+      },
       "variants": [
-        { "id": "default", "name": "Dusk", "swatch": "#c4783a" },
-        { "id": "dawn", "name": "Dawn", "swatch": "#2f6f6a" },
-        { "id": "night", "name": "Night", "swatch": "#e8a85a" }
+        {
+          "id": "default",
+          "name": "Dusk",
+          "swatch": "#c4783a"
+        },
+        {
+          "id": "dawn",
+          "name": "Dawn",
+          "swatch": "#2f6f6a"
+        },
+        {
+          "id": "night",
+          "name": "Night",
+          "swatch": "#e8a85a"
+        }
       ],
       "maps_to_theme": "coastal",
-      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
-      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass wellness twin-phone render. Layout rhythm, sun-arc fasting card, water tracker and profile/progress stack were kept; brand names, real people, photos and copy were replaced with invented Saffron Dusk content and abstract SVG silhouettes. The source image is not stored in the repo." },
-      "path": "site/dashboards/saffron-dusk/"
+      "tools_used": [
+        "frontend-design",
+        "dataviz",
+        "page-patterns",
+        "surfaces",
+        "browser-testing"
+      ],
+      "source": {
+        "type": "screenshot",
+        "note": "Recreated in original code from a user-supplied glass wellness twin-phone render. Layout rhythm, sun-arc fasting card, water tracker and profile/progress stack were kept; brand names, real people, photos and copy were replaced with invented Saffron Dusk content and abstract SVG silhouettes. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+      },
+      "path": "site/dashboards/saffron-dusk/",
+      "reference": "reference.jpg"
     },
     {
       "id": "clima-pane",
       "number": 35,
       "name": "Clima Pane",
       "style_family": "glass",
-      "use_cases": ["smart-home"],
+      "use_cases": [
+        "smart-home"
+      ],
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
       "summary": "A light glass climate console on a beige field with soft orange and blue orb blobs: orange↔blue thermostat dial, Heat/Cool, fan speed bars, living-room stats, schedule, rooms list and energy mode chips.",
-      "mood": ["airy", "warm", "frosted", "calm", "tactile"],
-      "best_for": ["HVAC and smart-thermostat companion apps", "Tablet wall panels focused on climate rather than every device", "Brands that want frosted glass over a warm beige field"],
-      "avoid_when": ["Full multi-device home consoles with cameras and media", "Dark cinematic living-room heroes", "Dense energy analytics tables"],
+      "mood": [
+        "airy",
+        "warm",
+        "frosted",
+        "calm",
+        "tactile"
+      ],
+      "best_for": [
+        "HVAC and smart-thermostat companion apps",
+        "Tablet wall panels focused on climate rather than every device",
+        "Brands that want frosted glass over a warm beige field"
+      ],
+      "avoid_when": [
+        "Full multi-device home consoles with cameras and media",
+        "Dark cinematic living-room heroes",
+        "Dense energy analytics tables"
+      ],
       "layout": {
         "pattern": "Dashboard",
         "structure": "Floating glass icon rail · top brand + outside chip + avatar · left: living-room stats + schedule · center: climate dial with Heat/Cool and fan bars · right: rooms list + mode chips",
         "responsive": "≤1180px: rooms and modes drop under dial · ≤960px: rail becomes top icon strip · ≤640px: single column, lists scroll inside cards"
       },
-      "components": ["Floating glass icon rail", "Outside temperature chip", "Living-room comfort stats card", "Orange-to-blue thermostat dial with ±", "Heat and Cool mode pills", "Fan speed segmented bars", "Schedule list with active period", "Rooms list with chevrons", "Circular Comfort/Eco/Away/Sleep chips"],
+      "components": [
+        "Floating glass icon rail",
+        "Outside temperature chip",
+        "Living-room comfort stats card",
+        "Orange-to-blue thermostat dial with ±",
+        "Heat and Cool mode pills",
+        "Fan speed segmented bars",
+        "Schedule list with active period",
+        "Rooms list with chevrons",
+        "Circular Comfort/Eco/Away/Sleep chips"
+      ],
       "signature": "Frosted glass cards floating over a beige canvas with soft orange and blue CSS orb blobs, centered on an orange↔blue thermostat dial.",
-      "palette": { "bg": "#ebe4d8", "surface": "#ffffff", "text": "#1c1916", "muted": "#5c564e", "accent": "#ff8c42", "cool": "#4aa3e8", "ok": "#186040" },
-      "fonts": { "display": "Sora", "sans": "Manrope" },
+      "palette": {
+        "bg": "#ebe4d8",
+        "surface": "#ffffff",
+        "text": "#1c1916",
+        "muted": "#5c564e",
+        "accent": "#ff8c42",
+        "cool": "#4aa3e8",
+        "ok": "#186040"
+      },
+      "fonts": {
+        "display": "Sora",
+        "sans": "Manrope"
+      },
       "variants": [
-        { "id": "default", "name": "Amber pane", "swatch": "#ff8c42" },
-        { "id": "sky", "name": "Sky", "swatch": "#3b8fd4" },
-        { "id": "dusk", "name": "Dusk", "swatch": "#e07040" }
+        {
+          "id": "default",
+          "name": "Amber pane",
+          "swatch": "#ff8c42"
+        },
+        {
+          "id": "sky",
+          "name": "Sky",
+          "swatch": "#3b8fd4"
+        },
+        {
+          "id": "dusk",
+          "name": "Dusk",
+          "swatch": "#e07040"
+        }
       ],
       "maps_to_theme": "linen",
-      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
-      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass climate control concept. Brand renamed to Clima Pane; copy and figures are fictional. Background orbs are CSS; dial and icons are SVG. The source image is not stored in the repo." },
-      "path": "site/dashboards/clima-pane/"
+      "tools_used": [
+        "frontend-design",
+        "dataviz",
+        "page-patterns",
+        "surfaces",
+        "browser-testing"
+      ],
+      "source": {
+        "type": "screenshot",
+        "note": "Recreated in original code from a user-supplied glass climate control concept. Brand renamed to Clima Pane; copy and figures are fictional. Background orbs are CSS; dial and icons are SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+      },
+      "path": "site/dashboards/clima-pane/",
+      "reference": "reference.jpg"
     },
     {
       "id": "meridian-labs",
       "number": 36,
       "name": "Meridian Labs",
       "style_family": "soft",
-      "use_cases": ["health"],
+      "use_cases": [
+        "health"
+      ],
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
       "summary": "A soft health diagnostics board: filterable doctor test cards, a code-drawn DNA helix centerpiece, a vitamin supplement grid with SVG bottles, and a week schedule strip with an orange highlight day.",
-      "mood": ["soft", "clinical", "calm", "airy", "reassuring"],
-      "best_for": ["Consumer lab and diagnostics portals", "Supplement and wellness apps with a gentle clinical look", "Screens that need a memorable DNA or science visual without photos"],
-      "avoid_when": ["Dense EHR tables or clinician worklists", "Wearable ring UIs (see Aura Ring)", "Bold lime consumer fitness brands (see Zest Health)"],
+      "mood": [
+        "soft",
+        "clinical",
+        "calm",
+        "airy",
+        "reassuring"
+      ],
+      "best_for": [
+        "Consumer lab and diagnostics portals",
+        "Supplement and wellness apps with a gentle clinical look",
+        "Screens that need a memorable DNA or science visual without photos"
+      ],
+      "avoid_when": [
+        "Dense EHR tables or clinician worklists",
+        "Wearable ring UIs (see Aura Ring)",
+        "Bold lime consumer fitness brands (see Zest Health)"
+      ],
       "layout": {
         "pattern": "Dashboard",
         "structure": "Top bar: brand · circular icon nav · profile · three columns: personal tests + filter pills · DNA helix · vitamin grid · full-width week schedule strip",
         "responsive": "≤1180px: vitamins under tests, DNA stays · ≤960px: single column, DNA shortens · ≤640px: test cards and week strip scroll horizontally inside"
       },
-      "components": ["Circular icon navigation", "Profile with initials avatar", "Test filter pills", "Doctor test card carousel with charts", "SVG DNA double helix", "Floating helix utility orbs", "Vitamin supplement 2×2 grid", "Week schedule strip with highlight day"],
+      "components": [
+        "Circular icon navigation",
+        "Profile with initials avatar",
+        "Test filter pills",
+        "Doctor test card carousel with charts",
+        "SVG DNA double helix",
+        "Floating helix utility orbs",
+        "Vitamin supplement 2×2 grid",
+        "Week schedule strip with highlight day"
+      ],
       "signature": "A soft off-white diagnostics layout centered on a code-drawn DNA helix, with an orange-highlighted day on the week strip and SVG vitamin bottles instead of product photos.",
-      "palette": { "bg": "#f3f4f6", "surface": "#ffffff", "text": "#1a1d24", "muted": "#6b7280", "accent": "#5b7cfa", "highlight": "#ff8a48", "lavender": "#e8ecff", "ok": "#1f7a4c" },
-      "fonts": { "display": "Plus Jakarta Sans", "sans": "Plus Jakarta Sans" },
+      "palette": {
+        "bg": "#f3f4f6",
+        "surface": "#ffffff",
+        "text": "#1a1d24",
+        "muted": "#6b7280",
+        "accent": "#5b7cfa",
+        "highlight": "#ff8a48",
+        "lavender": "#e8ecff",
+        "ok": "#1f7a4c"
+      },
+      "fonts": {
+        "display": "Plus Jakarta Sans",
+        "sans": "Plus Jakarta Sans"
+      },
       "variants": [
-        { "id": "default", "name": "Soft blue", "swatch": "#5b7cfa" },
-        { "id": "citrus", "name": "Citrus", "swatch": "#ff8a48" },
-        { "id": "night", "name": "Night", "swatch": "#8aa0ff" }
+        {
+          "id": "default",
+          "name": "Soft blue",
+          "swatch": "#5b7cfa"
+        },
+        {
+          "id": "citrus",
+          "name": "Citrus",
+          "swatch": "#ff8a48"
+        },
+        {
+          "id": "night",
+          "name": "Night",
+          "swatch": "#8aa0ff"
+        }
       ],
       "maps_to_theme": "blush",
-      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
-      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft medical diagnostics concept. Brand renamed to Meridian Labs; photos replaced with initials and SVG bottles/DNA. Copy and figures are fictional. The source image is not stored in the repo." },
-      "path": "site/dashboards/meridian-labs/"
+      "tools_used": [
+        "frontend-design",
+        "dataviz",
+        "page-patterns",
+        "surfaces",
+        "browser-testing"
+      ],
+      "source": {
+        "type": "screenshot",
+        "note": "Recreated in original code from a user-supplied soft medical diagnostics concept. Brand renamed to Meridian Labs; photos replaced with initials and SVG bottles/DNA. Copy and figures are fictional. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+      },
+      "path": "site/dashboards/meridian-labs/",
+      "reference": "reference.jpg"
     },
     {
       "id": "cortex-well",
       "number": 37,
       "name": "Cortex Well",
       "style_family": "glass",
-      "use_cases": ["health"],
+      "use_cases": [
+        "health"
+      ],
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
       "summary": "A lilac-glass wellness overview: frosted cards float over a soft pink–lilac haze around an SVG brain in a glass bowl, with lead lines to Heart, Breath, Brain and All activity pills, sleep bars and a multi-line heart chart.",
-      "mood": ["ethereal", "soft", "calm", "premium", "lilac"],
-      "best_for": ["Consumer wellness or mental-fitness products that want a gentle glass look", "Tablet overviews centred on one signature illustration", "Brands that prefer pastel lilac/pink over clinical blue or lime"],
-      "avoid_when": ["Clinical EHR or dense lab tables", "Dark-mode-only brands", "Screens that cannot spare space for a hero illustration"],
+      "mood": [
+        "ethereal",
+        "soft",
+        "calm",
+        "premium",
+        "lilac"
+      ],
+      "best_for": [
+        "Consumer wellness or mental-fitness products that want a gentle glass look",
+        "Tablet overviews centred on one signature illustration",
+        "Brands that prefer pastel lilac/pink over clinical blue or lime"
+      ],
+      "avoid_when": [
+        "Clinical EHR or dense lab tables",
+        "Dark-mode-only brands",
+        "Screens that cannot spare space for a hero illustration"
+      ],
       "layout": {
         "pattern": "Dashboard",
         "structure": "64px icon rail · top (greeting, glass pill nav, bell, avatar) · headline · 12-column board: left stack (performance, sleep waves, 3 metric tiles) · centre brain bowl with activity pills · right stack (sleep bars, heart bpm) · footer dots",
         "responsive": "≤1180px: rail becomes a top strip; board stacks left → hero → right · ≤960px: metric tiles 3-up · ≤640px: single column, nav scrolls, pills wrap"
       },
-      "components": ["Slim icon rail with brand mark", "Personal greeting and live clock", "Glass pill nav (Dashboard / Analytics / Reports)", "Notification bell and initials avatar", "SVG brain in frosted bowl with lead lines", "Activity pills (Heart, Breath, Brain, All)", "Performance line card", "Dual sleep-wave card", "Metric tiles (hills, blood, focus gauge)", "Sleep intensity bars", "Heart bpm multi-line chart", "Floating decorative orbs"],
+      "components": [
+        "Slim icon rail with brand mark",
+        "Personal greeting and live clock",
+        "Glass pill nav (Dashboard / Analytics / Reports)",
+        "Notification bell and initials avatar",
+        "SVG brain in frosted bowl with lead lines",
+        "Activity pills (Heart, Breath, Brain, All)",
+        "Performance line card",
+        "Dual sleep-wave card",
+        "Metric tiles (hills, blood, focus gauge)",
+        "Sleep intensity bars",
+        "Heart bpm multi-line chart",
+        "Floating decorative orbs"
+      ],
       "signature": "A pink-lilac SVG brain resting in a frosted glass bowl, connected by thin lead lines to soft activity pills over a lilac–pink haze.",
-      "palette": { "bg": "#e8dff5", "surface": "#f7f2fc", "text": "#2a2438", "muted": "#6a5f7a", "accent": "#5f4fb0", "pink": "#f2a0c0", "teal": "#5ec4b0", "heart": "#e85a6b" },
-      "fonts": { "display": "Plus Jakarta Sans", "sans": "Plus Jakarta Sans" },
+      "palette": {
+        "bg": "#e8dff5",
+        "surface": "#f7f2fc",
+        "text": "#2a2438",
+        "muted": "#6a5f7a",
+        "accent": "#5f4fb0",
+        "pink": "#f2a0c0",
+        "teal": "#5ec4b0",
+        "heart": "#e85a6b"
+      },
+      "fonts": {
+        "display": "Plus Jakarta Sans",
+        "sans": "Plus Jakarta Sans"
+      },
       "variants": [
-        { "id": "default", "name": "Lilac haze", "swatch": "#5f4fb0" },
-        { "id": "rose", "name": "Rose mist", "swatch": "#b04478" },
-        { "id": "dusk", "name": "Dusk violet", "swatch": "#9b8cff" }
+        {
+          "id": "default",
+          "name": "Lilac haze",
+          "swatch": "#5f4fb0"
+        },
+        {
+          "id": "rose",
+          "name": "Rose mist",
+          "swatch": "#b04478"
+        },
+        {
+          "id": "dusk",
+          "name": "Dusk violet",
+          "swatch": "#9b8cff"
+        }
       ],
       "maps_to_theme": "blush",
-      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
-      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass health concept. Brand (Cortex Well), member name and figures are fictional; CORE MEDICINE and the photo avatar were not reused. The 3D brain and marble spheres were replaced with SVG/CSS. The source image is not stored in the repo." },
-      "path": "site/dashboards/cortex-well/"
+      "tools_used": [
+        "frontend-design",
+        "dataviz",
+        "page-patterns",
+        "surfaces",
+        "browser-testing"
+      ],
+      "source": {
+        "type": "screenshot",
+        "note": "Recreated in original code from a user-supplied glass health concept. Brand (Cortex Well), member name and figures are fictional; CORE MEDICINE and the photo avatar were not reused. The 3D brain and marble spheres were replaced with SVG/CSS. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+      },
+      "path": "site/dashboards/cortex-well/",
+      "reference": "reference.jpg"
     },
     {
       "id": "ember-rooms",
       "number": 38,
       "name": "Ember Rooms",
       "style_family": "skeuo",
-      "use_cases": ["smart-home"],
+      "use_cases": [
+        "smart-home"
+      ],
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
       "summary": "A soft neumorphic indoor lighting console: orange accent, left icon rail, pill search, and a large centre stage with an SVG pendant lamp, orbiting room dots, intensity slider, schedule, line charts and a video-sim room panel.",
-      "mood": ["tactile", "soft", "warm", "calm", "orange"],
-      "best_for": ["Lighting-first smart-home or hospitality room tablets", "Products that want soft extruded controls without heavy glass", "Single-room focus with a clear power and dimmer story"],
-      "avoid_when": ["Climate-first HVAC dashboards (use a dial twin instead)", "Dense multi-device fleet admin", "Dark cinematic brands that need scenic photography"],
+      "mood": [
+        "tactile",
+        "soft",
+        "warm",
+        "calm",
+        "orange"
+      ],
+      "best_for": [
+        "Lighting-first smart-home or hospitality room tablets",
+        "Products that want soft extruded controls without heavy glass",
+        "Single-room focus with a clear power and dimmer story"
+      ],
+      "avoid_when": [
+        "Climate-first HVAC dashboards (use a dial twin instead)",
+        "Dense multi-device fleet admin",
+        "Dark cinematic brands that need scenic photography"
+      ],
       "layout": {
         "pattern": "Dashboard",
         "structure": "64px icon rail · top (search, brand, undo/redo/settings) · soft main well: left stack (intensity, schedule, arc dial) · centre pendant stage with orbit room dots · right stack (line chart, spark, video-sim)",
         "responsive": "≤1180px: right stack drops under centre · ≤960px: rail becomes top strip · ≤640px: single column, room dots scroll, charts full width"
       },
-      "components": ["Slim icon rail for home systems", "Pill search field", "Undo / redo / settings orb buttons", "Horizontal intensity slider", "Schedule start–end row", "Circular brightness dial", "SVG pendant lamp hero", "Orbiting room picker dots", "Power toggle and lights fraction", "Multi-line energy chart", "Secondary spark line", "Video-sim panel with SVG room and play"],
+      "components": [
+        "Slim icon rail for home systems",
+        "Pill search field",
+        "Undo / redo / settings orb buttons",
+        "Horizontal intensity slider",
+        "Schedule start–end row",
+        "Circular brightness dial",
+        "SVG pendant lamp hero",
+        "Orbiting room picker dots",
+        "Power toggle and lights fraction",
+        "Multi-line energy chart",
+        "Secondary spark line",
+        "Video-sim panel with SVG room and play"
+      ],
       "signature": "A soft extruded well with a grey SVG pendant lamp hanging inside concentric orbit rings, orange room dots and a bright orange power control.",
-      "palette": { "bg": "#f2f1ef", "surface": "#f7f6f4", "text": "#2a2622", "muted": "#5c564f", "accent": "#c45500", "blue": "#4a8fd8", "lamp": "#9a9a9e", "well": "#ecebe8" },
-      "fonts": { "display": "Outfit", "sans": "Outfit" },
+      "palette": {
+        "bg": "#f2f1ef",
+        "surface": "#f7f6f4",
+        "text": "#2a2622",
+        "muted": "#5c564f",
+        "accent": "#c45500",
+        "blue": "#4a8fd8",
+        "lamp": "#9a9a9e",
+        "well": "#ecebe8"
+      },
+      "fonts": {
+        "display": "Outfit",
+        "sans": "Outfit"
+      },
       "variants": [
-        { "id": "default", "name": "Ember", "swatch": "#c45500" },
-        { "id": "mist", "name": "Mist", "swatch": "#2a6aab" },
-        { "id": "dusk", "name": "Dusk", "swatch": "#ff8a3d" }
+        {
+          "id": "default",
+          "name": "Ember",
+          "swatch": "#c45500"
+        },
+        {
+          "id": "mist",
+          "name": "Mist",
+          "swatch": "#2a6aab"
+        },
+        {
+          "id": "dusk",
+          "name": "Dusk",
+          "swatch": "#ff8a3d"
+        }
       ],
       "maps_to_theme": "linen",
-      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
-      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft neumorphic indoor-control concept. Brand (Ember Rooms) and all copy are invented English; Chinese brand marks were not reused. The 3D pendant and camera still were replaced with SVG. Lighting-primary layout chosen to stay distinct from climate-dial twins. The source image is not stored in the repo." },
-      "path": "site/dashboards/ember-rooms/"
+      "tools_used": [
+        "frontend-design",
+        "dataviz",
+        "page-patterns",
+        "surfaces",
+        "browser-testing"
+      ],
+      "source": {
+        "type": "screenshot",
+        "note": "Recreated in original code from a user-supplied soft neumorphic indoor-control concept. Brand (Ember Rooms) and all copy are invented English; Chinese brand marks were not reused. The 3D pendant and camera still were replaced with SVG. Lighting-primary layout chosen to stay distinct from climate-dial twins. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+      },
+      "path": "site/dashboards/ember-rooms/",
+      "reference": "reference.jpg"
     }
   ]
 }

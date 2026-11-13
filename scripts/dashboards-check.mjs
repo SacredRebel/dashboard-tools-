@@ -24,7 +24,8 @@
  * transparent), app.js not finished (<html data-ready="true"> missing), horizontal overflow.
  * Writes:
  *   site/dashboards/<id>/thumb.jpg  — 720×450 gallery card (viewport 1440×900 @ 0.5× DPR)
- *   site/dashboards/<id>/shot.jpg   — 1440×900 1:1 desktop reference screenshot (@ 1× DPR)
+ *   site/dashboards/<id>/shot.jpg   — 1440×900 recreation screenshot (@ 1× DPR)
+ *   site/dashboards/<id>/reference.* — optional owner-supplied original (catalog "reference")
  *   docs/validation/dashboards/<id>.json — check evidence
  * Exit 1 on any problem. Requires Playwright (preinstalled in Claude cloud sessions; elsewhere:
  * npm install --no-save playwright && npx playwright install chromium).
