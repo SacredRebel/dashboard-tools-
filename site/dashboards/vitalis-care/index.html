@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
+  <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
+  <title>Vitalis Care · Dashboard Tools gallery</title>
+  <meta name="description" content="Bento-grid patient dashboard for a family clinic: vitals, a doctor directory, week-strip booking, activity and records. Sample data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../_shared/frame.js"></script>
+</head>
+<body>
+  <div class="vc">
+    <header class="vc-top">
+      <a class="vc-brand" href="#" aria-label="Vitalis home"><span data-icon="heartPulse"></span>Vitalis</a>
+      <nav class="vc-nav" aria-label="Main"><a href="#" aria-current="page">Dashboard</a><a href="#">Doctors</a><a href="#">Appointments</a><a href="#">Records</a></nav>
+      <button class="vc-icon" aria-label="Notifications, 2 new"><span data-icon="bell"></span><i></i></button>
+      <span class="vc-avatar" role="img" aria-label="Signed in as Priya Nair">PN</span>
+    </header>
+
+    <div class="vc-hello"><div><p data-greet></p><h1>How you are doing</h1></div><p class="vc-hello-meta">Vitals synced from your home kit this morning</p></div>
+
+    <main class="vc-bento">
+      <section class="vc-tile vc-heart" aria-labelledby="vc-hr-h">
+        <div class="vc-th"><h2 id="vc-hr-h"><span data-icon="heart"></span>Heart rate</h2><span class="vc-ok">Normal</span></div>
+        <div class="vc-heartbody"><div class="vc-heartart" data-heart aria-hidden="true"></div><p class="vc-big num"><b>72</b> bpm</p></div>
+        <div data-ecg aria-hidden="true"></div>
+      </section>
+      <section class="vc-tile vc-vital" aria-labelledby="vc-bp-h"><h2 id="vc-bp-h"><span data-icon="drop"></span>Blood pressure</h2><p class="vc-big num"><b>118/78</b></p><p class="vc-sub">mmHg · in range</p></section>
+      <section class="vc-tile vc-vital" aria-labelledby="vc-bs-h"><h2 id="vc-bs-h"><span data-icon="activity"></span>Blood sugar</h2><p class="vc-big num"><b>96</b></p><p class="vc-sub">mg/dL · fasting</p></section>
+
+      <section class="vc-tile vc-next" aria-labelledby="vc-next-h"><h2 id="vc-next-h">Next appointment</h2><div data-next></div></section>
+
+      <section class="vc-tile vc-docs" aria-labelledby="vc-docs-h">
+        <div class="vc-th"><h2 id="vc-docs-h">Find a doctor</h2>
+          <label class="vc-search"><span data-icon="search"></span><span class="vh">Search doctors</span><input type="search" placeholder="Name or speciality" data-q></label></div>
+        <div class="vc-chips" role="group" aria-label="Speciality" data-specs></div>
+        <ul class="vc-doclist" data-docs></ul>
+      </section>
+
+      <section class="vc-tile vc-book" aria-labelledby="vc-book-h">
+        <h2 id="vc-book-h">Book with <span data-book-doc></span></h2>
+        <div class="vc-week" role="group" aria-label="Pick a day" data-days></div>
+        <div class="vc-times" role="group" aria-label="Pick a time" data-times></div>
+        <dl class="vc-summary" data-summary></dl>
+        <button class="vc-cta" data-confirm>Confirm booking</button>
+        <p class="vc-msg" data-msg aria-live="polite"></p>
+      </section>
+
+      <section class="vc-tile vc-act" aria-labelledby="vc-act-h">
+        <div class="vc-th"><h2 id="vc-act-h">This week</h2>
+          <div class="vc-seg" role="group" aria-label="Measure" data-measure><button data-v="steps" aria-pressed="true">Steps</button><button data-v="sleep" aria-pressed="false">Sleep</button></div></div>
+        <div data-act></div>
+      </section>
+
+      <section class="vc-tile vc-rec" aria-labelledby="vc-rec-h">
+        <div class="vc-th"><h2 id="vc-rec-h">Medical records</h2></div>
+        <ul class="vc-recs" data-recs></ul>
+        <button class="vc-add" data-add><span data-icon="plus"></span>Add a record</button>
+      </section>
+    </main>
+    <p class="db-sample vc-foot">Sample data · fictional · phone numbers use 555</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

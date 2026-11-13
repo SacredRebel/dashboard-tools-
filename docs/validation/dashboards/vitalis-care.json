@@ -1,0 +1,62 @@
+{
+  "id": "vitalis-care",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/vitalis-care/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/vitalis-care/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/vitalis-care/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/vitalis-care/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/vitalis-care/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=sage",
+      "width": 1440,
+      "variant": "sage",
+      "final_path": "/dashboards/vitalis-care/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=night",
+      "width": 1440,
+      "variant": "night",
+      "final_path": "/dashboards/vitalis-care/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/vitalis-care",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-10 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+11 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -16,6 +16,7 @@
 | 8 | [Aura Ring](#aura-ring) | Glass & glow | Health & fitness | dark | Haze, Lagoon, Pearl | [site/dashboards/aura-ring/](../../site/dashboards/aura-ring/) |
 | 9 | [Lull Sleep](#lull-sleep) | Soft & friendly | Health & fitness | light | Lavender, Dawn, Nightfall | [site/dashboards/lull-sleep/](../../site/dashboards/lull-sleep/) |
 | 10 | [Pearlwell Dental](#smile-dental) | Soft & friendly | Health & fitness | light | Mint, Coral, Deep sea | [site/dashboards/smile-dental/](../../site/dashboards/smile-dental/) |
+| 11 | [Vitalis Care](#vitalis-care) | Bento grid | Health & fitness | light | Teal, Sage, Night | [site/dashboards/vitalis-care/](../../site/dashboards/vitalis-care/) |
 
 ## Cinematic & atmospheric
 
@@ -178,7 +179,33 @@ _No dashboards yet._
 
 Tiles of different sizes in a tight grid, each tile one idea. Great for overviews and product showcases.
 
-_No dashboards yet._
+<a id="vitalis-care"></a>
+### 11. Vitalis Care
+
+![Vitalis Care](../../site/dashboards/vitalis-care/thumb.jpg)
+
+A bento-grid patient dashboard for a family clinic: a heart-rate tile with a code-drawn heart and pulse trace, coloured vital tiles, a deep-teal next-appointment tile, a searchable doctor directory that feeds a week-strip booking panel, a steps and sleep chart, and a records list.
+
+- **Use cases:** Health & fitness · **Mode:** light · **Mood:** clear, caring, organised, fresh, friendly
+- **Signature:** Tiles of different sizes in a tight bento: a glossy SVG heart with a coral pulse trace, a coral and a mint vital tile, and one deep-teal appointment tile.
+- **Layout:** Pill top bar (brand, 4 links, bell, avatar) · greeting row · 12-column bento: heart rate (4) + blood pressure (2) + blood sugar (2) + next appointment (4) · doctor directory (5, two rows) + booking (4, two rows) + this week chart (3) + records (3)
+- **Responsive:** ≤1100px: 4-column bento (vitals pair, directory + booking side by side) · ≤700px: 2-column bento with vitals side by side, everything else full width, nav on its own row
+- **Fonts:** Plus Jakarta Sans / Plus Jakarta Sans · **Palette:** bg `#f1f6f5`, surface `#ffffff`, text `#13302e`, muted `#466361`, accent `#0e7c72`, chart `#14a092`, coral `#c2463b`, coral_soft `#fde4df`
+- **Variants:** Teal, Sage, Night · **Closest toolkit theme:** `coastal`
+
+**Best for**
+- Clinics, telehealth and family-health apps
+- Portals that join a directory to booking
+- Overviews that mix live readings with tasks
+
+**Avoid when**
+- Hospital staff tools with many patients
+- Pages that need one dominant chart
+- Brands that want a dark or dramatic look
+
+**Components:** Pill top bar with notification dot · Vital tiles in tinted colours · Heart-rate tile with pulse trace · Next-appointment tile · Doctor directory with search, chips, call and book · Week strip, time grid and booking summary · Steps / sleep bar chart toggle · Records list with add action
+
+---
 
 
 ## Data-dense pro

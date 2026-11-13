@@ -341,6 +341,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied concept sheet of six dental phone screens. The screens were merged into one responsive desktop portal; names, photos and copy were not reused and all patients, dentists and prices are invented. 3D tooth renders and props were replaced with an SVG tooth, shield and tooth chart. The source image is not stored in the repo." },
       "path": "site/dashboards/smile-dental/"
+    },
+    {
+      "id": "vitalis-care",
+      "number": 11,
+      "name": "Vitalis Care",
+      "style_family": "bento",
+      "use_cases": ["health"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A bento-grid patient dashboard for a family clinic: a heart-rate tile with a code-drawn heart and pulse trace, coloured vital tiles, a deep-teal next-appointment tile, a searchable doctor directory that feeds a week-strip booking panel, a steps and sleep chart, and a records list.",
+      "mood": ["clear", "caring", "organised", "fresh", "friendly"],
+      "best_for": ["Clinics, telehealth and family-health apps", "Portals that join a directory to booking", "Overviews that mix live readings with tasks"],
+      "avoid_when": ["Hospital staff tools with many patients", "Pages that need one dominant chart", "Brands that want a dark or dramatic look"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "Pill top bar (brand, 4 links, bell, avatar) · greeting row · 12-column bento: heart rate (4) + blood pressure (2) + blood sugar (2) + next appointment (4) · doctor directory (5, two rows) + booking (4, two rows) + this week chart (3) + records (3)",
+        "responsive": "≤1100px: 4-column bento (vitals pair, directory + booking side by side) · ≤700px: 2-column bento with vitals side by side, everything else full width, nav on its own row"
+      },
+      "components": ["Pill top bar with notification dot", "Vital tiles in tinted colours", "Heart-rate tile with pulse trace", "Next-appointment tile", "Doctor directory with search, chips, call and book", "Week strip, time grid and booking summary", "Steps / sleep bar chart toggle", "Records list with add action"],
+      "signature": "Tiles of different sizes in a tight bento: a glossy SVG heart with a coral pulse trace, a coral and a mint vital tile, and one deep-teal appointment tile.",
+      "palette": { "bg": "#f1f6f5", "surface": "#ffffff", "text": "#13302e", "muted": "#466361", "accent": "#0e7c72", "chart": "#14a092", "coral": "#c2463b", "coral_soft": "#fde4df" },
+      "fonts": { "display": "Plus Jakarta Sans", "sans": "Plus Jakarta Sans" },
+      "variants": [
+        { "id": "default", "name": "Teal", "swatch": "#0e7c72" },
+        { "id": "sage", "name": "Sage", "swatch": "#4c6a2a" },
+        { "id": "night", "name": "Night", "swatch": "#5ad8c6" }
+      ],
+      "maps_to_theme": "coastal",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied concept sheet of six medical phone screens (same set as Pearlwell Dental, different clinic). The screens were merged into a bento desktop layout that differs from Pearlwell's sidebar portal. Names, photos and copy were not reused; doctors, readings and records are invented and phone links use 555 numbers. 3D props were replaced with an SVG heart and charts. The source image is not stored in the repo." },
+      "path": "site/dashboards/vitalis-care/"
     }
   ]
 }
