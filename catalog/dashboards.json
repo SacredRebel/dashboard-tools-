@@ -2925,6 +2925,38 @@
       "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
       "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied soft medical diagnostics concept. Brand renamed to Meridian Labs; photos replaced with initials and SVG bottles/DNA. Copy and figures are fictional. The source image is not stored in the repo." },
       "path": "site/dashboards/meridian-labs/"
+    },
+    {
+      "id": "cortex-well",
+      "number": 37,
+      "name": "Cortex Well",
+      "style_family": "glass",
+      "use_cases": ["health"],
+      "mode": "light",
+      "status": "ready",
+      "added": "2026-11-13",
+      "summary": "A lilac-glass wellness overview: frosted cards float over a soft pink–lilac haze around an SVG brain in a glass bowl, with lead lines to Heart, Breath, Brain and All activity pills, sleep bars and a multi-line heart chart.",
+      "mood": ["ethereal", "soft", "calm", "premium", "lilac"],
+      "best_for": ["Consumer wellness or mental-fitness products that want a gentle glass look", "Tablet overviews centred on one signature illustration", "Brands that prefer pastel lilac/pink over clinical blue or lime"],
+      "avoid_when": ["Clinical EHR or dense lab tables", "Dark-mode-only brands", "Screens that cannot spare space for a hero illustration"],
+      "layout": {
+        "pattern": "Dashboard",
+        "structure": "64px icon rail · top (greeting, glass pill nav, bell, avatar) · headline · 12-column board: left stack (performance, sleep waves, 3 metric tiles) · centre brain bowl with activity pills · right stack (sleep bars, heart bpm) · footer dots",
+        "responsive": "≤1180px: rail becomes a top strip; board stacks left → hero → right · ≤960px: metric tiles 3-up · ≤640px: single column, nav scrolls, pills wrap"
+      },
+      "components": ["Slim icon rail with brand mark", "Personal greeting and live clock", "Glass pill nav (Dashboard / Analytics / Reports)", "Notification bell and initials avatar", "SVG brain in frosted bowl with lead lines", "Activity pills (Heart, Breath, Brain, All)", "Performance line card", "Dual sleep-wave card", "Metric tiles (hills, blood, focus gauge)", "Sleep intensity bars", "Heart bpm multi-line chart", "Floating decorative orbs"],
+      "signature": "A pink-lilac SVG brain resting in a frosted glass bowl, connected by thin lead lines to soft activity pills over a lilac–pink haze.",
+      "palette": { "bg": "#e8dff5", "surface": "#f7f2fc", "text": "#2a2438", "muted": "#6a5f7a", "accent": "#5f4fb0", "pink": "#f2a0c0", "teal": "#5ec4b0", "heart": "#e85a6b" },
+      "fonts": { "display": "Plus Jakarta Sans", "sans": "Plus Jakarta Sans" },
+      "variants": [
+        { "id": "default", "name": "Lilac haze", "swatch": "#5f4fb0" },
+        { "id": "rose", "name": "Rose mist", "swatch": "#b04478" },
+        { "id": "dusk", "name": "Dusk violet", "swatch": "#9b8cff" }
+      ],
+      "maps_to_theme": "blush",
+      "tools_used": ["frontend-design", "dataviz", "page-patterns", "surfaces", "browser-testing"],
+      "source": { "type": "screenshot", "note": "Recreated in original code from a user-supplied glass health concept. Brand (Cortex Well), member name and figures are fictional; CORE MEDICINE and the photo avatar were not reused. The 3D brain and marble spheres were replaced with SVG/CSS. The source image is not stored in the repo." },
+      "path": "site/dashboards/cortex-well/"
     }
   ]
 }

@@ -1,0 +1,62 @@
+{
+  "id": "cortex-well",
+  "checked": "2026-11-13",
+  "ok": true,
+  "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
+  "runs": [
+    {
+      "url": "/dashboards/cortex-well/",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/cortex-well/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/cortex-well/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/index.html",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/cortex-well/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/",
+      "width": 375,
+      "variant": "default",
+      "final_path": "/dashboards/cortex-well/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=rose",
+      "width": 1440,
+      "variant": "rose",
+      "final_path": "/dashboards/cortex-well/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=dusk",
+      "width": 1440,
+      "variant": "dusk",
+      "final_path": "/dashboards/cortex-well/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/#/dashboards/cortex-well",
+      "width": 1280,
+      "variant": "gallery preview",
+      "errors": []
+    }
+  ]
+}

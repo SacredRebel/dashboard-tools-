@@ -2,7 +2,7 @@
 
 # Dashboard gallery catalog
 
-36 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
+37 dashboards in 10 style families. Source: [catalog/dashboards.json](../../catalog/dashboards.json). How to choose and how to add: [README](README.md).
 
 | # | Dashboard | Style | Use cases | Mode | Variants | Folder |
 |---|---|---|---|---|---|---|
@@ -42,6 +42,7 @@
 | 34 | [Saffron Dusk](#saffron-dusk) | Glass & glow | Health & fitness, Education | light | Dusk, Dawn, Night | [site/dashboards/saffron-dusk/](../../site/dashboards/saffron-dusk/) |
 | 35 | [Clima Pane](#clima-pane) | Glass & glow | Smart home & IoT | light | Amber pane, Sky, Dusk | [site/dashboards/clima-pane/](../../site/dashboards/clima-pane/) |
 | 36 | [Meridian Labs](#meridian-labs) | Soft & friendly | Health & fitness | light | Soft blue, Citrus, Night | [site/dashboards/meridian-labs/](../../site/dashboards/meridian-labs/) |
+| 37 | [Cortex Well](#cortex-well) | Glass & glow | Health & fitness | light | Lilac haze, Rose mist, Dusk violet | [site/dashboards/cortex-well/](../../site/dashboards/cortex-well/) |
 
 ## Cinematic & atmospheric
 
@@ -469,6 +470,34 @@ A light glass climate console on a beige field with soft orange and blue orb blo
 - Dense energy analytics tables
 
 **Components:** Floating glass icon rail · Outside temperature chip · Living-room comfort stats card · Orange-to-blue thermostat dial with ± · Heat and Cool mode pills · Fan speed segmented bars · Schedule list with active period · Rooms list with chevrons · Circular Comfort/Eco/Away/Sleep chips
+
+---
+
+<a id="cortex-well"></a>
+### 37. Cortex Well
+
+![Cortex Well](../../site/dashboards/cortex-well/thumb.jpg)
+
+A lilac-glass wellness overview: frosted cards float over a soft pink–lilac haze around an SVG brain in a glass bowl, with lead lines to Heart, Breath, Brain and All activity pills, sleep bars and a multi-line heart chart.
+
+- **Use cases:** Health & fitness · **Mode:** light · **Mood:** ethereal, soft, calm, premium, lilac
+- **Signature:** A pink-lilac SVG brain resting in a frosted glass bowl, connected by thin lead lines to soft activity pills over a lilac–pink haze.
+- **Layout:** 64px icon rail · top (greeting, glass pill nav, bell, avatar) · headline · 12-column board: left stack (performance, sleep waves, 3 metric tiles) · centre brain bowl with activity pills · right stack (sleep bars, heart bpm) · footer dots
+- **Responsive:** ≤1180px: rail becomes a top strip; board stacks left → hero → right · ≤960px: metric tiles 3-up · ≤640px: single column, nav scrolls, pills wrap
+- **Fonts:** Plus Jakarta Sans / Plus Jakarta Sans · **Palette:** bg `#e8dff5`, surface `#f7f2fc`, text `#2a2438`, muted `#6a5f7a`, accent `#5f4fb0`, pink `#f2a0c0`, teal `#5ec4b0`, heart `#e85a6b`
+- **Variants:** Lilac haze, Rose mist, Dusk violet · **Closest toolkit theme:** `blush`
+
+**Best for**
+- Consumer wellness or mental-fitness products that want a gentle glass look
+- Tablet overviews centred on one signature illustration
+- Brands that prefer pastel lilac/pink over clinical blue or lime
+
+**Avoid when**
+- Clinical EHR or dense lab tables
+- Dark-mode-only brands
+- Screens that cannot spare space for a hero illustration
+
+**Components:** Slim icon rail with brand mark · Personal greeting and live clock · Glass pill nav (Dashboard / Analytics / Reports) · Notification bell and initials avatar · SVG brain in frosted bowl with lead lines · Activity pills (Heart, Breath, Brain, All) · Performance line card · Dual sleep-wave card · Metric tiles (hills, blood, focus gauge) · Sleep intensity bars · Heart bpm multi-line chart · Floating decorative orbs
 
 ---
 
