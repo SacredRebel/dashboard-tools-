@@ -258,7 +258,68 @@ if (typeof staggerReveal === "function") staggerReveal();
   }
   main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
   if (window.DB?.onVisible) window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
-  if (window.DB?.dense) window.DB.dense.mount({ main, overview, pages: PAGES, brand: "Larchwood Lodge" });
+  if (window.DB?.dense) {
+    const D = window.DB.dense;
+    window.DB.dense.mount({
+      main, overview, pages: PAGES, brand: "Larchwood Lodge",
+      renderPage(page) {
+        if (page.id === 'rooms') {
+          return `
+            ${D.kpiRow([{ to: 12, cap: 'Cabins', label: '12' }, { to: 9, cap: 'Occupied', label: '9' }, { to: 21, cap: 'Heat °C', label: '21' }, { to: 4, cap: 'Lakeside', label: '4' }])}
+            ${D.heroCard('Cabin board', 'Lakeside and ridge cabins for the Okafor stay window. Open a row for thermostat detail.', 'List')}
+            ${D.tableCard('Cabin register', ['Cabin', 'State', 'Heat'], [
+              { id: 'c1', cells: ['Cabin 4 · Lakeside', 'Occupied', '<span class="num">21°</span>'] },
+              { id: 'c2', cells: ['Cabin 1 · Ridge', 'Occupied', '<span class="num">20°</span>'] },
+              { id: 'c3', cells: ['Cabin 2 · Ridge', 'Turnover', '<span class="num">18°</span>'] },
+              { id: 'c4', cells: ['Cabin 3 · Meadow', 'Occupied', '<span class="num">22°</span>'] },
+              { id: 'c5', cells: ['Cabin 5 · Lakeside', 'Occupied', '<span class="num">21°</span>'] },
+              { id: 'c6', cells: ['Cabin 6 · Forest', 'Ready', '<span class="num">19°</span>'] },
+              { id: 'c7', cells: ['Cabin 7 · Forest', 'Occupied', '<span class="num">20°</span>'] },
+              { id: 'c8', cells: ['Cabin 8 · Meadow', 'Ready', '<span class="num">18°</span>'] },
+            ])}
+            ${D.chartCard('Heat trend', 'line')}
+            ${D.chartCard('Occupancy', 'bars')}
+            ${D.listCard('Scenes', [{ k: 'Fireside', v: 'On' }, { k: 'Reading', v: 'Off' }, { k: 'Sleep', v: 'Off' }, { k: 'Away', v: 'Off' }, { k: 'Dawn wash', v: 'Queued' }, { k: 'Path lights', v: 'On' }])}
+            ${D.listCard('Housekeeping', [{ k: 'Turnover Cabin 2', v: 'Today' }, { k: 'Restock Cabin 4', v: 'Ok' }, { k: 'Wood for 5', v: 'Fri' }, { k: 'Linen pull', v: 'Ok' }])}`;
+        }
+        if (page.id === 'guests') {
+          return `
+            ${D.kpiRow([{ to: 3, cap: 'Parties', label: '3' }, { to: 8, cap: 'Guests', label: '8' }, { to: 2, cap: 'Bookings', label: '2' }, { to: 1, cap: 'Wake-ups', label: '1' }])}
+            ${D.heroCard('Guest ledger', 'Sample parties on property this week. Bookings and wake-ups stay in memory only.', 'List')}
+            ${D.tableCard('Party register', ['Party', 'Cabin', 'Nights'], [
+              { id: 'g1', cells: ['Okafor family', 'Cabin 4', '<span class="num">5</span>'] },
+              { id: 'g2', cells: ['Nguyen pair', 'Cabin 1', '<span class="num">3</span>'] },
+              { id: 'g3', cells: ['Berg crew', 'Cabin 5', '<span class="num">4</span>'] },
+              { id: 'g4', cells: ['Sato party', 'Cabin 3', '<span class="num">2</span>'] },
+              { id: 'g5', cells: ['Ellis duo', 'Cabin 7', '<span class="num">6</span>'] },
+              { id: 'g6', cells: ['Arriving Fri', 'Cabin 6', '<span class="num">2</span>'] },
+            ])}
+            ${D.chartCard('Arrivals', 'bars')}
+            ${D.chartCard('Stay length', 'line')}
+            ${D.listCard('Activities', [{ k: 'Sunrise kayak', v: '2 seats' }, { k: 'Ridge walk', v: 'Full' }, { k: 'Sauna hour', v: 'Open' }, { k: 'Stargaze', v: 'Tonight' }, { k: 'Jetty coffee', v: 'Ok' }, { k: 'Snowshoe', v: 'Season' }])}
+            ${D.listCard('Wake-ups', [{ k: 'Okafor · 07:00', v: 'On' }, { k: 'Nguyen · 06:30', v: 'Off' }, { k: 'Berg · 08:00', v: 'On' }, { k: 'Sato · —', v: '—' }])}`;
+        }
+        if (page.id === 'settings') {
+          return `
+            ${D.kpiRow([{ to: 3, cap: 'Scenes', label: '3' }, { to: 2, cap: 'Alerts', label: '2' }, { to: 11, cap: 'Checkout', label: '11:00' }, { to: 14, cap: 'Retention', label: '14' }])}
+            ${D.heroCard('Lodge preferences', 'Heat defaults, light scenes and trail alerts. Sample only — nothing is persisted.', 'Settings')}
+            ${D.tableCard('Preference register', ['Setting', 'Value', 'Scope'], [
+              { id: 's1', cells: ['Default heat', '21°', 'Cabins'] },
+              { id: 's2', cells: ['Night standby', 'Eco', 'All'] },
+              { id: 's3', cells: ['Trail alerts', 'On', 'Ops'] },
+              { id: 's4', cells: ['Checkout', '11:00', 'Front desk'] },
+              { id: 's5', cells: ['Quiet hours', '22:00', 'All'] },
+              { id: 's6', cells: ['Lake cam', 'Guests', 'Privacy'] },
+            ])}
+            ${D.listCard('Scenes', [{ k: 'Fireside', v: 'Default' }, { k: 'Reading', v: 'Alt' }, { k: 'Sleep', v: 'Night' }, { k: 'Away', v: 'Vacant' }])}
+            ${D.listCard('Approvals', [{ k: 'Public trail cams', v: 'Gate' }, { k: 'Guest Wi-Fi name', v: 'Ok' }, { k: 'Vendor sync', v: 'Off' }, { k: 'Auto heat', v: 'Ok' }])}
+            ${D.chartCard('Alert volume', 'bars')}
+            ${D.chartCard('Heat load', 'line')}`;
+        }
+        return null;
+      },
+    });
+  }
 })();
 /* === /DB multipage polish === */
 document.documentElement.dataset.ready = 'true';
