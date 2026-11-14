@@ -1,11 +1,11 @@
 {
   "id": "tidebath-showroom",
-  "checked": "2026-11-13",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/tidebath-showroom/",
+      "url": "/dashboards/tidebath-showroom/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/tidebath-showroom/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/tidebath-showroom",
+      "url": "/dashboards/tidebath-showroom#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/tidebath-showroom/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/tidebath-showroom/index.html",
+      "url": "/dashboards/tidebath-showroom/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/tidebath-showroom/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/tidebath-showroom/",
+      "url": "/dashboards/tidebath-showroom/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/tidebath-showroom/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/tidebath-showroom/?variant=mist",
+      "url": "/dashboards/tidebath-showroom/?variant=mist#/overview",
       "width": 1440,
       "variant": "mist",
       "final_path": "/dashboards/tidebath-showroom/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/tidebath-showroom/?variant=dusk",
+      "url": "/dashboards/tidebath-showroom/?variant=dusk#/overview",
       "width": 1440,
       "variant": "dusk",
       "final_path": "/dashboards/tidebath-showroom/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=mist#/overview",
+      "width": 1440,
+      "variant": "mist",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=mist#/overview",
+      "width": 375,
+      "variant": "mist",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=dusk#/overview",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=dusk#/overview",
+      "width": 375,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/#/catalog",
+      "width": 1440,
+      "variant": "default",
+      "page": "catalog",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/#/catalog",
+      "width": 375,
+      "variant": "default",
+      "page": "catalog",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=mist#/catalog",
+      "width": 1440,
+      "variant": "mist",
+      "page": "catalog",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=mist#/catalog",
+      "width": 375,
+      "variant": "mist",
+      "page": "catalog",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=dusk#/catalog",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "catalog",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=dusk#/catalog",
+      "width": 375,
+      "variant": "dusk",
+      "page": "catalog",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/#/orders",
+      "width": 1440,
+      "variant": "default",
+      "page": "orders",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/#/orders",
+      "width": 375,
+      "variant": "default",
+      "page": "orders",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=mist#/orders",
+      "width": 1440,
+      "variant": "mist",
+      "page": "orders",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=mist#/orders",
+      "width": 375,
+      "variant": "mist",
+      "page": "orders",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=dusk#/orders",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "orders",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=dusk#/orders",
+      "width": 375,
+      "variant": "dusk",
+      "page": "orders",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=mist#/settings",
+      "width": 1440,
+      "variant": "mist",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=mist#/settings",
+      "width": 375,
+      "variant": "mist",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=dusk#/settings",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/tidebath-showroom/?variant=dusk#/settings",
+      "width": 375,
+      "variant": "dusk",
+      "page": "settings",
       "errors": []
     },
     {

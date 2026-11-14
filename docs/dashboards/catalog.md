@@ -913,13 +913,13 @@ A soft dark reading club: book shelf and friends on the left, a current-book her
 
 _Tidebath Showroom · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A soft-light bathroom showroom: curved SVG 3-bay room carousel with hotspot markers and a 6m² badge, above a four-column board for inspirations, product icons, store search and contact.
+A soft-light bathroom showroom: curved 3-bay photo room carousel with hotspot markers and a 6m² badge, above a four-column board for inspirations, product icons, store search and contact — plus Catalog, Orders and Settings. English copy throughout.
 
 - **Use cases:** E-commerce & retail, Hospitality & food · **Mode:** light · **Mood:** airy, minimal, clean, sculptural, calm
 - **Pages:** Overview (`overview`, Dashboard) · Catalog (`catalog`, List) · Orders (`orders`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** A soft white cylindrical stage holding three angled bathroom bays drawn in SVG, with blue tide-wave hotspot markers and a recessed circular 6m² badge.
-- **Layout:** Centered Tidebath mark + 4 nav links · curved 3-bay SVG carousel with prev/next, hotspots and 6m² badge · 4-column lower board (inspirations + social · product icons + store search · downloads · contact)
+- **Motion:** stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** A soft white cylindrical stage holding three angled photoreal bathroom bays, with blue tide-wave hotspot markers and a recessed circular 6m² badge.
+- **Layout:** Tidebath mark + pages nav · curved 3-bay photo carousel with prev/next, hotspots and 6m² badge · 4-column lower board (inspirations + social · product icons + store search · downloads · contact)
 - **Responsive:** ≤1100px: carousel scales, board becomes 2×2 · ≤700px: nav wraps under brand, carousel full-bleed with stacked arrows, board single column
 - **Fonts:** DM Serif Display / DM Sans · **Palette:** bg `#f4f5f7`, surface `#ffffff`, text `#2c333d`, muted `#4a5560`, accent `#2f6fed`, orange `#e8793a`, stage `#e8eaee`, hotspot `#3b82f6`
 - **Variants:** Porcelain, Mist, Dusk · **Closest toolkit theme:** `linen`
@@ -934,7 +934,7 @@ A soft-light bathroom showroom: curved SVG 3-bay room carousel with hotspot mark
 - Dark cinematic brands
 - Dashboards that need many KPIs on first paint
 
-**Components:** Centered brand mark with wave logo · Text navigation links · Curved 3-bay SVG room carousel · Prev/next carousel controls · Hotspot markers with look-closer tip · Recessed 6m² size badge · Inspirations column with social icons · Product icon strip with download link · Store city search field · Downloads link list · Contact phone and email
+**Components:** Centered brand mark with wave logo · Primary pages nav (Overview / Catalog / Orders / Settings) · Curved 3-bay photo room carousel · Prev/next carousel controls · Hotspot markers with look-closer tip · Recessed 6m² size badge · Inspirations column with social icons · Product icon strip with download link · Store city search field · Downloads link list · Contact phone and email
 
 ---
 

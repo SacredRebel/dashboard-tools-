@@ -6,91 +6,99 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Tidebath Showroom · Dashboard Tools gallery</title>
-  <meta name="description" content="Soft-light bathroom showroom with a curved 3-bay SVG room carousel, hotspot markers and a four-column utility board. Sample data.">
+  <meta name="description" content="Soft-light bathroom showroom with a curved 3-bay photo room carousel, hotspot markers and a four-column utility board. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="tb">
+  <div class="tb" data-db-app>
     <header class="tb-top">
-      <nav class="tb-nav tb-nav-l" aria-label="Primary left">
-        <a href="#products">Products</a>
-        <a href="#inspo">Inspirations</a>
-      </nav>
-      <a class="tb-brand" href="#" aria-label="Tidebath home">
+      <a class="tb-brand" href="#/overview" aria-label="Tidebath home">
         <span class="tb-mark" data-mark aria-hidden="true"></span>
         <span class="tb-name">Tidebath</span>
         <span class="tb-tag">showroom</span>
       </a>
-      <nav class="tb-nav tb-nav-r" aria-label="Primary right">
-        <a href="#stores">Store locator</a>
+      <nav class="tb-pages" aria-label="Primary">
+        <a href="#/overview" aria-current="page">Overview</a>
+        <a href="#/catalog">Catalog</a>
+        <a href="#/orders">Orders</a>
+        <a href="#/settings">Settings</a>
+      </nav>
+      <nav class="tb-nav" aria-label="On this page">
+        <a href="#inspo">Inspirations</a>
+        <a href="#stores">Stores</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <main>
-      <section class="tb-stage" aria-labelledby="tb-stage-h">
-        <h1 id="tb-stage-h" class="vh">Room carousel</h1>
-        <button class="tb-arrow tb-prev" type="button" data-prev aria-label="Previous room">
-          <span data-icon="chevLeft"></span>
-        </button>
-        <div class="tb-carousel" data-carousel role="group" aria-roledescription="carousel" aria-label="Bathroom layouts"></div>
-        <button class="tb-arrow tb-next" type="button" data-next aria-label="Next room">
-          <span data-icon="chevRight"></span>
-        </button>
-        <div class="tb-badge" aria-label="Room size 6 square metres">
-          <span class="num">6</span><small>m²</small>
-        </div>
-        <p class="tb-roomname" data-roomname aria-live="polite"></p>
-      </section>
+    <div data-main>
+      <div class="tb-overview" data-page-panel="overview">
+        <main>
+          <section class="tb-stage tb-reveal" aria-labelledby="tb-stage-h">
+            <h1 id="tb-stage-h" class="vh">Room carousel</h1>
+            <button class="tb-arrow tb-prev" type="button" data-prev aria-label="Previous room">
+              <span data-icon="chevLeft"></span>
+            </button>
+            <div class="tb-carousel" data-carousel role="group" aria-roledescription="carousel" aria-label="Bathroom layouts"></div>
+            <button class="tb-arrow tb-next" type="button" data-next aria-label="Next room">
+              <span data-icon="chevRight"></span>
+            </button>
+            <div class="tb-badge" aria-label="Room size 6 square metres">
+              <span class="num">6</span><small>m²</small>
+            </div>
+            <p class="tb-roomname" data-roomname aria-live="polite"></p>
+          </section>
 
-      <section class="tb-board" aria-label="Showroom tools">
-        <article class="tb-cell" id="inspo" aria-labelledby="tb-inspo-h">
-          <h2 id="tb-inspo-h">Inspirations</h2>
-          <p class="tb-blurb">Browse compact layouts that stretch light and space — from city flats to guest suites.</p>
-          <p class="tb-sub">Find us on</p>
-          <ul class="tb-social" data-social></ul>
-        </article>
+          <section class="tb-board tb-reveal" aria-label="Showroom tools">
+            <article class="tb-cell" id="inspo" aria-labelledby="tb-inspo-h">
+              <h2 id="tb-inspo-h">Inspirations</h2>
+              <p class="tb-blurb">Browse compact layouts that stretch light and space — from city flats to guest suites.</p>
+              <p class="tb-sub">Find us on</p>
+              <ul class="tb-social" data-social></ul>
+            </article>
 
-        <article class="tb-cell" id="products" aria-labelledby="tb-prod-h">
-          <h2 id="tb-prod-h">Product catalog</h2>
-          <div class="tb-icons" role="list" data-products></div>
-          <a class="tb-dl" href="#" data-download><span>Download PDF</span><span data-icon="arrowRight"></span></a>
-          <div class="tb-stores" id="stores">
-            <h3>Stores</h3>
-            <form class="tb-search" data-store-form>
-              <label class="vh" for="tb-city">Your town</label>
-              <input id="tb-city" type="search" name="city" placeholder="Your town" autocomplete="address-level2" data-city>
-              <button type="submit">OK</button>
-            </form>
-            <a class="tb-maplink" href="#" data-map>See on map</a>
-            <p class="tb-storemsg" data-storemsg aria-live="polite"></p>
-          </div>
-        </article>
+            <article class="tb-cell" id="products" aria-labelledby="tb-prod-h">
+              <h2 id="tb-prod-h">Product catalog</h2>
+              <div class="tb-icons" role="list" data-products></div>
+              <a class="tb-dl" href="#" data-download><span>Download PDF</span><span data-icon="arrowRight"></span></a>
+              <div class="tb-stores" id="stores">
+                <h3>Stores</h3>
+                <form class="tb-search" data-store-form>
+                  <label class="vh" for="tb-city">Your town</label>
+                  <input id="tb-city" type="search" name="city" placeholder="Your town" autocomplete="address-level2" data-city>
+                  <button type="submit">OK</button>
+                </form>
+                <a class="tb-maplink" href="#" data-map>See on map</a>
+                <p class="tb-storemsg" data-storemsg aria-live="polite"></p>
+              </div>
+            </article>
 
-        <article class="tb-cell" aria-labelledby="tb-dl-h">
-          <h2 id="tb-dl-h">Downloads</h2>
-          <ul class="tb-links" data-downloads></ul>
-        </article>
+            <article class="tb-cell" aria-labelledby="tb-dl-h">
+              <h2 id="tb-dl-h">Downloads</h2>
+              <ul class="tb-links" data-downloads></ul>
+            </article>
 
-        <article class="tb-cell" id="contact" aria-labelledby="tb-ct-h">
-          <h2 id="tb-ct-h">Contact</h2>
-          <ul class="tb-contact" data-contact></ul>
-        </article>
-      </section>
-    </main>
+            <article class="tb-cell" id="contact" aria-labelledby="tb-ct-h">
+              <h2 id="tb-ct-h">Contact</h2>
+              <ul class="tb-contact" data-contact></ul>
+            </article>
+          </section>
+        </main>
+        <p class="db-sample tb-foot">Sample data · fictional brand and stores</p>
+      </div>
+    </div>
 
     <aside class="tb-tip" data-tip hidden role="status">
       <b data-tip-title></b>
       <span data-tip-body></span>
     </aside>
-
-    <p class="db-sample tb-foot">Sample data · fictional brand and stores</p>
   </div>
+  <div class="tb-toast" data-toast hidden role="status"></div>
   <script src="app.js"></script>
 </body>
 </html>
