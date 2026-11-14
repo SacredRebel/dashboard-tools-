@@ -817,15 +817,15 @@ An organic reforestation tracker in forest green, bark brown and tan: a leafy co
 
 _Lull Sleep · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A one-night sleep report in soft lavender: a pastel sky hero with a crescent moon and a round score, a stage timeline you can filter by stage, a stage-split donut, a week of nights to pick from, logged habits that move the score, and bedroom conditions.
+A soft glass wellness board over a lavender sky: score and smart ring at the center, stress and sleep sparks, heart rate, and a glowing body report — with Sleep, Recovery, Activity and Settings pages.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** calm, gentle, dreamy, reassuring, soft
-- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** A pastel blue-to-pink sky with a glowing crescent and white clouds, holding a white round score, above soft white cards with rounded lavender stage blocks.
-- **Layout:** Top bar (wordmark, centred pill nav, avatar) · 250px sky hero: date, serif headline with italic second half, 3 chips, 200px round score · 12-column grid: timeline (8) + stage split (4, two rows) · night stats strip (8) · bottom row: last seven nights bar chart (5), habits (4), bedroom (3)
-- **Responsive:** ≤1100px: 2 columns (timeline and stats full width, split + week, habits + bedroom) · ≤700px: single column, nav on its own row, score under the headline, stats 2×2, fewer time labels
-- **Fonts:** Fraunces / Figtree · **Palette:** bg `#ece9f6`, surface `#fbfaff`, text `#24224a`, muted `#57557a`, accent `#3b3a8f`, rem `#b47ad6`, light `#8fa6e8`, wake `#e98a8a`
+- **Pages:** Overview (`overview`, Dashboard) · Sleep (`sleep`, Report) · Recovery (`recovery`, Report) · Activity (`activity`, List) · Settings (`settings`, Settings)
+- **Motion:** count-up, stagger, chart-draw, hover-lift, press, page-transition, icon-state, toast, ambient, skeleton
+- **Signature:** Frosted glass cards over a pink–blue atmospheric wash, a floral wellness gauge, and dimensional SVG ring, brain and body scans.
+- **Layout:** Top pill nav; three columns — hero copy + mini charts + AI summary; wellness gauge + smart ring; heart rate + body report.
+- **Responsive:** At 1100px hero spans full width; at 720px single column, nav scrolls horizontally.
+- **Fonts:** Fraunces / Figtree · **Palette:** bg `#d9e3f7`, surface `#ffffff`, text `#1a2240`, muted `#3f4a6e`, accent `#3f52d9`, chart `#4f6fe8`, pink `#c45a90`, good `#1f7a52`
 - **Variants:** Lavender, Dawn, Nightfall · **Closest toolkit theme:** `blush`
 
 **Best for**
@@ -838,7 +838,7 @@ A one-night sleep report in soft lavender: a pastel sky hero with a crescent moo
 - Multi-user or admin views
 - Brands that need a crisp, technical feel
 
-**Components:** Pill navigation · Sky hero with round score dial and chips · Stage timeline with stage filter chips · Stage-split donut with legend · Stats strip with dividers · Bar chart that picks the night · Toggleable habit tags that change the score · Sensor list with icon tiles
+**Components:** pill nav · glass cards · radial score with wreath · spark charts · heart-rate line · smart ring photo · body scan art · AI brain art · settings form · device drawer
 
 ---
 

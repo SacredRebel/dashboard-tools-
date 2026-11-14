@@ -1,195 +1,346 @@
-/* Lull Sleep: sample data, pastel sky artwork, night timeline and interactions.
-   All data is fictional sample data. No timers, no network. */
+/* Lull Sleep — glass wellness overview matching owner reference.
+   Fictional sample data. No polling / network. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ICON = {
-    moon: '<path d="M20 14.500A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.500z"/>',
-    thermo: '<path d="M14 14.800V5a2 2 0 0 0-4 0v9.800a4 4 0 1 0 4 0z"/>',
-    drop: '<path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"/>',
-    speaker: '<rect x="6" y="2.5" width="12" height="19" rx="2.5"/><circle cx="12" cy="14.5" r="3"/><circle cx="12" cy="7" r=".8"/>',
-    sun: '<circle cx="12" cy="12" r="4.2"/><path d="M12 1.800v2.400M12 19.800v2.400M4.8 4.800l1.7 1.700M17.5 17.500l1.7 1.700M1.8 12h2.400M19.8 12h2.400M4.8 19.200l1.7-1.700M17.5 6.500l1.7-1.7"/>',
-    bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
-    dumbbell: '<path d="M6.5 6.500v11M3.5 9v6M17.5 6.500v11M20.5 9v6M6.5 12h11"/>',
-    apple: '<path d="M12 7c-2-1.5-6-1-7 3s1.5 10 4.5 10c1 0 1.5-.5 2.5-.5s1.5.5 2.5.500c3 0 5.5-6 4.5-10s-5-4.5-7-3z"/><path d="M12 7c0-2 1-3.5 3-4"/>',
-    brain: '<path d="M12 4.500v15M12 6a3 3 0 0 0-5.5-1.500A3 3 0 0 0 4 9a3.5 3.5 0 0 0 .5 6A3.5 3.5 0 0 0 12 17M12 6a3 3 0 0 1 5.5-1.500A3 3 0 0 1 20 9a3.5 3.5 0 0 1-.5 6A3.5 3.5 0 0 1 12 17"/>',
+    spark: '<path d="M12 2l1.2 4.2L17 8l-3.8 1.8L12 14l-1.2-4.2L7 8l3.8-1.8z"/><path d="M19 13l.7 2.3L22 16l-2.3.7L19 19l-.7-2.3L16 16l2.3-.7z"/>',
+    bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>',
+    chev: '<path d="m9 6 6 6-6 6"/>',
     heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>',
-    coffee: '<path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5Z"/><path d="M16 11h1.500a2.500 2.500 0 0 1 0 5H16M8 3v3M12 3v3"/>',
-    book: '<path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2z"/><path d="M4 21a2 2 0 0 0 2 2h14v-4"/>',
   };
-  const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
-  const fmtNum = (v) => v.toLocaleString('en-US');
-  const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
-  const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
-  const niceStep = (raw) => { const p = 10 ** Math.floor(Math.log10(raw || 1)); const f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; };
-  function scale(vals, o) {
-    let min = o.min ?? Math.min(...vals), max = o.max ?? Math.max(...vals);
-    const step = o.step || niceStep((max - min || 1) / (o.ticks || 4));
-    min = Math.floor(min / step) * step; max = Math.ceil(max / step) * step; if (max === min) max = min + step;
-    const ticks = []; for (let v = min; v <= max + step / 1e6; v += step) ticks.push(+v.toFixed(6));
-    return { min, max, ticks };
+  const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[n] || ''}</svg>`;
+  $$('[data-icon]').forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'sleep', name: 'Sleep', pattern: 'Report' },
+    { id: 'recovery', name: 'Recovery', pattern: 'Report' },
+    { id: 'activity', name: 'Activity', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+
+  const HR = [62, 64, 61, 63, 70, 78, 88, 92, 85, 76, 72, 69, 74, 80, 77, 71, 68, 66];
+  const STRESS = [40, 48, 55, 62, 70, 76, 72, 68];
+  const SLEEP = [6.2, 6.8, 7.1, 6.5, 7.4, 7.0, 7.2];
+
+  function toast(msg) {
+    const t = $('[data-toast]');
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
   }
-  // segmented control / tabs: buttons carry data-v, the pressed one gets aria-pressed="true"
-  function seg(group, onChange) {
-    group.addEventListener('click', (e) => {
-      const b = e.target.closest('button[data-v]'); if (!b) return;
-      $$('button[data-v]', group).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      onChange(b.dataset.v, b);
+
+  function spark(el, data, color) {
+    if (!el) return;
+    const w = 160, h = 48, max = Math.max(...data), min = Math.min(...data);
+    const pts = data.map((v, i) => {
+      const x = (i / (data.length - 1)) * w;
+      const y = h - 6 - ((v - min) / (max - min || 1)) * (h - 14);
+      return [x, y];
     });
-  }
-  // Bar chart built from HTML columns (each column is a focusable button). Grouped by default, stacked with o.stacked.
-  // o: { labels, series: [{ name, color, values }], fmt, h, label, max, ticks, active, onPick, stacked }
-  function barChart(el, o) {
-    const fmt = o.fmt || fmtNum, n = o.labels.length;
-    const tot = o.labels.map((_, i) => (o.stacked ? o.series.reduce((a, s) => a + s.values[i], 0) : Math.max(...o.series.map((s) => s.values[i]))));
-    const { max, ticks } = scale(tot, { min: 0, max: o.max, ticks: o.ticks, step: o.step });
-    el.innerHTML = `<div class="ls-plot ls-barplot" style="--plot-h:${o.h || 200}px" role="group" aria-label="${o.label}">
-      ${o.noAxis ? '' : ticks.map((v) => `<span class="ls-y num" style="top:calc(var(--plot-h) * ${(1 - v / max).toFixed(4)})">${fmt(v)}</span><span class="ls-gl" style="top:calc(var(--plot-h) * ${(1 - v / max).toFixed(4)})"></span>`).join('')}
-      <div class="ls-cols">${o.labels.map((l, i) => `<button class="ls-col${o.stacked ? ' stack' : ''}${o.active === i ? ' on' : ''}" aria-label="${l}: ${o.series.map((s) => `${s.name ? s.name + ' ' : ''}${fmt(s.values[i])}`).join(', ')}"${o.onPick ? ` aria-pressed="${o.active === i}"` : ''}>${o.series.map((s) => `<span class="ls-bar" style="height:${((s.values[i] / max) * 100).toFixed(2)}%;--bar:var(${s.color})"></span>`).join('')}</button>`).join('')}</div>
-      <div class="ls-xs">${o.labels.map((l) => `<span>${l}</span>`).join('')}</div>
-      <span class="ls-tip num" hidden></span>
-    </div>`;
-    const tip = $('.ls-tip', el);
-    const show = (i) => {
-      tip.hidden = i < 0; if (i < 0) return;
-      tip.innerHTML = `<b>${o.labels[i]}</b> ${o.series.map((s) => fmt(s.values[i])).join(' · ')}`;
-      tip.className = `ls-tip num${i === 0 ? ' l' : i === n - 1 ? ' r' : ''}`;
-      tip.style.left = ((i + 0.5) / n) * 100 + '%'; tip.style.top = `calc(var(--plot-h) * ${(1 - tot[i] / max).toFixed(4)})`;
-    };
-    $$('.ls-col', el).forEach((b, i) => { b.addEventListener('mouseenter', () => show(i)); b.addEventListener('focus', () => show(i)); b.addEventListener('blur', () => show(-1)); if (o.onPick) b.addEventListener('click', () => o.onPick(i)); });
-    $('.ls-cols', el).addEventListener('mouseleave', () => show(-1));
-  }
-  // Donut from stroked circles. parts: [{ value, color: '--chart-1' }] (values in any unit). Returns an SVG string.
-  function donut(parts, { size = 120, w = 14, gap = 1.5, round = false } = {}) {
-    const total = parts.reduce((a, p) => a + p.value, 0), r = (size - w) / 2, c = size / 2; let off = 0;
-    return `<svg viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle class="track" cx="${c}" cy="${c}" r="${r}" fill="none" stroke-width="${w}"/>${parts.map((p) => {
-      const len = (p.value / total) * 100, seg = `<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke-width="${w}" pathLength="100" stroke-dasharray="${Math.max(0.01, len - gap).toFixed(2)} ${(100 - len + gap).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 ${c} ${c})" style="stroke:var(${p.color})"${round ? ' stroke-linecap="round"' : ''}/>`;
-      off += len; return seg;
-    }).join('')}</svg>`;
-  }
-  // Arc gauge. Angles in degrees, 0 = up, clockwise. Returns an SVG string with a track and a value arc.
-  const polar = (cx, cy, r, deg) => [cx + r * Math.sin((deg * Math.PI) / 180), cy - r * Math.cos((deg * Math.PI) / 180)];
-  const arcPath = (cx, cy, r, a0, a1) => { const [x0, y0] = polar(cx, cy, r, a0), [x1, y1] = polar(cx, cy, r, a1); return `M${x0.toFixed(2)},${y0.toFixed(2)} A${r},${r} 0 ${Math.abs(a1 - a0) > 180 ? 1 : 0} ${a1 > a0 ? 1 : 0} ${x1.toFixed(2)},${y1.toFixed(2)}`; };
-  function arcGauge(pct, { size = 160, w = 12, from = -120, to = 120, color = '--accent', knob = false } = {}) {
-    const c = size / 2, r = (size - w) / 2 - (knob ? 4 : 0), end = from + (to - from) * Math.max(0, Math.min(1, pct)), [kx, ky] = polar(c, c, r, end);
-    return `<svg viewBox="0 0 ${size} ${size}" aria-hidden="true"><path class="track" d="${arcPath(c, c, r, from, to)}" fill="none" stroke-width="${w}" stroke-linecap="round"/><path d="${arcPath(c, c, r, from, Math.max(end, from + 0.01))}" fill="none" stroke-width="${w}" stroke-linecap="round" style="stroke:var(${color})"/>${knob ? `<circle class="knob" cx="${kx.toFixed(2)}" cy="${ky.toFixed(2)}" r="${w * 0.75}"/>` : ''}</svg>`;
-  }
-  paintIcons();
-  const st = (o, c, a = 1) => `<stop offset="${o}" style="stop-color:var(${c});stop-opacity:${a}"/>`;
-
-  // ---------------------------------------------------------------- artwork: sky, clouds, moon, stars
-  $('[data-sky]').innerHTML = `<svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid slice">
-    <defs><linearGradient id="ls-sky" x1="0" y1="0" x2="1" y2="1">${st(0, '--sky-1')}${st(0.55, '--sky-2')}${st(1, '--sky-3')}</linearGradient>
-    <radialGradient id="ls-glow">${st(0, '--moon', 0.7)}${st(1, '--moon', 0)}</radialGradient></defs>
-    <rect width="1200" height="260" fill="url(#ls-sky)"/>
-    <circle cx="880" cy="92" r="120" fill="url(#ls-glow)"/>
-    <path d="M880,42 a52,52 0 1 0 46,76 a42,42 0 1 1 -46,-76 Z" fill="var(--moon)"/>
-    <g fill="var(--star)">${[[640, 40], [700, 120], [1010, 50], [1100, 140], [780, 30], [960, 190], [580, 100], [1140, 70]].map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="${1.5 + (i % 3)}" opacity="${0.5 + (i % 2) * 0.4}"/>`).join('')}</g>
-    <g fill="var(--cloud)" opacity="0.85"><path d="M600,260 c0,-40 40,-60 80,-48 c14,-40 80,-50 110,-12 c30,-28 96,-16 104,30 c40,-10 80,14 80,30 Z"/><path d="M940,260 c10,-36 60,-46 86,-24 c22,-34 90,-30 102,10 c30,-4 60,6 72,14 Z" opacity="0.7"/></g>
-  </svg>`;
-
-  // ---------------------------------------------------------------- sample data
-  const STAGES = [{ id: 'wake', name: 'Awake', c: '--st-wake' }, { id: 'rem', name: 'REM', c: '--st-rem' }, { id: 'light', name: 'Light', c: '--st-light' }, { id: 'deep', name: 'Deep', c: '--st-deep' }];
-  // each night: start (minutes after 9 pm), blocks [stage index, minutes]
-  const mk = (seed, start, len) => { const b = []; let t = 0, k = 0; while (t < len) { const cyc = [[2, 22], [3, 28 - k * 5], [2, 16], [1, 14 + k * 6], [0, k % 2 ? 4 : 0]]; for (const [s, m] of cyc) { const mm = Math.max(0, Math.round(m + ((seed * (k + 3) * 7) % 9) - 4)); if (mm && t < len) { b.push([s, Math.min(mm, len - t)]); t += mm; } } k++; } return { start, blocks: b }; };
-  const NIGHTS = [mk(3, 105, 402), mk(5, 90, 432), mk(2, 150, 356), mk(7, 120, 388), mk(4, 80, 470), mk(6, 140, 362), mk(1, 100, 444)];
-  const HABITS = [{ id: 'caf', name: 'Late coffee', icon: 'coffee', eff: -9, note: 'Caffeine after 3 pm usually costs you about 20 minutes of deep sleep.' }, { id: 'ex', name: 'Evening run', icon: 'dumbbell', eff: 4, note: 'Exercise before 7 pm tends to lengthen your deep sleep a little.' }, { id: 'read', name: 'Read in bed', icon: 'book', eff: 3, note: 'Reading on paper, not a screen, helped you fall asleep faster.' }, { id: 'meal', name: 'Late meal', icon: 'apple', eff: -6, note: 'Eating within two hours of bed raised your heart rate overnight.' }, { id: 'stress', name: 'Stressful day', icon: 'brain', eff: -5, note: 'High-stress days show more short wake-ups in the first half of the night.' }];
-  const logged = NIGHTS.map((_, i) => new Set([['ex', 'read'], ['read'], ['caf', 'stress'], ['meal'], ['ex', 'read'], ['caf', 'meal'], ['read', 'ex']][i]));
-  let night = NIGHTS.length - 1, hl = '';
-  const sum = (n, s) => n.blocks.reduce((a, [k, m]) => a + (k === s ? m : 0), 0), total = (n) => n.blocks.reduce((a, b) => a + b[1], 0);
-  const asleep = (n) => total(n) - sum(n, 0), hm = (m) => `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`;
-  const clock = (m) => { const t = (21 * 60 + m) % 1440, h = Math.floor(t / 60); return `${h % 12 || 12}:${String(t % 60).padStart(2, '0')} ${h < 12 ? 'am' : 'pm'}`; };
-  const score = (i) => { const n = NIGHTS[i]; return Math.max(30, Math.min(99, Math.round(34 + asleep(n) / 14 + sum(n, 3) / 7 - sum(n, 0) / 2 + [...logged[i]].reduce((a, h) => a + HABITS.find((x) => x.id === h).eff, 0)))); };
-  const ROOM = [{ icon: 'thermo', name: 'Temperature', sub: 'Ideal is 16–19 °C', v: ['18.2 °C', '18.6 °C', '20.4 °C', '19.1 °C', '17.8 °C', '20.9 °C', '18.0 °C'] }, { icon: 'drop', name: 'Humidity', sub: 'Ideal is 40–60%', v: ['48%', '51%', '44%', '55%', '50%', '39%', '47%'] }, { icon: 'speaker', name: 'Noise', sub: 'Loudest moment', v: ['38 dB', '41 dB', '52 dB', '36 dB', '34 dB', '49 dB', '35 dB'] }, { icon: 'sun', name: 'Light', sub: 'Before you fell asleep', v: ['Dark', 'Dark', 'Dim', 'Dark', 'Dark', 'Dim', 'Dark'] }];
-
-  // ---------------------------------------------------------------- renderers
-  function render() {
-    const n = NIGHTS[night], s = score(night), date = dayOffset(night - NIGHTS.length), word = s >= 85 ? 'restful' : s >= 70 ? 'solid' : s >= 55 ? 'light' : 'restless';
-    $('[data-date]').textContent = `Night of ${fmtDate(date, { weekday: 'long', month: 'long', day: 'numeric' })}`;
-    $('[data-headline]').innerHTML = `A ${word} night, <em>${hm(asleep(n)).replace(' h ', ' hours ')} minutes asleep</em>`;
-    $('[data-chips]').innerHTML = `<span>In bed ${clock(n.start)}</span><span>Up ${clock(n.start + total(n))}</span><span>${n.blocks.filter((b) => b[0] === 0).length} wake-ups</span>`;
-    $('[data-score]').innerHTML = `<div role="img" aria-label="Sleep score ${s} out of 100">${arcGauge(s / 100, { size: 180, w: 10, from: -140, to: 140, color: '--accent' })}</div><p><b class="num">${s}</b>Sleep score</p>`;
-    // timeline
-    const T = total(n); let t = 0;
-    const segs = n.blocks.map(([k, m]) => { const el = `<span class="ls-seg${STAGES[k].id === hl ? ' hl' : ''}" style="left:${((t / T) * 100).toFixed(2)}%;width:calc(${((m / T) * 100).toFixed(2)}% - 2px);top:${k * 34}px;--c:var(${STAGES[k].c})"></span>`; t += m; return el; }).join('');
-    const box = $('[data-hyp]'); hl ? box.setAttribute('data-hl', hl) : box.removeAttribute('data-hl');
-    box.innerHTML = `<div class="ls-rows" aria-hidden="true">${STAGES.map((x) => `<span>${x.name}</span>`).join('')}</div><div class="ls-track" role="img" aria-label="Sleep stages from ${clock(n.start)} to ${clock(n.start + T)}: ${STAGES.map((x, k) => `${x.name} ${sum(n, k)} minutes`).join(', ')}">${segs}</div><div class="ls-times num">${[0, 0.25, 0.5, 0.75, 1].map((f) => `<span>${clock(n.start + Math.round(T * f))}</span>`).join('')}</div>`;
-    // split
-    $('[data-split]').innerHTML = `<div class="ls-donut">${donut(STAGES.map((x, k) => ({ value: sum(n, k) || 0.01, color: x.c })), { size: 190, w: 22, gap: 1.2 })}<p><span><b class="num">${Math.round((sum(n, 3) / T) * 100)}%</b><br>deep sleep</span></p></div>
-      <ul class="ls-sl">${STAGES.map((x, k) => `<li><i style="--c:var(${x.c})"></i>${x.name}<b class="num">${hm(sum(n, k)).replace(/^0 h /, '')}${sum(n, k) < 60 ? ' min' : ''}</b><small class="num">${Math.round((sum(n, k) / T) * 100)}%</small></li>`).join('')}</ul>`;
-    // stats
-    const eff = Math.round((asleep(n) / T) * 100), lat = 6 + ((night * 5) % 17), hr = 52 + ((night * 3) % 9);
-    $('[data-stats]').innerHTML = [['Time asleep', hm(asleep(n)), ''], ['Efficiency', eff, '%'], ['Fell asleep in', lat, 'min'], ['Lowest heart rate', hr, 'bpm']].map(([l, v, u]) => `<div><dt>${l}</dt><dd class="num">${v}<small>${u}</small></dd></div>`).join('');
-    // week
-    barChart($('[data-week]'), { labels: NIGHTS.map((_, i) => fmtDate(dayOffset(i - NIGHTS.length), { weekday: 'short' })), series: [{ name: 'Asleep', color: '--chart-1', values: NIGHTS.map((x) => +(asleep(x) / 60).toFixed(1)) }], fmt: (v) => v + ' h', h: 150, ticks: 3, max: 9, active: night, onPick: (i) => { night = i; render(); $$('[data-week] .ls-col')[i].focus(); }, label: 'Hours asleep for each of the last seven nights' });
-    // habits
-    $('[data-habits]').innerHTML = HABITS.map((h) => `<li><button data-habit="${h.id}" aria-pressed="${logged[night].has(h.id)}">${svg(h.icon)}${h.name}</button></li>`).join('');
-    const on = HABITS.filter((h) => logged[night].has(h.id));
-    $('[data-habit-note]').textContent = on.length ? on.sort((a, b) => Math.abs(b.eff) - Math.abs(a.eff))[0].note : 'Nothing logged for this night. Tap a tag to log it and see how it changes your score.';
-    $('[data-room]').innerHTML = ROOM.map((r) => `<li><span>${svg(r.icon)}</span><span>${r.name}<small>${r.sub}</small></span><b class="num">${r.v[night]}</b></li>`).join('');
-  }
-  function renderLegend() { $('[data-legend]').innerHTML = STAGES.map((x) => `<button data-stage="${x.id}" style="--c:var(${x.c})" aria-pressed="${x.id === hl}">${x.name}</button>`).join(''); }
-
-  // ---------------------------------------------------------------- events
-  $('[data-legend]').addEventListener('click', (e) => { const b = e.target.closest('[data-stage]'); if (!b) return; hl = hl === b.dataset.stage ? '' : b.dataset.stage; renderLegend(); render(); });
-  $('[data-habits]').addEventListener('click', (e) => { const b = e.target.closest('[data-habit]'); if (!b) return; const set = logged[night], id = b.dataset.habit; set.has(id) ? set.delete(id) : set.add(id); render(); $(`[data-habit="${id}"]`).focus(); });
-  renderLegend(); render();
-/* === DB multipage bootstrap (generated; polish pass replaces stubs) === */
-  (function wirePages() {
-    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"vitals","name":"Vitals","pattern":"Report"},{"id":"appointments","name":"Appointments","pattern":"Calendar"},{"id":"records","name":"Records","pattern":"List"},{"id":"settings","name":"Settings","pattern":"Settings"}];
-    const main = document.querySelector('main') || document.body;
-    let stub = document.querySelector('[data-db-stub]');
-    if (!stub) {
-      stub = document.createElement('section');
-      stub.setAttribute('data-db-stub', '');
-      stub.hidden = true;
-      stub.setAttribute('aria-live', 'polite');
-      main.appendChild(stub);
+    let d = `M${pts[0][0]},${pts[0][1]}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      d += ` C${p1[0] + (p2[0] - p0[0]) / 6},${p1[1] + (p2[1] - p0[1]) / 6} ${p2[0] - (p3[0] - p1[0]) / 6},${p2[1] - (p3[1] - p1[1]) / 6} ${p2[0]},${p2[1]}`;
     }
-    function setOverviewVisible(on) {
-      [...main.children].forEach((ch) => {
-        if (ch === stub) return;
-        if (on) {
-          ch.hidden = false;
-          ch.removeAttribute('data-db-overview-hide');
-        } else {
-          ch.hidden = true;
-          ch.setAttribute('data-db-overview-hide', '');
-        }
-      });
-      stub.hidden = on;
-    }
-    function renderStub(page) {
-      const rows = [
-        ['Status', 'Sample · ready'],
-        ['Records', '24'],
-        ['Updated', 'Today'],
-      ];
-      stub.innerHTML = '<h1>' + page.name + '</h1>'
-        + '<p class="db-sample">Sample data · fictional</p>'
-        + '<p>This page is part of the multi-page shell. The polish pass fills it with real ' + page.name.toLowerCase() + ' UI in the same design language as Overview.</p>'
-        + '<div class="db-stub-panel" role="list">'
-        + rows.map(([k, v]) => '<div class="db-stub-row" role="listitem"><span>' + k + '</span><strong class="num">' + v + '</strong></div>').join('')
-        + '</div>';
-    }
-    document.querySelectorAll('a[href]').forEach((a) => {
-      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-      if (!label) return;
-      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
-        || (label === 'home' && p.id === 'overview')
-        || (label === 'dashboard' && p.id === 'overview'));
-      if (hit) a.setAttribute('href', '#/' + hit.id);
+    const fill = `${d} L${w},${h} L0,${h} Z`;
+    el.innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><path d="${fill}" fill="${color}" opacity="0.22"/><path class="ls-line" d="${d}" fill="none" stroke="${color}" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`;
+  }
+
+  function wreath(el) {
+    if (!el) return;
+    el.innerHTML = `<svg viewBox="0 0 120 120" aria-hidden="true">
+      <g fill="none" stroke="#d4a0c0" stroke-width="1.2" opacity="0.7">
+        <path d="M60 18c8 6 10 16 6 24M60 18c-8 6-10 16-6 24"/>
+        <path d="M92 40c-2 10-10 16-20 16M28 40c2 10 10 16 20 16"/>
+        <path d="M98 72c-8 6-18 6-26-2M22 72c8 6 18 6 26-2"/>
+        <path d="M78 98c-8-2-14-10-12-20M42 98c8-2 14-10 12-20"/>
+      </g>
+      <g fill="#e8b4c8" opacity="0.85">
+        <circle cx="60" cy="22" r="3.5"/><circle cx="88" cy="38" r="3"/><circle cx="96" cy="70" r="3.2"/>
+        <circle cx="78" cy="96" r="3"/><circle cx="42" cy="96" r="3"/><circle cx="24" cy="70" r="3.2"/>
+        <circle cx="32" cy="38" r="3"/><circle cx="70" cy="30" r="2.4" fill="#c9b8ff"/>
+        <circle cx="50" cy="30" r="2.4" fill="#9fd6c2"/>
+      </g>
+    </svg>`;
+  }
+
+  function hrChart(el) {
+    if (!el) return;
+    const w = 420, h = 150, pad = 8;
+    const max = Math.max(...HR), min = Math.min(...HR);
+    const pts = HR.map((v, i) => {
+      const x = pad + (i / (HR.length - 1)) * (w - pad * 2);
+      const y = pad + (1 - (v - min) / (max - min)) * (h - pad * 2);
+      return [x, y];
     });
-    if (!window.DB || typeof window.DB.route !== 'function') {
-      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+    let d = `M${pts[0][0]},${pts[0][1]}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      d += ` C${p1[0] + (p2[0] - p0[0]) / 6},${p1[1] + (p2[1] - p0[1]) / 6} ${p2[0] - (p3[0] - p1[0]) / 6},${p2[1] - (p3[1] - p1[1]) / 6} ${p2[0]},${p2[1]}`;
+    }
+    const area = `${d} L${pts[pts.length - 1][0]},${h} L${pts[0][0]},${h} Z`;
+    const marks = [2, 7, 11, 15].map((i) => `<circle cx="${pts[i][0]}" cy="${pts[i][1]}" r="4" fill="var(--accent)" stroke="#fff" stroke-width="2"/>`).join('');
+    el.innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" class="ls-hr-svg">
+      <path d="${area}" fill="var(--chart-1)" opacity="0.12"/>
+      <path d="${d}" fill="none" stroke="var(--chart-1)" stroke-width="2.5" vector-effect="non-scaling-stroke" class="ls-hr-path"/>
+      ${marks}
+    </svg>`;
+  }
+
+  function countUp(node) {
+    const target = +node.dataset.count;
+    const span = node.querySelector('span');
+    if (reduce) {
+      if (span) node.innerHTML = `${target}<span>${span.textContent}</span>`;
+      else node.textContent = String(target);
       return;
     }
-    window.DB.route(PAGES, (id, page) => {
-      if (id === PAGES[0].id) setOverviewVisible(true);
-      else { setOverviewVisible(false); renderStub(page); }
+    const start = performance.now();
+    const dur = 700;
+    const suffixHtml = span ? span.outerHTML : '';
+    function frame(now) {
+      const t = Math.min(1, (now - start) / dur);
+      const eased = 1 - (1 - t) ** 3;
+      const val = Math.round(target * eased);
+      if (suffixHtml) node.innerHTML = `${val}${suffixHtml}`;
+      else node.textContent = String(val);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function animateOverview() {
+    const root = $('[data-page-panel="overview"]');
+    if (!root || root.hidden) return;
+    $$('[data-count]', root).forEach(countUp);
+    const gauge = $('.ls-gauge-val', root);
+    if (gauge) gauge.setAttribute('stroke-dasharray', reduce ? '50 100' : '0 100');
+    if (gauge && !reduce) {
+      requestAnimationFrame(() => { gauge.setAttribute('stroke-dasharray', '50 100'); });
+    }
+    const path = $('.ls-hr-path', root);
+    if (path && !reduce) {
+      const len = path.getTotalLength?.() || 800;
+      path.style.strokeDasharray = String(len);
+      path.style.strokeDashoffset = String(len);
+      path.getBoundingClientRect();
+      path.style.transition = 'stroke-dashoffset 700ms var(--ease, ease)';
+      path.style.strokeDashoffset = '0';
+    }
+    const cards = $$('.ls-glass, .ls-hero-copy', root);
+    cards.forEach((c, i) => {
+      c.style.opacity = reduce ? '1' : '0';
+      c.style.transform = reduce ? 'none' : 'translateY(10px)';
+      if (!reduce) {
+        setTimeout(() => {
+          c.style.transition = 'opacity 220ms var(--ease, ease), transform 220ms var(--ease, ease)';
+          c.style.opacity = '1';
+          c.style.transform = 'none';
+        }, 40 * i);
+      }
     });
-  })();
-/* === /DB multipage bootstrap === */
-  document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end
+  }
+
+  // paint overview art
+  spark($('[data-spark="stress"]'), STRESS, 'var(--chart-1)');
+  spark($('[data-spark="sleep"]'), SLEEP, 'var(--chart-2)');
+  wreath($('[data-wreath]'));
+  hrChart($('[data-hr]'));
+
+  /* drawer */
+  const drawer = $('[data-drawer]');
+  const panel = $('.ls-drawer-panel', drawer);
+  let lastFocus = null;
+  function openDrawer() {
+    lastFocus = document.activeElement;
+    drawer.hidden = false;
+    panel.focus();
+  }
+  function closeDrawer() {
+    drawer.hidden = true;
+    lastFocus?.focus?.();
+  }
+  drawer.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { e.preventDefault(); closeDrawer(); }
+    if (e.key !== 'Tab') return;
+    const focusables = $$('button, [href], input, select, textarea', panel).filter((el) => !el.disabled);
+    if (!focusables.length) return;
+    const first = focusables[0], last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  $('[data-drawer-close]')?.addEventListener('click', closeDrawer);
+  $('[data-drawer-save]')?.addEventListener('click', () => { closeDrawer(); toast('Device prefs saved (sample)'); });
+  drawer.addEventListener('click', (e) => { if (e.target === drawer) closeDrawer(); });
+
+  $('[data-tips]')?.addEventListener('click', () => toast('Tip: dim lights 45 minutes before bed'));
+  $('[data-ai]')?.addEventListener('click', () => toast('Opening analysis… (sample)'));
+  $('[data-device]')?.addEventListener('click', openDrawer);
+  $('[data-body-btn]')?.addEventListener('click', () => toast('Body report (sample)'));
+
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+
+  function pageHtml(page) {
+    if (page.id === 'sleep') {
+      return `<section class="ls-page" aria-labelledby="p-h">
+        <h1 id="p-h">Sleep</h1>
+        <p class="ls-page-lead">Last night’s stages and efficiency. Sample data · fictional.</p>
+        <div class="ls-toolbar">
+          <div class="ls-seg" role="group" aria-label="Range">
+            <button type="button" aria-pressed="true" data-range="night">Last night</button>
+            <button type="button" aria-pressed="false" data-range="week">7 days</button>
+          </div>
+          <button type="button" class="ls-chip-btn" data-refresh>Refresh</button>
+        </div>
+        <div data-sleep-body>
+          <div class="ls-page-grid">
+            <article class="ls-glass"><h2>Time asleep</h2><p class="ls-mini-val num">7h 12m</p><p class="ls-meta">Efficiency 94%</p></article>
+            <article class="ls-glass"><h2>Deep sleep</h2><p class="ls-mini-val num">1h 28m</p><p class="ls-meta">+12 min vs baseline</p></article>
+            <article class="ls-glass"><h2>Wake-ups</h2><p class="ls-mini-val num">2</p><p class="ls-meta">Both under 4 minutes</p></article>
+          </div>
+        </div>
+      </section>`;
+    }
+    if (page.id === 'recovery') {
+      return `<section class="ls-page" aria-labelledby="p-h">
+        <h1 id="p-h">Recovery</h1>
+        <p class="ls-page-lead">Readiness for today based on HRV and overnight rest.</p>
+        <div class="ls-toolbar"><button type="button" class="ls-chip-btn" data-sim-err>Simulate sync error</button></div>
+        <div data-rec-body>
+          <article class="ls-glass"><div class="ls-row"><span>Recovery score</span><strong class="num">82</strong></div>
+            <div class="ls-row"><span>HRV</span><strong class="num">64 ms</strong></div>
+            <div class="ls-row"><span>Resting HR</span><strong class="num">52 bpm</strong></div></article>
+        </div>
+      </section>`;
+    }
+    if (page.id === 'activity') {
+      return `<section class="ls-page" aria-labelledby="p-h">
+        <h1 id="p-h">Activity</h1>
+        <p class="ls-page-lead">Steps and movement that may have shaped last night’s sleep.</p>
+        <div class="ls-toolbar">
+          <label class="ls-row" style="gap:8px">Search <input data-filter type="search" placeholder="Filter activities" style="min-height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2)"></label>
+        </div>
+        <div class="ls-page-grid" data-act-list>
+          <article class="ls-glass" data-act="walk"><div class="ls-row"><span>Evening walk</span><strong class="num">3,210 steps</strong></div></article>
+          <article class="ls-glass" data-act="desk"><div class="ls-row"><span>Desk day</span><strong class="num">5,210 steps</strong></div></article>
+          <article class="ls-glass ls-empty" data-act="empty"><p>No workouts logged today.</p><button type="button" class="ls-chip-btn" data-log>Log a workout</button></article>
+        </div>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="ls-page" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="ls-page-lead">Preferences for Lull. Nothing is saved in this demo.</p>
+        <form class="ls-glass" data-settings onsubmit="return false">
+          <label class="ls-row">Bedtime goal <input name="bed" type="time" value="22:30" style="min-height:44px;padding:0 10px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2)"></label>
+          <label class="ls-row">Wake goal <input name="wake" type="time" value="06:30" style="min-height:44px;padding:0 10px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2)"></label>
+          <label class="ls-row">Quiet hours <button type="button" class="ls-chip-btn" data-quiet aria-pressed="false">Off</button></label>
+          <p class="ls-error" data-form-err hidden style="color:#b42318;margin-top:8px">Enter both times to save.</p>
+          <button type="submit" class="ls-chip-btn" style="margin-top:12px">Save goals</button>
+        </form>
+      </section>`;
+    }
+    return `<section class="ls-page"><h1>${page.name}</h1><p class="ls-page-lead">Sample data · fictional</p></section>`;
+  }
+
+  function wirePage(host, page) {
+    if (page.id === 'sleep') {
+      host.querySelectorAll('[data-range]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          host.querySelectorAll('[data-range]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+          toast(btn.dataset.range === 'week' ? 'Showing 7-day average (sample)' : 'Showing last night (sample)');
+        });
+      });
+      host.querySelector('[data-refresh]')?.addEventListener('click', () => {
+        const body = host.querySelector('[data-sleep-body]');
+        body.innerHTML = `<div class="ls-loading" role="status"><p>Syncing sleep stages…</p><div class="ls-skel"></div><div class="ls-skel"></div><div class="ls-skel"></div></div>`;
+        setTimeout(() => {
+          body.innerHTML = `<div class="ls-page-grid">
+            <article class="ls-glass"><h2>Time asleep</h2><p class="ls-mini-val num">7h 12m</p><p class="ls-meta">Efficiency 94%</p></article>
+            <article class="ls-glass"><h2>Deep sleep</h2><p class="ls-mini-val num">1h 28m</p><p class="ls-meta">+12 min vs baseline</p></article>
+            <article class="ls-glass"><h2>Wake-ups</h2><p class="ls-mini-val num">2</p><p class="ls-meta">Both under 4 minutes</p></article>
+          </div>`;
+          toast('Sleep data refreshed (sample)');
+        }, reduce ? 0 : 700);
+      });
+    }
+    if (page.id === 'recovery') {
+      host.querySelector('[data-sim-err]')?.addEventListener('click', () => {
+        const body = host.querySelector('[data-rec-body]');
+        body.innerHTML = `<div class="ls-error" role="alert"><p>Couldn’t sync recovery from the ring.</p><button type="button" class="ls-chip-btn" data-retry>Try again</button></div>`;
+        body.querySelector('[data-retry]')?.addEventListener('click', () => {
+          body.innerHTML = `<article class="ls-glass"><div class="ls-row"><span>Recovery score</span><strong class="num">82</strong></div>
+            <div class="ls-row"><span>HRV</span><strong class="num">64 ms</strong></div>
+            <div class="ls-row"><span>Resting HR</span><strong class="num">52 bpm</strong></div></article>`;
+          toast('Recovery restored (sample)');
+        });
+      });
+    }
+    if (page.id === 'activity') {
+      host.querySelector('[data-log]')?.addEventListener('click', () => toast('Workout logged (sample)'));
+      const filter = host.querySelector('[data-filter]');
+      filter?.addEventListener('input', () => {
+        const q = filter.value.trim().toLowerCase();
+        host.querySelectorAll('[data-act]').forEach((row) => {
+          if (row.dataset.act === 'empty') { row.hidden = !!q; return; }
+          row.hidden = q ? !row.textContent.toLowerCase().includes(q) : false;
+        });
+      });
+    }
+    if (page.id === 'settings') {
+      const form = host.querySelector('[data-settings]');
+      const quiet = host.querySelector('[data-quiet]');
+      quiet?.addEventListener('click', () => {
+        const on = quiet.getAttribute('aria-pressed') !== 'true';
+        quiet.setAttribute('aria-pressed', String(on));
+        quiet.textContent = on ? 'On' : 'Off';
+        toast(on ? 'Quiet hours on' : 'Quiet hours off');
+      });
+      form?.addEventListener('submit', () => {
+        const err = host.querySelector('[data-form-err]');
+        const bed = form.bed.value, wake = form.wake.value;
+        if (!bed || !wake) { err.hidden = false; return; }
+        err.hidden = true;
+        toast(`Goals saved · bed ${bed}, wake ${wake}`);
+      });
+    }
+  }
+
+  let stub = null;
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+
+  window.DB.route(PAGES, (id, page) => {
+    const isOverview = id === 'overview';
+    overview.hidden = !isOverview;
+    const host = ensureStub();
+    host.hidden = isOverview;
+    if (!isOverview) {
+      host.innerHTML = pageHtml(page);
+      wirePage(host, page);
+    } else {
+      animateOverview();
+    }
+  });
+
+  // Pause ambient scan when offscreen
+  const scanRoot = $('.ls-body-wrap');
+  if (scanRoot && window.DB?.onVisible) {
+    window.DB.onVisible(scanRoot, (vis) => {
+      const scan = scanRoot.querySelector('.ls-body-scan');
+      if (scan) scan.style.animationPlayState = vis && !reduce ? 'running' : 'paused';
+    });
+  }
+
+  document.documentElement.dataset.ready = 'true';
 })();

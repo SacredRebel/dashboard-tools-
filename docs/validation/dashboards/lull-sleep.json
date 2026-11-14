@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/lull-sleep/",
+      "url": "/dashboards/lull-sleep/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/lull-sleep/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/lull-sleep",
+      "url": "/dashboards/lull-sleep#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/lull-sleep/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/lull-sleep/index.html",
+      "url": "/dashboards/lull-sleep/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/lull-sleep/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/lull-sleep/",
+      "url": "/dashboards/lull-sleep/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/lull-sleep/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/lull-sleep/?variant=dawn",
+      "url": "/dashboards/lull-sleep/?variant=dawn#/overview",
       "width": 1440,
       "variant": "dawn",
       "final_path": "/dashboards/lull-sleep/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/lull-sleep/?variant=nightfall",
+      "url": "/dashboards/lull-sleep/?variant=nightfall#/overview",
       "width": 1440,
       "variant": "nightfall",
       "final_path": "/dashboards/lull-sleep/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=dawn#/overview",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=dawn#/overview",
+      "width": 375,
+      "variant": "dawn",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=nightfall#/overview",
+      "width": 1440,
+      "variant": "nightfall",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=nightfall#/overview",
+      "width": 375,
+      "variant": "nightfall",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/#/sleep",
+      "width": 1440,
+      "variant": "default",
+      "page": "sleep",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/#/sleep",
+      "width": 375,
+      "variant": "default",
+      "page": "sleep",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=dawn#/sleep",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "sleep",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=dawn#/sleep",
+      "width": 375,
+      "variant": "dawn",
+      "page": "sleep",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=nightfall#/sleep",
+      "width": 1440,
+      "variant": "nightfall",
+      "page": "sleep",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=nightfall#/sleep",
+      "width": 375,
+      "variant": "nightfall",
+      "page": "sleep",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/#/recovery",
+      "width": 1440,
+      "variant": "default",
+      "page": "recovery",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/#/recovery",
+      "width": 375,
+      "variant": "default",
+      "page": "recovery",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=dawn#/recovery",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "recovery",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=dawn#/recovery",
+      "width": 375,
+      "variant": "dawn",
+      "page": "recovery",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=nightfall#/recovery",
+      "width": 1440,
+      "variant": "nightfall",
+      "page": "recovery",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=nightfall#/recovery",
+      "width": 375,
+      "variant": "nightfall",
+      "page": "recovery",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/#/activity",
+      "width": 1440,
+      "variant": "default",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/#/activity",
+      "width": 375,
+      "variant": "default",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=dawn#/activity",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=dawn#/activity",
+      "width": 375,
+      "variant": "dawn",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=nightfall#/activity",
+      "width": 1440,
+      "variant": "nightfall",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=nightfall#/activity",
+      "width": 375,
+      "variant": "nightfall",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=dawn#/settings",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=dawn#/settings",
+      "width": 375,
+      "variant": "dawn",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=nightfall#/settings",
+      "width": 1440,
+      "variant": "nightfall",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/lull-sleep/?variant=nightfall#/settings",
+      "width": 375,
+      "variant": "nightfall",
+      "page": "settings",
       "errors": []
     },
     {
