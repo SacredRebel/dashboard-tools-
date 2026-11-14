@@ -26,29 +26,29 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | mallow-music | 4.5 | 4.5 | 4.5 | 4.5 | 4 | 4.5 | 4 | 4.5 | 35 | New clay hero; dense pages | deep-polished |
 | canopy-reforest | 4 | 4 | 4 | 4 | 4 | 4.5 | 3.5 | 4 | 32 | New layered leaves + clay tiles; band still KPI-not-icon-steps | deep G2 started |
 | horizon-weather | 4 | 4 | 4.5 | 4 | 3.5 | 4 | 3.5 | 4 | 31.5 | Gate-green; opaque copy plate; not cinematic twin yet | gate-green |
-| kumo-payroll | 3.5 | 4 | 4 | 4 | 3 | 3 | 3 | 3.5 | 28 | Landscape DPI fixed; **missing** moon/pagoda/koi frame | gate-green · G2 open |
+| kumo-payroll | 4 | 4 | 4 | 4 | 3.5 | 4.5 | 3.5 | 4 | 31.5 | Moon/pagoda/koi/waves scene + Happy teams quote; still shy of glass-panel twin | deep G2 started |
 | haven-listings | 4 | 4 | 4 | 4 | 3.5 | 4 | 3.5 | 4 | 31 | Outer main + density; villa art OK | gate-green |
 | aura-ring | 4 | 4 | 4 | 4 | 3.5 | 3.5 | 3.5 | 3.5 | 30 | Dense contrast fixed; ring/brain upscaled | gate-green |
 | lull-sleep | 4 | 4 | 4 | 4.5 | 4 | 4 | 4 | 4 | 32.5 | Media DPI fixed; glass board strong | gate-green |
 | copper-radar | 3.5 | 4 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29.5 | Radar-hero + glowing half-arc + opaque 15% core; still shy of reference vendor-logo ring | deep G3 started |
 | ember-rooms | 3.5 | 4 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 29 | Larger lamp+orbit stage, icon chips, gate-safe labels; still shy of reference radial-control twin | deep G3 started |
 | tidebath-showroom | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 3.5 | 28.5 | CSS 3D carousel + srcset rooms; not yet reference curved-showroom twin | deep G3 started |
-| meridian-labs | 3 | 3.5 | 3.5 | 3.5 | 3 | 3 | 3 | 3 | 25.5 | Gate AA fixed (dose plates + dense chips); **DNA three-column G3 still open** | gate-green · G3 open |
-| citadel-wall | 3 | 3.5 | 3.5 | 3.5 | 3 | 3 | 3 | 3 | 25.5 | Holo upscaled; pedestal/circuits weak | open |
-| glacier-ops | 3 | 3.5 | 3.5 | 3.5 | 3 | 3 | 3 | 3 | 25.5 | Topo OK; dial-ring mountain weak | open |
+| meridian-labs | 3.5 | 3.5 | 3.5 | 3.5 | 3 | 3.5 | 3 | 3.5 | 27 | Soft-clay DNA + AA; three-column calendar G3 still open | deep G2 started |
+| citadel-wall | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29 | New holo cube + pedestal/circuit aura | deep G2 started |
+| glacier-ops | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Topo dial center + AA plates | deep G2 started |
+| forge-fitness | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | New athlete hero + phone bottom rail | deep G2 started |
+| ridgeline-trails | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 28 | Clay-bevel pie dials | deep G3 started |
 | *others (dense-wired)* | ~3 | ~3.5 | ~3.5 | ~3.5 | ~3 | ~3 | ~3 | ~3 | ~26 | Secondary pages = dense kit, not bespoke | gate-risk |
 
 ## Work order (remaining deep polish)
 
-1. ~~copper-radar~~ / ~~ember-rooms~~ / ~~tidebath-showroom~~ — G3 started (committed)  
-2. **kumo-payroll** — G2 moon/pagoda/blossoms/koi frame  
-3. **citadel / glacier / forge / clima / hollow** — G2 signature props  
-4. **meridian-labs / ridgeline** — G3 layout rebuilds (DNA columns / clay pies)  
-5. Phone (375) compositions for clay heroes (mallow, hollow, …)  
-6. Optional confirmation: full `dashboards-check` green log after push + keep `#/fx` screenshots current
+1. ~~copper / ember / tidebath / kumo / citadel / glacier / forge~~ — G2/G3 started  
+2. **clima / hollow / pearlwell / vitalis** — G2 signature props  
+3. **meridian-labs** — finish three-column + week calendar G3  
+4. Phone (375) for mallow / hollow clay heroes  
+5. Optional full-38 confirmation log after each push batch
 
 ## Verification log
 
-- Full-38: **37/38** then `meridian-labs` fixed → **38/38** (meridian re-checked alone ✔)  
-- Ember + Tidebath + Meridian — ✔ this stretch  
-- Prior: copper, cortex, mallow, gate batch — see git history / HANDOFF
+- Touched ✔: kumo, citadel, glacier, forge, meridian, ridgeline  
+- Prior: ember, tidebath, copper, cortex, mallow, full-38 green after Meridian AA — see HANDOFF

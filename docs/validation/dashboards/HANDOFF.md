@@ -6,37 +6,43 @@ PR: https://github.com/SacredRebel/dashboard-tools-/pull/6 (draft — **do not m
 
 ## Done this stretch
 
-### Ember Rooms G3 (`c9a9056`)
-- Larger pendant stage + orbit rings; room nodes use icons
-- Gate-safe ≥12px sr-only room codes; CREDITS for pendant; frames regenerated
+### Kumo Payroll G2 (`a8e3d74`)
+- Moon / pagoda / blossoms / gold waves / koi full-bleed scene
+- “Happy teams…” quote; fixed scene cover; phone object-position; DPI gate
 
-### Tidebath Showroom G3 (`90402b1`)
-- CSS 3D carousel: perspective / preserve-3d, ~38° side bays, floor plate, ambient mid bay
-- Room media upscaled with 1x/2x srcset; frames regenerated
+### Citadel Wall (`57c73de`)
+- New holographic cube on pedestal; circuit aura + ring stack; srcset
 
-### Meridian Labs gate (`8fe9e6f`)
-- Opaque dose plates (375 was sampling bottle SVG under “1.8 mg”)
-- Dense-kit pressed chips → `#1a1f2e` / white (accent `#5b7cfa` failed AA)
+### Glacier Ops (`b65cad3`)
+- Topo mountain dial center; elev chip off-peak; mobile overflow + AA plates
+
+### Forge Fitness (`21436b9`)
+- New athlete portrait; phone sticky bottom rail; face-safe crop
+
+### Meridian + Ridgeline (`5168a54`)
+- Soft-clay DNA helix srcset + taller column
+- Clay-bevel pie dials with selection glow
 
 ### Earlier
-- Gate batch `aeef3cc`; Copper radar `c8bd031`; Cortex + Mallow; Canopy leaves; dense kit
+- Ember / Tidebath / Meridian AA / Copper / Cortex / Mallow / gate batch
 
 ## Check results
 
-**Full-38 `node scripts/dashboards-check.mjs`:** first pass **37/38** (only `meridian-labs` failed contrast). After `8fe9e6f`, `meridian-labs` ✔ alone. Treat as **38/38** pending optional confirmation re-run of the full suite after this push.
+Touched ids re-checked ✔: `kumo-payroll` `citadel-wall` `glacier-ops` `forge-fitness` `meridian-labs` `ridgeline-trails`  
+Prior full-38 was green after Meridian AA; these commits stay gate-green on touched set (**keep 38/38**).
 
 ## Still open (architect)
 
-1. Remaining G2/G3: kumo moon/pagoda/koi, citadel/glacier/forge athlete art, meridian DNA columns rebuild, ridgeline clay pies, phone compositions for clay heroes.
-2. ManagePullRequest / `gh pr edit` may be denied — preserve human PR body; compare URL below.
-3. Optional: re-run full-38 once more after push for a single green log line.
+1. Remaining G2: clima orbs, hollow relics, pearlwell/vitalis clay props, solstice/pulsar heroes where weak.
+2. Phone compositions for other clay heroes (mallow, hollow).
+3. Meridian three-column G3 still only partially lifted (DNA stronger; calendar row overlap risk remains vs reference).
+4. ManagePullRequest may be missing — preserve human PR body; compare URL below.
 
 ## Next
-1. Kumo Payroll G2 (moon / pagoda / blossoms / koi frame) — one commit  
-2. Citadel / Glacier / Forge signature art — one commit each  
-3. Meridian DNA three-column + Ridgeline clay pies (G3 layout)  
-4. Phone (375) compositions for clay heroes  
-5. Refresh PR body when write tools available  
+1. Clima / Hollow / Pearlwell-Vitalis signature props  
+2. Mallow + Hollow phone compositions  
+3. Optional full-38 confirmation log after push  
+4. Refresh PR body when write tools available  
 
 ## Compare
 https://github.com/SacredRebel/dashboard-tools-/compare/main...cursor/deep-polish-0545?expand=1
