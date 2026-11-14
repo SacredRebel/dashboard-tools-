@@ -653,6 +653,18 @@ body {
 .dbp-btn { background: #1a1f2e !important; color: #ffffff !important; }
 .dbp-card strong, .dbp-row, .dbp-page p { color: #141414 !important; }
 
+/* dense-kit range/state chips — accent #5b7cfa fails white text AA */
+[data-db-page-host] .db-dense-seg {
+  background: #eef0f4 !important;
+}
+[data-db-page-host] .db-dense-seg button {
+  color: #3a3f4d !important;
+}
+[data-db-page-host] .db-dense-seg button[aria-pressed="true"] {
+  background: #1a1f2e !important;
+  color: #ffffff !important;
+}
+
 /* MERIDIAN OVERVIEW AA */
 .me-sechead h1,
 .me-sechead h2,
@@ -675,11 +687,17 @@ body {
 .me-vcard .me-num,
 .me-vcard .me-dose,
 .me-vcard h3 {
+  display: inline-block !important;
+  position: relative;
+  z-index: 2;
   color: #141a28 !important;
   background: #ffffff !important;
   font-weight: 800 !important;
   opacity: 1 !important;
+  padding: 2px 6px !important;
+  border-radius: 6px;
 }
+.me-vart { position: relative; z-index: 0; }
 .me-dnastats {
   background: #171c28 !important;
   color: #f4f7ff !important;
