@@ -369,10 +369,15 @@ body {
 .me-dnastats b { color: var(--text); font-weight: 800; }
 .me-dnastats .num b { font-size: 22px; }
 .me-helix {
-  width: min(220px, 70%);
-  height: 420px;
+  width: min(280px, 78%);
+  height: 460px;
+  display: grid; place-items: center;
 }
 .me-helix svg { width: 100%; height: 100%; display: block; }
+.me-helix .me-dna {
+  width: 100%; height: 100%; object-fit: contain; object-position: center;
+  filter: drop-shadow(0 18px 28px rgb(26 29 36 / 0.18));
+}
 .me-dnaorb {
   position: absolute;
   right: 8px;
