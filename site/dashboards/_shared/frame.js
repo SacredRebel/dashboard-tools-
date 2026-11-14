@@ -61,6 +61,7 @@
       const list = normalizePages(pages);
       const byId = Object.fromEntries(list.map((p) => [p.id, p]));
 
+      let first = true;
       function apply(id, { replace } = {}) {
         const page = byId[id] || list[0];
         const hash = `#/${page.id}`;
@@ -78,7 +79,10 @@
         const baseTitle = (document.title.split('·')[0] || document.title).trim();
         document.title = `${page.name} · ${baseTitle}`;
         render(page.id, page);
-        focusPageHeading();
+        // Move focus only on in-app navigation. Focusing on first load draws a focus ring in screenshots
+        // and steals the screen reader's start position.
+        if (!first) focusPageHeading();
+        first = false;
       }
 
       function syncFromLocation() {

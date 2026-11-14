@@ -32,6 +32,10 @@
  *   site/dashboards/<id>/shot@2x.jpg — 1440×900 @ 2× DPR
  *   site/dashboards/<id>/frames/desktop.jpg|tablet.jpg|phone.jpg — overview device frames
  *   site/dashboards/<id>/frames/pages/<page>.jpg — each catalog page @ 1440×900
+ *   site/dashboards/<id>/frames/pages/<page>-full.jpg — each catalog page, full length @ 1440
+ * Polish gates per page: fails on a visible [data-db-stub] placeholder, a focus ring on load, and at 1440
+ *   a thin page (< 60 visible elements in <main>, content < 70% of main width or < 60% of first screen),
+ *   and any visible <img> wider than 160px whose source is under 1.5× its rendered width.
  *   site/dashboards/<id>/reference.* — optional owner-supplied original (catalog "reference")
  *   docs/validation/dashboards/<id>.json — check evidence
  * Exit 1 on any problem. Requires Playwright (preinstalled in Claude cloud sessions; elsewhere:
@@ -243,9 +247,43 @@ for (const d of list) {
         });
         if (emptyMain) errs.push(emptyMain);
         if (await page.evaluate((id) => document.documentElement.dataset.page !== id, pg.id)) errs.push(`dataset.page != ${pg.id}`);
+        // Polish gates (architect review 2): no placeholder pages, no focus ring on load, real density.
+        const gate = await page.evaluate((wide) => {
+          const out = [];
+          const vis = (el) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none'; };
+          const stub = document.querySelector('[data-db-stub]');
+          if (stub && !stub.hidden && vis(stub)) out.push('placeholder page: [data-db-stub] is visible (build the real page UI)');
+          const a = document.activeElement;
+          if (a && a !== document.body) {
+            const cs = getComputedStyle(a);
+            if (cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) > 0) out.push(`focus ring visible on load (${a.tagName.toLowerCase()})`);
+          }
+          // Full-pixel imagery: every visible <img> wider than 160px needs ≥ 1.5× its rendered width in source pixels.
+          for (const img of document.querySelectorAll('img')) {
+            if (!vis(img) || !img.complete) continue;
+            const rw = img.getBoundingClientRect().width;
+            if (rw > 160 && img.naturalWidth && img.naturalWidth < rw * 1.5) out.push(`low-res image: ${(img.currentSrc || img.src).split('/').slice(-2).join('/')} is ${img.naturalWidth}px for ${Math.round(rw)}px rendered (need ≥ ${Math.ceil(rw * 1.5)}px or a srcset 2x)`);
+          }
+          const m = document.querySelector('main');
+          if (m && wide) {
+            const leaves = [...m.querySelectorAll('*')].filter((el) => vis(el) && (el.children.length === 0 || el.matches('svg,canvas,img,picture,video')));
+            if (leaves.length < 60) out.push(`thin page: ${leaves.length} visible elements in <main> (need ≥ 60 at 1440)`);
+            const mr = m.getBoundingClientRect();
+            let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+            for (const el of leaves) { const r = el.getBoundingClientRect(); x0 = Math.min(x0, r.left); y0 = Math.min(y0, r.top); x1 = Math.max(x1, r.right); y1 = Math.max(y1, r.bottom); }
+            const vw = Math.min(mr.width, innerWidth), vh = Math.min(mr.height, innerHeight);
+            const cover = leaves.length ? (Math.min(x1, mr.left + vw) - Math.max(x0, mr.left)) / vw : 0;
+            if (cover < 0.7) out.push(`page content spans ${Math.round(cover * 100)}% of the main width (need ≥ 70%)`);
+            if (leaves.length && (Math.min(y1, innerHeight) - Math.max(y0, 0)) / vh < 0.6) out.push('page content fills less than 60% of the first screen height');
+          }
+          return out;
+        }, w >= 1280);
+        errs.push(...gate);
         errs.push(...(await textAudit(page)));
         if (!errs.length && variant.id === 'default' && w === 1440) {
           await capture(page, join(pagesDir, `${pg.id}.jpg`));
+          // Full-length capture so reviewers see everything below the fold, not just 1440×900.
+          await page.screenshot({ path: join(pagesDir, `${pg.id}-full.jpg`), type: 'jpeg', quality: 80, fullPage: true });
         }
         runs.push({ url, width: w, variant: variant.id, page: pg.id, errors: errs });
         problems.push(...errs.map((e) => `[page ${pg.id} ${w} ${variant.id}] ${e}`));
