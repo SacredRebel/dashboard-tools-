@@ -33,7 +33,7 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | copper-radar | 3.5 | 4 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29.5 | Radar-hero + glowing half-arc + opaque 15% core; still shy of reference vendor-logo ring | deep G3 started |
 | ember-rooms | 3.5 | 4 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 29 | Larger lamp+orbit stage, icon chips, gate-safe labels; still shy of reference radial-control twin | deep G3 started |
 | tidebath-showroom | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 3.5 | 28.5 | CSS 3D carousel + srcset rooms; not yet reference curved-showroom twin | deep G3 started |
-| meridian-labs | 3.5 | 3.5 | 3.5 | 3.5 | 3 | 3.5 | 3 | 3.5 | 27 | Soft-clay DNA + AA; three-column calendar G3 still open | deep G2 started |
+| meridian-labs | 4 | 4 | 3.5 | 4 | 3.5 | 4 | 3.5 | 4 | 30.5 | Three-column board + week-calendar G3 (orange Fri, dose chips); DNA contained | deep G3 started |
 | citadel-wall | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29 | New holo cube + pedestal/circuit aura | deep G2 started |
 | glacier-ops | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Topo dial center + AA plates | deep G2 started |
 | forge-fitness | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | New athlete hero + phone bottom rail | deep G2 started |
@@ -42,16 +42,21 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | hollow-vault | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Witch hero + phone bottom nav; relic ring OK | deep G2 started |
 | pearlwell-dental | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay tooth/arch + phone nav | deep G2 started |
 | vitalis-care | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay heart/doctor + phone nav | deep G2 started |
+| solstice-energy | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29.5 | New copper mountain hero under arc; layout still shy of reference twin | deep G2 started |
+| pulsar-analytics | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29.5 | Neon terrain backdrop + glow chart layers | deep G2 started |
+| taffy-analytics | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay sphere-in-torus prop | deep G2 started |
+| pebble-studio | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay pebbles + torus dial | deep G2 started |
+| dune-panels | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Fabric dune folds 1x/2x | deep G2 started |
 | *others (dense-wired)* | ~3 | ~3.5 | ~3.5 | ~3.5 | ~3 | ~3 | ~3 | ~3 | ~26 | Secondary pages = dense kit, not bespoke | gate-risk |
 
 ## Work order (remaining deep polish)
 
 1. ~~copper / ember / tidebath / kumo / citadel / glacier / forge / clima / hollow / pearlwell / vitalis / mallow phone~~  
-2. **meridian-labs** — finish three-column + week calendar G3  
-3. Solstice / Pulsar / remaining thin clay boards if audit ≤3  
+2. ~~meridian-labs week-calendar G3 · solstice / pulsar / taffy / pebble / dune~~  
+3. Remaining dense secondary pages / shy reference twins  
 4. Optional full-38 confirmation log after each push batch
 
 ## Verification log
 
-- Touched ✔: clima, hollow, pearlwell, vitalis, mallow  
-- Prior: kumo, citadel, glacier, forge, meridian, ridgeline, ember, tidebath — see HANDOFF
+- Touched ✔: meridian, solstice, pulsar, taffy, pebble, dune  
+- Prior: clima, hollow, pearlwell, vitalis, mallow, kumo, citadel, glacier, forge, ridgeline, ember, tidebath — see HANDOFF
