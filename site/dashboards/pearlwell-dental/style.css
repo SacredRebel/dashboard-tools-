@@ -302,16 +302,31 @@ body {
   .pd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "next next" "score health" "book book" "treat treat"; }
 }
 @media (max-width: 700px) {
-  .pd { padding: 10px; gap: 12px; }
-  .pd-side { grid-template-columns: minmax(0, 1fr); }
-  .pd-side nav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2px; }
-  .pd-side nav a { flex-direction: column; justify-content: center; gap: 2px; padding: 4px 0; font-size: 12px; min-height: 52px; }
+  .pd {
+    display: grid; grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    padding: 10px 10px calc(10px + env(safe-area-inset-bottom, 0px)); gap: 12px;
+  }
+  .pd-main { order: 1; }
+  .pd-side {
+    order: 2; position: sticky; bottom: 0; z-index: 6;
+    grid-template-columns: minmax(0, 1fr); padding: 8px 10px;
+    border-radius: 18px; background: color-mix(in srgb, var(--surface) 94%, transparent);
+    box-shadow: var(--shadow);
+  }
+  .pd-brand { display: none; }
+  .pd-side nav { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .pd-side nav a {
+    flex: 1; flex-direction: column; justify-content: center; gap: 2px;
+    padding: 4px 0; font-size: 12px; min-height: 52px; min-width: 44px;
+  }
   .pd-top { flex-wrap: wrap; } .pd-top h1 { font-size: 24px; } .pd-search { order: 3; width: 100%; }
   .pd-quick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pd-prop { display: none; }
   .pd-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; grid-template-areas: "next" "score" "book" "treat" "health"; }
-  .pd-next { grid-template-columns: minmax(0, 1fr) 96px; }
-  .pd-toothart { width: 96px; }
+  .pd-next { grid-template-columns: minmax(0, 1fr) 108px; align-items: center; }
+  .pd-toothart { width: 108px; }
+  .pd-toothart img { width: 100%; height: auto; object-fit: contain; object-position: center; }
   .pd-bookbody { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .pd-cal button, .pd-slots button, .pd-chips button, .pd-seg button { min-height: 44px; }
 }
