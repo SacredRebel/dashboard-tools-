@@ -15,7 +15,7 @@ Verified ✔ after fix: `ridgeline-trails`, `prism-workspace`, `hearth-nest`, `a
 - Orbit: outer `<main>` + mission strip (thin/width)
 - Saffron: wider twin-phone stage; night countdown opaque plate
 
-### G2/G3 — Copper Radar (`pending commit`)
+### G2/G3 — Copper Radar (`c8bd031`)
 - New radar-hero WebP (GenerateImage) under Dynamic View
 - Stronger half-arc SVG glow + opaque copper 15% core
 
