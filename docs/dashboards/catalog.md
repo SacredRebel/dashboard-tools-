@@ -413,12 +413,12 @@ A glass smart-home room console over a living-room photo: climate dial, energy w
 
 _Aether Pane · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A dark cyan glass analytics HUD in one floating pane: Q4 revenue bars, a bold performance index, user-journey donut and neon area charts with soft frosted borders.
+A dark cyan glass analytics HUD floating over a blurred office scene: Q4 revenue bars, a bold performance index, user-journey donut and neon area charts with soft frosted borders.
 
 - **Use cases:** Analytics & BI, SaaS admin · **Mode:** dark · **Mood:** futuristic, glassy, neon, precise, calm-tech
 - **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** One frosted cyan glass pane floating over a dark blur field, centered on a huge 84.2% Performance Index with neon chart glow.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** One frosted cyan glass pane floating over a blurred office field, centered on a huge 84.2% Performance Index with neon chart glow.
 - **Layout:** Centered floating glass shell · 3×2 module grid (horizontal revenue · spark + performance hero · journey donut / vertical revenue · dual area · large journey area)
 - **Responsive:** ≤1180px: 2-column modules · ≤960px: single column inside the pane · ≤640px: pane edge-to-edge, charts shorten
 - **Fonts:** Syne / IBM Plex Sans · **Palette:** bg `#061018`, surface `#0a1c28`, text `#e8f7ff`, muted `#7aa8b8`, accent `#00f0ff`, teal `#1a6a9a`, coral `#ff6b4a`, deep `#0d3a55`

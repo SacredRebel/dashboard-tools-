@@ -6,31 +6,42 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Aether Pane · Dashboard Tools gallery</title>
-  <meta name="description" content="Dark cyan glass analytics HUD: Q4 revenue bars, performance index, user-journey donut and neon area charts. Sample data.">
+  <meta name="description" content="Dark cyan glass analytics HUD over a blurred office scene: Q4 revenue bars, performance index, user-journey donut and neon area charts. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="ae">
-    <div class="ae-atmosphere" aria-hidden="true"></div>
+  <div class="ae" data-db-app>
+    <div class="ae-atmosphere" aria-hidden="true">
+      <img class="ae-office ae-ambient" src="media/office.webp" width="1600" height="900" alt="" decoding="async">
+    </div>
 
-    <div class="ae-shell">
+    <div data-main>
+    <div class="ae-overview" data-page-panel="overview">
+    <div class="ae-shell ae-reveal">
       <header class="ae-top">
-        <a class="ae-brand" href="#" aria-label="Aether Pane home"><span class="ae-mark" aria-hidden="true"></span>Aether Pane</a>
+        <a class="ae-brand" href="#/overview" aria-label="Aether Pane home"><span class="ae-mark" aria-hidden="true"></span>Aether Pane</a>
+        <nav class="ae-nav" aria-label="Primary">
+          <a href="#/overview" aria-current="page">Overview</a>
+          <a href="#/reports">Reports</a>
+          <a href="#/segments">Segments</a>
+          <a href="#/settings">Settings</a>
+        </nav>
         <div class="ae-seg" role="group" aria-label="Time range" data-range>
-          <button data-v="q3" aria-pressed="false">Q3</button>
-          <button data-v="q4" aria-pressed="true">Q4</button>
-          <button data-v="ytd" aria-pressed="false">YTD</button>
+          <button type="button" data-v="q3" aria-pressed="false">Q3</button>
+          <button type="button" data-v="q4" aria-pressed="true">Q4</button>
+          <button type="button" data-v="ytd" aria-pressed="false">YTD</button>
         </div>
         <p class="ae-updated">Updated <time data-updated></time></p>
       </header>
 
       <main class="ae-grid" aria-label="Analytics modules">
-        <section class="ae-mod" aria-labelledby="ae-hbar-h">
+        <section class="ae-mod ae-reveal" aria-labelledby="ae-hbar-h">
           <div class="ae-mod-h">
             <h2 id="ae-hbar-h">Q4 Revenue</h2>
             <span data-icon="settings" class="ae-mod-ic" aria-hidden="true"></span>
@@ -39,7 +50,7 @@
           <p class="ae-empty" data-hbar-empty hidden>No revenue channels for this range.</p>
         </section>
 
-        <section class="ae-mod ae-mod-mid" aria-labelledby="ae-perf-h">
+        <section class="ae-mod ae-mod-mid ae-reveal" aria-labelledby="ae-perf-h">
           <div class="ae-sparkbars" data-sparkbars role="img" aria-label="Hourly pulse"></div>
           <div class="ae-perf">
             <p class="ae-perf-num num" data-perf>84.2%</p>
@@ -53,7 +64,7 @@
           <div data-mid-area></div>
         </section>
 
-        <section class="ae-mod" aria-labelledby="ae-donut-h">
+        <section class="ae-mod ae-reveal" aria-labelledby="ae-donut-h">
           <div class="ae-mod-h">
             <h2 id="ae-donut-h">User Journey</h2>
             <span data-icon="clock" class="ae-mod-ic" aria-hidden="true"></span>
@@ -71,26 +82,28 @@
           </div>
         </section>
 
-        <section class="ae-mod" aria-labelledby="ae-vbar-h">
+        <section class="ae-mod ae-reveal" aria-labelledby="ae-vbar-h">
           <div class="ae-mod-h"><h2 id="ae-vbar-h">Q4 Revenue</h2></div>
           <div data-vbars></div>
         </section>
 
-        <section class="ae-mod" aria-labelledby="ae-dual-h">
+        <section class="ae-mod ae-reveal" aria-labelledby="ae-dual-h">
           <div class="ae-mod-h"><h2 id="ae-dual-h">Signal mix</h2></div>
           <div data-dual></div>
         </section>
 
-        <section class="ae-mod" aria-labelledby="ae-area-h">
+        <section class="ae-mod ae-reveal" aria-labelledby="ae-area-h">
           <div class="ae-mod-h"><h2 id="ae-area-h">User Journey</h2></div>
           <div data-area></div>
           <p class="ae-error" data-area-error hidden>Chart failed to render. Pick another range.</p>
         </section>
       </main>
     </div>
-
     <p class="db-sample ae-foot">Sample data · fictional</p>
+    </div>
+    </div>
   </div>
+  <div class="ae-toast" data-toast hidden role="status"></div>
   <script src="app.js"></script>
 </body>
 </html>

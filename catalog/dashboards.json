@@ -2976,7 +2976,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A dark cyan glass analytics HUD in one floating pane: Q4 revenue bars, a bold performance index, user-journey donut and neon area charts with soft frosted borders.",
+      "summary": "A dark cyan glass analytics HUD floating over a blurred office scene: Q4 revenue bars, a bold performance index, user-journey donut and neon area charts with soft frosted borders.",
       "mood": [
         "futuristic",
         "glassy",
@@ -3009,7 +3009,7 @@
         "User journey donut",
         "Dual and single area charts"
       ],
-      "signature": "One frosted cyan glass pane floating over a dark blur field, centered on a huge 84.2% Performance Index with neon chart glow.",
+      "signature": "One frosted cyan glass pane floating over a blurred office field, centered on a huge 84.2% Performance Index with neon chart glow.",
       "palette": {
         "bg": "#061018",
         "surface": "#0a1c28",
@@ -3051,7 +3051,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied glass analytics HUD screenshot. Brand is Aether Pane (not taken from other gallery brands). Charts and copy are invented; the blurred photo backdrop became CSS atmosphere. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a glass HUD concept. Brand (Aether Pane), copy and figures are fictional. Atmosphere uses gallery media (`media/office.webp`). Owner original stored as `reference.png`."
       },
       "path": "site/dashboards/aether-pane/",
       "reference": "reference.png",
@@ -3077,7 +3077,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "forge-fitness",

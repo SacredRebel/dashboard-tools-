@@ -1,7 +1,9 @@
-/* Aether Pane: glass analytics HUD sample. No timers, no network. */
+/* Aether Pane: glass analytics HUD over office photo, multipage + motion. Sample data. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
   const ICON = {
     settings: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9 7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/>',
     clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
@@ -9,7 +11,25 @@
     activity: '<path d="M3 12h4l3-8 4 16 3-8h4"/>',
   };
   const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  const paintIcons = (host = document) => $$('[data-icon]', host).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 700, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
   const fmtNum = (v) => v.toLocaleString('en-US');
   const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
   const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
@@ -181,7 +201,10 @@
 
   function renderPerf() {
     const base = RANGES[range].perf;
-    $('[data-perf]').textContent = PERF_BY_DOT[health] || base;
+    const label = PERF_BY_DOT[health] || base;
+    const n = parseFloat(label);
+    if (!Number.isNaN(n)) countUp($('[data-perf]'), n, { format: (v) => `${v.toFixed(1)}%` });
+    else $('[data-perf]').textContent = label;
   }
 
   function renderDonut() {
@@ -250,71 +273,146 @@
     renderHbars(); renderPerf(); renderDonut(); renderVbars(); renderDual(); renderMidArea(); renderArea();
   }
 
-  seg($('[data-range]'), (v) => { range = v; renderAll(); });
+  seg($('[data-range]'), (v) => { range = v; renderAll(); toast(`${v.toUpperCase()} · sample`); });
   $('[data-dots]').addEventListener('click', (e) => {
     const b = e.target.closest('[data-dot]'); if (!b) return;
     health = b.dataset.dot;
     $$('[data-dot]', $('[data-dots]')).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
     renderPerf();
+    toast(`${health} · sample`);
   });
 
   renderSparkbars();
   renderAll();
-/* === DB multipage bootstrap (generated; polish pass replaces stubs) === */
-  (function wirePages() {
-    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"reports","name":"Reports","pattern":"Report"},{"id":"segments","name":"Segments","pattern":"List"},{"id":"settings","name":"Settings","pattern":"Settings"}];
-    const main = document.querySelector('main') || document.body;
-    let stub = document.querySelector('[data-db-stub]');
-    if (!stub) {
-      stub = document.createElement('section');
-      stub.setAttribute('data-db-stub', '');
-      stub.hidden = true;
-      stub.setAttribute('aria-live', 'polite');
-      main.appendChild(stub);
+
+  function staggerReveal() {
+    $$('.ae-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 35 * i}ms`);
+      el.classList.add('ae-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'reports', name: 'Reports', pattern: 'Report' },
+    { id: 'segments', name: 'Segments', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+  function setNav(id) {
+    $$('.ae-nav a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      if (href === `#/${id}`) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  function pageHtml(page) {
+    if (page.id === 'reports') {
+      return `<section class="ae-page" data-db-page="reports" aria-labelledby="p-h">
+        <h1 id="p-h">Reports</h1>
+        <p class="ae-page-lead">Export packs for the selected range. Sample data · fictional.</p>
+        <div class="ae-seg" role="group" aria-label="Reports state" data-rep-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-rep-body></div>
+      </section>`;
     }
-    function setOverviewVisible(on) {
-      [...main.children].forEach((ch) => {
-        if (ch === stub) return;
-        if (on) {
-          ch.hidden = false;
-          ch.removeAttribute('data-db-overview-hide');
-        } else {
-          ch.hidden = true;
-          ch.setAttribute('data-db-overview-hide', '');
+    if (page.id === 'segments') {
+      return `<section class="ae-page" data-db-page="segments" aria-labelledby="p-h">
+        <h1 id="p-h">Segments</h1>
+        <p class="ae-page-lead">Audience slices feeding the performance index.</p>
+        <div class="ae-page-grid">
+          <article class="ae-page-card"><div class="ae-row"><strong>Direct</strong><span class="num">70%</span></div></article>
+          <article class="ae-page-card"><div class="ae-row"><strong>Partner</strong><span class="num">92%</span></div></article>
+          <article class="ae-page-card"><div class="ae-row"><strong>Trial</strong><span class="num">38%</span></div></article>
+        </div>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="ae-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="ae-page-lead">HUD preferences and alert stubs.</p>
+        <div class="ae-page-grid">
+          <article class="ae-page-card"><div class="ae-row"><strong>Neon intensity</strong><span>High</span></div></article>
+          <article class="ae-page-card"><div class="ae-row"><strong>Auto refresh</strong><span>Off</span></div></article>
+        </div>
+        <button type="button" class="ae-btn ghost" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="ae-page"><h1>${page.name}</h1></section>`;
+  }
+  function wirePage(host, page) {
+    if (page.id === 'reports') {
+      const body = host.querySelector('[data-rep-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="ae-loading" role="status"><p>Building pack…</p><div class="ae-skel"></div><div class="ae-skel"></div></div>`;
+          return;
         }
-      });
-      stub.hidden = on;
+        if (state === 'empty') {
+          body.innerHTML = `<div class="ae-empty"><p>No reports for this range.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="ae-error"><p>Could not build reports.</p><button type="button" class="ae-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="ae-page-grid">
+          <article class="ae-page-card"><div class="ae-row"><strong>Q pack</strong><span>PDF</span></div></article>
+          <article class="ae-page-card"><div class="ae-row"><strong>Journey CSV</strong><span>CSV</span></div></article>
+        </div>
+        <button type="button" class="ae-btn" data-export>Export pack</button>`;
+        host.querySelector('[data-export]')?.addEventListener('click', () => toast('Export queued · sample'));
+      };
+      paint('ready');
+      seg(host.querySelector('[data-rep-tabs]'), (v) => paint(v));
     }
-    function renderStub(page) {
-      const rows = [
-        ['Status', 'Sample · ready'],
-        ['Records', '24'],
-        ['Updated', 'Today'],
-      ];
-      stub.innerHTML = '<h1>' + page.name + '</h1>'
-        + '<p class="db-sample">Sample data · fictional</p>'
-        + '<p>This page is part of the multi-page shell. The polish pass fills it with real ' + page.name.toLowerCase() + ' UI in the same design language as Overview.</p>'
-        + '<div class="db-stub-panel" role="list">'
-        + rows.map(([k, v]) => '<div class="db-stub-row" role="listitem"><span>' + k + '</span><strong class="num">' + v + '</strong></div>').join('')
-        + '</div>';
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
     }
-    document.querySelectorAll('a[href]').forEach((a) => {
-      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-      if (!label) return;
-      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
-        || (label === 'home' && p.id === 'overview')
-        || (label === 'dashboard' && p.id === 'overview'));
-      if (hit) a.setAttribute('href', '#/' + hit.id);
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
     });
-    if (!window.DB || typeof window.DB.route !== 'function') {
-      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
-      return;
-    }
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
     window.DB.route(PAGES, (id, page) => {
-      if (id === PAGES[0].id) setOverviewVisible(true);
-      else { setOverviewVisible(false); renderStub(page); }
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
     });
-  })();
-/* === /DB multipage bootstrap === */
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `aether-pane` (Phase C — total 27).
+Next: `aura-ring` (Phase C — total 28).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -31,7 +31,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 21 | glacier-ops | Glacier Ops | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | softer neumorph; readable labels vs lorem | queued |
 | 22 | folio-club | Folio Club | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | less background blur; different book cover | queued |
 | 23 | citadel-wall | Citadel Wall | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | hologram cube + HUD rings; multipage fleet/shipments | polished 23→36 |
-| 24 | aether-pane | Aether Pane | 4 | 4 | 4 | 4 | 2 | 2 | 4 | 3 | 27 | no office glass perspective; flat panel | queued |
+| 24 | aether-pane | Aether Pane | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | office photo + perspective pane; multipage + motion | polished 27→36 |
 | 25 | forge-fitness | Forge Fitness | 5 | 4 | 4 | 4 | 2 | 2 | 4 | 4 | 29 | athlete photo background removed | queued |
 | 26 | zest-health | Zest Health | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 5 | 32 | no 3D rocket CTA; dot chart vs scatter | queued |
 | 27 | orchard-sales | Orchard Sales | 5 | 4 | 4 | 4 | 4 | 4 | 4 | 5 | 34 | minor copy/date drift only | queued |
@@ -63,7 +63,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 10. ~~`hearth-nest` — 26~~ → polished (36)
 11. ~~`atrium-living` — 26~~ → polished (36)
 12. ~~`haven-listings` — 27~~ → polished (36)
-13. `aether-pane` — 27
+13. ~~`aether-pane` — 27~~ → polished (36)
 14. `aura-ring` — 28
 15. `larchwood-lodge` — 28
 16. `taffy-analytics` — 28
