@@ -6,19 +6,20 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Ridgeline Trails · Dashboard Tools gallery</title>
-  <meta name="description" content="Editorial trail-network dashboard: a pale upper half with misty code-drawn mountains flowing into a charcoal lower half of dials and gauges. Sample data.">
+  <meta name="description" content="Editorial trail-network dashboard: a pale upper half with misty photo mountains flowing into a charcoal lower half of dials and gauges. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Inter:wght@400;500&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="rt">
-    <div class="rt-board">
+  <div class="rt" data-db-app>
+    <main class="rt-board">
       <section class="rt-upper">
-        <div class="rt-art" data-art aria-hidden="true"></div>
+        <div class="rt-art" data-art aria-hidden="true"><img class="rt-mountains rt-ambient" src="media/mountains.webp" width="1280" height="720" alt="" decoding="async"></div>
         <header class="rt-head">
           <h1>Ridgeline</h1>
           <p>Trail network · visitor report</p>
@@ -60,7 +61,7 @@
         </div>
         <p class="db-sample rt-foot">Sample data · fictional</p>
       </section>
-    </div>
+    </main>
   </div>
   <script src="app.js"></script>
 </body>

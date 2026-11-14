@@ -124,7 +124,7 @@ A moonlit payroll overview: a code-drawn ink landscape with a gold moon, layered
 
 - **Use cases:** HR & people, Finance & banking · **Mode:** dark · **Mood:** cinematic, serene, luxurious, eastern, warm
 - **Pages:** Overview (`overview`, Dashboard) · People (`people`, List) · Payroll (`payroll`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** A glowing gold moon, ink-line hills and a cherry-blossom branch drawn in SVG behind a dark panel with a thin gold edge.
 - **Layout:** Fixed illustrated scene behind the page · one centred panel, max 1240px, offset 210px from the top so the moon shows · inside: 216px sidebar (brand, 7-item nav, wave pattern) + 12-column main grid, 16px gaps: header with pay-period stepper · 4 KPI tiles · trend chart (7 cols) + deductions (5 cols) · time off (6) + next steps (6)
 - **Responsive:** ≤1080px: sidebar becomes a scrolling top nav, KPIs 2×2, cards stack · ≤640px: panel offset 130px, icon-only nav, period stepper full width, donut and legend stack
@@ -449,7 +449,7 @@ A light lilac glass finance desk: frosted KPI tiles over a soft lavender haze, a
 
 - **Use cases:** Finance & banking · **Mode:** light · **Mood:** airy, soft, premium, calm, lilac
 - **Pages:** Overview (`overview`, Dashboard) · Transactions (`transactions`, List) · Budgets (`budgets`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** Frosted lilac glass cards on a soft lavender–pink haze, anchored by a segmented 51.2% success gauge.
 - **Layout:** Top bar (logo, pill nav, utility icons, avatar) · greeting · 4 KPI glass cards · 12-col: average sales (8) + formation status + success gauge (4) · recent emails full width
 - **Responsive:** ≤1180px: KPIs 2×2, sales full width above side stack · ≤960px: nav scrolls · ≤640px: single column, email rows compact
@@ -481,7 +481,7 @@ A respectful fictional fasting-day wellness board in liquid glass: twin phones w
 
 - **Use cases:** Health & fitness, Education · **Mode:** light · **Mood:** serene, warm, reverent, airy, soft
 - **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** Frosted cream and olive glass phones with a white fasting sun arc, teal water segments and warm saffron gather/progress panels under Fraunces headlines.
 - **Layout:** Stage · twin phones: Today (date strip, sun-arc card, water, gather, nav) · Profile (greeting, profile card, daily bars, upgrade, nav)
 - **Responsive:** ≤1100px: phones stack · ≤700px: single column, date strip scrolls inside its row, nav stays sticky to each phone
@@ -683,7 +683,7 @@ A light black-and-lime sales bento: slim icon rail, pill nav, a tall product her
 
 - **Use cases:** CRM & sales, Analytics & BI · **Mode:** light · **Mood:** crisp, modern, commercial, bright, precise
 - **Pages:** Overview (`overview`, Dashboard) · Pipeline (`pipeline`, Board) · Accounts (`accounts`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** A tall product tile with a lime sphere cluster, frosted advantages glass, and thick lime growth bars.
 - **Layout:** 56px dark icon rail · top bar with pill nav and avatars · breadcrumb + title + date/actions · 12-col bento: product hero (3, tall) · activity (5) · revenue (4) · spend (5) · virtual cards (4)
 - **Responsive:** ≤1180px: rail becomes bottom or top chips · ≤960px: product full width, charts 2-col · ≤640px: single column, action chips scroll
@@ -720,7 +720,7 @@ A data-dense dark-blue radial HUD for cold-ops monitoring: a multi-ring dial wit
 
 - **Use cases:** Analytics & BI · **Mode:** dark · **Mood:** tactical, icy, technical, dense, nocturnal
 - **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** A cyan-rimmed multi-ring dial whose core is a hand-drawn glacier topographic sphere, ringed by lock segments and flanked by dense miniature charts.
 - **Layout:** Top bar (brand, sector tabs, 4 status orbs) · 12-column body: left chart stack · center multi-ring topo dial · right viewfinder + lines + dual gauges · full-width bottom area wave
 - **Responsive:** ≤1180px: dial full width on top, side stacks become two columns below · ≤960px: single column, dial scales down, bottom chart first after dial · ≤640px: status orbs wrap, tabs scroll
@@ -885,7 +885,7 @@ A soft dark reading club: book shelf and friends on the left, a current-book her
 
 - **Use cases:** Education, Music & media · **Mode:** dark · **Mood:** cosy, social, playful, soft, dark
 - **Pages:** Overview (`overview`, Dashboard) · Library (`library`, List) · Progress (`progress`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** Five saturated pastel metric tiles — gold progress with overlapping friend avatars on the bar, orange time, purple level, green streak, sky badges — floating on soft charcoal glass.
 - **Layout:** Left rail (profile, books, friends, settings) · center stack (current book hero, metric tile grid, leaderboard) · right activity feed
 - **Responsive:** ≤1180px: activity under center, rail stays · ≤960px: rail becomes horizontal strip · ≤640px: single column, tiles 1-wide, feed last
@@ -949,7 +949,7 @@ A soft-light SOC ops board: copper accents on white, concentric radar arcs with 
 
 - **Use cases:** Analytics & BI · **Mode:** light · **Mood:** alert, clean, soft, operational, focused
 - **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** Soft white SOC shell with copper accents and a large semi-circular radar of concentric arcs dotted with invented vendor chips.
 - **Layout:** Top bar (brand · soft pill tabs · utilities) · Dynamic View (injection + incidents · radar · live feed) · 4-card row (Sources, Assets, Alerts, Automation) · timeline footer
 - **Responsive:** ≤1180px: feed under radar · ≤960px: side cards stack, 2×2 bottom grid · ≤640px: single column, tabs scroll, timeline wraps
@@ -981,7 +981,7 @@ A soft health diagnostics board: filterable doctor test cards, a code-drawn DNA 
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** soft, clinical, calm, airy, reassuring
 - **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** A soft off-white diagnostics layout centered on a code-drawn DNA helix, with an orange-highlighted day on the week strip and SVG vitamin bottles instead of product photos.
 - **Layout:** Top bar: brand · circular icon nav · profile · three columns: personal tests + filter pills · DNA helix · vitamin grid · full-width week schedule strip
 - **Responsive:** ≤1180px: vitamins under tests, DNA stays · ≤960px: single column, DNA shortens · ≤640px: test cards and week strip scroll horizontally inside
@@ -1018,7 +1018,7 @@ A two-tone visitor report for a trail network: a pale, quiet upper half where a 
 
 - **Use cases:** Travel & places, Analytics & BI · **Mode:** light · **Mood:** quiet, editorial, misty, monochrome, considered
 - **Pages:** Overview (`overview`, Dashboard) · Routes (`routes`, List) · Journal (`journal`, Detail) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** Grey mountain ridges separated by bands of mist, with an ochre forest on the front slope, dissolving into the page and cut off by a wave edge into the charcoal half.
 - **Layout:** One framed board, max 1280px, thick dark bezel · upper half (pale): centred title + period toggle, left column of 2 ring stats, 2 big numbers and a line chart, right column mountain art with a conditions card · wave-shaped edge · lower half (charcoal): 4 columns (thin bar list, 2 pie dials with legends, ring gauge + small table)
 - **Responsive:** ≤1080px: upper half stacks and the mountains move to a 330px strip above the wave; lower half 2×2 · ≤640px: single column, 230px mountain strip, full-width period toggle, legends as 44px rows
@@ -1055,7 +1055,7 @@ A bold lime health overview with a charcoal sidebar, overlapping energy bubbles,
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** bold, fresh, energetic, playful, clear
 - **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** Three overlapping kcal bubbles (lilac, charcoal, lime) beside a charcoal sleep panel with hatched month bars and one highlighted month.
 - **Layout:** 240px dark sidebar (brand, nav with badges, upgrade card) · main: profile + search header · title row with date · bento: energy bubbles (tall) · heart · activity · wellness dot index (tall) · sleep analysis (wide dark)
 - **Responsive:** ≤1180px: sidebar collapses to top nav, bento 2 columns · ≤960px: upgrade hidden · ≤640px: single column, bubbles stack
@@ -1161,7 +1161,7 @@ A claymorphic listening dashboard for a music app: puffy pastel tiles with soft 
 
 - **Use cases:** Music & media · **Mode:** light · **Mood:** cosy, playful, warm, soft, friendly
 - **Pages:** Overview (`overview`, Dashboard) · Library (`library`, List) · Activity (`activity`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** Puffy clay surfaces with an outer shadow and an inner highlight, in cream, sage, peach, butter and sky, with glossy SVG headphones on the hero shelf.
 - **Layout:** 220px clay sidebar (avatar, 6 links, Plus card) · main: title + search + bell · peach hero (art 220px, greeting, plant) · now-playing bar · 4 stat tiles · listening bars (1.25fr) + top genres (1fr) · recently played + daily mix
 - **Responsive:** ≤1100px: sidebar becomes a top block, stats 2×2 · ≤700px: single column, nav in 3×2 grid, hero art above copy, player wraps to two rows

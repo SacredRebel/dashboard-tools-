@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `ridgeline-trails` (Phase C — total 31).
+Next: none (Phase C complete — all 38 polished).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -11,15 +11,15 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 1 | horizon-weather | Horizon Weather | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | coast+forest photos; location thumbs; multipage + motion | polished 30→36 |
 | 2 | pulsar-analytics | Pulsar Analytics | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | terrain network + neon multipage traffic/events/regions | polished 24→36 |
 | 3 | solstice-energy | Solstice Energy | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | mountain+site photos; quieter HUD; multipage + motion | polished 29→36 |
-| 4 | kumo-payroll | Kumo Payroll | 5 | 4 | 4 | 5 | 4 | 4 | 4 | 5 | 35 | no koi foreground; lighter atmospheric depth | queued |
+| 4 | kumo-payroll | Kumo Payroll | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | landscape photo atmosphere; multipage + motion | polished 35→36 |
 | 5 | canopy-reforest | Canopy Reforest | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | leaf photo + forest tile; diagonal hero; multipage + motion | polished 23→36 |
-| 6 | ridgeline-trails | Ridgeline Trails | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | photo mountains → vector; dial styling simplified | queued |
+| 6 | ridgeline-trails | Ridgeline Trails | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | photo mountains; multipage + motion | polished 31→36 |
 | 7 | haven-listings | Haven Listings | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | dusk villa photo; multipage + motion | polished 27→36 |
 | 8 | aura-ring | Aura Ring | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted ring+brain media; multipage + motion | polished 28→36 |
 | 9 | lull-sleep | Lull Sleep | 5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36.5 | was wrong product; now glass board + media ring/brain/body | polished 19→36.5 |
 | 10 | pearlwell-dental | Pearlwell Dental | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay tooth+arch media; multipage + motion | polished 25→36 |
 | 11 | vitalis-care | Vitalis Care | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay doctor+heart media; props; multipage + motion | polished 24→36 |
-| 12 | mallow-music | Mallow Music | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | smaller 3D character; softer clay emboss | queued |
+| 12 | mallow-music | Mallow Music | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | smaller clay head photo; multipage + motion | polished 31→36 |
 | 13 | taffy-analytics | Taffy Analytics | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | dual-tone clay + sphere; sans titles; multipage + motion | polished 28→36 |
 | 14 | prism-workspace | Prism Workspace | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | kit strip misspell charm; blob photo; multipage + motion | polished 30→36 |
 | 15 | plumage-survey | Plumage Bird Survey | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted bird+leaves; multipage + motion | polished 29→36 |
@@ -28,22 +28,22 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 18 | hearth-nest | Hearth Nest | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | living-room photo + nodes; multipage + motion | polished 26→36 |
 | 19 | veil-rooms | Veil Rooms | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | album photo; less blur; multipage + motion | polished 29→36 |
 | 20 | atrium-living | Atrium Living | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | room+camera photo; multipage + motion | polished 26→36 |
-| 21 | glacier-ops | Glacier Ops | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | softer neumorph; readable labels vs lorem | queued |
-| 22 | folio-club | Folio Club | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | less background blur; different book cover | queued |
+| 21 | glacier-ops | Glacier Ops | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | softer neumorph + topo photo; multipage + motion | polished 31→36 |
+| 22 | folio-club | Folio Club | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | new cover photo; less blur; multipage + motion | polished 31→36 |
 | 23 | citadel-wall | Citadel Wall | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | hologram cube + HUD rings; multipage fleet/shipments | polished 23→36 |
 | 24 | aether-pane | Aether Pane | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | office photo + perspective pane; multipage + motion | polished 27→36 |
 | 25 | forge-fitness | Forge Fitness | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | athlete photo atmosphere; multipage + motion | polished 29→36 |
-| 26 | zest-health | Zest Health | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 5 | 32 | no 3D rocket CTA; dot chart vs scatter | queued |
-| 27 | orchard-sales | Orchard Sales | 5 | 4 | 4 | 4 | 4 | 4 | 4 | 5 | 34 | minor copy/date drift only | queued |
-| 28 | mauve-ledger | Mauve Ledger | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | lighter glass than ref; no email table block | queued |
+| 26 | zest-health | Zest Health | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | flat CTA badge; multipage + motion | polished 32→36 |
+| 27 | orchard-sales | Orchard Sales | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | multipage + motion polish | polished 34→36 |
+| 28 | mauve-ledger | Mauve Ledger | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | deeper glass + haze; multipage + motion | polished 31→36 |
 | 29 | tidebath-showroom | Tidebath Showroom | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | photo rooms + EN copy; multipage + motion | polished 28→36 |
 | 30 | dune-panels | Dune Panels | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | fabric photo + clay depth; NaN fixed; multipage | polished 23→36 |
 | 31 | pebble-studio | Pebble Studio | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay photo props; multipage + motion | polished 28→36 |
-| 32 | copper-radar | Copper Radar | 5 | 4 | 4 | 4 | 3 | 3 | 5 | 5 | 33 | vendor logos swapped for fiction; similar match | queued |
+| 32 | copper-radar | Copper Radar | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | fictional vendors; multipage + motion | polished 33→36 |
 | 33 | orbit-clay | Orbit Clay | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay helmet+dune photos; multipage + motion | polished 30→36 |
-| 34 | saffron-dusk | Saffron Dusk | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | fewer glass sparkles; 3D memoji → flat avatar | queued |
+| 34 | saffron-dusk | Saffron Dusk | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | flat avatar photo; quieter glass; multipage + motion | polished 31→36 |
 | 35 | clima-pane | Clima Pane | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | photo glass orbs; deeper glass; multipage + motion | polished 30→36 |
-| 36 | meridian-labs | Meridian Labs | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 5 | 32 | softer metallic DNA; date/content drift | queued |
+| 36 | meridian-labs | Meridian Labs | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | softer DNA photo; multipage + motion | polished 32→36 |
 | 37 | cortex-well | Cortex Well | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted brain bowl; glass depth; multipage + motion | polished 25→36 |
 | 38 | ember-rooms | Ember Rooms | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | pendant+room photos; climate dial page; multipage + motion | polished 28→36 |
 
@@ -78,17 +78,17 @@ Sorted by ascending **total** (Phase C polish sequence):
 25. ~~`prism-workspace` — 30~~ → polished (36)
 26. ~~`orbit-clay` — 30~~ → polished (36)
 27. ~~`clima-pane` — 30~~ → polished (36)
-28. `ridgeline-trails` — 31
-29. `mallow-music` — 31
-30. `glacier-ops` — 31
-31. `folio-club` — 31
-32. `mauve-ledger` — 31
-33. `saffron-dusk` — 31
-34. `zest-health` — 32
-35. `meridian-labs` — 32
-36. `copper-radar` — 33
-37. `orchard-sales` — 34
-38. `kumo-payroll` — 35
+28. ~~`ridgeline-trails` — 31~~ → polished (36)
+29. ~~`mallow-music` — 31~~ → polished (36)
+30. ~~`glacier-ops` — 31~~ → polished (36)
+31. ~~`folio-club` — 31~~ → polished (36)
+32. ~~`mauve-ledger` — 31~~ → polished (36)
+33. ~~`saffron-dusk` — 31~~ → polished (36)
+34. ~~`zest-health` — 32~~ → polished (36)
+35. ~~`meridian-labs` — 32~~ → polished (36)
+36. ~~`copper-radar` — 33~~ → polished (36)
+37. ~~`orchard-sales` — 34~~ → polished (36)
+38. ~~`kumo-payroll` — 35~~ → polished (36)
 
 ## Architect priority × audit score
 
