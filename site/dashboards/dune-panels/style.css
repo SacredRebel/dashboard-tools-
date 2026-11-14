@@ -150,7 +150,10 @@ body {
   overflow: hidden;
   background:
     linear-gradient(180deg, rgb(197 207 201 / 0.55), rgb(197 207 201 / 0.82)),
-    url("media/fabric.webp") center / cover no-repeat;
+    image-set(
+      url("media/fabric.webp") 1x,
+      url("media/fabric@2x.webp") 2x
+    ) center / cover no-repeat;
 }
 .du-wave svg {
   position: absolute;
