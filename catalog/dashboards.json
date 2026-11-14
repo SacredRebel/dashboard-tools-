@@ -1799,7 +1799,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "Workspace settings in a light liquid-glass style: thick translucent pills with bright rims over soft pastel blobs. Invite people through a keyboard-friendly suggestion list, filter and remove members, tick permissions, flip notification switches and watch seats fill a folder-shaped plan card.",
+      "summary": "Workspace settings in a light liquid-glass style: pastel blob photo atmosphere, thick translucent pills, a playful \u201cLiquid glass UI kidd kit\u201d strip with intentional misspell charm, invite suggestions, members, permissions, and a folder-shaped plan card.",
       "mood": [
         "airy",
         "polished",
@@ -1830,9 +1830,12 @@
         "Permission checkboxes",
         "Notification switches",
         "Folder-shaped plan card with seat meter",
-        "Speech-bubble tip"
+        "Speech-bubble tip",
+        "Pastel blob photo atmosphere",
+        "Liquid glass UI kidd kit strip",
+        "Workspace / People / Settings multipage views"
       ],
-      "signature": "Thick liquid-glass pills and orbs: a pastel fill fading to white at the top, a bright inner rim and a soft outer glow, floating over blurred pastel blobs.",
+      "signature": "Thick liquid-glass pills and orbs over soft pastel photo blobs, plus a kit strip that keeps the reference\u2019s misspell charm (Primary bwitton) beside real workspace copy.",
       "palette": {
         "bg": "#eceef3",
         "surface": "#ffffff",
@@ -1900,7 +1903,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "plumage-survey",

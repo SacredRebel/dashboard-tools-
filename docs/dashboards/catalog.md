@@ -317,12 +317,12 @@ A wellness overview for a smart ring: frosted, softly bordered cards float over 
 
 _Prism Workspace · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-Workspace settings in a light liquid-glass style: thick translucent pills with bright rims over soft pastel blobs. Invite people through a keyboard-friendly suggestion list, filter and remove members, tick permissions, flip notification switches and watch seats fill a folder-shaped plan card.
+Workspace settings in a light liquid-glass style: pastel blob photo atmosphere, thick translucent pills, a playful “Liquid glass UI kidd kit” strip with intentional misspell charm, invite suggestions, members, permissions, and a folder-shaped plan card.
 
 - **Use cases:** SaaS admin · **Mode:** light · **Mood:** airy, polished, calm, modern, tactile
 - **Pages:** Overview (`overview`, Dashboard) · Workspace (`workspace`, List) · People (`people`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Thick liquid-glass pills and orbs: a pastel fill fading to white at the top, a bright inner rim and a soft outer glow, floating over blurred pastel blobs.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Thick liquid-glass pills and orbs over soft pastel photo blobs, plus a kit strip that keeps the reference’s misspell charm (Primary bwitton) beside real workspace copy.
 - **Layout:** Top bar: gem wordmark, glass tab pill, lock and bell orbs · title row with Create workspace pill · 12-column grid: invite (4) + members (5) + folder plan card (3) · permissions (6) + notifications (6)
 - **Responsive:** ≤1100px: 2 columns (invite + members, plan under invite, permissions and notifications full width) · ≤700px: single column, tabs scroll on their own row, permissions in one column
 - **Fonts:** Inter Tight / Inter Tight · **Palette:** bg `#eceef3`, surface `#ffffff`, text `#1f2330`, muted `#525a6c`, accent `#4f4fb0`, lilac `#d9dcff`, mint `#cdeedd`, peach `#ffdcc4`
@@ -338,7 +338,7 @@ Workspace settings in a light liquid-glass style: thick translucent pills with b
 - Low-end devices where backdrop blur is costly
 - Brands that want flat or high-contrast UI
 
-**Components:** Glass tab bar and icon orbs · Invite combobox with suggestions (arrow keys, Enter, Esc) · Role radio group · Member list with filter and remove · Permission checkboxes · Notification switches · Folder-shaped plan card with seat meter · Speech-bubble tip
+**Components:** Glass tab bar and icon orbs · Invite combobox with suggestions (arrow keys, Enter, Esc) · Role radio group · Member list with filter and remove · Permission checkboxes · Notification switches · Folder-shaped plan card with seat meter · Speech-bubble tip · Pastel blob photo atmosphere · Liquid glass UI kidd kit strip · Workspace / People / Settings multipage views
 
 ---
 

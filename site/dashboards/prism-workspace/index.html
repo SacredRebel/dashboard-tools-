@@ -6,67 +6,95 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Prism Workspace · Dashboard Tools gallery</title>
-  <meta name="description" content="Liquid-glass workspace settings for a team tool: invite members, set permissions and notifications, and manage seats. Sample data.">
+  <meta name="description" content="Liquid-glass workspace settings: invite members, permissions, notifications, seat plan, and a playful kit strip. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="pw-world" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-  <div class="pw">
-    <header class="pw-top">
-      <a class="pw-brand" href="#" aria-label="Prism home"><span class="pw-gem" aria-hidden="true"></span>Prism</a>
-      <nav class="pw-tabs" aria-label="Settings sections"><a href="#" aria-current="page">Workspace</a><a href="#">Billing</a><a href="#">Integrations</a><a href="#">Security</a></nav>
-      <button class="pw-orb pw-lock" aria-pressed="true" aria-label="Workspace locked to invited members" data-lock><span data-icon="lock"></span></button>
-      <button class="pw-orb pw-bell" aria-label="Notifications, 2 new"><span data-icon="bell"></span><i></i></button>
-    </header>
+  <div class="pw-world" aria-hidden="true">
+    <img class="pw-blobs pw-ambient" src="media/blobs.webp" width="1280" height="720" alt="" decoding="async">
+    <i></i><i></i><i></i><i></i>
+  </div>
+  <div class="pw" data-db-app>
+    <div class="pw-stage" data-main>
+      <div class="pw-overview" data-page-panel="overview">
+        <header class="pw-top pw-reveal">
+          <a class="pw-brand" href="#/overview" aria-label="Prism home"><span class="pw-gem" aria-hidden="true"></span>Prism</a>
+          <nav class="pw-tabs" aria-label="Settings sections">
+            <a href="#/overview" aria-current="page">Overview</a>
+            <a href="#/workspace">Workspace</a>
+            <a href="#/people">People</a>
+            <a href="#/settings">Settings</a>
+          </nav>
+          <button type="button" class="pw-orb pw-lock" aria-pressed="true" aria-label="Workspace locked to invited members" data-lock><span data-icon="lock"></span></button>
+          <button type="button" class="pw-orb pw-bell" aria-label="Notifications, 2 new" data-bell><span data-icon="bell"></span><i></i></button>
+        </header>
 
-    <div class="pw-title"><div><p class="pw-k">Settings</p><h1 data-wsname>Northwind Studio</h1></div>
-      <button class="pw-pill pw-lilac" data-create><span data-icon="plus"></span>Create workspace</button></div>
-
-    <main class="pw-grid">
-      <section class="pw-glass pw-invite" aria-labelledby="pw-inv-h">
-        <h2 id="pw-inv-h">Invite people</h2>
-        <div class="pw-combo">
-          <label class="vh" for="pw-inv">Name or email</label>
-          <div class="pw-field"><span data-icon="search"></span><input id="pw-inv" role="combobox" aria-expanded="false" aria-controls="pw-sugg" aria-autocomplete="list" autocomplete="off" placeholder="Name or email" data-inv></div>
-          <ul class="pw-sugg" id="pw-sugg" role="listbox" aria-label="Suggestions" data-sugg hidden></ul>
+        <div class="pw-title pw-reveal">
+          <div><p class="pw-k">Settings</p><h1 data-wsname>Northwind Studio</h1></div>
+          <button type="button" class="pw-pill pw-lilac" data-create><span data-icon="plus"></span>Create workspace</button>
         </div>
-        <div class="pw-roles" role="radiogroup" aria-label="Role for new people" data-roles></div>
-        <button class="pw-pill pw-mint pw-wide" data-send>Send invite</button>
-        <p class="pw-msg" data-msg aria-live="polite"></p>
-        <div class="pw-bubble"><b>Tip</b> Guests can comment but never see billing or other projects.</div>
-      </section>
 
-      <section class="pw-glass pw-members" aria-labelledby="pw-mem-h">
-        <div class="pw-head"><h2 id="pw-mem-h">Members <span class="num" data-memcount></span></h2>
-          <label class="pw-field pw-small"><span data-icon="search"></span><span class="vh">Filter members</span><input type="search" placeholder="Filter" data-q></label></div>
-        <ul class="pw-list" data-members></ul>
-      </section>
+        <aside class="pw-kit pw-reveal" aria-label="Liquid glass sample kit">
+          <p class="pw-kit-title">Liquid glass UI kidd kit</p>
+          <div class="pw-kit-row">
+            <span class="pw-pill pw-lilac pw-kit-chip">Create workspace</span>
+            <span class="pw-pill pw-mint pw-kit-chip">Primary bwitton</span>
+            <span class="pw-pill pw-peach pw-kit-chip">Search button</span>
+            <span class="pw-field pw-kit-field"><span data-icon="search"></span>Text field</span>
+            <span class="pw-orb pw-lock pw-kit-orb" aria-hidden="true"><span data-icon="lock"></span></span>
+            <span class="pw-orb pw-bell pw-kit-orb" aria-hidden="true"><span data-icon="bell"></span></span>
+          </div>
+        </aside>
 
-      <section class="pw-glass pw-perm" aria-labelledby="pw-perm-h">
-        <h2 id="pw-perm-h">Member permissions</h2>
-        <ul class="pw-checks" data-perms></ul>
-      </section>
+        <main class="pw-grid">
+          <section class="pw-glass pw-invite pw-reveal" aria-labelledby="pw-inv-h">
+            <h2 id="pw-inv-h">Invite people</h2>
+            <div class="pw-combo">
+              <label class="vh" for="pw-inv">Name or email</label>
+              <div class="pw-field"><span data-icon="search"></span><input id="pw-inv" role="combobox" aria-expanded="false" aria-controls="pw-sugg" aria-autocomplete="list" autocomplete="off" placeholder="Name or email" data-inv></div>
+              <ul class="pw-sugg" id="pw-sugg" role="listbox" aria-label="Suggestions" data-sugg hidden></ul>
+            </div>
+            <div class="pw-roles" role="radiogroup" aria-label="Role for new people" data-roles></div>
+            <button type="button" class="pw-pill pw-mint pw-wide" data-send>Send invite</button>
+            <p class="pw-msg" data-msg aria-live="polite"></p>
+            <div class="pw-bubble"><b>Tip</b> Guests can comment but never see billing or other projects.</div>
+          </section>
 
-      <section class="pw-glass pw-notif" aria-labelledby="pw-not-h">
-        <h2 id="pw-not-h">Notifications</h2>
-        <ul class="pw-switches" data-switches></ul>
-      </section>
+          <section class="pw-glass pw-members pw-reveal" aria-labelledby="pw-mem-h">
+            <div class="pw-head"><h2 id="pw-mem-h">Members <span class="num" data-memcount></span></h2>
+              <label class="pw-field pw-small"><span data-icon="search"></span><span class="vh">Filter members</span><input type="search" placeholder="Filter" data-q></label></div>
+            <ul class="pw-list" data-members></ul>
+          </section>
 
-      <section class="pw-folder" aria-labelledby="pw-plan-h">
-        <span class="pw-tab" aria-hidden="true"><i></i><i></i><i></i></span>
-        <p class="pw-k">Team plan</p>
-        <h2 id="pw-plan-h"><span class="num" data-seats></span> seats used</h2>
-        <div class="pw-meter" aria-hidden="true"><i data-meter></i></div>
-        <p class="pw-plannote" data-plannote></p>
-        <button class="pw-pill pw-lilac pw-wide" data-upgrade>Upgrade plan</button>
-      </section>
-    </main>
-    <p class="db-sample pw-foot">Sample data · fictional</p>
+          <section class="pw-glass pw-perm pw-reveal" aria-labelledby="pw-perm-h">
+            <h2 id="pw-perm-h">Member permissions</h2>
+            <ul class="pw-checks" data-perms></ul>
+          </section>
+
+          <section class="pw-glass pw-notif pw-reveal" aria-labelledby="pw-not-h">
+            <h2 id="pw-not-h">Notifications</h2>
+            <ul class="pw-switches" data-switches></ul>
+          </section>
+
+          <section class="pw-folder pw-reveal" aria-labelledby="pw-plan-h">
+            <span class="pw-tab" aria-hidden="true"><i></i><i></i><i></i></span>
+            <p class="pw-k">Team plan</p>
+            <h2 id="pw-plan-h"><span class="num" data-seats></span> seats used</h2>
+            <div class="pw-meter" aria-hidden="true"><i data-meter></i></div>
+            <p class="pw-plannote" data-plannote></p>
+            <button type="button" class="pw-pill pw-lilac pw-wide" data-upgrade>Upgrade plan</button>
+          </section>
+        </main>
+        <p class="db-sample pw-foot">Sample data · fictional</p>
+      </div>
+    </div>
+    <div class="pw-toast" data-toast hidden role="status" aria-live="polite"></div>
   </div>
   <script src="app.js"></script>
 </body>

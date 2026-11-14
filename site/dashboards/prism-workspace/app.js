@@ -3,6 +3,15 @@
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
   const ICON = {
     lock: '<rect x="4.5" y="10.5" width="15" height="10.5" rx="2"/><path d="M8 10.500V7a4 4 0 0 1 8 0v3.5"/>',
     bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>',
@@ -89,64 +98,152 @@
   $('[data-perms]').addEventListener('click', (e) => { const b = e.target.closest('[data-perm]'); if (!b) return; const p = PERMS[+b.dataset.perm]; p.on = !p.on; renderPerms(); $(`[data-perm="${b.dataset.perm}"]`).focus(); });
   $('[data-switches]').addEventListener('click', (e) => { const b = e.target.closest('[data-sw]'); if (!b) return; const s = SW[+b.dataset.sw]; s.on = !s.on; renderSwitches(); $(`[data-sw="${b.dataset.sw}"]`).focus(); });
   $('[data-lock]').addEventListener('click', (e) => { const b = e.currentTarget, on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', on); b.setAttribute('aria-label', on ? 'Workspace locked to invited members' : 'Workspace open to anyone with the link'); });
-  $('[data-upgrade]').addEventListener('click', (e) => { e.currentTarget.textContent = 'Plan upgraded · 25 seats'; e.currentTarget.disabled = true; renderMembers(); $('[data-seats]').textContent = `${MEMBERS.filter((m) => m.r !== 'Guest').length} of 25`; });
-  $('[data-create]').addEventListener('click', () => { $('[data-wsname]').textContent = 'Untitled workspace'; $('[data-msg]').textContent = 'New workspace created. Invite your first people.'; inp.focus(); });
+  $('[data-upgrade]').addEventListener('click', (e) => {
+    e.currentTarget.textContent = 'Plan upgraded · 25 seats';
+    e.currentTarget.disabled = true;
+    renderMembers();
+    $('[data-seats]').textContent = `${MEMBERS.filter((m) => m.r !== 'Guest').length} of 25`;
+    toast('Plan upgraded · sample');
+  });
+  $('[data-create]').addEventListener('click', () => {
+    $('[data-wsname]').textContent = 'Untitled workspace';
+    $('[data-msg]').textContent = 'New workspace created. Invite your first people.';
+    toast('Workspace created · sample');
+    inp.focus();
+  });
+  $('[data-bell]')?.addEventListener('click', () => toast('2 notifications · sample'));
   renderRoles(); renderMembers(); renderPerms(); renderSwitches();
-/* === DB multipage bootstrap (generated; polish pass replaces stubs) === */
-  (function wirePages() {
-    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"workspace","name":"Workspace","pattern":"List"},{"id":"people","name":"People","pattern":"List"},{"id":"settings","name":"Settings","pattern":"Settings"}];
-    const main = document.querySelector('main') || document.body;
-    let stub = document.querySelector('[data-db-stub]');
-    if (!stub) {
-      stub = document.createElement('section');
-      stub.setAttribute('data-db-stub', '');
-      stub.hidden = true;
-      stub.setAttribute('aria-live', 'polite');
-      main.appendChild(stub);
+
+  function staggerReveal() {
+    $$('.pw-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
+      el.classList.add('pw-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'workspace', name: 'Workspace', pattern: 'List' },
+    { id: 'people', name: 'People', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+
+  function setNav(id) {
+    $$('.pw-tabs a').forEach((a) => {
+      const match = (a.getAttribute('href') || '') === `#/${id}`;
+      if (match) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  function pageHtml(page) {
+    if (page.id === 'workspace') {
+      return `<section class="pw-page" data-db-page="workspace" aria-labelledby="p-h">
+        <h1 id="p-h">Workspace</h1>
+        <p class="pw-page-lead">Identity and defaults for Northwind Studio. Sample data · fictional.</p>
+        <div class="pw-page-seg" role="group" aria-label="Workspace state" data-ws-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-ws-body></div>
+      </section>`;
     }
-    function setOverviewVisible(on) {
-      [...main.children].forEach((ch) => {
-        if (ch === stub) return;
-        if (on) {
-          ch.hidden = false;
-          ch.removeAttribute('data-db-overview-hide');
-        } else {
-          ch.hidden = true;
-          ch.setAttribute('data-db-overview-hide', '');
+    if (page.id === 'people') {
+      return `<section class="pw-page" data-db-page="people" aria-labelledby="p-h">
+        <h1 id="p-h">People</h1>
+        <p class="pw-page-lead">Everyone with access to this workspace.</p>
+        <div class="pw-page-grid">${MEMBERS.map((m) =>
+          `<article class="pw-page-card"><div class="pw-row"><strong>${m.n}</strong><span class="pw-chip">${m.r}</span></div><p class="pw-meta">${m.e}</p></article>`
+        ).join('')}</div>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="pw-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="pw-page-lead">Security and notification defaults.</p>
+        <div class="pw-page-grid">
+          <article class="pw-page-card"><div class="pw-row"><strong>Invite lock</strong><span class="pw-chip">On</span></div></article>
+          <article class="pw-page-card"><div class="pw-row"><strong>2FA for admins</strong><span class="pw-chip">Required</span></div></article>
+          <article class="pw-page-card"><div class="pw-row"><strong>Digest email</strong><span class="pw-chip">Mondays</span></div></article>
+        </div>
+        <button type="button" class="pw-btn" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="pw-page"><h1>${page.name}</h1></section>`;
+  }
+
+  function wirePage(host, page) {
+    if (page.id === 'workspace') {
+      const body = host.querySelector('[data-ws-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="pw-loading" role="status"><p>Syncing workspace…</p><div class="pw-skel"></div><div class="pw-skel"></div></div>`;
+          return;
         }
-      });
-      stub.hidden = on;
+        if (state === 'empty') {
+          body.innerHTML = `<div class="pw-empty-block"><p>No workspace profile yet.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="pw-error-block"><p>Could not load workspace.</p><button type="button" class="pw-btn" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="pw-page-grid">
+          <article class="pw-page-card"><div class="pw-row"><strong>Name</strong><span class="pw-chip">Northwind Studio</span></div></article>
+          <article class="pw-page-card"><div class="pw-row"><strong>Slug</strong><span class="pw-chip">northwind</span></div></article>
+          <article class="pw-page-card"><div class="pw-row"><strong>Region</strong><span class="pw-chip">US-West</span></div></article>
+        </div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-ws-tabs]'), (v) => paint(v));
     }
-    function renderStub(page) {
-      const rows = [
-        ['Status', 'Sample · ready'],
-        ['Records', '24'],
-        ['Updated', 'Today'],
-      ];
-      stub.innerHTML = '<h1>' + page.name + '</h1>'
-        + '<p class="db-sample">Sample data · fictional</p>'
-        + '<p>This page is part of the multi-page shell. The polish pass fills it with real ' + page.name.toLowerCase() + ' UI in the same design language as Overview.</p>'
-        + '<div class="db-stub-panel" role="list">'
-        + rows.map(([k, v]) => '<div class="db-stub-row" role="listitem"><span>' + k + '</span><strong class="num">' + v + '</strong></div>').join('')
-        + '</div>';
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
     }
-    document.querySelectorAll('a[href]').forEach((a) => {
-      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-      if (!label) return;
-      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
-        || (label === 'home' && p.id === 'overview')
-        || (label === 'dashboard' && p.id === 'overview'));
-      if (hit) a.setAttribute('href', '#/' + hit.id);
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
     });
-    if (!window.DB || typeof window.DB.route !== 'function') {
-      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
-      return;
-    }
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
     window.DB.route(PAGES, (id, page) => {
-      if (id === PAGES[0].id) setOverviewVisible(true);
-      else { setOverviewVisible(false); renderStub(page); }
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
     });
-  })();
-/* === /DB multipage bootstrap === */
-  document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end
+  }
+
+  document.documentElement.dataset.ready = 'true';
 })();
