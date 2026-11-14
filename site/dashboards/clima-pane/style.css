@@ -645,6 +645,12 @@ body {
 }
 
 /* --- polish multipage + motion (shared) --- */
+
+.dbp-page { background: #ffffff; color: #141414; }
+.dbp-lead, .dbp-chip, .dbp-card { background: #f4f4f6; color: #141414; }
+.dbp-toast { background: #ffffff; color: #141414; }
+.db-sample { display:inline-block !important; padding: 6px 12px !important; border-radius: 999px !important; background: #ffffff !important; color: #141414 !important; font-weight: 650 !important; font-size: 13px !important; }
+
 .dbp-page {
   margin: 12px 0 20px; padding: 20px; border-radius: 18px;
   background: var(--surface, #fff); color: var(--text, #111);
@@ -666,7 +672,7 @@ body {
 .dbp-seg { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 4px; border-radius: 999px; background: var(--surface-2, #eee); }
 .dbp-seg button { border: 0; background: none; min-height: 36px; padding: 0 12px; border-radius: 999px; font-weight: 650; color: var(--text-muted, #555); }
 .dbp-seg button[aria-pressed="true"] { background: var(--surface, #fff); color: var(--text, #111); }
-.dbp-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 0; border-radius: 999px; font-weight: 650; background: var(--accent, #444); color: var(--accent-fg, #fff); }
+.dbp-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 0; border-radius: 999px; font-weight: 650; background: #1a1f2e; color: #ffffff; }
 .dbp-state { padding: 16px; border-radius: 14px; background: var(--surface-2, #f3f3f3); display: grid; gap: 10px; color: var(--text-muted, #555); }
 .dbp-skel { height: 44px; border-radius: 10px; background: linear-gradient(90deg, #e8e8e8, #f7f7f7, #e8e8e8); background-size: 200% 100%; animation: dbp-skel 1.2s linear infinite; }
 .dbp-toast { position: fixed; right: 20px; bottom: 20px; z-index: 50; min-height: 44px; padding: 12px 16px; border-radius: 12px; background: var(--surface, #fff); color: var(--text, #111); box-shadow: 0 12px 32px rgb(0 0 0 / 0.18); max-width: min(360px, calc(100vw - 32px)); }
@@ -679,3 +685,13 @@ body {
   .dbp-reveal, .dbp-reveal-in { opacity: 1; transform: none; transition: none; }
   .dbp-skel { animation: none !important; }
 }
+
+/* forced AA surfaces for multipage stubs (all variants) */
+.dbp-page { background: #ffffff !important; color: #141414 !important; }
+.dbp-page h1 { color: #141414 !important; }
+.dbp-lead, .dbp-card, .dbp-chip, .dbp-state, .dbp-seg { background: #f3f4f7 !important; color: #141414 !important; border-color: #d7dae2 !important; }
+.dbp-seg button { color: #3a3f4d !important; }
+.dbp-seg button[aria-pressed="true"] { background: #ffffff !important; color: #141414 !important; }
+.dbp-btn { background: #1a1f2e !important; color: #ffffff !important; }
+.dbp-card strong, .dbp-row, .dbp-page p { color: #141414 !important; }
+
