@@ -110,8 +110,9 @@ body {
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
 }
 .hv-witch {
-  position: absolute; right: -2%; top: 4%; width: min(38%, 260px); height: auto;
-  opacity: 0.72; pointer-events: none; filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.45));
+  position: absolute; right: -2%; top: 2%; width: min(42%, 300px); height: auto;
+  object-fit: contain; object-position: center top;
+  opacity: 0.88; pointer-events: none; filter: drop-shadow(0 14px 28px rgb(0 0 0 / 0.5));
   z-index: 2;
 }
 .hv-wheel {
@@ -340,15 +341,41 @@ body {
   .hv-witch { width: min(32%, 200px); opacity: 0.55; }
 }
 @media (max-width: 760px) {
-  .hv { grid-template-columns: minmax(0, 1fr); padding: 12px; gap: 12px; overflow-x: hidden; }
-  .hv-side { position: static; }
-  .hv-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hv {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    padding: 12px 12px calc(12px + env(safe-area-inset-bottom, 0px));
+    gap: 12px; overflow-x: hidden;
+  }
+  .hv-side {
+    order: 2; position: sticky; bottom: 0; z-index: 6;
+    display: flex; flex-direction: row; align-items: center; gap: 8px;
+    padding: 8px 10px; border-radius: 18px;
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+  }
+  .hv-brand, .hv-k, .hv-quests, .hv-side-foot { display: none; }
+  .hv-nav {
+    display: flex; flex: 1; overflow-x: auto; gap: 4px;
+    grid-template-columns: none; scrollbar-width: none;
+  }
+  .hv-nav a {
+    flex: none; min-width: 44px; min-height: 44px; padding: 0 12px;
+    justify-content: center;
+  }
+  .hv-nav a span:last-child { display: none; }
+  .hv-nav a[aria-current="page"] span:last-child { display: inline; }
   .hv-main, .hv-wheelcard, .hv-card { max-width: 100%; }
-  /* Side chat is desktop-only; Guild hall page covers messaging on small screens. */
   .hv-chat { display: none; }
-  .hv-wheelcard { padding: 10px; overflow: hidden; }
+  .hv-wheelcard { padding: 10px 10px 48px; overflow: hidden; position: relative; }
   .hv-wheel { width: 100%; max-width: 100%; }
-  .hv-witch, .hv-float { display: none; }
+  /* Phone composition: keep witch as a compact corner prop, not a cropped blob */
+  .hv-witch {
+    display: block; right: 2%; top: auto; bottom: 8%;
+    width: min(34%, 140px); opacity: 0.78; object-position: center top;
+  }
+  .hv-float { display: none; }
   .hv-slot { width: 18%; }
   .hv-slot span { display: none; }
   .hv-core { inset: 24%; padding: 4%; gap: 4px; }
