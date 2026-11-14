@@ -49,6 +49,17 @@
     </section>`;
   }
 
+  function heroCard(title, lede, meta) {
+    return `<section class="db-dense-card db-dense-full db-dense-hero mat-clay" data-fx="reveal spotlight">
+      <div class="db-dense-hero-copy">
+        <p class="db-dense-eyebrow">${esc(meta || 'Focus')}</p>
+        <h2>${esc(title)}</h2>
+        <p class="db-dense-lead">${esc(lede)}</p>
+      </div>
+      <div class="db-dense-hero-viz" data-fx="draw" data-dense-chart="line" role="img" aria-label="${esc(title)} trend"></div>
+    </section>`;
+  }
+
   function pageShell(page, brand, body) {
     return `<section class="db-dense-page" data-db-page="${esc(page.id)}" data-dense aria-labelledby="db-dense-h">
       <div class="db-dense-top">
@@ -70,19 +81,26 @@
         </div>
       </div>
       <div data-dense-body>${body}</div>
+      <div class="db-dense-scrim" data-dense-scrim hidden></div>
+      <aside class="db-dense-drawer" data-dense-drawer hidden role="dialog" aria-modal="true" aria-labelledby="db-dense-dh">
+        <h2 id="db-dense-dh">Row detail</h2>
+        <p data-dense-drawer-body></p>
+        <button type="button" class="db-dense-btn" data-dense-drawer-close>Close detail</button>
+      </aside>
     </section>`;
   }
 
   function defaultBody(page) {
+    const label = page.name || 'Workspace';
     const seed = [
-      { id: 'a1', cells: ['North wind', 'Active', '<span class="num">128</span>'] },
-      { id: 'a2', cells: ['Cedar lane', 'Active', '<span class="num">96</span>'] },
-      { id: 'a3', cells: ['Harbor desk', 'Paused', '<span class="num">44</span>'] },
-      { id: 'a4', cells: ['Maple booth', 'Active', '<span class="num">72</span>'] },
-      { id: 'a5', cells: ['Iris bay', 'Review', '<span class="num">51</span>'] },
-      { id: 'a6', cells: ['Quartz loft', 'Active', '<span class="num">83</span>'] },
-      { id: 'a7', cells: ['Pine annex', 'Active', '<span class="num">67</span>'] },
-      { id: 'a8', cells: ['Saffron nook', 'Paused', '<span class="num">29</span>'] },
+      { id: 'a1', cells: [`${label} alpha`, 'Active', '<span class="num">128</span>'] },
+      { id: 'a2', cells: [`${label} bravo`, 'Active', '<span class="num">96</span>'] },
+      { id: 'a3', cells: [`${label} cedar`, 'Paused', '<span class="num">44</span>'] },
+      { id: 'a4', cells: [`${label} delta`, 'Active', '<span class="num">72</span>'] },
+      { id: 'a5', cells: [`${label} echo`, 'Review', '<span class="num">51</span>'] },
+      { id: 'a6', cells: [`${label} folio`, 'Active', '<span class="num">83</span>'] },
+      { id: 'a7', cells: [`${label} grove`, 'Active', '<span class="num">67</span>'] },
+      { id: 'a8', cells: [`${label} haven`, 'Paused', '<span class="num">29</span>'] },
     ];
     const rows = [
       { k: 'Open items', v: '14' }, { k: 'This week', v: '38' }, { k: 'Exceptions', v: '2' },
@@ -96,7 +114,8 @@
         { to: 14, cap: 'Open', label: '14' },
         { to: 4.2, decimals: 1, cap: 'Hours saved', label: '4.2' },
       ])}
-      ${tableCard(`${page.name} register`, ['Name', 'Status', 'Score'], seed)}
+      ${heroCard(`${label} pulse`, `Live sample signal for the ${label.toLowerCase()} lane. Pick a row for detail.`, page.pattern || 'Report')}
+      ${tableCard(`${label} register`, ['Name', 'Status', 'Score'], seed)}
       ${chartCard('Trend', 'line')}
       ${chartCard('Mix', 'bars')}
       ${listCard('Highlights', rows)}
@@ -114,13 +133,7 @@
           <article><span>Region</span><strong>US-West</strong></article>
           <article><span>Retention</span><strong>14 days</strong></article>
         </div>
-      </section>
-      <div class="db-dense-scrim" data-dense-scrim hidden></div>
-      <aside class="db-dense-drawer" data-dense-drawer hidden role="dialog" aria-modal="true" aria-labelledby="db-dense-dh">
-        <h2 id="db-dense-dh">Row detail</h2>
-        <p data-dense-drawer-body></p>
-        <button type="button" class="db-dense-btn" data-dense-drawer-close>Close detail</button>
-      </aside>`;
+      </section>`;
   }
 
   function paintCharts(root) {
@@ -237,5 +250,5 @@
   }
 
   window.DB = window.DB || {};
-  window.DB.dense = { mount, defaultBody, pageShell };
+  window.DB.dense = { mount, defaultBody, pageShell, kpiRow, listCard, tableCard, chartCard, heroCard };
 })();

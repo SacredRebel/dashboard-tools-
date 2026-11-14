@@ -101,6 +101,53 @@ main > [data-page-panel="overview"]:not([hidden]) { display: contents; }
 .db-dense-card.db-dense-wide { grid-column: span 8; }
 .db-dense-card.db-dense-span6 { grid-column: span 6; }
 .db-dense-card.db-dense-full { grid-column: 1 / -1; }
+[data-dense-body] {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 14px;
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+.db-dense-kpis { grid-column: 1 / -1; }
+.db-dense-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(180px, 0.9fr);
+  gap: 16px;
+  align-items: center;
+  min-height: 160px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 12%, transparent), transparent 55%),
+    var(--mat-clay-fill, var(--db-dense-fill, var(--surface)));
+}
+.db-dense-hero-copy { min-width: 0; }
+.db-dense-eyebrow {
+  display: inline-block;
+  margin: 0 0 8px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: var(--db-dense-fill-2, var(--bg));
+  border: 1px solid var(--border);
+}
+.db-dense-hero h2 {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.db-dense-hero-viz {
+  min-height: 110px;
+  color: var(--accent);
+  padding: 8px;
+  border-radius: var(--radius-md, 14px);
+  background: var(--db-dense-fill-2, var(--bg));
+  border: 1px solid var(--border);
+}
 .db-dense-head {
   display: flex; justify-content: space-between; align-items: center;
   gap: 10px; margin-bottom: 10px; flex-wrap: wrap;
@@ -153,9 +200,11 @@ main > [data-page-panel="overview"]:not([hidden]) { display: contents; }
 @media (max-width: 1100px) {
   .db-dense-card, .db-dense-card.db-dense-wide, .db-dense-card.db-dense-span6 { grid-column: span 6; }
   .db-dense-kpis { grid-template-columns: repeat(2, 1fr); }
+  .db-dense-hero { grid-template-columns: 1fr; }
 }
 @media (max-width: 700px) {
   .db-dense-card, .db-dense-card.db-dense-wide, .db-dense-card.db-dense-span6, .db-dense-card.db-dense-full { grid-column: 1 / -1; }
+  .db-dense-hero { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   .db-dense-skel { animation: none; }
