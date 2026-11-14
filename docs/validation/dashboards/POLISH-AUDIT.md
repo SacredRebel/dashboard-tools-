@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `pulsar-analytics` (Phase C — total 24).
+Next: `vitalis-care` (Phase C — total 24).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -9,7 +9,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | # | id | name | layout | density | type | color | depth | imagery | detail | overall | total | top gaps | status |
 |:-:|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | horizon-weather | Horizon Weather | 4 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 30 | photo hero missing; weaker glass glow; no location thumbs | queued |
-| 2 | pulsar-analytics | Pulsar Analytics | 3 | 3 | 3 | 4 | 3 | 2 | 3 | 3 | 24 | central terrain viz gone; different panel grid; abstract ref language | queued |
+| 2 | pulsar-analytics | Pulsar Analytics | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | terrain network + neon multipage traffic/events/regions | polished 24→36 |
 | 3 | solstice-energy | Solstice Energy | 4 | 3 | 4 | 4 | 3 | 3 | 4 | 4 | 29 | less HUD noise; softer 3D mountains; fewer micro widgets | queued |
 | 4 | kumo-payroll | Kumo Payroll | 5 | 4 | 4 | 5 | 4 | 4 | 4 | 5 | 35 | no koi foreground; lighter atmospheric depth | queued |
 | 5 | canopy-reforest | Canopy Reforest | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | leaf photo + forest tile; diagonal hero; multipage + motion | polished 23→36 |
@@ -55,7 +55,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 2. ~~`canopy-reforest` — 23~~ → polished (36)
 3. ~~`citadel-wall` — 23~~ → polished (36)
 4. ~~`dune-panels` — 23~~ → polished (36)
-5. `pulsar-analytics` — 24
+5. ~~`pulsar-analytics` — 24~~ → polished (36)
 6. `vitalis-care` — 24
 7. `pearlwell-dental` — 25
 8. `hollow-vault` — 25

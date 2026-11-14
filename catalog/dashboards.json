@@ -255,7 +255,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A dark neon product-analytics overview: glossy metric orbs that switch the main chart, layered violet and mint wave areas over a purple floor glow, a ticked uptime dial and gradient pillar bars.",
+      "summary": "A dark neon product-analytics board: glossy metric orbs switch a topographic mint/violet terrain chart with network nodes, a ticked uptime dial, gradient pillars, and Traffic / Events / Regions pages.",
       "mood": [
         "neon",
         "technical",
@@ -275,30 +275,31 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Top bar (brand, 4-item nav, pill search, range toggle, bell, avatar) · 3 columns at 1440px: 288px left rail (uptime dial, health donut, hourly bars) · fluid centre (4 metric orbs, wave chart, 3 sparkline tiles) · 304px right rail (channel pillars, top events, regions) · 18px gaps",
+        "structure": "Top bar (brand, Overview/Traffic/Events/Regions nav, pill search, range toggle, bell, avatar) · 3 columns at 1440px: 288px left rail (uptime dial, health donut, hourly bars) · fluid centre (4 metric orbs, topographic terrain chart, 3 sparkline tiles) · 304px right rail (channel pillars, top events, regions) · 18px gaps",
         "responsive": "≤1180px: centre column spans full width on top, rails sit side by side below, search hides · ≤960px: nav wraps under the bar, orbs 2×2 · ≤640px: single column, orbs stack, chart 200px tall"
       },
       "components": [
         "Metric orbs (toggle buttons that switch the chart)",
-        "Two-series wave area chart with hover/focus values",
+        "Topographic multi-layer terrain chart with network overlay",
         "Segmented range toggle",
         "Ticked dial gauge with needle",
         "Segmented donut with legend",
         "Gradient pillar bars (selectable)",
         "Event list with progress bars",
         "Sparkline tiles",
-        "Key-value list"
+        "Key-value list",
+        "Traffic / Events / Regions multipage views"
       ],
-      "signature": "Violet and mint wave areas rising out of a blurred purple floor glow, with glossy sphere-like metric buttons above.",
+      "signature": "Layered mint and violet topographic terrain waves under a neon network of nodes, rising from a blurred purple floor glow.",
       "palette": {
-        "bg": "#17161d",
-        "surface": "#23222b",
+        "bg": "#12111a",
+        "surface": "#1e1d28",
         "text": "#f1eff7",
         "muted": "#b3afc2",
-        "accent": "#b88cff",
-        "violet": "#a06bff",
-        "mint": "#3fe0a5",
-        "peach": "#ff9d5c"
+        "accent": "#c49bff",
+        "violet": "#bf00ff",
+        "mint": "#00ffcc",
+        "peach": "#ffcc33"
       },
       "fonts": {
         "display": "Space Grotesk",
@@ -308,7 +309,7 @@
         {
           "id": "default",
           "name": "Violet mint",
-          "swatch": "#a06bff"
+          "swatch": "#bf00ff"
         },
         {
           "id": "ember",
@@ -331,7 +332,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied concept render of a dark analytics board. The render had no readable text, so brand, labels, metrics and all data are invented. Charts, dial and orbs are drawn in SVG and CSS. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied concept render of a dark analytics board. The render had no readable text, so brand, labels, metrics and all data are invented. Charts, dial, terrain network and orbs are drawn in SVG and CSS. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/pulsar-analytics/",
       "reference": "reference.jpg",
@@ -342,22 +343,33 @@
           "pattern": "Dashboard"
         },
         {
-          "id": "reports",
-          "name": "Reports",
+          "id": "traffic",
+          "name": "Traffic",
           "pattern": "Report"
         },
         {
-          "id": "segments",
-          "name": "Segments",
+          "id": "events",
+          "name": "Events",
           "pattern": "List"
         },
         {
-          "id": "settings",
-          "name": "Settings",
-          "pattern": "Settings"
+          "id": "regions",
+          "name": "Regions",
+          "pattern": "Detail"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "chart-draw",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "solstice-energy",

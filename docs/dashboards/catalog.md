@@ -1088,15 +1088,15 @@ Near-black canvas with vivid neon accents and gradients. Gaming, crypto, music, 
 
 _Pulsar Analytics · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A dark neon product-analytics overview: glossy metric orbs that switch the main chart, layered violet and mint wave areas over a purple floor glow, a ticked uptime dial and gradient pillar bars.
+A dark neon product-analytics board: glossy metric orbs switch a topographic mint/violet terrain chart with network nodes, a ticked uptime dial, gradient pillars, and Traffic / Events / Regions pages.
 
 - **Use cases:** Analytics & BI, SaaS admin · **Mode:** dark · **Mood:** neon, technical, moody, glossy, futuristic
-- **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Violet and mint wave areas rising out of a blurred purple floor glow, with glossy sphere-like metric buttons above.
-- **Layout:** Top bar (brand, 4-item nav, pill search, range toggle, bell, avatar) · 3 columns at 1440px: 288px left rail (uptime dial, health donut, hourly bars) · fluid centre (4 metric orbs, wave chart, 3 sparkline tiles) · 304px right rail (channel pillars, top events, regions) · 18px gaps
+- **Pages:** Overview (`overview`, Dashboard) · Traffic (`traffic`, Report) · Events (`events`, List) · Regions (`regions`, Detail)
+- **Motion:** count-up, stagger, chart-draw, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Layered mint and violet topographic terrain waves under a neon network of nodes, rising from a blurred purple floor glow.
+- **Layout:** Top bar (brand, Overview/Traffic/Events/Regions nav, pill search, range toggle, bell, avatar) · 3 columns at 1440px: 288px left rail (uptime dial, health donut, hourly bars) · fluid centre (4 metric orbs, topographic terrain chart, 3 sparkline tiles) · 304px right rail (channel pillars, top events, regions) · 18px gaps
 - **Responsive:** ≤1180px: centre column spans full width on top, rails sit side by side below, search hides · ≤960px: nav wraps under the bar, orbs 2×2 · ≤640px: single column, orbs stack, chart 200px tall
-- **Fonts:** Space Grotesk / Inter · **Palette:** bg `#17161d`, surface `#23222b`, text `#f1eff7`, muted `#b3afc2`, accent `#b88cff`, violet `#a06bff`, mint `#3fe0a5`, peach `#ff9d5c`
+- **Fonts:** Space Grotesk / Inter · **Palette:** bg `#12111a`, surface `#1e1d28`, text `#f1eff7`, muted `#b3afc2`, accent `#c49bff`, violet `#bf00ff`, mint `#00ffcc`, peach `#ffcc33`
 - **Variants:** Violet mint, Ember, Daylight · **Closest toolkit theme:** `aurora`
 
 **Best for**
@@ -1109,7 +1109,7 @@ A dark neon product-analytics overview: glossy metric orbs that switch the main 
 - Conservative or regulated brands (banking, legal, healthcare)
 - Print or export-first reporting
 
-**Components:** Metric orbs (toggle buttons that switch the chart) · Two-series wave area chart with hover/focus values · Segmented range toggle · Ticked dial gauge with needle · Segmented donut with legend · Gradient pillar bars (selectable) · Event list with progress bars · Sparkline tiles · Key-value list
+**Components:** Metric orbs (toggle buttons that switch the chart) · Topographic multi-layer terrain chart with network overlay · Segmented range toggle · Ticked dial gauge with needle · Segmented donut with legend · Gradient pillar bars (selectable) · Event list with progress bars · Sparkline tiles · Key-value list · Traffic / Events / Regions multipage views
 
 ---
 
