@@ -1,11 +1,11 @@
 {
   "id": "saffron-dusk",
-  "checked": "2026-11-13",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/saffron-dusk/",
+      "url": "/dashboards/saffron-dusk/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/saffron-dusk/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk",
+      "url": "/dashboards/saffron-dusk#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/saffron-dusk/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/index.html",
+      "url": "/dashboards/saffron-dusk/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/saffron-dusk/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/",
+      "url": "/dashboards/saffron-dusk/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/saffron-dusk/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=dawn",
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/overview",
       "width": 1440,
       "variant": "dawn",
       "final_path": "/dashboards/saffron-dusk/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=night",
+      "url": "/dashboards/saffron-dusk/?variant=night#/overview",
       "width": 1440,
       "variant": "night",
       "final_path": "/dashboards/saffron-dusk/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/overview",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/overview",
+      "width": 375,
+      "variant": "dawn",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/overview",
+      "width": 1440,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/overview",
+      "width": 375,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/vitals",
+      "width": 1440,
+      "variant": "default",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/vitals",
+      "width": 375,
+      "variant": "default",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/vitals",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/vitals",
+      "width": 375,
+      "variant": "dawn",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/vitals",
+      "width": 1440,
+      "variant": "night",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/vitals",
+      "width": 375,
+      "variant": "night",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/appointments",
+      "width": 1440,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/appointments",
+      "width": 375,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/appointments",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/appointments",
+      "width": 375,
+      "variant": "dawn",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/appointments",
+      "width": 1440,
+      "variant": "night",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/appointments",
+      "width": 375,
+      "variant": "night",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/records",
+      "width": 1440,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/records",
+      "width": 375,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/records",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/records",
+      "width": 375,
+      "variant": "dawn",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/records",
+      "width": 1440,
+      "variant": "night",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/records",
+      "width": 375,
+      "variant": "night",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/settings",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/settings",
+      "width": 375,
+      "variant": "dawn",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/settings",
+      "width": 1440,
+      "variant": "night",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/settings",
+      "width": 375,
+      "variant": "night",
+      "page": "settings",
       "errors": []
     },
     {
