@@ -1120,12 +1120,12 @@ A dark neon product-analytics board: glossy metric orbs switch a topographic min
 
 _Hollow Vault · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A dark-neon rewards hub for a fantasy game. Eight code-drawn relics ring a glowing chest; open it with keys earned from quests and see what you win. Drop rates are shown openly, your haul fills in below, and guild chat runs down the right.
+A dark-neon rewards hub for a fantasy game. Eight painted relics ring a glowing Moonwell chest; open it with keys earned from quests. Drop rates are shown openly, a live feed and haul fill below, and guild chat runs down the right.
 
 - **Use cases:** Music & media · **Mode:** dark · **Mood:** playful, magical, vivid, immersive, dark
-- **Pages:** Overview (`overview`, Dashboard) · Library (`library`, List) · Activity (`activity`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** A wheel of eight glowing SVG relics around a brass-bound chest, with a soft indigo glow and rarity-coloured card tops.
+- **Pages:** Quest vault (`overview`, Dashboard) · Quest board (`quests`, List) · Arena (`arena`, Board) · Guild hall (`guild`, List)
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** A concave neon dial of eight painted relic sprites around a brass-bound chest photo, with a flying witch prop and a floating drop-rate card.
 - **Layout:** 3 columns: 240px menu (realm nav, today's quests that award keys) · main: title + key balance, relic wheel with chest core, chest contents with rarity filter, your haul · 320px guild chat with composer
 - **Responsive:** ≤1180px: chat moves under the main column · ≤760px: single column, nav 2×2, wheel labels hidden, chest copy trimmed
 - **Fonts:** Outfit / Outfit · **Palette:** bg `#12132a`, surface `#1b1d3a`, text `#f0f1fb`, muted `#b0b3d6`, accent `#5858e0`, rare `#5fb0ff`, epic `#c18bff`, legendary `#ffc44d`
@@ -1141,7 +1141,7 @@ A dark-neon rewards hub for a fantasy game. Eight code-drawn relics ring a glowi
 - Business tools and serious reporting
 - Light, minimal brands
 
-**Components:** Relic wheel around a chest · Open-chest action with key cost · Quest list that awards keys · Rarity filter and drop-rate cards · Inventory grid with empty state · Guild chat with message composer
+**Components:** Painted relic wheel around chest photo · Flying witch atmosphere prop · Floating drop-rate detail card · Open-chest action with key cost · Quest list that awards keys · Rarity filter and drop-rate cards · Live feed of recent opens · Inventory grid with empty state · Guild chat with boost banner and composer · Quest board / Arena / Guild hall pages
 
 ---
 

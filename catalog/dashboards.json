@@ -1974,7 +1974,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A dark-neon rewards hub for a fantasy game. Eight code-drawn relics ring a glowing chest; open it with keys earned from quests and see what you win. Drop rates are shown openly, your haul fills in below, and guild chat runs down the right.",
+      "summary": "A dark-neon rewards hub for a fantasy game. Eight painted relics ring a glowing Moonwell chest; open it with keys earned from quests. Drop rates are shown openly, a live feed and haul fill below, and guild chat runs down the right.",
       "mood": [
         "playful",
         "magical",
@@ -1998,14 +1998,18 @@
         "responsive": "\u22641180px: chat moves under the main column \u00b7 \u2264760px: single column, nav 2\u00d72, wheel labels hidden, chest copy trimmed"
       },
       "components": [
-        "Relic wheel around a chest",
+        "Painted relic wheel around chest photo",
+        "Flying witch atmosphere prop",
+        "Floating drop-rate detail card",
         "Open-chest action with key cost",
         "Quest list that awards keys",
         "Rarity filter and drop-rate cards",
+        "Live feed of recent opens",
         "Inventory grid with empty state",
-        "Guild chat with message composer"
+        "Guild chat with boost banner and composer",
+        "Quest board / Arena / Guild hall pages"
       ],
-      "signature": "A wheel of eight glowing SVG relics around a brass-bound chest, with a soft indigo glow and rarity-coloured card tops.",
+      "signature": "A concave neon dial of eight painted relic sprites around a brass-bound chest photo, with a flying witch prop and a floating drop-rate card.",
       "palette": {
         "bg": "#12132a",
         "surface": "#1b1d3a",
@@ -2047,33 +2051,43 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied dribbble-style shot of a crypto 'chest battle' game screen. The wheel-around-a-chest layout, sidebar, item row and chat column were kept. The witch illustration, 3D item renders, coin balance and buy button were dropped. It was reframed as a keys-earned-by-play rewards hub with open drop rates and no purchases. Relics are simple SVG shapes. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied dark fantasy chest-battle concept (WAGER-style reference). Rebranded Hollow; gambling framing replaced with play-earned keys. Relic and chest imagery are GenerateImage painted assets in media/; witch prop too. Fidelity pass used local tesseract OCR + palette sample on reference.jpg. Owner original stored as reference.jpg."
       },
       "path": "site/dashboards/hollow-vault/",
       "reference": "reference.jpg",
       "pages": [
         {
           "id": "overview",
-          "name": "Overview",
+          "name": "Quest vault",
           "pattern": "Dashboard"
         },
         {
-          "id": "library",
-          "name": "Library",
+          "id": "quests",
+          "name": "Quest board",
           "pattern": "List"
         },
         {
-          "id": "activity",
-          "name": "Activity",
-          "pattern": "Report"
+          "id": "arena",
+          "name": "Arena",
+          "pattern": "Board"
         },
         {
-          "id": "settings",
-          "name": "Settings",
-          "pattern": "Settings"
+          "id": "guild",
+          "name": "Guild hall",
+          "pattern": "List"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "larchwood-lodge",

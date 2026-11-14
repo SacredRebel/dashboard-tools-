@@ -1,30 +1,20 @@
-/* Hollow Vault: sample data, relic wheel, honest drop rates, haul and guild chat.
-   All data is fictional sample data. Keys are earned in play, no purchases. No timers, no network. */
+/* Hollow Vault: painted relics/chest, multipage + motion. Sample data only. Keys earned in play. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
   const ICON = {
     map: '<path d="m9 4-6 2v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
     shield: '<path d="M12 2 4 5v6c0 5.2 3.4 9.3 8 11 4.6-1.7 8-5.8 8-11V5z"/>',
     box: '<path d="m12 2 9 5v10l-9 5-9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/>',
     users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.2a6.5 6.5 0 0 1 3.5 5.8"/>',
-    lock: '<rect x="4.5" y="10.5" width="15" height="10.5" rx="2"/><path d="M8 10.500V7a4 4 0 0 1 8 0v3.5"/>',
+    lock: '<rect x="4.5" y="10.5" width="15" height="10.5" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/>',
     send: '<path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/>',
   };
   const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
-  const fmtNum = (v) => v.toLocaleString('en-US');
-  const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
-  const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
-  const niceStep = (raw) => { const p = 10 ** Math.floor(Math.log10(raw || 1)); const f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; };
-  function scale(vals, o) {
-    let min = o.min ?? Math.min(...vals), max = o.max ?? Math.max(...vals);
-    const step = o.step || niceStep((max - min || 1) / (o.ticks || 4));
-    min = Math.floor(min / step) * step; max = Math.ceil(max / step) * step; if (max === min) max = min + step;
-    const ticks = []; for (let v = min; v <= max + step / 1e6; v += step) ticks.push(+v.toFixed(6));
-    return { min, max, ticks };
-  }
-  // segmented control / tabs: buttons carry data-v, the pressed one gets aria-pressed="true"
+  const paintIcons = (host = document) => $$('[data-icon]', host).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+
   function seg(group, onChange) {
     group.addEventListener('click', (e) => {
       const b = e.target.closest('button[data-v]'); if (!b) return;
@@ -32,137 +22,326 @@
       onChange(b.dataset.v, b);
     });
   }
+  function countUp(el, to, { duration = 500, format = (n) => String(Math.round(n)) } = {}) {
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+
   paintIcons();
-  // relic glyphs: tiny SVGs built from shapes, coloured by tokens
-  const G = {
-    cauldron: '<ellipse cx="32" cy="20" rx="18" ry="6" style="fill:var(--brew)"/><path d="M12 22 Q12 52 32 52 Q52 52 52 22Z" style="fill:var(--surface)" stroke="currentColor" stroke-width="3"/><circle cx="26" cy="14" r="3" style="fill:var(--brew)"/><circle cx="36" cy="10" r="2" style="fill:var(--brew)"/>',
-    potion: '<rect x="27" y="6" width="10" height="10" rx="2" style="fill:var(--wood)"/><path d="M27 16 L27 24 Q14 30 14 42 Q14 56 32 56 Q50 56 50 42 Q50 30 37 24 L37 16Z" style="fill:var(--r-rare)"/><path d="M18 40 Q32 46 46 40 Q46 54 32 54 Q18 54 18 40Z" style="fill:var(--r-epic)"/>',
-    mushroom: '<path d="M8 32 Q8 10 32 10 Q56 10 56 32Z" style="fill:var(--r-legend)"/><circle cx="22" cy="22" r="4" style="fill:var(--text)"/><circle cx="40" cy="18" r="3" style="fill:var(--text)"/><rect x="25" y="32" width="14" height="20" rx="6" style="fill:var(--text)"/>',
-    hat: '<path d="M32 4 L46 44 L18 44Z" style="fill:var(--r-epic)"/><ellipse cx="32" cy="46" rx="26" ry="7" style="fill:var(--wood)"/><rect x="22" y="36" width="20" height="5" style="fill:var(--r-legend)"/>',
-    broom: '<rect x="30" y="4" width="4" height="34" rx="2" transform="rotate(20 32 32)" style="fill:var(--wood)"/><path d="M16 38 L40 34 L44 58 L12 60Z" style="fill:var(--r-legend)"/><rect x="15" y="36" width="27" height="5" transform="rotate(-8 28 38)" style="fill:var(--r-epic)"/>',
-    crystal: '<path d="M32 4 L48 22 L32 60 L16 22Z" style="fill:var(--r-rare)"/><path d="M32 4 L40 22 L32 60 L24 22Z" style="fill:var(--accent-soft)" opacity=".6"/>',
-    tome: '<rect x="12" y="10" width="40" height="46" rx="4" style="fill:var(--wood)"/><rect x="16" y="14" width="32" height="38" rx="2" style="fill:var(--wood-d)"/><circle cx="32" cy="33" r="8" style="fill:var(--r-legend)"/>',
-    feather: '<path d="M48 6 Q20 14 16 52 L20 56 Q52 44 48 6Z" style="fill:var(--r-common)"/><path d="M46 10 L18 54" stroke="currentColor" stroke-width="2"/>'
-  };
-  const glyph = (k) => `<svg viewBox="0 0 64 64" aria-hidden="true">${G[k]}</svg>`;
+
   const RAR = { common: ['Common', '--r-common'], rare: ['Rare', '--r-rare'], epic: ['Epic', '--r-epic'], legend: ['Legendary', '--r-legend'] };
   const RELICS = [
-    { k: 'potion', n: 'Draught of Dusk', r: 'epic', p: 8 }, { k: 'tome', n: 'Moonwell Tome', r: 'rare', p: 14 }, { k: 'crystal', n: 'Tidecrystal', r: 'rare', p: 14 }, { k: 'broom', n: 'Gale Broom', r: 'epic', p: 8 },
-    { k: 'feather', n: 'Owl Quill', r: 'common', p: 24 }, { k: 'mushroom', n: 'Glowcap', r: 'common', p: 24 }, { k: 'hat', n: 'Witchwarden Hat', r: 'legend', p: 3 }, { k: 'cauldron', n: 'Ember Cauldron', r: 'legend', p: 5 }
+    { k: 'potion', n: 'Draught of Dusk', r: 'epic', p: 8 },
+    { k: 'tome', n: 'Moonwell Tome', r: 'rare', p: 14 },
+    { k: 'crystal', n: 'Tidecrystal', r: 'rare', p: 14 },
+    { k: 'broom', n: 'Gale Broom', r: 'epic', p: 8 },
+    { k: 'feather', n: 'Owl Quill', r: 'common', p: 24 },
+    { k: 'mushroom', n: 'Glowcap', r: 'common', p: 24 },
+    { k: 'hat', n: 'Witchwarden Hat', r: 'legend', p: 3 },
+    { k: 'cauldron', n: 'Ember Cauldron', r: 'legend', p: 5 },
   ];
-  const QUESTS = [{ n: 'Clear the marsh ruins', d: 'Daily', key: 1, done: true }, { n: 'Win 3 arena rounds', d: 'Daily', key: 1, done: false }, { n: 'Help a guildmate', d: 'Weekly', key: 2, done: false }];
-  const PEOPLE = { Maren: '--r-rare', Tobi: '--r-epic', Ilse: '--r-legend', Quill: '--brew' };
+  const QUESTS = [
+    { n: 'Clear the marsh ruins', d: 'Daily', key: 1, done: true },
+    { n: 'Win 3 arena rounds', d: 'Daily', key: 1, done: false },
+    { n: 'Help a guildmate', d: 'Weekly', key: 2, done: false },
+  ];
+  const PEOPLE = { Maren: '--r-rare', Tobi: '--r-epic', Ilse: '--r-legend', Quill: '--brew', You: '--accent' };
   const MSGS = [
-    { w: 'Maren', t: '18:02', m: 'Anyone up for the marsh ruins run? Need a healer.' }, { w: 'Tobi', t: '18:05', m: 'Got a Gale Broom from the Moonwell chest!' },
-    { sys: 'Ilse found Ember Cauldron (legendary).', t: '18:09' }, { w: 'Ilse', t: '18:10', m: 'Took me 40 keys, the 5% is real 😅' }, { w: 'Quill', t: '18:14', m: 'Arena opens in the evening, meet at the gate.' }
+    { w: 'Maren', t: '18:02', m: 'Anyone up for the marsh ruins run? Need a healer.' },
+    { w: 'Tobi', t: '18:05', m: 'Got a Gale Broom from the Moonwell chest!' },
+    { sys: 'Ilse found Ember Cauldron (legendary).', t: '18:09' },
+    { w: 'Ilse', t: '18:10', m: 'Took me 40 keys, the 5% is real.' },
+    { w: 'Quill', t: '18:14', m: 'Arena opens in the evening, meet at the gate.' },
   ];
-  let keys = 3, seed = 7, win = -1, rar = 'all';
-  const haul = [];
+  const LIVE = [
+    { who: 'Angelica', i: 7 },
+    { who: 'Katya', i: 3 },
+    { who: 'Madina', i: 0 },
+    { who: 'Max', i: 5 },
+    { who: 'Ilse', i: 7 },
+  ];
 
-  // ---------------------------------------------------------------- wheel
+  let keys = 3, seed = 7, win = -1, rar = 'all', focus = 6;
+  const haul = [];
+  const art = (k) => `<img src="media/${k}.webp" width="96" height="96" alt="" decoding="async">`;
+
   function renderWheel() {
     const core = $('.hv-core');
-    $$('.hv-slot').forEach((s) => s.remove());
+    $$('.hv-slot', $('[data-wheel]')).forEach((s) => s.remove());
     RELICS.forEach((r, i) => {
-      const a = (i / RELICS.length) * Math.PI * 2 - Math.PI / 2, b = document.createElement('div');
-      b.className = 'hv-slot' + (i === win ? ' is-win' : ''); b.style.left = 50 + Math.cos(a) * 37.5 + '%'; b.style.top = 50 + Math.sin(a) * 37.5 + '%';
-      b.innerHTML = `${glyph(r.k)}<span>${r.n}</span>`; b.setAttribute('aria-hidden', 'true');
+      const a = (i / RELICS.length) * Math.PI * 2 - Math.PI / 2;
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'hv-slot' + (i === win ? ' is-win' : '') + (i === focus ? ' is-focus' : '');
+      b.style.left = 50 + Math.cos(a) * 37.5 + '%';
+      b.style.top = 50 + Math.sin(a) * 37.5 + '%';
+      b.innerHTML = `${art(r.k)}<span>${r.n}</span>`;
+      b.dataset.slot = String(i);
+      b.setAttribute('aria-label', `${r.n}, ${RAR[r.r][0]}, ${r.p}% drop rate`);
       core.before(b);
     });
     const btn = $('[data-open]');
-    btn.disabled = keys < 1; btn.textContent = keys < 1 ? 'No keys left' : 'Open chest';
-    $('[data-keys]').textContent = keys;
+    btn.disabled = keys < 1;
+    btn.textContent = keys < 1 ? 'No keys left' : 'Open chest';
+    countUp($('[data-keys]'), keys);
+    renderFloat(focus);
   }
-  $('[data-chest]').innerHTML = `<svg viewBox="0 0 120 96"><rect x="10" y="40" width="100" height="50" rx="8" style="fill:var(--wood)"/><path d="M10 44 Q10 10 60 10 Q110 10 110 44Z" style="fill:var(--wood-d)"/><rect x="10" y="40" width="100" height="8" style="fill:var(--metal)"/><rect x="52" y="34" width="16" height="22" rx="3" style="fill:var(--metal)"/><circle cx="60" cy="46" r="3" style="fill:var(--wood-d)"/><rect x="24" y="12" width="8" height="78" style="fill:var(--metal)" opacity=".85"/><rect x="88" y="12" width="8" height="78" style="fill:var(--metal)" opacity=".85"/></svg>`;
 
-  // ---------------------------------------------------------------- lists
+  function renderFloat(i) {
+    const el = $('[data-float]');
+    if (!el) return;
+    const r = RELICS[i];
+    if (!r) { el.hidden = true; return; }
+    el.hidden = false;
+    el.innerHTML = `${art(r.k)}<div><b>${r.n}</b><em style="color:var(${RAR[r.r][1]})">${RAR[r.r][0]}</em><small class="num">${r.p}% drop rate</small></div>`;
+  }
+
   function renderItems() {
     const ok = (r) => rar === 'all' || (rar === 'rare' ? r.r !== 'common' : r.r === 'legend');
     const list = RELICS.filter(ok);
-    $('[data-items]').innerHTML = list.map((r) => `<li style="--rar:var(${RAR[r.r][1]})">${glyph(r.k)}${r.n}<em>${RAR[r.r][0]}</em><small class="num">${r.p}% drop rate</small></li>`).join('');
-  }
-  function renderHaul() {
-    $('[data-invcount]').textContent = haul.length ? `${haul.length} ${haul.length === 1 ? 'relic' : 'relics'} this session` : '';
-    $('[data-inv]').innerHTML = haul.length ? haul.map((i) => { const r = RELICS[i]; return `<li style="--rar:var(${RAR[r.r][1]})">${glyph(r.k)}${r.n}<small>${RAR[r.r][0]}</small></li>`; }).join('') : `<li class="hv-none">Nothing yet. Open the chest above to win your first relic.</li>`;
-  }
-  function renderQuests() { $('[data-quests]').innerHTML = QUESTS.map((q, i) => `<li><button data-q="${i}" aria-pressed="${q.done}"><span>${q.n}<small>${q.d}${q.done ? ' · claimed' : ''}</small></span><b>+${q.key} key${q.key > 1 ? 's' : ''}</b></button></li>`).join(''); }
-  function renderMsgs() {
-    $('[data-msgs]').innerHTML = MSGS.map((m) => m.sys ? `<li class="is-sys"><p>${m.sys} <time>${m.t}</time></p></li>` : `<li><span class="hv-ava" style="background:var(${PEOPLE[m.w] || '--accent'})" aria-hidden="true">${m.w[0]}</span><div><b>${m.w}<time>${m.t}</time></b><p></p></div></li>`).join('');
-    $$('[data-msgs] li:not(.is-sys) p').forEach((p, i) => { p.textContent = MSGS.filter((m) => !m.sys)[i].m; });
-    const box = $('[data-msgs]'); box.scrollTop = box.scrollHeight;
+    $('[data-items]').innerHTML = list.length
+      ? list.map((r) => `<li style="--rar:var(${RAR[r.r][1]})">${art(r.k)}<span>${r.n}</span><em>${RAR[r.r][0]}</em><small class="num">${r.p}% drop rate</small></li>`).join('')
+      : `<li class="hv-none">No relics match this filter.</li>`;
   }
 
-  // ---------------------------------------------------------------- events
+  function renderHaul() {
+    $('[data-invcount]').textContent = haul.length ? `${haul.length} ${haul.length === 1 ? 'relic' : 'relics'} this session` : '';
+    $('[data-inv]').innerHTML = haul.length
+      ? haul.map((i) => {
+        const r = RELICS[i];
+        return `<li style="--rar:var(${RAR[r.r][1]})">${art(r.k)}${r.n}<small>${RAR[r.r][0]}</small></li>`;
+      }).join('')
+      : `<li class="hv-none">Nothing yet. Open the chest above to win your first relic.</li>`;
+  }
+
+  function renderLive() {
+    const feed = LIVE.concat(haul.slice(0, 3).map((i) => ({ who: 'You', i })));
+    $('[data-live]').innerHTML = feed.map((row) => {
+      const r = RELICS[row.i];
+      return `<article class="hv-live-item" role="listitem" style="--rar:var(${RAR[r.r][1]})">${art(r.k)}<span><b>${r.n}</b><small>${row.who}</small></span></article>`;
+    }).join('');
+  }
+
+  function renderQuests() {
+    $('[data-quests]').innerHTML = QUESTS.map((q, i) =>
+      `<li><button type="button" data-q="${i}" aria-pressed="${q.done}"><span>${q.n}<small>${q.d}${q.done ? ' · claimed' : ''}</small></span><b>+${q.key} key${q.key > 1 ? 's' : ''}</b></button></li>`
+    ).join('');
+  }
+
+  function renderMsgs() {
+    $('[data-msgs]').innerHTML = MSGS.map((m) =>
+      m.sys
+        ? `<li class="is-sys"><p>${m.sys}</p><time>${m.t}</time></li>`
+        : `<li><span class="hv-ava" aria-hidden="true">${m.w[0]}</span><div class="hv-msgbody"><div class="hv-msgmeta"><b>${m.w}</b><time>${m.t}</time></div><p></p></div></li>`
+    ).join('');
+    $$('[data-msgs] li:not(.is-sys) p').forEach((p, i) => {
+      p.textContent = MSGS.filter((m) => !m.sys)[i].m;
+    });
+    const box = $('[data-msgs]');
+    box.scrollTop = box.scrollHeight;
+  }
+
   $('[data-open]').addEventListener('click', () => {
     if (keys < 1) return;
-    seed = (seed * 9301 + 49297) % 233280; let roll = (seed / 233280) * 100;
-    win = RELICS.findIndex((r) => (roll -= r.p) < 0); if (win < 0) win = 0;
-    keys -= 1; haul.unshift(win);
+    seed = (seed * 9301 + 49297) % 233280;
+    let roll = (seed / 233280) * 100;
+    win = RELICS.findIndex((r) => (roll -= r.p) < 0);
+    if (win < 0) win = 0;
+    keys -= 1;
+    haul.unshift(win);
+    focus = win;
     const r = RELICS[win];
     $('[data-result]').textContent = `You found ${r.n} (${RAR[r.r][0].toLowerCase()}).`;
-    if (r.r === 'legend' || r.r === 'epic') { MSGS.push({ sys: `You found ${r.n} (${RAR[r.r][0].toLowerCase()}).`, t: 'now' }); renderMsgs(); }
-    renderWheel(); renderHaul();
+    if (r.r === 'legend' || r.r === 'epic') {
+      MSGS.push({ sys: `You found ${r.n} (${RAR[r.r][0].toLowerCase()}).`, t: 'now' });
+      renderMsgs();
+    }
+    renderWheel();
+    renderHaul();
+    renderLive();
+    toast(`Opened · ${r.n}`);
+    if (!reduce) {
+      const slot = $(`.hv-slot[data-slot="${win}"]`);
+      if (slot) {
+        slot.classList.add('hv-pulse');
+        setTimeout(() => slot.classList.remove('hv-pulse'), 600);
+      }
+    }
     if (keys < 1) $('[data-result]').textContent += ' Finish a quest to earn more keys.';
   });
-  $('[data-quests]').addEventListener('click', (e) => { const b = e.target.closest('[data-q]'); if (!b) return; const q = QUESTS[+b.dataset.q]; if (q.done) return; q.done = true; keys += q.key; renderQuests(); renderWheel(); $(`[data-q="${b.dataset.q}"]`).focus(); });
+
+  $('[data-wheel]').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-slot]');
+    if (!b) return;
+    focus = +b.dataset.slot;
+    renderWheel();
+  });
+
+  $('[data-quests]').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-q]');
+    if (!b) return;
+    const q = QUESTS[+b.dataset.q];
+    if (q.done) return;
+    q.done = true;
+    keys += q.key;
+    renderQuests();
+    renderWheel();
+    toast(`Quest claimed · +${q.key} key${q.key > 1 ? 's' : ''}`);
+    $(`[data-q="${b.dataset.q}"]`)?.focus();
+  });
+
   seg($('[data-rarity]'), (v) => { rar = v; renderItems(); });
-  $('[data-say]').addEventListener('submit', (e) => { e.preventDefault(); const v = $('[data-msg]').value.trim(); if (!v) return; MSGS.push({ w: 'You', t: 'now', m: v }); $('[data-msg]').value = ''; renderMsgs(); });
-  renderWheel(); renderItems(); renderHaul(); renderQuests(); renderMsgs();
-/* === DB multipage bootstrap (generated; polish pass replaces stubs) === */
-  (function wirePages() {
-    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"library","name":"Library","pattern":"List"},{"id":"activity","name":"Activity","pattern":"Report"},{"id":"settings","name":"Settings","pattern":"Settings"}];
-    const main = document.querySelector('main') || document.body;
-    let stub = document.querySelector('[data-db-stub]');
-    if (!stub) {
-      stub = document.createElement('section');
-      stub.setAttribute('data-db-stub', '');
-      stub.hidden = true;
-      stub.setAttribute('aria-live', 'polite');
-      main.appendChild(stub);
+
+  $('[data-say]').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = $('[data-msg]').value.trim();
+    if (!v) return;
+    MSGS.push({ w: 'You', t: 'now', m: v });
+    $('[data-msg]').value = '';
+    renderMsgs();
+  });
+
+  renderWheel();
+  renderItems();
+  renderHaul();
+  renderLive();
+  renderQuests();
+  renderMsgs();
+
+  function staggerReveal() {
+    $$('.hv-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
+      el.classList.add('hv-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Quest vault', pattern: 'Dashboard' },
+    { id: 'quests', name: 'Quest board', pattern: 'List' },
+    { id: 'arena', name: 'Arena', pattern: 'Board' },
+    { id: 'guild', name: 'Guild hall', pattern: 'List' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+
+  function pageHtml(page) {
+    if (page.id === 'quests') {
+      return `<section class="hv-page" data-db-page="quests" aria-labelledby="p-h">
+        <h1 id="p-h">Quest board</h1>
+        <p class="hv-page-lead">Daily and weekly tasks that earn keys. Sample data · fictional.</p>
+        <div class="hv-seg" role="group" aria-label="Quest state" data-quest-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Open</button>
+          <button type="button" data-v="loading" aria-pressed="false">Syncing</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-quest-body></div>
+      </section>`;
     }
-    function setOverviewVisible(on) {
-      [...main.children].forEach((ch) => {
-        if (ch === stub) return;
-        if (on) {
-          ch.hidden = false;
-          ch.removeAttribute('data-db-overview-hide');
-        } else {
-          ch.hidden = true;
-          ch.setAttribute('data-db-overview-hide', '');
+    if (page.id === 'arena') {
+      return `<section class="hv-page" data-db-page="arena" aria-labelledby="p-h">
+        <h1 id="p-h">Arena</h1>
+        <p class="hv-page-lead">Tonight’s matches. Win rounds to earn keys.</p>
+        <div class="hv-page-grid" data-arena-list></div>
+      </section>`;
+    }
+    if (page.id === 'guild') {
+      return `<section class="hv-page" data-db-page="guild" aria-labelledby="p-h">
+        <h1 id="p-h">Guild hall</h1>
+        <p class="hv-page-lead">Members online and recent activity.</p>
+        <div class="hv-page-grid" data-guild-list></div>
+      </section>`;
+    }
+    return `<section class="hv-page"><h1>${page.name}</h1><p class="hv-page-lead">Sample data · fictional</p></section>`;
+  }
+
+  function wirePage(host, page) {
+    if (page.id === 'quests') {
+      const body = host.querySelector('[data-quest-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="hv-loading" role="status"><p>Syncing board…</p><div class="hv-skel"></div><div class="hv-skel"></div></div>`;
+          return;
         }
-      });
-      stub.hidden = on;
+        if (state === 'empty') {
+          body.innerHTML = `<div class="hv-empty"><p>No open quests. Check back after reset.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="hv-error"><p>Could not load quests.</p><button type="button" class="hv-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="hv-page-grid">${QUESTS.map((q) =>
+          `<article class="hv-page-card"><div class="hv-row"><strong>${q.n}</strong><span class="num">+${q.key}</span></div><p class="hv-meta" style="margin:0">${q.d}${q.done ? ' · claimed' : ''}</p></article>`
+        ).join('')}</div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-quest-tabs]'), (v) => paint(v));
     }
-    function renderStub(page) {
-      const rows = [
-        ['Status', 'Sample · ready'],
-        ['Records', '24'],
-        ['Updated', 'Today'],
-      ];
-      stub.innerHTML = '<h1>' + page.name + '</h1>'
-        + '<p class="db-sample">Sample data · fictional</p>'
-        + '<p>This page is part of the multi-page shell. The polish pass fills it with real ' + page.name.toLowerCase() + ' UI in the same design language as Overview.</p>'
-        + '<div class="db-stub-panel" role="list">'
-        + rows.map(([k, v]) => '<div class="db-stub-row" role="listitem"><span>' + k + '</span><strong class="num">' + v + '</strong></div>').join('')
-        + '</div>';
+    if (page.id === 'arena') {
+      host.querySelector('[data-arena-list]').innerHTML = [
+        { name: 'Marsh gate skirmish', when: 'Tonight · 19:00', reward: '+1 key' },
+        { name: 'Moonwell duel', when: 'Tonight · 21:30', reward: '+2 keys' },
+      ].map((a) =>
+        `<article class="hv-page-card"><div class="hv-row"><strong>${a.name}</strong><span>${a.reward}</span></div><p class="hv-meta" style="margin:0">${a.when}</p></article>`
+      ).join('');
     }
-    document.querySelectorAll('a[href]').forEach((a) => {
-      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-      if (!label) return;
-      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
-        || (label === 'home' && p.id === 'overview')
-        || (label === 'dashboard' && p.id === 'overview'));
-      if (hit) a.setAttribute('href', '#/' + hit.id);
+    if (page.id === 'guild') {
+      host.querySelector('[data-guild-list]').innerHTML = Object.keys(PEOPLE).filter((n) => n !== 'You').map((n) =>
+        `<article class="hv-page-card"><div class="hv-row"><strong>${n}</strong><span class="hv-meta"><i class="hv-on"></i> online</span></div></article>`
+      ).join('');
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
     });
-    if (!window.DB || typeof window.DB.route !== 'function') {
-      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
-      return;
-    }
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
     window.DB.route(PAGES, (id, page) => {
-      if (id === PAGES[0].id) setOverviewVisible(true);
-      else { setOverviewVisible(false); renderStub(page); }
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
     });
-  })();
-/* === /DB multipage bootstrap === */
-  document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end
+  }
+
+  document.documentElement.dataset.ready = 'true';
 })();

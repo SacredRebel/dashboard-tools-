@@ -1,11 +1,11 @@
 {
   "id": "hollow-vault",
-  "checked": "2026-11-13",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/hollow-vault/",
+      "url": "/dashboards/hollow-vault/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/hollow-vault/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/hollow-vault",
+      "url": "/dashboards/hollow-vault#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/hollow-vault/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/hollow-vault/index.html",
+      "url": "/dashboards/hollow-vault/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/hollow-vault/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/hollow-vault/",
+      "url": "/dashboards/hollow-vault/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/hollow-vault/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/hollow-vault/?variant=moss",
+      "url": "/dashboards/hollow-vault/?variant=moss#/overview",
       "width": 1440,
       "variant": "moss",
       "final_path": "/dashboards/hollow-vault/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/hollow-vault/?variant=crimson",
+      "url": "/dashboards/hollow-vault/?variant=crimson#/overview",
       "width": 1440,
       "variant": "crimson",
       "final_path": "/dashboards/hollow-vault/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=moss#/overview",
+      "width": 1440,
+      "variant": "moss",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=moss#/overview",
+      "width": 375,
+      "variant": "moss",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=crimson#/overview",
+      "width": 1440,
+      "variant": "crimson",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=crimson#/overview",
+      "width": 375,
+      "variant": "crimson",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/#/quests",
+      "width": 1440,
+      "variant": "default",
+      "page": "quests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/#/quests",
+      "width": 375,
+      "variant": "default",
+      "page": "quests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=moss#/quests",
+      "width": 1440,
+      "variant": "moss",
+      "page": "quests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=moss#/quests",
+      "width": 375,
+      "variant": "moss",
+      "page": "quests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=crimson#/quests",
+      "width": 1440,
+      "variant": "crimson",
+      "page": "quests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=crimson#/quests",
+      "width": 375,
+      "variant": "crimson",
+      "page": "quests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/#/arena",
+      "width": 1440,
+      "variant": "default",
+      "page": "arena",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/#/arena",
+      "width": 375,
+      "variant": "default",
+      "page": "arena",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=moss#/arena",
+      "width": 1440,
+      "variant": "moss",
+      "page": "arena",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=moss#/arena",
+      "width": 375,
+      "variant": "moss",
+      "page": "arena",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=crimson#/arena",
+      "width": 1440,
+      "variant": "crimson",
+      "page": "arena",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=crimson#/arena",
+      "width": 375,
+      "variant": "crimson",
+      "page": "arena",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/#/guild",
+      "width": 1440,
+      "variant": "default",
+      "page": "guild",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/#/guild",
+      "width": 375,
+      "variant": "default",
+      "page": "guild",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=moss#/guild",
+      "width": 1440,
+      "variant": "moss",
+      "page": "guild",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=moss#/guild",
+      "width": 375,
+      "variant": "moss",
+      "page": "guild",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=crimson#/guild",
+      "width": 1440,
+      "variant": "crimson",
+      "page": "guild",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hollow-vault/?variant=crimson#/guild",
+      "width": 375,
+      "variant": "crimson",
+      "page": "guild",
       "errors": []
     },
     {

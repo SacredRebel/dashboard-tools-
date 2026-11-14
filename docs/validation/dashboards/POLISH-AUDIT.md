@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `hollow-vault` (Phase C — total 25).
+Next: `cortex-well` (Phase C — total 25).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -23,7 +23,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 13 | taffy-analytics | Taffy Analytics | 4 | 3 | 3 | 4 | 3 | 3 | 4 | 4 | 28 | abstract kit layout; added serif titles | queued |
 | 14 | prism-workspace | Prism Workspace | 4 | 3 | 4 | 4 | 4 | 3 | 4 | 4 | 30 | kit gibberish → real copy; missing kit misspell charm | queued |
 | 15 | plumage-survey | Plumage Bird Survey | 4 | 3 | 4 | 4 | 3 | 3 | 4 | 4 | 29 | hyper-detailed parrot → flat vector; less glass | queued |
-| 16 | hollow-vault | Hollow Vault | 4 | 3 | 4 | 3 | 2 | 2 | 4 | 3 | 25 | flat icons vs painted items; blue WAGER palette | queued |
+| 16 | hollow-vault | Hollow Vault | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted relics+chest; witch; multipage + motion | polished 25→36 |
 | 17 | larchwood-lodge | Larchwood Lodge | 4 | 3 | 4 | 3 | 3 | 3 | 4 | 4 | 28 | missing purple glass kit widgets; photo in ref | queued |
 | 18 | hearth-nest | Hearth Nest | 4 | 4 | 4 | 4 | 2 | 2 | 3 | 3 | 26 | no living-room photo; flat room map; weaker glow | queued |
 | 19 | veil-rooms | Veil Rooms | 5 | 4 | 4 | 3 | 3 | 2 | 4 | 4 | 29 | less glass blur; no album art photo | queued |
@@ -58,7 +58,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 5. ~~`pulsar-analytics` — 24~~ → polished (36)
 6. ~~`vitalis-care` — 24~~ → polished (36)
 7. ~~`pearlwell-dental` — 25~~ → polished (36)
-8. `hollow-vault` — 25
+8. ~~`hollow-vault` — 25~~ → polished (36)
 9. `cortex-well` — 25
 10. `hearth-nest` — 26
 11. `atrium-living` — 26
