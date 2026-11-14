@@ -57,7 +57,10 @@
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/kumo-payroll/#/overview",
@@ -71,7 +74,10 @@
       "width": 1440,
       "variant": "jade",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=jade#/overview",
@@ -85,7 +91,10 @@
       "width": 1440,
       "variant": "sakura",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=sakura#/overview",
@@ -100,9 +109,8 @@
       "variant": "default",
       "page": "people",
       "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)",
-        "thin page: 12 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 21% of the main width (need ≥ 70%)"
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 27% of the main width (need ≥ 70%)"
       ]
     },
     {
@@ -110,9 +118,7 @@
       "width": 375,
       "variant": "default",
       "page": "people",
-      "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=jade#/people",
@@ -120,9 +126,8 @@
       "variant": "jade",
       "page": "people",
       "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)",
-        "thin page: 12 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 21% of the main width (need ≥ 70%)"
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 27% of the main width (need ≥ 70%)"
       ]
     },
     {
@@ -130,9 +135,7 @@
       "width": 375,
       "variant": "jade",
       "page": "people",
-      "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=sakura#/people",
@@ -140,9 +143,8 @@
       "variant": "sakura",
       "page": "people",
       "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)",
-        "thin page: 12 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 21% of the main width (need ≥ 70%)"
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 27% of the main width (need ≥ 70%)"
       ]
     },
     {
@@ -150,9 +152,7 @@
       "width": 375,
       "variant": "sakura",
       "page": "people",
-      "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/#/payroll",
@@ -160,9 +160,8 @@
       "variant": "default",
       "page": "payroll",
       "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)",
-        "thin page: 9 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 21% of the main width (need ≥ 70%)"
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 27% of the main width (need ≥ 70%)"
       ]
     },
     {
@@ -170,9 +169,7 @@
       "width": 375,
       "variant": "default",
       "page": "payroll",
-      "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=jade#/payroll",
@@ -180,9 +177,8 @@
       "variant": "jade",
       "page": "payroll",
       "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)",
-        "thin page: 9 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 21% of the main width (need ≥ 70%)"
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 27% of the main width (need ≥ 70%)"
       ]
     },
     {
@@ -190,9 +186,7 @@
       "width": 375,
       "variant": "jade",
       "page": "payroll",
-      "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=sakura#/payroll",
@@ -200,9 +194,8 @@
       "variant": "sakura",
       "page": "payroll",
       "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)",
-        "thin page: 9 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 21% of the main width (need ≥ 70%)"
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 27% of the main width (need ≥ 70%)"
       ]
     },
     {
@@ -210,9 +203,7 @@
       "width": 375,
       "variant": "sakura",
       "page": "payroll",
-      "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/#/settings",
@@ -220,9 +211,8 @@
       "variant": "default",
       "page": "settings",
       "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)",
-        "thin page: 9 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 21% of the main width (need ≥ 70%)"
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 27% of the main width (need ≥ 70%)"
       ]
     },
     {
@@ -230,9 +220,7 @@
       "width": 375,
       "variant": "default",
       "page": "settings",
-      "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=jade#/settings",
@@ -240,9 +228,8 @@
       "variant": "jade",
       "page": "settings",
       "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)",
-        "thin page: 9 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 21% of the main width (need ≥ 70%)"
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 27% of the main width (need ≥ 70%)"
       ]
     },
     {
@@ -250,9 +237,7 @@
       "width": 375,
       "variant": "jade",
       "page": "settings",
-      "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=sakura#/settings",
@@ -260,9 +245,8 @@
       "variant": "sakura",
       "page": "settings",
       "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)",
-        "thin page: 9 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 21% of the main width (need ≥ 70%)"
+        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
+        "page content spans 27% of the main width (need ≥ 70%)"
       ]
     },
     {
@@ -270,9 +254,7 @@
       "width": 375,
       "variant": "sakura",
       "page": "settings",
-      "errors": [
-        "placeholder page: [data-db-stub] is visible (build the real page UI)"
-      ]
+      "errors": []
     },
     {
       "url": "/#/dashboards/kumo-payroll",

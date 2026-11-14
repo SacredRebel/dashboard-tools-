@@ -314,13 +314,13 @@
   function ensureStub() {
     if (stub) return stub;
     stub = document.createElement('div');
-    stub.setAttribute('data-db-stub-host', '');
+    stub.setAttribute('data-db-stub-host-legacy', '');
     stub.hidden = true;
     main.appendChild(stub);
     return stub;
   }
 
-  window.DB.route(PAGES, (id, page) => {
+  window.DB._legacyRouteDisabled && window.DB.route(PAGES, (id, page) => {
     const isOverview = id === 'overview';
     overview.hidden = !isOverview;
     const host = ensureStub();
@@ -342,5 +342,26 @@
     });
   }
 
-  document.documentElement.dataset.ready = 'true';
+  
+/* === DB multipage polish (dense kit) === */
+(function wirePages() {
+  const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"sleep","name":"Sleep","pattern":"Report"},{"id":"recovery","name":"Recovery","pattern":"Report"},{"id":"activity","name":"Activity","pattern":"List"},{"id":"settings","name":"Settings","pattern":"Settings"}];
+  const root = document.querySelector('[data-db-app]') || document.body;
+  const main = document.querySelector('main') || document.body;
+  let overview = main.querySelector('[data-page-panel="overview"]');
+  if (!overview) {
+    overview = document.createElement('div');
+    overview.setAttribute('data-page-panel', 'overview');
+    [...main.children].forEach((ch) => {
+      if (ch.hasAttribute && (ch.hasAttribute('data-db-stub') || ch.getAttribute('data-db-page-host') != null)) return;
+      overview.appendChild(ch);
+    });
+    main.insertBefore(overview, main.firstChild);
+  }
+  main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
+  if (window.DB?.onVisible) window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
+  if (window.DB?.dense) window.DB.dense.mount({ main, overview, pages: PAGES, brand: "Lull Sleep" });
+})();
+/* === /DB multipage polish === */
+document.documentElement.dataset.ready = 'true';
 })();

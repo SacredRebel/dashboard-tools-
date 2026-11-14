@@ -1,25 +1,11 @@
 {
   "id": "veil-rooms",
   "checked": "2026-11-14",
-  "ok": false,
+  "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/veil-rooms/",
-      "width": 1440,
-      "variant": "default",
-      "final_path": "/dashboards/veil-rooms/",
-      "overflow_px": 0,
-      "errors": [
-        "low contrast 3.66:1 (needs 4.5) \"Front door\" 12px, text rgb(91, 156, 240) on ~rgb(48, 65, 91) at x794 y555",
-        "low contrast 3.34:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 134, 148) on ~rgb(49, 53, 64) at x1152 y240",
-        "low contrast 3.34:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 134, 148) on ~rgb(49, 53, 64) at x1152 y314",
-        "low contrast 3.64:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 134, 148) on ~rgb(44, 47, 57) at x1300 y240",
-        "low contrast 3.64:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 134, 148) on ~rgb(44, 47, 57) at x1300 y314"
-      ]
-    },
-    {
-      "url": "/dashboards/veil-rooms",
+      "url": "/dashboards/veil-rooms/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/veil-rooms/",
@@ -27,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/veil-rooms/index.html",
+      "url": "/dashboards/veil-rooms#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/veil-rooms/",
@@ -35,39 +21,245 @@
       "errors": []
     },
     {
-      "url": "/dashboards/veil-rooms/",
+      "url": "/dashboards/veil-rooms/index.html#/overview",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/veil-rooms/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/veil-rooms/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 3.67:1 (needs 4.5) \"Front door\" 12px, text rgb(91, 156, 240) on ~rgb(48, 65, 91) at x41 y1477",
-        "low contrast 3.34:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 134, 148) on ~rgb(49, 53, 64) at x31 y1875",
-        "low contrast 3.34:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 134, 148) on ~rgb(49, 53, 64) at x31 y1949",
-        "low contrast 3.64:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 134, 148) on ~rgb(44, 47, 57) at x31 y2171",
-        "low contrast 3.64:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 134, 148) on ~rgb(44, 47, 57) at x31 y2245"
-      ]
+      "errors": []
     },
     {
-      "url": "/dashboards/veil-rooms/?variant=mist",
+      "url": "/dashboards/veil-rooms/?variant=mist#/overview",
       "width": 1440,
       "variant": "mist",
       "final_path": "/dashboards/veil-rooms/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 3.77:1 (needs 4.5) \"Front door\" 12px, text rgb(106, 168, 239) on ~rgb(52, 72, 96) at x794 y555",
-        "low contrast 3.21:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 140, 156) on ~rgb(49, 61, 77) at x1152 y240",
-        "low contrast 3.21:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 140, 156) on ~rgb(49, 61, 77) at x1152 y314",
-        "low contrast 3.52:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 140, 156) on ~rgb(44, 55, 69) at x1300 y240",
-        "low contrast 3.52:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 140, 156) on ~rgb(44, 55, 69) at x1300 y314"
-      ]
+      "errors": []
     },
     {
-      "url": "/dashboards/veil-rooms/?variant=midnight",
+      "url": "/dashboards/veil-rooms/?variant=midnight#/overview",
       "width": 1440,
       "variant": "midnight",
       "final_path": "/dashboards/veil-rooms/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=mist#/overview",
+      "width": 1440,
+      "variant": "mist",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=mist#/overview",
+      "width": 375,
+      "variant": "mist",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=midnight#/overview",
+      "width": 1440,
+      "variant": "midnight",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=midnight#/overview",
+      "width": 375,
+      "variant": "midnight",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/#/rooms",
+      "width": 1440,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/#/rooms",
+      "width": 375,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=mist#/rooms",
+      "width": 1440,
+      "variant": "mist",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=mist#/rooms",
+      "width": 375,
+      "variant": "mist",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=midnight#/rooms",
+      "width": 1440,
+      "variant": "midnight",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=midnight#/rooms",
+      "width": 375,
+      "variant": "midnight",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/#/devices",
+      "width": 1440,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/#/devices",
+      "width": 375,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=mist#/devices",
+      "width": 1440,
+      "variant": "mist",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=mist#/devices",
+      "width": 375,
+      "variant": "mist",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=midnight#/devices",
+      "width": 1440,
+      "variant": "midnight",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=midnight#/devices",
+      "width": 375,
+      "variant": "midnight",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/#/energy",
+      "width": 1440,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/#/energy",
+      "width": 375,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=mist#/energy",
+      "width": 1440,
+      "variant": "mist",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=mist#/energy",
+      "width": 375,
+      "variant": "mist",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=midnight#/energy",
+      "width": 1440,
+      "variant": "midnight",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=midnight#/energy",
+      "width": 375,
+      "variant": "midnight",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=mist#/settings",
+      "width": 1440,
+      "variant": "mist",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=mist#/settings",
+      "width": 375,
+      "variant": "mist",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=midnight#/settings",
+      "width": 1440,
+      "variant": "midnight",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/veil-rooms/?variant=midnight#/settings",
+      "width": 375,
+      "variant": "midnight",
+      "page": "settings",
       "errors": []
     },
     {

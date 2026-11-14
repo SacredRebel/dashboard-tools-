@@ -1,5 +1,16 @@
 /* Dense secondary pages — shared kit (pair with dense-pages.js) */
 [data-db-page-host][hidden] { display: none !important; }
+/* Keep parent grid/flex layouts: overview wrapper must not collapse columns. */
+main > [data-page-panel="overview"]:not([hidden]) { display: contents; }
+[data-db-page-host]:not([hidden]) {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  grid-column: 1 / -1;
+  flex: 1 1 100%;
+  max-width: none;
+}
+[data-db-page-host] > .db-dense-page { width: 100%; min-width: 0; max-width: none; }
 .db-dense-page {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));

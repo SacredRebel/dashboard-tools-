@@ -1,7 +1,7 @@
 {
   "id": "haven-listings",
   "checked": "2026-11-14",
-  "ok": true,
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -57,7 +57,12 @@
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "thin page: 44 visible elements in <main> (need ≥ 60 at 1440)",
+        "page content spans 36% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/#/overview",
@@ -71,7 +76,12 @@
       "width": 1440,
       "variant": "sunrise",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "thin page: 44 visible elements in <main> (need ≥ 60 at 1440)",
+        "page content spans 36% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/?variant=sunrise#/overview",
@@ -85,7 +95,12 @@
       "width": 1440,
       "variant": "midnight",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "thin page: 44 visible elements in <main> (need ≥ 60 at 1440)",
+        "page content spans 36% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/?variant=midnight#/overview",
@@ -99,7 +114,11 @@
       "width": 1440,
       "variant": "default",
       "page": "listings",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/#/listings",
@@ -113,7 +132,11 @@
       "width": 1440,
       "variant": "sunrise",
       "page": "listings",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/?variant=sunrise#/listings",
@@ -127,7 +150,11 @@
       "width": 1440,
       "variant": "midnight",
       "page": "listings",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/?variant=midnight#/listings",
@@ -141,7 +168,11 @@
       "width": 1440,
       "variant": "default",
       "page": "showings",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/#/showings",
@@ -155,7 +186,11 @@
       "width": 1440,
       "variant": "sunrise",
       "page": "showings",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/?variant=sunrise#/showings",
@@ -169,7 +204,11 @@
       "width": 1440,
       "variant": "midnight",
       "page": "showings",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/?variant=midnight#/showings",
@@ -183,7 +222,11 @@
       "width": 1440,
       "variant": "default",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/#/settings",
@@ -197,7 +240,11 @@
       "width": 1440,
       "variant": "sunrise",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/?variant=sunrise#/settings",
@@ -211,7 +258,11 @@
       "width": 1440,
       "variant": "midnight",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "low-res image: media/villa.webp is 1440px for 1245px rendered (need ≥ 1868px or a srcset 2x)",
+        "page content spans 33% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/haven-listings/?variant=midnight#/settings",

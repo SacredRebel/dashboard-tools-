@@ -141,24 +141,26 @@
     const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"library","name":"Library","pattern":"List"},{"id":"activity","name":"Activity","pattern":"Report"},{"id":"settings","name":"Settings","pattern":"Settings"}];
     const root = document.querySelector('[data-db-app]') || document.body;
     const main = document.querySelector('main') || document.body;
-    // Wrap overview children once
     let overview = main.querySelector('[data-page-panel="overview"]');
     if (!overview) {
       overview = document.createElement('div');
       overview.setAttribute('data-page-panel', 'overview');
-      while (main.firstChild) overview.appendChild(main.firstChild);
-      main.appendChild(overview);
+      const keep = [];
+      [...main.children].forEach((ch) => {
+        if (ch.hasAttribute && ch.hasAttribute('data-db-stub')) return;
+        if (ch.getAttribute && ch.getAttribute('data-db-page-host') != null) return;
+        keep.push(ch);
+      });
+      keep.forEach((ch) => overview.appendChild(ch));
+      main.insertBefore(overview, main.firstChild);
     }
+    main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
     document.querySelectorAll('a[href]').forEach((a) => {
       const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
       if (!label) return;
       const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
         || (label === 'home' && p.id === 'overview')
-        || (label === 'dashboard' && p.id === 'overview')
-        || (label === 'my music' && p.id === 'library')
-        || (label === 'favourites' && p.id === 'library')
-        || (label === 'playlists' && p.id === 'library')
-        || (label === 'podcasts' && p.id === 'activity'));
+        || (label === 'dashboard' && p.id === 'overview'));
       if (hit) a.setAttribute('href', '#/' + hit.id);
     });
     if (window.DB?.onVisible) {
@@ -166,23 +168,13 @@
         document.documentElement.dataset.motionPaused = visible ? '' : '1';
       });
     }
-    main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
     if (!window.DB?.dense) {
       console.error('DB.dense missing — load ../_shared/dense-pages.js');
       return;
     }
-    window.DB.dense.mount({
-      main,
-      overview,
-      pages: PAGES,
-      brand: 'Mallow Music',
-    });
-    // overview motion once
-    document.querySelectorAll('.mm-reveal, .dbp-reveal').forEach((el, i) => {
-      el.style.setProperty('--reveal-delay', (reduce ? 0 : 40 * i) + 'ms');
-      el.classList.add('mm-reveal-in', 'dbp-reveal-in');
-    });
+    window.DB.dense.mount({ main, overview, pages: PAGES, brand: "Mallow Music" });
     if (window.DB?.fx) window.DB.fx.remount(overview);
+    void reduce;
   })();
 /* === /DB multipage polish === */
   document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end

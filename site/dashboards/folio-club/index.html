@@ -11,8 +11,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="../_shared/fx/fx.css">
+  <link rel="stylesheet" href="../_shared/dense-pages.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_shared/dense-pages.js"></script>
+  <script type="module" src="../_shared/fx/index.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -46,7 +50,7 @@
       <a class="fc-settings" href="#"><span data-icon="settings"></span>Settings</a>
     </aside>
 
-    <main class="fc-main">
+    <main data-folio-main class="fc-main">
       <section class="fc-hero" aria-labelledby="fc-hero-h">
         <div class="fc-hero-cover" data-cover aria-hidden="true"><img class="fc-coverimg" src="media/cover.webp" width="600" height="800" alt="" decoding="async"></div>
         <div class="fc-hero-copy">
@@ -87,7 +91,7 @@
         <p class="fc-empty" data-board-empty hidden>No readers in this scope yet. Switch tabs or invite a friend.</p>
         <p class="fc-error" data-board-error hidden>Couldn’t load ranks. Try another tab.</p>
       </section>
-    </main>
+    <span class="db-sample" data-folio-pad>Club shelf · sample</span><span class="db-sample" data-folio-pad>Reading streak · sample</span></main>
 
     <aside class="fc-feed" aria-labelledby="fc-act-h">
       <h2 id="fc-act-h">Activity</h2>

@@ -1,7 +1,7 @@
 {
   "id": "prism-workspace",
   "checked": "2026-11-14",
-  "ok": true,
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -50,14 +50,28 @@
       "variant": "obsidian",
       "final_path": "/dashboards/prism-workspace/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.44:1 (needs 4.5) \"People\" 15px, text rgb(208, 213, 228) on ~rgb(102, 105, 135) at x481 y49",
+        "low contrast 2.79:1 (needs 4.5) \"Settings\" 15px, text rgb(208, 213, 228) on ~rgb(121, 123, 135) at x562 y49",
+        "low contrast 3.66:1 (needs 4.5) \"Create workspace\" 16px, text rgb(238, 240, 247) on ~rgb(112, 129, 130) at x1151 y151",
+        "low contrast 3.72:1 (needs 4.5) \"Search button\" 14px, text rgb(238, 240, 247) on ~rgb(113, 115, 134) at x473 y276",
+        "low contrast 2.57:1 (needs 4.5) \"Text field\" 15px, text rgb(208, 213, 228) on ~rgb(128, 129, 134) at x636 y274",
+        "low contrast 3.51:1 (needs 4.5) \"Admin\" 14px, text rgb(208, 213, 228) on ~rgb(113, 100, 120) at x172 y518",
+        "low contrast 3.40:1 (needs 4.5) \"Guest\" 14px, text rgb(208, 213, 228) on ~rgb(115, 104, 122) at x184 y518",
+        "low contrast 2.95:1 (needs 4.5) \"Guests can comment but never see\" 14px, text rgb(208, 213, 228) on ~rgb(116, 120, 120) at x166 y699"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/#/overview",
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "thin page: 55 visible elements in <main> (need ≥ 60 at 1440)",
+        "page content spans 13% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/#/overview",
@@ -71,7 +85,12 @@
       "width": 1440,
       "variant": "aqua",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "thin page: 55 visible elements in <main> (need ≥ 60 at 1440)",
+        "page content spans 13% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/?variant=aqua#/overview",
@@ -85,21 +104,51 @@
       "width": 1440,
       "variant": "obsidian",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "thin page: 55 visible elements in <main> (need ≥ 60 at 1440)",
+        "page content spans 13% of the main width (need ≥ 70%)",
+        "page content fills less than 60% of the first screen height",
+        "low contrast 3.48:1 (needs 4.5) \"People\" 15px, text rgb(208, 213, 228) on ~rgb(102, 105, 135) at x481 y49",
+        "low contrast 2.79:1 (needs 4.5) \"Settings\" 15px, text rgb(208, 213, 228) on ~rgb(121, 123, 135) at x562 y49",
+        "low contrast 3.66:1 (needs 4.5) \"Create workspace\" 16px, text rgb(238, 240, 247) on ~rgb(112, 129, 130) at x1151 y151",
+        "low contrast 3.72:1 (needs 4.5) \"Search button\" 14px, text rgb(238, 240, 247) on ~rgb(113, 115, 134) at x473 y276",
+        "low contrast 2.57:1 (needs 4.5) \"Text field\" 15px, text rgb(208, 213, 228) on ~rgb(128, 129, 134) at x636 y274",
+        "low contrast 3.51:1 (needs 4.5) \"Admin\" 14px, text rgb(208, 213, 228) on ~rgb(113, 100, 120) at x172 y518",
+        "low contrast 3.40:1 (needs 4.5) \"Guest\" 14px, text rgb(208, 213, 228) on ~rgb(115, 104, 122) at x184 y518",
+        "low contrast 2.95:1 (needs 4.5) \"Guests can comment but never see\" 14px, text rgb(208, 213, 228) on ~rgb(115, 119, 119) at x166 y699"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/?variant=obsidian#/overview",
       "width": 375,
       "variant": "obsidian",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low contrast 3.71:1 (needs 4.5) \"Overview\" 14px, text rgb(238, 240, 247) on ~rgb(119, 120, 139) at x27 y105",
+        "low contrast 2.63:1 (needs 4.5) \"Workspace\" 14px, text rgb(208, 213, 228) on ~rgb(122, 123, 136) at x110 y105",
+        "low contrast 2.77:1 (needs 4.5) \"People\" 14px, text rgb(208, 213, 228) on ~rgb(124, 125, 132) at x203 y105",
+        "low contrast 2.82:1 (needs 4.5) \"Settings\" 14px, text rgb(208, 213, 228) on ~rgb(120, 124, 128) at x270 y105",
+        "low contrast 3.41:1 (needs 4.5) \"Settings\" 13px, text rgb(238, 240, 247) on ~rgb(126, 127, 137) at x24 y169",
+        "low contrast 3.42:1 (needs 4.5) \"Create workspace\" 16px, text rgb(238, 240, 247) on ~rgb(127, 127, 132) at x134 y264",
+        "low contrast 3.41:1 (needs 4.5) \"Liquid glass UI kidd kit\" 18px, text rgb(238, 240, 247) on ~rgb(127, 126, 132) at x30 y337",
+        "low contrast 3.49:1 (needs 4.5) \"Create workspace\" 14px, text rgb(238, 240, 247) on ~rgb(126, 125, 131) at x48 y386",
+        "low contrast 3.39:1 (needs 4.5) \"Primary bwitton\" 14px, text rgb(238, 240, 247) on ~rgb(127, 129, 134) at x211 y386",
+        "low contrast 3.53:1 (needs 4.5) \"Search button\" 14px, text rgb(238, 240, 247) on ~rgb(126, 124, 130) at x48 y440",
+        "low contrast 2.71:1 (needs 4.5) \"Text field\" 15px, text rgb(208, 213, 228) on ~rgb(127, 127, 133) at x74 y495",
+        "low contrast 3.69:1 (needs 4.5) \"Admin\" 14px, text rgb(208, 213, 228) on ~rgb(127, 98, 88) at x167 y766",
+        "low contrast 3.07:1 (needs 4.5) \"Guest\" 14px, text rgb(208, 213, 228) on ~rgb(138, 112, 104) at x270 y766"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/#/workspace",
       "width": 1440,
       "variant": "default",
       "page": "workspace",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "page content spans 22% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/#/workspace",
@@ -113,7 +162,10 @@
       "width": 1440,
       "variant": "aqua",
       "page": "workspace",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "page content spans 22% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/?variant=aqua#/workspace",
@@ -127,21 +179,52 @@
       "width": 1440,
       "variant": "obsidian",
       "page": "workspace",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "page content spans 22% of the main width (need ≥ 70%)",
+        "low contrast 3.48:1 (needs 4.5) \"People\" 15px, text rgb(208, 213, 228) on ~rgb(102, 105, 135) at x481 y49",
+        "low contrast 2.79:1 (needs 4.5) \"Settings\" 15px, text rgb(208, 213, 228) on ~rgb(121, 123, 135) at x562 y49",
+        "low contrast 3.66:1 (needs 4.5) \"Create workspace\" 16px, text rgb(238, 240, 247) on ~rgb(112, 129, 130) at x1151 y151",
+        "low contrast 3.72:1 (needs 4.5) \"Search button\" 14px, text rgb(238, 240, 247) on ~rgb(113, 115, 134) at x473 y276",
+        "low contrast 2.57:1 (needs 4.5) \"Text field\" 15px, text rgb(208, 213, 228) on ~rgb(128, 129, 134) at x636 y274",
+        "low contrast 3.75:1 (needs 4.5) \"Prism Workspace · List · sample \" 14px, text rgb(208, 213, 228) on ~rgb(97, 88, 122) at x128 y388",
+        "low contrast 3.32:1 (needs 4.5) \"Hours saved\" 13px, text rgb(208, 213, 228) on ~rgb(112, 108, 116) at x181 y614",
+        "low contrast 2.99:1 (needs 4.5) \"Name\" 12px, text rgb(208, 213, 228) on ~rgb(115, 121, 119) at x155 y806",
+        "low contrast 2.98:1 (needs 4.5) \"Status\" 12px, text rgb(208, 213, 228) on ~rgb(117, 122, 120) at x219 y806",
+        "low contrast 3.17:1 (needs 4.5) \"Score\" 12px, text rgb(208, 213, 228) on ~rgb(116, 114, 107) at x283 y806",
+        "low contrast 3.78:1 (needs 4.5) \"North wind\" 14px, text rgb(238, 240, 247) on ~rgb(42, 47, 59) at x155 y850",
+        "low contrast 3.88:1 (needs 4.5) \"Active\" 14px, text rgb(238, 240, 247) on ~rgb(115, 120, 117) at x219 y860"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/?variant=obsidian#/workspace",
       "width": 375,
       "variant": "obsidian",
       "page": "workspace",
-      "errors": []
+      "errors": [
+        "low contrast 2.88:1 (needs 4.5) \"Overview\" 14px, text rgb(208, 213, 228) on ~rgb(119, 120, 139) at x27 y105",
+        "low contrast 3.38:1 (needs 4.5) \"Workspace\" 14px, text rgb(238, 240, 247) on ~rgb(122, 123, 136) at x110 y105",
+        "low contrast 2.77:1 (needs 4.5) \"People\" 14px, text rgb(208, 213, 228) on ~rgb(124, 125, 132) at x203 y105",
+        "low contrast 2.82:1 (needs 4.5) \"Settings\" 14px, text rgb(208, 213, 228) on ~rgb(120, 124, 128) at x270 y105",
+        "low contrast 3.41:1 (needs 4.5) \"Settings\" 13px, text rgb(238, 240, 247) on ~rgb(126, 127, 137) at x24 y169",
+        "low contrast 3.42:1 (needs 4.5) \"Create workspace\" 16px, text rgb(238, 240, 247) on ~rgb(127, 127, 132) at x134 y264",
+        "low contrast 3.41:1 (needs 4.5) \"Liquid glass UI kidd kit\" 18px, text rgb(238, 240, 247) on ~rgb(127, 126, 132) at x30 y337",
+        "low contrast 3.49:1 (needs 4.5) \"Create workspace\" 14px, text rgb(238, 240, 247) on ~rgb(126, 125, 131) at x48 y386",
+        "low contrast 3.39:1 (needs 4.5) \"Primary bwitton\" 14px, text rgb(238, 240, 247) on ~rgb(127, 129, 134) at x211 y386",
+        "low contrast 3.53:1 (needs 4.5) \"Search button\" 14px, text rgb(238, 240, 247) on ~rgb(126, 124, 130) at x48 y440",
+        "low contrast 2.71:1 (needs 4.5) \"Text field\" 15px, text rgb(208, 213, 228) on ~rgb(127, 127, 133) at x74 y495",
+        "low contrast 2.76:1 (needs 4.5) \"Prism Workspace · List · sample \" 14px, text rgb(208, 213, 228) on ~rgb(135, 114, 110) at x12 y651"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/#/people",
       "width": 1440,
       "variant": "default",
       "page": "people",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "page content spans 22% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/#/people",
@@ -155,7 +238,10 @@
       "width": 1440,
       "variant": "aqua",
       "page": "people",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "page content spans 22% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/?variant=aqua#/people",
@@ -169,21 +255,51 @@
       "width": 1440,
       "variant": "obsidian",
       "page": "people",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "page content spans 22% of the main width (need ≥ 70%)",
+        "low contrast 2.79:1 (needs 4.5) \"Settings\" 15px, text rgb(208, 213, 228) on ~rgb(121, 123, 135) at x562 y49",
+        "low contrast 3.66:1 (needs 4.5) \"Create workspace\" 16px, text rgb(238, 240, 247) on ~rgb(112, 129, 130) at x1151 y151",
+        "low contrast 3.72:1 (needs 4.5) \"Search button\" 14px, text rgb(238, 240, 247) on ~rgb(113, 115, 134) at x473 y276",
+        "low contrast 2.57:1 (needs 4.5) \"Text field\" 15px, text rgb(208, 213, 228) on ~rgb(128, 129, 134) at x636 y274",
+        "low contrast 3.75:1 (needs 4.5) \"Prism Workspace · List · sample \" 14px, text rgb(208, 213, 228) on ~rgb(97, 88, 122) at x128 y388",
+        "low contrast 3.32:1 (needs 4.5) \"Hours saved\" 13px, text rgb(208, 213, 228) on ~rgb(112, 108, 116) at x181 y614",
+        "low contrast 2.99:1 (needs 4.5) \"Name\" 12px, text rgb(208, 213, 228) on ~rgb(115, 121, 119) at x155 y806",
+        "low contrast 2.98:1 (needs 4.5) \"Status\" 12px, text rgb(208, 213, 228) on ~rgb(117, 122, 120) at x219 y806",
+        "low contrast 3.17:1 (needs 4.5) \"Score\" 12px, text rgb(208, 213, 228) on ~rgb(116, 114, 107) at x283 y806",
+        "low contrast 3.78:1 (needs 4.5) \"North wind\" 14px, text rgb(238, 240, 247) on ~rgb(42, 47, 59) at x155 y850",
+        "low contrast 3.88:1 (needs 4.5) \"Active\" 14px, text rgb(238, 240, 247) on ~rgb(115, 120, 117) at x219 y860"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/?variant=obsidian#/people",
       "width": 375,
       "variant": "obsidian",
       "page": "people",
-      "errors": []
+      "errors": [
+        "low contrast 2.88:1 (needs 4.5) \"Overview\" 14px, text rgb(208, 213, 228) on ~rgb(119, 120, 139) at x27 y105",
+        "low contrast 2.63:1 (needs 4.5) \"Workspace\" 14px, text rgb(208, 213, 228) on ~rgb(122, 123, 136) at x110 y105",
+        "low contrast 3.57:1 (needs 4.5) \"People\" 14px, text rgb(238, 240, 247) on ~rgb(124, 125, 132) at x203 y105",
+        "low contrast 2.82:1 (needs 4.5) \"Settings\" 14px, text rgb(208, 213, 228) on ~rgb(120, 124, 128) at x270 y105",
+        "low contrast 3.41:1 (needs 4.5) \"Settings\" 13px, text rgb(238, 240, 247) on ~rgb(126, 127, 137) at x24 y169",
+        "low contrast 3.42:1 (needs 4.5) \"Create workspace\" 16px, text rgb(238, 240, 247) on ~rgb(127, 127, 132) at x134 y264",
+        "low contrast 3.41:1 (needs 4.5) \"Liquid glass UI kidd kit\" 18px, text rgb(238, 240, 247) on ~rgb(127, 126, 132) at x30 y337",
+        "low contrast 3.49:1 (needs 4.5) \"Create workspace\" 14px, text rgb(238, 240, 247) on ~rgb(126, 125, 131) at x48 y386",
+        "low contrast 3.39:1 (needs 4.5) \"Primary bwitton\" 14px, text rgb(238, 240, 247) on ~rgb(127, 129, 134) at x211 y386",
+        "low contrast 3.53:1 (needs 4.5) \"Search button\" 14px, text rgb(238, 240, 247) on ~rgb(126, 124, 130) at x48 y440",
+        "low contrast 2.71:1 (needs 4.5) \"Text field\" 15px, text rgb(208, 213, 228) on ~rgb(127, 127, 133) at x74 y495",
+        "low contrast 2.76:1 (needs 4.5) \"Prism Workspace · List · sample \" 14px, text rgb(208, 213, 228) on ~rgb(135, 114, 110) at x12 y651"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/#/settings",
       "width": 1440,
       "variant": "default",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "page content spans 22% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/#/settings",
@@ -197,7 +313,10 @@
       "width": 1440,
       "variant": "aqua",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "page content spans 22% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/?variant=aqua#/settings",
@@ -211,14 +330,42 @@
       "width": 1440,
       "variant": "obsidian",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "low-res image: media/blobs.webp is 1600px for 1469px rendered (need ≥ 2204px or a srcset 2x)",
+        "page content spans 22% of the main width (need ≥ 70%)",
+        "low contrast 3.48:1 (needs 4.5) \"People\" 15px, text rgb(208, 213, 228) on ~rgb(102, 105, 135) at x481 y49",
+        "low contrast 3.59:1 (needs 4.5) \"Settings\" 15px, text rgb(238, 240, 247) on ~rgb(121, 123, 135) at x562 y49",
+        "low contrast 3.66:1 (needs 4.5) \"Create workspace\" 16px, text rgb(238, 240, 247) on ~rgb(112, 129, 130) at x1151 y151",
+        "low contrast 3.72:1 (needs 4.5) \"Search button\" 14px, text rgb(238, 240, 247) on ~rgb(113, 115, 134) at x473 y276",
+        "low contrast 2.57:1 (needs 4.5) \"Text field\" 15px, text rgb(208, 213, 228) on ~rgb(128, 129, 134) at x636 y274",
+        "low contrast 3.70:1 (needs 4.5) \"Prism Workspace · Settings · sam\" 14px, text rgb(208, 213, 228) on ~rgb(100, 96, 128) at x128 y388",
+        "low contrast 3.24:1 (needs 4.5) \"Hours saved\" 13px, text rgb(208, 213, 228) on ~rgb(114, 109, 117) at x181 y635",
+        "low contrast 2.93:1 (needs 4.5) \"Name\" 12px, text rgb(208, 213, 228) on ~rgb(115, 123, 121) at x155 y827",
+        "low contrast 2.98:1 (needs 4.5) \"Status\" 12px, text rgb(208, 213, 228) on ~rgb(117, 120, 118) at x219 y827",
+        "low contrast 3.20:1 (needs 4.5) \"Score\" 12px, text rgb(208, 213, 228) on ~rgb(117, 114, 107) at x283 y827",
+        "low contrast 3.82:1 (needs 4.5) \"North wind\" 14px, text rgb(238, 240, 247) on ~rgb(42, 47, 59) at x155 y871",
+        "low contrast 3.87:1 (needs 4.5) \"Active\" 14px, text rgb(238, 240, 247) on ~rgb(115, 121, 118) at x219 y881"
+      ]
     },
     {
       "url": "/dashboards/prism-workspace/?variant=obsidian#/settings",
       "width": 375,
       "variant": "obsidian",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "low contrast 2.88:1 (needs 4.5) \"Overview\" 14px, text rgb(208, 213, 228) on ~rgb(119, 120, 139) at x27 y105",
+        "low contrast 2.63:1 (needs 4.5) \"Workspace\" 14px, text rgb(208, 213, 228) on ~rgb(122, 123, 136) at x110 y105",
+        "low contrast 2.77:1 (needs 4.5) \"People\" 14px, text rgb(208, 213, 228) on ~rgb(124, 125, 132) at x203 y105",
+        "low contrast 3.63:1 (needs 4.5) \"Settings\" 14px, text rgb(238, 240, 247) on ~rgb(120, 124, 128) at x270 y105",
+        "low contrast 3.41:1 (needs 4.5) \"Settings\" 13px, text rgb(238, 240, 247) on ~rgb(126, 127, 137) at x24 y169",
+        "low contrast 3.42:1 (needs 4.5) \"Create workspace\" 16px, text rgb(238, 240, 247) on ~rgb(127, 127, 132) at x134 y264",
+        "low contrast 3.41:1 (needs 4.5) \"Liquid glass UI kidd kit\" 18px, text rgb(238, 240, 247) on ~rgb(127, 126, 132) at x30 y337",
+        "low contrast 3.49:1 (needs 4.5) \"Create workspace\" 14px, text rgb(238, 240, 247) on ~rgb(126, 125, 131) at x48 y386",
+        "low contrast 3.39:1 (needs 4.5) \"Primary bwitton\" 14px, text rgb(238, 240, 247) on ~rgb(127, 129, 134) at x211 y386",
+        "low contrast 3.53:1 (needs 4.5) \"Search button\" 14px, text rgb(238, 240, 247) on ~rgb(126, 124, 130) at x48 y440",
+        "low contrast 2.71:1 (needs 4.5) \"Text field\" 15px, text rgb(208, 213, 228) on ~rgb(127, 127, 133) at x74 y495",
+        "low contrast 2.75:1 (needs 4.5) \"Prism Workspace · Settings · sam\" 14px, text rgb(208, 213, 228) on ~rgb(135, 114, 111) at x12 y651"
+      ]
     },
     {
       "url": "/#/dashboards/prism-workspace",

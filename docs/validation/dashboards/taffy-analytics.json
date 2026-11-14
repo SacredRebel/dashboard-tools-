@@ -1,7 +1,7 @@
 {
   "id": "taffy-analytics",
   "checked": "2026-11-14",
-  "ok": true,
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -10,7 +10,11 @@
       "variant": "default",
       "final_path": "/dashboards/taffy-analytics/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.00:1 (needs 4.5) \"On · 40% of teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y2297",
+        "low contrast 1.97:1 (needs 4.5) \"On · All teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y2664",
+        "low contrast 1.97:1 (needs 4.5) \"On · All teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y3031"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics#/overview",
@@ -18,7 +22,11 @@
       "variant": "default",
       "final_path": "/dashboards/taffy-analytics/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.00:1 (needs 4.5) \"On · 40% of teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y2297",
+        "low contrast 1.97:1 (needs 4.5) \"On · All teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y2664",
+        "low contrast 1.97:1 (needs 4.5) \"On · All teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y3031"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/index.html#/overview",
@@ -26,7 +34,11 @@
       "variant": "default",
       "final_path": "/dashboards/taffy-analytics/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.00:1 (needs 4.5) \"On · 40% of teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y2297",
+        "low contrast 1.97:1 (needs 4.5) \"On · All teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y2664",
+        "low contrast 1.97:1 (needs 4.5) \"On · All teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y3031"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/#/overview",
@@ -42,7 +54,11 @@
       "variant": "mint",
       "final_path": "/dashboards/taffy-analytics/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.28:1 (needs 4.5) \"On · 40% of teams\" 13px, text rgb(36, 56, 48) on ~rgb(229, 239, 234) at x122 y2297",
+        "low contrast 2.25:1 (needs 4.5) \"On · All teams\" 13px, text rgb(36, 56, 48) on ~rgb(229, 239, 234) at x122 y2664",
+        "low contrast 2.25:1 (needs 4.5) \"On · All teams\" 13px, text rgb(36, 56, 48) on ~rgb(229, 239, 234) at x122 y3031"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/?variant=dusk#/overview",
@@ -50,14 +66,23 @@
       "variant": "dusk",
       "final_path": "/dashboards/taffy-analytics/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 1.58:1 (needs 4.5) \"On · 40% of teams\" 13px, text rgb(235, 228, 242) on ~rgb(48, 43, 59) at x122 y2297",
+        "low contrast 1.58:1 (needs 4.5) \"On · All teams\" 13px, text rgb(235, 228, 242) on ~rgb(48, 43, 59) at x122 y2664",
+        "low contrast 1.58:1 (needs 4.5) \"On · All teams\" 13px, text rgb(235, 228, 242) on ~rgb(48, 43, 59) at x122 y3031"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/#/overview",
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "page content spans 16% of the main width (need ≥ 70%)",
+        "low contrast 2.00:1 (needs 4.5) \"On · 40% of teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y2297",
+        "low contrast 1.97:1 (needs 4.5) \"On · All teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y2664",
+        "low contrast 1.97:1 (needs 4.5) \"On · All teams\" 13px, text rgb(58, 51, 64) on ~rgb(241, 233, 226) at x122 y3031"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/#/overview",
@@ -71,7 +96,12 @@
       "width": 1440,
       "variant": "mint",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "page content spans 16% of the main width (need ≥ 70%)",
+        "low contrast 2.28:1 (needs 4.5) \"On · 40% of teams\" 13px, text rgb(36, 56, 48) on ~rgb(229, 239, 234) at x122 y2297",
+        "low contrast 2.25:1 (needs 4.5) \"On · All teams\" 13px, text rgb(36, 56, 48) on ~rgb(229, 239, 234) at x122 y2664",
+        "low contrast 2.25:1 (needs 4.5) \"On · All teams\" 13px, text rgb(36, 56, 48) on ~rgb(229, 239, 234) at x122 y3031"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/?variant=mint#/overview",
@@ -85,7 +115,12 @@
       "width": 1440,
       "variant": "dusk",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "page content spans 16% of the main width (need ≥ 70%)",
+        "low contrast 1.58:1 (needs 4.5) \"On · 40% of teams\" 13px, text rgb(235, 228, 242) on ~rgb(48, 43, 59) at x122 y2297",
+        "low contrast 1.58:1 (needs 4.5) \"On · All teams\" 13px, text rgb(235, 228, 242) on ~rgb(48, 43, 59) at x122 y2664",
+        "low contrast 1.58:1 (needs 4.5) \"On · All teams\" 13px, text rgb(235, 228, 242) on ~rgb(48, 43, 59) at x122 y3031"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/?variant=dusk#/overview",
@@ -99,7 +134,9 @@
       "width": 1440,
       "variant": "default",
       "page": "workspace",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/#/workspace",
@@ -113,7 +150,9 @@
       "width": 1440,
       "variant": "mint",
       "page": "workspace",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/?variant=mint#/workspace",
@@ -127,7 +166,9 @@
       "width": 1440,
       "variant": "dusk",
       "page": "workspace",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/?variant=dusk#/workspace",
@@ -141,7 +182,9 @@
       "width": 1440,
       "variant": "default",
       "page": "people",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/#/people",
@@ -155,7 +198,9 @@
       "width": 1440,
       "variant": "mint",
       "page": "people",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/?variant=mint#/people",
@@ -169,7 +214,9 @@
       "width": 1440,
       "variant": "dusk",
       "page": "people",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/?variant=dusk#/people",
@@ -183,7 +230,9 @@
       "width": 1440,
       "variant": "default",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/#/settings",
@@ -197,7 +246,9 @@
       "width": 1440,
       "variant": "mint",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/?variant=mint#/settings",
@@ -211,7 +262,9 @@
       "width": 1440,
       "variant": "dusk",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/taffy-analytics/?variant=dusk#/settings",

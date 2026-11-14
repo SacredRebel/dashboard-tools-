@@ -34,7 +34,9 @@
       "variant": "default",
       "final_path": "/dashboards/horizon-weather/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.34:1 (needs 4.5) \"Accurate forecasts, beautiful in\" 16px, text rgb(244, 239, 230) on ~rgb(56, 45, 49) at x29 y342"
+      ]
     },
     {
       "url": "/dashboards/horizon-weather/?variant=dawn#/overview",
@@ -57,52 +59,61 @@
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/coast.webp is 1280px for 1175px rendered (need ≥ 1763px or a srcset 2x)"
+      ]
     },
     {
       "url": "/dashboards/horizon-weather/#/overview",
       "width": 375,
       "variant": "default",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low contrast 3.34:1 (needs 4.5) \"Accurate forecasts, beautiful in\" 16px, text rgb(244, 239, 230) on ~rgb(56, 45, 49) at x29 y342"
+      ]
     },
     {
       "url": "/dashboards/horizon-weather/?variant=dawn#/overview",
       "width": 1440,
       "variant": "dawn",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/coast.webp is 1280px for 1175px rendered (need ≥ 1763px or a srcset 2x)"
+      ]
     },
     {
       "url": "/dashboards/horizon-weather/?variant=dawn#/overview",
       "width": 375,
       "variant": "dawn",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low contrast 3.34:1 (needs 4.5) \"Accurate forecasts, beautiful in\" 16px, text rgb(244, 239, 230) on ~rgb(56, 45, 49) at x29 y342"
+      ]
     },
     {
       "url": "/dashboards/horizon-weather/?variant=night#/overview",
       "width": 1440,
       "variant": "night",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/coast.webp is 1280px for 1175px rendered (need ≥ 1763px or a srcset 2x)"
+      ]
     },
     {
       "url": "/dashboards/horizon-weather/?variant=night#/overview",
       "width": 375,
       "variant": "night",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low contrast 3.36:1 (needs 4.5) \"Accurate forecasts, beautiful in\" 16px, text rgb(244, 239, 230) on ~rgb(56, 44, 49) at x29 y342"
+      ]
     },
     {
       "url": "/dashboards/horizon-weather/#/forecast",
       "width": 1440,
       "variant": "default",
       "page": "forecast",
-      "errors": [
-        "thin page: 0 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 0% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/horizon-weather/#/forecast",
@@ -116,10 +127,7 @@
       "width": 1440,
       "variant": "dawn",
       "page": "forecast",
-      "errors": [
-        "thin page: 0 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 0% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/horizon-weather/?variant=dawn#/forecast",
@@ -133,10 +141,7 @@
       "width": 1440,
       "variant": "night",
       "page": "forecast",
-      "errors": [
-        "thin page: 0 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 0% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/horizon-weather/?variant=night#/forecast",
@@ -150,10 +155,7 @@
       "width": 1440,
       "variant": "default",
       "page": "maps",
-      "errors": [
-        "thin page: 0 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 0% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/horizon-weather/#/maps",
@@ -167,10 +169,7 @@
       "width": 1440,
       "variant": "dawn",
       "page": "maps",
-      "errors": [
-        "thin page: 0 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 0% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/horizon-weather/?variant=dawn#/maps",
@@ -184,10 +183,7 @@
       "width": 1440,
       "variant": "night",
       "page": "maps",
-      "errors": [
-        "thin page: 0 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 0% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/horizon-weather/?variant=night#/maps",
@@ -201,10 +197,7 @@
       "width": 1440,
       "variant": "default",
       "page": "settings",
-      "errors": [
-        "thin page: 0 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 0% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/horizon-weather/#/settings",
@@ -218,10 +211,7 @@
       "width": 1440,
       "variant": "dawn",
       "page": "settings",
-      "errors": [
-        "thin page: 0 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 0% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/horizon-weather/?variant=dawn#/settings",
@@ -235,10 +225,7 @@
       "width": 1440,
       "variant": "night",
       "page": "settings",
-      "errors": [
-        "thin page: 0 visible elements in <main> (need ≥ 60 at 1440)",
-        "page content spans 0% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/horizon-weather/?variant=night#/settings",

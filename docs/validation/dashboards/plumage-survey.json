@@ -1,35 +1,44 @@
 {
   "id": "plumage-survey",
   "checked": "2026-11-14",
-  "ok": true,
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/plumage-survey/",
+      "url": "/dashboards/plumage-survey/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/plumage-survey/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.27:1 (needs 4.5) \"33%\" 13px, text rgb(238, 242, 244) on ~rgb(32, 38, 45) at x117 y1482",
+        "low contrast 2.27:1 (needs 4.5) \"26%\" 13px, text rgb(238, 242, 244) on ~rgb(32, 38, 45) at x138 y1482"
+      ]
     },
     {
-      "url": "/dashboards/plumage-survey",
+      "url": "/dashboards/plumage-survey#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/plumage-survey/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.27:1 (needs 4.5) \"33%\" 13px, text rgb(238, 242, 244) on ~rgb(32, 38, 45) at x117 y1482",
+        "low contrast 2.27:1 (needs 4.5) \"26%\" 13px, text rgb(238, 242, 244) on ~rgb(32, 38, 45) at x138 y1482"
+      ]
     },
     {
-      "url": "/dashboards/plumage-survey/index.html",
+      "url": "/dashboards/plumage-survey/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/plumage-survey/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.27:1 (needs 4.5) \"33%\" 13px, text rgb(238, 242, 244) on ~rgb(32, 38, 45) at x117 y1482",
+        "low contrast 2.27:1 (needs 4.5) \"26%\" 13px, text rgb(238, 242, 244) on ~rgb(32, 38, 45) at x138 y1482"
+      ]
     },
     {
-      "url": "/dashboards/plumage-survey/",
+      "url": "/dashboards/plumage-survey/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/plumage-survey/",
@@ -37,19 +46,223 @@
       "errors": []
     },
     {
-      "url": "/dashboards/plumage-survey/?variant=canopy",
+      "url": "/dashboards/plumage-survey/?variant=canopy#/overview",
       "width": 1440,
       "variant": "canopy",
       "final_path": "/dashboards/plumage-survey/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.27:1 (needs 4.5) \"33%\" 13px, text rgb(238, 242, 244) on ~rgb(22, 39, 35) at x117 y1482",
+        "low contrast 2.27:1 (needs 4.5) \"26%\" 13px, text rgb(238, 242, 244) on ~rgb(22, 39, 35) at x138 y1482"
+      ]
     },
     {
-      "url": "/dashboards/plumage-survey/?variant=ember",
+      "url": "/dashboards/plumage-survey/?variant=ember#/overview",
       "width": 1440,
       "variant": "ember",
       "final_path": "/dashboards/plumage-survey/",
       "overflow_px": 0,
+      "errors": [
+        "low contrast 1.64:1 (needs 4.5) \"33%\" 13px, text rgb(238, 242, 244) on ~rgb(40, 32, 27) at x117 y1482",
+        "low contrast 1.64:1 (needs 4.5) \"26%\" 13px, text rgb(238, 242, 244) on ~rgb(40, 32, 27) at x138 y1482"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": [
+        "page content spans 20% of the main width (need ≥ 70%)",
+        "low contrast 2.27:1 (needs 4.5) \"33%\" 13px, text rgb(238, 242, 244) on ~rgb(32, 38, 45) at x117 y1482",
+        "low contrast 2.27:1 (needs 4.5) \"26%\" 13px, text rgb(238, 242, 244) on ~rgb(32, 38, 45) at x138 y1482"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=canopy#/overview",
+      "width": 1440,
+      "variant": "canopy",
+      "page": "overview",
+      "errors": [
+        "page content spans 20% of the main width (need ≥ 70%)",
+        "low contrast 2.27:1 (needs 4.5) \"33%\" 13px, text rgb(238, 242, 244) on ~rgb(22, 39, 35) at x117 y1482",
+        "low contrast 2.27:1 (needs 4.5) \"26%\" 13px, text rgb(238, 242, 244) on ~rgb(22, 39, 35) at x138 y1482"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=canopy#/overview",
+      "width": 375,
+      "variant": "canopy",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=ember#/overview",
+      "width": 1440,
+      "variant": "ember",
+      "page": "overview",
+      "errors": [
+        "page content spans 20% of the main width (need ≥ 70%)",
+        "low contrast 1.64:1 (needs 4.5) \"33%\" 13px, text rgb(238, 242, 244) on ~rgb(40, 32, 27) at x117 y1482",
+        "low contrast 1.64:1 (needs 4.5) \"26%\" 13px, text rgb(238, 242, 244) on ~rgb(40, 32, 27) at x138 y1482"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=ember#/overview",
+      "width": 375,
+      "variant": "ember",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/#/reports",
+      "width": 1440,
+      "variant": "default",
+      "page": "reports",
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/#/reports",
+      "width": 375,
+      "variant": "default",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=canopy#/reports",
+      "width": 1440,
+      "variant": "canopy",
+      "page": "reports",
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=canopy#/reports",
+      "width": 375,
+      "variant": "canopy",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=ember#/reports",
+      "width": 1440,
+      "variant": "ember",
+      "page": "reports",
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=ember#/reports",
+      "width": 375,
+      "variant": "ember",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/#/segments",
+      "width": 1440,
+      "variant": "default",
+      "page": "segments",
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/#/segments",
+      "width": 375,
+      "variant": "default",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=canopy#/segments",
+      "width": 1440,
+      "variant": "canopy",
+      "page": "segments",
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=canopy#/segments",
+      "width": 375,
+      "variant": "canopy",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=ember#/segments",
+      "width": 1440,
+      "variant": "ember",
+      "page": "segments",
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=ember#/segments",
+      "width": 375,
+      "variant": "ember",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=canopy#/settings",
+      "width": 1440,
+      "variant": "canopy",
+      "page": "settings",
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=canopy#/settings",
+      "width": 375,
+      "variant": "canopy",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=ember#/settings",
+      "width": 1440,
+      "variant": "ember",
+      "page": "settings",
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
+    },
+    {
+      "url": "/dashboards/plumage-survey/?variant=ember#/settings",
+      "width": 375,
+      "variant": "ember",
+      "page": "settings",
       "errors": []
     },
     {

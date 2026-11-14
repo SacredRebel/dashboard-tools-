@@ -215,11 +215,27 @@ body {
 .me-profile > span[data-icon] svg { width: 16px; height: 16px; color: var(--text-muted); }
 
 .me-main {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: stretch;
+  margin-bottom: 22px;
+  width: 100%;
+}
+.me-main > [data-page-panel="overview"],
+.me-main > .db-dense-page,
+.me-main > [data-db-page-host] > .db-dense-page {
   display: grid;
   grid-template-columns: minmax(280px, 1.05fr) minmax(240px, 0.85fr) minmax(260px, 0.95fr);
   gap: 22px;
   align-items: start;
-  margin-bottom: 22px;
+  width: 100%;
+}
+.me-main > [data-db-page-host] {
+  width: 100%;
+}
+.me-main > [data-db-page-host] > .db-dense-page {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 .me-sechead {
   display: flex;
@@ -555,7 +571,7 @@ body {
 .me-foot { text-align: center; margin-top: 16px; }
 
 @media (max-width: 1180px) {
-  .me-main {
+  .me-main > [data-page-panel="overview"] {
     grid-template-columns: 1fr 1fr;
   }
   .me-dna { grid-column: 1 / -1; min-height: 320px; }
@@ -563,7 +579,7 @@ body {
 }
 @media (max-width: 960px) {
   .me { padding: 14px 16px 20px; }
-  .me-main { grid-template-columns: 1fr; min-width: 0; }
+  .me-main > [data-page-panel="overview"] { grid-template-columns: 1fr; min-width: 0; }
   .me-who { display: none; }
   .me-week { min-width: 0; overflow: hidden; }
   .me-weekstrip {
