@@ -413,7 +413,7 @@
         const bpm = tab === 'heart' ? 72 : tab === 'activity' ? 8840 : tab === 'sleep' ? 7.2 : 72;
         const label = tab === 'heart' ? 'bpm' : tab === 'activity' ? 'steps' : tab === 'sleep' ? 'hrs' : 'bpm';
         const center = tab === 'heart' || tab === 'overview'
-          ? `<img class="vc-donut-heart" src="media/heart.webp" width="72" height="72" alt="" decoding="async"><b class="num">${typeof bpm === 'number' && bpm > 100 ? fmtNum(bpm) : bpm}<small>${label} · Normal</small></b>`
+          ? `<img class="vc-donut-heart" src="media/heart.webp" srcset="media/heart.webp 1x, media/heart@2x.webp 2x" width="1600" height="1600" alt="" decoding="async"><b class="num">${typeof bpm === 'number' && bpm > 100 ? fmtNum(bpm) : bpm}<small>${label} · Normal</small></b>`
           : `<b class="num">${typeof bpm === 'number' && bpm > 100 ? fmtNum(bpm) : bpm}<small>${label} · Normal</small></b>`;
         donutEl.innerHTML = `${donut([
           { value: 72, color: '--coral' },
