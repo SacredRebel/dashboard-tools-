@@ -1655,7 +1655,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A calm pastel product-analytics dashboard for a design-tool startup: a serif headline number over a soft area chart, a row of glossy 3D capsules for sign-ups by channel, a rounded plan-mix ring, springy feature-flag switches and a release checklist.",
+      "summary": "A calm pastel product-analytics dashboard for a design-tool startup: a rounded-sans headline number over a soft area chart, dual-tone clay capsules for sign-ups by channel, a plan-mix ring with a clay sphere prop, springy feature-flag switches and a release checklist — plus Workspace, People and Settings.",
       "mood": [
         "calm",
         "tactile",
@@ -1679,27 +1679,27 @@
         "responsive": "\u22641100px: 2 columns (hero and KPIs full width, capsules + mix, flags + checklist) \u00b7 \u2264700px: single column, workspace pill on its own row, KPIs stacked"
       },
       "components": [
-        "Round workspace switcher",
+        "Round workspace switcher and pages nav",
         "Headline number with area chart and range toggle",
-        "3D capsule bar chart with selectable channels",
+        "Dual-tone clay capsule chart with peach shelf",
         "KPI strip with dividers",
-        "Rounded donut ring with legend",
+        "Rounded donut ring with clay sphere prop",
         "Feature-flag list with springy switches and filter",
         "Checklist with progress bar"
       ],
-      "signature": "Glossy pastel capsules standing on a peach shelf, shaded with a left-to-right gradient and an inner highlight so they read as soft 3D pills.",
+      "signature": "Dual-tone pastel clay capsules standing on a peach shelf, with a soft interlocking sphere prop and rounded sans titles matching the kit.",
       "palette": {
         "bg": "#f4ebe4",
         "surface": "#fbf8f5",
         "text": "#2e2633",
-        "muted": "#625866",
+        "muted": "#5a5160",
         "accent": "#5d55b8",
         "peach": "#f3c3ae",
         "lilac": "#c9c2ee",
         "mint": "#b9e0dd"
       },
       "fonts": {
-        "display": "Instrument Serif",
+        "display": "Manrope",
         "sans": "Manrope"
       },
       "variants": [
@@ -1729,7 +1729,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied render of a pastel 3D UI kit with no real content (placeholder text). The capsule bars, round icon buttons, elastic switches and wave card were turned into a working analytics page with invented data. No artwork was copied; all shapes are CSS and SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied render of a pastel 3D UI kit with no real content (placeholder text). Capsule bars, round icon buttons, elastic switches and wave card became a working analytics page with invented data. Clay sphere uses gallery media (`media/sphere.webp`); titles use rounded sans (Manrope) to match the kit — Instrument Serif removed. Fidelity pass used local tesseract OCR + palette sample on reference.jpg. Owner original stored as `reference.jpg`."
       },
       "path": "site/dashboards/taffy-analytics/",
       "reference": "reference.jpg",
@@ -1755,7 +1755,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "prism-workspace",

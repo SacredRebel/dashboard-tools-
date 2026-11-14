@@ -1,16 +1,18 @@
 /* =========================================================================
    Taffy Analytics · style family: minimal · mode: light
    Token names match design-system/tokens.css. Variants: default (taffy), mint, dusk.
+   Kit fidelity: rounded sans titles, dual-tone clay capsules, peach blob, soft sphere.
    ========================================================================= */
 :root {
   --cap-ink: #2b2230;
   --bg: #f4ebe4;
   --surface: #fbf8f5;
   --surface-2: #f1e9e2;
+  --surface-solid: #ffffff;
   --border: #e7dbd1;
   --text: #2e2633;
-  --text-muted: #625866;
-  --text-subtle: #6c6270;
+  --text-muted: #3a3340;
+  --text-subtle: #4a4350;
   --accent: #5d55b8;
   --accent-fg: #ffffff;
   --accent-soft: #e4e1f6;
@@ -19,65 +21,130 @@
   --c1: #f3c3ae; --c2: #c9c2ee; --c3: #f5b6a7; --c4: #f6eadf; --c5: #b9e0dd; --c6: #f4d9a4;
   --c1-d: #d99a82; --c2-d: #9f97d6; --c3-d: #e08b78; --c4-d: #dccbbb; --c5-d: #86c2bd; --c6-d: #dcb871;
   --up: #2f7a52; --down: #a8442f;
+  --dur-1: 120ms; --dur-2: 180ms; --dur-3: 240ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --shadow: 0 2px 4px rgb(90 60 50 / 0.05), 0 18px 40px rgb(90 60 50 / 0.08);
-  --font-display: "Instrument Serif", Georgia, serif;
+  --font-display: "Manrope", system-ui, sans-serif;
   --font-sans: "Manrope", system-ui, sans-serif;
   --radius-sm: 14px; --radius-md: 22px; --radius-lg: 30px; --radius-pill: 999px;
 }
 [data-variant="mint"] {
-  --bg: #e9f2ee; --surface: #f8fbf9; --surface-2: #e5efea; --border: #d5e4dc; --text: #1f332b; --text-muted: #4f6359; --text-subtle: #586d62;
+  --bg: #e9f2ee; --surface: #f8fbf9; --surface-2: #e5efea; --border: #d5e4dc; --text: #1f332b; --text-muted: #243830; --text-subtle: #31463c;
   --accent: #2f7563; --accent-soft: #d3ebe3; --focus: #2f7563; --chart-1: #5fa892; --c2: #b9e0d2; --c2-d: #7fbfa8;
 }
 [data-variant="dusk"] {
-  --bg: #1d1a24; --surface: #26222f; --surface-2: #302b3b; --border: #3c364a; --text: #f3eef6; --text-muted: #bfb6c8; --text-subtle: #ada4b7;
-  --accent: #b8b0ff; --accent-fg: #1d1a24; --accent-soft: #3a3556; --focus: #d5d0ff; --chart-1: #b8b0ff; --up: #8be0b1; --down: #ffa58f;
+  --bg: #1d1a24; --surface: #26222f; --surface-2: #302b3b; --surface-solid: #302b3b; --border: #3c364a; --text: #f3eef6; --text-muted: #ebe4f2; --text-subtle: #d5cce0;
+  --accent: #b8b0ff; --accent-fg: #1d1a24; --accent-soft: #3a3556; --focus: #d5d0ff; --chart-1: #b8b0ff; --up: #c8f5d8; --down: #ffa58f;
+  --cap-ink: #f8f4fc;
   --c4: #4a4250; --c4-d: #5c5366; --c4-ink: #f3eef6; --shadow: 0 18px 40px rgb(0 0 0 / 0.35);
 }
 body { background: var(--bg); }
-.tf { max-width: 1320px; margin: 0 auto; padding: 22px 28px 26px; }
-.tf-foot { margin-top: 18px; text-align: center; }
-.tf-top { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
-.tf-brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 30px; color: var(--text); text-decoration: none; }
+.tf {
+  max-width: 1320px; margin: 0 auto; padding: 22px 28px 26px;
+  background:
+    radial-gradient(42% 34% at 12% 18%, rgb(243 195 174 / 0.35), transparent 70%),
+    radial-gradient(36% 30% at 88% 72%, rgb(201 194 238 / 0.28), transparent 70%);
+}
+.tf-overview[hidden], [data-db-stub-host][hidden] { display: none !important; }
+.tf-foot {
+  margin-top: 18px; text-align: center; color: var(--text);
+  padding: 10px 16px; border-radius: var(--radius-pill); width: fit-content; margin-inline: auto;
+  background: var(--surface-solid); box-shadow: var(--shadow);
+}
+.tf-top { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
+.tf-brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--text); text-decoration: none; }
 .tf-blob { width: 30px; height: 30px; border-radius: 40% 60% 55% 45%; background: radial-gradient(circle at 30% 30%, var(--c4), var(--c1) 55%, var(--c1-d)); box-shadow: inset -3px -4px 6px rgb(0 0 0 / 0.08); }
+.tf-pages {
+  display: flex; gap: 4px; flex-wrap: wrap;
+  padding: 4px; border-radius: var(--radius-pill); background: var(--surface); box-shadow: var(--shadow);
+}
+.tf-pages a {
+  min-height: 44px; padding: 0 14px; border-radius: var(--radius-pill);
+  color: var(--text); text-decoration: none; font-size: 13px; font-weight: 700;
+  display: inline-flex; align-items: center;
+  transition: transform var(--dur-1) var(--ease-out), background-color var(--dur-2) var(--ease-out);
+}
+.tf-pages a[aria-current="page"] { background: var(--accent); color: var(--accent-fg); }
+.tf-pages a:hover { transform: translateY(-1px); }
 .tf-apps { display: flex; gap: 10px; margin: 0 auto; padding: 8px; border-radius: var(--radius-pill); background: var(--surface); box-shadow: var(--shadow); }
-.tf-apps button { width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; color: var(--text); box-shadow: inset -3px -4px 8px rgb(0 0 0 / 0.08), inset 3px 3px 6px rgb(255 255 255 / 0.55); }
+.tf-apps button {
+  width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; color: var(--text);
+  box-shadow: inset -3px -4px 8px rgb(0 0 0 / 0.08), inset 3px 3px 6px rgb(255 255 255 / 0.55);
+  transition: transform var(--dur-1) var(--ease-out);
+}
+.tf-apps button:hover { transform: translateY(-1px); }
+.tf-apps button:active { transform: translateY(1px); }
 .tf-apps button svg { width: 18px; height: 18px; }
 .tf-apps button[aria-pressed="true"] { outline: 2px solid var(--accent); outline-offset: 2px; }
-.tf-avatar { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--accent-soft); font-size: 14px; font-weight: 700; }
+.tf-avatar { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--accent); color: var(--accent-fg); font-size: 14px; font-weight: 700; }
 .tf-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; grid-template-areas:
   "hero hero hero hero hero hero hero pills pills pills pills pills"
   "kpis kpis kpis kpis kpis kpis kpis pills pills pills pills pills"
   "mix mix mix mix flags flags flags flags rel rel rel rel"; }
 .tf-hero { grid-area: hero; } .tf-pills { grid-area: pills; } .tf-kpis { grid-area: kpis; } .tf-mix { grid-area: mix; } .tf-flags { grid-area: flags; } .tf-release { grid-area: rel; }
-.tf-card { min-width: 0; padding: 22px; border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
-.tf-head { display: flex; align-items: start; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
-.tf-card h2 { font-family: var(--font-display); font-size: 26px; font-weight: 400; line-height: 1.1; }
-.tf-k { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.tf-card { position: relative; min-width: 0; padding: 22px; border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
+.tf-head { display: flex; align-items: start; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; position: relative; z-index: 1; }
+.tf-card h2 { font-family: var(--font-display); font-size: 22px; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+.tf-k {
+  display: inline-block; font-size: 14px; font-weight: 700; color: var(--text);
+  padding: 4px 10px; border-radius: var(--radius-pill); background: var(--surface-solid);
+}
 .tf-meta { font-size: 13px; color: var(--text-muted); }
-.tf-hero h1 { font-family: var(--font-display); font-size: 52px; font-weight: 400; line-height: 1; }
+.tf-hero h1 { font-family: var(--font-display); font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
 .tf-hero h1 em { font-family: var(--font-sans); font-style: normal; font-size: 15px; font-weight: 600; color: var(--up); vertical-align: middle; }
 .tf-seg { display: flex; gap: 4px; padding: 4px; border-radius: var(--radius-pill); background: var(--surface-2); }
-.tf-seg button { min-height: 36px; padding: 0 14px; border: 0; border-radius: var(--radius-pill); background: none; color: var(--text); font-size: 14px; font-weight: 600; }
+.tf-seg button { min-height: 44px; padding: 0 14px; border: 0; border-radius: var(--radius-pill); background: none; color: var(--text); font-size: 14px; font-weight: 600; }
 .tf-seg button[aria-pressed="true"] { background: var(--surface); box-shadow: var(--shadow); }
+.tf-wave { position: relative; z-index: 1; }
 .tf-wave .tf-y { display: none; } .tf-wave .tf-plot { --y-w: 0px; }
-/* signature: soft 3D capsules */
-.tf-capsules { display: flex; align-items: end; justify-content: space-between; gap: 12px; height: 300px; padding: 10px 6px 0; border-bottom: 6px solid var(--c1); border-radius: 0 0 6px 6px; }
-.tf-capsules button { position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; padding: 0; border: 0; background: none; color: var(--text); }
-.tf-capsules i { display: block; width: 100%; border-radius: var(--radius-pill); background: linear-gradient(90deg, var(--cap-d) 0%, var(--cap) 38%, var(--cap) 62%, var(--cap-d) 100%); box-shadow: inset 0 10px 14px rgb(255 255 255 / 0.45), 0 12px 18px rgb(90 60 50 / 0.12); transition: transform 200ms ease; transform-origin: bottom; }
+/* signature: dual-tone clay capsules on peach shelf */
+.tf-shelf {
+  position: absolute; left: 28px; right: 28px; bottom: 86px; height: 12px; border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--c1), var(--c1-d)); box-shadow: 0 8px 16px rgb(90 60 50 / 0.12); z-index: 0;
+  pointer-events: none;
+}
+.tf-capsules { position: relative; z-index: 1; display: flex; align-items: end; justify-content: space-between; gap: 12px; height: 300px; padding: 10px 6px 0; }
+.tf-capsules button {
+  position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; height: 100%; padding: 0 0 8px; border: 0; background: none; color: var(--text);
+  transition: transform var(--dur-1) var(--ease-out);
+}
+.tf-capsules button:hover { transform: translateY(-2px); }
+.tf-capsules i {
+  display: block; width: 100%; border-radius: var(--radius-pill);
+  background:
+    linear-gradient(180deg, var(--cap-top) 0%, var(--cap-top) 48%, var(--cap-bot) 52%, var(--cap-bot) 100%);
+  box-shadow: inset 0 10px 14px rgb(255 255 255 / 0.45), inset -6px 0 10px rgb(0 0 0 / 0.06), 0 12px 18px rgb(90 60 50 / 0.12);
+  transition: transform 200ms var(--ease-out); transform-origin: bottom;
+}
 .tf-capsules button:hover i, .tf-capsules button[aria-pressed="true"] i { transform: scaleY(1.03); }
 .tf-capsules button[aria-pressed="true"] i { outline: 3px solid var(--accent); outline-offset: 3px; }
-.tf-capsules span { position: absolute; left: 50%; bottom: 14px; translate: -50% 0; font-size: 13px; font-weight: 700; color: var(--cap-ink); }
-.tf-capnames { display: flex; justify-content: space-between; gap: 12px; }
-.tf-capnote { margin-top: 14px; min-height: 42px; font-size: 14px; color: var(--text-muted); } .tf-capnote b { color: var(--text); }
+.tf-capval {
+  position: static; translate: none; font-size: 13px; font-weight: 800; color: var(--text);
+  background: var(--surface-solid); padding: 2px 8px; border-radius: var(--radius-pill); box-shadow: var(--shadow);
+}
+.tf-capnote {
+  position: relative; z-index: 2; margin-top: 14px; min-height: 42px; font-size: 14px; color: var(--text);
+  padding: 10px 12px; border-radius: var(--radius-sm); background: var(--surface-solid);
+} .tf-capnote b { color: var(--text); }
 .tf-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: 18px 22px; }
 .tf-kpis div + div { padding-left: 20px; border-left: 1px solid var(--border); }
 .tf-kpis b { display: block; margin: 4px 0 2px; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
 .tf-kpis small { font-size: 13px; font-weight: 600; } .up { color: var(--up); } .down { color: var(--down); }
-.tf-ring { position: relative; width: 190px; margin: 14px auto 10px; }
+.tf-mix { padding-bottom: 28px; }
+.tf-ring { position: relative; width: 190px; margin: 14px auto 10px; z-index: 1; }
 .tf-ring svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 10px 12px rgb(90 60 50 / 0.15)); } .tf-ring .track { stroke: var(--surface-2); }
-.tf-ring b { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; font-family: var(--font-display); font-size: 34px; font-weight: 400; }
-.tf-ring b small { font-family: var(--font-sans); font-size: 13px; color: var(--text-muted); }
-.tf-legend { display: grid; gap: 2px; }
+.tf-ring b { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; font-family: var(--font-display); font-size: 34px; font-weight: 800; }
+.tf-ring b small { font-family: var(--font-sans); font-size: 13px; color: var(--text-muted); font-weight: 600; }
+.tf-sphere {
+  position: absolute; right: 8px; top: 8px; width: 64px; height: 64px; object-fit: contain;
+  pointer-events: none; opacity: 0.95; z-index: 0; filter: drop-shadow(0 8px 12px rgb(90 60 50 / 0.18));
+}
+.tf-ambient { animation: tfFloat 4.5s var(--ease-out) infinite alternate; }
+@keyframes tfFloat {
+  from { transform: translateY(0) rotate(-2deg); }
+  to { transform: translateY(-8px) rotate(3deg); }
+}
+.tf-legend { display: grid; gap: 2px; position: relative; z-index: 1; }
 .tf-legend li { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; gap: 10px; align-items: center; min-height: 32px; font-size: 14px; }
 .tf-legend i { width: 12px; height: 12px; border-radius: 50%; }
 .tf-search { display: flex; align-items: center; gap: 8px; min-height: 44px; width: 180px; padding: 0 14px; border-radius: var(--radius-pill); background: var(--surface-2); color: var(--text-muted); }
@@ -103,7 +170,7 @@ body { background: var(--bg); }
 .tf-checks [aria-pressed="true"] i { background: var(--accent); }
 .tf-checks [aria-pressed="true"] span { color: var(--text-muted); text-decoration: line-through; }
 .tf-checks small { display: block; font-size: 13px; color: var(--text-muted); text-decoration: none; }
-/* ---------------------------------------------------------------- charts (plumbing: SVG shape + HTML labels) */
+/* ---------------------------------------------------------------- charts */
 .tf-plot { position: relative; margin-left: var(--y-w, 44px); padding-bottom: 26px; min-width: 0; }
 .tf-plot svg { display: block; width: 100%; height: var(--plot-h, 200px); overflow: visible; }
 .tf-plot .grid line { stroke: var(--border); }
@@ -115,31 +182,79 @@ body { background: var(--bg); }
 .tf-dot.on { background: var(--chart-1); box-shadow: 0 0 0 5px var(--accent-soft); }
 .tf-hit { position: absolute; inset: 0 0 26px 0; display: flex; }
 .tf-hit button { flex: 1; min-width: 0; border: 0; background: none; padding: 0; }
-.tf-hit button:focus-visible, .tf-col:focus-visible { outline-offset: -2px; }
 .tf-cursor { position: absolute; top: 0; width: 1px; height: var(--plot-h, 200px); background: var(--text-subtle); opacity: 0.6; pointer-events: none; }
 .tf-tip { position: absolute; z-index: 3; transform: translate(-50%, -130%); padding: 4px 8px; border-radius: var(--radius-sm); background: var(--accent); color: var(--accent-fg); font-size: 12px; font-weight: 500; pointer-events: none; white-space: nowrap; }
 .tf-tip b { font-weight: 600; margin-right: 4px; }
 .tf-tip.l { transform: translate(-12%, -130%); } .tf-tip.r { transform: translate(-88%, -130%); }
-.tf-barplot { padding-bottom: 0; }
-.tf-cols { position: relative; display: flex; align-items: flex-end; gap: var(--bar-gap, 10px); height: var(--plot-h, 200px); }
-.tf-col { flex: 1; min-width: 0; height: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 3px; border: 0; background: none; padding: 0; }
-.tf-col.stack { flex-direction: column; justify-content: flex-end; align-items: center; gap: 2px; }
-.tf-bar { flex: 1 1 auto; width: 100%; max-width: var(--bar-w, 22px); min-height: 2px; border-radius: var(--bar-r, 6px) var(--bar-r, 6px) 0 0; background: var(--bar, var(--chart-1)); transition: opacity 160ms ease; }
-.tf-col.stack .tf-bar { flex: none; }
-.tf-cols:hover .tf-col:not(:hover) .tf-bar { opacity: 0.55; }
-.tf-gl { position: absolute; left: 0; right: 0; height: 1px; background: var(--border); }
-.tf-xs { display: flex; gap: var(--bar-gap, 10px); padding-top: 8px; }
-.tf-xs span { flex: 1; min-width: 0; text-align: center; font-size: 12px; color: var(--text-muted); white-space: nowrap; overflow: hidden; }
-.tf-spark { width: 100%; height: 100%; overflow: visible; }
 @media (max-width: 640px) { .tf-x.alt { display: none; } }
 @media (max-width: 1100px) {
   .tf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "hero hero" "kpis kpis" "pills mix" "flags rel"; }
 }
 @media (max-width: 700px) {
   .tf { padding: 12px; }
-  .tf-top { flex-wrap: wrap; gap: 12px; } .tf-apps { order: 3; flex: 0 0 100%; justify-content: space-between; gap: 4px; } .tf-avatar { margin-left: auto; }
+  .tf-top { flex-wrap: wrap; gap: 12px; }
+  .tf-pages { order: 3; flex: 0 0 100%; }
+  .tf-apps { order: 4; flex: 0 0 100%; justify-content: space-between; gap: 4px; }
+  .tf-avatar { margin-left: auto; }
   .tf-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; grid-template-areas: "hero" "kpis" "pills" "mix" "flags" "rel"; }
   .tf-hero h1 { font-size: 42px; } .tf-capsules { height: 220px; gap: 6px; }
   .tf-kpis { grid-template-columns: minmax(0, 1fr); gap: 12px; } .tf-kpis div + div { padding: 12px 0 0; border-left: 0; border-top: 1px solid var(--border); }
-  .tf-search { width: 100%; } .tf-seg button { min-height: 44px; }
+  .tf-search { width: 100%; }
+  .tf-sphere { width: 100px; height: 100px; }
+}
+
+.tf-page {
+  display: grid; gap: 16px; padding: 22px; border-radius: var(--radius-lg);
+  background: var(--surface); box-shadow: var(--shadow);
+  animation: tfIn var(--dur-3) var(--ease-out) both; color: var(--text);
+}
+.tf-page h1 { margin: 0; font-family: var(--font-display); font-size: clamp(24px, 3vw, 34px); font-weight: 800; }
+.tf-page-lead { margin: 0; color: var(--text-muted); font-size: 14px; max-width: 65ch; }
+.tf-page-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.tf-page-card { padding: 14px 16px; border-radius: var(--radius-md); background: var(--surface-2); }
+.tf-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 44px; font-size: 14px; }
+.tf-btn {
+  min-height: 44px; padding: 0 16px; border: 0; border-radius: var(--radius-pill);
+  background: var(--accent); color: var(--accent-fg); font-weight: 700; font-size: 14px; cursor: pointer; width: fit-content;
+  transition: transform var(--dur-1) var(--ease-out);
+}
+.tf-btn:hover { transform: translateY(-1px); }
+.tf-btn:active { transform: translateY(1px); }
+.tf-btn.ghost { background: var(--accent-soft); color: var(--text); }
+.tf-page-seg {
+  display: flex; gap: 2px; padding: 3px; border-radius: var(--radius-pill);
+  background: var(--surface-2); width: fit-content; flex-wrap: wrap;
+}
+.tf-page-seg button {
+  min-height: 44px; padding: 0 12px; border: 0; border-radius: var(--radius-pill);
+  background: none; color: var(--text); font: inherit; font-size: 12px; font-weight: 700;
+}
+.tf-page-seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); }
+.tf-empty, .tf-error, .tf-loading {
+  padding: 28px; border-radius: var(--radius-md); background: var(--surface-2); text-align: center;
+  color: var(--text-muted); font-size: 14px;
+}
+.tf-skel {
+  height: 10px; margin: 8px 0; border-radius: 8px;
+  background: linear-gradient(90deg, var(--surface), var(--surface-2), var(--surface));
+  background-size: 200% 100%; animation: tfShimmer 1.2s linear infinite;
+}
+.tf-toast {
+  position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+  padding: 12px 16px; border-radius: var(--radius-pill); background: var(--accent); color: var(--accent-fg);
+  font-size: 14px; font-weight: 700; z-index: 30; box-shadow: var(--shadow);
+}
+.tf-toast[hidden] { display: none !important; }
+.tf-reveal-in {
+  animation: tfRise var(--dur-3) var(--ease-out) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+@keyframes tfIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes tfRise { from { transform: translateY(10px); } to { transform: none; } }
+@keyframes tfShimmer { to { background-position: -200% 0; } }
+[data-motion-paused="1"] .tf-ambient,
+[data-motion-paused="1"] .tf-skel { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) {
+  .tf-page, .tf-skel, .tf-ambient, .tf-reveal-in { animation: none !important; }
+  .tf-pages a, .tf-apps button, .tf-capsules button, .tf-btn { transition: none; }
 }

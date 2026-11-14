@@ -1,8 +1,9 @@
-/* Taffy Analytics: sample data, capsule chart, feature flags and release checklist.
-   All data is fictional sample data. No timers, no network. */
+/* Taffy Analytics: clay capsules + sphere, multipage + motion. Sample data only. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
   const ICON = {
     grid: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
     chart: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
@@ -15,7 +16,25 @@
     check: '<path d="m5 12 5 5 9-10"/>',
   };
   const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  const paintIcons = (host = document) => $$('[data-icon]', host).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 650, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
   const fmtNum = (v) => v.toLocaleString('en-US');
   const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
   const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
@@ -27,7 +46,6 @@
     const ticks = []; for (let v = min; v <= max + step / 1e6; v += step) ticks.push(+v.toFixed(6));
     return { min, max, ticks };
   }
-  // segmented control / tabs: buttons carry data-v, the pressed one gets aria-pressed="true"
   function seg(group, onChange) {
     group.addEventListener('click', (e) => {
       const b = e.target.closest('button[data-v]'); if (!b) return;
@@ -35,7 +53,7 @@
       onChange(b.dataset.v, b);
     });
   }
-  function smooth(pts) { // Catmull-Rom to cubic Bezier
+  function smooth(pts) {
     let p = `M${pts[0][0]},${pts[0][1]}`;
     for (let i = 0; i < pts.length - 1; i++) {
       const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
@@ -44,8 +62,6 @@
     return p;
   }
   let chartId = 0;
-  // Line / area chart: SVG draws the shape, HTML labels sit over it (so text never scales), hover and focus show values.
-  // o: { labels, series: [{ name, color: '--chart-1', values, fill, dash }], fmt, h, label, curve, dots, min, max, ticks, step }
   function lineChart(el, o) {
     const fmt = o.fmt || fmtNum, n = o.labels.length, W = 600, H = 200;
     const { min, max, ticks } = scale(o.series.flatMap((s) => s.values), o);
@@ -62,7 +78,7 @@
       </svg>
       ${o.dots ? sets[0].pts.map(([px, py]) => `<span class="tf-dot" style="left:${(px / W) * 100}%;top:${top(py)}"></span>`).join('') : ''}
       ${o.labels.map((l, i) => (i % every === 0 ? `<span class="tf-x${(i / every) % 2 ? ' alt' : ''}" style="left:${(x(i) / W) * 100}%">${l}</span>` : '')).join('')}
-      <div class="tf-hit">${o.labels.map((l, i) => `<button aria-label="${l}: ${sets.map((s) => `${s.name ? s.name + ' ' : ''}${fmt(s.values[i])}`).join(', ')}"></button>`).join('')}</div>
+      <div class="tf-hit">${o.labels.map((l, i) => `<button type="button" aria-label="${l}: ${sets.map((s) => `${s.name ? s.name + ' ' : ''}${fmt(s.values[i])}`).join(', ')}"></button>`).join('')}</div>
       <span class="tf-cursor" hidden></span><span class="tf-tip num" hidden></span>
     </div>`;
     const tip = $('.tf-tip', el), cur = $('.tf-cursor', el), dots = $$('.tf-dot', el);
@@ -76,7 +92,6 @@
     $$('.tf-hit button', el).forEach((b, i) => { b.addEventListener('mouseenter', () => show(i)); b.addEventListener('focus', () => show(i)); b.addEventListener('blur', () => show(-1)); if (o.onPick) b.addEventListener('click', () => o.onPick(i)); });
     $('.tf-hit', el).addEventListener('mouseleave', () => show(-1));
   }
-  // Donut from stroked circles. parts: [{ value, color: '--chart-1' }] (values in any unit). Returns an SVG string.
   function donut(parts, { size = 120, w = 14, gap = 1.5, round = false } = {}) {
     const total = parts.reduce((a, p) => a + p.value, 0), r = (size - w) / 2, c = size / 2; let off = 0;
     return `<svg viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle class="track" cx="${c}" cy="${c}" r="${r}" fill="none" stroke-width="${w}"/>${parts.map((p) => {
@@ -87,105 +102,188 @@
   paintIcons();
   const APPS = [{ id: 'grid', c: '--c6', n: 'Overview' }, { id: 'chart', c: '--c5', n: 'Reports' }, { id: 'users', c: '--c3', n: 'Teams' }, { id: 'mail', c: '--c2', n: 'Lifecycle email' }, { id: 'sparkle', c: '--c1', n: 'Experiments' }];
   let app = 'grid';
-  const renderApps = () => { $('[data-apps]').innerHTML = APPS.map((a) => `<button data-app="${a.id}" aria-pressed="${a.id === app}" aria-label="${a.n}" title="${a.n}" style="background:var(${a.c})">${svg(a.id)}</button>`).join(''); };
+  const renderApps = () => { $('[data-apps]').innerHTML = APPS.map((a) => `<button type="button" data-app="${a.id}" aria-pressed="${a.id === app}" aria-label="${a.n}" title="${a.n}" style="background:var(${a.c})">${svg(a.id)}</button>`).join(''); };
 
   const WAT = [612, 640, 655, 648, 690, 712, 735, 728, 760, 798, 812, 840, 866, 851, 902, 938];
   let range = 16;
   function renderWave() {
     const v = WAT.slice(-range), d = ((v[v.length - 1] - v[0]) / v[0]) * 100;
-    $('[data-wat]').textContent = fmtNum(v[v.length - 1]); $('[data-wat-delta]').textContent = `+${d.toFixed(1)}% in ${range} weeks`;
-    lineChart($('[data-wave]'), { labels: v.map((_, i) => fmtDate(dayOffset((i - v.length + 1) * 7), { month: 'short', day: 'numeric' })), series: [{ name: 'Active teams', color: '--chart-1', values: v, area: true }], h: 150, ticks: 3, min: 500, fmt: fmtNum, label: `Weekly active teams, last ${range} weeks` });
+    countUp($('[data-wat]'), v[v.length - 1], { format: (n) => fmtNum(Math.round(n)) });
+    $('[data-wat-delta]').textContent = `+${d.toFixed(1)}% in ${range} weeks`;
+    lineChart($('[data-wave]'), { labels: v.map((_, i) => fmtDate(dayOffset((i - v.length + 1) * 7), { month: 'short', day: 'numeric' })), series: [{ name: 'Active teams', color: '--chart-1', values: v, fill: 0.28 }], h: 150, ticks: 3, min: 500, fmt: fmtNum, label: `Weekly active teams, last ${range} weeks` });
   }
 
-  const CH = [{ n: 'Organic', v: 412, c: '--c1', note: 'Search and word of mouth, steady all month.' }, { n: 'Referral', v: 268, c: '--c2', note: 'Up after the two-for-one invite offer.' }, { n: 'Paid', v: 356, c: '--c3', note: 'Cost per sign-up fell to $18 this month.' }, { n: 'Partners', v: 174, c: '--c4', note: 'Two new agency partners started sending teams.' }, { n: 'Events', v: 302, c: '--c5', note: 'Spike from the online design meetup on the 12th.' }];
+  // Dual-tone clay capsules (top / bottom) matching kit
+  const CH = [
+    { n: 'Organic', v: 412, top: '--c5', bot: '--c1', note: 'Search and word of mouth, steady all month.' },
+    { n: 'Referral', v: 268, top: '--c2', bot: '--c3', note: 'Up after the two-for-one invite offer.' },
+    { n: 'Paid', v: 356, top: '--c1', bot: '--c6', note: 'Cost per sign-up fell to $18 this month.' },
+    { n: 'Partners', v: 174, top: '--c4', bot: '--c2', note: 'Two new agency partners started sending teams.' },
+    { n: 'Events', v: 302, top: '--c3', bot: '--c5', note: 'Spike from the online design meetup on the 12th.' },
+  ];
   let ch = 0;
   function renderCaps() {
     const max = Math.max(...CH.map((c) => c.v));
-    $('[data-caps]').innerHTML = CH.map((c, i) => `<button data-ch="${i}" aria-pressed="${i === ch}" aria-label="${c.n}: ${c.v} sign-ups"><i style="height:${((c.v / max) * 92).toFixed(1)}%;--cap:var(${c.c});--cap-d:var(${c.c}-d)"></i><span class="num" style="color:var(${c.c}-ink, var(--cap-ink))">${c.v}</span></button>`).join('');
+    $('[data-caps]').innerHTML = CH.map((c, i) => `<button type="button" data-ch="${i}" aria-pressed="${i === ch}" aria-label="${c.n}: ${c.v} sign-ups"><i style="height:${((c.v / max) * 78).toFixed(1)}%;--cap-top:var(${c.top});--cap-bot:var(${c.bot})"></i><span class="num tf-capval">${c.v}</span></button>`).join('');
     const tot = CH.reduce((a, c) => a + c.v, 0);
     $('[data-capnote]').innerHTML = `<b>${CH[ch].n}</b>, ${Math.round((CH[ch].v / tot) * 100)}% of ${fmtNum(tot)} sign-ups. ${CH[ch].note}`;
   }
 
   const PLANS = [{ n: 'Starter', v: 52, c: '--c1' }, { n: 'Team', v: 33, c: '--c2-d' }, { n: 'Business', v: 15, c: '--c5-d' }];
-  $('[data-ring]').innerHTML = `<div role="img" aria-label="Plan mix: ${PLANS.map((p) => `${p.n} ${p.v}%`).join(', ')}">${donut(PLANS.map((p) => ({ value: p.v, color: p.c })), { size: 190, w: 36, gap: 1.2, round: true })}</div><b>2,184<small>paying teams</small></b>`;
+  $('[data-ring]').innerHTML = `<div role="img" aria-label="Plan mix: ${PLANS.map((p) => `${p.n} ${p.v}%`).join(', ')}">${donut(PLANS.map((p) => ({ value: p.v, color: p.c })), { size: 190, w: 36, gap: 1.2, round: true })}</div><b class="num"><span data-paying>2,184</span><small>paying teams</small></b>`;
   $('[data-legend]').innerHTML = PLANS.map((p) => `<li><i style="background:var(${p.c})"></i>${p.n}<span class="num">${p.v}%</span></li>`).join('');
 
   const FLAGS = [{ id: 'mp', n: 'Multiplayer cursors', d: '40% of teams', on: true }, { id: 'ai', n: 'Auto-layout suggestions', d: 'Internal only', on: false }, { id: 'dm', n: 'Dark canvas', d: 'All teams', on: true }, { id: 'ex', n: 'PDF export v2', d: '10% of teams', on: false }, { id: 'cm', n: 'Comment threads', d: 'All teams', on: true }];
   function renderFlags() {
     const q = $('[data-q]').value.trim().toLowerCase(), list = FLAGS.filter((f) => !q || f.n.toLowerCase().includes(q));
-    $('[data-flags]').innerHTML = list.length ? list.map((f) => `<li><span><b id="tf-f-${f.id}">${f.n}</b><small>${f.on ? 'On · ' : 'Off · '}${f.d}</small></span><button class="tf-switch" role="switch" aria-checked="${f.on}" aria-labelledby="tf-f-${f.id}" data-flag="${f.id}"></button></li>`).join('') : `<li class="tf-none">No flags match “${q}”. Clear the filter to see all ${FLAGS.length}.</li>`;
+    $('[data-flags]').innerHTML = list.length ? list.map((f) => `<li><span><b id="tf-f-${f.id}">${f.n}</b><small>${f.on ? 'On · ' : 'Off · '}${f.d}</small></span><button type="button" class="tf-switch" role="switch" aria-checked="${f.on}" aria-labelledby="tf-f-${f.id}" data-flag="${f.id}"></button></li>`).join('') : `<li class="tf-none">No flags match “${q}”. Clear the filter to see all ${FLAGS.length}.</li>`;
   }
 
   const CHECKS = [{ n: 'Freeze strings for translation', d: 'Copy team', done: true }, { n: 'Run accessibility pass', d: 'QA', done: true }, { n: 'Update help centre', d: 'Support', done: false }, { n: 'Write release notes', d: 'Product', done: false }, { n: 'Schedule in-app announcement', d: 'Lifecycle', done: false }];
   function renderChecks() {
     const n = CHECKS.filter((c) => c.done).length;
     $('[data-relcount]').textContent = `${n} of ${CHECKS.length} done`; $('[data-relbar]').style.width = (n / CHECKS.length) * 100 + '%';
-    $('[data-checks]').innerHTML = CHECKS.map((c, i) => `<li><button data-check="${i}" aria-pressed="${c.done}"><i>${c.done ? svg('check') : ''}</i><span>${c.n}<small>${c.d}</small></span></button></li>`).join('');
+    $('[data-checks]').innerHTML = CHECKS.map((c, i) => `<li><button type="button" data-check="${i}" aria-pressed="${c.done}"><i>${c.done ? svg('check') : ''}</i><span>${c.n}<small>${c.d}</small></span></button></li>`).join('');
   }
 
-  // ---------------------------------------------------------------- events
-  $('[data-apps]').addEventListener('click', (e) => { const b = e.target.closest('[data-app]'); if (!b) return; app = b.dataset.app; renderApps(); $(`[data-app="${app}"]`).focus(); });
-  seg($('[data-range]'), (v) => { range = +v; renderWave(); });
-  $('[data-caps]').addEventListener('click', (e) => { const b = e.target.closest('[data-ch]'); if (!b) return; ch = +b.dataset.ch; renderCaps(); $(`[data-ch="${ch}"]`).focus(); });
+  $('[data-apps]').addEventListener('click', (e) => { const b = e.target.closest('[data-app]'); if (!b) return; app = b.dataset.app; renderApps(); toast(`${APPS.find((a) => a.id === app).n} · sample`); $(`[data-app="${app}"]`).focus(); });
+  seg($('[data-range]'), (v) => { range = +v; renderWave(); toast(`${range} weeks · sample`); });
+  $('[data-caps]').addEventListener('click', (e) => { const b = e.target.closest('[data-ch]'); if (!b) return; ch = +b.dataset.ch; renderCaps(); toast(`${CH[ch].n} · sample`); $(`[data-ch="${ch}"]`).focus(); });
   $('[data-q]').addEventListener('input', renderFlags);
-  $('[data-flags]').addEventListener('click', (e) => { const b = e.target.closest('[data-flag]'); if (!b) return; const f = FLAGS.find((x) => x.id === b.dataset.flag); f.on = !f.on; renderFlags(); $(`[data-flag="${f.id}"]`).focus(); $('[data-msg]').textContent = `${f.n} turned ${f.on ? 'on' : 'off'}.`; });
-  $('[data-checks]').addEventListener('click', (e) => { const b = e.target.closest('[data-check]'); if (!b) return; const c = CHECKS[+b.dataset.check]; c.done = !c.done; renderChecks(); $(`[data-check="${b.dataset.check}"]`).focus(); });
+  $('[data-flags]').addEventListener('click', (e) => { const b = e.target.closest('[data-flag]'); if (!b) return; const f = FLAGS.find((x) => x.id === b.dataset.flag); f.on = !f.on; renderFlags(); $(`[data-flag="${f.id}"]`).focus(); $('[data-msg]').textContent = `${f.n} turned ${f.on ? 'on' : 'off'}.`; toast(`${f.n} ${f.on ? 'on' : 'off'} · sample`); });
+  $('[data-checks]').addEventListener('click', (e) => { const b = e.target.closest('[data-check]'); if (!b) return; const c = CHECKS[+b.dataset.check]; c.done = !c.done; renderChecks(); toast(`${c.done ? 'Done' : 'Reopened'} · sample`); $(`[data-check="${b.dataset.check}"]`).focus(); });
   renderApps(); renderWave(); renderCaps(); renderFlags(); renderChecks();
-/* === DB multipage bootstrap (generated; polish pass replaces stubs) === */
-  (function wirePages() {
-    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"workspace","name":"Workspace","pattern":"List"},{"id":"people","name":"People","pattern":"List"},{"id":"settings","name":"Settings","pattern":"Settings"}];
-    const main = document.querySelector('main') || document.body;
-    let stub = document.querySelector('[data-db-stub]');
-    if (!stub) {
-      stub = document.createElement('section');
-      stub.setAttribute('data-db-stub', '');
-      stub.hidden = true;
-      stub.setAttribute('aria-live', 'polite');
-      main.appendChild(stub);
+  countUp($('[data-paying]'), 2184, { format: (n) => fmtNum(Math.round(n)) });
+
+  function staggerReveal() {
+    $$('.tf-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
+      el.classList.add('tf-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'workspace', name: 'Workspace', pattern: 'List' },
+    { id: 'people', name: 'People', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+  function setNav(id) {
+    $$('.tf-pages a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      if (href === `#/${id}`) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  function pageHtml(page) {
+    if (page.id === 'workspace') {
+      return `<section class="tf-page" data-db-page="workspace" aria-labelledby="p-h">
+        <h1 id="p-h">Workspace</h1>
+        <p class="tf-page-lead">Boards and projects in this org.</p>
+        <div class="tf-page-seg" role="group" aria-label="Workspace state" data-ws-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-ws-body></div>
+      </section>`;
     }
-    function setOverviewVisible(on) {
-      [...main.children].forEach((ch) => {
-        if (ch === stub) return;
-        if (on) {
-          ch.hidden = false;
-          ch.removeAttribute('data-db-overview-hide');
-        } else {
-          ch.hidden = true;
-          ch.setAttribute('data-db-overview-hide', '');
+    if (page.id === 'people') {
+      return `<section class="tf-page" data-db-page="people" aria-labelledby="p-h">
+        <h1 id="p-h">People</h1>
+        <p class="tf-page-lead">Seats and roles across paying teams.</p>
+        <div class="tf-page-grid">
+          <article class="tf-page-card"><div class="tf-row"><strong>Rosa Lindqvist</strong><span>Admin</span></div></article>
+          <article class="tf-page-card"><div class="tf-row"><strong>Kai Mendes</strong><span>Editor</span></div></article>
+        </div>
+        <button type="button" class="tf-btn" data-invite>Invite teammate</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="tf-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="tf-page-lead">Billing alerts and workspace defaults.</p>
+        <div class="tf-page-grid">
+          <article class="tf-page-card"><div class="tf-row"><strong>Usage alerts</strong><span>On</span></div></article>
+          <article class="tf-page-card"><div class="tf-row"><strong>Default plan</strong><span>Team</span></div></article>
+        </div>
+        <button type="button" class="tf-btn ghost" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="tf-page"><h1>${page.name}</h1></section>`;
+  }
+  function wirePage(host, page) {
+    if (page.id === 'workspace') {
+      const body = host.querySelector('[data-ws-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="tf-loading" role="status"><p>Loading boards…</p><div class="tf-skel"></div><div class="tf-skel"></div></div>`;
+          return;
         }
-      });
-      stub.hidden = on;
+        if (state === 'empty') {
+          body.innerHTML = `<div class="tf-empty"><p>No boards yet. Create one to start.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="tf-error"><p>Could not load workspace.</p><button type="button" class="tf-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="tf-page-grid">
+          <article class="tf-page-card"><div class="tf-row"><span>Brand system</span><strong>12 files</strong></div></article>
+          <article class="tf-page-card"><div class="tf-row"><span>Launch kit</span><strong>8 files</strong></div></article>
+        </div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-ws-tabs]'), (v) => paint(v));
     }
-    function renderStub(page) {
-      const rows = [
-        ['Status', 'Sample · ready'],
-        ['Records', '24'],
-        ['Updated', 'Today'],
-      ];
-      stub.innerHTML = '<h1>' + page.name + '</h1>'
-        + '<p class="db-sample">Sample data · fictional</p>'
-        + '<p>This page is part of the multi-page shell. The polish pass fills it with real ' + page.name.toLowerCase() + ' UI in the same design language as Overview.</p>'
-        + '<div class="db-stub-panel" role="list">'
-        + rows.map(([k, v]) => '<div class="db-stub-row" role="listitem"><span>' + k + '</span><strong class="num">' + v + '</strong></div>').join('')
-        + '</div>';
+    if (page.id === 'people') {
+      host.querySelector('[data-invite]')?.addEventListener('click', () => toast('Invite sent · sample'));
     }
-    document.querySelectorAll('a[href]').forEach((a) => {
-      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-      if (!label) return;
-      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
-        || (label === 'home' && p.id === 'overview')
-        || (label === 'dashboard' && p.id === 'overview'));
-      if (hit) a.setAttribute('href', '#/' + hit.id);
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
     });
-    if (!window.DB || typeof window.DB.route !== 'function') {
-      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
-      return;
-    }
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
     window.DB.route(PAGES, (id, page) => {
-      if (id === PAGES[0].id) setOverviewVisible(true);
-      else { setOverviewVisible(false); renderStub(page); }
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
     });
-  })();
-/* === /DB multipage bootstrap === */
-  document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end
+  }
+
+  document.documentElement.dataset.ready = 'true';
 })();

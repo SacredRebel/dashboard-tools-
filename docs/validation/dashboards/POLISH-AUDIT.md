@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `taffy-analytics` (Phase C — total 28).
+Next: `tidebath-showroom` (Phase C — total 28).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -20,7 +20,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 10 | pearlwell-dental | Pearlwell Dental | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay tooth+arch media; multipage + motion | polished 25→36 |
 | 11 | vitalis-care | Vitalis Care | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay doctor+heart media; props; multipage + motion | polished 24→36 |
 | 12 | mallow-music | Mallow Music | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | smaller 3D character; softer clay emboss | queued |
-| 13 | taffy-analytics | Taffy Analytics | 4 | 3 | 3 | 4 | 3 | 3 | 4 | 4 | 28 | abstract kit layout; added serif titles | queued |
+| 13 | taffy-analytics | Taffy Analytics | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | dual-tone clay + sphere; sans titles; multipage + motion | polished 28→36 |
 | 14 | prism-workspace | Prism Workspace | 4 | 3 | 4 | 4 | 4 | 3 | 4 | 4 | 30 | kit gibberish → real copy; missing kit misspell charm | queued |
 | 15 | plumage-survey | Plumage Bird Survey | 4 | 3 | 4 | 4 | 3 | 3 | 4 | 4 | 29 | hyper-detailed parrot → flat vector; less glass | queued |
 | 16 | hollow-vault | Hollow Vault | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted relics+chest; witch; multipage + motion | polished 25→36 |
@@ -66,7 +66,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 13. ~~`aether-pane` — 27~~ → polished (36)
 14. ~~`aura-ring` — 28~~ → polished (36)
 15. ~~`larchwood-lodge` — 28~~ → polished (36)
-16. `taffy-analytics` — 28
+16. ~~`taffy-analytics` — 28~~ → polished (36)
 17. `tidebath-showroom` — 28
 18. `pebble-studio` — 28
 19. `ember-rooms` — 28

@@ -578,15 +578,15 @@ Lots of white space, hairlines, one accent, quiet type. Calm tools people use al
 
 _Taffy Analytics · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A calm pastel product-analytics dashboard for a design-tool startup: a serif headline number over a soft area chart, a row of glossy 3D capsules for sign-ups by channel, a rounded plan-mix ring, springy feature-flag switches and a release checklist.
+A calm pastel product-analytics dashboard for a design-tool startup: a rounded-sans headline number over a soft area chart, dual-tone clay capsules for sign-ups by channel, a plan-mix ring with a clay sphere prop, springy feature-flag switches and a release checklist — plus Workspace, People and Settings.
 
 - **Use cases:** SaaS admin, Analytics & BI · **Mode:** light · **Mood:** calm, tactile, light, friendly, modern
 - **Pages:** Overview (`overview`, Dashboard) · Workspace (`workspace`, List) · People (`people`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Glossy pastel capsules standing on a peach shelf, shaded with a left-to-right gradient and an inner highlight so they read as soft 3D pills.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Dual-tone pastel clay capsules standing on a peach shelf, with a soft interlocking sphere prop and rounded sans titles matching the kit.
 - **Layout:** Top bar: serif wordmark, centred pill of 5 round workspace buttons, avatar · 12-column grid: weekly active teams area chart (7) + capsule chart (5, two rows) · KPI strip (7) · plan mix (4) + feature flags (4) + release checklist (4)
 - **Responsive:** ≤1100px: 2 columns (hero and KPIs full width, capsules + mix, flags + checklist) · ≤700px: single column, workspace pill on its own row, KPIs stacked
-- **Fonts:** Instrument Serif / Manrope · **Palette:** bg `#f4ebe4`, surface `#fbf8f5`, text `#2e2633`, muted `#625866`, accent `#5d55b8`, peach `#f3c3ae`, lilac `#c9c2ee`, mint `#b9e0dd`
+- **Fonts:** Manrope / Manrope · **Palette:** bg `#f4ebe4`, surface `#fbf8f5`, text `#2e2633`, muted `#5a5160`, accent `#5d55b8`, peach `#f3c3ae`, lilac `#c9c2ee`, mint `#b9e0dd`
 - **Variants:** Taffy, Mint, Dusk · **Closest toolkit theme:** `blush`
 
 **Best for**
@@ -599,7 +599,7 @@ A calm pastel product-analytics dashboard for a design-tool startup: a serif hea
 - Finance or ops tools that need exact gridlines
 - Dark, technical brands
 
-**Components:** Round workspace switcher · Headline number with area chart and range toggle · 3D capsule bar chart with selectable channels · KPI strip with dividers · Rounded donut ring with legend · Feature-flag list with springy switches and filter · Checklist with progress bar
+**Components:** Round workspace switcher and pages nav · Headline number with area chart and range toggle · Dual-tone clay capsule chart with peach shelf · KPI strip with dividers · Rounded donut ring with clay sphere prop · Feature-flag list with springy switches and filter · Checklist with progress bar
 
 ---
 
