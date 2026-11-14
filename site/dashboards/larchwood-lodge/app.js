@@ -1,8 +1,9 @@
-/* Larchwood Lodge: sample data, hero art, thermostat, daylight, forecast, scenes, bookings.
-   All data is fictional sample data. No timers, no network. */
+/* Larchwood Lodge: painted lake hero, plum glass bento, multipage + motion. Sample data only. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
   const ICON = {
     sun: '<circle cx="12" cy="12" r="4.2"/><path d="M12 1.800v2.400M12 19.800v2.400M4.8 4.800l1.7 1.700M17.5 17.500l1.7 1.700M1.8 12h2.400M19.8 12h2.400M4.8 19.200l1.7-1.700M17.5 6.500l1.7-1.7"/>',
     umbrella: '<path d="M3 12a9 9 0 0 1 18 0zM12 12v7a2 2 0 0 1-4 0"/>',
@@ -18,18 +19,28 @@
     heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>',
   };
   const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  const paintIcons = (host = document) => $$('[data-icon]', host).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 650, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
   const fmtNum = (v) => v.toLocaleString('en-US');
   const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
   const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
-  const niceStep = (raw) => { const p = 10 ** Math.floor(Math.log10(raw || 1)); const f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; };
-  function scale(vals, o) {
-    let min = o.min ?? Math.min(...vals), max = o.max ?? Math.max(...vals);
-    const step = o.step || niceStep((max - min || 1) / (o.ticks || 4));
-    min = Math.floor(min / step) * step; max = Math.ceil(max / step) * step; if (max === min) max = min + step;
-    const ticks = []; for (let v = min; v <= max + step / 1e6; v += step) ticks.push(+v.toFixed(6));
-    return { min, max, ticks };
-  }
   // segmented control / tabs: buttons carry data-v, the pressed one gets aria-pressed="true"
   function seg(group, onChange) {
     group.addEventListener('click', (e) => {
@@ -38,7 +49,7 @@
       onChange(b.dataset.v, b);
     });
   }
-  // Arc gauge. Angles in degrees, 0 = up, clockwise. Returns an SVG string with a track and a value arc.
+  // Arc gauge. Angles in degrees, 0 = up, clockwise.
   const polar = (cx, cy, r, deg) => [cx + r * Math.sin((deg * Math.PI) / 180), cy - r * Math.cos((deg * Math.PI) / 180)];
   const arcPath = (cx, cy, r, a0, a1) => { const [x0, y0] = polar(cx, cy, r, a0), [x1, y1] = polar(cx, cy, r, a1); return `M${x0.toFixed(2)},${y0.toFixed(2)} A${r},${r} 0 ${Math.abs(a1 - a0) > 180 ? 1 : 0} ${a1 > a0 ? 1 : 0} ${x1.toFixed(2)},${y1.toFixed(2)}`; };
   function arcGauge(pct, { size = 160, w = 12, from = -120, to = 120, color = '--accent', knob = false } = {}) {
@@ -49,23 +60,6 @@
   const fmtD = (n, o) => fmtDate(dayOffset(n), o);
   $('[data-stay]').textContent = `Checked in ${fmtD(-2, { weekday: 'short', day: 'numeric', month: 'short' })} · check-out ${fmtD(3, { weekday: 'short', day: 'numeric', month: 'short' })}, 11:00`;
   const SUNSET = '18:04'; $('[data-sunset]').textContent = SUNSET; $('[data-sunset2]').textContent = SUNSET;
-
-  // ---------------------------------------------------------------- hero art
-  const tree = (x, y, s, c) => `<path d="M${x} ${y - 46 * s} L${x + 16 * s} ${y} L${x - 16 * s} ${y}Z" style="fill:var(${c})"/><rect x="${x - 2 * s}" y="${y}" width="${4 * s}" height="${8 * s}" style="fill:var(--mtn-3)"/>`;
-  let trees = '', refl = '';
-  for (let i = 0; i < 22; i++) { const x = 20 + i * 38 + ((i * 13) % 17), s = 0.7 + ((i * 7) % 6) / 10, c = ['--tree-1', '--tree-2', '--tree-3', '--pine'][i % 4]; trees += tree(x, 300 - ((i * 11) % 14), s, c); refl += tree(x, 300 + ((i * 11) % 14), s * 0.8, c); }
-  $('[data-art]').innerHTML = `<svg viewBox="0 0 860 420" preserveAspectRatio="xMidYMid slice">
-    <defs><linearGradient id="lw-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--sky-1)"/><stop offset=".6" style="stop-color:var(--sky-2)"/><stop offset="1" style="stop-color:var(--sky-3)"/></linearGradient></defs>
-    <rect width="860" height="420" style="fill:url(#lw-sky)"/>
-    <circle cx="560" cy="200" r="46" style="fill:var(--sun)" opacity=".9"/>
-    <path d="M0 260 L150 120 L250 210 L380 70 L520 220 L640 130 L860 270 L860 310 L0 310Z" style="fill:var(--mtn-1)"/>
-    <path d="M330 120 L380 70 L430 120 L405 112 L380 126 L355 110Z" style="fill:var(--text)" opacity=".75"/>
-    <path d="M0 290 L120 200 L260 270 L420 180 L600 280 L760 210 L860 280 L860 310 L0 310Z" style="fill:var(--mtn-2)"/>
-    <g>${trees}</g>
-    <rect y="306" width="860" height="114" style="fill:var(--lake)"/>
-    <g transform="translate(0 612) scale(1 -1)" opacity=".35">${refl}</g>
-    <path d="M520 330 h80 M500 350 h120 M540 372 h50" style="stroke:var(--sun)" stroke-width="3" stroke-linecap="round" opacity=".5"/>
-  </svg>`;
 
   // ---------------------------------------------------------------- thermostat
   let target = 21;
@@ -82,90 +76,167 @@
   const WX = [{ i: 'sun', hi: 14, lo: 4, d: 'Clear and crisp. Frost by the jetty at dawn.' }, { i: 'leaf', hi: 12, lo: 6, d: 'Breezy, gusts to 35 km/h. Lake may be choppy for kayaks.' }, { i: 'umbrella', hi: 9, lo: 5, d: 'Rain most of the day, 12 mm. A good sauna day.' }, { i: 'sun', hi: 11, lo: 2, d: 'Bright after a cold start. Best day for the ridge trail.' }, { i: 'moon', hi: 10, lo: 3, d: 'Cloudy, clearing at night. Stars from the deck after 21:00.' }];
   let day = 0;
   function renderWx() {
-    $('[data-days]').innerHTML = WX.map((w, i) => `<button data-day="${i}" aria-pressed="${i === day}">${i === 0 ? 'Today' : fmtD(i, { weekday: 'short' })}${svg(w.i)}<span class="num">${w.hi}°</span><small class="num">${w.lo}°</small></button>`).join('');
+    $('[data-days]').innerHTML = WX.map((w, i) => `<button type="button" data-day="${i}" aria-pressed="${i === day}">${i === 0 ? 'Today' : fmtD(i, { weekday: 'short' })}${svg(w.i)}<span class="num">${w.hi}°</span><small class="num">${w.lo}°</small></button>`).join('');
     $('[data-wxdetail]').textContent = WX[day].d; $('[data-wxnote]').textContent = 'Lake level normal';
   }
   // ---------------------------------------------------------------- scenes
   const SC = [{ n: 'Fireside', i: 'flame', d: 'Warm lamps at 40%, fireplace glow on.' }, { n: 'Reading', i: 'book', d: 'Reading lamps at 80%, others off.' }, { n: 'Sleep', i: 'moon', d: 'All off except a low hallway light.' }, { n: 'Away', i: 'power', d: 'Lights off, heat drops to 15° while you are out.' }];
   let scene = 0;
-  const renderScenes = () => { $('[data-scenes]').innerHTML = SC.map((s, i) => `<button role="radio" aria-checked="${i === scene}" tabindex="${i === scene ? 0 : -1}" data-sc="${i}">${svg(s.i)}${s.n}</button>`).join(''); $('[data-scnote]').textContent = SC[scene].d; };
+  const renderScenes = () => { $('[data-scenes]').innerHTML = SC.map((s, i) => `<button type="button" role="radio" aria-checked="${i === scene}" tabindex="${i === scene ? 0 : -1}" data-sc="${i}">${svg(s.i)}${s.n}</button>`).join(''); $('[data-scnote]').textContent = SC[scene].d; };
   // ---------------------------------------------------------------- activities
   const ACTS = [{ n: 'Sunrise kayak', ic: 'drop', w: 'Tomorrow 07:30 · 90 min · 2 places left', mine: false, full: false }, { n: 'Cedar sauna', ic: 'flame', w: 'Today 19:00 · private · 45 min', mine: true, full: false }, { n: 'Guided ridge hike', ic: 'map', w: `${fmtD(3, { weekday: 'long' })} 09:00 · 4 h`, mine: false, full: false }, { n: 'Mushroom walk', ic: 'leaf', w: `${fmtD(2, { weekday: 'long' })} 10:00 · full`, mine: false, full: true }];
   let actf = 'all';
   function renderActs() {
     const list = ACTS.map((x, i) => ({ ...x, i })).filter((x) => actf === 'all' || x.mine);
-    $('[data-acts]').innerHTML = list.length ? list.map((x) => `<li><span class="lw-ic" aria-hidden="true">${svg(x.ic)}</span><span>${x.n}<small>${x.w}</small></span><button class="lw-book" data-act="${x.i}" aria-pressed="${x.mine}" ${x.full && !x.mine ? 'disabled' : ''} aria-label="${x.mine ? 'Cancel' : x.full ? 'Full:' : 'Book'} ${x.n}">${x.mine ? 'Booked · cancel' : x.full ? 'Full' : 'Book'}</button></li>`).join('') : '<li class="lw-none">No bookings yet. Switch to All to pick an activity.</li>';
+    $('[data-acts]').innerHTML = list.length ? list.map((x) => `<li><span class="lw-ic" aria-hidden="true">${svg(x.ic)}</span><span>${x.n}<small>${x.w}</small></span><button type="button" class="lw-book" data-act="${x.i}" aria-pressed="${x.mine}" ${x.full && !x.mine ? 'disabled' : ''} aria-label="${x.mine ? 'Cancel' : x.full ? 'Full:' : 'Book'} ${x.n}">${x.mine ? 'Booked · cancel' : x.full ? 'Full' : 'Book'}</button></li>`).join('') : '<li class="lw-none">No bookings yet. Switch to All to pick an activity.</li>';
   }
   // ---------------------------------------------------------------- alarms + trails
   const AL = [{ t: '07:00', d: 'Sunrise kayak', on: true }, { t: '08:30', d: 'Weekend lie-in', on: false }];
-  const renderAlarms = () => { $('[data-alarms]').innerHTML = AL.map((x, i) => `<li><span><b class="num" id="lw-al${i}">${x.t}</b><small>${x.d}</small></span><button class="lw-switch" role="switch" aria-checked="${x.on}" aria-labelledby="lw-al${i}" data-al="${i}"></button></li>`).join(''); };
+  const renderAlarms = () => { $('[data-alarms]').innerHTML = AL.map((x, i) => `<li><span><b class="num" id="lw-al${i}">${x.t}</b><small>${x.d}</small></span><button type="button" class="lw-switch" role="switch" aria-checked="${x.on}" aria-labelledby="lw-al${i}" data-al="${i}"></button></li>`).join(''); };
   const TR = [['Lakeshore loop', '4.2 km · easy', 'ok', 'Open'], ['Larch ridge', '9.8 km · hard', 'warn', 'Muddy'], ['Falls path', '3.1 km · easy', 'bad', 'Closed · bridge repair']];
   $('[data-trails]').innerHTML = TR.map(([n, d, c, s]) => `<li><span>${n}<small>${d}</small></span><span class="lw-st ${c}">${s}</span></li>`).join('');
 
   // ---------------------------------------------------------------- events
-  $$('[data-t]').forEach((b) => b.addEventListener('click', () => { target = Math.min(27, Math.max(15, target + +b.dataset.t)); renderTemp(); }));
-  $('[data-days]').addEventListener('click', (e) => { const b = e.target.closest('[data-day]'); if (!b) return; day = +b.dataset.day; renderWx(); $(`[data-day="${day}"]`).focus(); });
-  $('[data-scenes]').addEventListener('click', (e) => { const b = e.target.closest('[data-sc]'); if (!b) return; scene = +b.dataset.sc; renderScenes(); $(`[data-sc="${scene}"]`).focus(); });
+  $$('[data-t]').forEach((b) => b.addEventListener('click', () => { target = Math.min(27, Math.max(15, target + +b.dataset.t)); renderTemp(); toast(`Target ${target}° · sample`); }));
+  $('[data-days]').addEventListener('click', (e) => { const b = e.target.closest('[data-day]'); if (!b) return; day = +b.dataset.day; renderWx(); $(`[data-day="${day}"]`).focus(); toast(`${day === 0 ? 'Today' : fmtD(day, { weekday: 'short' })} · sample`); });
+  $('[data-scenes]').addEventListener('click', (e) => { const b = e.target.closest('[data-sc]'); if (!b) return; scene = +b.dataset.sc; renderScenes(); $(`[data-sc="${scene}"]`).focus(); toast(`${SC[scene].n} · sample`); });
   $('[data-scenes]').addEventListener('keydown', (e) => { const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key]; if (!d) return; e.preventDefault(); scene = (scene + d + SC.length) % SC.length; renderScenes(); $(`[data-sc="${scene}"]`).focus(); });
   seg($('[data-actf]'), (v) => { actf = v; renderActs(); });
-  $('[data-acts]').addEventListener('click', (e) => { const b = e.target.closest('[data-act]'); if (!b) return; const x = ACTS[+b.dataset.act]; x.mine = !x.mine; renderActs(); const nb = $(`[data-act="${b.dataset.act}"]`); (nb || $('[data-actf] [aria-pressed="true"]')).focus(); });
-  $('[data-alarms]').addEventListener('click', (e) => { const b = e.target.closest('[data-al]'); if (!b) return; AL[+b.dataset.al].on = !AL[+b.dataset.al].on; renderAlarms(); $(`[data-al="${b.dataset.al}"]`).focus(); });
+  $('[data-acts]').addEventListener('click', (e) => { const b = e.target.closest('[data-act]'); if (!b) return; const x = ACTS[+b.dataset.act]; x.mine = !x.mine; renderActs(); toast(`${x.mine ? 'Booked' : 'Cancelled'} ${x.n} · sample`); const nb = $(`[data-act="${b.dataset.act}"]`); (nb || $('[data-actf] [aria-pressed="true"]')).focus(); });
+  $('[data-alarms]').addEventListener('click', (e) => { const b = e.target.closest('[data-al]'); if (!b) return; AL[+b.dataset.al].on = !AL[+b.dataset.al].on; renderAlarms(); toast(`Alarm ${AL[+b.dataset.al].on ? 'on' : 'off'} · sample`); $(`[data-al="${b.dataset.al}"]`).focus(); });
   renderTemp(); renderWx(); renderScenes(); renderActs(); renderAlarms();
-/* === DB multipage bootstrap (generated; polish pass replaces stubs) === */
-  (function wirePages() {
-    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"rooms","name":"Rooms","pattern":"List"},{"id":"guests","name":"Guests","pattern":"List"},{"id":"settings","name":"Settings","pattern":"Settings"}];
-    const main = document.querySelector('main') || document.body;
-    let stub = document.querySelector('[data-db-stub]');
-    if (!stub) {
-      stub = document.createElement('section');
-      stub.setAttribute('data-db-stub', '');
-      stub.hidden = true;
-      stub.setAttribute('aria-live', 'polite');
-      main.appendChild(stub);
+  countUp($('[data-inside]'), 18.5, { format: (n) => `${n.toFixed(1)}°` });
+
+  function staggerReveal() {
+    $$('.lw-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
+      el.classList.add('lw-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'rooms', name: 'Rooms', pattern: 'List' },
+    { id: 'guests', name: 'Guests', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+  function setNav(id) {
+    $$('.lw-pages a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      if (href === `#/${id}`) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  function pageHtml(page) {
+    if (page.id === 'rooms') {
+      return `<section class="lw-page" data-db-page="rooms" aria-labelledby="p-h">
+        <h1 id="p-h">Rooms</h1>
+        <p class="lw-page-lead">Cabins and shared spaces on the property.</p>
+        <div class="lw-page-seg" role="group" aria-label="Rooms state" data-rooms-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-rooms-body></div>
+      </section>`;
     }
-    function setOverviewVisible(on) {
-      [...main.children].forEach((ch) => {
-        if (ch === stub) return;
-        if (on) {
-          ch.hidden = false;
-          ch.removeAttribute('data-db-overview-hide');
-        } else {
-          ch.hidden = true;
-          ch.setAttribute('data-db-overview-hide', '');
+    if (page.id === 'guests') {
+      return `<section class="lw-page" data-db-page="guests" aria-labelledby="p-h">
+        <h1 id="p-h">Guests</h1>
+        <p class="lw-page-lead">Current stays and check-ins.</p>
+        <div class="lw-page-grid">
+          <article class="lw-page-card"><div class="lw-row"><strong>Okafor family</strong><span>Cabin 4</span></div></article>
+          <article class="lw-page-card"><div class="lw-row"><strong>Nguyen party</strong><span>Cabin 2</span></div></article>
+        </div>
+        <button type="button" class="lw-btn" data-check-in>Check in guest</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="lw-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="lw-page-lead">Stay preferences and quiet hours.</p>
+        <div class="lw-page-grid">
+          <article class="lw-page-card"><div class="lw-row"><strong>Quiet hours</strong><span>22:00–07:00</span></div></article>
+          <article class="lw-page-card"><div class="lw-row"><strong>Trail alerts</strong><span>On</span></div></article>
+        </div>
+        <button type="button" class="lw-btn ghost" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="lw-page"><h1>${page.name}</h1></section>`;
+  }
+  function wirePage(host, page) {
+    if (page.id === 'rooms') {
+      const body = host.querySelector('[data-rooms-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="lw-loading" role="status"><p>Loading rooms…</p><div class="lw-skel"></div><div class="lw-skel"></div></div>`;
+          return;
         }
-      });
-      stub.hidden = on;
+        if (state === 'empty') {
+          body.innerHTML = `<div class="lw-empty"><p>No cabins assigned yet.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="lw-error"><p>Could not load rooms.</p><button type="button" class="lw-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="lw-page-grid">
+          <article class="lw-page-card"><div class="lw-row"><span>Cabin 4</span><strong>Lakeside</strong></div></article>
+          <article class="lw-page-card"><div class="lw-row"><span>Cabin 2</span><strong>Forest</strong></div></article>
+          <article class="lw-page-card"><div class="lw-row"><span>Sauna</span><strong>Open</strong></div></article>
+        </div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-rooms-tabs]'), (v) => paint(v));
     }
-    function renderStub(page) {
-      const rows = [
-        ['Status', 'Sample · ready'],
-        ['Records', '24'],
-        ['Updated', 'Today'],
-      ];
-      stub.innerHTML = '<h1>' + page.name + '</h1>'
-        + '<p class="db-sample">Sample data · fictional</p>'
-        + '<p>This page is part of the multi-page shell. The polish pass fills it with real ' + page.name.toLowerCase() + ' UI in the same design language as Overview.</p>'
-        + '<div class="db-stub-panel" role="list">'
-        + rows.map(([k, v]) => '<div class="db-stub-row" role="listitem"><span>' + k + '</span><strong class="num">' + v + '</strong></div>').join('')
-        + '</div>';
+    if (page.id === 'guests') {
+      host.querySelector('[data-check-in]')?.addEventListener('click', () => toast('Check-in started · sample'));
     }
-    document.querySelectorAll('a[href]').forEach((a) => {
-      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-      if (!label) return;
-      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
-        || (label === 'home' && p.id === 'overview')
-        || (label === 'dashboard' && p.id === 'overview'));
-      if (hit) a.setAttribute('href', '#/' + hit.id);
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
     });
-    if (!window.DB || typeof window.DB.route !== 'function') {
-      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
-      return;
-    }
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
     window.DB.route(PAGES, (id, page) => {
-      if (id === PAGES[0].id) setOverviewVisible(true);
-      else { setOverviewVisible(false); renderStub(page); }
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
     });
-  })();
-/* === /DB multipage bootstrap === */
-  document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end
+  }
+
+  document.documentElement.dataset.ready = 'true';
 })();

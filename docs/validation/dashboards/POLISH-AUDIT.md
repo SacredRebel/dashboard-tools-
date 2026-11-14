@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `larchwood-lodge` (Phase C — total 28).
+Next: `taffy-analytics` (Phase C — total 28).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -24,7 +24,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 14 | prism-workspace | Prism Workspace | 4 | 3 | 4 | 4 | 4 | 3 | 4 | 4 | 30 | kit gibberish → real copy; missing kit misspell charm | queued |
 | 15 | plumage-survey | Plumage Bird Survey | 4 | 3 | 4 | 4 | 3 | 3 | 4 | 4 | 29 | hyper-detailed parrot → flat vector; less glass | queued |
 | 16 | hollow-vault | Hollow Vault | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted relics+chest; witch; multipage + motion | polished 25→36 |
-| 17 | larchwood-lodge | Larchwood Lodge | 4 | 3 | 4 | 3 | 3 | 3 | 4 | 4 | 28 | missing purple glass kit widgets; photo in ref | queued |
+| 17 | larchwood-lodge | Larchwood Lodge | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | lake photo + plum glass; multipage + motion | polished 28→36 |
 | 18 | hearth-nest | Hearth Nest | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | living-room photo + nodes; multipage + motion | polished 26→36 |
 | 19 | veil-rooms | Veil Rooms | 5 | 4 | 4 | 3 | 3 | 2 | 4 | 4 | 29 | less glass blur; no album art photo | queued |
 | 20 | atrium-living | Atrium Living | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | room+camera photo; multipage + motion | polished 26→36 |
@@ -65,7 +65,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 12. ~~`haven-listings` — 27~~ → polished (36)
 13. ~~`aether-pane` — 27~~ → polished (36)
 14. ~~`aura-ring` — 28~~ → polished (36)
-15. `larchwood-lodge` — 28
+15. ~~`larchwood-lodge` — 28~~ → polished (36)
 16. `taffy-analytics` — 28
 17. `tidebath-showroom` — 28
 18. `pebble-studio` — 28

@@ -647,15 +647,15 @@ A bento-grid patient dashboard for a family clinic: clay doctor hero photo, dime
 
 _Larchwood Lodge · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, drawn in SVG layers, greets the family. Around it sit tiles for cabin heat, daylight left, a five-day forecast, light scenes, activity booking, wake-up alarms and today's trail status.
+A dusky plum glass bento guest hub for a mountain cabin. A painted autumn lake at sunset greets the family. Around it sit frosted tiles for cabin heat, daylight left, a five-day forecast, light scenes, activity booking, wake-up alarms and today's trail status — plus Rooms, Guests and Settings.
 
 - **Use cases:** Hospitality & food, Smart home & IoT · **Mode:** dark · **Mood:** cosy, warm, seasonal, calm, atmospheric
 - **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Guests (`guests`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** A layered SVG autumn lake at sunset (plum ridges, gold and rust larches, reflected in the water) set inside dark plum bento tiles that pick up the same sunset orange.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** A painted autumn lake at sunset (plum ridges, gold and rust larches) set inside frosted plum glass bento tiles that pick up the same sunset orange.
 - **Layout:** Top bar: mark, name, stay dates · 12-column bento: landscape hero with greeting (8) + thermostat dial (4) · daylight arc (3) + forecast (5) + light scenes (4) · activity booking (6) + alarms (3) + trails (3)
 - **Responsive:** ≤1100px: 2 columns (hero full, dial + daylight, forecast full, scenes + alarms, bookings and trails full) · ≤700px: single column, greeting moves under the art
-- **Fonts:** Fraunces / Figtree · **Palette:** bg `#1c1720`, surface `#2a2230`, text `#f5eef3`, muted `#c4b4c1`, accent `#f29455`, sky `#a65a6a`, larch `#f0a03c`, lake `#3a4a6b`
+- **Fonts:** Fraunces / Figtree · **Palette:** bg `#1c1720`, surface `#2a2230`, text `#f5eef3`, muted `#e4d6e0`, accent `#f29455`, sky `#a65a6a`, larch `#f0a03c`, lake `#3a4a6b`
 - **Variants:** Plum, Birch, Pine · **Closest toolkit theme:** `ember`
 
 **Best for**
@@ -668,7 +668,7 @@ A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, dra
 - Bright, high-energy brands
 - Screens that must show many rooms at once
 
-**Components:** SVG landscape hero with greeting · Thermostat dial with step buttons · Daylight arc · Five-day forecast picker · Light-scene radio tiles · Activity booking list with filter and empty state · Alarm switches · Trail status list
+**Components:** Painted lake photo hero with greeting glass card · Thermostat dial with step buttons · Daylight arc · Five-day forecast picker · Light-scene radio tiles · Activity booking list with filter and empty state · Alarm switches · Trail status list · Primary pages nav (Overview / Rooms / Guests / Settings)
 
 ---
 

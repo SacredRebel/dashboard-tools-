@@ -2122,7 +2122,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, drawn in SVG layers, greets the family. Around it sit tiles for cabin heat, daylight left, a five-day forecast, light scenes, activity booking, wake-up alarms and today's trail status.",
+      "summary": "A dusky plum glass bento guest hub for a mountain cabin. A painted autumn lake at sunset greets the family. Around it sit frosted tiles for cabin heat, daylight left, a five-day forecast, light scenes, activity booking, wake-up alarms and today's trail status — plus Rooms, Guests and Settings.",
       "mood": [
         "cosy",
         "warm",
@@ -2146,21 +2146,22 @@
         "responsive": "\u22641100px: 2 columns (hero full, dial + daylight, forecast full, scenes + alarms, bookings and trails full) \u00b7 \u2264700px: single column, greeting moves under the art"
       },
       "components": [
-        "SVG landscape hero with greeting",
+        "Painted lake photo hero with greeting glass card",
         "Thermostat dial with step buttons",
         "Daylight arc",
         "Five-day forecast picker",
         "Light-scene radio tiles",
         "Activity booking list with filter and empty state",
         "Alarm switches",
-        "Trail status list"
+        "Trail status list",
+        "Primary pages nav (Overview / Rooms / Guests / Settings)"
       ],
-      "signature": "A layered SVG autumn lake at sunset (plum ridges, gold and rust larches, reflected in the water) set inside dark plum bento tiles that pick up the same sunset orange.",
+      "signature": "A painted autumn lake at sunset (plum ridges, gold and rust larches) set inside frosted plum glass bento tiles that pick up the same sunset orange.",
       "palette": {
         "bg": "#1c1720",
         "surface": "#2a2230",
         "text": "#f5eef3",
-        "muted": "#c4b4c1",
+        "muted": "#e4d6e0",
         "accent": "#f29455",
         "sky": "#a65a6a",
         "larch": "#f0a03c",
@@ -2197,7 +2198,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a small user-supplied render of plum widgets around an autumn mountain-lake painting. The widget-board feel, plum tones and central landscape were kept, and the widgets were given a cabin-guest job. The painting was redrawn as simple SVG shapes. The unreadable widget text was replaced with invented content. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a small user-supplied render of plum widgets around an autumn mountain-lake painting. The widget-board feel, plum glass tones and central landscape were kept, and the widgets were given a cabin-guest job. Hero uses gallery media (`media/lake.webp`). Unreadable widget text was replaced with invented content. Fidelity pass used local tesseract OCR + palette sample on reference.jpg. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/larchwood-lodge/",
       "reference": "reference.jpg",
@@ -2223,7 +2224,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "hearth-nest",
