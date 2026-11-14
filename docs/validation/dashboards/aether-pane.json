@@ -1,7 +1,7 @@
 {
   "id": "aether-pane",
-  "checked": "2026-11-13",
-  "ok": true,
+  "checked": "2026-11-14",
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -50,7 +50,9 @@
       "variant": "daylight",
       "final_path": "/dashboards/aether-pane/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.82:1 (needs 4.5) \"Sample data · fictional\" 12px, text rgb(42, 68, 80) on ~rgb(123, 142, 151) at x660 y812"
+      ]
     },
     {
       "url": "/#/dashboards/aether-pane",

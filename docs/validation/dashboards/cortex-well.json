@@ -1,7 +1,7 @@
 {
   "id": "cortex-well",
-  "checked": "2026-11-13",
-  "ok": true,
+  "checked": "2026-11-14",
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -10,7 +10,11 @@
       "variant": "default",
       "final_path": "/dashboards/cortex-well/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.95:1 (needs 4.5) \"AV\" 13px, text rgb(255, 255, 255) on ~rgb(181, 126, 185) at x1381 y36",
+        "low contrast 3.12:1 (needs 4.5) \"Rising\" 12px, text rgb(42, 143, 122) on ~rgb(213, 232, 235) at x395 y245",
+        "low contrast 3.47:1 (needs 4.5) \"Sample data · fictional · not me\" 12px, text rgb(125, 115, 140) on ~rgb(232, 223, 245) at x632 y863"
+      ]
     },
     {
       "url": "/dashboards/cortex-well",
@@ -34,7 +38,11 @@
       "variant": "default",
       "final_path": "/dashboards/cortex-well/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.99:1 (needs 4.5) \"AV\" 13px, text rgb(255, 255, 255) on ~rgb(182, 127, 186) at x328 y153",
+        "low contrast 3.07:1 (needs 4.5) \"Rising\" 12px, text rgb(42, 143, 122) on ~rgb(216, 230, 232) at x295 y751",
+        "low contrast 3.47:1 (needs 4.5) \"Sample data · fictional · not me\" 12px, text rgb(125, 115, 140) on ~rgb(232, 223, 245) at x67 y2032"
+      ]
     },
     {
       "url": "/dashboards/cortex-well/?variant=rose",
@@ -42,7 +50,11 @@
       "variant": "rose",
       "final_path": "/dashboards/cortex-well/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.82:1 (needs 4.5) \"AV\" 13px, text rgb(255, 255, 255) on ~rgb(213, 122, 157) at x1381 y36",
+        "low contrast 2.98:1 (needs 4.5) \"Rising\" 12px, text rgb(42, 143, 122) on ~rgb(216, 226, 227) at x395 y245",
+        "low contrast 3.45:1 (needs 4.5) \"Sample data · fictional · not me\" 12px, text rgb(125, 115, 140) on ~rgb(243, 220, 232) at x632 y863"
+      ]
     },
     {
       "url": "/dashboards/cortex-well/?variant=dusk",

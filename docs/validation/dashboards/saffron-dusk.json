@@ -1,7 +1,7 @@
 {
   "id": "saffron-dusk",
-  "checked": "2026-11-13",
-  "ok": true,
+  "checked": "2026-11-14",
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -10,7 +10,10 @@
       "variant": "default",
       "final_path": "/dashboards/saffron-dusk/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.10:1 (needs 4.5) \"Today\" 12px, text rgb(196, 120, 58) on ~rgb(240, 245, 241) at x360 y812",
+        "low contrast 1.65:1 (needs 4.5) \"We\" 12px, text color(srgb 0.101961 0.0784314 0.0470588 / 0.8) on ~rgb(199, 124, 60) at x1098 y544"
+      ]
     },
     {
       "url": "/dashboards/saffron-dusk",
@@ -34,7 +37,9 @@
       "variant": "default",
       "final_path": "/dashboards/saffron-dusk/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.12:1 (needs 4.5) \"Today\" 12px, text rgb(196, 120, 58) on ~rgb(240, 245, 241) at x53 y822"
+      ]
     },
     {
       "url": "/dashboards/saffron-dusk/?variant=dawn",
@@ -42,7 +47,20 @@
       "variant": "dawn",
       "final_path": "/dashboards/saffron-dusk/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 1.67:1 (needs 4.5) \"Iftar at Cedar House\" 16px, text rgb(244, 255, 252) on ~rgb(219, 182, 140) at x344 y695",
+        "low contrast 1.52:1 (needs 4.5) \"6:00 PM\" 13px, text color(srgb 0.956863 1 0.988235 / 0.78) on ~rgb(224, 191, 151) at x344 y723",
+        "low contrast 3.22:1 (needs 4.5) \"MN\" 14px, text rgb(244, 255, 252) on ~rgb(146, 140, 100) at x631 y708",
+        "low contrast 3.29:1 (needs 4.5) \"NE\" 16px, text rgb(244, 255, 252) on ~rgb(130, 136, 101) at x792 y228",
+        "low contrast 2.50:1 (needs 4.5) \"Daily progress\" 13px, text rgb(244, 255, 252) on ~rgb(206, 153, 89) at x820 y430",
+        "low contrast 2.29:1 (needs 4.5) \"Th\" 12px, text color(srgb 0.956863 1 0.988235 / 0.8) on ~rgb(197, 143, 79) at x789 y544",
+        "low contrast 2.36:1 (needs 4.5) \"Fr\" 12px, text color(srgb 0.956863 1 0.988235 / 0.8) on ~rgb(194, 140, 76) at x842 y544",
+        "low contrast 2.44:1 (needs 4.5) \"Sa\" 12px, text color(srgb 0.956863 1 0.988235 / 0.8) on ~rgb(191, 137, 73) at x893 y544",
+        "low contrast 2.53:1 (needs 4.5) \"Su\" 12px, text color(srgb 0.956863 1 0.988235 / 0.8) on ~rgb(188, 134, 70) at x945 y544",
+        "low contrast 2.61:1 (needs 4.5) \"Mo\" 12px, text color(srgb 0.956863 1 0.988235 / 0.8) on ~rgb(185, 130, 66) at x995 y544",
+        "low contrast 2.72:1 (needs 4.5) \"Tu\" 12px, text color(srgb 0.956863 1 0.988235 / 0.8) on ~rgb(181, 126, 62) at x1049 y544",
+        "low contrast 2.82:1 (needs 4.5) \"We\" 12px, text color(srgb 0.956863 1 0.988235 / 0.8) on ~rgb(178, 122, 58) at x1098 y544"
+      ]
     },
     {
       "url": "/dashboards/saffron-dusk/?variant=night",
@@ -50,7 +68,15 @@
       "variant": "night",
       "final_path": "/dashboards/saffron-dusk/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.32:1 (needs 4.5) \"8\" 15px, text rgb(194, 184, 168) on ~rgb(112, 120, 115) at x347 y215",
+        "low contrast 2.29:1 (needs 4.5) \"10\" 15px, text rgb(194, 184, 168) on ~rgb(112, 120, 115) at x448 y215",
+        "low contrast 2.26:1 (needs 4.5) \"11\" 15px, text rgb(194, 184, 168) on ~rgb(113, 122, 117) at x502 y215",
+        "low contrast 2.21:1 (needs 4.5) \"12\" 15px, text rgb(194, 184, 168) on ~rgb(113, 123, 118) at x553 y215",
+        "low contrast 2.21:1 (needs 4.5) \"13\" 15px, text rgb(194, 184, 168) on ~rgb(113, 124, 119) at x604 y215",
+        "low contrast 2.21:1 (needs 4.5) \"14\" 15px, text rgb(194, 184, 168) on ~rgb(113, 124, 119) at x656 y215",
+        "low contrast 1.02:1 (needs 4.5) \"We\" 12px, text color(srgb 0.101961 0.0784314 0.0470588 / 0.8) on ~rgb(198, 123, 60) at x1098 y544"
+      ]
     },
     {
       "url": "/#/dashboards/saffron-dusk",

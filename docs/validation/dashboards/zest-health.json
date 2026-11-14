@@ -1,7 +1,7 @@
 {
   "id": "zest-health",
-  "checked": "2026-11-13",
-  "ok": true,
+  "checked": "2026-11-14",
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -34,7 +34,9 @@
       "variant": "default",
       "final_path": "/dashboards/zest-health/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 1.02:1 (needs 4.5) \"Dec\" 12px, text rgba(242, 245, 240, 0.75) on ~rgb(211, 229, 168) at x364 y2129"
+      ]
     },
     {
       "url": "/dashboards/zest-health/?variant=grape",

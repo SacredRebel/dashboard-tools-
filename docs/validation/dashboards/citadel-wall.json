@@ -1,7 +1,7 @@
 {
   "id": "citadel-wall",
-  "checked": "2026-11-13",
-  "ok": true,
+  "checked": "2026-11-14",
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -10,7 +10,9 @@
       "variant": "default",
       "final_path": "/dashboards/citadel-wall/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.89:1 (needs 4.5) \"Orbital cargo\" 12px, text rgb(90, 132, 158) on ~rgb(4, 37, 59) at x732 y738"
+      ]
     },
     {
       "url": "/dashboards/citadel-wall",
@@ -42,7 +44,10 @@
       "variant": "ocean",
       "final_path": "/dashboards/citadel-wall/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.72:1 (needs 4.5) \"Orbital cargo\" 12px, text rgb(84, 142, 136) on ~rgb(10, 49, 55) at x732 y738",
+        "low contrast 3.81:1 (needs 4.5) \"Sector lock\" 12px, text rgb(84, 142, 136) on ~rgb(9, 46, 54) at x732 y762"
+      ]
     },
     {
       "url": "/dashboards/citadel-wall/?variant=amber",
@@ -50,7 +55,11 @@
       "variant": "amber",
       "final_path": "/dashboards/citadel-wall/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.88:1 (needs 4.5) \"Drone latency\" 12px, text rgb(154, 120, 80) on ~rgb(42, 27, 7) at x500 y738",
+        "low contrast 3.70:1 (needs 4.5) \"Orbital cargo\" 12px, text rgb(154, 120, 80) on ~rgb(54, 34, 9) at x732 y738",
+        "low contrast 3.77:1 (needs 4.5) \"Sector lock\" 12px, text rgb(154, 120, 80) on ~rgb(52, 33, 8) at x732 y762"
+      ]
     },
     {
       "url": "/#/dashboards/citadel-wall",

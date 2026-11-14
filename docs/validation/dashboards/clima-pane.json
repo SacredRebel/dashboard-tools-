@@ -1,7 +1,7 @@
 {
   "id": "clima-pane",
-  "checked": "2026-11-13",
-  "ok": true,
+  "checked": "2026-11-14",
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -10,7 +10,9 @@
       "variant": "default",
       "final_path": "/dashboards/clima-pane/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.70:1 (needs 4.5) \"NV\" 13px, text rgb(255, 255, 255) on ~rgb(171, 151, 144) at x1387 y33"
+      ]
     },
     {
       "url": "/dashboards/clima-pane",
@@ -34,7 +36,9 @@
       "variant": "default",
       "final_path": "/dashboards/clima-pane/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.87:1 (needs 4.5) \"NV\" 13px, text rgb(255, 255, 255) on ~rgb(175, 147, 133) at x330 y104"
+      ]
     },
     {
       "url": "/dashboards/clima-pane/?variant=sky",
@@ -42,7 +46,10 @@
       "variant": "sky",
       "final_path": "/dashboards/clima-pane/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.62:1 (needs 4.5) \"Climate Control\" 13px, text rgb(74, 92, 104) on ~rgb(140, 193, 234) at x152 y48",
+        "low contrast 2.72:1 (needs 4.5) \"NV\" 13px, text rgb(255, 255, 255) on ~rgb(71, 161, 207) at x1387 y33"
+      ]
     },
     {
       "url": "/dashboards/clima-pane/?variant=dusk",
@@ -50,7 +57,9 @@
       "variant": "dusk",
       "final_path": "/dashboards/clima-pane/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.65:1 (needs 4.5) \"NV\" 13px, text rgb(255, 255, 255) on ~rgb(167, 122, 114) at x1387 y33"
+      ]
     },
     {
       "url": "/#/dashboards/clima-pane",

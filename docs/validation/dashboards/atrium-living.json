@@ -1,7 +1,7 @@
 {
   "id": "atrium-living",
-  "checked": "2026-11-13",
-  "ok": true,
+  "checked": "2026-11-14",
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -10,7 +10,13 @@
       "variant": "default",
       "final_path": "/dashboards/atrium-living/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 1.21:1 (needs 4.5) \"Atrium Living\" 12px, text rgb(63, 81, 92) on ~rgb(41, 100, 96) at x96 y22",
+        "low contrast 2.55:1 (large, needs 3) \"Living Room\" 28px, text rgb(15, 28, 36) on ~rgb(41, 100, 96) at x96 y45",
+        "low contrast 3.10:1 (needs 4.5) \"Online\" 13px, text rgb(31, 107, 58) on ~rgb(158, 184, 183) at x1353 y123",
+        "low contrast 3.90:1 (needs 4.5) \"Locked\" 13px, text rgb(63, 81, 92) on ~rgb(156, 184, 178) at x1350 y607",
+        "low contrast 1.26:1 (needs 4.5) \"Sample data · fictional\" 12px, text rgb(74, 92, 102) on ~rgb(141, 96, 53) at x693 y1157"
+      ]
     },
     {
       "url": "/dashboards/atrium-living",
@@ -34,7 +40,13 @@
       "variant": "default",
       "final_path": "/dashboards/atrium-living/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 1.11:1 (needs 4.5) \"Atrium Living\" 12px, text rgb(63, 81, 92) on ~rgb(39, 97, 93) at x12 y80",
+        "low contrast 2.44:1 (large, needs 3) \"Living Room\" 24px, text rgb(15, 28, 36) on ~rgb(41, 100, 96) at x12 y103",
+        "low contrast 1.18:1 (needs 4.5) \"Courtyard\" 14px, text rgb(63, 81, 92) on ~rgb(158, 185, 183) at x334 y171",
+        "low contrast 3.10:1 (needs 4.5) \"Online\" 13px, text rgb(31, 107, 58) on ~rgb(158, 184, 182) at x304 y1196",
+        "low contrast 1.22:1 (needs 4.5) \"Sample data · fictional\" 12px, text rgb(74, 92, 102) on ~rgb(136, 95, 52) at x127 y3204"
+      ]
     },
     {
       "url": "/dashboards/atrium-living/?variant=dusk",
@@ -42,7 +54,16 @@
       "variant": "dusk",
       "final_path": "/dashboards/atrium-living/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 1.52:1 (needs 4.5) \"Atrium Living\" 12px, text rgb(62, 48, 40) on ~rgb(66, 80, 88) at x96 y22",
+        "low contrast 2.18:1 (large, needs 3) \"Living Room\" 28px, text rgb(28, 20, 15) on ~rgb(66, 80, 88) at x96 y45",
+        "low contrast 3.72:1 (needs 4.5) \"AN\" 12px, text rgb(26, 14, 6) on ~rgb(143, 115, 93) at x127 y560",
+        "low contrast 3.73:1 (needs 4.5) \"JR\" 12px, text rgb(26, 14, 6) on ~rgb(141, 114, 93) at x160 y560",
+        "low contrast 3.71:1 (needs 4.5) \"MK\" 12px, text rgb(26, 14, 6) on ~rgb(143, 115, 93) at x190 y560",
+        "low contrast 3.75:1 (needs 4.5) \"SL\" 12px, text rgb(26, 14, 6) on ~rgb(143, 115, 93) at x224 y560",
+        "low contrast 3.29:1 (needs 4.5) \"Online\" 13px, text rgb(42, 90, 52) on ~rgb(166, 167, 165) at x1353 y123",
+        "low contrast 1.46:1 (needs 4.5) \"Sample data · fictional\" 12px, text rgb(78, 62, 52) on ~rgb(119, 84, 48) at x693 y1157"
+      ]
     },
     {
       "url": "/dashboards/atrium-living/?variant=night",

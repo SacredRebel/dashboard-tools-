@@ -1,7 +1,7 @@
 {
   "id": "tidebath-showroom",
-  "checked": "2026-11-13",
-  "ok": true,
+  "checked": "2026-11-14",
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -10,7 +10,10 @@
       "variant": "default",
       "final_path": "/dashboards/tidebath-showroom/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.83:1 (needs 4.5) \"Look closer\" 12px, text rgb(44, 51, 61) on ~rgb(254, 254, 254) at x661 y342",
+        "low contrast 3.89:1 (needs 4.5) \"Download PDF\" 14px, text rgb(47, 111, 237) on ~rgb(237, 239, 242) at x427 y836"
+      ]
     },
     {
       "url": "/dashboards/tidebath-showroom",
@@ -42,7 +45,11 @@
       "variant": "mist",
       "final_path": "/dashboards/tidebath-showroom/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.60:1 (needs 4.5) \"showroom\" 12px, text rgb(116, 136, 132) on ~rgb(248, 251, 250) at x684 y87",
+        "low contrast 3.23:1 (needs 4.5) \"Find us on\" 12px, text rgb(116, 136, 132) on ~rgb(231, 241, 239) at x116 y781",
+        "low contrast 3.19:1 (needs 4.5) \"Sample data · fictional brand an\" 12px, text rgb(116, 136, 132) on ~rgb(229, 240, 238) at x610 y1063"
+      ]
     },
     {
       "url": "/dashboards/tidebath-showroom/?variant=dusk",
@@ -50,7 +57,10 @@
       "variant": "dusk",
       "final_path": "/dashboards/tidebath-showroom/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.64:1 (needs 4.5) \"Find us on\" 12px, text rgb(134, 117, 100) on ~rgb(240, 232, 224) at x116 y781",
+        "low contrast 3.58:1 (needs 4.5) \"Sample data · fictional brand an\" 12px, text rgb(134, 117, 100) on ~rgb(239, 231, 221) at x610 y1063"
+      ]
     },
     {
       "url": "/#/dashboards/tidebath-showroom",

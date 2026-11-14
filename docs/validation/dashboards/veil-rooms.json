@@ -1,7 +1,7 @@
 {
   "id": "veil-rooms",
-  "checked": "2026-11-13",
-  "ok": true,
+  "checked": "2026-11-14",
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -10,7 +10,13 @@
       "variant": "default",
       "final_path": "/dashboards/veil-rooms/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.66:1 (needs 4.5) \"Front door\" 12px, text rgb(91, 156, 240) on ~rgb(48, 65, 91) at x794 y555",
+        "low contrast 3.34:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 134, 148) on ~rgb(49, 53, 64) at x1152 y240",
+        "low contrast 3.34:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 134, 148) on ~rgb(49, 53, 64) at x1152 y314",
+        "low contrast 3.64:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 134, 148) on ~rgb(44, 47, 57) at x1300 y240",
+        "low contrast 3.64:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 134, 148) on ~rgb(44, 47, 57) at x1300 y314"
+      ]
     },
     {
       "url": "/dashboards/veil-rooms",
@@ -34,7 +40,13 @@
       "variant": "default",
       "final_path": "/dashboards/veil-rooms/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.67:1 (needs 4.5) \"Front door\" 12px, text rgb(91, 156, 240) on ~rgb(48, 65, 91) at x41 y1477",
+        "low contrast 3.34:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 134, 148) on ~rgb(49, 53, 64) at x31 y1875",
+        "low contrast 3.34:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 134, 148) on ~rgb(49, 53, 64) at x31 y1949",
+        "low contrast 3.64:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 134, 148) on ~rgb(44, 47, 57) at x31 y2171",
+        "low contrast 3.64:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 134, 148) on ~rgb(44, 47, 57) at x31 y2245"
+      ]
     },
     {
       "url": "/dashboards/veil-rooms/?variant=mist",
@@ -42,7 +54,13 @@
       "variant": "mist",
       "final_path": "/dashboards/veil-rooms/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.77:1 (needs 4.5) \"Front door\" 12px, text rgb(106, 168, 239) on ~rgb(52, 72, 96) at x794 y555",
+        "low contrast 3.21:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 140, 156) on ~rgb(49, 61, 77) at x1152 y240",
+        "low contrast 3.21:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 140, 156) on ~rgb(49, 61, 77) at x1152 y314",
+        "low contrast 3.52:1 (needs 4.5) \"Temp\" 12px, text rgb(126, 140, 156) on ~rgb(44, 55, 69) at x1300 y240",
+        "low contrast 3.52:1 (needs 4.5) \"Bright\" 12px, text rgb(126, 140, 156) on ~rgb(44, 55, 69) at x1300 y314"
+      ]
     },
     {
       "url": "/dashboards/veil-rooms/?variant=midnight",

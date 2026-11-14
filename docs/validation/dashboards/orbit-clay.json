@@ -1,7 +1,7 @@
 {
   "id": "orbit-clay",
-  "checked": "2026-11-13",
-  "ok": true,
+  "checked": "2026-11-14",
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -10,7 +10,9 @@
       "variant": "default",
       "final_path": "/dashboards/orbit-clay/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.18:1 (needs 4.5) \"Sample data · fictional · Orbit \" 12px, text rgb(92, 116, 104) on ~rgb(31, 57, 45) at x631 y873"
+      ]
     },
     {
       "url": "/dashboards/orbit-clay",
@@ -34,7 +36,9 @@
       "variant": "default",
       "final_path": "/dashboards/orbit-clay/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.13:1 (needs 4.5) \"Sample data · fictional · Orbit \" 12px, text rgb(92, 116, 104) on ~rgb(194, 166, 128) at x98 y1592"
+      ]
     },
     {
       "url": "/dashboards/orbit-clay/?variant=moss",
@@ -42,7 +46,9 @@
       "variant": "moss",
       "final_path": "/dashboards/orbit-clay/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 2.27:1 (needs 4.5) \"Sample data · fictional · Orbit \" 12px, text rgb(81, 104, 92) on ~rgb(168, 184, 154) at x631 y873"
+      ]
     },
     {
       "url": "/dashboards/orbit-clay/?variant=dusk",

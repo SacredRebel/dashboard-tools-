@@ -129,6 +129,8 @@ Write `docs/validation/dashboards/POLISH-AUDIT.md`: a table with the scores, the
 - #37 Cortex Well: the glass brain bowl
 - #26 Zest Health and #28 Mauve Ledger: chart detail, sizes and density
 
+**Known failures to fix:** 13 dashboards currently fail the pixel contrast check (35 spots). The exact list, with text, colors and positions, is in `docs/validation/dashboards/CONTRAST-BASELINE.md`. Each must pass by the time you commit that dashboard.
+
 ## 4. Phase C: per dashboard, in audit order (one commit each)
 
 For each dashboard:
