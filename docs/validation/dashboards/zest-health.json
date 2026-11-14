@@ -1,11 +1,11 @@
 {
   "id": "zest-health",
-  "checked": "2026-11-13",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/zest-health/",
+      "url": "/dashboards/zest-health/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/zest-health/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/zest-health",
+      "url": "/dashboards/zest-health#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/zest-health/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/zest-health/index.html",
+      "url": "/dashboards/zest-health/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/zest-health/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/zest-health/",
+      "url": "/dashboards/zest-health/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/zest-health/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/zest-health/?variant=grape",
+      "url": "/dashboards/zest-health/?variant=grape#/overview",
       "width": 1440,
       "variant": "grape",
       "final_path": "/dashboards/zest-health/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/zest-health/?variant=night",
+      "url": "/dashboards/zest-health/?variant=night#/overview",
       "width": 1440,
       "variant": "night",
       "final_path": "/dashboards/zest-health/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=grape#/overview",
+      "width": 1440,
+      "variant": "grape",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=grape#/overview",
+      "width": 375,
+      "variant": "grape",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=night#/overview",
+      "width": 1440,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=night#/overview",
+      "width": 375,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/#/vitals",
+      "width": 1440,
+      "variant": "default",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/#/vitals",
+      "width": 375,
+      "variant": "default",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=grape#/vitals",
+      "width": 1440,
+      "variant": "grape",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=grape#/vitals",
+      "width": 375,
+      "variant": "grape",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=night#/vitals",
+      "width": 1440,
+      "variant": "night",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=night#/vitals",
+      "width": 375,
+      "variant": "night",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/#/appointments",
+      "width": 1440,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/#/appointments",
+      "width": 375,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=grape#/appointments",
+      "width": 1440,
+      "variant": "grape",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=grape#/appointments",
+      "width": 375,
+      "variant": "grape",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=night#/appointments",
+      "width": 1440,
+      "variant": "night",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=night#/appointments",
+      "width": 375,
+      "variant": "night",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/#/records",
+      "width": 1440,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/#/records",
+      "width": 375,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=grape#/records",
+      "width": 1440,
+      "variant": "grape",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=grape#/records",
+      "width": 375,
+      "variant": "grape",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=night#/records",
+      "width": 1440,
+      "variant": "night",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=night#/records",
+      "width": 375,
+      "variant": "night",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=grape#/settings",
+      "width": 1440,
+      "variant": "grape",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=grape#/settings",
+      "width": 375,
+      "variant": "grape",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=night#/settings",
+      "width": 1440,
+      "variant": "night",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/zest-health/?variant=night#/settings",
+      "width": 375,
+      "variant": "night",
+      "page": "settings",
       "errors": []
     },
     {
