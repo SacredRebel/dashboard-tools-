@@ -175,7 +175,7 @@
       <i class="cw-holo-ring a" aria-hidden="true"></i>
       <i class="cw-holo-ring b" aria-hidden="true"></i>
       <i class="cw-holo-ring c" aria-hidden="true"></i>
-      <img class="cw-holo-img" src="media/holo.webp" width="900" height="900" alt="Cyan holographic cube core (sample art)" decoding="async">`;
+      <img class="cw-holo-img" src="media/holo@2x.webp" srcset="media/holo.webp 1x, media/holo@2x.webp 2x" width="800" height="800" alt="Cyan holographic cube core (sample art)" decoding="async">`;
     $('[data-rays]').innerHTML = [
       ['Drone latency', '42 ms'],
       ['Orbital cargo', '1.2k t'],
