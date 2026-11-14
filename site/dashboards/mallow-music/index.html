@@ -13,9 +13,10 @@
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="mm">
+  <div class="mm" data-db-app>
     <aside class="mm-side">
       <div class="mm-me"><span class="mm-avatar" aria-hidden="true" data-avatar></span><p>Hi, Juno</p></div>
       <nav aria-label="Main">
@@ -37,7 +38,7 @@
       </header>
 
       <section class="mm-hero" aria-labelledby="mm-hero-h">
-        <div class="mm-heroart" data-hero aria-hidden="true"></div>
+        <div class="mm-heroart" data-hero aria-hidden="true"><img class="mm-head mm-ambient" src="media/head.webp" width="640" height="640" alt="" decoding="async"></div>
         <div class="mm-herocopy"><h2 id="mm-hero-h" data-greet></h2><p>Your Sunday slow-down mix is ready.</p><button class="mm-btn" data-playmix><span data-icon="play"></span>Play the mix</button></div>
         <div class="mm-plant" data-plant aria-hidden="true"></div>
       </section>

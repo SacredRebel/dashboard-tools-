@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/mallow-music/",
+      "url": "/dashboards/mallow-music/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/mallow-music/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mallow-music",
+      "url": "/dashboards/mallow-music#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/mallow-music/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mallow-music/index.html",
+      "url": "/dashboards/mallow-music/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/mallow-music/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mallow-music/",
+      "url": "/dashboards/mallow-music/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/mallow-music/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mallow-music/?variant=berry",
+      "url": "/dashboards/mallow-music/?variant=berry#/overview",
       "width": 1440,
       "variant": "berry",
       "final_path": "/dashboards/mallow-music/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mallow-music/?variant=cocoa",
+      "url": "/dashboards/mallow-music/?variant=cocoa#/overview",
       "width": 1440,
       "variant": "cocoa",
       "final_path": "/dashboards/mallow-music/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=berry#/overview",
+      "width": 1440,
+      "variant": "berry",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=berry#/overview",
+      "width": 375,
+      "variant": "berry",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=cocoa#/overview",
+      "width": 1440,
+      "variant": "cocoa",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=cocoa#/overview",
+      "width": 375,
+      "variant": "cocoa",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/#/library",
+      "width": 1440,
+      "variant": "default",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/#/library",
+      "width": 375,
+      "variant": "default",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=berry#/library",
+      "width": 1440,
+      "variant": "berry",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=berry#/library",
+      "width": 375,
+      "variant": "berry",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=cocoa#/library",
+      "width": 1440,
+      "variant": "cocoa",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=cocoa#/library",
+      "width": 375,
+      "variant": "cocoa",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/#/activity",
+      "width": 1440,
+      "variant": "default",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/#/activity",
+      "width": 375,
+      "variant": "default",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=berry#/activity",
+      "width": 1440,
+      "variant": "berry",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=berry#/activity",
+      "width": 375,
+      "variant": "berry",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=cocoa#/activity",
+      "width": 1440,
+      "variant": "cocoa",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=cocoa#/activity",
+      "width": 375,
+      "variant": "cocoa",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=berry#/settings",
+      "width": 1440,
+      "variant": "berry",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=berry#/settings",
+      "width": 375,
+      "variant": "berry",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=cocoa#/settings",
+      "width": 1440,
+      "variant": "cocoa",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mallow-music/?variant=cocoa#/settings",
+      "width": 375,
+      "variant": "cocoa",
+      "page": "settings",
       "errors": []
     },
     {
