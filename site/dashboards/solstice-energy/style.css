@@ -104,9 +104,11 @@ body { background: var(--bg); }
 .se-hero { position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: 520px; padding-bottom: 0; }
 .se-hero-art { position: absolute; inset: 0 0 124px 0; pointer-events: none; }
 .se-mountains {
-  position: absolute; inset: auto 0 0 0; width: 100%; height: 58%;
-  object-fit: cover; object-position: center bottom;
-  opacity: 0.88; mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 100%);
+  position: absolute; inset: auto 0 0 0; width: 100%; height: 62%;
+  object-fit: cover; object-position: center 70%;
+  opacity: 0.92; mask-image: linear-gradient(180deg, transparent 0%, #000 24%, #000 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 24%, #000 100%);
+  filter: saturate(1.08) contrast(1.04);
 }
 .se-arc { position: absolute; inset: 0; }
 .se-arc svg { width: 100%; height: 100%; }
