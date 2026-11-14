@@ -872,7 +872,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A property browser built around one large dusk scene: a code-drawn curved house glows under a blue sky, white filter tabs notch into the top edge, and a frosted card shows the selected home. Listings, price history and viewings sit below.",
+      "summary": "A property browser built around one large dusk villa photo: curved white architecture glows under a blue sky, white filter tabs notch into the top edge, and a frosted card shows the selected home.",
       "mood": [
         "airy",
         "premium",
@@ -901,11 +901,11 @@
         "Vertical icon rail in a pill",
         "Match count card with step-through arrow",
         "Frosted detail card with specs and save, compare, share",
-        "Selectable listing rows with drawn thumbnails",
+        "Selectable listing rows with photo thumbnails",
         "Line chart with hover/focus values",
         "Viewings list with date chips"
       ],
-      "signature": "White tabs that notch into the rounded edge of a full-bleed dusk scene, where a curved white house glows orange from inside.",
+      "signature": "White tabs that notch into the rounded edge of a full-bleed dusk villa photo, where warm interior light spills from curved glass walls.",
       "palette": {
         "bg": "#ebe7e1",
         "surface": "#f7f5f8",
@@ -947,7 +947,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied design shot of a real-estate landing screen. The studio and product names, logo mark, headline, listing text and avatar were not reused; all homes, addresses and prices are invented. The rendered villa photo was replaced with an SVG house and sky themed by CSS variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied luxury listings concept. Brand (Haven), copy and figures are fictional. Hero uses gallery media (`media/villa.webp`). Owner original stored as `reference.jpg`."
       },
       "path": "site/dashboards/haven-listings/",
       "reference": "reference.jpg",
@@ -973,7 +973,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "aura-ring",

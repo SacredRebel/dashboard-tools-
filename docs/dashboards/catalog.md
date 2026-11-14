@@ -253,12 +253,12 @@ Frosted translucent panels over gradients or blurred color fields, soft glows. M
 
 _Haven Listings · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A property browser built around one large dusk scene: a code-drawn curved house glows under a blue sky, white filter tabs notch into the top edge, and a frosted card shows the selected home. Listings, price history and viewings sit below.
+A property browser built around one large dusk villa photo: curved white architecture glows under a blue sky, white filter tabs notch into the top edge, and a frosted card shows the selected home.
 
 - **Use cases:** Real estate · **Mode:** light · **Mood:** airy, premium, calm, architectural, soft
 - **Pages:** Overview (`overview`, Dashboard) · Listings (`listings`, List) · Showings (`showings`, Calendar) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** White tabs that notch into the rounded edge of a full-bleed dusk scene, where a curved white house glows orange from inside.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** White tabs that notch into the rounded edge of a full-bleed dusk villa photo, where warm interior light spills from curved glass walls.
 - **Layout:** 600px rounded stage with a full-bleed scene: top row (Buy pill, notched filter tab with 3 selects, Rent pill) · left 60px pill rail of 6 icons · headline and lede · white match-count card bottom-left · frosted detail card bottom-right (340px) · below: 3 cards (matching homes list, price-history line chart, viewings with a book button)
 - **Responsive:** ≤1100px: detail card moves under the match card, lower cards 2 columns · ≤700px: single column, filters become a stacked white card, rail turns into a horizontal pill, scene stays behind the top 470px
 - **Fonts:** Urbanist / Urbanist · **Palette:** bg `#ebe7e1`, surface `#f7f5f8`, text `#1d1b33`, muted `#55526b`, accent `#2a2470`, sky `#3f5a96`, glow `#e8743a`, rust `#c2562f`
@@ -274,7 +274,7 @@ A property browser built around one large dusk scene: a code-drawn curved house 
 - Dense analytics: only one chart fits naturally
 - Low-end devices where backdrop blur is costly (the card falls back to a near-opaque fill)
 
-**Components:** Buy / Rent toggle pills · Notched filter tab with selects · Vertical icon rail in a pill · Match count card with step-through arrow · Frosted detail card with specs and save, compare, share · Selectable listing rows with drawn thumbnails · Line chart with hover/focus values · Viewings list with date chips
+**Components:** Buy / Rent toggle pills · Notched filter tab with selects · Vertical icon rail in a pill · Match count card with step-through arrow · Frosted detail card with specs and save, compare, share · Selectable listing rows with photo thumbnails · Line chart with hover/focus values · Viewings list with date chips
 
 ---
 
