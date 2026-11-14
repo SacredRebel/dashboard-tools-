@@ -171,40 +171,11 @@
   }
 
   function renderHolo() {
-    $('[data-holo]').innerHTML = `<svg viewBox="0 0 400 400" role="img" aria-label="Core hologram: cube inside a glowing sphere">
-      <defs>
-        <radialGradient id="cw-orb" cx="50%" cy="42%" r="55%">
-          <stop offset="0" style="stop-color:var(--accent);stop-opacity:.55"/>
-          <stop offset=".55" style="stop-color:var(--chart-2);stop-opacity:.18"/>
-          <stop offset="1" style="stop-color:var(--accent);stop-opacity:0"/>
-        </radialGradient>
-        <linearGradient id="cw-cube" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" style="stop-color:var(--accent)"/>
-          <stop offset="1" style="stop-color:var(--chart-2)"/>
-        </linearGradient>
-        <filter id="cw-glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      </defs>
-      <ellipse cx="200" cy="330" rx="110" ry="18" style="fill:var(--accent)" opacity=".15"/>
-      <ellipse cx="200" cy="330" rx="80" ry="10" fill="none" style="stroke:var(--accent)" stroke-width="1.5" opacity=".6"/>
-      <ellipse cx="200" cy="330" rx="55" ry="6" fill="none" style="stroke:var(--accent)" stroke-width="1" opacity=".4"/>
-      <g opacity=".35">
-        ${[0,1,2,3,4,5].map((i) => `<line x1="${80 + i * 40}" y1="340" x2="${120 + i * 28}" y2="380" style="stroke:var(--accent)" stroke-width="1"/>`).join('')}
-      </g>
-      <circle cx="200" cy="175" r="118" fill="url(#cw-orb)" style="stroke:var(--accent)" stroke-width="1.2" opacity=".9"/>
-      <circle cx="200" cy="175" r="98" fill="none" style="stroke:var(--accent)" stroke-width="0.8" opacity=".35" stroke-dasharray="4 6"/>
-      <circle cx="200" cy="175" r="78" fill="none" style="stroke:var(--chart-2)" stroke-width="0.6" opacity=".4"/>
-      <g filter="url(#cw-glow)" transform="translate(200 175)">
-        <path d="M0,-42 L42,-18 L42,28 L0,52 L-42,28 L-42,-18 Z" fill="url(#cw-cube)" opacity=".35"/>
-        <path d="M0,-42 L42,-18 L0,6 L-42,-18 Z" fill="url(#cw-cube)" opacity=".85"/>
-        <path d="M0,6 L42,-18 L42,28 L0,52 Z" fill="url(#cw-cube)" opacity=".55"/>
-        <path d="M0,6 L-42,-18 L-42,28 L0,52 Z" fill="url(#cw-cube)" opacity=".4"/>
-        <path d="M0,-42 L42,-18 L0,6 L-42,-18 Z M0,6 L42,-18 L42,28 L0,52 L-42,28 L-42,-18 Z" fill="none" style="stroke:var(--text)" stroke-width="1.2" opacity=".9"/>
-      </g>
-      <g style="stroke:var(--accent)" stroke-width="1" fill="none" opacity=".5">
-        <path d="M200 55 A120 120 0 0 1 310 140"/>
-        <path d="M90 210 A120 120 0 0 0 200 295"/>
-      </g>
-    </svg>`;
+    $('[data-holo]').innerHTML = `
+      <i class="cw-holo-ring a" aria-hidden="true"></i>
+      <i class="cw-holo-ring b" aria-hidden="true"></i>
+      <i class="cw-holo-ring c" aria-hidden="true"></i>
+      <img class="cw-holo-img" src="media/holo.webp" width="900" height="900" alt="Cyan holographic cube core (sample art)" decoding="async">`;
     $('[data-rays]').innerHTML = [
       ['Drone latency', '42 ms'],
       ['Orbital cargo', '1.2k t'],
@@ -289,61 +260,147 @@
   });
 
   renderFlow(); renderStatus(); renderHolo(); renderKpis(); renderGauges(); renderCargo(); renderStrip();
-/* === DB multipage bootstrap (generated; polish pass replaces stubs) === */
-  (function wirePages() {
-    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"fleet","name":"Fleet","pattern":"List"},{"id":"shipments","name":"Shipments","pattern":"Board"},{"id":"settings","name":"Settings","pattern":"Settings"}];
-    const main = document.querySelector('main') || document.body;
-    let stub = document.querySelector('[data-db-stub]');
-    if (!stub) {
-      stub = document.createElement('section');
-      stub.setAttribute('data-db-stub', '');
-      stub.hidden = true;
-      stub.setAttribute('aria-live', 'polite');
-      main.appendChild(stub);
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'fleet', name: 'Fleet', pattern: 'List' },
+    { id: 'shipments', name: 'Shipments', pattern: 'Board' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const FLEET = [
+    { id: 'H-12', route: 'Meridian → Dock 4', status: 'En route' },
+    { id: 'H-19', route: 'Bravo → Bay C', status: 'Loading' },
+    { id: 'H-03', route: 'Charlie → Relay', status: 'Idle' },
+    { id: 'H-27', route: 'Alpha → Orbital', status: 'En route' },
+  ];
+  const SHIPS = [
+    { id: 'SC-441', bay: 'A1', eta: '14:20', state: 'inbound' },
+    { id: 'SC-512', bay: 'B3', eta: '15:05', state: 'outbound' },
+    { id: 'SC-608', bay: 'C2', eta: '16:40', state: 'hold' },
+  ];
+
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  const foot = $('[data-strip]');
+  let stub = null;
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+  function pageHtml(page) {
+    if (page.id === 'fleet') {
+      return `<section class="cw-page" aria-labelledby="p-h">
+        <h1 id="p-h">Fleet</h1>
+        <p class="cw-page-lead">Active haulers for Sector Meridian. Sample data · fictional.</p>
+        <label class="cw-row">Search <input data-fleet-q type="search" placeholder="Filter haulers" style="min-height:44px;padding:0 12px;border:1px solid var(--border);background:var(--surface-2);color:var(--text)"></label>
+        <div class="cw-page-grid" data-fleet-list></div>
+      </section>`;
     }
-    function setOverviewVisible(on) {
-      [...main.children].forEach((ch) => {
-        if (ch === stub) return;
-        if (on) {
-          ch.hidden = false;
-          ch.removeAttribute('data-db-overview-hide');
-        } else {
-          ch.hidden = true;
-          ch.setAttribute('data-db-overview-hide', '');
+    if (page.id === 'shipments') {
+      return `<section class="cw-page" aria-labelledby="p-h">
+        <h1 id="p-h">Shipments</h1>
+        <p class="cw-page-lead">Bay board for the current shift.</p>
+        <div class="cw-seg" role="group" aria-label="Shipment filter" data-ship-tabs>
+          <button type="button" data-v="all" aria-pressed="true">All</button>
+          <button type="button" data-v="inbound" aria-pressed="false">Inbound</button>
+          <button type="button" data-v="outbound" aria-pressed="false">Outbound</button>
+        </div>
+        <div class="cw-page-grid" data-ship-board></div>
+        <button type="button" class="cw-seg" data-ship-refresh style="border:1px solid var(--border);padding:0 16px;min-height:44px;color:var(--text);background:var(--accent-soft);font-family:var(--font-display);letter-spacing:.08em;text-transform:uppercase">Refresh board</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="cw-page" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="cw-page-lead">Shift alerts for Citadel Wall. Nothing is saved in this demo.</p>
+        <form class="cw-card" data-settings onsubmit="return false">
+          <label class="cw-row">Alert channel <input name="channel" value="#orbital-ops" style="min-height:44px;padding:0 12px;border:1px solid var(--border);background:var(--surface-2);color:var(--text)"></label>
+          <label class="cw-row">Latency warn (ms) <input name="lat" type="number" value="80" min="10" style="min-height:44px;padding:0 12px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);width:100px"></label>
+          <p class="cw-error" data-form-err hidden style="color:var(--chart-3);margin-top:8px">Enter a channel and latency threshold.</p>
+          <button type="submit" style="margin-top:12px;min-height:44px;padding:0 18px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-fg);font-family:var(--font-display);letter-spacing:.08em;text-transform:uppercase">Save alerts</button>
+        </form>
+      </section>`;
+    }
+    return `<section class="cw-page"><h1>${page.name}</h1><p class="cw-page-lead">Sample data · fictional</p></section>`;
+  }
+  function wirePage(host, page) {
+    if (page.id === 'fleet') {
+      const list = host.querySelector('[data-fleet-list]');
+      const paint = (q = '') => {
+        const rows = FLEET.filter((f) => !q || (`${f.id} ${f.route} ${f.status}`).toLowerCase().includes(q));
+        if (!rows.length) {
+          list.innerHTML = `<div class="cw-empty"><p>No haulers match.</p></div>`;
+          return;
         }
+        list.innerHTML = rows.map((f) => `<article class="cw-card"><div class="cw-row"><strong>${f.id}</strong><span>${f.status}</span></div><p style="margin:0;color:var(--text-muted);font-size:13px">${f.route}</p></article>`).join('');
+      };
+      paint();
+      host.querySelector('[data-fleet-q]')?.addEventListener('input', (e) => paint(e.target.value.trim().toLowerCase()));
+    }
+    if (page.id === 'shipments') {
+      const board = host.querySelector('[data-ship-board]');
+      const paint = (filter = 'all') => {
+        const rows = SHIPS.filter((s) => filter === 'all' || s.state === filter);
+        if (!rows.length) {
+          board.innerHTML = `<div class="cw-empty"><p>No ${filter} shipments.</p></div>`;
+          return;
+        }
+        board.innerHTML = rows.map((s) => `<article class="cw-card"><div class="cw-row"><strong>${s.id}</strong><span>${s.state}</span></div><div class="cw-row"><span>Bay ${s.bay}</span><span class="num">ETA ${s.eta}</span></div></article>`).join('');
+      };
+      paint('all');
+      seg(host.querySelector('[data-ship-tabs]'), (v) => paint(v));
+      host.querySelector('[data-ship-refresh]')?.addEventListener('click', () => {
+        board.innerHTML = `<div class="cw-loading" role="status"><p>Syncing bay board…</p><div class="cw-skel"></div><div class="cw-skel"></div></div>`;
+        setTimeout(() => {
+          paint(host.querySelector('[aria-pressed="true"]')?.dataset.v || 'all');
+          toast('Board refreshed (sample)');
+        }, reduce ? 0 : 650);
       });
-      stub.hidden = on;
     }
-    function renderStub(page) {
-      const rows = [
-        ['Status', 'Sample · ready'],
-        ['Records', '24'],
-        ['Updated', 'Today'],
-      ];
-      stub.innerHTML = '<h1>' + page.name + '</h1>'
-        + '<p class="db-sample">Sample data · fictional</p>'
-        + '<p>This page is part of the multi-page shell. The polish pass fills it with real ' + page.name.toLowerCase() + ' UI in the same design language as Overview.</p>'
-        + '<div class="db-stub-panel" role="list">'
-        + rows.map(([k, v]) => '<div class="db-stub-row" role="listitem"><span>' + k + '</span><strong class="num">' + v + '</strong></div>').join('')
-        + '</div>';
+    if (page.id === 'settings') {
+      const form = host.querySelector('[data-settings]');
+      form?.addEventListener('submit', () => {
+        const err = host.querySelector('[data-form-err]');
+        if (!form.channel.value.trim() || !form.lat.value) { err.hidden = false; return; }
+        err.hidden = true;
+        toast(`Alerts saved · ${form.channel.value.trim()}`);
+      });
     }
-    document.querySelectorAll('a[href]').forEach((a) => {
-      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-      if (!label) return;
-      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
-        || (label === 'home' && p.id === 'overview')
-        || (label === 'dashboard' && p.id === 'overview'));
-      if (hit) a.setAttribute('href', '#/' + hit.id);
+  }
+
+  window.DB.route(PAGES, (id, page) => {
+    const isOverview = id === 'overview';
+    overview.hidden = !isOverview;
+    if (foot) foot.hidden = !isOverview;
+    const host = ensureStub();
+    host.hidden = isOverview;
+    if (!isOverview) {
+      host.innerHTML = pageHtml(page);
+      wirePage(host, page);
+    }
+  });
+
+  const holo = $('[data-holo]');
+  if (holo && window.DB?.onVisible) {
+    window.DB.onVisible(holo, (vis) => {
+      holo.querySelectorAll('.cw-holo-img, .cw-holo-ring').forEach((el) => {
+        el.style.animationPlayState = vis && !reduce ? 'running' : 'paused';
+      });
     });
-    if (!window.DB || typeof window.DB.route !== 'function') {
-      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
-      return;
-    }
-    window.DB.route(PAGES, (id, page) => {
-      if (id === PAGES[0].id) setOverviewVisible(true);
-      else { setOverviewVisible(false); renderStub(page); }
-    });
-  })();
-/* === /DB multipage bootstrap === */
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

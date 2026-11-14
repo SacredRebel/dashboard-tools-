@@ -2759,7 +2759,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central SVG sphere-and-cube hologram, arc gauges, dense charts and a four-block spark footer for fictional orbital logistics.",
+      "summary": "A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central holographic cube core, arc gauges, dense charts and a four-block spark footer for fictional orbital logistics — with Fleet, Shipments and Settings pages.",
       "mood": [
         "tactical",
         "glowing",
@@ -2784,13 +2784,14 @@
       },
       "components": [
         "Tech-frame header",
-        "Identity silhouette panel",
+        "Nav tabs",
+        "Identity panel",
         "Line and bar charts",
-        "Status list with mini bars",
-        "2×2 KPI tiles with cube icons",
-        "Three arc gauges",
-        "Central sphere/cube SVG hologram",
-        "Bottom spark metric strip"
+        "Status list",
+        "2×2 KPI tiles",
+        "Arc gauges",
+        "Hologram cube photo + HUD rings",
+        "Bottom spark strip"
       ],
       "signature": "A cyan-glow cube locked inside a translucent sphere on a scan-line pedestal, framed by HUD brackets on a deep navy wall.",
       "palette": {
@@ -2834,7 +2835,13 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied big-screen HUD screenshot. Chinese labels were replaced with English fictional ops/logistics copy; the 3D hero became an SVG sphere and cube. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a dual-concept FUI reference. Brand and copy are invented. Central cube is an AI-generated original (not traced). Owner original stored as reference.png.",
+        "credits": [
+          {
+            "credit": "AI-generated original — cyan holographic cube core on navy field",
+            "role": "media/holo.webp"
+          }
+        ]
       },
       "path": "site/dashboards/citadel-wall/",
       "reference": "reference.png",
@@ -2860,7 +2867,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "chart-draw",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast"
+      ]
     },
     {
       "id": "aether-pane",

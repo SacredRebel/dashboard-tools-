@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
   <div class="cw">
@@ -24,8 +25,16 @@
         <time data-clock></time>
       </div>
     </header>
+    <nav class="cw-nav" aria-label="Main">
+      <a href="#/overview">Overview</a>
+      <a href="#/fleet">Fleet</a>
+      <a href="#/shipments">Shipments</a>
+      <a href="#/settings">Settings</a>
+    </nav>
 
-    <main class="cw-grid" aria-labelledby="cw-title">
+    <main class="cw-main" data-main>
+    <div data-page-panel="overview" class="cw-overview">
+    <div class="cw-grid" aria-labelledby="cw-title">
       <div class="cw-stack cw-left">
         <section class="cw-panel cw-id" aria-labelledby="cw-id-h">
           <h2 id="cw-id-h" class="vh">Sector officer</h2>
@@ -90,9 +99,12 @@
           <div data-cargo></div>
         </section>
       </div>
+    </div>
+    </div>
     </main>
 
     <footer class="cw-foot-strip" aria-label="Shift summary" data-strip></footer>
+    <div class="cw-toast" data-toast hidden role="status"></div>
     <p class="db-sample cw-sample">Sample data · fictional</p>
   </div>
   <script src="app.js"></script>

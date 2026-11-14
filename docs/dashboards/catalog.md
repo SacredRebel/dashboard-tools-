@@ -748,11 +748,11 @@ A data-dense dark-blue radial HUD for cold-ops monitoring: a multi-ring dial wit
 
 _Citadel Wall · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central SVG sphere-and-cube hologram, arc gauges, dense charts and a four-block spark footer for fictional orbital logistics.
+A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central holographic cube core, arc gauges, dense charts and a four-block spark footer for fictional orbital logistics — with Fleet, Shipments and Settings pages.
 
 - **Use cases:** Analytics & BI, Logistics & fleet · **Mode:** dark · **Mood:** tactical, glowing, dense, command-center, futuristic
 - **Pages:** Overview (`overview`, Dashboard) · Fleet (`fleet`, List) · Shipments (`shipments`, Board) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, chart-draw, hover-lift, press, page-transition, ambient, skeleton, toast
 - **Signature:** A cyan-glow cube locked inside a translucent sphere on a scan-line pedestal, framed by HUD brackets on a deep navy wall.
 - **Layout:** Tech title bar · three columns (left identity/charts/status · center hologram · right KPI grid/gauges/bars) · bottom four-metric spark strip
 - **Responsive:** ≤1180px: hologram on top, side columns two-up below · ≤960px: single column stacks · ≤640px: gauges wrap, footer 2×2
@@ -769,7 +769,7 @@ A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central SVG s
 - Light themes as the primary look
 - Editing workflows — this is monitor-first, not form-first
 
-**Components:** Tech-frame header · Identity silhouette panel · Line and bar charts · Status list with mini bars · 2×2 KPI tiles with cube icons · Three arc gauges · Central sphere/cube SVG hologram · Bottom spark metric strip
+**Components:** Tech-frame header · Nav tabs · Identity panel · Line and bar charts · Status list · 2×2 KPI tiles · Arc gauges · Hologram cube photo + HUD rings · Bottom spark strip
 
 ---
 

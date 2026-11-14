@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `citadel-wall` (Phase C — total 23).
+Next: `dune-panels` (Phase C — total 23).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -30,7 +30,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 20 | atrium-living | Atrium Living | 4 | 3 | 4 | 4 | 3 | 2 | 3 | 3 | 26 | photo room bg gone; placeholder TV tiles | queued |
 | 21 | glacier-ops | Glacier Ops | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | softer neumorph; readable labels vs lorem | queued |
 | 22 | folio-club | Folio Club | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | less background blur; different book cover | queued |
-| 23 | citadel-wall | Citadel Wall | 3 | 3 | 3 | 4 | 2 | 2 | 3 | 3 | 23 | ref dual concepts; no network graph hero | queued |
+| 23 | citadel-wall | Citadel Wall | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | hologram cube + HUD rings; multipage fleet/shipments | polished 23→36 |
 | 24 | aether-pane | Aether Pane | 4 | 4 | 4 | 4 | 2 | 2 | 4 | 3 | 27 | no office glass perspective; flat panel | queued |
 | 25 | forge-fitness | Forge Fitness | 5 | 4 | 4 | 4 | 2 | 2 | 4 | 4 | 29 | athlete photo background removed | queued |
 | 26 | zest-health | Zest Health | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 5 | 32 | no 3D rocket CTA; dot chart vs scatter | queued |
@@ -53,7 +53,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 
 1. ~~`lull-sleep` — 19~~ → polished (36.5)
 2. ~~`canopy-reforest` — 23~~ → polished (36)
-3. `citadel-wall` — 23
+3. ~~`citadel-wall` — 23~~ → polished (36)
 4. `dune-panels` — 23
 5. `pulsar-analytics` — 24
 6. `vitalis-care` — 24
