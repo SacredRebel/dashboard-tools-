@@ -1902,7 +1902,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A code-drawn, rainbow-feathered bird sits between walls of teal and amber leaves, framed by gradient region charts, coverage and nesting rings, habitat donuts, ranked species bars and an observation log you can filter by species.",
+      "summary": "A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A painted rainbow-feathered lorikeet sits between leaf walls, framed by gradient region charts, coverage and nesting rings, species bars and an observation log.",
       "mood": [
         "vivid",
         "natural",
@@ -1928,18 +1928,19 @@
       "components": [
         "Season toggle",
         "Region spark cards with gradient fills",
-        "Headline count with gradient text",
+        "Headline count",
         "Arc gauges",
         "Mini habitat donuts",
         "Ranked gradient bars that filter the log",
-        "Observation log with empty state"
+        "Observation log with empty state",
+        "Painted bird and leaf-wall photo props"
       ],
-      "signature": "A code-drawn bird in a teal-to-violet feather gradient between leaf walls, with every chart reusing the same feather colours.",
+      "signature": "A painted rainbow lorikeet between teal and amber leaf walls, with every chart reusing the same feather colours.",
       "palette": {
         "bg": "#171b20",
         "surface": "#20262d",
         "text": "#eef2f4",
-        "muted": "#a9b4bd",
+        "muted": "#b4bec7",
         "accent": "#3ccbb0",
         "amber": "#f2b43c",
         "orange": "#f07a3a",
@@ -1976,7 +1977,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied AI render of a dark dashboard with a painted parrot and leaves. The colour story, rings, gradient area charts and bars were kept. The painted bird and foliage were redrawn from scratch as simple SVG shapes, and the unreadable chart labels were replaced with an invented bird-survey dataset. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied AI render of a dark dashboard with a painted parrot and leaves. The colour story, rings, gradient area charts and bars were kept. Bird and foliage use gallery media (`media/bird.webp`, `media/leaves.webp`). Fictional bird-survey dataset. Fidelity pass used local tesseract OCR + palette sample on reference.jpg. Owner original stored as `reference.jpg`."
       },
       "path": "site/dashboards/plumage-survey/",
       "reference": "reference.jpg",
@@ -2002,7 +2003,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "hollow-vault",

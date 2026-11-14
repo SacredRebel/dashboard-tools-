@@ -152,15 +152,15 @@ A moonlit payroll overview: a code-drawn ink landscape with a gold moon, layered
 
 _Plumage Bird Survey · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A code-drawn, rainbow-feathered bird sits between walls of teal and amber leaves, framed by gradient region charts, coverage and nesting rings, habitat donuts, ranked species bars and an observation log you can filter by species.
+A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A painted rainbow-feathered lorikeet sits between leaf walls, framed by gradient region charts, coverage and nesting rings, species bars and an observation log.
 
 - **Use cases:** Analytics & BI · **Mode:** dark · **Mood:** vivid, natural, dramatic, rich, lively
 - **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** A code-drawn bird in a teal-to-violet feather gradient between leaf walls, with every chart reusing the same feather colours.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** A painted rainbow lorikeet between teal and amber leaf walls, with every chart reusing the same feather colours.
 - **Layout:** Top bar: mark, name, season toggle · 4 region spark cards · 12-column grid: species KPI + coverage ring (3) + hero art with caption (6) + nesting ring and habitat donuts (3) · species bars (6) + observation log (6)
 - **Responsive:** ≤1100px: regions 2×2, art full width, KPI and rings side by side, bars and log full width · ≤700px: single column, caption moves under the art
-- **Fonts:** Space Grotesk / Sora · **Palette:** bg `#171b20`, surface `#20262d`, text `#eef2f4`, muted `#a9b4bd`, accent `#3ccbb0`, amber `#f2b43c`, orange `#f07a3a`, violet `#8a63ff`
+- **Fonts:** Space Grotesk / Sora · **Palette:** bg `#171b20`, surface `#20262d`, text `#eef2f4`, muted `#b4bec7`, accent `#3ccbb0`, amber `#f2b43c`, orange `#f07a3a`, violet `#8a63ff`
 - **Variants:** Plume, Canopy, Ember · **Closest toolkit theme:** `ember`
 
 **Best for**
@@ -173,7 +173,7 @@ A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A co
 - Calm or corporate brands
 - Screens where the art would push data below the fold on small laptops
 
-**Components:** Season toggle · Region spark cards with gradient fills · Headline count with gradient text · Arc gauges · Mini habitat donuts · Ranked gradient bars that filter the log · Observation log with empty state
+**Components:** Season toggle · Region spark cards with gradient fills · Headline count · Arc gauges · Mini habitat donuts · Ranked gradient bars that filter the log · Observation log with empty state · Painted bird and leaf-wall photo props
 
 ---
 
