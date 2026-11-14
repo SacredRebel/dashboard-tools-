@@ -117,12 +117,12 @@
   paintIcons();
 
   const ROOMS = [
-    { id: 'living', label: 'LR', name: 'Living Room', on: 7, total: 12, angle: -90, devices: 6 },
-    { id: 'kitchen', label: 'KT', name: 'Kitchen', on: 4, total: 6, angle: -30, devices: 5 },
-    { id: 'bed', label: 'BR', name: 'Bedroom', on: 2, total: 4, angle: 25, devices: 4 },
-    { id: 'study', label: 'ST', name: 'Study', on: 3, total: 5, angle: 80, devices: 3 },
-    { id: 'bath', label: 'BA', name: 'Bath', on: 1, total: 3, angle: 145, devices: 2 },
-    { id: 'hall', label: 'HL', name: 'Hall', on: 5, total: 8, angle: -145, devices: 3 },
+    { id: 'living', label: 'LR', icon: 'home', name: 'Living Room', on: 7, total: 12, angle: -90, devices: 6 },
+    { id: 'kitchen', label: 'KT', icon: 'flame', name: 'Kitchen', on: 4, total: 6, angle: -35, devices: 5 },
+    { id: 'bed', label: 'BR', icon: 'moon', name: 'Bedroom', on: 2, total: 4, angle: 20, devices: 4 },
+    { id: 'study', label: 'ST', icon: 'layers', name: 'Study', on: 3, total: 5, angle: 75, devices: 3 },
+    { id: 'bath', label: 'BA', icon: 'drop', name: 'Bath', on: 1, total: 3, angle: 140, devices: 2 },
+    { id: 'hall', label: 'HL', icon: 'grid', name: 'Hall', on: 5, total: 8, angle: -145, devices: 3 },
   ];
   const DEVICES = [
     { n: 'Pendant cluster', s: 'Living · dimmable', on: true },
@@ -175,11 +175,12 @@
     const el = $('[data-rooms]');
     el.innerHTML = ROOMS.map((r, i) => {
       const rad = ((r.angle - 90) * Math.PI) / 180;
-      const dist = 36;
+      const dist = 42;
       const x = 50 + Math.cos(rad) * dist;
       const y = 50 + Math.sin(rad) * dist;
-      return `<button type="button" class="er-room" style="left:${x}%;top:${y}%" data-v="${r.id}" aria-pressed="${i === room}" aria-label="${r.name}">${r.label}</button>`;
+      return `<button type="button" class="er-room" style="left:${x}%;top:${y}%" data-v="${r.id}" aria-pressed="${i === room}" aria-label="${r.name}"><span data-icon="${r.icon}"></span><span class="er-room-code">${r.label}</span></button>`;
     }).join('');
+    paintIcons(el);
   }
 
   function renderDial() {
