@@ -2,28 +2,35 @@
 
 Branch: `cursor/deep-polish-0545`  
 Brief: `prompts/cursor-deep-polish.md`  
-**Do not merge** — architect review required.
+PR: https://github.com/SacredRebel/dashboard-tools-/pull/6 (draft — **do not merge**)
 
-## Done
+## Done this stretch
 
-### Framework (§2) ✔
-FX library, icons, DotLottie vendor, materials docs 10–13, `#/fx` page, catalog `fx`/`materials` validation, `scripts/fidelity.py`, stub CSS removed, route transitions, dense-pages kit + `wire-dense-pages.py`.
+### Gate fixes (commit `9bcd884`)
+- Hero media upscaled past 1.5× + `srcset` (kumo, horizon, haven, lull, aura, peers)
+- Dense-page kit: opaque fills, `min-height: 72vh`, `--mat-clay-fill` fallbacks
+- Aura dense ink panels (haze no longer fails contrast)
+- Haven: outer `<main>`, denser overview (agent notes), secondary pages fill height
+- Horizon: opaque `.hw-hero-copy` plate; reveal no longer starts at `opacity: 0`
+- Reveal-boot + opacity:1 pre-reveal across boards that skipped legacy `DB.route`
 
-### Dashboards
-| Dashboard | Status | Notes |
-|---|---|---|
-| cortex-well | ✔ check + fidelity md | Full art/layout/pages/motion pass |
-| mallow-music | ✔ check + fidelity md | New clay hero + dense pages |
-| canopy, copper, ember, tidebath, meridian, glacier, folio, atrium, ridgeline, pulsar, lull, pearlwell, vitalis, hollow, veil | ✔ check (batch) | Dense-page wire + layout/CSS fixes |
-| Remaining ~20 | Needs re-check after `grid-column:1/-1` host fix | Legacy stubs neutralized; may still fail art/low-res/width |
+### G2/G3 — Canopy Reforest
+- New layered leaves hero (GenerateImage → WebP 1x/2x) + foreground leaf layer
+- Opaque clay hero copy plate; deeper clay tile shadows
+- Forest scene srcset; `media/CREDITS.md` updated
+
+### Verified green (this stretch)
+`horizon-weather`, `kumo-payroll`, `haven-listings`, `aura-ring`, `lull-sleep`, `canopy-reforest`  
+(plus earlier cortex/mallow and batch densers from prior commits)
 
 ## Still open (architect)
-1. Re-run `node scripts/dashboards-check.mjs` on **all 38** after host CSS fix; fix remaining fails without touching gates.
-2. Honest POLISH-AUDIT rewrite (10 axes, reasons, no uniform 4.5).
-3. G2 hero art for remaining signature dashboards (kumo, canopy leaves, hollow, citadel, …).
-4. G3 composition rebuilds still thin vs reference (ember lamp ring, copper radar arc, tidebath 3D carousel, etc.).
+
+1. Finish / consume full `node scripts/dashboards-check.mjs` on all 38 after this push; fix any new fails without touching gates.
+2. Honest POLISH-AUDIT (no uniform 4.5) — rewritten this stretch; keep updating per dashboard.
+3. Remaining G2 hero art: kumo moon/pagoda/koi frame, ember lamp+ring, copper radar arc, tidebath 3D carousel, hollow relics, citadel holo, glacier dial, forge athlete, clima orbs…
+4. Remaining G3 composition: copper half-radar, tidebath CSS 3D, ember lamp stage, meridian DNA columns, ridgeline clay pies, phone compositions.
 5. `node scripts/screenshot.mjs` including `#/fx`.
-6. Open PR from this branch (compare URL below). ManagePullRequest was not available in this agent.
+6. ManagePullRequest may be unavailable — update PR body carefully if editing (preserve human edits).
 
 ## Compare
 https://github.com/SacredRebel/dashboard-tools-/compare/main...cursor/deep-polish-0545?expand=1
