@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/vitalis-care/",
+      "url": "/dashboards/vitalis-care/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/vitalis-care/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/vitalis-care",
+      "url": "/dashboards/vitalis-care#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/vitalis-care/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/vitalis-care/index.html",
+      "url": "/dashboards/vitalis-care/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/vitalis-care/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/vitalis-care/",
+      "url": "/dashboards/vitalis-care/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/vitalis-care/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/vitalis-care/?variant=sage",
+      "url": "/dashboards/vitalis-care/?variant=sage#/overview",
       "width": 1440,
       "variant": "sage",
       "final_path": "/dashboards/vitalis-care/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/vitalis-care/?variant=night",
+      "url": "/dashboards/vitalis-care/?variant=night#/overview",
       "width": 1440,
       "variant": "night",
       "final_path": "/dashboards/vitalis-care/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=sage#/overview",
+      "width": 1440,
+      "variant": "sage",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=sage#/overview",
+      "width": 375,
+      "variant": "sage",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=night#/overview",
+      "width": 1440,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=night#/overview",
+      "width": 375,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/#/vitals",
+      "width": 1440,
+      "variant": "default",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/#/vitals",
+      "width": 375,
+      "variant": "default",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=sage#/vitals",
+      "width": 1440,
+      "variant": "sage",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=sage#/vitals",
+      "width": 375,
+      "variant": "sage",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=night#/vitals",
+      "width": 1440,
+      "variant": "night",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=night#/vitals",
+      "width": 375,
+      "variant": "night",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/#/appointments",
+      "width": 1440,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/#/appointments",
+      "width": 375,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=sage#/appointments",
+      "width": 1440,
+      "variant": "sage",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=sage#/appointments",
+      "width": 375,
+      "variant": "sage",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=night#/appointments",
+      "width": 1440,
+      "variant": "night",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=night#/appointments",
+      "width": 375,
+      "variant": "night",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/#/records",
+      "width": 1440,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/#/records",
+      "width": 375,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=sage#/records",
+      "width": 1440,
+      "variant": "sage",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=sage#/records",
+      "width": 375,
+      "variant": "sage",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=night#/records",
+      "width": 1440,
+      "variant": "night",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=night#/records",
+      "width": 375,
+      "variant": "night",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=sage#/settings",
+      "width": 1440,
+      "variant": "sage",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=sage#/settings",
+      "width": 375,
+      "variant": "sage",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=night#/settings",
+      "width": 1440,
+      "variant": "night",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/vitalis-care/?variant=night#/settings",
+      "width": 375,
+      "variant": "night",
+      "page": "settings",
       "errors": []
     },
     {

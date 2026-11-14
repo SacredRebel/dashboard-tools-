@@ -1371,7 +1371,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A bento-grid patient dashboard for a family clinic: a heart-rate tile with a code-drawn heart and pulse trace, coloured vital tiles, a deep-teal next-appointment tile, a searchable doctor directory that feeds a week-strip booking panel, a steps and sleep chart, and a records list.",
+      "summary": "A bento-grid patient dashboard for a family clinic: clay doctor hero photo, dimensional heart, floating medical props, tinted vital tiles, teal next-appointment card, doctor directory with booking, activity chart, quick actions, and Vitals / Appointments / Records / Settings pages.",
       "mood": [
         "clear",
         "caring",
@@ -1396,24 +1396,29 @@
       },
       "components": [
         "Pill top bar with notification dot",
+        "Clay doctor hero image",
+        "Floating medical props (stethoscope, pills, thermometer, kit)",
         "Vital tiles in tinted colours",
-        "Heart-rate tile with pulse trace",
+        "Heart-rate tile with clay heart photo and pulse trace",
+        "Hero search synced to doctor directory",
         "Next-appointment tile",
+        "Quick-action clay buttons",
         "Doctor directory with search, chips, call and book",
         "Week strip, time grid and booking summary",
         "Steps / sleep bar chart toggle",
-        "Records list with add action"
+        "Records list with add action",
+        "Vitals / Appointments / Records / Settings pages"
       ],
-      "signature": "Tiles of different sizes in a tight bento: a glossy SVG heart with a coral pulse trace, a coral and a mint vital tile, and one deep-teal appointment tile.",
+      "signature": "A clay doctor hero beside the greeting, floating medical props at the stage edges, and a glossy dimensional heart with a coral pulse trace in a tight bento of tinted tiles.",
       "palette": {
-        "bg": "#f1f6f5",
+        "bg": "#eef7f5",
         "surface": "#ffffff",
-        "text": "#13302e",
+        "text": "#12332f",
         "muted": "#466361",
-        "accent": "#0e7c72",
+        "accent": "#0b7268",
         "chart": "#14a092",
-        "coral": "#c2463b",
-        "coral_soft": "#fde4df"
+        "coral": "#b83a30",
+        "coral_soft": "#fde8e4"
       },
       "fonts": {
         "display": "Plus Jakarta Sans",
@@ -1423,7 +1428,7 @@
         {
           "id": "default",
           "name": "Teal",
-          "swatch": "#0e7c72"
+          "swatch": "#0b7268"
         },
         {
           "id": "sage",
@@ -1446,7 +1451,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied concept sheet of six medical phone screens (same set as Pearlwell Dental, different clinic). The screens were merged into a bento desktop layout that differs from Pearlwell's sidebar portal. Names, photos and copy were not reused; doctors, readings and records are invented and phone links use 555 numbers. 3D props were replaced with an SVG heart and charts. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied concept sheet of six medical phone screens (same set as Pearlwell Dental, different clinic). The screens were merged into a bento desktop layout that differs from Pearlwell's sidebar portal. Names, photos and copy were not reused; doctors, readings and records are invented and phone links use 555 numbers. Doctor and heart imagery are original GenerateImage clay assets in `media/`; floating medical props are code-drawn SVG. Fidelity pass used local tesseract OCR on `reference.jpg` plus visual compare to `shot.jpg`. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/vitalis-care/",
       "reference": "reference.jpg",
@@ -1477,7 +1482,18 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "chart-draw",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "mallow-music",

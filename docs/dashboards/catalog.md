@@ -615,15 +615,15 @@ Tiles of different sizes in a tight grid, each tile one idea. Great for overview
 
 _Vitalis Care · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A bento-grid patient dashboard for a family clinic: a heart-rate tile with a code-drawn heart and pulse trace, coloured vital tiles, a deep-teal next-appointment tile, a searchable doctor directory that feeds a week-strip booking panel, a steps and sleep chart, and a records list.
+A bento-grid patient dashboard for a family clinic: clay doctor hero photo, dimensional heart, floating medical props, tinted vital tiles, teal next-appointment card, doctor directory with booking, activity chart, quick actions, and Vitals / Appointments / Records / Settings pages.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** clear, caring, organised, fresh, friendly
 - **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Tiles of different sizes in a tight bento: a glossy SVG heart with a coral pulse trace, a coral and a mint vital tile, and one deep-teal appointment tile.
+- **Motion:** count-up, stagger, chart-draw, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** A clay doctor hero beside the greeting, floating medical props at the stage edges, and a glossy dimensional heart with a coral pulse trace in a tight bento of tinted tiles.
 - **Layout:** Pill top bar (brand, 4 links, bell, avatar) · greeting row · 12-column bento: heart rate (4) + blood pressure (2) + blood sugar (2) + next appointment (4) · doctor directory (5, two rows) + booking (4, two rows) + this week chart (3) + records (3)
 - **Responsive:** ≤1100px: 4-column bento (vitals pair, directory + booking side by side) · ≤700px: 2-column bento with vitals side by side, everything else full width, nav on its own row
-- **Fonts:** Plus Jakarta Sans / Plus Jakarta Sans · **Palette:** bg `#f1f6f5`, surface `#ffffff`, text `#13302e`, muted `#466361`, accent `#0e7c72`, chart `#14a092`, coral `#c2463b`, coral_soft `#fde4df`
+- **Fonts:** Plus Jakarta Sans / Plus Jakarta Sans · **Palette:** bg `#eef7f5`, surface `#ffffff`, text `#12332f`, muted `#466361`, accent `#0b7268`, chart `#14a092`, coral `#b83a30`, coral_soft `#fde8e4`
 - **Variants:** Teal, Sage, Night · **Closest toolkit theme:** `coastal`
 
 **Best for**
@@ -636,7 +636,7 @@ A bento-grid patient dashboard for a family clinic: a heart-rate tile with a cod
 - Pages that need one dominant chart
 - Brands that want a dark or dramatic look
 
-**Components:** Pill top bar with notification dot · Vital tiles in tinted colours · Heart-rate tile with pulse trace · Next-appointment tile · Doctor directory with search, chips, call and book · Week strip, time grid and booking summary · Steps / sleep bar chart toggle · Records list with add action
+**Components:** Pill top bar with notification dot · Clay doctor hero image · Floating medical props (stethoscope, pills, thermometer, kit) · Vital tiles in tinted colours · Heart-rate tile with clay heart photo and pulse trace · Hero search synced to doctor directory · Next-appointment tile · Quick-action clay buttons · Doctor directory with search, chips, call and book · Week strip, time grid and booking summary · Steps / sleep bar chart toggle · Records list with add action · Vitals / Appointments / Records / Settings pages
 
 ---
 
