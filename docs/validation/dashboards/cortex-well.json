@@ -1,11 +1,11 @@
 {
   "id": "cortex-well",
-  "checked": "2026-11-13",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/cortex-well/",
+      "url": "/dashboards/cortex-well/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/cortex-well/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/cortex-well",
+      "url": "/dashboards/cortex-well#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/cortex-well/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/cortex-well/index.html",
+      "url": "/dashboards/cortex-well/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/cortex-well/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/cortex-well/",
+      "url": "/dashboards/cortex-well/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/cortex-well/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/cortex-well/?variant=rose",
+      "url": "/dashboards/cortex-well/?variant=rose#/overview",
       "width": 1440,
       "variant": "rose",
       "final_path": "/dashboards/cortex-well/",
@@ -45,11 +45,137 @@
       "errors": []
     },
     {
-      "url": "/dashboards/cortex-well/?variant=dusk",
+      "url": "/dashboards/cortex-well/?variant=dusk#/overview",
       "width": 1440,
       "variant": "dusk",
       "final_path": "/dashboards/cortex-well/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=rose#/overview",
+      "width": 1440,
+      "variant": "rose",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=rose#/overview",
+      "width": 375,
+      "variant": "rose",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=dusk#/overview",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=dusk#/overview",
+      "width": 375,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/#/analytics",
+      "width": 1440,
+      "variant": "default",
+      "page": "analytics",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/#/analytics",
+      "width": 375,
+      "variant": "default",
+      "page": "analytics",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=rose#/analytics",
+      "width": 1440,
+      "variant": "rose",
+      "page": "analytics",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=rose#/analytics",
+      "width": 375,
+      "variant": "rose",
+      "page": "analytics",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=dusk#/analytics",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "analytics",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=dusk#/analytics",
+      "width": 375,
+      "variant": "dusk",
+      "page": "analytics",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/#/reports",
+      "width": 1440,
+      "variant": "default",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/#/reports",
+      "width": 375,
+      "variant": "default",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=rose#/reports",
+      "width": 1440,
+      "variant": "rose",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=rose#/reports",
+      "width": 375,
+      "variant": "rose",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=dusk#/reports",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/cortex-well/?variant=dusk#/reports",
+      "width": 375,
+      "variant": "dusk",
+      "page": "reports",
       "errors": []
     },
     {

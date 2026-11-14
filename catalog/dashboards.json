@@ -4475,7 +4475,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A lilac-glass wellness overview: frosted cards float over a soft pink\u2013lilac haze around an SVG brain in a glass bowl, with lead lines to Heart, Breath, Brain and All activity pills, sleep bars and a multi-line heart chart.",
+      "summary": "A lilac-glass wellness overview: frosted cards float over a soft pink\u2013lilac haze around a painted brain in a glass bowl, with lead lines to Heart, Breath, Brain and All activity pills, sleep bars and a multi-line heart chart.",
       "mood": [
         "ethereal",
         "soft",
@@ -4499,20 +4499,16 @@
         "responsive": "\u22641180px: rail becomes a top strip; board stacks left \u2192 hero \u2192 right \u00b7 \u2264960px: metric tiles 3-up \u00b7 \u2264640px: single column, nav scrolls, pills wrap"
       },
       "components": [
-        "Slim icon rail with brand mark",
-        "Personal greeting and live clock",
-        "Glass pill nav (Dashboard / Analytics / Reports)",
-        "Notification bell and initials avatar",
-        "SVG brain in frosted bowl with lead lines",
-        "Activity pills (Heart, Breath, Brain, All)",
-        "Performance line card",
-        "Dual sleep-wave card",
-        "Metric tiles (hills, blood, focus gauge)",
-        "Sleep intensity bars",
-        "Heart bpm multi-line chart",
-        "Floating decorative orbs"
+        "Icon rail navigation",
+        "Glass top bar with Dashboard / Analytics / Reports",
+        "Painted brain-in-bowl hero",
+        "Floating pastel orbs",
+        "Activity focus pills with lead lines",
+        "Performance and sleep wave cards",
+        "Sleep bar chart and multi-line heart rate",
+        "Analytics and Reports pages with states"
       ],
-      "signature": "A pink-lilac SVG brain resting in a frosted glass bowl, connected by thin lead lines to soft activity pills over a lilac\u2013pink haze.",
+      "signature": "A painted brain in a frosted glass bowl at center stage, with glass activity pills on lead lines and soft floating orbs.",
       "palette": {
         "bg": "#e8dff5",
         "surface": "#f7f2fc",
@@ -4554,38 +4550,38 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied glass health concept. Brand (Cortex Well), member name and figures are fictional; CORE MEDICINE and the photo avatar were not reused. The 3D brain and marble spheres were replaced with SVG/CSS. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a lilac-glass wellness concept (Core Medicine\u2013style reference). Rebranded Cortex Well; names and readings reinvented. Brain-in-bowl is a GenerateImage asset in media/. Fidelity pass used local tesseract OCR on reference.jpg. Owner original stored as reference.jpg."
       },
       "path": "site/dashboards/cortex-well/",
       "reference": "reference.jpg",
       "pages": [
         {
           "id": "overview",
-          "name": "Overview",
+          "name": "Dashboard",
           "pattern": "Dashboard"
         },
         {
-          "id": "vitals",
-          "name": "Vitals",
+          "id": "analytics",
+          "name": "Analytics",
           "pattern": "Report"
         },
         {
-          "id": "appointments",
-          "name": "Appointments",
-          "pattern": "Calendar"
-        },
-        {
-          "id": "records",
-          "name": "Records",
-          "pattern": "List"
-        },
-        {
-          "id": "settings",
-          "name": "Settings",
-          "pattern": "Settings"
+          "id": "reports",
+          "name": "Reports",
+          "pattern": "Report"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "ember-rooms",

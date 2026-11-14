@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `cortex-well` (Phase C — total 25).
+Next: `hearth-nest` (Phase C — total 26).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -44,7 +44,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 34 | saffron-dusk | Saffron Dusk | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | fewer glass sparkles; 3D memoji → flat avatar | queued |
 | 35 | clima-pane | Clima Pane | 5 | 4 | 4 | 4 | 3 | 2 | 4 | 4 | 30 | no background color spheres; flatter glass | queued |
 | 36 | meridian-labs | Meridian Labs | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 5 | 32 | softer metallic DNA; date/content drift | queued |
-| 37 | cortex-well | Cortex Well | 4 | 3 | 4 | 4 | 2 | 2 | 3 | 3 | 25 | brain 3D → abstract blob; less glass depth | queued |
+| 37 | cortex-well | Cortex Well | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted brain bowl; glass depth; multipage + motion | polished 25→36 |
 | 38 | ember-rooms | Ember Rooms | 4 | 3 | 4 | 4 | 3 | 2 | 4 | 4 | 28 | single state vs 4 ref screens; lamp vs dial | queued |
 
 ## Work order
@@ -59,7 +59,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 6. ~~`vitalis-care` — 24~~ → polished (36)
 7. ~~`pearlwell-dental` — 25~~ → polished (36)
 8. ~~`hollow-vault` — 25~~ → polished (36)
-9. `cortex-well` — 25
+9. ~~`cortex-well` — 25~~ → polished (36)
 10. `hearth-nest` — 26
 11. `atrium-living` — 26
 12. `haven-listings` — 27

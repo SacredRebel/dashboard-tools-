@@ -541,12 +541,12 @@ A light glass climate console on a beige field with soft orange and blue orb blo
 
 _Cortex Well · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A lilac-glass wellness overview: frosted cards float over a soft pink–lilac haze around an SVG brain in a glass bowl, with lead lines to Heart, Breath, Brain and All activity pills, sleep bars and a multi-line heart chart.
+A lilac-glass wellness overview: frosted cards float over a soft pink–lilac haze around a painted brain in a glass bowl, with lead lines to Heart, Breath, Brain and All activity pills, sleep bars and a multi-line heart chart.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** ethereal, soft, calm, premium, lilac
-- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** A pink-lilac SVG brain resting in a frosted glass bowl, connected by thin lead lines to soft activity pills over a lilac–pink haze.
+- **Pages:** Dashboard (`overview`, Dashboard) · Analytics (`analytics`, Report) · Reports (`reports`, Report)
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** A painted brain in a frosted glass bowl at center stage, with glass activity pills on lead lines and soft floating orbs.
 - **Layout:** 64px icon rail · top (greeting, glass pill nav, bell, avatar) · headline · 12-column board: left stack (performance, sleep waves, 3 metric tiles) · centre brain bowl with activity pills · right stack (sleep bars, heart bpm) · footer dots
 - **Responsive:** ≤1180px: rail becomes a top strip; board stacks left → hero → right · ≤960px: metric tiles 3-up · ≤640px: single column, nav scrolls, pills wrap
 - **Fonts:** Plus Jakarta Sans / Plus Jakarta Sans · **Palette:** bg `#e8dff5`, surface `#f7f2fc`, text `#2a2438`, muted `#6a5f7a`, accent `#5f4fb0`, pink `#f2a0c0`, teal `#5ec4b0`, heart `#e85a6b`
@@ -562,7 +562,7 @@ A lilac-glass wellness overview: frosted cards float over a soft pink–lilac ha
 - Dark-mode-only brands
 - Screens that cannot spare space for a hero illustration
 
-**Components:** Slim icon rail with brand mark · Personal greeting and live clock · Glass pill nav (Dashboard / Analytics / Reports) · Notification bell and initials avatar · SVG brain in frosted bowl with lead lines · Activity pills (Heart, Breath, Brain, All) · Performance line card · Dual sleep-wave card · Metric tiles (hills, blood, focus gauge) · Sleep intensity bars · Heart bpm multi-line chart · Floating decorative orbs
+**Components:** Icon rail navigation · Glass top bar with Dashboard / Analytics / Reports · Painted brain-in-bowl hero · Floating pastel orbs · Activity focus pills with lead lines · Performance and sleep wave cards · Sleep bar chart and multi-line heart rate · Analytics and Reports pages with states
 
 ---
 
