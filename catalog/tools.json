@@ -87,6 +87,12 @@
       "blurb": "Small, strict rule-sets (spacing, type, motion, loaders, empty states) that separate premium from generic."
     },
     {
+      "id": "motion",
+      "name": "Motion & Animation",
+      "icon": "sparkles",
+      "blurb": "Motion tokens, vendored animation runtimes for the static gallery, and React animation libraries for product apps."
+    },
+    {
       "id": "dataviz",
       "name": "Dashboards & Data Viz",
       "icon": "chart",
@@ -4365,27 +4371,35 @@
     },
     {
       "id": "motion-lib",
-      "name": "Motion (Framer Motion)",
+      "name": "Motion (motion.dev)",
       "invoke": "https://motion.dev",
       "kind": "library",
       "plugin": null,
-      "category": "libraries",
+      "category": "motion",
       "phases": [
-        "build"
+        "build",
+        "polish"
       ],
       "tier": "recommended",
-      "summary": "Animation library for React with layout animations.",
+      "summary": "MIT animation library. Vanilla build vendored for the gallery; React build for product apps.",
       "use_when": [
-        "Board card moves, slide-overs, list reordering"
+        "Count-ups, staggered card entrances, spring presses, scroll/inView reveals in gallery dashboards",
+        "React product apps that need layout animations"
       ],
       "avoid_when": [
-        "Simple hovers (use CSS)"
+        "Simple color/opacity hovers (use CSS tokens)",
+        "Anything that must work with zero JS beyond frame.js"
       ],
       "how_to_use": [
-        "Respect the motion rule tokens (100-300ms)"
+        "Gallery: load site/dashboards/_vendor/motion@12.23.12/motion.js (relative path, no CDN)",
+        "Follow docs/design/09-motion-system.md; honor prefers-reduced-motion and DB.onVisible",
+        "React apps: npm install motion"
       ],
-      "pairs_with": [],
-      "fallback": null,
+      "pairs_with": [
+        "reduced-motion",
+        "frontend-ui-engineering"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
       "requires": null,
       "url": "https://motion.dev"
     },
@@ -5571,6 +5585,403 @@
       ],
       "fallback": "docs/dashboards/README.md",
       "category": "design-to-code"
+    },
+    {
+      "id": "gsap-lib",
+      "name": "GSAP (+ ScrollTrigger)",
+      "invoke": "https://gsap.com",
+      "kind": "library",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Timeline and path-drawing engine. Vendored under GreenSock standard no-charge license.",
+      "use_when": [
+        "Complex hero sequences, SVG path draw-ins, multi-step timelines"
+      ],
+      "avoid_when": [
+        "Simple KPI count-ups (use Motion or CSS)",
+        "Club GSAP plugins not vendored"
+      ],
+      "how_to_use": [
+        "Load ../_vendor/gsap@3.13.0/gsap.min.js and ScrollTrigger.min.js",
+        "Read LICENSE.txt; do not use a CDN in the gallery"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://gsap.com"
+    },
+    {
+      "id": "dotlottie-web",
+      "name": "dotLottie web player",
+      "invoke": "https://lottiefiles.com/dotlottie",
+      "kind": "library",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Plays .lottie/.json icon animations. Only ship files whose license allows reuse.",
+      "use_when": [
+        "Animated icons or illustrations that need more than CSS"
+      ],
+      "avoid_when": [
+        "Decorative loops that never stop",
+        "Files without a clear free/reuse license"
+      ],
+      "how_to_use": [
+        "Vendor the player under _vendor when first needed",
+        "Store animation files in the dashboard folder; credit in source.credits"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://lottiefiles.com/dotlottie"
+    },
+    {
+      "id": "rive-web",
+      "name": "Rive web runtime",
+      "invoke": "https://rive.app",
+      "kind": "library",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Interactive state-machine illustrations. Optional; only when a dashboard truly needs it.",
+      "use_when": [
+        "Interactive illustrated controls with state machines"
+      ],
+      "avoid_when": [
+        "Static icons (use SVG)",
+        "Most gallery polish (prefer Motion/CSS)"
+      ],
+      "how_to_use": [
+        "Vendor only if used; document license in the vendor README"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://rive.app"
+    },
+    {
+      "id": "react-bits",
+      "name": "React Bits",
+      "invoke": "https://reactbits.dev",
+      "kind": "reference",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "design",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Animated React text, backgrounds, cards, cursors. MIT + Commons Clause: use in products, do not resell the components.",
+      "use_when": [
+        "React product UIs that need polished animated primitives"
+      ],
+      "avoid_when": [
+        "Static gallery dashboards (re-implement effects in vanilla instead)",
+        "Reselling the component pack"
+      ],
+      "how_to_use": [
+        "Read the license before shipping",
+        "Port effects into vanilla CSS/JS for gallery; credit in catalog motion notes"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://reactbits.dev"
+    },
+    {
+      "id": "motion-react",
+      "name": "Motion for React",
+      "invoke": "https://motion.dev/docs/react",
+      "kind": "library",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "React bindings for Motion. Product apps only — not for the static gallery.",
+      "use_when": [
+        "Next.js / React dashboards"
+      ],
+      "avoid_when": [
+        "site/dashboards static HTML"
+      ],
+      "how_to_use": [
+        "npm install motion; follow 09-motion-system.md timing"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://motion.dev/docs/react"
+    },
+    {
+      "id": "magic-ui",
+      "name": "Magic UI",
+      "invoke": "https://magicui.design",
+      "kind": "reference",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "design",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Animated React components and effects to study and port.",
+      "use_when": [
+        "Inspiration for product motion"
+      ],
+      "avoid_when": [
+        "Pasting licensed source into the gallery without permission"
+      ],
+      "how_to_use": [
+        "Re-implement in your own code; credit the idea"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://magicui.design"
+    },
+    {
+      "id": "aceternity-ui",
+      "name": "Aceternity UI",
+      "invoke": "https://ui.aceternity.com",
+      "kind": "reference",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "design",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Animated React UI blocks. Study and re-implement; do not paste into the gallery.",
+      "use_when": [
+        "Marketing/product UI inspiration"
+      ],
+      "avoid_when": [
+        "Copying source into site/dashboards"
+      ],
+      "how_to_use": [
+        "Port effects; keep gallery code original"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://ui.aceternity.com"
+    },
+    {
+      "id": "animate-ui",
+      "name": "Animate UI",
+      "invoke": "https://animate-ui.com",
+      "kind": "reference",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "design",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Animated component patterns for React apps.",
+      "use_when": [
+        "Product motion references"
+      ],
+      "avoid_when": [
+        "Static gallery without a React build"
+      ],
+      "how_to_use": [
+        "Use as reference only unless license allows copy"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://animate-ui.com"
+    },
+    {
+      "id": "shadcn-blocks",
+      "name": "shadcn/ui blocks",
+      "invoke": "https://ui.shadcn.com",
+      "kind": "library",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Composable UI blocks; pair with Motion for React in product apps.",
+      "use_when": [
+        "Building the real client dashboard in React"
+      ],
+      "avoid_when": [
+        "Copying into static gallery HTML"
+      ],
+      "how_to_use": [
+        "Follow the repo stack docs; keep motion on tokens"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://ui.shadcn.com"
+    },
+    {
+      "id": "lucide-animated",
+      "name": "Lucide animated icons",
+      "invoke": "https://lucide.dev",
+      "kind": "library",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "recommended",
+      "summary": "Icon family; animate via CSS/Motion on state change.",
+      "use_when": [
+        "Consistent stroke icons with state animation"
+      ],
+      "avoid_when": [
+        "Mixing multiple icon families on one screen"
+      ],
+      "how_to_use": [
+        "Inline SVG in gallery; one stroke width"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://lucide.dev"
+    },
+    {
+      "id": "lordicon",
+      "name": "Lordicon",
+      "invoke": "https://lordicon.com",
+      "kind": "library",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Animated icon pack — check the license tier before shipping.",
+      "use_when": [
+        "Product apps with a paid/allowed Lordicon plan"
+      ],
+      "avoid_when": [
+        "Gallery dashboards without a verified license"
+      ],
+      "how_to_use": [
+        "Prefer Lucide + CSS in the gallery"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://lordicon.com"
+    },
+    {
+      "id": "iconify",
+      "name": "Iconify",
+      "invoke": "https://iconify.design",
+      "kind": "library",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Icon runtime and collections for product apps.",
+      "use_when": [
+        "Large icon sets in React/Vue apps"
+      ],
+      "avoid_when": [
+        "Static gallery (inline SVG instead)"
+      ],
+      "how_to_use": [
+        "Do not hotlink icon APIs from gallery pages"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://iconify.design"
+    },
+    {
+      "id": "useanimations",
+      "name": "useAnimations",
+      "invoke": "https://useanimations.com",
+      "kind": "reference",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "design",
+        "polish"
+      ],
+      "tier": "optional",
+      "summary": "Micro-interaction icon animations to study.",
+      "use_when": [
+        "Reference for toggle/menu micro-motion"
+      ],
+      "avoid_when": [
+        "Shipping without checking license"
+      ],
+      "how_to_use": [
+        "Re-implement with SVG + Motion/CSS"
+      ],
+      "pairs_with": [
+        "motion-lib",
+        "reduced-motion"
+      ],
+      "fallback": "docs/design/09-motion-system.md",
+      "requires": null,
+      "url": "https://useanimations.com"
     }
   ]
 }
