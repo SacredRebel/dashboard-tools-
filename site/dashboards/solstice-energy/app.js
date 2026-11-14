@@ -187,19 +187,53 @@
 
   function renderOut() {
     const r = RANGES[range], vals = r.k.map((k) => Math.round(site.kwp * r.per * k));
+    const load = vals.map((v, i) => Math.round(v * (0.55 + (i % 3) * 0.08)));
     $('[data-out-total]').textContent = fmtNum(vals.reduce((a, b) => a + b, 0));
     $('[data-out-unit]').textContent = r.unit;
-    barChart($('[data-out]'), { labels: r.labels, series: [{ name: 'Generated', color: '--chart-1', values: vals }], fmt: (v) => fmtNum(v) + ' kWh', h: 150, ticks: 3, label: `Energy generated at ${site.name}, ${r.unit}` });
+    // Bar + overlay line twin (reference watt-metrics beat)
+    barChart($('[data-out]'), {
+      labels: r.labels,
+      series: [
+        { name: 'Generated', color: '--chart-1', values: vals },
+      ],
+      fmt: (v) => fmtNum(v) + ' kWh',
+      h: 150,
+      ticks: 3,
+      label: `Energy generated at ${site.name}, ${r.unit}`,
+    });
+    const host = $('[data-out]');
+    const plot = host?.querySelector('.se-plot');
+    if (plot && !reduce) {
+      const W = 600, H = 150, n = load.length;
+      const max = Math.max(...vals, 1);
+      const pts = load.map((v, i) => [(n > 1 ? (i / (n - 1)) * W : W / 2), H - (v / max) * H]);
+      const d = 'M' + pts.map((p) => p.map((n) => n.toFixed(1)).join(',')).join(' L');
+      const svg = plot.querySelector('svg');
+      if (svg && !svg.querySelector('.se-overlay-line')) {
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('class', 'line se-overlay-line');
+        path.setAttribute('d', d);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', 'var(--text)');
+        path.setAttribute('stroke-width', '1.6');
+        path.setAttribute('opacity', '0.85');
+        path.setAttribute('vector-effect', 'non-scaling-stroke');
+        svg.appendChild(path);
+      } else if (svg?.querySelector('.se-overlay-line')) {
+        svg.querySelector('.se-overlay-line').setAttribute('d', d);
+      }
+    }
   }
 
   function renderDials() {
     const batt = 43 + SITES.indexOf(site) * 12, self = 68 - SITES.indexOf(site) * 7, exp = +(site.gen[hour] * 0.31).toFixed(1), temp = 38 + hour;
     const ring = (v, c, w) => donut([{ value: v, color: c }, { value: 100 - v + 0.01, color: '--surface-sunken' }], { size: 112, w, gap: 0, round: w < 8 });
+    const portals = SITES.filter((s) => s !== site).slice(0, 2);
     $('[data-dials]').innerHTML = [
       `<div class="se-dial"><div class="se-dial-face" role="img" aria-label="Battery ${batt}%">${ring(batt, '--chart-2', 4)}<b class="num">${batt}<small>%</small></b></div><p><strong>Battery</strong>${(batt * 0.27).toFixed(1)} kWh stored</p></div>`,
       `<div class="se-dial"><div class="se-dial-face" role="img" aria-label="Self-use ${self}%">${ring(self, '--chart-2', 18)}<b class="num">${self}<small>%</small></b></div><p><strong>Self-use</strong>of today's output</p></div>`,
-      `<div class="se-dial fill" style="--lv:${Math.min(100, exp * 8)}%"><div class="se-dial-face" role="img" aria-label="Exporting ${exp} kilowatts"><b class="num">${exp}<small>kW</small></b></div><p><strong>Grid export</strong>at ${hh(HOURS[hour])}</p></div>`,
-      `<div class="se-dial"><div class="se-dial-face" role="img" aria-label="Panel temperature ${temp} degrees">${ring(temp, '--chart-1', 12)}<b class="num">${temp}<small>°C</small></b></div><p><strong>Panel temp</strong>within range</p></div>`,
+      `<div class="se-dial se-portal"><button type="button" class="se-portal-face" data-site="${portals[0]?.id || site.id}" aria-label="Open ${portals[0]?.name || site.name}" aria-pressed="false"><img src="${portals[0]?.photo || site.photo}" width="512" height="512" alt="" decoding="async"></button><p><strong>${portals[0]?.name || site.name}</strong>${portals[0]?.kwp || site.kwp} kWp peer</p></div>`,
+      `<div class="se-dial se-portal"><button type="button" class="se-portal-face" data-site="${portals[1]?.id || site.id}" aria-label="Open ${portals[1]?.name || site.name}" aria-pressed="false"><img src="${portals[1]?.photo || site.photo}" width="512" height="512" alt="" decoding="async"></button><p><strong>${portals[1]?.name || site.name}</strong>${portals[1]?.kwp || site.kwp} kWp peer</p></div>`,
     ].join('');
   }
 
@@ -220,12 +254,20 @@
   const renderAll = () => { renderHero(); renderOut(); renderDials(); renderUse(); renderSites(); };
 
   seg($('[data-range]'), (v) => { range = v; renderOut(); toast(`${v} output · sample`); });
-  $('[data-sites]').addEventListener('click', (e) => {
-    const b = e.target.closest('[data-site]'); if (!b) return;
-    site = SITES.find((s) => s.id === b.dataset.site);
+  const pickSite = (id) => {
+    const next = SITES.find((s) => s.id === id); if (!next) return;
+    site = next;
     renderAll();
     toast(`${site.name} · sample`);
-    $(`[data-site="${site.id}"]`)?.focus();
+    $(`[data-sites] [data-site="${site.id}"]`)?.focus();
+  };
+  $('[data-sites]').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-site]'); if (!b) return;
+    pickSite(b.dataset.site);
+  });
+  $('[data-dials]')?.addEventListener('click', (e) => {
+    const b = e.target.closest('.se-portal-face[data-site]'); if (!b) return;
+    pickSite(b.dataset.site);
   });
   $('[data-bell]')?.addEventListener('click', () => toast('2 alerts · sample'));
   $('[data-date]').textContent = fmtDate(dayOffset(0), { weekday: 'long', month: 'long', day: 'numeric' });
@@ -416,7 +458,137 @@ if (typeof staggerReveal === "function") staggerReveal();
   }
   main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
   if (window.DB?.onVisible) window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
-  if (window.DB?.dense) window.DB.dense.mount({ main, overview, pages: PAGES, brand: "Solstice Energy" });
+  if (window.DB?.dense) {
+    const D = window.DB.dense;
+    window.DB.dense.mount({
+      main, overview, pages: PAGES, brand: "Solstice Energy",
+      renderPage(page) {
+        if (page.id === 'rooms') {
+          return `
+            ${D.kpiRow([
+              { to: 48, cap: 'Active kWp', label: '48' },
+              { to: 6, cap: 'Strings online', label: '6' },
+              { to: 1, cap: 'Shaded', label: '1' },
+              { to: 92, cap: 'Clear-sky %', label: '92' },
+            ])}
+            ${D.heroCard('Array field map', 'Copper Ridge strings ranked by live output. Open a row for inverter detail.', 'List')}
+            ${D.tableCard('String register', ['String', 'State', 'kW'], [
+              { id: 's1', cells: ['A1 East roof', 'Normal', '<span class="num">9.1</span>'] },
+              { id: 's2', cells: ['A2 East roof', 'Normal', '<span class="num">8.7</span>'] },
+              { id: 's3', cells: ['B1 South field', 'Normal', '<span class="num">10.3</span>'] },
+              { id: 's4', cells: ['B2 South field', 'Shaded', '<span class="num">7.2</span>'] },
+              { id: 's5', cells: ['C1 Carport', 'Normal', '<span class="num">2.7</span>'] },
+              { id: 's6', cells: ['C2 Carport', 'Offline', '<span class="num">0.0</span>'] },
+              { id: 's7', cells: ['D1 Ridge tip', 'Normal', '<span class="num">6.4</span>'] },
+              { id: 's8', cells: ['D2 Ridge tip', 'Normal', '<span class="num">5.9</span>'] },
+            ])}
+            ${D.chartCard('Output by string', 'bars')}
+            ${D.chartCard('Shade trend', 'line')}
+            ${D.listCard('Commission queue', [
+              { k: 'Replace C2 optimizer', v: 'Today' }, { k: 'Clean B2 glass', v: 'Tomorrow' },
+              { k: 'Torque A-row clamps', v: 'Wed' }, { k: 'Firmware sweep', v: 'Ok' },
+              { k: 'Irradiance sensor', v: 'Cal' }, { k: 'Fence camera', v: 'Gate' },
+            ])}
+            ${D.listCard('Site peers', [
+              { k: 'Juniper Mesa', v: '72 kWp' }, { k: 'Salt Basin', v: '31 kWp' },
+              { k: 'Lantern Pass', v: '56 kWp' }, { k: 'Copper Ridge', v: '48 kWp' },
+            ])}`;
+        }
+        if (page.id === 'devices') {
+          return `
+            ${D.kpiRow([
+              { to: 43, cap: 'Battery %', label: '43' },
+              { to: 11.8, decimals: 1, cap: 'Export kW', label: '11.8' },
+              { to: 2, cap: 'Inverters live', label: '2' },
+              { to: 46, cap: 'Panel °C', label: '46' },
+            ])}
+            ${D.heroCard('Storage and flow', 'Battery banks and export paths for the active site. Sample readings only.', 'List')}
+            ${D.tableCard('Device register', ['Device', 'State', 'Read'], [
+              { id: 'd1', cells: ['Battery bank A', 'Charging', '<span class="num">43%</span>'] },
+              { id: 'd2', cells: ['Battery bank B', 'Standby', '<span class="num">35%</span>'] },
+              { id: 'd3', cells: ['Inverter 1', 'Exporting', '<span class="num">11.8 kW</span>'] },
+              { id: 'd4', cells: ['Inverter 2', 'Idle', '<span class="num">0 kW</span>'] },
+              { id: 'd5', cells: ['Meter west', 'Online', '<span class="num">909 W/m²</span>'] },
+              { id: 'd6', cells: ['Meter east', 'Online', '<span class="num">870 W/m²</span>'] },
+              { id: 'd7', cells: ['Optimizer row B', 'Online', '<span class="num">98%</span>'] },
+              { id: 'd8', cells: ['Gate relay', 'Armed', '<span class="num">Ok</span>'] },
+            ])}
+            ${D.chartCard('Charge curve', 'line')}
+            ${D.chartCard('Export mix', 'bars')}
+            ${D.listCard('Alarms', [
+              { k: 'Bank B low overnight', v: 'Watch' }, { k: 'Inverter 2 idle', v: 'Info' },
+              { k: 'Temp within range', v: 'Ok' }, { k: 'Grid handshake', v: 'Ok' },
+              { k: 'Meter drift', v: 'Ok' }, { k: 'Fence contact', v: 'Ok' },
+            ])}
+            ${D.listCard('Maintenance', [
+              { k: 'Torque clamps', v: 'Wed' }, { k: 'Clean glass', v: 'Fri' },
+              { k: 'Firmware sweep', v: 'Ok' }, { k: 'Thermal scan', v: 'Queued' },
+            ])}`;
+        }
+        if (page.id === 'energy') {
+          return `
+            ${D.kpiRow([
+              { to: 1.9, decimals: 1, cap: 'MWh this week', label: '1.9' },
+              { to: 312, cap: 'Peak day kWh', label: '312' },
+              { to: 31, cap: 'Export share %', label: '31' },
+              { to: 79, cap: 'Self-powered %', label: '79' },
+            ])}
+            ${D.heroCard('Weekly generation', 'Sun-path report for Copper Ridge. Export a sample pack when ready.', 'Report')}
+            ${D.tableCard('Day register', ['Day', 'kWh', 'Clear-sky'], [
+              { id: 'w1', cells: ['Mon', '<span class="num">248</span>', '94%'] },
+              { id: 'w2', cells: ['Tue', '<span class="num">261</span>', '96%'] },
+              { id: 'w3', cells: ['Wed', '<span class="num">232</span>', '88%'] },
+              { id: 'w4', cells: ['Thu', '<span class="num">275</span>', '97%'] },
+              { id: 'w5', cells: ['Fri', '<span class="num">312</span>', '99%'] },
+              { id: 'w6', cells: ['Sat', '<span class="num">198</span>', '81%'] },
+              { id: 'w7', cells: ['Sun', '<span class="num">214</span>', '85%'] },
+            ])}
+            ${D.chartCard('Daily kWh', 'bars')}
+            ${D.chartCard('Clear-sky gap', 'line')}
+            ${D.listCard('Report packs', [
+              { k: 'Weekly CSV', v: 'Ready' }, { k: 'Inverter PDF', v: 'Ready' },
+              { k: 'Shade diary', v: 'Draft' }, { k: 'Grid settle', v: 'Gate' },
+              { k: 'Ops brief', v: 'Ready' }, { k: 'Board pack', v: 'Queued' },
+            ])}
+            ${D.listCard('Comparables', [
+              { k: 'Vs last week', v: '+6%' }, { k: 'Vs forecast', v: '92%' },
+              { k: 'Vs Juniper', v: '−12%' }, { k: 'Vs basin', v: '+41%' },
+            ])}`;
+        }
+        if (page.id === 'settings') {
+          return `
+            ${D.kpiRow([
+              { to: 3, cap: 'Alert rules', label: '3' },
+              { to: 2, cap: 'Channels', label: '2' },
+              { to: 1, cap: 'Pending gate', label: '1' },
+              { to: 14, cap: 'Retention days', label: '14' },
+            ])}
+            ${D.heroCard('Site preferences', 'Shade alerts, export policy and night standby. Sample only — nothing is persisted.', 'Settings')}
+            ${D.tableCard('Preference register', ['Setting', 'Value', 'Owner'], [
+              { id: 'p1', cells: ['Shade alerts', 'On', 'Ops'] },
+              { id: 'p2', cells: ['Export to grid', 'Allowed', 'Ops'] },
+              { id: 'p3', cells: ['Night standby', 'Eco', 'Site'] },
+              { id: 'p4', cells: ['Temp ceiling', '62 °C', 'Eng'] },
+              { id: 'p5', cells: ['Bank floor', '18%', 'Eng'] },
+              { id: 'p6', cells: ['Push channel', 'Ops', 'Admin'] },
+            ])}
+            ${D.listCard('Thresholds', [
+              { k: 'Shade alerts', v: 'On' }, { k: 'Export to grid', v: 'Allowed' },
+              { k: 'Night standby', v: 'Eco' }, { k: 'Temp ceiling', v: '62 °C' },
+              { k: 'Bank floor', v: '18%' }, { k: 'Push channel', v: 'Ops' },
+            ])}
+            ${D.listCard('Approvals', [
+              { k: 'Firmware roll', v: 'Gate' }, { k: 'Export schedule', v: 'Ok' },
+              { k: 'Camera share', v: 'Off' }, { k: 'Public API', v: 'Off' },
+              { k: 'Vendor sync', v: 'Ok' }, { k: 'Night export', v: 'Off' },
+            ])}
+            ${D.chartCard('Alert volume', 'bars')}
+            ${D.chartCard('Gate queue', 'line')}`;
+        }
+        return null;
+      },
+    });
+  }
 })();
 /* === /DB multipage polish === */
 document.documentElement.dataset.ready = 'true';
