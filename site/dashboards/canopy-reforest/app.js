@@ -104,12 +104,15 @@
   function renderSite() {
     $('[data-site-name]').textContent = site.name;
     $('[data-lede]').textContent = site.lede;
+    // Four icon-steps (reference beat) with live site figures under each step
     $('[data-band]').innerHTML = [
-      ['leaf', site.trees, 'Trees planted', `${fmtNum(site.planted[7])} this month`, true],
-      ['heart', site.surv + '%', 'Survival rate', 'After the first dry season', false],
-      ['map', site.ha + ' ha', 'Area restored', `${Math.round(site.ha / 0.62)}% of the site plan`, false],
-      ['globe', site.co2 + ' t', 'Carbon stored', 'Estimated, per year', false],
-    ].map(([ic, v, n, note, num]) => `<article class="cr-metric"><span class="cr-metric-ic">${svg(ic, 1.5)}</span><b class="num" data-kpi="${num ? v : ''}" data-kpi-raw="${v}">${v}</b><p>${n}</p><small>${note}</small></article>`).join('');
+      ['01', 'map', 'Survey', site.ha + ' ha', 'Map the ridge and mark plantable plots'],
+      ['02', 'leaf', 'Plant', String(site.trees), `${fmtNum(site.planted[7])} saplings this month`],
+      ['03', 'drop', 'Water', site.surv + '%', 'Survival after the first dry season'],
+      ['04', 'globe', 'Measure', site.co2 + ' t', 'Estimated carbon stored per year'],
+    ].map(([step, ic, n, v, note], i) =>
+      `<article class="cr-metric cr-step"><span class="cr-step-n">${step}</span><span class="cr-metric-ic">${svg(ic, 1.5)}</span><p>${n}</p><b class="num" data-kpi="${i === 1 ? v : ''}">${v}</b><small>${note}</small></article>`
+    ).join('');
     $$('[data-kpi]', $('[data-band]')).forEach((el) => {
       if (el.dataset.kpi) countUp(el, +el.dataset.kpi);
     });
