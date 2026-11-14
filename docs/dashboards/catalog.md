@@ -381,12 +381,12 @@ A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device ca
 
 _Atrium Living · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A glass smart-home room console over a code-drawn atrium living room: climate dial, energy wave, live camera, door lock, lighting, music and ambient LED on frosted panels.
+A glass smart-home room console over a living-room photo: climate dial, energy wave, live camera feed, door lock, lighting, music and ambient LED on frosted panels.
 
 - **Use cases:** Smart home & IoT · **Mode:** light · **Mood:** airy, glassy, calm, contemporary, residential
 - **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Frosted glass panels floating over a hand-drawn atrium living room — teal walls, tall window light, wood floor and plants — with a warm energy chart and cool climate dial as twin accents.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Frosted glass panels floating over a teal-wall living-room still — tall window light, wood floor and plants — with a warm energy chart and cool climate dial as twin accents.
 - **Layout:** Full-bleed SVG room backdrop · left pill icon rail · top room capsule nav · glass grid: climate column (weather, thermo dial, modes, members) · center (energy chart, TV strip, music) · right (camera, lighting, lock, ambient LED, speaker)
 - **Responsive:** ≤1180px: rail becomes top icon strip, glass grid 2 columns · ≤960px: single column stack, backdrop shortens · ≤640px: room pills scroll horizontally, sliders full width, tap targets ≥44px
 - **Fonts:** Sora / Manrope · **Palette:** bg `#d8e6ea`, surface `#f4f9fb`, text `#0f1c24`, muted `#3f515c`, accent `#f5b942`, cool `#4ec3d9`, pink `#ff6bb5`, wood `#c48a4a`
@@ -402,7 +402,7 @@ A glass smart-home room console over a code-drawn atrium living room: climate di
 - Brands that need opaque cards or a dark cinematic mood
 - Screens where frost/blur would hide critical dense tables
 
-**Components:** Vertical icon rail · Room capsule nav · Weather chip · Thermostat dial with climate modes · Members avatar row · Energy area chart with range seg · Live camera SVG with controls · Lighting toggle and intensity slider · Door lock switch · Music transport · Ambient LED color and intensity · Smart speaker tile
+**Components:** Vertical icon rail · Room capsule nav · Weather chip · Thermostat dial with climate modes · Members avatar row · Energy area chart with range seg · Live camera photo with controls · Lighting toggle and intensity slider · Door lock switch · Music transport · Ambient LED color and intensity · Smart speaker tile
 
 ---
 

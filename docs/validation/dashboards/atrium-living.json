@@ -1,11 +1,11 @@
 {
   "id": "atrium-living",
-  "checked": "2026-11-13",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/atrium-living/",
+      "url": "/dashboards/atrium-living/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/atrium-living/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/atrium-living",
+      "url": "/dashboards/atrium-living#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/atrium-living/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/atrium-living/index.html",
+      "url": "/dashboards/atrium-living/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/atrium-living/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/atrium-living/",
+      "url": "/dashboards/atrium-living/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/atrium-living/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/atrium-living/?variant=dusk",
+      "url": "/dashboards/atrium-living/?variant=dusk#/overview",
       "width": 1440,
       "variant": "dusk",
       "final_path": "/dashboards/atrium-living/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/atrium-living/?variant=night",
+      "url": "/dashboards/atrium-living/?variant=night#/overview",
       "width": 1440,
       "variant": "night",
       "final_path": "/dashboards/atrium-living/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=dusk#/overview",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=dusk#/overview",
+      "width": 375,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=night#/overview",
+      "width": 1440,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=night#/overview",
+      "width": 375,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/#/rooms",
+      "width": 1440,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/#/rooms",
+      "width": 375,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=dusk#/rooms",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=dusk#/rooms",
+      "width": 375,
+      "variant": "dusk",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=night#/rooms",
+      "width": 1440,
+      "variant": "night",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=night#/rooms",
+      "width": 375,
+      "variant": "night",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/#/devices",
+      "width": 1440,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/#/devices",
+      "width": 375,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=dusk#/devices",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=dusk#/devices",
+      "width": 375,
+      "variant": "dusk",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=night#/devices",
+      "width": 1440,
+      "variant": "night",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=night#/devices",
+      "width": 375,
+      "variant": "night",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/#/energy",
+      "width": 1440,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/#/energy",
+      "width": 375,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=dusk#/energy",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=dusk#/energy",
+      "width": 375,
+      "variant": "dusk",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=night#/energy",
+      "width": 1440,
+      "variant": "night",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=night#/energy",
+      "width": 375,
+      "variant": "night",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=dusk#/settings",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=dusk#/settings",
+      "width": 375,
+      "variant": "dusk",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=night#/settings",
+      "width": 1440,
+      "variant": "night",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/atrium-living/?variant=night#/settings",
+      "width": 375,
+      "variant": "night",
+      "page": "settings",
       "errors": []
     },
     {

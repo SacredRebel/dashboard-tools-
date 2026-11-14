@@ -2468,7 +2468,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A glass smart-home room console over a code-drawn atrium living room: climate dial, energy wave, live camera, door lock, lighting, music and ambient LED on frosted panels.",
+      "summary": "A glass smart-home room console over a living-room photo: climate dial, energy wave, live camera feed, door lock, lighting, music and ambient LED on frosted panels.",
       "mood": [
         "airy",
         "glassy",
@@ -2498,14 +2498,14 @@
         "Thermostat dial with climate modes",
         "Members avatar row",
         "Energy area chart with range seg",
-        "Live camera SVG with controls",
+        "Live camera photo with controls",
         "Lighting toggle and intensity slider",
         "Door lock switch",
         "Music transport",
         "Ambient LED color and intensity",
         "Smart speaker tile"
       ],
-      "signature": "Frosted glass panels floating over a hand-drawn atrium living room \u2014 teal walls, tall window light, wood floor and plants \u2014 with a warm energy chart and cool climate dial as twin accents.",
+      "signature": "Frosted glass panels floating over a teal-wall living-room still \u2014 tall window light, wood floor and plants \u2014 with a warm energy chart and cool climate dial as twin accents.",
       "palette": {
         "bg": "#d8e6ea",
         "surface": "#f4f9fb",
@@ -2547,7 +2547,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied glass smart-home reference. Brand, room names and all data are invented. The living-room photograph was replaced with an SVG atrium scene. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied smart-home glass concept. Brand (Atrium Living), copy and figures are fictional. Room backdrop and camera use gallery media (`media/room.webp`, `media/camera.webp`). Owner original stored as `reference.jpg`."
       },
       "path": "site/dashboards/atrium-living/",
       "reference": "reference.jpg",
@@ -2578,7 +2578,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "glacier-ops",

@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `atrium-living` (Phase C — total 26).
+Next: `haven-listings` (Phase C — total 27).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -27,7 +27,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 17 | larchwood-lodge | Larchwood Lodge | 4 | 3 | 4 | 3 | 3 | 3 | 4 | 4 | 28 | missing purple glass kit widgets; photo in ref | queued |
 | 18 | hearth-nest | Hearth Nest | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | living-room photo + nodes; multipage + motion | polished 26→36 |
 | 19 | veil-rooms | Veil Rooms | 5 | 4 | 4 | 3 | 3 | 2 | 4 | 4 | 29 | less glass blur; no album art photo | queued |
-| 20 | atrium-living | Atrium Living | 4 | 3 | 4 | 4 | 3 | 2 | 3 | 3 | 26 | photo room bg gone; placeholder TV tiles | queued |
+| 20 | atrium-living | Atrium Living | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | room+camera photo; multipage + motion | polished 26→36 |
 | 21 | glacier-ops | Glacier Ops | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | softer neumorph; readable labels vs lorem | queued |
 | 22 | folio-club | Folio Club | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | less background blur; different book cover | queued |
 | 23 | citadel-wall | Citadel Wall | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | hologram cube + HUD rings; multipage fleet/shipments | polished 23→36 |
@@ -61,7 +61,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 8. ~~`hollow-vault` — 25~~ → polished (36)
 9. ~~`cortex-well` — 25~~ → polished (36)
 10. ~~`hearth-nest` — 26~~ → polished (36)
-11. `atrium-living` — 26
+11. ~~`atrium-living` — 26~~ → polished (36)
 12. `haven-listings` — 27
 13. `aether-pane` — 27
 14. `aura-ring` — 28
