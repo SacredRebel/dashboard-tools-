@@ -184,13 +184,13 @@ A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A co
 
 _Hearth Nest · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A cinematic dark smart-home board: amber accent, SVG living-room hero with device nodes, weather and AQI arc, thermostat dial, device toggles and a 7-day power chart.
+A cinematic dark smart-home board: amber accent, living-room photo hero with device-node overlays, weather and AQI arc, thermostat dial, device toggles and a 7-day power chart.
 
 - **Use cases:** Smart home & IoT · **Mode:** dark · **Mood:** cinematic, warm, cosy, premium, amber
 - **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Warm amber glow on a code-drawn living room with sofa, lamp and plant, linked by glowing device constellation nodes.
-- **Layout:** 64px icon rail · top bar (brand, search, bell, avatar) · left stack (weather, AQI arc + spark, thermostat dial) · right hero (room tabs, SVG living room with device nodes, vertical brightness) · bottom row (2×2 device toggles · 7-day power bars) · eco footer
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Warm amber glow over a living-room camera still with sofa, lamp and plant, linked by glowing device constellation nodes.
+- **Layout:** 64px icon rail · top bar (brand, search, bell, avatar) · left stack (weather, AQI arc + spark, thermostat dial) · right hero (room tabs, living-room photo with device nodes, vertical brightness) · bottom row (2×2 device toggles · 7-day power bars) · eco footer
 - **Responsive:** ≤1180px: left stack and hero stack; power full width · ≤960px: rail becomes top icon strip · ≤640px: single column, room tabs scroll, brightness becomes horizontal
 - **Fonts:** Syne / Outfit · **Palette:** bg `#12151c`, surface `#1a1f2a`, text `#f4ebe0`, muted `#b8aea2`, accent `#f0a04b`, aqi `#3ecf8e`, cool `#5b8def`, violet `#a78bfa`
 - **Variants:** Amber hearth, Cedar, Frost · **Closest toolkit theme:** `ember`
@@ -205,7 +205,7 @@ A cinematic dark smart-home board: amber accent, SVG living-room hero with devic
 - Light-mode-only brands
 - Screens that cannot spare space for a scenic hero
 
-**Components:** Icon rail navigation · Pill search and notification bell · Weather scene card with humidity/wind/AQI chips · AQI arc gauge with PM2.5 sparkline · Thermostat dial with ± and eco pill · Room segmented tabs · SVG living-room hero with device nodes · Vertical brightness slider · Device power toggle tiles · 7-day power bar chart
+**Components:** Icon rail navigation · Pill search and notification bell · Weather scene card with humidity/wind/AQI chips · AQI arc gauge with PM2.5 sparkline · Thermostat dial with ± and eco pill · Room segmented tabs · Living-room photo hero with device nodes · Vertical brightness slider · Device power toggle tiles · 7-day power bar chart
 
 ---
 

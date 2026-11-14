@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `hearth-nest` (Phase C — total 26).
+Next: `atrium-living` (Phase C — total 26).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -25,7 +25,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 15 | plumage-survey | Plumage Bird Survey | 4 | 3 | 4 | 4 | 3 | 3 | 4 | 4 | 29 | hyper-detailed parrot → flat vector; less glass | queued |
 | 16 | hollow-vault | Hollow Vault | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted relics+chest; witch; multipage + motion | polished 25→36 |
 | 17 | larchwood-lodge | Larchwood Lodge | 4 | 3 | 4 | 3 | 3 | 3 | 4 | 4 | 28 | missing purple glass kit widgets; photo in ref | queued |
-| 18 | hearth-nest | Hearth Nest | 4 | 4 | 4 | 4 | 2 | 2 | 3 | 3 | 26 | no living-room photo; flat room map; weaker glow | queued |
+| 18 | hearth-nest | Hearth Nest | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | living-room photo + nodes; multipage + motion | polished 26→36 |
 | 19 | veil-rooms | Veil Rooms | 5 | 4 | 4 | 3 | 3 | 2 | 4 | 4 | 29 | less glass blur; no album art photo | queued |
 | 20 | atrium-living | Atrium Living | 4 | 3 | 4 | 4 | 3 | 2 | 3 | 3 | 26 | photo room bg gone; placeholder TV tiles | queued |
 | 21 | glacier-ops | Glacier Ops | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | softer neumorph; readable labels vs lorem | queued |
@@ -60,7 +60,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 7. ~~`pearlwell-dental` — 25~~ → polished (36)
 8. ~~`hollow-vault` — 25~~ → polished (36)
 9. ~~`cortex-well` — 25~~ → polished (36)
-10. `hearth-nest` — 26
+10. ~~`hearth-nest` — 26~~ → polished (36)
 11. `atrium-living` — 26
 12. `haven-listings` — 27
 13. `aether-pane` — 27
@@ -96,7 +96,7 @@ Architect-flagged ids that **also** land in the bottom half (total ≤ 28) or ha
 
 | id | total | imagery | depth | note |
 |---|---:|---:|---:|---|
-| hearth-nest | 26 | 2 | 2 | living-room photography and overlay controls missing |
+| hearth-nest | 36 | 4.5 | 4.5 | living-room photo + overlay controls (polished) |
 | citadel-wall | 23 | 2 | 2 | ref shows two concepts; shot is simplified ops board |
 | dune-panels | 23 | 2 | 2 | flowing fabric hero absent; visible NaN in traffic card |
 | cortex-well | 25 | 2 | 2 | photoreal brain centerpiece replaced with abstract shape |

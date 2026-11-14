@@ -1,7 +1,9 @@
-/* Hearth Nest: cinematic smart-home sample. Fictional data. No timers, no network. */
+/* Hearth Nest: cinematic smart-home with living-room photo, multipage + motion. Sample data only. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
   const ICON = {
     home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
     bulb: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.900c.600.5 1 1.2 1 2.100h5c0-.900.4-1.6 1-2.100A6 6 0 0 0 12 3z"/>',
@@ -24,7 +26,7 @@
     trendDown: '<path d="m3 7 6 6 4-4 8 8"/><path d="M15 17h6v-6"/>',
   };
   const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  const paintIcons = (host = document) => $$('[data-icon]', host).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
   const fmtNum = (v) => v.toLocaleString('en-US');
   const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
   const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
@@ -36,7 +38,6 @@
     const ticks = []; for (let v = min; v <= max + step / 1e6; v += step) ticks.push(+v.toFixed(6));
     return { min, max, ticks };
   }
-  // segmented control / tabs: buttons carry data-v, the pressed one gets aria-pressed="true"
   function seg(group, onChange) {
     group.addEventListener('click', (e) => {
       const b = e.target.closest('button[data-v]'); if (!b) return;
@@ -44,8 +45,6 @@
       onChange(b.dataset.v, b);
     });
   }
-  // Bar chart built from HTML columns (each column is a focusable button). Grouped by default, stacked with o.stacked.
-  // o: { labels, series: [{ name, color, values }], fmt, h, label, max, ticks, active, onPick, stacked }
   function barChart(el, o) {
     const fmt = o.fmt || fmtNum, n = o.labels.length;
     const tot = o.labels.map((_, i) => (o.stacked ? o.series.reduce((a, s) => a + s.values[i], 0) : Math.max(...o.series.map((s) => s.values[i]))));
@@ -66,20 +65,38 @@
     $$('.hn-col', el).forEach((b, i) => { b.addEventListener('mouseenter', () => show(i)); b.addEventListener('focus', () => show(i)); b.addEventListener('blur', () => show(-1)); if (o.onPick) b.addEventListener('click', () => o.onPick(i)); });
     $('.hn-cols', el).addEventListener('mouseleave', () => show(-1));
   }
-  // Arc gauge. Angles in degrees, 0 = up, clockwise. Returns an SVG string with a track and a value arc.
   const polar = (cx, cy, r, deg) => [cx + r * Math.sin((deg * Math.PI) / 180), cy - r * Math.cos((deg * Math.PI) / 180)];
   const arcPath = (cx, cy, r, a0, a1) => { const [x0, y0] = polar(cx, cy, r, a0), [x1, y1] = polar(cx, cy, r, a1); return `M${x0.toFixed(2)},${y0.toFixed(2)} A${r},${r} 0 ${Math.abs(a1 - a0) > 180 ? 1 : 0} ${a1 > a0 ? 1 : 0} ${x1.toFixed(2)},${y1.toFixed(2)}`; };
   function arcGauge(pct, { size = 160, w = 12, from = -120, to = 120, color = '--accent', knob = false } = {}) {
     const c = size / 2, r = (size - w) / 2 - (knob ? 4 : 0), end = from + (to - from) * Math.max(0, Math.min(1, pct)), [kx, ky] = polar(c, c, r, end);
     return `<svg viewBox="0 0 ${size} ${size}" aria-hidden="true"><path class="track" d="${arcPath(c, c, r, from, to)}" fill="none" stroke-width="${w}" stroke-linecap="round"/><path d="${arcPath(c, c, r, from, Math.max(end, from + 0.01))}" fill="none" stroke-width="${w}" stroke-linecap="round" style="stroke:var(${color})"/>${knob ? `<circle class="knob" cx="${kx.toFixed(2)}" cy="${ky.toFixed(2)}" r="${w * 0.75}"/>` : ''}</svg>`;
   }
-  // Tiny trend line. Returns an SVG string; stretches to its box.
   function spark(vals, { color = '--chart-1', fill = 0.25, w = 120, h = 36 } = {}) {
     const mn = Math.min(...vals), mx = Math.max(...vals), pts = vals.map((v, i) => [(i / (vals.length - 1)) * w, h - 3 - ((v - mn) / (mx - mn || 1)) * (h - 6)]);
     const d = 'M' + pts.map((p) => p.map((n) => n.toFixed(1)).join(',')).join(' L'), id = `hn-s${++sparkId}`;
     return `<svg class="hn-spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(${color});stop-opacity:${fill}"/><stop offset="1" style="stop-color:var(${color});stop-opacity:0"/></linearGradient></defs><path d="${d} L${w},${h} L0,${h} Z" fill="url(#${id})"/><path d="${d}" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(${color})" vector-effect="non-scaling-stroke"/></svg>`;
   }
   let sparkId = 0;
+
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 700, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
   paintIcons();
 
   $('[data-wxdate]').textContent = fmtDate(dayOffset(0), { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
@@ -98,7 +115,7 @@
     $$('[data-t]').forEach((b) => { b.disabled = (+b.dataset.t < 0 && target <= 16) || (+b.dataset.t > 0 && target >= 28); });
   }
   $$('[data-t]').forEach((b) => b.addEventListener('click', () => { target = Math.round((target + +b.dataset.t) * 10) / 10; target = Math.min(28, Math.max(16, target)); renderTemp(); }));
-  $('.hn-eco').addEventListener('click', (e) => { eco = !eco; e.currentTarget.setAttribute('aria-pressed', String(eco)); renderTemp(); });
+  $('.hn-eco').addEventListener('click', (e) => { eco = !eco; e.currentTarget.setAttribute('aria-pressed', String(eco)); renderTemp(); toast(eco ? 'Eco mode on · sample' : 'Eco mode off · sample'); });
 
   const ROOMS = {
     living: { note: 'Living room · sofa lamps and ceiling fan linked', nodes: [{ i: 'bulb', x: 28, y: 42, on: true }, { i: 'wifi', x: 48, y: 28, on: true }, { i: 'fan', x: 68, y: 38, on: true }, { i: 'tv', x: 78, y: 58, on: true }, { i: 'grid', x: 38, y: 68, on: false }] },
@@ -109,24 +126,6 @@
   };
   let room = 'living';
 
-  function paintScene() {
-    $('[data-scene]').innerHTML = `<svg viewBox="0 0 900 420" preserveAspectRatio="xMidYMid slice">
-      <defs><linearGradient id="hn-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--surface-2)"/><stop offset="1" style="stop-color:var(--bg)"/></linearGradient>
-      <radialGradient id="hn-glow" cx="72%" cy="35%" r="35%"><stop offset="0" style="stop-color:var(--lamp)" stop-opacity=".55"/><stop offset="1" style="stop-color:var(--lamp)" stop-opacity="0"/></radialGradient></defs>
-      <rect width="900" height="420" style="fill:url(#hn-wall)"/>
-      <rect x="520" y="48" width="220" height="160" rx="8" style="fill:var(--sky-1)" opacity=".85"/><rect x="535" y="62" width="190" height="132" rx="4" style="fill:var(--sky-2)" opacity=".35"/>
-      <ellipse cx="650" cy="120" rx="70" ry="40" style="fill:url(#hn-glow)"/>
-      <rect x="0" y="300" width="900" height="120" style="fill:var(--wood)" opacity=".35"/>
-      <path d="M80 300 h360 c20 0 30 14 30 28 v40 H50 v-40 c0-14 10-28 30-28z" style="fill:var(--sofa)"/>
-      <rect x="120" y="268" width="70" height="42" rx="10" style="fill:var(--pillow-a)"/><rect x="210" y="272" width="64" height="38" rx="10" style="fill:var(--pillow-b)"/>
-      <rect x="250" y="330" width="110" height="14" rx="4" style="fill:var(--wood)"/><rect x="285" y="310" width="40" height="22" rx="3" style="fill:var(--surface)"/>
-      <circle cx="305" cy="300" r="10" style="fill:var(--pillow-b)"/><path d="M305 300 c-10-18-4-30 0-36 6 6 10 18 0 36z" style="fill:var(--aqi)"/>
-      <line x1="700" y1="90" x2="700" y2="300" style="stroke:var(--wood)" stroke-width="4"/><circle cx="700" cy="88" r="28" style="fill:var(--lamp)" opacity=".85"/><path d="M672 88 h56" style="stroke:var(--accent)" stroke-width="3" opacity=".5"/>
-      <rect x="780" y="180" width="70" height="120" rx="6" style="fill:var(--surface)" opacity=".7"/>
-      <g stroke="var(--accent)" stroke-width="1.2" opacity=".45" fill="none"><path d="M450 210 L252 176"/><path d="M450 210 L432 118"/><path d="M450 210 L612 160"/><path d="M450 210 L702 244"/><path d="M450 210 L342 286"/></g>
-    </svg>`;
-  }
-
   function renderNodes() {
     const r = ROOMS[room];
     $('[data-roomnote]').textContent = r.note;
@@ -136,8 +135,9 @@
   $('[data-nodes]').addEventListener('click', (e) => {
     const b = e.target.closest('[data-node]'); if (!b) return;
     const n = ROOMS[room].nodes[+b.dataset.node]; n.on = !n.on; renderNodes(); $(`[data-node="${b.dataset.node}"]`).focus();
+    toast(`${n.i} ${n.on ? 'on' : 'off'} · sample`);
   });
-  seg($('[data-rooms]'), (v) => { room = v; renderNodes(); });
+  seg($('[data-rooms]'), (v) => { room = v; renderNodes(); toast(`${v} view · sample`); });
 
   const bright = $('[data-bright]'), bout = $('[data-brightout]');
   const syncBright = () => { bout.textContent = bright.value + '%'; };
@@ -147,6 +147,14 @@
     e.currentTarget.setAttribute('aria-pressed', String(on));
     bright.disabled = !on; if (!on) { bright.value = 0; } else if (+bright.value === 0) { bright.value = 70; }
     syncBright();
+    toast(on ? 'Room power on · sample' : 'Room power off · sample');
+  });
+
+  $('[data-4k]')?.addEventListener('click', () => toast('4K stream · sample'));
+  $('[data-expand]')?.addEventListener('click', () => toast('Fullscreen · sample'));
+  $('[data-bell]')?.addEventListener('click', () => toast('2 alerts · sample'));
+  $('[data-search]')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); toast('Search · sample'); }
   });
 
   const DEVS = [
@@ -161,6 +169,7 @@
   $('[data-devs]').addEventListener('click', (e) => {
     const b = e.target.closest('[data-dev]'); if (!b) return;
     const d = DEVS[+b.dataset.dev]; d.on = !d.on; renderDevs(); $(`[data-dev="${b.dataset.dev}"]`).focus();
+    toast(`${d.n} ${d.on ? 'on' : 'off'} · sample`);
   });
 
   const days = [0, 1, 2, 3, 4, 5, 6].map((i) => fmtDate(dayOffset(i - 6), { weekday: 'short' }));
@@ -173,62 +182,157 @@
     });
   }
 
-  paintScene(); renderTemp(); renderNodes(); renderDevs(); renderPower();
-/* === DB multipage bootstrap (generated; polish pass replaces stubs) === */
-  (function wirePages() {
-    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"rooms","name":"Rooms","pattern":"List"},{"id":"devices","name":"Devices","pattern":"List"},{"id":"energy","name":"Energy","pattern":"Report"},{"id":"settings","name":"Settings","pattern":"Settings"}];
-    const main = document.querySelector('main') || document.body;
-    let stub = document.querySelector('[data-db-stub]');
-    if (!stub) {
-      stub = document.createElement('section');
-      stub.setAttribute('data-db-stub', '');
-      stub.hidden = true;
-      stub.setAttribute('aria-live', 'polite');
-      main.appendChild(stub);
+  renderTemp(); renderNodes(); renderDevs(); renderPower();
+  countUp($('[data-pm]'), 12);
+  countUp($('[data-kwh]'), 6.8, { format: (n) => n.toFixed(1) });
+
+  function staggerReveal() {
+    $$('.hn-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
+      el.classList.add('hn-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'rooms', name: 'Rooms', pattern: 'List' },
+    { id: 'devices', name: 'Devices', pattern: 'List' },
+    { id: 'energy', name: 'Energy', pattern: 'Report' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+
+  function setNav(id) {
+    $$('.hn-nav a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      const match = href === `#/${id}` || (id === 'overview' && href === '#/overview');
+      if (match) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  function pageHtml(page) {
+    if (page.id === 'rooms') {
+      return `<section class="hn-page" data-db-page="rooms" aria-labelledby="p-h">
+        <h1 id="p-h">Rooms</h1>
+        <p class="hn-page-lead">Zones in this home. Sample data · fictional.</p>
+        <div class="hn-seg" role="group" aria-label="Rooms state" data-rooms-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-rooms-body></div>
+      </section>`;
     }
-    function setOverviewVisible(on) {
-      [...main.children].forEach((ch) => {
-        if (ch === stub) return;
-        if (on) {
-          ch.hidden = false;
-          ch.removeAttribute('data-db-overview-hide');
-        } else {
-          ch.hidden = true;
-          ch.setAttribute('data-db-overview-hide', '');
+    if (page.id === 'devices') {
+      return `<section class="hn-page" data-db-page="devices" aria-labelledby="p-h">
+        <h1 id="p-h">Devices</h1>
+        <p class="hn-page-lead">Every controllable endpoint on the mesh.</p>
+        <div class="hn-page-grid" data-dev-list></div>
+      </section>`;
+    }
+    if (page.id === 'energy') {
+      return `<section class="hn-page" data-db-page="energy" aria-labelledby="p-h">
+        <h1 id="p-h">Energy</h1>
+        <p class="hn-page-lead">Weekly draw and eco tips. Sample readings only.</p>
+        <div class="hn-page-grid">
+          <article class="hn-page-card"><div class="hn-row"><span>This week</span><strong class="num">6.8 kWh</strong></div></article>
+          <article class="hn-page-card"><div class="hn-row"><span>Peak day</span><strong class="num">9.2 kWh</strong></div></article>
+          <article class="hn-page-card"><div class="hn-row"><span>vs last week</span><strong class="num">−18%</strong></div></article>
+        </div>
+        <button type="button" class="hn-btn" data-eco-report>Open eco report</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="hn-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="hn-page-lead">Home preferences and security stubs.</p>
+        <div class="hn-page-grid">
+          <article class="hn-page-card"><div class="hn-row"><strong>Notifications</strong><span>On</span></div></article>
+          <article class="hn-page-card"><div class="hn-row"><strong>Door sensors</strong><span>Armed</span></div></article>
+          <article class="hn-page-card"><div class="hn-row"><strong>Guest access</strong><span>Off</span></div></article>
+        </div>
+        <button type="button" class="hn-btn ghost" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="hn-page"><h1>${page.name}</h1></section>`;
+  }
+
+  function wirePage(host, page) {
+    if (page.id === 'rooms') {
+      const body = host.querySelector('[data-rooms-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="hn-loading" role="status"><p>Syncing rooms…</p><div class="hn-skel"></div><div class="hn-skel"></div></div>`;
+          return;
         }
-      });
-      stub.hidden = on;
+        if (state === 'empty') {
+          body.innerHTML = `<div class="hn-empty"><p>No rooms configured yet.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="hn-error"><p>Could not load rooms.</p><button type="button" class="hn-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="hn-page-grid">${Object.entries(ROOMS).map(([id, r]) =>
+          `<article class="hn-page-card"><div class="hn-row"><strong>${id[0].toUpperCase()}${id.slice(1)}</strong><span class="num">${r.nodes.length}</span></div><p class="hn-meta">${r.note}</p></article>`
+        ).join('')}</div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-rooms-tabs]'), (v) => paint(v));
     }
-    function renderStub(page) {
-      const rows = [
-        ['Status', 'Sample · ready'],
-        ['Records', '24'],
-        ['Updated', 'Today'],
-      ];
-      stub.innerHTML = '<h1>' + page.name + '</h1>'
-        + '<p class="db-sample">Sample data · fictional</p>'
-        + '<p>This page is part of the multi-page shell. The polish pass fills it with real ' + page.name.toLowerCase() + ' UI in the same design language as Overview.</p>'
-        + '<div class="db-stub-panel" role="list">'
-        + rows.map(([k, v]) => '<div class="db-stub-row" role="listitem"><span>' + k + '</span><strong class="num">' + v + '</strong></div>').join('')
-        + '</div>';
+    if (page.id === 'devices') {
+      host.querySelector('[data-dev-list]').innerHTML = DEVS.map((d) =>
+        `<article class="hn-page-card"><div class="hn-row"><strong>${d.n}</strong><span>${d.on ? 'On' : 'Off'}</span></div><p class="hn-meta">${d.s}</p></article>`
+      ).join('');
     }
-    document.querySelectorAll('a[href]').forEach((a) => {
-      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-      if (!label) return;
-      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
-        || (label === 'home' && p.id === 'overview')
-        || (label === 'dashboard' && p.id === 'overview'));
-      if (hit) a.setAttribute('href', '#/' + hit.id);
+    if (page.id === 'energy') {
+      host.querySelector('[data-eco-report]')?.addEventListener('click', () => toast('Eco report · sample'));
+    }
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
     });
-    if (!window.DB || typeof window.DB.route !== 'function') {
-      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
-      return;
-    }
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
     window.DB.route(PAGES, (id, page) => {
-      if (id === PAGES[0].id) setOverviewVisible(true);
-      else { setOverviewVisible(false); renderStub(page); }
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
     });
-  })();
-/* === /DB multipage bootstrap === */
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

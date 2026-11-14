@@ -2215,7 +2215,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A cinematic dark smart-home board: amber accent, SVG living-room hero with device nodes, weather and AQI arc, thermostat dial, device toggles and a 7-day power chart.",
+      "summary": "A cinematic dark smart-home board: amber accent, living-room photo hero with device-node overlays, weather and AQI arc, thermostat dial, device toggles and a 7-day power chart.",
       "mood": [
         "cinematic",
         "warm",
@@ -2235,7 +2235,7 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "64px icon rail \u00b7 top bar (brand, search, bell, avatar) \u00b7 left stack (weather, AQI arc + spark, thermostat dial) \u00b7 right hero (room tabs, SVG living room with device nodes, vertical brightness) \u00b7 bottom row (2\u00d72 device toggles \u00b7 7-day power bars) \u00b7 eco footer",
+        "structure": "64px icon rail \u00b7 top bar (brand, search, bell, avatar) \u00b7 left stack (weather, AQI arc + spark, thermostat dial) \u00b7 right hero (room tabs, living-room photo with device nodes, vertical brightness) \u00b7 bottom row (2\u00d72 device toggles \u00b7 7-day power bars) \u00b7 eco footer",
         "responsive": "\u22641180px: left stack and hero stack; power full width \u00b7 \u2264960px: rail becomes top icon strip \u00b7 \u2264640px: single column, room tabs scroll, brightness becomes horizontal"
       },
       "components": [
@@ -2245,12 +2245,12 @@
         "AQI arc gauge with PM2.5 sparkline",
         "Thermostat dial with \u00b1 and eco pill",
         "Room segmented tabs",
-        "SVG living-room hero with device nodes",
+        "Living-room photo hero with device nodes",
         "Vertical brightness slider",
         "Device power toggle tiles",
         "7-day power bar chart"
       ],
-      "signature": "Warm amber glow on a code-drawn living room with sofa, lamp and plant, linked by glowing device constellation nodes.",
+      "signature": "Warm amber glow over a living-room camera still with sofa, lamp and plant, linked by glowing device constellation nodes.",
       "palette": {
         "bg": "#12151c",
         "surface": "#1a1f2a",
@@ -2292,7 +2292,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied smart-home concept screenshot. Brand (Hearth Nest), copy and figures are fictional. The living-room photo and decorative plant were replaced with SVG themed by CSS variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied smart-home concept screenshot. Brand (Hearth Nest), copy and figures are fictional. Living-room hero uses original gallery media (`media/living-room.webp`) with device-node overlays. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/hearth-nest/",
       "reference": "reference.jpg",
@@ -2323,7 +2323,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "veil-rooms",
