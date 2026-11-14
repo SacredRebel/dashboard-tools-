@@ -23,7 +23,7 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | id | layout | density | type | color | depth | imagery | detail | overall | total | honest notes | status |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | cortex-well | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4 | 4.5 | 35.5 | Brain bowl + three-column rebuild | deep-polished |
-| mallow-music | 4.5 | 4.5 | 4.5 | 4.5 | 4 | 4.5 | 4 | 4.5 | 35 | New clay hero; dense pages | deep-polished |
+| mallow-music | 4.5 | 4.5 | 4.5 | 4.5 | 4 | 4.5 | 4 | 4.5 | 35.5 | Clay headphones hero + phone face-first composition | deep-polished |
 | canopy-reforest | 4 | 4 | 4 | 4 | 4 | 4.5 | 3.5 | 4 | 32 | New layered leaves + clay tiles; band still KPI-not-icon-steps | deep G2 started |
 | horizon-weather | 4 | 4 | 4.5 | 4 | 3.5 | 4 | 3.5 | 4 | 31.5 | Gate-green; opaque copy plate; not cinematic twin yet | gate-green |
 | kumo-payroll | 4 | 4 | 4 | 4 | 3.5 | 4.5 | 3.5 | 4 | 31.5 | Moon/pagoda/koi/waves scene + Happy teams quote; still shy of glass-panel twin | deep G2 started |
@@ -38,17 +38,20 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | glacier-ops | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Topo dial center + AA plates | deep G2 started |
 | forge-fitness | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | New athlete hero + phone bottom rail | deep G2 started |
 | ridgeline-trails | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 28 | Clay-bevel pie dials | deep G3 started |
+| clima-pane | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29 | Frosted warm/cool orbs; dial still shy of reference twin | deep G2 started |
+| hollow-vault | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Witch hero + phone bottom nav; relic ring OK | deep G2 started |
+| pearlwell-dental | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay tooth/arch + phone nav | deep G2 started |
+| vitalis-care | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay heart/doctor + phone nav | deep G2 started |
 | *others (dense-wired)* | ~3 | ~3.5 | ~3.5 | ~3.5 | ~3 | ~3 | ~3 | ~3 | ~26 | Secondary pages = dense kit, not bespoke | gate-risk |
 
 ## Work order (remaining deep polish)
 
-1. ~~copper / ember / tidebath / kumo / citadel / glacier / forge~~ — G2/G3 started  
-2. **clima / hollow / pearlwell / vitalis** — G2 signature props  
-3. **meridian-labs** — finish three-column + week calendar G3  
-4. Phone (375) for mallow / hollow clay heroes  
-5. Optional full-38 confirmation log after each push batch
+1. ~~copper / ember / tidebath / kumo / citadel / glacier / forge / clima / hollow / pearlwell / vitalis / mallow phone~~  
+2. **meridian-labs** — finish three-column + week calendar G3  
+3. Solstice / Pulsar / remaining thin clay boards if audit ≤3  
+4. Optional full-38 confirmation log after each push batch
 
 ## Verification log
 
-- Touched ✔: kumo, citadel, glacier, forge, meridian, ridgeline  
-- Prior: ember, tidebath, copper, cortex, mallow, full-38 green after Meridian AA — see HANDOFF
+- Touched ✔: clima, hollow, pearlwell, vitalis, mallow  
+- Prior: kumo, citadel, glacier, forge, meridian, ridgeline, ember, tidebath — see HANDOFF
