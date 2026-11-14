@@ -509,12 +509,12 @@ A respectful fictional fasting-day wellness board in liquid glass: twin phones w
 
 _Clima Pane · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A light glass climate console on a beige field with soft orange and blue orb blobs: orange↔blue thermostat dial, Heat/Cool, fan speed bars, living-room stats, schedule, rooms list and energy mode chips.
+A light glass climate console on a beige field with soft orange and blue glass orb photos: orange↔blue thermostat dial, Heat/Cool, fan speed bars, schedule and rooms — plus Devices, Energy and Settings pages.
 
 - **Use cases:** Smart home & IoT · **Mode:** light · **Mood:** airy, warm, frosted, calm, tactile
 - **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Frosted glass cards floating over a beige canvas with soft orange and blue CSS orb blobs, centered on an orange↔blue thermostat dial.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Frosted glass cards floating over cream with photoreal soft orange and blue glass orbs, centered on an orange↔blue thermostat dial.
 - **Layout:** Floating glass icon rail · top brand + outside chip + avatar · left: living-room stats + schedule · center: climate dial with Heat/Cool and fan bars · right: rooms list + mode chips
 - **Responsive:** ≤1180px: rooms and modes drop under dial · ≤960px: rail becomes top icon strip · ≤640px: single column, lists scroll inside cards
 - **Fonts:** Sora / Manrope · **Palette:** bg `#ebe4d8`, surface `#ffffff`, text `#1c1916`, muted `#5c564e`, accent `#ff8c42`, cool `#4aa3e8`, ok `#186040`

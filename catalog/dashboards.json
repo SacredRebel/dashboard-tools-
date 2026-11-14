@@ -4405,7 +4405,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A light glass climate console on a beige field with soft orange and blue orb blobs: orange\u2194blue thermostat dial, Heat/Cool, fan speed bars, living-room stats, schedule, rooms list and energy mode chips.",
+      "summary": "A light glass climate console on a beige field with soft orange and blue glass orb photos: orange\u2194blue thermostat dial, Heat/Cool, fan speed bars, schedule and rooms \u2014 plus Devices, Energy and Settings pages.",
       "mood": [
         "airy",
         "warm",
@@ -4439,7 +4439,7 @@
         "Rooms list with chevrons",
         "Circular Comfort/Eco/Away/Sleep chips"
       ],
-      "signature": "Frosted glass cards floating over a beige canvas with soft orange and blue CSS orb blobs, centered on an orange\u2194blue thermostat dial.",
+      "signature": "Frosted glass cards floating over cream with photoreal soft orange and blue glass orbs, centered on an orange\u2194blue thermostat dial.",
       "palette": {
         "bg": "#ebe4d8",
         "surface": "#ffffff",
@@ -4511,7 +4511,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "meridian-labs",

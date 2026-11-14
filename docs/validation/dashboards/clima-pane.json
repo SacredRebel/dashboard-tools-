@@ -1,11 +1,11 @@
 {
   "id": "clima-pane",
-  "checked": "2026-11-13",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/clima-pane/",
+      "url": "/dashboards/clima-pane/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/clima-pane/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/clima-pane",
+      "url": "/dashboards/clima-pane#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/clima-pane/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/clima-pane/index.html",
+      "url": "/dashboards/clima-pane/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/clima-pane/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/clima-pane/",
+      "url": "/dashboards/clima-pane/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/clima-pane/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/clima-pane/?variant=sky",
+      "url": "/dashboards/clima-pane/?variant=sky#/overview",
       "width": 1440,
       "variant": "sky",
       "final_path": "/dashboards/clima-pane/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/clima-pane/?variant=dusk",
+      "url": "/dashboards/clima-pane/?variant=dusk#/overview",
       "width": 1440,
       "variant": "dusk",
       "final_path": "/dashboards/clima-pane/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=sky#/overview",
+      "width": 1440,
+      "variant": "sky",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=sky#/overview",
+      "width": 375,
+      "variant": "sky",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=dusk#/overview",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=dusk#/overview",
+      "width": 375,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/#/rooms",
+      "width": 1440,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/#/rooms",
+      "width": 375,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=sky#/rooms",
+      "width": 1440,
+      "variant": "sky",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=sky#/rooms",
+      "width": 375,
+      "variant": "sky",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=dusk#/rooms",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=dusk#/rooms",
+      "width": 375,
+      "variant": "dusk",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/#/devices",
+      "width": 1440,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/#/devices",
+      "width": 375,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=sky#/devices",
+      "width": 1440,
+      "variant": "sky",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=sky#/devices",
+      "width": 375,
+      "variant": "sky",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=dusk#/devices",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=dusk#/devices",
+      "width": 375,
+      "variant": "dusk",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/#/energy",
+      "width": 1440,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/#/energy",
+      "width": 375,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=sky#/energy",
+      "width": 1440,
+      "variant": "sky",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=sky#/energy",
+      "width": 375,
+      "variant": "sky",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=dusk#/energy",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=dusk#/energy",
+      "width": 375,
+      "variant": "dusk",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=sky#/settings",
+      "width": 1440,
+      "variant": "sky",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=sky#/settings",
+      "width": 375,
+      "variant": "sky",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=dusk#/settings",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/clima-pane/?variant=dusk#/settings",
+      "width": 375,
+      "variant": "dusk",
+      "page": "settings",
       "errors": []
     },
     {

@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `clima-pane` (Phase C — total 30).
+Next: `ridgeline-trails` (Phase C — total 31).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -42,7 +42,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 32 | copper-radar | Copper Radar | 5 | 4 | 4 | 4 | 3 | 3 | 5 | 5 | 33 | vendor logos swapped for fiction; similar match | queued |
 | 33 | orbit-clay | Orbit Clay | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay helmet+dune photos; multipage + motion | polished 30→36 |
 | 34 | saffron-dusk | Saffron Dusk | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | fewer glass sparkles; 3D memoji → flat avatar | queued |
-| 35 | clima-pane | Clima Pane | 5 | 4 | 4 | 4 | 3 | 2 | 4 | 4 | 30 | no background color spheres; flatter glass | queued |
+| 35 | clima-pane | Clima Pane | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | photo glass orbs; deeper glass; multipage + motion | polished 30→36 |
 | 36 | meridian-labs | Meridian Labs | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 5 | 32 | softer metallic DNA; date/content drift | queued |
 | 37 | cortex-well | Cortex Well | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted brain bowl; glass depth; multipage + motion | polished 25→36 |
 | 38 | ember-rooms | Ember Rooms | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | pendant+room photos; climate dial page; multipage + motion | polished 28→36 |
@@ -77,7 +77,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 24. ~~`horizon-weather` — 30~~ → polished (36)
 25. ~~`prism-workspace` — 30~~ → polished (36)
 26. ~~`orbit-clay` — 30~~ → polished (36)
-27. `clima-pane` — 30
+27. ~~`clima-pane` — 30~~ → polished (36)
 28. `ridgeline-trails` — 31
 29. `mallow-music` — 31
 30. `glacier-ops` — 31
