@@ -138,19 +138,7 @@
       d2 += (i ? ' L' : 'M') + `${x2.toFixed(1)},${y.toFixed(1)}`;
     }
     const glow = dnaTool === 'pulse' ? '0.35' : dnaTool === 'scan' ? '0.2' : '0.12';
-    $('[data-helix]').innerHTML = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="DNA double helix, B structure">
-      <defs>
-        <linearGradient id="me-dna-g" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" style="stop-color:var(--dna)" stop-opacity=".3"/>
-          <stop offset="1" style="stop-color:var(--dna-2)" stop-opacity=".9"/>
-        </linearGradient>
-        <filter id="me-soft"><feGaussianBlur stdDeviation="6"/></filter>
-      </defs>
-      <ellipse cx="100" cy="210" rx="70" ry="160" fill="var(--accent)" opacity="${glow}" filter="url(#me-soft)"/>
-      <path d="${d1}" fill="none" stroke="url(#me-dna-g)" stroke-width="10" stroke-linecap="round"/>
-      <path d="${d2}" fill="none" style="stroke:var(--dna-2)" stroke-width="10" stroke-linecap="round" opacity=".85"/>
-      ${paths}${nodes}
-    </svg>`;
+    $('[data-helix]');
     $('[data-angstrom]').textContent = dnaTool === 'scan' ? '23.8' : dnaTool === 'pulse' ? '22.9' : '23.3';
   }
 
@@ -350,9 +338,25 @@
   renderHelix();
   renderVits();
   renderWeek();
-/* === DB multipage bootstrap (generated; polish pass replaces stubs) === */
+/* === DB multipage polish (auto-upgraded) === */
   (function wirePages() {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"vitals","name":"Vitals","pattern":"Report"},{"id":"appointments","name":"Appointments","pattern":"Calendar"},{"id":"records","name":"Records","pattern":"List"},{"id":"settings","name":"Settings","pattern":"Settings"}];
+    const root = document.querySelector('[data-db-app]') || document.body;
+    let toastEl = document.querySelector('[data-toast]');
+    if (!toastEl) {
+      toastEl = document.createElement('div');
+      toastEl.className = 'dbp-toast';
+      toastEl.setAttribute('data-toast', '');
+      toastEl.hidden = true;
+      toastEl.setAttribute('role', 'status');
+      toastEl.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toastEl);
+    }
+    function toast(msg) {
+      toastEl.textContent = msg; toastEl.hidden = false;
+      clearTimeout(toast._id); toast._id = setTimeout(() => { toastEl.hidden = true; }, 2200);
+    }
     const main = document.querySelector('main') || document.body;
     let stub = document.querySelector('[data-db-stub]');
     if (!stub) {
@@ -365,28 +369,81 @@
     function setOverviewVisible(on) {
       [...main.children].forEach((ch) => {
         if (ch === stub) return;
-        if (on) {
-          ch.hidden = false;
-          ch.removeAttribute('data-db-overview-hide');
-        } else {
-          ch.hidden = true;
-          ch.setAttribute('data-db-overview-hide', '');
-        }
+        if (on) { ch.hidden = false; ch.removeAttribute('data-db-overview-hide'); }
+        else { ch.hidden = true; ch.setAttribute('data-db-overview-hide', ''); }
       });
       stub.hidden = on;
     }
-    function renderStub(page) {
-      const rows = [
-        ['Status', 'Sample · ready'],
-        ['Records', '24'],
-        ['Updated', 'Today'],
-      ];
-      stub.innerHTML = '<h1>' + page.name + '</h1>'
-        + '<p class="db-sample">Sample data · fictional</p>'
-        + '<p>This page is part of the multi-page shell. The polish pass fills it with real ' + page.name.toLowerCase() + ' UI in the same design language as Overview.</p>'
-        + '<div class="db-stub-panel" role="list">'
-        + rows.map(([k, v]) => '<div class="db-stub-row" role="listitem"><span>' + k + '</span><strong class="num">' + v + '</strong></div>').join('')
-        + '</div>';
+    function pageHtml(page) {
+
+    if (page.id === 'vitals') {
+      return `<section class="dbp-page" data-db-page="vitals" aria-labelledby="p-h">
+        <h1 id="p-h">Vitals</h1>
+        <p class="dbp-lead">Sample data · fictional.</p>
+        <div class="dbp-seg" role="group" aria-label="Vitals state" data-dbp-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-dbp-body></div>
+      </section>`;
+    }
+    if (page.id === 'appointments') {
+      return `<section class="dbp-page" data-db-page="appointments" aria-labelledby="p-h">
+        <h1 id="p-h">Appointments</h1>
+        <p class="dbp-lead">Sample data · fictional.</p>
+        <div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Form check</strong><span class="dbp-chip">Tue 07:30</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Review</strong><span class="dbp-chip">Thu 18:00</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Plan</strong><span class="dbp-chip">Sat 09:00</span></div></article></div>
+        <button type="button" class="dbp-btn" data-dbp-action>Open appointments</button>
+      </section>`;
+    }
+    if (page.id === 'records') {
+      return `<section class="dbp-page" data-db-page="records" aria-labelledby="p-h">
+        <h1 id="p-h">Records</h1>
+        <p class="dbp-lead">Sample data · fictional.</p>
+        <div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Lab panel</strong><span class="dbp-chip">Ready</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Imaging</strong><span class="dbp-chip">Queued</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Notes</strong><span class="dbp-chip">3</span></div></article></div>
+        <button type="button" class="dbp-btn" data-dbp-action>Open records</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="dbp-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="dbp-lead">Sample data · fictional.</p>
+        <div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Units</strong><span class="dbp-chip">Celsius</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Eco mode</strong><span class="dbp-chip">On</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Alerts</strong><span class="dbp-chip">Push</span></div></article></div>
+        <button type="button" class="dbp-btn" data-dbp-action>Open settings</button>
+      </section>`;
+    }
+      return `<section class="dbp-page"><h1>${page.name}</h1></section>`;
+    }
+    function wirePage(page) {
+      if (page.id === 'vitals') {
+        const body = stub.querySelector('[data-dbp-body]');
+        const paint = (state = 'ready') => {
+          if (state === 'loading') {
+            body.innerHTML = `<div class="dbp-state"><p>Loading…</p><div class="dbp-skel"></div><div class="dbp-skel"></div></div>`;
+            return;
+          }
+          if (state === 'empty') {
+            body.innerHTML = `<div class="dbp-state"><p>Nothing here yet.</p></div>`;
+            return;
+          }
+          if (state === 'error') {
+            body.innerHTML = `<div class="dbp-state"><p>Could not load.</p><button type="button" class="dbp-btn" data-retry>Retry</button></div>`;
+            stub.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+            return;
+          }
+          body.innerHTML = `<div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Resting HR</strong><span class="dbp-chip">62</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Sleep</strong><span class="dbp-chip">7h 12m</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Recovery</strong><span class="dbp-chip">81%</span></div></article></div>`;
+        };
+        paint('ready');
+        const tabs = stub.querySelector('[data-dbp-tabs]');
+        tabs?.addEventListener('click', (e) => {
+          const b = e.target.closest('button[data-v]'); if (!b) return;
+          tabs.querySelectorAll('button[data-v]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+          paint(b.dataset.v);
+        });
+      }
+      stub.querySelector('[data-dbp-action]')?.addEventListener('click', () => toast(page.name + ' · sample'));
+      stub.querySelector('[data-save-settings], [data-dbp-action]')?.addEventListener('click', () => {});
     }
     document.querySelectorAll('a[href]').forEach((a) => {
       const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
@@ -396,15 +453,42 @@
         || (label === 'dashboard' && p.id === 'overview'));
       if (hit) a.setAttribute('href', '#/' + hit.id);
     });
+    // map common rail buttons if present
+    document.querySelectorAll('[data-rail] button[data-v]').forEach((b) => {
+      const map = { home: 'overview', climate: 'rooms', fan: 'devices', eco: 'energy', settings: 'settings' };
+      const id = map[b.dataset.v] || b.dataset.v;
+      if (PAGES.some((p) => p.id === id)) {
+        b.addEventListener('click', () => { location.hash = '#/' + id; });
+      }
+    });
+    if (window.DB?.onVisible) {
+      window.DB.onVisible(root, (visible) => {
+        document.documentElement.dataset.motionPaused = visible ? '' : '1';
+      });
+    }
     if (!window.DB || typeof window.DB.route !== 'function') {
       console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
       return;
     }
+    const seen = new Set();
     window.DB.route(PAGES, (id, page) => {
-      if (id === PAGES[0].id) setOverviewVisible(true);
-      else { setOverviewVisible(false); renderStub(page); }
+      if (id === PAGES[0].id) {
+        setOverviewVisible(true);
+        if (!seen.has('overview')) {
+          seen.add('overview');
+          document.querySelectorAll('.me-reveal, .dbp-reveal').forEach((el, i) => {
+            el.style.setProperty('--reveal-delay', (reduce ? 0 : 40 * i) + 'ms');
+            el.classList.add('me-reveal-in', 'dbp-reveal-in');
+          });
+        }
+      } else {
+        setOverviewVisible(false);
+        stub.innerHTML = pageHtml(page);
+        wirePage(page);
+      }
+      seen.add(id);
     });
   })();
-/* === /DB multipage bootstrap === */
+/* === /DB multipage polish === */
   document.documentElement.dataset.ready = 'true';
 })();
