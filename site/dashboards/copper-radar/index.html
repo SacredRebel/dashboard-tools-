@@ -13,9 +13,11 @@
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="cp">
+  <div class="cp" data-db-app>
+    <main class="dbp-main">
     <header class="cp-top">
       <a class="cp-brand" href="#" aria-label="Copper Radar home">
         <span class="cp-logo" aria-hidden="true"></span>
@@ -54,6 +56,7 @@
       </div>
 
       <div class="cp-radarwrap" aria-labelledby="cp-dyn-h">
+        <img class="cp-mesh" src="media/mesh.webp" width="1280" height="720" alt="" decoding="async" aria-hidden="true">
         <div class="cp-radarhead">
           <h2 id="cp-dyn-h">Dynamic View</h2>
           <b class="cp-endpoints num" data-endpoints>8.6K End Points</b>
@@ -64,6 +67,7 @@
           <span>Manually Resolved</span>
         </div>
       </div>
+      <div class="cp-radar-legend" data-radar-legend aria-label="Vendor legend"></div>
 
       <aside class="cp-panel cp-feed" aria-labelledby="cp-feed-h">
         <div class="cp-panelhead">
@@ -106,6 +110,7 @@
     </footer>
     <p class="db-sample cp-foot">Sample data · fictional</p>
   </div>
+  </main>
   <script src="app.js"></script>
 </body>
 </html>
