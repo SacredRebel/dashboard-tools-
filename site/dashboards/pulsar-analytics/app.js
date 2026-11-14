@@ -588,7 +588,105 @@ if (typeof staggerReveal === "function") staggerReveal();
   }
   main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
   if (window.DB?.onVisible) window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
-  if (window.DB?.dense) window.DB.dense.mount({ main, overview, pages: PAGES, brand: "Pulsar Analytics" });
+  if (window.DB?.dense) {
+    const D = window.DB.dense;
+    window.DB.dense.mount({
+      main, overview, pages: PAGES, brand: "Pulsar Analytics",
+      renderPage(page) {
+        if (page.id === 'traffic') {
+          return `
+            ${D.kpiRow([
+              { to: 38, cap: 'Search share %', label: '38' },
+              { to: 24, cap: 'Direct %', label: '24' },
+              { to: 14200, cap: 'Search sessions', label: '14.2k' },
+              { to: 8.1, decimals: 1, suffix: '%', cap: 'WoW', label: '8.1' },
+            ])}
+            ${D.heroCard('Channel terrain', 'Session mix for the active window. Filter owned vs paid, then open a row for detail.', 'Report')}
+            ${D.tableCard('Channel register', ['Channel', 'Share', 'Sessions'], [
+              { id: 'c1', cells: ['Search', '<span class="num">38%</span>', '<span class="num">14,200</span>'] },
+              { id: 'c2', cells: ['Direct', '<span class="num">24%</span>', '<span class="num">9,010</span>'] },
+              { id: 'c3', cells: ['Social', '<span class="num">16%</span>', '<span class="num">6,040</span>'] },
+              { id: 'c4', cells: ['Email', '<span class="num">12%</span>', '<span class="num">4,510</span>'] },
+              { id: 'c5', cells: ['Referral', '<span class="num">7%</span>', '<span class="num">2,640</span>'] },
+              { id: 'c6', cells: ['Paid', '<span class="num">3%</span>', '<span class="num">1,120</span>'] },
+            ])}
+            ${D.chartCard('Share trend', 'line')}
+            ${D.chartCard('Volume mix', 'bars')}
+            ${D.listCard('Owned lanes', [
+              { k: 'Search', v: '38%' }, { k: 'Direct', v: '24%' },
+              { k: 'Email', v: '12%' }, { k: 'Referral', v: '7%' },
+            ])}
+            ${D.listCard('Paid lanes', [
+              { k: 'Social boost', v: '16%' }, { k: 'Paid search', v: '3%' },
+              { k: 'Partner', v: '—' }, { k: 'Retarget', v: '—' },
+            ])}`;
+        }
+        if (page.id === 'events') {
+          return `
+            ${D.kpiRow([
+              { to: 18420, cap: 'Top event', label: '18.4k' },
+              { to: 5, cap: 'Streams', label: '5' },
+              { to: 31.8, decimals: 1, suffix: '%', cap: 'Bounce', label: '31.8' },
+              { to: 1284, cap: 'Signups', label: '1,284' },
+            ])}
+            ${D.heroCard('Instrument streams', 'Events ranked by volume. Search to filter; open a row for the sample payload.', 'List')}
+            ${D.tableCard('Event register', ['Event', 'Volume', 'Delta'], [
+              { id: 'e1', cells: ['<code>checkout.completed</code>', '<span class="num">18,420</span>', '+6%'] },
+              { id: 'e2', cells: ['<code>plan.upgraded</code>', '<span class="num">12,880</span>', '+4%'] },
+              { id: 'e3', cells: ['<code>invite.sent</code>', '<span class="num">9,610</span>', '+2%'] },
+              { id: 'e4', cells: ['<code>report.exported</code>', '<span class="num">6,240</span>', '−1%'] },
+              { id: 'e5', cells: ['<code>search.performed</code>', '<span class="num">4,975</span>', '+9%'] },
+              { id: 'e6', cells: ['<code>session.started</code>', '<span class="num">41,200</span>', '+8%'] },
+              { id: 'e7', cells: ['<code>billing.retry</code>', '<span class="num">820</span>', '0%'] },
+              { id: 'e8', cells: ['<code>auth.locked</code>', '<span class="num">64</span>', '−3%'] },
+            ])}
+            ${D.chartCard('Event wave', 'line')}
+            ${D.chartCard('Volume pillars', 'bars')}
+            ${D.listCard('Watch list', [
+              { k: 'checkout.failed', v: 'Gate' }, { k: 'auth.locked', v: 'Watch' },
+              { k: 'billing.retry', v: 'Ok' }, { k: 'export.queued', v: 'Ok' },
+              { k: 'invite.bounced', v: 'Watch' }, { k: 'plan.cancelled', v: 'Ok' },
+            ])}
+            ${D.listCard('Owners', [
+              { k: 'Growth', v: 'checkout.*' }, { k: 'Lifecycle', v: 'invite.*' },
+              { k: 'Platform', v: 'session.*' }, { k: 'Finance', v: 'billing.*' },
+            ])}`;
+        }
+        if (page.id === 'regions') {
+          return `
+            ${D.kpiRow([
+              { to: 34, cap: 'Top share %', label: '34' },
+              { to: 6, cap: 'Clusters', label: '6' },
+              { to: 99.982, decimals: 3, suffix: '%', cap: 'Uptime', label: '99.982' },
+              { to: 182, cap: 'p95 ms', label: '182' },
+            ])}
+            ${D.heroCard('Region map', 'Geographic share of sessions. Set a default region — sample only, nothing is persisted.', 'Detail')}
+            ${D.tableCard('Region register', ['Region', 'Share', 'Code'], [
+              { id: 'r1', cells: ['Pacific', '<span class="num">34%</span>', 'US-W'] },
+              { id: 'r2', cells: ['Atlantic', '<span class="num">22%</span>', 'US-E'] },
+              { id: 'r3', cells: ['Central', '<span class="num">18%</span>', 'US-C'] },
+              { id: 'r4', cells: ['EU West', '<span class="num">14%</span>', 'EU-W'] },
+              { id: 'r5', cells: ['APAC', '<span class="num">8%</span>', 'APAC'] },
+              { id: 'r6', cells: ['LatAm', '<span class="num">4%</span>', 'LATAM'] },
+              { id: 'r7', cells: ['Canada', '<span class="num">3%</span>', 'CA'] },
+              { id: 'r8', cells: ['Other', '<span class="num">1%</span>', 'ROW'] },
+            ])}
+            ${D.chartCard('Share trend', 'line')}
+            ${D.chartCard('Cluster mix', 'bars')}
+            ${D.listCard('Routing', [
+              { k: 'Default region', v: 'Unset' }, { k: 'Failover', v: 'US-E' },
+              { k: 'Edge cache', v: 'On' }, { k: 'PII stay', v: 'Region' },
+              { k: 'Warm pool', v: '3' }, { k: 'Cold region', v: 'Off' },
+            ])}
+            ${D.listCard('Health', [
+              { k: 'Pacific latency', v: '142 ms' }, { k: 'Atlantic latency', v: '168 ms' },
+              { k: 'EU West latency', v: '121 ms' }, { k: 'APAC latency', v: '210 ms' },
+            ])}`;
+        }
+        return null;
+      },
+    });
+  }
 })();
 /* === /DB multipage polish === */
 document.documentElement.dataset.ready = 'true';
