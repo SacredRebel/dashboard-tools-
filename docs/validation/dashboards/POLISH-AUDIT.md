@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `aura-ring` (Phase C — total 28).
+Next: `larchwood-lodge` (Phase C — total 28).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -15,7 +15,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 5 | canopy-reforest | Canopy Reforest | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | leaf photo + forest tile; diagonal hero; multipage + motion | polished 23→36 |
 | 6 | ridgeline-trails | Ridgeline Trails | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | photo mountains → vector; dial styling simplified | queued |
 | 7 | haven-listings | Haven Listings | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | dusk villa photo; multipage + motion | polished 27→36 |
-| 8 | aura-ring | Aura Ring | 5 | 4 | 4 | 2 | 3 | 3 | 4 | 3 | 28 | light glass ref vs dark shot; missing brain 3D | queued |
+| 8 | aura-ring | Aura Ring | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted ring+brain media; multipage + motion | polished 28→36 |
 | 9 | lull-sleep | Lull Sleep | 5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36.5 | was wrong product; now glass board + media ring/brain/body | polished 19→36.5 |
 | 10 | pearlwell-dental | Pearlwell Dental | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay tooth+arch media; multipage + motion | polished 25→36 |
 | 11 | vitalis-care | Vitalis Care | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay doctor+heart media; props; multipage + motion | polished 24→36 |
@@ -64,7 +64,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 11. ~~`atrium-living` — 26~~ → polished (36)
 12. ~~`haven-listings` — 27~~ → polished (36)
 13. ~~`aether-pane` — 27~~ → polished (36)
-14. `aura-ring` — 28
+14. ~~`aura-ring` — 28~~ → polished (36)
 15. `larchwood-lodge` — 28
 16. `taffy-analytics` — 28
 17. `tidebath-showroom` — 28

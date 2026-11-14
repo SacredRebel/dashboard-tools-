@@ -285,15 +285,15 @@ A property browser built around one large dusk villa photo: curved white archite
 
 _Aura Ring · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A wellness overview for a smart ring: frosted, softly bordered cards float over a periwinkle-to-pink haze, with a two-weight headline, a score dial, thin white line charts, a code-drawn metal ring and a tappable body map.
+A wellness overview for a smart ring: frosted, softly bordered cards float over a periwinkle-to-pink haze, with a two-weight headline, a score dial, thin white line charts, a painted ring photo, a brain summary orb and a tappable body map — plus Vitals, Appointments, Records and Settings.
 
 - **Use cases:** Health & fitness · **Mode:** dark · **Mood:** serene, dreamy, premium, soft, futuristic
 - **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Frosted cards with a hairline white edge over a deep periwinkle field that blooms pink on the right, and solid white pills as the only opaque elements.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Frosted cards with a hairline white edge over a deep periwinkle field that blooms pink on the right, a painted metal ring and brain orb, and solid white pills as the only opaque elements.
 - **Layout:** Top bar (brand, centred pill tabs, bell, avatar) · 12-column grid, 18px gaps: row 1 headline (5) + score card (4) + heart-rate card (3) · rows 2–3: two small chart cards and a summary card on the left (5), device card (4) and body-map card (3) spanning both rows
 - **Responsive:** ≤1100px: 2 columns (headline, score + heart rate, stress + sleep, device + body, summary) and tabs scroll · ≤680px: single column, tabs on their own scrolling row
-- **Fonts:** Red Hat Display / Red Hat Display · **Palette:** bg `#3f4f8f`, surface `#34417f`, text `#ffffff`, muted `#e3e4f5`, accent `#ffffff`, periwinkle `#6079c4`, pink `#ffc4dd`, lilac `#b9a4ff`, mint `#8ef0b4`
+- **Fonts:** Red Hat Display / Red Hat Display · **Palette:** bg `#3f4f8f`, surface `#34417f`, text `#ffffff`, muted `#fafbff`, accent `#ffffff`, periwinkle `#6079c4`, pink `#ffc4dd`, lilac `#b9a4ff`, mint `#8ef0b4`
 - **Variants:** Haze, Lagoon, Pearl · **Closest toolkit theme:** `aurora`
 
 **Best for**
@@ -306,7 +306,7 @@ A wellness overview for a smart ring: frosted, softly bordered cards float over 
 - Long tables or many KPIs
 - Interfaces that must work without colour gradients (print, e-ink)
 
-**Components:** Centred pill tabs that switch the score · Two-weight headline with tip chip · Score card with arc dial and state chip · Thin line charts with point markers · Device card with battery bar and status rows · Body map with selectable points · Summary card with glossy orb · White pill buttons with round arrow
+**Components:** Centred pill tabs that switch the score · Two-weight headline with tip chip · Score card with arc dial and state chip · Thin line charts with point markers · Device card with painted ring photo and battery bar · Body map with selectable points · Summary card with painted brain orb · White pill buttons with round arrow · Primary pages nav (Overview / Vitals / Appointments / Records / Settings)
 
 ---
 

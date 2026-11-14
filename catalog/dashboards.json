@@ -996,7 +996,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A wellness overview for a smart ring: frosted, softly bordered cards float over a periwinkle-to-pink haze, with a two-weight headline, a score dial, thin white line charts, a code-drawn metal ring and a tappable body map.",
+      "summary": "A wellness overview for a smart ring: frosted, softly bordered cards float over a periwinkle-to-pink haze, with a two-weight headline, a score dial, thin white line charts, a painted ring photo, a brain summary orb and a tappable body map — plus Vitals, Appointments, Records and Settings.",
       "mood": [
         "serene",
         "dreamy",
@@ -1024,17 +1024,18 @@
         "Two-weight headline with tip chip",
         "Score card with arc dial and state chip",
         "Thin line charts with point markers",
-        "Device card with battery bar and status rows",
+        "Device card with painted ring photo and battery bar",
         "Body map with selectable points",
-        "Summary card with glossy orb",
-        "White pill buttons with round arrow"
+        "Summary card with painted brain orb",
+        "White pill buttons with round arrow",
+        "Primary pages nav (Overview / Vitals / Appointments / Records / Settings)"
       ],
-      "signature": "Frosted cards with a hairline white edge over a deep periwinkle field that blooms pink on the right, and solid white pills as the only opaque elements.",
+      "signature": "Frosted cards with a hairline white edge over a deep periwinkle field that blooms pink on the right, a painted metal ring and brain orb, and solid white pills as the only opaque elements.",
       "palette": {
         "bg": "#3f4f8f",
         "surface": "#34417f",
         "text": "#ffffff",
-        "muted": "#e3e4f5",
+        "muted": "#fafbff",
         "accent": "#ffffff",
         "periwinkle": "#6079c4",
         "pink": "#ffc4dd",
@@ -1072,7 +1073,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied product shot of a wellness tablet app. The product and agency names, logo, avatar photo and copy were not reused; scores and text are invented. The ring photo, 3D body figure and brain render were replaced with an SVG ring, a simple SVG figure with selectable points and a CSS orb. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied product shot of a wellness tablet app. The product and agency names, logo, avatar photo and copy were not reused; scores and text are invented. Ring and brain use gallery media (`media/ring.webp`, `media/brain.webp`); body map is an SVG figure with selectable points. Fidelity pass used local tesseract OCR + palette sample on reference.jpg. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/aura-ring/",
       "reference": "reference.jpg",
@@ -1103,7 +1104,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "lull-sleep",
