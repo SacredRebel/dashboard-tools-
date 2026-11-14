@@ -4157,7 +4157,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "Cream, forest and gold claymorphism for an immersive media console: twin phone panels with a gold-ring astronaut helmet, a START pill, and a calibration landscape where a gold sphere rides a vertical rail beside stacked KPIs.",
+      "summary": "Cream, forest and gold claymorphism for an immersive media console: twin phone panels with a clay astronaut helmet photo in a gold ring, a START pill, and a cream dune landscape with a calibration rail \u2014 plus Library, Activity and Settings pages.",
       "mood": [
         "tactile",
         "playful",
@@ -4188,9 +4188,12 @@
         "Vertical gold-sphere calibration slider",
         "Clay mountain terrain SVG",
         "Stacked gold KPI numbers",
-        "Foot icon strip"
+        "Foot icon strip",
+        "Clay helmet photo in gold ring",
+        "Clay dune landscape photo",
+        "Library / Activity / Settings multipage"
       ],
-      "signature": "Soft cream clay phones with a thick gold ring framing an abstract forest-green astronaut helmet, and a gold sphere on a vertical rail over clay mountains.",
+      "signature": "Twin clay phones: gold-ring helmet photo on cream, forest-green START, and a soft clay dune landscape with a vertical altitude rail.",
       "palette": {
         "bg": "#f3ebe0",
         "surface": "#f7f0e6",
@@ -4258,7 +4261,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "saffron-dusk",

@@ -1253,12 +1253,12 @@ A cream-and-pink soft-UI studio admin: extruded nav pills, clay pebble photo pro
 
 _Orbit Clay · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-Cream, forest and gold claymorphism for an immersive media console: twin phone panels with a gold-ring astronaut helmet, a START pill, and a calibration landscape where a gold sphere rides a vertical rail beside stacked KPIs.
+Cream, forest and gold claymorphism for an immersive media console: twin phone panels with a clay astronaut helmet photo in a gold ring, a START pill, and a cream dune landscape with a calibration rail — plus Library, Activity and Settings pages.
 
 - **Use cases:** Music & media · **Mode:** light · **Mood:** tactile, playful, premium, earthy, curious
 - **Pages:** Overview (`overview`, Dashboard) · Library (`library`, List) · Activity (`activity`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Soft cream clay phones with a thick gold ring framing an abstract forest-green astronaut helmet, and a gold sphere on a vertical rail over clay mountains.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Twin clay phones: gold-ring helmet photo on cream, forest-green START, and a soft clay dune landscape with a vertical altitude rail.
 - **Layout:** Split stage · twin phone panels: mission phone (score, gold-ring helmet, pager, START) · calibration phone (KPI stack, clay terrain, gold sphere rail, foot icons)
 - **Responsive:** ≤1100px: panels stack centred · ≤700px: single phone width, stage padding shrinks, foot icons wrap
 - **Fonts:** Outfit / Outfit · **Palette:** bg `#f3ebe0`, surface `#f7f0e6`, text `#1f3a2e`, muted `#4a6356`, accent `#c9a24a`, forest `#1f3a2e`, gold `#c9a24a`, cream `#f7f0e6`
@@ -1274,7 +1274,7 @@ Cream, forest and gold claymorphism for an immersive media console: twin phone p
 - Clinical or high-contrast accessibility-first UIs
 - Flat material or neon dark-neon brands
 
-**Components:** Twin clay phone shells · Gold-ring astronaut hero SVG · Mission pager dots and house markers · Pressable START pill · Vertical gold-sphere calibration slider · Clay mountain terrain SVG · Stacked gold KPI numbers · Foot icon strip
+**Components:** Twin clay phone shells · Gold-ring astronaut hero SVG · Mission pager dots and house markers · Pressable START pill · Vertical gold-sphere calibration slider · Clay mountain terrain SVG · Stacked gold KPI numbers · Foot icon strip · Clay helmet photo in gold ring · Clay dune landscape photo · Library / Activity / Settings multipage
 
 ---
 

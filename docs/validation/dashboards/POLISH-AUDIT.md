@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `orbit-clay` (Phase C — total 30).
+Next: `clima-pane` (Phase C — total 30).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -40,7 +40,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 30 | dune-panels | Dune Panels | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | fabric photo + clay depth; NaN fixed; multipage | polished 23→36 |
 | 31 | pebble-studio | Pebble Studio | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay photo props; multipage + motion | polished 28→36 |
 | 32 | copper-radar | Copper Radar | 5 | 4 | 4 | 4 | 3 | 3 | 5 | 5 | 33 | vendor logos swapped for fiction; similar match | queued |
-| 33 | orbit-clay | Orbit Clay | 4 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 30 | desktop frame vs pure mobile ref | queued |
+| 33 | orbit-clay | Orbit Clay | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay helmet+dune photos; multipage + motion | polished 30→36 |
 | 34 | saffron-dusk | Saffron Dusk | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | fewer glass sparkles; 3D memoji → flat avatar | queued |
 | 35 | clima-pane | Clima Pane | 5 | 4 | 4 | 4 | 3 | 2 | 4 | 4 | 30 | no background color spheres; flatter glass | queued |
 | 36 | meridian-labs | Meridian Labs | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 5 | 32 | softer metallic DNA; date/content drift | queued |
@@ -76,7 +76,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 23. ~~`forge-fitness` — 29~~ → polished (36)
 24. ~~`horizon-weather` — 30~~ → polished (36)
 25. ~~`prism-workspace` — 30~~ → polished (36)
-26. `orbit-clay` — 30
+26. ~~`orbit-clay` — 30~~ → polished (36)
 27. `clima-pane` — 30
 28. `ridgeline-trails` — 31
 29. `mallow-music` — 31
