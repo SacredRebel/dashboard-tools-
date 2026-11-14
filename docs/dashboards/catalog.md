@@ -349,15 +349,15 @@ Workspace settings in a light liquid-glass style: thick translucent pills with b
 
 _Veil Rooms · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device cards, and a right Light panel for fixture toggles and stepped spotlights.
+A grey smart-home board: greeting and room pills, a 2×3 grid of opaque device cards with album art, and a right Light panel for fixture toggles and stepped spotlights.
 
 - **Use cases:** Smart home & IoT · **Mode:** dark · **Mood:** glassy, calm, modern, cool, precise
 - **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Frosted grey glass device cards beside a dedicated Light fixtures column with green on-toggles and three-step spotlight rails.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Opaque grey device cards beside a dedicated Light fixtures column with green on-toggles and three-step spotlight rails, plus painted album art.
 - **Layout:** 56px icon rail · centre column (status chips, greeting, room pills, 3×2 device cards) · 320px right Light panel (header, time, 2×2 fixture cards with toggles and sliders)
 - **Responsive:** ≤1180px: Light panel drops under the device grid · ≤960px: rail becomes a top strip · ≤640px: device cards single column, room pills scroll
-- **Fonts:** Plus Jakarta Sans / Plus Jakarta Sans · **Palette:** bg `#1a1d24`, surface `#2a2e38`, text `#f2f4f8`, muted `#a8aeb8`, accent `#6ecf9a`, cool `#5b9cf0`, warm `#f0b35a`, glass `#343944`
+- **Fonts:** Plus Jakarta Sans / Plus Jakarta Sans · **Palette:** bg `#1a1d24`, surface `#2a2e38`, text `#f2f4f8`, muted `#b4bac4`, accent `#6ecf9a`, cool `#5b9cf0`, warm `#f0b35a`, glass `#343944`
 - **Variants:** Slate glass, Mist, Midnight · **Closest toolkit theme:** `noir`
 
 **Best for**
@@ -370,7 +370,7 @@ A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device ca
 - Installer or device-fleet admin screens
 - Brands that require a warm cinematic look
 
-**Components:** Slim icon rail with avatar · Environment status chips · Personal greeting · Room pill switcher with add · Main light dual sliders · AC temperature stepper · Media player card · Wifi speed card · Air purifier status card · Smart lock card · Right Light fixtures panel with stepped spotlight control
+**Components:** Slim icon rail with avatar wired to multipage · Environment status chips · Personal greeting · Room pill switcher with add · Main light dual sliders · AC temperature stepper · Media player card with album photo · Wifi speed card · Air purifier status card · Smart lock card · Right Light fixtures panel with stepped spotlight control
 
 ---
 

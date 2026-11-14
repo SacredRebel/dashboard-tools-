@@ -2409,7 +2409,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device cards, and a right Light panel for fixture toggles and stepped spotlights.",
+      "summary": "A grey smart-home board: greeting and room pills, a 2×3 grid of opaque device cards with album art, and a right Light panel for fixture toggles and stepped spotlights.",
       "mood": [
         "glassy",
         "calm",
@@ -2433,24 +2433,24 @@
         "responsive": "≤1180px: Light panel drops under the device grid · ≤960px: rail becomes a top strip · ≤640px: device cards single column, room pills scroll"
       },
       "components": [
-        "Slim icon rail with avatar",
+        "Slim icon rail with avatar wired to multipage",
         "Environment status chips",
         "Personal greeting",
         "Room pill switcher with add",
         "Main light dual sliders",
         "AC temperature stepper",
-        "Media player card",
+        "Media player card with album photo",
         "Wifi speed card",
         "Air purifier status card",
         "Smart lock card",
         "Right Light fixtures panel with stepped spotlight control"
       ],
-      "signature": "Frosted grey glass device cards beside a dedicated Light fixtures column with green on-toggles and three-step spotlight rails.",
+      "signature": "Opaque grey device cards beside a dedicated Light fixtures column with green on-toggles and three-step spotlight rails, plus painted album art.",
       "palette": {
         "bg": "#1a1d24",
         "surface": "#2a2e38",
         "text": "#f2f4f8",
-        "muted": "#a8aeb8",
+        "muted": "#b4bac4",
         "accent": "#6ecf9a",
         "cool": "#5b9cf0",
         "warm": "#f0b35a",
@@ -2487,7 +2487,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied grey-glass smart-home screenshot. Brand (Veil Rooms), resident name, track titles and figures are fictional. Album art and lamp photos were replaced with SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied grey-glass smart-home screenshot. Brand (Veil Rooms), resident name, track titles and figures are fictional. Album art uses gallery media (`media/album.webp`); heavy glass blur was reduced to opaque slate surfaces. Fidelity pass used local tesseract OCR + palette sample on reference.jpg. Owner original stored as `reference.jpg`."
       },
       "path": "site/dashboards/veil-rooms/",
       "reference": "reference.jpg",
@@ -2518,7 +2518,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "atrium-living",

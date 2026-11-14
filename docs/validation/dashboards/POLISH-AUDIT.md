@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `veil-rooms` (Phase C — total 29).
+Next: `forge-fitness` (Phase C — total 29).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -26,7 +26,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 16 | hollow-vault | Hollow Vault | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted relics+chest; witch; multipage + motion | polished 25→36 |
 | 17 | larchwood-lodge | Larchwood Lodge | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | lake photo + plum glass; multipage + motion | polished 28→36 |
 | 18 | hearth-nest | Hearth Nest | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | living-room photo + nodes; multipage + motion | polished 26→36 |
-| 19 | veil-rooms | Veil Rooms | 5 | 4 | 4 | 3 | 3 | 2 | 4 | 4 | 29 | less glass blur; no album art photo | queued |
+| 19 | veil-rooms | Veil Rooms | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | album photo; less blur; multipage + motion | polished 29→36 |
 | 20 | atrium-living | Atrium Living | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | room+camera photo; multipage + motion | polished 26→36 |
 | 21 | glacier-ops | Glacier Ops | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | softer neumorph; readable labels vs lorem | queued |
 | 22 | folio-club | Folio Club | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | less background blur; different book cover | queued |
@@ -72,7 +72,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 19. ~~`ember-rooms` — 28~~ → polished (36)
 20. ~~`solstice-energy` — 29~~ → polished (36)
 21. ~~`plumage-survey` — 29~~ → polished (36)
-22. `veil-rooms` — 29
+22. ~~`veil-rooms` — 29~~ → polished (36)
 23. `forge-fitness` — 29
 24. `horizon-weather` — 30
 25. `prism-workspace` — 30
