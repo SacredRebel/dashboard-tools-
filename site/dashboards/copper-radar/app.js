@@ -189,8 +189,16 @@
     const sweep = resolved / 100;
     const sweepEnd = -180 + 180 * Math.min(1, sweep + 0.35);
     $('[data-radar]').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Radar with ${VENDORS.length} fictional vendors and ${resolved}% manually resolved">
-      ${rings.map((r, i) => `<path d="${arc(cx, cy, r, -180, 0)}" fill="none" stroke="var(--border)" stroke-width="${i === rings.length - 1 ? 1.5 : 1}" ${i === rings.length - 1 ? 'stroke-dasharray="3 5"' : ''}/>`).join('')}
-      <path d="${arc(cx, cy, 236, -180, sweepEnd)}" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+      <defs>
+        <linearGradient id="cp-arc-glow" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.15"/>
+          <stop offset="55%" stop-color="var(--accent)" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#ffb06a" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+      ${rings.map((r, i) => `<path d="${arc(cx, cy, r, -180, 0)}" fill="none" stroke="${i === rings.length - 1 ? 'var(--accent)' : 'var(--border)'}" stroke-width="${i === rings.length - 1 ? 2 : 1.25}" stroke-opacity="${i === rings.length - 1 ? 0.55 : 0.9}" ${i % 2 === 1 ? 'stroke-dasharray="4 6"' : ''}/>`).join('')}
+      <path d="${arc(cx, cy, 236, -180, sweepEnd)}" fill="none" stroke="url(#cp-arc-glow)" stroke-width="6" stroke-linecap="round"/>
+      <path d="${arc(cx, cy, 236, -180, sweepEnd)}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" opacity="0.95"/>
       ${ticks}
       <line x1="${cx - 260}" y1="${cy}" x2="${cx + 260}" y2="${cy}" stroke="var(--border)" stroke-width="1"/>
       ${nodes}${flags}

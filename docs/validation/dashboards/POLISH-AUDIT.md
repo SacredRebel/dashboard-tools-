@@ -30,7 +30,7 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | haven-listings | 4 | 4 | 4 | 4 | 3.5 | 4 | 3.5 | 4 | 31 | Outer main + density; villa art OK | gate-green |
 | aura-ring | 4 | 4 | 4 | 4 | 3.5 | 3.5 | 3.5 | 3.5 | 30 | Dense contrast fixed; ring/brain upscaled | gate-green |
 | lull-sleep | 4 | 4 | 4 | 4.5 | 4 | 4 | 4 | 4 | 32.5 | Media DPI fixed; glass board strong | gate-green |
-| copper-radar | 2.5 | 3.5 | 3.5 | 3.5 | 2.5 | 2.5 | 2.5 | 2.5 | 23 | **Missing** half-radar arc + vendor ring (G3) | open |
+| copper-radar | 3.5 | 4 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29.5 | Radar-hero + glowing half-arc + opaque 15% core; still shy of reference vendor-logo ring | deep G3 started |
 | ember-rooms | 2.5 | 3.5 | 3.5 | 3.5 | 2.5 | 3 | 2.5 | 2.5 | 23.5 | Pendant exists; **missing** orbit ring stage (G3) | open |
 | tidebath-showroom | 2.5 | 3.5 | 3.5 | 3.5 | 2 | 3 | 2.5 | 2.5 | 22.5 | Flat thumbs; needs CSS 3D carousel | open |
 | citadel-wall | 3 | 3.5 | 3.5 | 3.5 | 3 | 3 | 3 | 3 | 25.5 | Holo upscaled; pedestal/circuits weak | open |

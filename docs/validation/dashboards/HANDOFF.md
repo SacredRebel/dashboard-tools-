@@ -6,31 +6,34 @@ PR: https://github.com/SacredRebel/dashboard-tools-/pull/6 (draft — **do not m
 
 ## Done this stretch
 
-### Gate fixes (commit `9bcd884`)
-- Hero media upscaled past 1.5× + `srcset` (kumo, horizon, haven, lull, aura, peers)
-- Dense-page kit: opaque fills, `min-height: 72vh`, `--mat-clay-fill` fallbacks
-- Aura dense ink panels (haze no longer fails contrast)
-- Haven: outer `<main>`, denser overview (agent notes), secondary pages fill height
-- Horizon: opaque `.hw-hero-copy` plate; reveal no longer starts at `opacity: 0`
-- Reveal-boot + opacity:1 pre-reveal across boards that skipped legacy `DB.route`
+### Gate fixes (`aeef3cc`)
+Verified ✔ after fix: `ridgeline-trails`, `prism-workspace`, `hearth-nest`, `aether-pane`, `forge-fitness`, `mauve-ledger`, `orbit-clay`, `saffron-dusk`, `clima-pane`  
+(+ prior stretch: horizon, kumo, haven, aura, lull, canopy)
 
-### G2/G3 — Canopy Reforest
-- New layered leaves hero (GenerateImage → WebP 1x/2x) + foreground leaf layer
-- Opaque clay hero copy plate; deeper clay tile shadows
-- Forest scene srcset; `media/CREDITS.md` updated
+- Media DPI/srcset: blobs, living-room, office, athlete, haze, orb-warm/cool
+- Ridgeline dense forced opaque AA (dusk mauve)
+- Orbit: outer `<main>` + mission strip (thin/width)
+- Saffron: wider twin-phone stage; night countdown opaque plate
 
-### Verified green (this stretch)
-`horizon-weather`, `kumo-payroll`, `haven-listings`, `aura-ring`, `lull-sleep`, `canopy-reforest`  
-(plus earlier cortex/mallow and batch densers from prior commits)
+### G2/G3 — Copper Radar (`pending commit`)
+- New radar-hero WebP (GenerateImage) under Dynamic View
+- Stronger half-arc SVG glow + opaque copper 15% core
+
+### Earlier
+- Framework FX/materials/dense kit; Cortex + Mallow full; Canopy layered leaves
 
 ## Still open (architect)
 
-1. Finish / consume full `node scripts/dashboards-check.mjs` on all 38 after this push; fix any new fails without touching gates.
-2. Honest POLISH-AUDIT (no uniform 4.5) — rewritten this stretch; keep updating per dashboard.
-3. Remaining G2 hero art: kumo moon/pagoda/koi frame, ember lamp+ring, copper radar arc, tidebath 3D carousel, hollow relics, citadel holo, glacier dial, forge athlete, clima orbs…
-4. Remaining G3 composition: copper half-radar, tidebath CSS 3D, ember lamp stage, meridian DNA columns, ridgeline clay pies, phone compositions.
-5. `node scripts/screenshot.mjs` including `#/fx`.
-6. ManagePullRequest may be unavailable — update PR body carefully if editing (preserve human edits).
+1. Full-38 `node scripts/dashboards-check.mjs` confirmation pass (most were green mid-run; re-run after this push).
+2. Remaining G2/G3: ember lamp+orbit ring, tidebath CSS 3D carousel, kumo moon/pagoda/koi, citadel/glacier/forge athlete art, meridian DNA columns, ridgeline clay pies, phone compositions.
+3. `node scripts/screenshot.mjs` including `#/fx`.
+4. ManagePullRequest / `gh pr edit` may be denied — preserve human PR body; compare URL below.
+
+## Next
+1. Ember Rooms G3 (lamp + orbit room chips) — one commit  
+2. Tidebath 3D carousel — one commit  
+3. Full-38 check green + honest audit row updates  
+4. Open/refresh PR body when write tools available
 
 ## Compare
 https://github.com/SacredRebel/dashboard-tools-/compare/main...cursor/deep-polish-0545?expand=1
