@@ -198,80 +198,82 @@ body {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 460px;
-  padding: 24px 72px 56px;
+  min-height: 520px;
+  padding: 28px 64px 72px;
   margin: 8px 0 28px;
 }
 .tb-overview[hidden], [data-db-stub-host][hidden] { display: none !important; }
 .tb-carousel {
   position: relative;
-  width: min(980px, 100%);
-  aspect-ratio: 980 / 480;
-  perspective: 1400px;
-  perspective-origin: 50% 60%;
-  filter: drop-shadow(0 28px 48px rgb(40 50 70 / 0.18));
+  width: min(1040px, 100%);
+  aspect-ratio: 1040 / 520;
+  perspective: 1680px;
+  perspective-origin: 50% 58%;
+  filter: drop-shadow(0 32px 56px rgb(40 50 70 / 0.22));
 }
 .tb-platform {
-  position: absolute; left: 4%; right: 4%; bottom: 2%; height: 34%;
+  position: absolute; left: -2%; right: -2%; bottom: -4%; height: 42%;
   border-radius: 50%;
   background:
-    radial-gradient(ellipse at 50% 28%, rgb(255 255 255 / 0.55), transparent 50%),
-    radial-gradient(ellipse at 50% 70%, rgb(20 28 40 / 0.18), transparent 60%),
+    radial-gradient(ellipse at 50% 28%, rgb(255 255 255 / 0.62), transparent 52%),
+    radial-gradient(ellipse at 50% 70%, rgb(20 28 40 / 0.22), transparent 62%),
     linear-gradient(180deg, var(--stage), var(--stage-deep));
   box-shadow:
-    0 22px 48px rgb(40 50 70 / 0.16),
-    inset 0 1px 0 rgb(255 255 255 / 0.45);
+    0 28px 56px rgb(40 50 70 / 0.2),
+    inset 0 1px 0 rgb(255 255 255 / 0.5);
   z-index: 0;
+  transform: rotateX(18deg);
+  transform-origin: 50% 100%;
 }
 .tb-platform::after {
   content: "";
-  position: absolute; left: 38%; right: 38%; top: 42%; bottom: 22%;
+  position: absolute; left: 34%; right: 34%; top: 40%; bottom: 18%;
   border-radius: 50%;
-  background: rgb(20 28 40 / 0.22);
-  box-shadow: inset 0 6px 14px rgb(0 0 0 / 0.25);
+  background: rgb(20 28 40 / 0.26);
+  box-shadow: inset 0 8px 18px rgb(0 0 0 / 0.28);
 }
 .tb-bays {
   position: relative; z-index: 1; height: 100%;
-  display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 8px;
-  align-items: end; padding: 2% 4% 16%;
+  display: grid; grid-template-columns: 0.95fr 1.25fr 0.95fr; gap: 4px;
+  align-items: end; padding: 0 2% 18%;
   transform-style: preserve-3d;
 }
 .tb-bay {
-  position: relative; overflow: hidden; border-radius: 12px 12px 6px 6px;
+  position: relative; overflow: hidden; border-radius: 16px 16px 8px 8px;
   background: var(--surface);
   box-shadow:
-    0 18px 36px rgb(40 50 70 / 0.2),
-    0 2px 0 rgb(255 255 255 / 0.5) inset;
+    0 22px 40px rgb(40 50 70 / 0.24),
+    0 2px 0 rgb(255 255 255 / 0.55) inset;
   aspect-ratio: 4 / 5; max-height: 100%;
   transform-style: preserve-3d;
   will-change: transform;
-  transition: transform 320ms var(--ease-out), opacity 280ms ease, filter 280ms ease;
+  transition: transform 340ms var(--ease-out), opacity 280ms ease, filter 280ms ease;
 }
 .tb-bay img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 .tb-bay-left {
-  transform: translate3d(-6%, 8%, -80px) rotateY(38deg) rotateX(4deg) scale(0.86);
-  transform-origin: 100% 70%;
-  opacity: 0.72; filter: brightness(0.92) saturate(0.9);
+  transform: translate3d(-10%, 12%, -120px) rotateY(48deg) rotateX(6deg) scale(0.82);
+  transform-origin: 100% 72%;
+  opacity: 0.68; filter: brightness(0.9) saturate(0.88);
   z-index: 1;
 }
 .tb-bay-right {
-  transform: translate3d(6%, 8%, -80px) rotateY(-38deg) rotateX(4deg) scale(0.86);
-  transform-origin: 0% 70%;
-  opacity: 0.72; filter: brightness(0.92) saturate(0.9);
+  transform: translate3d(10%, 12%, -120px) rotateY(-48deg) rotateX(6deg) scale(0.82);
+  transform-origin: 0% 72%;
+  opacity: 0.68; filter: brightness(0.9) saturate(0.88);
   z-index: 1;
 }
 .tb-bay-mid {
   z-index: 3;
-  transform: translate3d(0, -4%, 40px) rotateY(0deg) scale(1.02);
-  transform-origin: 50% 80%;
+  transform: translate3d(0, -8%, 56px) rotateY(0deg) scale(1.04);
+  transform-origin: 50% 82%;
   box-shadow:
-    0 28px 50px rgb(40 50 70 / 0.28),
-    0 0 0 1px rgb(255 255 255 / 0.35) inset;
+    0 34px 58px rgb(40 50 70 / 0.32),
+    0 0 0 1px rgb(255 255 255 / 0.4) inset;
 }
 .tb-ambient { animation: tbGlow 4.8s var(--ease-out) infinite alternate; }
 @keyframes tbGlow {
-  from { transform: translate3d(0, -4%, 40px) scale(1.02); }
-  to { transform: translate3d(0, -7%, 48px) scale(1.035); }
+  from { transform: translate3d(0, -8%, 56px) scale(1.04); }
+  to { transform: translate3d(0, -11%, 68px) scale(1.055); }
 }
 @media (prefers-reduced-motion: reduce) {
   .tb-ambient { animation: none; }
