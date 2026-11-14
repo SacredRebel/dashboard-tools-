@@ -2,7 +2,19 @@
 
 Next: none (Phase C complete — all 38 polished).
 
-Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
+## Before → after (Phase C)
+
+| | Before (audit totals) | After (polished) |
+|---|---|---|
+| Count | 38 gallery dashboards | 38 / 38 polished |
+| Min total | 19 | 36 |
+| Avg total | ~28.2 | ~36.0 |
+| Max total | 35 | 36.5 (`lull-sleep`) |
+| Status column | gaps / work-order open | every row `polished X→Y` |
+
+Verification (done checklist): `node scripts/build.mjs` ✔ · `node scripts/dashboards-check.mjs` (all) ✔ · `node scripts/screenshot.mjs` (site routes @375/1280) ✔ · branch `cursor/polish-pass-0545`.
+
+Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger — all polished.
 
 Track scores 0–5 per axis. **Total** = sum of scored columns.
 
