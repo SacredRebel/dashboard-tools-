@@ -127,16 +127,33 @@ body {
 }
 .cl-orbs img {
   position: absolute;
-  width: min(46vw, 520px);
-  height: min(46vw, 520px);
+  width: min(48vw, 560px);
+  height: min(48vw, 560px);
   object-fit: cover;
   border-radius: 50%;
-  filter: blur(2px);
-  opacity: 0.85;
+  filter: blur(1.5px) saturate(1.05);
+  opacity: 0.9;
   animation: cl-drift 18s ease-in-out infinite alternate;
 }
 .cl-orbs img:nth-child(1) { top: -8vw; left: -6vw; }
-.cl-orbs img:nth-child(2) { bottom: -10vw; right: 4vw; width: min(40vw, 460px); height: min(40vw, 460px); animation-duration: 22s; }
+.cl-orbs img:nth-child(2) { bottom: -10vw; right: 4vw; width: min(42vw, 500px); height: min(42vw, 500px); animation-duration: 22s; }
+@media (max-width: 640px) {
+  .cl-orbs img:nth-child(1) { width: min(70vw, 280px); height: min(70vw, 280px); top: -6vw; left: -12vw; opacity: 0.55; }
+  .cl-orbs img:nth-child(2) { width: min(58vw, 220px); height: min(58vw, 220px); bottom: 8vh; right: -8vw; opacity: 0.5; }
+  .cl-brand b, .cl-brand small {
+    display: inline-block;
+    background: #ffffff !important;
+    color: #142028 !important;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 700;
+  }
+  [data-variant="sky"] .cl-brand b,
+  [data-variant="sky"] .cl-brand small {
+    background: #ffffff !important;
+    color: #142028 !important;
+  }
+}
 .cl-orbs i {
   position: absolute;
   border-radius: 50%;
