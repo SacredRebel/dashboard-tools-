@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `dune-panels` (Phase C — total 23).
+Next: `pulsar-analytics` (Phase C — total 24).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -37,7 +37,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 27 | orchard-sales | Orchard Sales | 5 | 4 | 4 | 4 | 4 | 4 | 4 | 5 | 34 | minor copy/date drift only | queued |
 | 28 | mauve-ledger | Mauve Ledger | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | lighter glass than ref; no email table block | queued |
 | 29 | tidebath-showroom | Tidebath Showroom | 4 | 4 | 3 | 3 | 3 | 3 | 4 | 4 | 28 | 3D renders → line illustrations; Polish copy | queued |
-| 30 | dune-panels | Dune Panels | 3 | 3 | 3 | 4 | 2 | 2 | 3 | 3 | 23 | fabric 3D waves missing; NaN footer copy | queued |
+| 30 | dune-panels | Dune Panels | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | fabric photo + clay depth; NaN fixed; multipage | polished 23→36 |
 | 31 | pebble-studio | Pebble Studio | 4 | 3 | 3 | 4 | 3 | 3 | 4 | 4 | 28 | kit collage → single dashboard; less abstract blobs | queued |
 | 32 | copper-radar | Copper Radar | 5 | 4 | 4 | 4 | 3 | 3 | 5 | 5 | 33 | vendor logos swapped for fiction; similar match | queued |
 | 33 | orbit-clay | Orbit Clay | 4 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 30 | desktop frame vs pure mobile ref | queued |
@@ -54,7 +54,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 1. ~~`lull-sleep` — 19~~ → polished (36.5)
 2. ~~`canopy-reforest` — 23~~ → polished (36)
 3. ~~`citadel-wall` — 23~~ → polished (36)
-4. `dune-panels` — 23
+4. ~~`dune-panels` — 23~~ → polished (36)
 5. `pulsar-analytics` — 24
 6. `vitalis-care` — 24
 7. `pearlwell-dental` — 25

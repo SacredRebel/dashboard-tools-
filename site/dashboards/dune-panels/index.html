@@ -13,15 +13,22 @@
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
   <div class="du-wave" data-wave aria-hidden="true"></div>
   <div class="du">
     <header class="du-top">
-      <a class="du-brand" href="#" aria-label="Dune Panels home">
+      <a class="du-brand" href="#/overview" aria-label="Dune Panels home">
         <span class="du-mark" aria-hidden="true"></span>
         <span>Dune Panels</span>
       </a>
+      <nav class="du-nav" aria-label="Main">
+        <a href="#/overview">Overview</a>
+        <a href="#/reports">Reports</a>
+        <a href="#/segments">Segments</a>
+        <a href="#/settings">Settings</a>
+      </nav>
       <label class="du-search">
         <span class="vh">Search metrics</span>
         <input type="search" placeholder="Search panels, metrics…" data-q>
@@ -34,7 +41,9 @@
       </div>
     </header>
 
-    <main class="du-grid">
+    <main class="du-main" data-main>
+    <div data-page-panel="overview" class="du-overview">
+    <div class="du-grid">
       <section class="du-panel du-sand" aria-labelledby="du-mix-h">
         <header class="du-ph">
           <span data-icon="layers"></span>
@@ -96,8 +105,11 @@
         <ul class="du-pulses" data-pulses></ul>
         <p class="du-note" data-feed-msg aria-live="polite"></p>
       </section>
+    </div>
+    </div>
     </main>
 
+    <div class="du-toast" data-toast hidden role="status"></div>
     <p class="db-sample du-foot">Sample data · fictional metrics</p>
   </div>
   <script src="app.js"></script>

@@ -3589,7 +3589,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A skeuomorphic soft-UI analytics board in sand, sage and slate: blue fabric wave backdrop, dual donuts, a recessed neumorphic donut well, pill search, icon shelves and a 2×2 analytics grid under dark headers.",
+      "summary": "A skeuomorphic soft-UI analytics board in sand, sage and slate: fabric wave backdrop, dual donuts, a recessed neumorphic donut well, pill search, icon shelves and a 2×2 analytics grid — with Reports, Segments and Settings pages.",
       "mood": [
         "tactile",
         "calm",
@@ -3613,14 +3613,15 @@
         "responsive": "≤1100px: two-column wrap, wave softens · ≤700px: single column, icon grid 3×3 retained, search full width, analytics 2×2 stacks"
       },
       "components": [
-        "Blue fabric wave SVG backdrop",
-        "Dark slate panel headers with icons",
-        "Dual side-by-side donut charts",
-        "Recessed neumorphic donut well",
-        "Pill search field",
-        "3×3 raised icon shelf grid",
-        "24h / 48h / 72h range pills",
-        "2×2 analytics donut grid"
+        "Fabric wave photo backdrop",
+        "Dark slate panel headers",
+        "Dual donuts",
+        "Recessed neumorphic well",
+        "Pill search",
+        "3×3 icon shelves",
+        "Range pills",
+        "2×2 analytics grid",
+        "Reports/Segments/Settings pages"
       ],
       "signature": "Sand, sage and slate panels with multi-layer neumorphic shadows, a draped blue fabric wave, and a large donut seated in a deeply recessed circular well.",
       "palette": {
@@ -3664,7 +3665,13 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied soft-UI / neumorphic mood board. Brand (Dune Panels), metrics and labels are fictional. The fabric wave and charts were redrawn as SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a soft-UI analytics kit. Brand and figures are invented. Fabric backdrop is an AI-generated original. Owner original stored as reference.jpg.",
+        "credits": [
+          {
+            "credit": "AI-generated original — draped blue-grey fabric wave textile",
+            "role": "media/fabric.webp"
+          }
+        ]
       },
       "path": "site/dashboards/dune-panels/",
       "reference": "reference.jpg",
@@ -3690,7 +3697,16 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "pebble-studio",

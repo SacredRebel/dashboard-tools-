@@ -1189,11 +1189,11 @@ A claymorphic listening dashboard for a music app: puffy pastel tiles with soft 
 
 _Dune Panels · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A skeuomorphic soft-UI analytics board in sand, sage and slate: blue fabric wave backdrop, dual donuts, a recessed neumorphic donut well, pill search, icon shelves and a 2×2 analytics grid under dark headers.
+A skeuomorphic soft-UI analytics board in sand, sage and slate: fabric wave backdrop, dual donuts, a recessed neumorphic donut well, pill search, icon shelves and a 2×2 analytics grid — with Reports, Segments and Settings pages.
 
 - **Use cases:** Analytics & BI · **Mode:** light · **Mood:** tactile, calm, organic, matte, soft
 - **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** Sand, sage and slate panels with multi-layer neumorphic shadows, a draped blue fabric wave, and a large donut seated in a deeply recessed circular well.
 - **Layout:** Fabric wave backdrop · top search on slate strip · dual donut sand panel · sage recessed donut well · 3×3 icon grid · range pills · slate 2×2 analytics donut grid with dark headers throughout
 - **Responsive:** ≤1100px: two-column wrap, wave softens · ≤700px: single column, icon grid 3×3 retained, search full width, analytics 2×2 stacks
@@ -1210,7 +1210,7 @@ A skeuomorphic soft-UI analytics board in sand, sage and slate: blue fabric wave
 - Brands that need sharp glass or high-chroma charts
 - Dark-only or neon cyber aesthetics
 
-**Components:** Blue fabric wave SVG backdrop · Dark slate panel headers with icons · Dual side-by-side donut charts · Recessed neumorphic donut well · Pill search field · 3×3 raised icon shelf grid · 24h / 48h / 72h range pills · 2×2 analytics donut grid
+**Components:** Fabric wave photo backdrop · Dark slate panel headers · Dual donuts · Recessed neumorphic well · Pill search · 3×3 icon shelves · Range pills · 2×2 analytics grid · Reports/Segments/Settings pages
 
 ---
 
