@@ -1,11 +1,11 @@
 {
   "id": "mauve-ledger",
-  "checked": "2026-11-13",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/mauve-ledger/",
+      "url": "/dashboards/mauve-ledger/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/mauve-ledger/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mauve-ledger",
+      "url": "/dashboards/mauve-ledger#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/mauve-ledger/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mauve-ledger/index.html",
+      "url": "/dashboards/mauve-ledger/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/mauve-ledger/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mauve-ledger/",
+      "url": "/dashboards/mauve-ledger/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/mauve-ledger/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mauve-ledger/?variant=blush",
+      "url": "/dashboards/mauve-ledger/?variant=blush#/overview",
       "width": 1440,
       "variant": "blush",
       "final_path": "/dashboards/mauve-ledger/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mauve-ledger/?variant=slate",
+      "url": "/dashboards/mauve-ledger/?variant=slate#/overview",
       "width": 1440,
       "variant": "slate",
       "final_path": "/dashboards/mauve-ledger/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/overview",
+      "width": 1440,
+      "variant": "blush",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/overview",
+      "width": 375,
+      "variant": "blush",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/overview",
+      "width": 1440,
+      "variant": "slate",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/overview",
+      "width": 375,
+      "variant": "slate",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/transactions",
+      "width": 1440,
+      "variant": "default",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/transactions",
+      "width": 375,
+      "variant": "default",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/transactions",
+      "width": 1440,
+      "variant": "blush",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/transactions",
+      "width": 375,
+      "variant": "blush",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/transactions",
+      "width": 1440,
+      "variant": "slate",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/transactions",
+      "width": 375,
+      "variant": "slate",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/budgets",
+      "width": 1440,
+      "variant": "default",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/budgets",
+      "width": 375,
+      "variant": "default",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/budgets",
+      "width": 1440,
+      "variant": "blush",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/budgets",
+      "width": 375,
+      "variant": "blush",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/budgets",
+      "width": 1440,
+      "variant": "slate",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/budgets",
+      "width": 375,
+      "variant": "slate",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/settings",
+      "width": 1440,
+      "variant": "blush",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/settings",
+      "width": 375,
+      "variant": "blush",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/settings",
+      "width": 1440,
+      "variant": "slate",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/settings",
+      "width": 375,
+      "variant": "slate",
+      "page": "settings",
       "errors": []
     },
     {

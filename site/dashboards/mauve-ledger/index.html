@@ -13,9 +13,12 @@
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="ml">
+  <div class="ml-haze" aria-hidden="true"><img src="media/haze.webp" width="1280" height="720" alt="" decoding="async"></div>
+  <div class="ml" data-db-app>
+  <main class="ml-main">
     <header class="ml-top">
       <a class="ml-brand" href="#" aria-label="Mauve Ledger home"><span class="ml-logo" aria-hidden="true">M</span></a>
       <nav class="ml-nav" aria-label="Sections" data-nav>
@@ -97,6 +100,7 @@
     </section>
 
     <p class="db-sample ml-foot">Sample data · fictional company and inbox</p>
+  </main>
   </div>
   <script src="app.js"></script>
 </body>
