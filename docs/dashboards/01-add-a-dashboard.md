@@ -42,7 +42,7 @@ site/dashboards/<id>/
   reference.jpg  ← (or .png) the owner's original reference image, copied in for 1:1 comparison
 ```
 
-Working copies of owner-supplied references live in `inputs/dashboards/` (gitignored while building). When the owner asks to keep them in the gallery, copy each into `site/dashboards/<id>/reference.jpg` (or `.png`) and set `"reference": "reference.jpg"` on the catalog entry. `shot.jpg` is our recreation screenshot; `reference.*` is the original for side-by-side fidelity checks.
+Working copies of owner-supplied references live in `inputs/dashboards/` (gitignored while building). When the owner asks to keep them in the gallery, copy each into `site/dashboards/<id>/reference.jpg` (or `.png`) and set `"reference": "reference.jpg"` on the catalog entry. The gallery detail then toggles **Live** vs **Original reference**. `shot.jpg` stays as a QA capture from `dashboards-check` — it is not shown in the gallery UI.
 
 ### index.html skeleton (copy and adapt)
 
@@ -149,7 +149,7 @@ It validates the entry: enums, required fields, palette hex, variant blocks pres
 node scripts/dashboards-check.mjs <id>
 ```
 
-It serves `site/` over HTTP with worst-case clean-URL rules (not file://), then loads `/dashboards/<id>/`, `/dashboards/<id>` and `/dashboards/<id>/index.html` at 1440×900, the folder URL at 375×812, every variant, and the gallery preview iframe at `#/dashboards/<id>`. It fails on console errors, any 404, an unstyled page, a missing `data-ready`, or horizontal overflow. It writes `thumb.jpg` (720×450 gallery card), `shot.jpg` (1440×900 recreation screenshot), and `docs/validation/dashboards/<id>.json`. Then run `node scripts/build.mjs` again so the catalog picks up the assets. Fidelity check: open Live vs **Original reference** (`reference.*`) in the gallery; use `shot.jpg` only as our recreation capture.
+It serves `site/` over HTTP with worst-case clean-URL rules (not file://), then loads `/dashboards/<id>/`, `/dashboards/<id>` and `/dashboards/<id>/index.html` at 1440×900, the folder URL at 375×812, every variant, and the gallery preview iframe at `#/dashboards/<id>`. It fails on console errors, any 404, an unstyled page, a missing `data-ready`, or horizontal overflow. It writes `thumb.jpg` (720×450 gallery card), `shot.jpg` (1440×900 recreation capture for QA), and `docs/validation/dashboards/<id>.json`. Then run `node scripts/build.mjs` again so the catalog picks up the assets. Gallery fidelity check: **Live** vs **Original reference** (`reference.*`).
 
 ## 7. Verify in the gallery
 

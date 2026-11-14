@@ -94,11 +94,9 @@
 Show me the screen plan before building.`;
     const refFile = d.reference || null;
     const files = ['index.html', 'style.css', 'app.js', 'thumb.jpg', 'shot.jpg'].concat(refFile ? [refFile] : []);
-    const viewBtns = [
-      ['live', 'Live'],
-      ...(refFile ? [['original', 'Original reference']] : []),
-      ['shot', 'Our shot'],
-    ];
+    const viewBtns = refFile
+      ? [['live', 'Live'], ['original', 'Original reference']]
+      : [];
     main.innerHTML = `
       <div class="s-wrap dg-detail">
         <nav class="dg-crumbs" aria-label="Breadcrumb"><a class="s-link" href="#/dashboards">← All dashboards</a><span class="s-muted s-small">${esc(fam[d.style_family].name)}</span></nav>
@@ -107,7 +105,7 @@ Show me the screen plan before building.`;
           <div class="cx-head-actions"><a class="s-btn" href="${dashUrl(d.id)}" target="_blank" rel="noopener">${icon('external')}Open full page</a><button class="s-btn s-btn-primary" data-copy-prompt>${icon('agent')}Copy agent prompt</button></div>
         </div>
         <div class="dg-toolbar">
-          <div class="dg-seg" role="group" aria-label="View">${viewBtns.map(([k, l]) => `<button data-view="${k}" aria-pressed="${k === 'live'}">${l}</button>`).join('')}</div>
+          ${viewBtns.length ? `<div class="dg-seg" role="group" aria-label="View">${viewBtns.map(([k, l]) => `<button data-view="${k}" aria-pressed="${k === 'live'}">${l}</button>`).join('')}</div>` : ''}
           <div class="dg-seg" role="group" aria-label="Device" data-device-seg>${Object.entries(DEVICES).map(([k, [, , l]]) => `<button data-device="${k}" aria-pressed="${k === device}">${l}</button>`).join('')}</div>
           <div class="dg-variants" role="group" aria-label="Variant">${d.variants.map((v) => `<button data-variant="${v.id}" aria-pressed="${v.id === variant}"><i style="background:${v.swatch || d.palette.accent}"></i>${esc(v.name)}</button>`).join('')}</div>
         </div>
@@ -117,10 +115,6 @@ Show me the screen plan before building.`;
             <img src="dashboards/${d.id}/${esc(refFile)}" alt="${esc(d.name)} original reference image" loading="lazy" decoding="async">
             <figcaption class="s-small s-muted">Original owner reference · <a class="s-link" href="dashboards/${d.id}/${esc(refFile)}" target="_blank" rel="noopener">Open ${esc(refFile)}</a> · compare 1:1 with Live</figcaption>
           </figure>` : ''}
-          <figure class="dg-shot" data-shot hidden>
-            <img src="dashboards/${d.id}/shot.jpg" alt="${esc(d.name)} 1440×900 recreation screenshot" width="1440" height="900" loading="lazy" decoding="async">
-            <figcaption class="s-small s-muted">Our recreation screenshot · 1440×900 · <a class="s-link" href="dashboards/${d.id}/shot.jpg" target="_blank" rel="noopener">Open shot.jpg</a></figcaption>
-          </figure>
         </div>
         <div class="dg-info">
           <section class="s-panel dg-pad"><h2 class="s-h3">Style</h2>
@@ -140,13 +134,11 @@ Show me the screen plan before building.`;
       </div>`;
     document.title = d.name + ' · Dashboards · Dashboard Tools';
     const stage = main.querySelector('[data-stage]'), frame = main.querySelector('[data-frame]'), ifr = frame.querySelector('iframe');
-    const shot = main.querySelector('[data-shot]');
     const original = main.querySelector('[data-original]');
     const deviceSeg = main.querySelector('[data-device-seg]');
     function syncView() {
       const live = view === 'live';
       frame.hidden = !live;
-      if (shot) shot.hidden = view !== 'shot';
       if (original) original.hidden = view !== 'original';
       deviceSeg.hidden = !live;
       main.querySelectorAll('[data-view]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === view)));
