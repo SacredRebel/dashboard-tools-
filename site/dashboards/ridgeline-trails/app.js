@@ -134,105 +134,26 @@
   $('.rt-grid').addEventListener('click', (e) => { const b = e.target.closest('[data-k]'); if (!b) return; const k = b.dataset.k, i = +b.dataset.i; sel[k] = sel[k] === i ? -1 : i; renderDial(k); $(`[data-k="${k}"][data-i="${i}"]`).focus(); });
   $('[data-cond]').innerHTML = COND.map(([n, v, c]) => `<li><i style="background:var(${c})"></i><b>${n}</b><span>${v}</span></li>`).join('');
   renderArt(); renderUpper(); renderDial('trail'); renderDial('act'); renderCap();
-/* === DB multipage polish (auto-upgraded) === */
+/* === DB multipage polish (dense kit) === */
   (function wirePages() {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"routes","name":"Routes","pattern":"List"},{"id":"journal","name":"Journal","pattern":"Detail"},{"id":"settings","name":"Settings","pattern":"Settings"}];
     const root = document.querySelector('[data-db-app]') || document.body;
-    let toastEl = document.querySelector('[data-toast]');
-    if (!toastEl) {
-      toastEl = document.createElement('div');
-      toastEl.className = 'dbp-toast';
-      toastEl.setAttribute('data-toast', '');
-      toastEl.hidden = true;
-      toastEl.setAttribute('role', 'status');
-      toastEl.setAttribute('aria-live', 'polite');
-      document.body.appendChild(toastEl);
-    }
-    function toast(msg) {
-      toastEl.textContent = msg; toastEl.hidden = false;
-      clearTimeout(toast._id); toast._id = setTimeout(() => { toastEl.hidden = true; }, 2200);
-    }
     const main = document.querySelector('main') || document.body;
-    let stub = document.querySelector('[data-db-stub]');
-    if (!stub) {
-      stub = document.createElement('section');
-      stub.setAttribute('data-db-stub', '');
-      stub.hidden = true;
-      stub.setAttribute('aria-live', 'polite');
-      main.appendChild(stub);
-    }
-    function setOverviewVisible(on) {
+    let overview = main.querySelector('[data-page-panel="overview"]');
+    if (!overview) {
+      overview = document.createElement('div');
+      overview.setAttribute('data-page-panel', 'overview');
+      const keep = [];
       [...main.children].forEach((ch) => {
-        if (ch === stub) return;
-        if (on) { ch.hidden = false; ch.removeAttribute('data-db-overview-hide'); }
-        else { ch.hidden = true; ch.setAttribute('data-db-overview-hide', ''); }
+        if (ch.hasAttribute && ch.hasAttribute('data-db-stub')) return;
+        if (ch.getAttribute && ch.getAttribute('data-db-page-host') != null) return;
+        keep.push(ch);
       });
-      stub.hidden = on;
+      keep.forEach((ch) => overview.appendChild(ch));
+      main.insertBefore(overview, main.firstChild);
     }
-    function pageHtml(page) {
-
-    if (page.id === 'routes') {
-      return `<section class="dbp-page" data-db-page="routes" aria-labelledby="p-h">
-        <h1 id="p-h">Routes</h1>
-        <p class="dbp-lead">Sample data · fictional.</p>
-        <div class="dbp-seg" role="group" aria-label="Routes state" data-dbp-tabs>
-          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
-          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
-          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
-          <button type="button" data-v="error" aria-pressed="false">Error</button>
-        </div>
-        <div data-dbp-body></div>
-      </section>`;
-    }
-    if (page.id === 'journal') {
-      return `<section class="dbp-page" data-db-page="journal" aria-labelledby="p-h">
-        <h1 id="p-h">Journal</h1>
-        <p class="dbp-lead">Sample data · fictional.</p>
-        <div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Misty morning</strong><span class="dbp-chip">Today</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Gold hour</strong><span class="dbp-chip">Yesterday</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Storm pause</strong><span class="dbp-chip">Tue</span></div></article></div>
-        <button type="button" class="dbp-btn" data-dbp-action>Open journal</button>
-      </section>`;
-    }
-    if (page.id === 'settings') {
-      return `<section class="dbp-page" data-db-page="settings" aria-labelledby="p-h">
-        <h1 id="p-h">Settings</h1>
-        <p class="dbp-lead">Sample data · fictional.</p>
-        <div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Units</strong><span class="dbp-chip">Celsius</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Eco mode</strong><span class="dbp-chip">On</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Alerts</strong><span class="dbp-chip">Push</span></div></article></div>
-        <button type="button" class="dbp-btn" data-dbp-action>Open settings</button>
-      </section>`;
-    }
-      return `<section class="dbp-page"><h1>${page.name}</h1></section>`;
-    }
-    function wirePage(page) {
-      if (page.id === 'routes') {
-        const body = stub.querySelector('[data-dbp-body]');
-        const paint = (state = 'ready') => {
-          if (state === 'loading') {
-            body.innerHTML = `<div class="dbp-state"><p>Loading…</p><div class="dbp-skel"></div><div class="dbp-skel"></div></div>`;
-            return;
-          }
-          if (state === 'empty') {
-            body.innerHTML = `<div class="dbp-state"><p>Nothing here yet.</p></div>`;
-            return;
-          }
-          if (state === 'error') {
-            body.innerHTML = `<div class="dbp-state"><p>Could not load.</p><button type="button" class="dbp-btn" data-retry>Retry</button></div>`;
-            stub.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
-            return;
-          }
-          body.innerHTML = `<div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Summit Loop</strong><span class="dbp-chip">12.4 km</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Lake Spur</strong><span class="dbp-chip">6.1 km</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Ridge Run</strong><span class="dbp-chip">9.8 km</span></div></article></div>`;
-        };
-        paint('ready');
-        const tabs = stub.querySelector('[data-dbp-tabs]');
-        tabs?.addEventListener('click', (e) => {
-          const b = e.target.closest('button[data-v]'); if (!b) return;
-          tabs.querySelectorAll('button[data-v]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-          paint(b.dataset.v);
-        });
-      }
-      stub.querySelector('[data-dbp-action]')?.addEventListener('click', () => toast(page.name + ' · sample'));
-      stub.querySelector('[data-save-settings], [data-dbp-action]')?.addEventListener('click', () => {});
-    }
+    main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
     document.querySelectorAll('a[href]').forEach((a) => {
       const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
       if (!label) return;
@@ -241,41 +162,18 @@
         || (label === 'dashboard' && p.id === 'overview'));
       if (hit) a.setAttribute('href', '#/' + hit.id);
     });
-    // map common rail buttons if present
-    document.querySelectorAll('[data-rail] button[data-v]').forEach((b) => {
-      const map = { home: 'overview', climate: 'rooms', fan: 'devices', eco: 'energy', settings: 'settings' };
-      const id = map[b.dataset.v] || b.dataset.v;
-      if (PAGES.some((p) => p.id === id)) {
-        b.addEventListener('click', () => { location.hash = '#/' + id; });
-      }
-    });
     if (window.DB?.onVisible) {
       window.DB.onVisible(root, (visible) => {
         document.documentElement.dataset.motionPaused = visible ? '' : '1';
       });
     }
-    if (!window.DB || typeof window.DB.route !== 'function') {
-      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+    if (!window.DB?.dense) {
+      console.error('DB.dense missing — load ../_shared/dense-pages.js');
       return;
     }
-    const seen = new Set();
-    window.DB.route(PAGES, (id, page) => {
-      if (id === PAGES[0].id) {
-        setOverviewVisible(true);
-        if (!seen.has('overview')) {
-          seen.add('overview');
-          document.querySelectorAll('.rt-reveal, .dbp-reveal').forEach((el, i) => {
-            el.style.setProperty('--reveal-delay', (reduce ? 0 : 40 * i) + 'ms');
-            el.classList.add('rt-reveal-in', 'dbp-reveal-in');
-          });
-        }
-      } else {
-        setOverviewVisible(false);
-        stub.innerHTML = pageHtml(page);
-        wirePage(page);
-      }
-      seen.add(id);
-    });
+    window.DB.dense.mount({ main, overview, pages: PAGES, brand: "Ridgeline Trails" });
+    if (window.DB?.fx) window.DB.fx.remount(overview);
+    void reduce;
   })();
 /* === /DB multipage polish === */
   document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end

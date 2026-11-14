@@ -433,7 +433,7 @@ Inputs I have: &lt;voice memo / meeting notes / playbook&gt;.</code></pre>
   }
 
   // ---------------------------------------------------------------- router
-  const titles = { '': 'Dashboard Tools', dashboards: 'Dashboards', showcase: 'Showcase', calendars: 'Calendars', tools: 'Tools', framework: 'Framework', themes: 'Themes', components: 'Components', demo: 'Demo', docs: 'Docs', inventory: 'Inventory' };
+  const titles = { '': 'Dashboard Tools', dashboards: 'Dashboards', fx: 'Motion & FX', showcase: 'Showcase', calendars: 'Calendars', tools: 'Tools', framework: 'Framework', themes: 'Themes', components: 'Components', demo: 'Demo', docs: 'Docs', inventory: 'Inventory' };
   let lastPage = null;
   function route() {
     const raw = location.hash.replace(/^#\/?/, '');
@@ -454,6 +454,7 @@ Inputs I have: &lt;voice memo / meeting notes / playbook&gt;.</code></pre>
       case 'demo': pageDemo(); break;
       case 'showcase': Showcase.render(main, { theme: (TH.find((t) => t.id === current.theme) || {}).family === 'cinematic' ? current.theme : 'grove', themes: TH, onTheme: saveTheme }); break;
       case 'dashboards': Dashboards.render(main, sub); break;
+      case 'fx': window.FxPage ? FxPage.render(main) : (main.innerHTML = '<div class="s-wrap"><p>FX page script missing.</p></div>'); break;
       case 'calendars': Calendars.render(main, { themes: TH, onTheme: saveTheme }); break;
       case 'docs': pageDocs(sub || 'README.md', anchor); break;
       case 'inventory': pageInventory(); break;

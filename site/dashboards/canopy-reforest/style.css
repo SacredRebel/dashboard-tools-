@@ -99,23 +99,35 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
 }
 .cr-hero-leaves {
   position: absolute; right: -4%; top: -8%; width: min(62%, 720px); height: 120%;
-  object-fit: cover; object-position: center; pointer-events: none;
+  object-fit: cover; object-position: center; pointer-events: none; z-index: 1;
   mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 100%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 100%);
-  filter: saturate(1.05) contrast(1.02);
+  filter: saturate(1.08) contrast(1.04);
   animation: crSway 9s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.cr-hero-leaves-fg {
+  position: absolute; right: -8%; bottom: -12%; width: min(38%, 420px); height: 55%;
+  object-fit: cover; object-position: 70% 30%; pointer-events: none; z-index: 2;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 35%, #000 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 35%, #000 100%);
+  filter: saturate(1.1) contrast(1.05);
+  animation: crSway 11s ease-in-out infinite alternate-reverse;
+  transform-origin: 80% 100%;
 }
 .cr-hero-copy {
-  position: relative; z-index: 1; max-width: 520px; margin: 24px; padding: 28px 32px;
+  position: relative; z-index: 3; max-width: 520px; margin: 24px; padding: 28px 32px;
   border-radius: var(--radius-lg);
-  background: linear-gradient(145deg, rgb(18 28 20 / 0.72), rgb(24 36 28 / 0.55));
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+  /* Opaque clay plate so body copy never samples leaf photo for contrast. */
+  background: #1a2e22;
+  border: 1px solid var(--border);
+  box-shadow: var(--mat-clay-shadow, 0 16px 34px rgb(0 0 0 / 0.3)), inset 0 1px 0 rgb(255 255 255 / 0.1);
 }
 [data-variant="birch"] .cr-hero-copy {
-  background: linear-gradient(145deg, rgb(255 255 255 / 0.82), rgb(235 242 220 / 0.9));
+  background: #f4f7ea;
 }
 [data-variant="autumn"] .cr-hero-copy {
-  background: linear-gradient(145deg, rgb(40 20 10 / 0.78), rgb(70 35 15 / 0.55));
+  background: #2c180e;
 }
 .cr-eyebrow { font-size: 14px; font-weight: 600; color: #f6efdc; }
 [data-variant="birch"] .cr-eyebrow { color: var(--text); }
@@ -175,7 +187,12 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
 .cr-tile {
   position: relative; min-width: 0; min-height: 250px; padding: 22px; border-radius: var(--radius-lg);
   background: var(--tile); color: var(--text);
-  box-shadow: var(--shadow), inset 0 1px 0 rgb(255 255 255 / 0.12);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  box-shadow:
+    0 18px 36px rgb(0 0 0 / 0.28),
+    0 2px 0 rgb(0 0 0 / 0.12),
+    inset 0 1px 0 rgb(255 255 255 / 0.22),
+    inset 0 -10px 18px rgb(0 0 0 / 0.12);
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 .cr-tile:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgb(0 0 0 / 0.34), inset 0 1px 0 rgb(255 255 255 / 0.14); }
@@ -307,8 +324,10 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
 @keyframes crShimmer { to { background-position: -200% 0; } }
 @keyframes crSway { from { transform: translate3d(0,0,0) rotate(0deg); } to { transform: translate3d(-1.2%, 0.6%, 0) rotate(-0.6deg); } }
 
+[data-motion-paused="1"] .cr-hero-leaves,
+[data-motion-paused="1"] .cr-hero-leaves-fg { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
-  .cr-hero-leaves { animation: none; }
+  .cr-hero-leaves, .cr-hero-leaves-fg { animation: none; }
   .cr-tile:hover { transform: none; }
   .cr-page { animation: none; }
   .cr-skel { animation: none; }

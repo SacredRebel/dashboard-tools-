@@ -1,7 +1,7 @@
 {
   "id": "larchwood-lodge",
   "checked": "2026-11-14",
-  "ok": true,
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -10,7 +10,13 @@
       "variant": "default",
       "final_path": "/dashboards/larchwood-lodge/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 1.13:1 (needs 4.5) \"Fireside\" 15px, text rgb(36, 19, 10) on ~rgb(52, 42, 58) at x132 y1450",
+        "low contrast 1.64:1 (needs 4.5) \"Today 19:00 · private · 45 min\" 13px, text rgb(228, 214, 224) on ~rgb(52, 42, 58) at x177 y2155",
+        "low contrast 2.27:1 (large, needs 3) \"07:00\" 24px, text rgb(245, 238, 243) on ~rgb(41, 33, 47) at x113 y2720",
+        "low contrast 1.64:1 (needs 4.5) \"Sunrise kayak\" 13px, text rgb(228, 214, 224) on ~rgb(41, 33, 47) at x113 y2755",
+        "low contrast 1.23:1 (needs 4.5) \"Weekend lie-in\" 13px, text rgb(228, 214, 224) on ~rgb(40, 33, 46) at x113 y2855"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge#/overview",
@@ -18,7 +24,13 @@
       "variant": "default",
       "final_path": "/dashboards/larchwood-lodge/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 1.13:1 (needs 4.5) \"Fireside\" 15px, text rgb(36, 19, 10) on ~rgb(242, 148, 85) at x132 y1450",
+        "low contrast 1.64:1 (needs 4.5) \"Today 19:00 · private · 45 min\" 13px, text rgb(228, 214, 224) on ~rgb(52, 42, 58) at x177 y2155",
+        "low contrast 2.01:1 (large, needs 3) \"07:00\" 24px, text rgb(245, 238, 243) on ~rgb(41, 33, 47) at x113 y2720",
+        "low contrast 1.64:1 (needs 4.5) \"Sunrise kayak\" 13px, text rgb(228, 214, 224) on ~rgb(41, 33, 47) at x113 y2755",
+        "low contrast 1.23:1 (needs 4.5) \"Weekend lie-in\" 13px, text rgb(228, 214, 224) on ~rgb(41, 33, 47) at x113 y2855"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/index.html#/overview",
@@ -26,7 +38,13 @@
       "variant": "default",
       "final_path": "/dashboards/larchwood-lodge/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 1.13:1 (needs 4.5) \"Fireside\" 15px, text rgb(36, 19, 10) on ~rgb(242, 148, 85) at x132 y1450",
+        "low contrast 1.64:1 (needs 4.5) \"Today 19:00 · private · 45 min\" 13px, text rgb(228, 214, 224) on ~rgb(52, 42, 58) at x177 y2155",
+        "low contrast 2.01:1 (large, needs 3) \"07:00\" 24px, text rgb(245, 238, 243) on ~rgb(41, 33, 47) at x113 y2720",
+        "low contrast 1.64:1 (needs 4.5) \"Sunrise kayak\" 13px, text rgb(228, 214, 224) on ~rgb(41, 33, 47) at x113 y2755",
+        "low contrast 1.23:1 (needs 4.5) \"Weekend lie-in\" 13px, text rgb(228, 214, 224) on ~rgb(41, 33, 47) at x113 y2855"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/#/overview",
@@ -42,7 +60,12 @@
       "variant": "birch",
       "final_path": "/dashboards/larchwood-lodge/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 1.08:1 (needs 4.5) \"Fireside\" 15px, text rgb(255, 255, 255) on ~rgb(168, 79, 30) at x132 y1450",
+        "low contrast 1.81:1 (needs 4.5) \"Today 19:00 · private · 45 min\" 13px, text rgb(74, 63, 72) on ~rgb(242, 233, 228) at x177 y2155",
+        "low contrast 1.81:1 (needs 4.5) \"Sunrise kayak\" 13px, text rgb(74, 63, 72) on ~rgb(247, 243, 240) at x113 y2755",
+        "low contrast 1.54:1 (needs 4.5) \"Weekend lie-in\" 13px, text rgb(74, 63, 72) on ~rgb(247, 243, 240) at x113 y2855"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/?variant=pine#/overview",
@@ -50,14 +73,27 @@
       "variant": "pine",
       "final_path": "/dashboards/larchwood-lodge/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 1.14:1 (needs 4.5) \"Fireside\" 15px, text rgb(31, 20, 5) on ~rgb(231, 164, 71) at x132 y1450",
+        "low contrast 1.53:1 (needs 4.5) \"Today 19:00 · private · 45 min\" 13px, text rgb(228, 214, 224) on ~rgb(32, 49, 45) at x177 y2155",
+        "low contrast 1.88:1 (large, needs 3) \"07:00\" 24px, text rgb(245, 238, 243) on ~rgb(26, 38, 36) at x113 y2720",
+        "low contrast 1.53:1 (needs 4.5) \"Sunrise kayak\" 13px, text rgb(228, 214, 224) on ~rgb(26, 38, 37) at x113 y2755",
+        "low contrast 1.23:1 (needs 4.5) \"Weekend lie-in\" 13px, text rgb(228, 214, 224) on ~rgb(26, 38, 37) at x113 y2855"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/#/overview",
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)",
+        "low contrast 1.13:1 (needs 4.5) \"Fireside\" 15px, text rgb(36, 19, 10) on ~rgb(242, 148, 85) at x132 y1450",
+        "low contrast 1.64:1 (needs 4.5) \"Today 19:00 · private · 45 min\" 13px, text rgb(228, 214, 224) on ~rgb(52, 42, 58) at x177 y2155",
+        "low contrast 2.01:1 (large, needs 3) \"07:00\" 24px, text rgb(245, 238, 243) on ~rgb(41, 33, 47) at x113 y2720",
+        "low contrast 1.64:1 (needs 4.5) \"Sunrise kayak\" 13px, text rgb(228, 214, 224) on ~rgb(41, 33, 47) at x113 y2755",
+        "low contrast 1.23:1 (needs 4.5) \"Weekend lie-in\" 13px, text rgb(228, 214, 224) on ~rgb(41, 33, 47) at x113 y2855"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/#/overview",
@@ -71,7 +107,13 @@
       "width": 1440,
       "variant": "birch",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)",
+        "low contrast 1.08:1 (needs 4.5) \"Fireside\" 15px, text rgb(255, 255, 255) on ~rgb(168, 79, 30) at x132 y1450",
+        "low contrast 1.81:1 (needs 4.5) \"Today 19:00 · private · 45 min\" 13px, text rgb(74, 63, 72) on ~rgb(242, 233, 228) at x177 y2155",
+        "low contrast 1.81:1 (needs 4.5) \"Sunrise kayak\" 13px, text rgb(74, 63, 72) on ~rgb(247, 243, 240) at x113 y2755",
+        "low contrast 1.54:1 (needs 4.5) \"Weekend lie-in\" 13px, text rgb(74, 63, 72) on ~rgb(247, 243, 240) at x113 y2855"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/?variant=birch#/overview",
@@ -85,7 +127,14 @@
       "width": 1440,
       "variant": "pine",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)",
+        "low contrast 1.14:1 (needs 4.5) \"Fireside\" 15px, text rgb(31, 20, 5) on ~rgb(231, 164, 71) at x132 y1450",
+        "low contrast 1.53:1 (needs 4.5) \"Today 19:00 · private · 45 min\" 13px, text rgb(228, 214, 224) on ~rgb(32, 49, 45) at x177 y2155",
+        "low contrast 1.88:1 (large, needs 3) \"07:00\" 24px, text rgb(245, 238, 243) on ~rgb(26, 38, 36) at x113 y2720",
+        "low contrast 1.53:1 (needs 4.5) \"Sunrise kayak\" 13px, text rgb(228, 214, 224) on ~rgb(26, 38, 37) at x113 y2755",
+        "low contrast 1.23:1 (needs 4.5) \"Weekend lie-in\" 13px, text rgb(228, 214, 224) on ~rgb(26, 38, 37) at x113 y2855"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/?variant=pine#/overview",
@@ -99,7 +148,9 @@
       "width": 1440,
       "variant": "default",
       "page": "rooms",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/#/rooms",
@@ -113,7 +164,9 @@
       "width": 1440,
       "variant": "birch",
       "page": "rooms",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/?variant=birch#/rooms",
@@ -127,7 +180,9 @@
       "width": 1440,
       "variant": "pine",
       "page": "rooms",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/?variant=pine#/rooms",
@@ -141,7 +196,9 @@
       "width": 1440,
       "variant": "default",
       "page": "guests",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/#/guests",
@@ -155,7 +212,9 @@
       "width": 1440,
       "variant": "birch",
       "page": "guests",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/?variant=birch#/guests",
@@ -169,7 +228,9 @@
       "width": 1440,
       "variant": "pine",
       "page": "guests",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/?variant=pine#/guests",
@@ -183,7 +244,9 @@
       "width": 1440,
       "variant": "default",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/#/settings",
@@ -197,7 +260,9 @@
       "width": 1440,
       "variant": "birch",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/?variant=birch#/settings",
@@ -211,7 +276,9 @@
       "width": 1440,
       "variant": "pine",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "page content spans 21% of the main width (need ≥ 70%)"
+      ]
     },
     {
       "url": "/dashboards/larchwood-lodge/?variant=pine#/settings",

@@ -11,9 +11,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="../_shared/fx/fx.css">
+  <link rel="stylesheet" href="../_shared/dense-pages.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_shared/dense-pages.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
+  <script type="module" src="../_shared/fx/index.js"></script>
 </head>
 <body>
   <div class="mm" data-db-app>
@@ -38,7 +42,7 @@
       </header>
 
       <section class="mm-hero" aria-labelledby="mm-hero-h">
-        <div class="mm-heroart" data-hero aria-hidden="true"><img class="mm-head mm-ambient" src="media/head.webp" width="640" height="640" alt="" decoding="async"></div>
+        <div class="mm-heroart" data-hero data-fx="parallax" aria-hidden="true"><img class="mm-head" data-fx="ambient" data-fx-dur="14" src="media/head@2x.webp" srcset="media/head.webp 1x, media/head@2x.webp 2x" width="720" height="720" alt="" decoding="async"></div>
         <div class="mm-herocopy"><h2 id="mm-hero-h" data-greet></h2><p>Your Sunday slow-down mix is ready.</p><button class="mm-btn" data-playmix><span data-icon="play"></span>Play the mix</button></div>
         <div class="mm-plant" data-plant aria-hidden="true"></div>
       </section>
@@ -51,21 +55,21 @@
         <span class="mm-time num" data-time></span>
       </section>
       <section class="mm-stats" aria-label="This week">
-        <div class="mm-stat t1"><span data-icon="music"></span><p>Songs played</p><b class="num">1,312</b><small>+14% this week</small></div>
-        <div class="mm-stat t2"><span data-icon="heart"></span><p>Favourites</p><b class="num" data-favs>0</b><small>Tap a heart to add</small></div>
-        <div class="mm-stat t3"><span data-icon="clock"></span><p>Hours listened</p><b class="num">31.8</b><small>+4.2 this week</small></div>
-        <div class="mm-stat t4"><span data-icon="flame"></span><p>Listening streak</p><b class="num">9</b><small>days in a row</small></div>
+        <div class="mm-stat t1" data-fx="reveal"><span data-icon="music"></span><p>Songs played</p><b class="num" data-fx="count" data-to="1312">1,312</b><small>+14% this week</small></div>
+        <div class="mm-stat t2" data-fx="reveal"><span data-icon="heart" data-anim="hover"></span><p>Favourites</p><b class="num" data-favs data-fx="count" data-to="0">0</b><small>Tap a heart to add</small></div>
+        <div class="mm-stat t3" data-fx="reveal"><span data-icon="clock"></span><p>Hours listened</p><b class="num" data-fx="count" data-to="31.8" data-decimals="1">31.8</b><small>+4.2 this week</small></div>
+        <div class="mm-stat t4" data-fx="reveal"><span data-icon="flame"></span><p>Listening streak</p><b class="num" data-fx="count" data-to="9">9</b><small>days in a row</small></div>
       </section>
 
       <div class="mm-row">
-        <section class="mm-card mm-listen" aria-labelledby="mm-l-h">
+        <section class="mm-card mm-listen mat-clay" data-fx="reveal spotlight" aria-labelledby="mm-l-h">
           <div class="mm-head"><h2 id="mm-l-h">Listening this week</h2>
             <div class="mm-seg" role="group" aria-label="Week" data-week><button data-v="this" aria-pressed="true">This week</button><button data-v="last" aria-pressed="false">Last week</button></div></div>
-          <div data-bars></div>
+          <div data-bars data-fx="draw"></div>
         </section>
-        <section class="mm-card mm-genres" aria-labelledby="mm-g-h">
+        <section class="mm-card mm-genres mat-clay" data-fx="reveal spotlight" aria-labelledby="mm-g-h">
           <h2 id="mm-g-h">Top genres</h2>
-          <div class="mm-gbody"><div class="mm-donut" data-donut></div><ul class="mm-legend" data-legend></ul></div>
+          <div class="mm-gbody"><div class="mm-donut" data-donut data-fx="draw"></div><ul class="mm-legend" data-legend></ul></div>
         </section>
       </div>
 

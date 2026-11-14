@@ -1,7 +1,7 @@
 {
   "id": "hearth-nest",
   "checked": "2026-11-14",
-  "ok": true,
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -57,7 +57,9 @@
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/living-room.webp is 1280px for 1012px rendered (need ≥ 1518px or a srcset 2x)"
+      ]
     },
     {
       "url": "/dashboards/hearth-nest/#/overview",
@@ -71,7 +73,9 @@
       "width": 1440,
       "variant": "cedar",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/living-room.webp is 1280px for 1012px rendered (need ≥ 1518px or a srcset 2x)"
+      ]
     },
     {
       "url": "/dashboards/hearth-nest/?variant=cedar#/overview",
@@ -85,7 +89,9 @@
       "width": 1440,
       "variant": "frost",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low-res image: media/living-room.webp is 1280px for 1011px rendered (need ≥ 1517px or a srcset 2x)"
+      ]
     },
     {
       "url": "/dashboards/hearth-nest/?variant=frost#/overview",

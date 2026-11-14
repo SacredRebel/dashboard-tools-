@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/ember-rooms/",
+      "url": "/dashboards/ember-rooms/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/ember-rooms/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/ember-rooms",
+      "url": "/dashboards/ember-rooms#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/ember-rooms/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/ember-rooms/index.html",
+      "url": "/dashboards/ember-rooms/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/ember-rooms/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/ember-rooms/",
+      "url": "/dashboards/ember-rooms/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/ember-rooms/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/ember-rooms/?variant=mist",
+      "url": "/dashboards/ember-rooms/?variant=mist#/overview",
       "width": 1440,
       "variant": "mist",
       "final_path": "/dashboards/ember-rooms/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/ember-rooms/?variant=dusk",
+      "url": "/dashboards/ember-rooms/?variant=dusk#/overview",
       "width": 1440,
       "variant": "dusk",
       "final_path": "/dashboards/ember-rooms/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/overview",
+      "width": 1440,
+      "variant": "mist",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/overview",
+      "width": 375,
+      "variant": "mist",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/overview",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/overview",
+      "width": 375,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/rooms",
+      "width": 1440,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/rooms",
+      "width": 375,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/rooms",
+      "width": 1440,
+      "variant": "mist",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/rooms",
+      "width": 375,
+      "variant": "mist",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/rooms",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/rooms",
+      "width": 375,
+      "variant": "dusk",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/devices",
+      "width": 1440,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/devices",
+      "width": 375,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/devices",
+      "width": 1440,
+      "variant": "mist",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/devices",
+      "width": 375,
+      "variant": "mist",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/devices",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/devices",
+      "width": 375,
+      "variant": "dusk",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/energy",
+      "width": 1440,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/energy",
+      "width": 375,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/energy",
+      "width": 1440,
+      "variant": "mist",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/energy",
+      "width": 375,
+      "variant": "mist",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/energy",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/energy",
+      "width": 375,
+      "variant": "dusk",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/settings",
+      "width": 1440,
+      "variant": "mist",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/settings",
+      "width": 375,
+      "variant": "mist",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/settings",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/settings",
+      "width": 375,
+      "variant": "dusk",
+      "page": "settings",
       "errors": []
     },
     {

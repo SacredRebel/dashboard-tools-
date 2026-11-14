@@ -215,11 +215,27 @@ body {
 .me-profile > span[data-icon] svg { width: 16px; height: 16px; color: var(--text-muted); }
 
 .me-main {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: stretch;
+  margin-bottom: 22px;
+  width: 100%;
+}
+.me-main > [data-page-panel="overview"],
+.me-main > .db-dense-page,
+.me-main > [data-db-page-host] > .db-dense-page {
   display: grid;
   grid-template-columns: minmax(280px, 1.05fr) minmax(240px, 0.85fr) minmax(260px, 0.95fr);
   gap: 22px;
   align-items: start;
-  margin-bottom: 22px;
+  width: 100%;
+}
+.me-main > [data-db-page-host] {
+  width: 100%;
+}
+.me-main > [data-db-page-host] > .db-dense-page {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 .me-sechead {
   display: flex;
@@ -555,7 +571,7 @@ body {
 .me-foot { text-align: center; margin-top: 16px; }
 
 @media (max-width: 1180px) {
-  .me-main {
+  .me-main > [data-page-panel="overview"] {
     grid-template-columns: 1fr 1fr;
   }
   .me-dna { grid-column: 1 / -1; min-height: 320px; }
@@ -563,7 +579,7 @@ body {
 }
 @media (max-width: 960px) {
   .me { padding: 14px 16px 20px; }
-  .me-main { grid-template-columns: 1fr; min-width: 0; }
+  .me-main > [data-page-panel="overview"] { grid-template-columns: 1fr; min-width: 0; }
   .me-who { display: none; }
   .me-week { min-width: 0; overflow: hidden; }
   .me-weekstrip {
@@ -619,7 +635,7 @@ body {
 .dbp-skel { height: 44px; border-radius: 10px; background: linear-gradient(90deg, #e8e8e8, #f7f7f7, #e8e8e8); background-size: 200% 100%; animation: dbp-skel 1.2s linear infinite; }
 .dbp-toast { position: fixed; right: 20px; bottom: 20px; z-index: 50; min-height: 44px; padding: 12px 16px; border-radius: 12px; background: var(--surface, #fff); color: var(--text, #111); box-shadow: 0 12px 32px rgb(0 0 0 / 0.18); max-width: min(360px, calc(100vw - 32px)); }
 .dbp-toast[hidden] { display: none !important; }
-.dbp-reveal { opacity: 0; transform: translateY(8px); }
+.dbp-reveal { opacity: 1; transform: translateY(8px); }
 .dbp-reveal-in { opacity: 1; transform: none; transition: opacity 280ms ease, transform 280ms ease; transition-delay: var(--reveal-delay, 0ms); }
 @keyframes dbp-skel { to { background-position: -200% 0; } }
 [data-motion-paused="1"] .dbp-skel { animation-play-state: paused; }

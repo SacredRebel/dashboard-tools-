@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/solstice-energy/",
+      "url": "/dashboards/solstice-energy/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/solstice-energy/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/solstice-energy",
+      "url": "/dashboards/solstice-energy#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/solstice-energy/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/solstice-energy/index.html",
+      "url": "/dashboards/solstice-energy/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/solstice-energy/",
@@ -29,15 +29,15 @@
       "errors": []
     },
     {
-      "url": "/dashboards/solstice-energy/",
+      "url": "/dashboards/solstice-energy/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/solstice-energy/",
-      "overflow_px": 0,
+      "overflow_px": 1,
       "errors": []
     },
     {
-      "url": "/dashboards/solstice-energy/?variant=glacier",
+      "url": "/dashboards/solstice-energy/?variant=glacier#/overview",
       "width": 1440,
       "variant": "glacier",
       "final_path": "/dashboards/solstice-energy/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/solstice-energy/?variant=paper",
+      "url": "/dashboards/solstice-energy/?variant=paper#/overview",
       "width": 1440,
       "variant": "paper",
       "final_path": "/dashboards/solstice-energy/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=glacier#/overview",
+      "width": 1440,
+      "variant": "glacier",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=glacier#/overview",
+      "width": 375,
+      "variant": "glacier",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=paper#/overview",
+      "width": 1440,
+      "variant": "paper",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=paper#/overview",
+      "width": 375,
+      "variant": "paper",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/#/rooms",
+      "width": 1440,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/#/rooms",
+      "width": 375,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=glacier#/rooms",
+      "width": 1440,
+      "variant": "glacier",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=glacier#/rooms",
+      "width": 375,
+      "variant": "glacier",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=paper#/rooms",
+      "width": 1440,
+      "variant": "paper",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=paper#/rooms",
+      "width": 375,
+      "variant": "paper",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/#/devices",
+      "width": 1440,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/#/devices",
+      "width": 375,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=glacier#/devices",
+      "width": 1440,
+      "variant": "glacier",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=glacier#/devices",
+      "width": 375,
+      "variant": "glacier",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=paper#/devices",
+      "width": 1440,
+      "variant": "paper",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=paper#/devices",
+      "width": 375,
+      "variant": "paper",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/#/energy",
+      "width": 1440,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/#/energy",
+      "width": 375,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=glacier#/energy",
+      "width": 1440,
+      "variant": "glacier",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=glacier#/energy",
+      "width": 375,
+      "variant": "glacier",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=paper#/energy",
+      "width": 1440,
+      "variant": "paper",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=paper#/energy",
+      "width": 375,
+      "variant": "paper",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=glacier#/settings",
+      "width": 1440,
+      "variant": "glacier",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=glacier#/settings",
+      "width": 375,
+      "variant": "glacier",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=paper#/settings",
+      "width": 1440,
+      "variant": "paper",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/solstice-energy/?variant=paper#/settings",
+      "width": 375,
+      "variant": "paper",
+      "page": "settings",
       "errors": []
     },
     {

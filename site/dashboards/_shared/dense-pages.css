@@ -1,0 +1,162 @@
+/* Dense secondary pages — shared kit (pair with dense-pages.js) */
+[data-db-page-host][hidden] { display: none !important; }
+/* Keep parent grid/flex layouts: overview wrapper must not collapse columns. */
+main > [data-page-panel="overview"]:not([hidden]) { display: contents; }
+[data-db-page-host]:not([hidden]) {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  grid-column: 1 / -1;
+  flex: 1 1 100%;
+  max-width: none;
+}
+[data-db-page-host] > .db-dense-page { width: 100%; min-width: 0; max-width: none; }
+.db-dense-page {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  min-height: 72vh;
+  color: var(--text);
+  align-content: start;
+  /* Opaque panel fill (override per glass board when --surface is translucent). */
+  --db-dense-fill: var(--surface-solid, var(--bg));
+  --db-dense-fill-2: var(--bg);
+  /* Keep .mat-clay helpers opaque even when the board never defines material tokens. */
+  --mat-clay-fill: var(--db-dense-fill);
+  --mat-clay-edge: var(--border);
+  --mat-clay-shadow: var(--shadow-sm, 0 1px 2px rgb(0 0 0 / 0.08));
+  --mat-clay-inset: inset 0 1px 0 rgb(255 255 255 / 0.35);
+  padding: 18px 16px 28px;
+  border-radius: var(--radius-lg, 18px);
+  background: var(--db-dense-fill);
+}
+.db-dense-top {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: end;
+}
+.db-dense-page h1 {
+  margin: 0;
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 700;
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+.db-dense-lead {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 65ch;
+  text-wrap: pretty;
+}
+.db-dense-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.db-dense-seg {
+  display: flex; gap: 2px; padding: 3px; border-radius: 999px;
+  background: var(--db-dense-fill-2, var(--surface-2, var(--surface)));
+}
+.db-dense-seg button {
+  min-height: 40px; padding: 0 12px; border: 0; border-radius: 999px;
+  background: none; color: var(--text); font: inherit; font-size: 13px; font-weight: 600;
+}
+.db-dense-seg button[aria-pressed="true"] {
+  background: var(--accent); color: var(--accent-fg);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgb(0 0 0 / 0.08));
+}
+@media (max-width: 640px) {
+  .db-dense-seg button { min-height: 44px; }
+}
+.db-dense-kpis {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.db-dense-kpi {
+  padding: 14px 16px;
+  border-radius: var(--radius-md, 14px);
+  background: var(--mat-clay-fill, var(--db-dense-fill, var(--surface)));
+  border: 1px solid var(--mat-clay-edge, var(--border));
+  box-shadow: var(--mat-clay-shadow, var(--shadow-sm)), var(--mat-clay-inset, inset 0 1px 0 rgb(255 255 255 / 0.65));
+}
+.db-dense-kpi b {
+  display: block;
+  font-size: 28px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.db-dense-kpi span { font-size: 13px; color: var(--text-muted); }
+.db-dense-card {
+  grid-column: span 4;
+  padding: 16px;
+  border-radius: var(--radius-lg, 18px);
+  background: var(--mat-clay-fill, var(--db-dense-fill, var(--surface)));
+  border: 1px solid var(--mat-clay-edge, var(--border));
+  box-shadow: var(--mat-clay-shadow, var(--shadow-sm)), var(--mat-clay-inset, inset 0 1px 0 rgb(255 255 255 / 0.65));
+  min-width: 0;
+}
+.db-dense-card.db-dense-wide { grid-column: span 8; }
+.db-dense-card.db-dense-span6 { grid-column: span 6; }
+.db-dense-card.db-dense-full { grid-column: 1 / -1; }
+.db-dense-head {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 10px; margin-bottom: 10px; flex-wrap: wrap;
+}
+.db-dense-head h2 { margin: 0; font-size: 15px; font-weight: 650; }
+.db-dense-muted { font-size: 13px; color: var(--text-muted); }
+.db-dense-search {
+  min-height: 40px; min-width: 160px; padding: 0 12px;
+  border-radius: 999px; border: 1px solid var(--border);
+  background: var(--bg); color: var(--text); font: inherit;
+}
+.db-dense-list { display: grid; gap: 8px; }
+.db-dense-list article {
+  display: flex; justify-content: space-between; gap: 12px; align-items: center;
+  min-height: 44px; padding: 8px 12px; border-radius: 12px;
+  background: var(--db-dense-fill-2, var(--bg)); border: 1px solid var(--border); cursor: pointer;
+  color: var(--text);
+}
+.db-dense-list article:hover { border-color: var(--accent); }
+.db-dense-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.db-dense-table th, .db-dense-table td {
+  padding: 12px 10px; text-align: left; border-bottom: 1px solid var(--border);
+}
+.db-dense-table th { color: var(--text-muted); font-size: 12px; font-weight: 600; }
+.db-dense-table tr { cursor: pointer; }
+.db-dense-table tr:hover, .db-dense-table tr[aria-selected="true"] { background: var(--accent-soft, rgb(0 0 0 / 0.04)); }
+.db-dense-chart { color: var(--accent); min-height: 80px; }
+.db-dense-skel {
+  height: 12px; margin: 10px 0; border-radius: 8px;
+  background: linear-gradient(90deg, var(--surface), var(--surface-2, var(--bg)), var(--surface));
+  background-size: 200% 100%;
+  animation: dbDenseShimmer 1.2s linear infinite;
+}
+@keyframes dbDenseShimmer { to { background-position: -200% 0; } }
+.db-dense-btn {
+  min-height: 44px; padding: 0 16px; border-radius: 999px;
+  border: 2px solid var(--accent); background: var(--surface); color: var(--text);
+  font: inherit; font-weight: 650; cursor: pointer;
+}
+.db-dense-scrim {
+  position: fixed; inset: 0; background: rgb(20 16 30 / 0.35); z-index: 39;
+}
+.db-dense-scrim[hidden], .db-dense-drawer[hidden], .db-dense-empty[hidden] { display: none !important; }
+.db-dense-drawer {
+  position: fixed; top: 0; right: 0; width: min(400px, 100%); height: 100%;
+  background: var(--surface); border-left: 1px solid var(--border);
+  box-shadow: var(--shadow-lg, 0 24px 60px rgb(0 0 0 / 0.2));
+  padding: 24px; z-index: 40; overflow: auto;
+}
+@media (max-width: 1100px) {
+  .db-dense-card, .db-dense-card.db-dense-wide, .db-dense-card.db-dense-span6 { grid-column: span 6; }
+  .db-dense-kpis { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .db-dense-card, .db-dense-card.db-dense-wide, .db-dense-card.db-dense-span6, .db-dense-card.db-dense-full { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .db-dense-skel { animation: none; }
+}

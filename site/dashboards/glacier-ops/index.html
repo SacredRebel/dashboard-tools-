@@ -11,8 +11,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="../_shared/fx/fx.css">
+  <link rel="stylesheet" href="../_shared/dense-pages.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_shared/dense-pages.js"></script>
+  <script type="module" src="../_shared/fx/index.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -50,7 +54,7 @@
 
       <section class="go-center" aria-labelledby="go-core-h">
         <h2 class="vh" id="go-core-h">Core dial</h2>
-        <div class="go-dialwrap"><img class="go-topo" src="media/topo.webp" width="800" height="800" alt="" decoding="async" aria-hidden="true"><div class="go-dial" data-dial></div></div>
+        <div class="go-dialwrap"><img class="go-topo" src="media/topo@2x.webp" srcset="media/topo.webp 1x, media/topo@2x.webp 2x" width="800" height="800" alt="" decoding="async" aria-hidden="true"><div class="go-dial" data-dial></div></div>
         <p class="go-dialnote" data-dialnote aria-live="polite"></p>
         <div class="go-seglocks" role="group" aria-label="Rim locks" data-rim></div>
       </section>

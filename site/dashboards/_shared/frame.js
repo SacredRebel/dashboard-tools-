@@ -73,16 +73,35 @@
         } else if (!location.hash) {
           history.replaceState(null, '', next);
         }
-        html.dataset.page = page.id;
-        window.DB.page = page.id;
-        setNavCurrent(page.id);
-        const baseTitle = (document.title.split('·')[0] || document.title).trim();
-        document.title = `${page.name} · ${baseTitle}`;
-        render(page.id, page);
-        // Move focus only on in-app navigation. Focusing on first load draws a focus ring in screenshots
-        // and steals the screen reader's start position.
-        if (!first) focusPageHeading();
-        first = false;
+        const run = () => {
+          html.dataset.page = page.id;
+          window.DB.page = page.id;
+          setNavCurrent(page.id);
+          const baseTitle = (document.title.split('·')[0] || document.title).trim();
+          document.title = `${page.name} · ${baseTitle}`;
+          render(page.id, page);
+          // Move focus only on in-app navigation. Focusing on first load draws a focus ring in screenshots
+          // and steals the screen reader's start position.
+          if (!first) focusPageHeading();
+          first = false;
+        };
+        // Route transition: View Transitions API when supported, else a 180ms opacity cross-fade.
+        const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!first && !reduce && typeof document.startViewTransition === 'function') {
+          html.classList.add('fx-vt-pending');
+          const vt = document.startViewTransition(run);
+          vt.finished.finally(() => html.classList.remove('fx-vt-pending'));
+        } else if (!first && !reduce) {
+          const main = document.querySelector('main') || document.body;
+          main.style.transition = 'opacity 180ms cubic-bezier(0.16,1,0.3,1)';
+          main.style.opacity = '0';
+          setTimeout(() => {
+            run();
+            requestAnimationFrame(() => { main.style.opacity = '1'; });
+          }, 90);
+        } else {
+          run();
+        }
       }
 
       function syncFromLocation() {

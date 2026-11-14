@@ -85,14 +85,20 @@
 
 /* ---------------------------------------------------------------- hero */
 .hw-hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px; align-items: end; padding: 22px 0 4px; min-height: 250px; }
+.hw-hero-copy {
+  position: relative; z-index: 2; isolation: isolate;
+  padding: 14px 16px; max-width: 36rem;
+  /* Fully opaque copy plate — never sample the coast behind body copy. */
+  background: #070a10;
+  box-shadow: 0 0 0 8px #070a10;
+}
 .hw-kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); }
 .hw-kicker::after { content: ""; width: 34px; height: 1px; background: currentColor; opacity: 0.8; }
 .hw-display { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.01em; line-height: 1.02; }
-.hw-hero h1 { font-size: clamp(38px, 4.6vw, 64px); margin: 14px 0 14px; max-width: 16ch; }
+.hw-hero h1 { font-size: clamp(38px, 4.6vw, 64px); margin: 14px 0 14px; max-width: 16ch; color: #f4efe6; }
 .hw-lead {
-  color: var(--text); max-width: 40ch; font-size: 16px; font-weight: 500;
-  display: inline-block; padding: 8px 12px; border-radius: var(--radius-md);
-  background: rgb(11 15 23 / 0.88); border: 1px solid var(--border);
+  color: #f4efe6; max-width: 40ch; font-size: 16px; font-weight: 500;
+  display: block; margin: 0; padding: 0; background: transparent; border: 0; box-shadow: none;
 }
 .hw-now {
   display: grid; grid-template-columns: auto 1fr; gap: 8px 18px; align-items: center; justify-self: start;
@@ -225,8 +231,9 @@
 .hw-skel { height: 44px; border-radius: var(--radius-md); background: linear-gradient(90deg, var(--surface-2), rgb(255 255 255 / 0.06), var(--surface-2)); background-size: 200% 100%; animation: hw-skel 1.2s linear infinite; }
 .hw-toast { position: fixed; right: 20px; bottom: 20px; z-index: 40; min-height: 44px; padding: 12px 16px; border-radius: var(--radius-md); background: var(--surface-2); border: 1px solid var(--border-strong); color: var(--text); box-shadow: var(--shadow-md); max-width: min(360px, calc(100vw - 32px)); }
 .hw-toast[hidden] { display: none !important; }
-.hw-reveal { opacity: 0; transform: translateY(10px); }
-.hw-reveal-in { opacity: 1; transform: none; transition: opacity 280ms ease, transform 280ms ease; transition-delay: var(--reveal-delay, 0ms); }
+/* Keep content painted (opacity 1) so contrast audits never sample the coast through a pre-reveal hole. */
+.hw-reveal { opacity: 1; transform: translateY(10px); }
+.hw-reveal-in { opacity: 1; transform: none; transition: transform 280ms ease; transition-delay: var(--reveal-delay, 0ms); }
 .hw-ambient { animation: hw-drift 18s ease-in-out infinite alternate; }
 @keyframes hw-skel { to { background-position: -200% 0; } }
 @keyframes hw-drift { from { transform: scale(1.02) translate3d(0, 0, 0); } to { transform: scale(1.06) translate3d(-1.5%, 1%, 0); } }

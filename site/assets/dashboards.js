@@ -140,6 +140,8 @@ Show me the screen plan before building.`;
             <div><dt>Signature</dt><dd>${esc(d.signature)}</dd></div><div><dt>Fonts</dt><dd>${esc(d.fonts.display)} · ${esc(d.fonts.sans)}</dd></div>
             <div><dt>Pages</dt><dd>${pages.map((pg) => `${esc(pg.name)} (${esc(pg.pattern)})`).join(' · ')}</dd></div>
             ${motion.length ? `<div><dt>Motion</dt><dd>${motion.map(esc).join(', ')}</dd></div>` : ''}
+            ${(d.fx || []).length ? `<div><dt>Effects used here</dt><dd>${d.fx.map(esc).join(', ')} · <a class="s-link" href="#/fx">Motion &amp; FX</a></dd></div>` : ''}
+            ${(d.materials || []).length ? `<div><dt>Materials</dt><dd>${d.materials.map(esc).join(', ')}</dd></div>` : ''}
             ${d.maps_to_theme ? `<div><dt>Closest toolkit theme</dt><dd><a class="s-link" href="#/themes">${esc(d.maps_to_theme)}</a></dd></div>` : ''}</dl>
             <h3 class="dg-sub">Palette</h3><div class="dg-pal">${Object.entries(d.palette).map(([k, v]) => `<button data-hex="${v}" title="Copy ${v}"><i style="background:${v}"></i><span>${esc(k)}</span><code>${v}</code></button>`).join('')}</div></section>
           <section class="s-panel dg-pad"><h2 class="s-h3">Layout</h2>

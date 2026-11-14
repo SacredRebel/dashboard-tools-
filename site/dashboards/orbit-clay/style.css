@@ -637,7 +637,7 @@ body {
   box-shadow: var(--clay); max-width: min(360px, calc(100vw - 32px));
 }
 .oc-toast[hidden] { display: none !important; }
-.oc-reveal { opacity: 0; transform: translateY(10px); }
+.oc-reveal { opacity: 1; transform: translateY(10px); }
 .oc-reveal-in { opacity: 1; transform: none; transition: opacity 280ms ease, transform 280ms ease; transition-delay: var(--reveal-delay, 0ms); }
 .oc-ambient { animation: oc-drift 16s ease-in-out infinite alternate; }
 @keyframes oc-skel { to { background-position: -200% 0; } }

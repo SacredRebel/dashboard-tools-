@@ -246,6 +246,35 @@ body { background: var(--bg); }
 @keyframes arIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @keyframes arRise { from { transform: translateY(10px); } to { transform: none; } }
 @keyframes arShimmer { to { background-position: -200% 0; } }
+/* Dense kit: ink-dark opaque panels (haze must not show through any glyph box). */
+[data-db-page-host] .db-dense-page {
+  --db-dense-fill: #12183c;
+  --db-dense-fill-2: #0c122e;
+  --text: #ffffff;
+  --text-muted: #e6e9ff;
+  --text-subtle: #cfd5f5;
+  --accent: #ffffff;
+  --accent-fg: #12183c;
+  --border: rgb(255 255 255 / 0.22);
+}
+[data-variant="lagoon"] [data-db-page-host] .db-dense-page {
+  --db-dense-fill: #062a32;
+  --db-dense-fill-2: #041f26;
+  --text: #f2fffc;
+  --text-muted: #d7f3ec;
+  --accent-fg: #062a32;
+}
+[data-variant="pearl"] [data-db-page-host] .db-dense-page {
+  --db-dense-fill: #f7f5fc;
+  --db-dense-fill-2: #ebe7f5;
+  --text: #221f45;
+  --text-muted: #504c73;
+  --text-subtle: #625e85;
+  --accent: #2d2a55;
+  --accent-fg: #ffffff;
+  --border: rgb(60 50 110 / 0.16);
+}
+
 [data-motion-paused="1"] .ar-ambient,
 [data-motion-paused="1"] .ar-skel { animation-play-state: paused !important; }
 @media (prefers-reduced-motion: reduce) {

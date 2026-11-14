@@ -20,40 +20,59 @@ img, svg { display: block; max-width: 100%; }
 [tabindex="-1"]:focus { outline: none; }
 .db-sample { font-size: 12px; color: var(--text-subtle, var(--text-muted)); }
 
-/* Multi-page stub host (Phase A). Real page UIs replace this in the polish pass. */
-[data-db-stub] {
-  display: grid;
-  gap: 16px;
-  padding: clamp(20px, 3vw, 36px);
-  max-width: 72ch;
-}
-[data-db-stub][hidden] { display: none !important; }
-[data-db-stub] h1 {
-  font-family: var(--font-display, var(--font-sans));
-  font-size: clamp(28px, 3vw, 40px);
-  font-weight: 600;
-  line-height: 1.15;
-  color: var(--text);
-}
-[data-db-stub] p { font-size: 15px; color: var(--text-muted); max-width: 60ch; }
-[data-db-stub] .db-stub-panel {
-  display: grid;
-  gap: 12px;
-  padding: 16px;
-  border-radius: var(--radius-md, 12px);
-  background: var(--surface);
-  border: 1px solid var(--border, var(--line, transparent));
-  color: var(--text);
-}
-[data-db-stub] .db-stub-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-  min-height: 44px;
-  font-size: 14px;
-}
-[data-db-stub] .db-stub-row strong { color: var(--text); font-weight: 600; }
+/* Secondary pages are full screens in each dashboard's own CSS — no shared stub. */
 [data-db-overview-hide][hidden] { display: none !important; }
+[data-db-page][hidden] { display: none !important; }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+
+/* Material recipe helpers — docs/design/10-materials.md */
+.mat-glass {
+  background: var(--mat-glass-fill);
+  border: 1px solid var(--mat-glass-edge);
+  box-shadow: var(--mat-glass-shadow), var(--mat-glass-inset);
+  backdrop-filter: blur(var(--mat-glass-blur)) saturate(1.2);
+  -webkit-backdrop-filter: blur(var(--mat-glass-blur)) saturate(1.2);
+}
+.mat-glass-dark {
+  background: var(--mat-glass-dark-fill);
+  border: 1px solid var(--mat-glass-dark-edge);
+  box-shadow: var(--mat-glass-dark-shadow), var(--mat-glass-dark-inset);
+  backdrop-filter: blur(var(--mat-glass-dark-blur)) saturate(1.25);
+}
+.mat-clay {
+  background: var(--mat-clay-fill, var(--surface-solid, var(--surface, var(--bg))));
+  border: 1px solid var(--mat-clay-edge, var(--border));
+  box-shadow: var(--mat-clay-shadow, var(--shadow-sm, none)), var(--mat-clay-inset, inset 0 1px 0 rgb(255 255 255 / 0.35));
+}
+.mat-neu {
+  background: var(--mat-neu-fill);
+  box-shadow: var(--mat-neu-shadow);
+  border: none;
+}
+.mat-holo {
+  background: var(--mat-holo-fill);
+  border: 1px solid var(--mat-holo-edge);
+  box-shadow: var(--mat-holo-glow), var(--mat-holo-inset);
+}
+.mat-paper {
+  background: var(--mat-paper-fill);
+  border: 1px solid var(--mat-paper-edge);
+  box-shadow: var(--mat-paper-shadow);
+}
+.mat-metal {
+  background: var(--mat-metal-fill);
+  border: 1px solid var(--mat-metal-edge);
+  box-shadow: var(--mat-metal-shadow), var(--mat-metal-inset);
+}
+.mat-acrylic {
+  background: var(--mat-acrylic-fill);
+  border: 1px solid var(--mat-acrylic-edge);
+  box-shadow: var(--mat-acrylic-shadow), var(--mat-acrylic-inset);
+  backdrop-filter: blur(var(--mat-acrylic-blur)) saturate(1.35);
+}
+.mat-tile3d {
+  background: var(--mat-tile3d-fill);
+  border: 1px solid var(--mat-tile3d-edge);
+  box-shadow: var(--mat-tile3d-shadow), var(--mat-tile3d-inset);
+}

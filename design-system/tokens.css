@@ -633,6 +633,55 @@
   --canvas-texture: radial-gradient(900px 520px at 88% -12%, var(--glow-1), transparent 62%), radial-gradient(760px 520px at -12% 112%, var(--glow-2), transparent 62%);
 }
 
+/* ---- Material recipes (gallery deep polish) — docs/design/10-materials.md -- */
+:root,
+[data-theme] {
+  --mat-glass-fill: rgb(255 255 255 / 0.55);
+  --mat-glass-edge: rgb(255 255 255 / 0.55);
+  --mat-glass-blur: 16px;
+  --mat-glass-inset: inset 0 1px 0 rgb(255 255 255 / 0.65);
+  --mat-glass-shadow: 0 10px 30px rgb(40 30 70 / 0.08);
+
+  --mat-glass-dark-fill: rgb(255 255 255 / 0.06);
+  --mat-glass-dark-edge: rgb(255 255 255 / 0.12);
+  --mat-glass-dark-blur: 18px;
+  --mat-glass-dark-inset: inset 0 1px 0 rgb(255 255 255 / 0.1);
+  --mat-glass-dark-shadow: 0 16px 40px rgb(0 0 0 / 0.35);
+
+  --mat-clay-fill: var(--surface);
+  --mat-clay-edge: rgb(0 0 0 / 0.04);
+  --mat-clay-inset: inset 0 1px 0 rgb(255 255 255 / 0.7), inset 0 -2px 4px rgb(0 0 0 / 0.04);
+  --mat-clay-shadow: 0 8px 20px rgb(60 40 30 / 0.1);
+
+  --mat-neu-fill: var(--bg);
+  --mat-neu-shadow: 8px 8px 18px rgb(0 0 0 / 0.08), -6px -6px 16px rgb(255 255 255 / 0.7);
+
+  --mat-holo-fill: rgb(20 30 50 / 0.72);
+  --mat-holo-edge: rgb(120 200 255 / 0.35);
+  --mat-holo-inset: inset 0 1px 0 rgb(180 230 255 / 0.25);
+  --mat-holo-glow: 0 0 24px rgb(80 180 255 / 0.25);
+
+  --mat-paper-fill: var(--surface);
+  --mat-paper-edge: var(--border);
+  --mat-paper-shadow: 0 1px 2px rgb(40 30 20 / 0.06), 0 12px 28px rgb(40 30 20 / 0.06);
+
+  --mat-metal-fill: linear-gradient(160deg, #d8d5d0, #a8a49c 45%, #cfcbc4);
+  --mat-metal-edge: rgb(80 70 60 / 0.25);
+  --mat-metal-inset: inset 0 1px 0 rgb(255 255 255 / 0.45);
+  --mat-metal-shadow: 0 10px 24px rgb(40 30 20 / 0.18);
+
+  --mat-acrylic-fill: rgb(255 255 255 / 0.42);
+  --mat-acrylic-edge: rgb(255 255 255 / 0.5);
+  --mat-acrylic-blur: 20px;
+  --mat-acrylic-inset: inset 0 1px 0 rgb(255 255 255 / 0.7);
+  --mat-acrylic-shadow: 0 12px 32px rgb(30 40 60 / 0.1);
+
+  --mat-tile3d-fill: var(--surface);
+  --mat-tile3d-edge: rgb(0 0 0 / 0.06);
+  --mat-tile3d-inset: inset 0 1px 0 rgb(255 255 255 / 0.8);
+  --mat-tile3d-shadow: 0 18px 40px rgb(40 30 50 / 0.14), 0 2px 0 rgb(0 0 0 / 0.04);
+}
+
 /* Reduced motion: collapse durations globally */
 @media (prefers-reduced-motion: reduce) {
   :root {
