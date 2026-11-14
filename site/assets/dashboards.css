@@ -39,9 +39,17 @@
 .dg-variants i { width: 12px; height: 12px; border-radius: 50%; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15); }
 .dg-stage { display: grid; justify-items: center; padding: 16px; border-radius: 20px; background: var(--s-sunken); border: 1px solid var(--s-line); margin-bottom: 24px; }
 .dg-shot { margin: 0; width: min(100%, 1440px); display: grid; gap: 10px; justify-items: center; }
-.dg-shot[hidden], .dg-frame[hidden] { display: none !important; }
+.dg-shot[hidden], .dg-frame[hidden], .dg-compare[hidden] { display: none !important; }
 .dg-shot img { width: 100%; height: auto; max-height: min(80vh, 900px); object-fit: contain; object-position: center top; border-radius: 12px; box-shadow: 0 2px 6px rgb(0 0 0 / 0.08), 0 24px 60px rgb(0 0 0 / 0.18); background: #111; display: block; }
 .dg-shot figcaption { text-align: center; }
+.dg-motion-badge { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; background: var(--s-sunken); color: var(--s-ink-2); font-size: 12px; font-weight: 500; vertical-align: middle; }
+.dg-compare { width: min(100%, 1440px); display: grid; gap: 10px; }
+.dg-compare-track { position: relative; width: 100%; aspect-ratio: 16 / 10; border-radius: 12px; overflow: hidden; background: #111; box-shadow: 0 2px 6px rgb(0 0 0 / 0.08), 0 24px 60px rgb(0 0 0 / 0.18); }
+.dg-compare-track img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; max-width: none; }
+.dg-compare-fore { position: absolute; inset: 0; width: var(--split, 50%); overflow: hidden; border-right: 2px solid #fff; box-shadow: 2px 0 0 rgb(0 0 0 / 0.25); }
+.dg-compare-fore img { width: calc(100% / (var(--split, 50%) / 100%)); max-width: none; }
+.dg-compare-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; z-index: 2; }
+.dg-compare-cap { display: flex; justify-content: space-between; margin: 0; }
 .dg-frame { position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 2px 6px rgb(0 0 0 / 0.08), 0 24px 60px rgb(0 0 0 / 0.18); background: #000; }
 .dg-frame[data-device="phone"], .dg-frame[data-device="tablet"] { border-radius: 28px; outline: 8px solid #16161a; outline-offset: -1px; }
 .dg-frame iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: 0 0; display: block; background: #000; }

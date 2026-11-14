@@ -218,7 +218,30 @@
         "note": "Recreated in original code from a user-supplied concept screenshot. Brand name, photos and copy were replaced; the landscape is drawn in SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/horizon-weather/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "forecast",
+          "name": "Forecast",
+          "pattern": "Report"
+        },
+        {
+          "id": "maps",
+          "name": "Maps",
+          "pattern": "Detail"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "pulsar-analytics",
@@ -311,7 +334,30 @@
         "note": "Recreated in original code from a user-supplied concept render of a dark analytics board. The render had no readable text, so brand, labels, metrics and all data are invented. Charts, dial and orbs are drawn in SVG and CSS. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/pulsar-analytics/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "reports",
+          "name": "Reports",
+          "pattern": "Report"
+        },
+        {
+          "id": "segments",
+          "name": "Segments",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "solstice-energy",
@@ -403,7 +449,35 @@
         "note": "Recreated in original code from a user-supplied concept render with no readable text. The domain (solar monitoring), brand, labels and all data are invented. The mountain photo-style art and the round thumbnails were replaced with SVG and CSS landscapes themed by variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/solstice-energy/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "rooms",
+          "name": "Rooms",
+          "pattern": "List"
+        },
+        {
+          "id": "devices",
+          "name": "Devices",
+          "pattern": "List"
+        },
+        {
+          "id": "energy",
+          "name": "Energy",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "kumo-payroll",
@@ -495,7 +569,30 @@
         "note": "Recreated in original code from a user-supplied concept illustration of a payroll dashboard. Brand name, labels, copy and figures were rewritten. The painted moon, hills and blossoms are redrawn as SVG themed by CSS variables; the pagoda, koi and lotus artwork were left out. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/kumo-payroll/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "people",
+          "name": "People",
+          "pattern": "List"
+        },
+        {
+          "id": "payroll",
+          "name": "Payroll",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "canopy-reforest",
@@ -588,7 +685,30 @@
         "note": "Recreated in original code from a user-supplied landing-page concept with placeholder text. It was turned into a dashboard (a reforestation tracker): brand, copy and all figures are invented. The leaf photography and the forest photo tile were replaced with SVG drawings themed by CSS variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/canopy-reforest/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "tasks",
+          "name": "Tasks",
+          "pattern": "Board"
+        },
+        {
+          "id": "sites",
+          "name": "Sites",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "ridgeline-trails",
@@ -680,7 +800,30 @@
         "note": "Recreated in original code from a user-supplied concept render with unreadable text. The domain (trail-network visitor report), name, labels and data are invented; the render's title wordmark was not reused. The mountain photograph was replaced with layered SVG ridges, mist gradients and triangle trees themed by CSS variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/ridgeline-trails/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "routes",
+          "name": "Routes",
+          "pattern": "List"
+        },
+        {
+          "id": "journal",
+          "name": "Journal",
+          "pattern": "Detail"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "haven-listings",
@@ -771,7 +914,30 @@
         "note": "Recreated in original code from a user-supplied design shot of a real-estate landing screen. The studio and product names, logo mark, headline, listing text and avatar were not reused; all homes, addresses and prices are invented. The rendered villa photo was replaced with an SVG house and sky themed by CSS variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/haven-listings/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "listings",
+          "name": "Listings",
+          "pattern": "List"
+        },
+        {
+          "id": "showings",
+          "name": "Showings",
+          "pattern": "Calendar"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "aura-ring",
@@ -863,7 +1029,35 @@
         "note": "Recreated in original code from a user-supplied product shot of a wellness tablet app. The product and agency names, logo, avatar photo and copy were not reused; scores and text are invented. The ring photo, 3D body figure and brain render were replaced with an SVG ring, a simple SVG figure with selectable points and a CSS orb. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/aura-ring/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "vitals",
+          "name": "Vitals",
+          "pattern": "Report"
+        },
+        {
+          "id": "appointments",
+          "name": "Appointments",
+          "pattern": "Calendar"
+        },
+        {
+          "id": "records",
+          "name": "Records",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "lull-sleep",
@@ -954,7 +1148,35 @@
         "note": "Built in original code from a user-supplied flat shot of the same wellness screen as Aura Ring. To avoid a second copy it takes only the pastel gradient, white pills and two-weight headline, and turns them into a sleep detail page with its own layout and data. No names, logos, photos or copy from the shot were reused; sky, moon and clouds are SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/lull-sleep/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "vitals",
+          "name": "Vitals",
+          "pattern": "Report"
+        },
+        {
+          "id": "appointments",
+          "name": "Appointments",
+          "pattern": "Calendar"
+        },
+        {
+          "id": "records",
+          "name": "Records",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "pearlwell-dental",
@@ -1045,7 +1267,35 @@
         "note": "Recreated in original code from a user-supplied concept sheet of six dental phone screens. The screens were merged into one responsive desktop portal; names, photos and copy were not reused and all patients, dentists and prices are invented. 3D tooth renders and props were replaced with an SVG tooth, shield and tooth chart. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/pearlwell-dental/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "vitals",
+          "name": "Vitals",
+          "pattern": "Report"
+        },
+        {
+          "id": "appointments",
+          "name": "Appointments",
+          "pattern": "Calendar"
+        },
+        {
+          "id": "records",
+          "name": "Records",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "vitalis-care",
@@ -1136,7 +1386,35 @@
         "note": "Recreated in original code from a user-supplied concept sheet of six medical phone screens (same set as Pearlwell Dental, different clinic). The screens were merged into a bento desktop layout that differs from Pearlwell's sidebar portal. Names, photos and copy were not reused; doctors, readings and records are invented and phone links use 555 numbers. 3D props were replaced with an SVG heart and charts. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/vitalis-care/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "vitals",
+          "name": "Vitals",
+          "pattern": "Report"
+        },
+        {
+          "id": "appointments",
+          "name": "Appointments",
+          "pattern": "Calendar"
+        },
+        {
+          "id": "records",
+          "name": "Records",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "mallow-music",
@@ -1227,7 +1505,30 @@
         "note": "Recreated in original code from a user-supplied claymorphism music-app render. Layout and mood were kept; the cartoon girl, photos, artist names and copy were not reused. Artists and songs are invented. Characters and photos were replaced with SVG headphones, a plant, a crown, generated cover art and a room scene. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/mallow-music/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "pattern": "List"
+        },
+        {
+          "id": "activity",
+          "name": "Activity",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "taffy-analytics",
@@ -1318,7 +1619,30 @@
         "note": "Recreated in original code from a user-supplied render of a pastel 3D UI kit with no real content (placeholder text). The capsule bars, round icon buttons, elastic switches and wave card were turned into a working analytics page with invented data. No artwork was copied; all shapes are CSS and SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/taffy-analytics/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "workspace",
+          "name": "Workspace",
+          "pattern": "List"
+        },
+        {
+          "id": "people",
+          "name": "People",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "prism-workspace",
@@ -1409,7 +1733,30 @@
         "note": "Recreated in original code from a user-supplied render of a liquid-glass UI kit with placeholder text. Its pill buttons, round icon buttons, suggestion list, switches, checkboxes, speech bubble and folder card became a working workspace-settings page with invented people and data. All shapes are CSS. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/prism-workspace/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "workspace",
+          "name": "Workspace",
+          "pattern": "List"
+        },
+        {
+          "id": "people",
+          "name": "People",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "plumage-survey",
@@ -1499,7 +1846,30 @@
         "note": "Recreated in original code from a user-supplied AI render of a dark dashboard with a painted parrot and leaves. The colour story, rings, gradient area charts and bars were kept. The painted bird and foliage were redrawn from scratch as simple SVG shapes, and the unreadable chart labels were replaced with an invented bird-survey dataset. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/plumage-survey/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "reports",
+          "name": "Reports",
+          "pattern": "Report"
+        },
+        {
+          "id": "segments",
+          "name": "Segments",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "hollow-vault",
@@ -1588,7 +1958,30 @@
         "note": "Recreated in original code from a user-supplied dribbble-style shot of a crypto 'chest battle' game screen. The wheel-around-a-chest layout, sidebar, item row and chat column were kept. The witch illustration, 3D item renders, coin balance and buy button were dropped. It was reframed as a keys-earned-by-play rewards hub with open drop rates and no purchases. Relics are simple SVG shapes. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/hollow-vault/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "pattern": "List"
+        },
+        {
+          "id": "activity",
+          "name": "Activity",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "larchwood-lodge",
@@ -1680,7 +2073,30 @@
         "note": "Recreated in original code from a small user-supplied render of plum widgets around an autumn mountain-lake painting. The widget-board feel, plum tones and central landscape were kept, and the widgets were given a cabin-guest job. The painting was redrawn as simple SVG shapes. The unreadable widget text was replaced with invented content. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/larchwood-lodge/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "rooms",
+          "name": "Rooms",
+          "pattern": "List"
+        },
+        {
+          "id": "guests",
+          "name": "Guests",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "hearth-nest",
@@ -1773,7 +2189,35 @@
         "note": "Recreated in original code from a user-supplied smart-home concept screenshot. Brand (Hearth Nest), copy and figures are fictional. The living-room photo and decorative plant were replaced with SVG themed by CSS variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/hearth-nest/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "rooms",
+          "name": "Rooms",
+          "pattern": "List"
+        },
+        {
+          "id": "devices",
+          "name": "Devices",
+          "pattern": "List"
+        },
+        {
+          "id": "energy",
+          "name": "Energy",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "veil-rooms",
@@ -1867,7 +2311,35 @@
         "note": "Recreated in original code from a user-supplied grey-glass smart-home screenshot. Brand (Veil Rooms), resident name, track titles and figures are fictional. Album art and lamp photos were replaced with SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/veil-rooms/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "rooms",
+          "name": "Rooms",
+          "pattern": "List"
+        },
+        {
+          "id": "devices",
+          "name": "Devices",
+          "pattern": "List"
+        },
+        {
+          "id": "energy",
+          "name": "Energy",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "atrium-living",
@@ -1962,7 +2434,35 @@
         "note": "Recreated in original code from a user-supplied glass smart-home reference. Brand, room names and all data are invented. The living-room photograph was replaced with an SVG atrium scene. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/atrium-living/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "rooms",
+          "name": "Rooms",
+          "pattern": "List"
+        },
+        {
+          "id": "devices",
+          "name": "Devices",
+          "pattern": "List"
+        },
+        {
+          "id": "energy",
+          "name": "Energy",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "glacier-ops",
@@ -2056,7 +2556,30 @@
         "note": "Recreated in original code from a user-supplied blue radial HUD reference. Brand, sector names and all data are invented English fiction. The central 3D topo was replaced with SVG contour art. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/glacier-ops/",
-      "reference": "reference.png"
+      "reference": "reference.png",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "reports",
+          "name": "Reports",
+          "pattern": "Report"
+        },
+        {
+          "id": "segments",
+          "name": "Segments",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "folio-club",
@@ -2148,7 +2671,30 @@
         "note": "Recreated in original code from a user-supplied reading-tracker screenshot. Brand, book titles, people and numbers are invented; cover photos became flat SVG covers and initial avatars. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/folio-club/",
-      "reference": "reference.png"
+      "reference": "reference.png",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "pattern": "List"
+        },
+        {
+          "id": "progress",
+          "name": "Progress",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "citadel-wall",
@@ -2240,7 +2786,30 @@
         "note": "Recreated in original code from a user-supplied big-screen HUD screenshot. Chinese labels were replaced with English fictional ops/logistics copy; the 3D hero became an SVG sphere and cube. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/citadel-wall/",
-      "reference": "reference.png"
+      "reference": "reference.png",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "fleet",
+          "name": "Fleet",
+          "pattern": "List"
+        },
+        {
+          "id": "shipments",
+          "name": "Shipments",
+          "pattern": "Board"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "aether-pane",
@@ -2332,7 +2901,30 @@
         "note": "Recreated in original code from a user-supplied glass analytics HUD screenshot. Brand is Aether Pane (not taken from other gallery brands). Charts and copy are invented; the blurred photo backdrop became CSS atmosphere. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/aether-pane/",
-      "reference": "reference.png"
+      "reference": "reference.png",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "reports",
+          "name": "Reports",
+          "pattern": "Report"
+        },
+        {
+          "id": "segments",
+          "name": "Segments",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "forge-fitness",
@@ -2423,7 +3015,35 @@
         "note": "Recreated in original code from a user-supplied fitness dashboard screenshot. Brand, labels and figures are invented. The person photograph was replaced with an abstract SVG gym silhouette and vignette atmosphere. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/forge-fitness/",
-      "reference": "reference.png"
+      "reference": "reference.png",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "vitals",
+          "name": "Vitals",
+          "pattern": "Report"
+        },
+        {
+          "id": "appointments",
+          "name": "Appointments",
+          "pattern": "Calendar"
+        },
+        {
+          "id": "records",
+          "name": "Records",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "zest-health",
@@ -2513,7 +3133,35 @@
         "note": "Recreated in original code from a user-supplied lime health overview. Brand renamed to Zest Health; flux logo and photo avatars were not reused. Bubbles and charts are SVG/CSS. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/zest-health/",
-      "reference": "reference.png"
+      "reference": "reference.png",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "vitals",
+          "name": "Vitals",
+          "pattern": "Report"
+        },
+        {
+          "id": "appointments",
+          "name": "Appointments",
+          "pattern": "Calendar"
+        },
+        {
+          "id": "records",
+          "name": "Records",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "orchard-sales",
@@ -2606,7 +3254,30 @@
         "note": "Recreated in original code from a user-supplied lime sales dashboard. Brand renamed to Orchard Sales; 3D sphere props became SVG gradients. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/orchard-sales/",
-      "reference": "reference.png"
+      "reference": "reference.png",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "pipeline",
+          "name": "Pipeline",
+          "pattern": "Board"
+        },
+        {
+          "id": "accounts",
+          "name": "Accounts",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "mauve-ledger",
@@ -2696,7 +3367,30 @@
         "note": "Recreated in original code from a user-supplied lilac finance glass concept. Brand renamed to Mauve Ledger; photo avatars became initials. Owner original stored as `reference.png` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/mauve-ledger/",
-      "reference": "reference.png"
+      "reference": "reference.png",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "transactions",
+          "name": "Transactions",
+          "pattern": "List"
+        },
+        {
+          "id": "budgets",
+          "name": "Budgets",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "tidebath-showroom",
@@ -2791,7 +3485,30 @@
         "note": "Recreated in original code from a user-supplied soft bathroom showroom render. Brand (Tidebath), copy and fixtures are fictional. Photoreal rooms and original logos were replaced with SVG bathrooms and abstract hotspot markers. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/tidebath-showroom/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "catalog",
+          "name": "Catalog",
+          "pattern": "List"
+        },
+        {
+          "id": "orders",
+          "name": "Orders",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "dune-panels",
@@ -2882,7 +3599,30 @@
         "note": "Recreated in original code from a user-supplied soft-UI / neumorphic mood board. Brand (Dune Panels), metrics and labels are fictional. The fabric wave and charts were redrawn as SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/dune-panels/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "reports",
+          "name": "Reports",
+          "pattern": "Report"
+        },
+        {
+          "id": "segments",
+          "name": "Segments",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "pebble-studio",
@@ -2973,7 +3713,30 @@
         "note": "Recreated in original code from a user-supplied soft-UI / neumorphic kit render. Brand (Pebble Studio), copy and metrics are fictional. Product photos and original marks were replaced with SVG blobs, dunes, torus and knobs. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/pebble-studio/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "workspace",
+          "name": "Workspace",
+          "pattern": "List"
+        },
+        {
+          "id": "people",
+          "name": "People",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "copper-radar",
@@ -3064,7 +3827,30 @@
         "note": "Recreated in original code from a user-supplied soft-light SOC dashboard render. Brand (Copper Radar), vendor names and copy are fictional. Real vendor logos (Okta, AWS, Alibaba and others) were replaced with invented chips such as NimbusID and RidgeHost. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/copper-radar/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "reports",
+          "name": "Reports",
+          "pattern": "Report"
+        },
+        {
+          "id": "segments",
+          "name": "Segments",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "orbit-clay",
@@ -3155,7 +3941,30 @@
         "note": "Recreated in original code from a user-supplied claymorphism twin-phone render. Layout rhythm, cream/forest/gold clay and the gold-ring helmet plus rail sphere were kept; any photo helmet or brand marks were replaced with abstract SVG and invented Orbit Clay copy. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/orbit-clay/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "library",
+          "name": "Library",
+          "pattern": "List"
+        },
+        {
+          "id": "activity",
+          "name": "Activity",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "saffron-dusk",
@@ -3248,7 +4057,35 @@
         "note": "Recreated in original code from a user-supplied glass wellness twin-phone render. Layout rhythm, sun-arc fasting card, water tracker and profile/progress stack were kept; brand names, real people, photos and copy were replaced with invented Saffron Dusk content and abstract SVG silhouettes. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/saffron-dusk/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "vitals",
+          "name": "Vitals",
+          "pattern": "Report"
+        },
+        {
+          "id": "appointments",
+          "name": "Appointments",
+          "pattern": "Calendar"
+        },
+        {
+          "id": "records",
+          "name": "Records",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "clima-pane",
@@ -3339,7 +4176,35 @@
         "note": "Recreated in original code from a user-supplied glass climate control concept. Brand renamed to Clima Pane; copy and figures are fictional. Background orbs are CSS; dial and icons are SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/clima-pane/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "rooms",
+          "name": "Rooms",
+          "pattern": "List"
+        },
+        {
+          "id": "devices",
+          "name": "Devices",
+          "pattern": "List"
+        },
+        {
+          "id": "energy",
+          "name": "Energy",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "meridian-labs",
@@ -3430,7 +4295,35 @@
         "note": "Recreated in original code from a user-supplied soft medical diagnostics concept. Brand renamed to Meridian Labs; photos replaced with initials and SVG bottles/DNA. Copy and figures are fictional. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/meridian-labs/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "vitals",
+          "name": "Vitals",
+          "pattern": "Report"
+        },
+        {
+          "id": "appointments",
+          "name": "Appointments",
+          "pattern": "Calendar"
+        },
+        {
+          "id": "records",
+          "name": "Records",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "cortex-well",
@@ -3525,7 +4418,35 @@
         "note": "Recreated in original code from a user-supplied glass health concept. Brand (Cortex Well), member name and figures are fictional; CORE MEDICINE and the photo avatar were not reused. The 3D brain and marble spheres were replaced with SVG/CSS. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/cortex-well/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "vitals",
+          "name": "Vitals",
+          "pattern": "Report"
+        },
+        {
+          "id": "appointments",
+          "name": "Appointments",
+          "pattern": "Calendar"
+        },
+        {
+          "id": "records",
+          "name": "Records",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
     },
     {
       "id": "ember-rooms",
@@ -3620,7 +4541,87 @@
         "note": "Recreated in original code from a user-supplied soft neumorphic indoor-control concept. Brand (Ember Rooms) and all copy are invented English; Chinese brand marks were not reused. The 3D pendant and camera still were replaced with SVG. Lighting-primary layout chosen to stay distinct from climate-dial twins. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
       "path": "site/dashboards/ember-rooms/",
-      "reference": "reference.jpg"
+      "reference": "reference.jpg",
+      "pages": [
+        {
+          "id": "overview",
+          "name": "Overview",
+          "pattern": "Dashboard"
+        },
+        {
+          "id": "rooms",
+          "name": "Rooms",
+          "pattern": "List"
+        },
+        {
+          "id": "devices",
+          "name": "Devices",
+          "pattern": "List"
+        },
+        {
+          "id": "energy",
+          "name": "Energy",
+          "pattern": "Report"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
+        }
+      ],
+      "motion": []
+    }
+  ],
+  "motion_patterns": [
+    {
+      "id": "count-up",
+      "name": "Count-up",
+      "summary": "KPI numbers animate from 0 to value on first view."
+    },
+    {
+      "id": "stagger",
+      "name": "Staggered reveal",
+      "summary": "Cards enter with a short cascade on page change."
+    },
+    {
+      "id": "chart-draw",
+      "name": "Chart draw-in",
+      "summary": "Lines/bars draw on first view."
+    },
+    {
+      "id": "hover-lift",
+      "name": "Hover lift",
+      "summary": "Surfaces lift slightly on hover (transform only)."
+    },
+    {
+      "id": "press",
+      "name": "Press feedback",
+      "summary": "Buttons scale down briefly on press."
+    },
+    {
+      "id": "page-transition",
+      "name": "Page transition",
+      "summary": "Cross-fade or short slide under 250ms between pages."
+    },
+    {
+      "id": "skeleton",
+      "name": "Skeleton shimmer",
+      "summary": "Loading placeholders shimmer once."
+    },
+    {
+      "id": "icon-state",
+      "name": "Icon state change",
+      "summary": "Icons animate when a control changes state."
+    },
+    {
+      "id": "toast",
+      "name": "Toast in/out",
+      "summary": "Transient notices enter and leave calmly."
+    },
+    {
+      "id": "ambient",
+      "name": "Ambient",
+      "summary": "At most one soft looping background motion, paused offscreen."
     }
   ]
 }

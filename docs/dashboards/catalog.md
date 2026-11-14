@@ -59,6 +59,8 @@ _Horizon Weather · original owner reference (`reference.jpg`; recreation `shot.
 A cinematic weather home: painted sunset landscape behind glass panels, an editorial serif headline, a 7-day forecast strip with a glowing selected day, a smooth gold temperature curve and a mood card.
 
 - **Use cases:** Weather & climate, Travel & places · **Mode:** dark · **Mood:** cinematic, calm, premium, warm, editorial
+- **Pages:** Overview (`overview`, Dashboard) · Forecast (`forecast`, Report) · Maps (`maps`, Detail) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Code-drawn sunset landscape (SVG, themed by CSS variables) fading into the dark UI, with a gold glow ring on the selected day.
 - **Layout:** Fixed left sidebar (brand, 5-item nav, quote) · top bar (pill search, bell, avatar) · hero (headline left, current conditions right) over a painted scene · 7-day strip · 3 columns: area chart, details list, story card · popular-locations row
 - **Responsive:** ≤1180px: chart spans full width above details + story · ≤960px: sidebar becomes a top bar, hero stacks · ≤640px: single column, icon-only nav, day strip scrolls horizontally
@@ -89,6 +91,8 @@ _Solstice Energy · original owner reference (`reference.jpg`; recreation `shot.
 A cinematic solar-monitoring board: a thick gradient sun-path arc rises over a code-drawn mountain range, with generation and load curves on a teal grid, a readout strip, storage dials and round site thumbnails.
 
 - **Use cases:** Analytics & BI, Smart home & IoT · **Mode:** dark · **Mood:** cinematic, warm, technical, atmospheric, instrument-like
+- **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A thick yellow-to-orange-to-pink arc tracing the sun's path, cut by faceted orange mountains drawn in SVG; the sun dot moves to the hour you pick.
 - **Layout:** Slim top bar (brand, 4-item nav, date, 2 icon buttons) · 12-column grid at 1440px, 18px gaps: 3-column rail (today's total, strings table, self-powered ring) + 9-column hero (sun arc scene, hourly chart, 6-item readout strip) · then 2×2 half-width panels (output bars with range toggle, 4 storage dials, hourly load bars, 4 site thumbnails)
 - **Responsive:** ≤1180px: hero full width on top, rail becomes a two-column panel below · ≤760px: single column, hero chart 130px, readout strip 3×2, dials and sites 2×2
@@ -119,6 +123,8 @@ _Kumo Payroll · original owner reference (`reference.jpg`; recreation `shot.jpg
 A moonlit payroll overview: a code-drawn ink landscape with a gold moon, layered hills and a blossom branch sits behind one dark, gold-edged panel holding KPI tiles, a gross/net bar chart, a deductions donut and time-off ring.
 
 - **Use cases:** HR & people, Finance & banking · **Mode:** dark · **Mood:** cinematic, serene, luxurious, eastern, warm
+- **Pages:** Overview (`overview`, Dashboard) · People (`people`, List) · Payroll (`payroll`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A glowing gold moon, ink-line hills and a cherry-blossom branch drawn in SVG behind a dark panel with a thin gold edge.
 - **Layout:** Fixed illustrated scene behind the page · one centred panel, max 1240px, offset 210px from the top so the moon shows · inside: 216px sidebar (brand, 7-item nav, wave pattern) + 12-column main grid, 16px gaps: header with pay-period stepper · 4 KPI tiles · trend chart (7 cols) + deductions (5 cols) · time off (6) + next steps (6)
 - **Responsive:** ≤1080px: sidebar becomes a scrolling top nav, KPIs 2×2, cards stack · ≤640px: panel offset 130px, icon-only nav, period stepper full width, donut and legend stack
@@ -149,6 +155,8 @@ _Plumage Bird Survey · original owner reference (`reference.jpg`; recreation `s
 A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A code-drawn, rainbow-feathered bird sits between walls of teal and amber leaves, framed by gradient region charts, coverage and nesting rings, habitat donuts, ranked species bars and an observation log you can filter by species.
 
 - **Use cases:** Analytics & BI · **Mode:** dark · **Mood:** vivid, natural, dramatic, rich, lively
+- **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A code-drawn bird in a teal-to-violet feather gradient between leaf walls, with every chart reusing the same feather colours.
 - **Layout:** Top bar: mark, name, season toggle · 4 region spark cards · 12-column grid: species KPI + coverage ring (3) + hero art with caption (6) + nesting ring and habitat donuts (3) · species bars (6) + observation log (6)
 - **Responsive:** ≤1100px: regions 2×2, art full width, KPI and rings side by side, bars and log full width · ≤700px: single column, caption moves under the art
@@ -179,6 +187,8 @@ _Hearth Nest · original owner reference (`reference.jpg`; recreation `shot.jpg`
 A cinematic dark smart-home board: amber accent, SVG living-room hero with device nodes, weather and AQI arc, thermostat dial, device toggles and a 7-day power chart.
 
 - **Use cases:** Smart home & IoT · **Mode:** dark · **Mood:** cinematic, warm, cosy, premium, amber
+- **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Warm amber glow on a code-drawn living room with sofa, lamp and plant, linked by glowing device constellation nodes.
 - **Layout:** 64px icon rail · top bar (brand, search, bell, avatar) · left stack (weather, AQI arc + spark, thermostat dial) · right hero (room tabs, SVG living room with device nodes, vertical brightness) · bottom row (2×2 device toggles · 7-day power bars) · eco footer
 - **Responsive:** ≤1180px: left stack and hero stack; power full width · ≤960px: rail becomes top icon strip · ≤640px: single column, room tabs scroll, brightness becomes horizontal
@@ -209,6 +219,8 @@ _Forge Fitness · original owner reference (`reference.png`; recreation `shot.jp
 A cinematic dark fitness board: frosted glass cards for steps, sleep, heart, wellness and focus float over a code-drawn gym silhouette atmosphere, with an energy-and-recovery gauge on the right.
 
 - **Use cases:** Health & fitness · **Mode:** dark · **Mood:** cinematic, athletic, moody, focused, premium
+- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Glass metric cards floating over an SVG athlete/gym silhouette with orange and lime accents — no photographic faces.
 - **Layout:** 64px icon rail · top bar (brand, ask-anything search, add, avatar) · toolbar (search, edit, date range, add wallet, create report) · 12-column glass grid: activity · sleep · heart · wellness + focus + tall energy/recovery gauge
 - **Responsive:** ≤1180px: energy gauge drops below wellness/focus · ≤960px: icon rail becomes top chips, cards 2-col · ≤640px: single column, toolbar scrolls
@@ -244,6 +256,8 @@ _Haven Listings · original owner reference (`reference.jpg`; recreation `shot.j
 A property browser built around one large dusk scene: a code-drawn curved house glows under a blue sky, white filter tabs notch into the top edge, and a frosted card shows the selected home. Listings, price history and viewings sit below.
 
 - **Use cases:** Real estate · **Mode:** light · **Mood:** airy, premium, calm, architectural, soft
+- **Pages:** Overview (`overview`, Dashboard) · Listings (`listings`, List) · Showings (`showings`, Calendar) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** White tabs that notch into the rounded edge of a full-bleed dusk scene, where a curved white house glows orange from inside.
 - **Layout:** 600px rounded stage with a full-bleed scene: top row (Buy pill, notched filter tab with 3 selects, Rent pill) · left 60px pill rail of 6 icons · headline and lede · white match-count card bottom-left · frosted detail card bottom-right (340px) · below: 3 cards (matching homes list, price-history line chart, viewings with a book button)
 - **Responsive:** ≤1100px: detail card moves under the match card, lower cards 2 columns · ≤700px: single column, filters become a stacked white card, rail turns into a horizontal pill, scene stays behind the top 470px
@@ -274,6 +288,8 @@ _Aura Ring · original owner reference (`reference.jpg`; recreation `shot.jpg`, 
 A wellness overview for a smart ring: frosted, softly bordered cards float over a periwinkle-to-pink haze, with a two-weight headline, a score dial, thin white line charts, a code-drawn metal ring and a tappable body map.
 
 - **Use cases:** Health & fitness · **Mode:** dark · **Mood:** serene, dreamy, premium, soft, futuristic
+- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Frosted cards with a hairline white edge over a deep periwinkle field that blooms pink on the right, and solid white pills as the only opaque elements.
 - **Layout:** Top bar (brand, centred pill tabs, bell, avatar) · 12-column grid, 18px gaps: row 1 headline (5) + score card (4) + heart-rate card (3) · rows 2–3: two small chart cards and a summary card on the left (5), device card (4) and body-map card (3) spanning both rows
 - **Responsive:** ≤1100px: 2 columns (headline, score + heart rate, stress + sleep, device + body, summary) and tabs scroll · ≤680px: single column, tabs on their own scrolling row
@@ -304,6 +320,8 @@ _Prism Workspace · original owner reference (`reference.jpg`; recreation `shot.
 Workspace settings in a light liquid-glass style: thick translucent pills with bright rims over soft pastel blobs. Invite people through a keyboard-friendly suggestion list, filter and remove members, tick permissions, flip notification switches and watch seats fill a folder-shaped plan card.
 
 - **Use cases:** SaaS admin · **Mode:** light · **Mood:** airy, polished, calm, modern, tactile
+- **Pages:** Overview (`overview`, Dashboard) · Workspace (`workspace`, List) · People (`people`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Thick liquid-glass pills and orbs: a pastel fill fading to white at the top, a bright inner rim and a soft outer glow, floating over blurred pastel blobs.
 - **Layout:** Top bar: gem wordmark, glass tab pill, lock and bell orbs · title row with Create workspace pill · 12-column grid: invite (4) + members (5) + folder plan card (3) · permissions (6) + notifications (6)
 - **Responsive:** ≤1100px: 2 columns (invite + members, plan under invite, permissions and notifications full width) · ≤700px: single column, tabs scroll on their own row, permissions in one column
@@ -334,6 +352,8 @@ _Veil Rooms · original owner reference (`reference.jpg`; recreation `shot.jpg`,
 A grey-glass smart-home board: greeting and room pills, a 2×3 grid of device cards, and a right Light panel for fixture toggles and stepped spotlights.
 
 - **Use cases:** Smart home & IoT · **Mode:** dark · **Mood:** glassy, calm, modern, cool, precise
+- **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Frosted grey glass device cards beside a dedicated Light fixtures column with green on-toggles and three-step spotlight rails.
 - **Layout:** 56px icon rail · centre column (status chips, greeting, room pills, 3×2 device cards) · 320px right Light panel (header, time, 2×2 fixture cards with toggles and sliders)
 - **Responsive:** ≤1180px: Light panel drops under the device grid · ≤960px: rail becomes a top strip · ≤640px: device cards single column, room pills scroll
@@ -364,6 +384,8 @@ _Atrium Living · original owner reference (`reference.jpg`; recreation `shot.jp
 A glass smart-home room console over a code-drawn atrium living room: climate dial, energy wave, live camera, door lock, lighting, music and ambient LED on frosted panels.
 
 - **Use cases:** Smart home & IoT · **Mode:** light · **Mood:** airy, glassy, calm, contemporary, residential
+- **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Frosted glass panels floating over a hand-drawn atrium living room — teal walls, tall window light, wood floor and plants — with a warm energy chart and cool climate dial as twin accents.
 - **Layout:** Full-bleed SVG room backdrop · left pill icon rail · top room capsule nav · glass grid: climate column (weather, thermo dial, modes, members) · center (energy chart, TV strip, music) · right (camera, lighting, lock, ambient LED, speaker)
 - **Responsive:** ≤1180px: rail becomes top icon strip, glass grid 2 columns · ≤960px: single column stack, backdrop shortens · ≤640px: room pills scroll horizontally, sliders full width, tap targets ≥44px
@@ -394,6 +416,8 @@ _Aether Pane · original owner reference (`reference.png`; recreation `shot.jpg`
 A dark cyan glass analytics HUD in one floating pane: Q4 revenue bars, a bold performance index, user-journey donut and neon area charts with soft frosted borders.
 
 - **Use cases:** Analytics & BI, SaaS admin · **Mode:** dark · **Mood:** futuristic, glassy, neon, precise, calm-tech
+- **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** One frosted cyan glass pane floating over a dark blur field, centered on a huge 84.2% Performance Index with neon chart glow.
 - **Layout:** Centered floating glass shell · 3×2 module grid (horizontal revenue · spark + performance hero · journey donut / vertical revenue · dual area · large journey area)
 - **Responsive:** ≤1180px: 2-column modules · ≤960px: single column inside the pane · ≤640px: pane edge-to-edge, charts shorten
@@ -424,6 +448,8 @@ _Mauve Ledger · original owner reference (`reference.png`; recreation `shot.jpg
 A light lilac glass finance desk: frosted KPI tiles over a soft lavender haze, average sales bars, formation status, a segmented success gauge and a recent-email list.
 
 - **Use cases:** Finance & banking · **Mode:** light · **Mood:** airy, soft, premium, calm, lilac
+- **Pages:** Overview (`overview`, Dashboard) · Transactions (`transactions`, List) · Budgets (`budgets`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Frosted lilac glass cards on a soft lavender–pink haze, anchored by a segmented 51.2% success gauge.
 - **Layout:** Top bar (logo, pill nav, utility icons, avatar) · greeting · 4 KPI glass cards · 12-col: average sales (8) + formation status + success gauge (4) · recent emails full width
 - **Responsive:** ≤1180px: KPIs 2×2, sales full width above side stack · ≤960px: nav scrolls · ≤640px: single column, email rows compact
@@ -454,6 +480,8 @@ _Saffron Dusk · original owner reference (`reference.jpg`; recreation `shot.jpg
 A respectful fictional fasting-day wellness board in liquid glass: twin phones with a date strip, imsak→iftar sun arc, water segments, an evening gather card, plus a glass profile, daily progress bars and an upgrade row.
 
 - **Use cases:** Health & fitness, Education · **Mode:** light · **Mood:** serene, warm, reverent, airy, soft
+- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Frosted cream and olive glass phones with a white fasting sun arc, teal water segments and warm saffron gather/progress panels under Fraunces headlines.
 - **Layout:** Stage · twin phones: Today (date strip, sun-arc card, water, gather, nav) · Profile (greeting, profile card, daily bars, upgrade, nav)
 - **Responsive:** ≤1100px: phones stack · ≤700px: single column, date strip scrolls inside its row, nav stays sticky to each phone
@@ -484,6 +512,8 @@ _Clima Pane · original owner reference (`reference.jpg`; recreation `shot.jpg`,
 A light glass climate console on a beige field with soft orange and blue orb blobs: orange↔blue thermostat dial, Heat/Cool, fan speed bars, living-room stats, schedule, rooms list and energy mode chips.
 
 - **Use cases:** Smart home & IoT · **Mode:** light · **Mood:** airy, warm, frosted, calm, tactile
+- **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Frosted glass cards floating over a beige canvas with soft orange and blue CSS orb blobs, centered on an orange↔blue thermostat dial.
 - **Layout:** Floating glass icon rail · top brand + outside chip + avatar · left: living-room stats + schedule · center: climate dial with Heat/Cool and fan bars · right: rooms list + mode chips
 - **Responsive:** ≤1180px: rooms and modes drop under dial · ≤960px: rail becomes top icon strip · ≤640px: single column, lists scroll inside cards
@@ -514,6 +544,8 @@ _Cortex Well · original owner reference (`reference.jpg`; recreation `shot.jpg`
 A lilac-glass wellness overview: frosted cards float over a soft pink–lilac haze around an SVG brain in a glass bowl, with lead lines to Heart, Breath, Brain and All activity pills, sleep bars and a multi-line heart chart.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** ethereal, soft, calm, premium, lilac
+- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A pink-lilac SVG brain resting in a frosted glass bowl, connected by thin lead lines to soft activity pills over a lilac–pink haze.
 - **Layout:** 64px icon rail · top (greeting, glass pill nav, bell, avatar) · headline · 12-column board: left stack (performance, sleep waves, 3 metric tiles) · centre brain bowl with activity pills · right stack (sleep bars, heart bpm) · footer dots
 - **Responsive:** ≤1180px: rail becomes a top strip; board stacks left → hero → right · ≤960px: metric tiles 3-up · ≤640px: single column, nav scrolls, pills wrap
@@ -549,6 +581,8 @@ _Taffy Analytics · original owner reference (`reference.jpg`; recreation `shot.
 A calm pastel product-analytics dashboard for a design-tool startup: a serif headline number over a soft area chart, a row of glossy 3D capsules for sign-ups by channel, a rounded plan-mix ring, springy feature-flag switches and a release checklist.
 
 - **Use cases:** SaaS admin, Analytics & BI · **Mode:** light · **Mood:** calm, tactile, light, friendly, modern
+- **Pages:** Overview (`overview`, Dashboard) · Workspace (`workspace`, List) · People (`people`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Glossy pastel capsules standing on a peach shelf, shaded with a left-to-right gradient and an inner highlight so they read as soft 3D pills.
 - **Layout:** Top bar: serif wordmark, centred pill of 5 round workspace buttons, avatar · 12-column grid: weekly active teams area chart (7) + capsule chart (5, two rows) · KPI strip (7) · plan mix (4) + feature flags (4) + release checklist (4)
 - **Responsive:** ≤1100px: 2 columns (hero and KPIs full width, capsules + mix, flags + checklist) · ≤700px: single column, workspace pill on its own row, KPIs stacked
@@ -584,6 +618,8 @@ _Vitalis Care · original owner reference (`reference.jpg`; recreation `shot.jpg
 A bento-grid patient dashboard for a family clinic: a heart-rate tile with a code-drawn heart and pulse trace, coloured vital tiles, a deep-teal next-appointment tile, a searchable doctor directory that feeds a week-strip booking panel, a steps and sleep chart, and a records list.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** clear, caring, organised, fresh, friendly
+- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Tiles of different sizes in a tight bento: a glossy SVG heart with a coral pulse trace, a coral and a mint vital tile, and one deep-teal appointment tile.
 - **Layout:** Pill top bar (brand, 4 links, bell, avatar) · greeting row · 12-column bento: heart rate (4) + blood pressure (2) + blood sugar (2) + next appointment (4) · doctor directory (5, two rows) + booking (4, two rows) + this week chart (3) + records (3)
 - **Responsive:** ≤1100px: 4-column bento (vitals pair, directory + booking side by side) · ≤700px: 2-column bento with vitals side by side, everything else full width, nav on its own row
@@ -614,6 +650,8 @@ _Larchwood Lodge · original owner reference (`reference.jpg`; recreation `shot.
 A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, drawn in SVG layers, greets the family. Around it sit tiles for cabin heat, daylight left, a five-day forecast, light scenes, activity booking, wake-up alarms and today's trail status.
 
 - **Use cases:** Hospitality & food, Smart home & IoT · **Mode:** dark · **Mood:** cosy, warm, seasonal, calm, atmospheric
+- **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Guests (`guests`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A layered SVG autumn lake at sunset (plum ridges, gold and rust larches, reflected in the water) set inside dark plum bento tiles that pick up the same sunset orange.
 - **Layout:** Top bar: mark, name, stay dates · 12-column bento: landscape hero with greeting (8) + thermostat dial (4) · daylight arc (3) + forecast (5) + light scenes (4) · activity booking (6) + alarms (3) + trails (3)
 - **Responsive:** ≤1100px: 2 columns (hero full, dial + daylight, forecast full, scenes + alarms, bookings and trails full) · ≤700px: single column, greeting moves under the art
@@ -644,6 +682,8 @@ _Orchard Sales · original owner reference (`reference.png`; recreation `shot.jp
 A light black-and-lime sales bento: slim icon rail, pill nav, a tall product hero with sphere art and frosted advantages, activity bars, hatched revenue area, spend line and virtual-card balances.
 
 - **Use cases:** CRM & sales, Analytics & BI · **Mode:** light · **Mood:** crisp, modern, commercial, bright, precise
+- **Pages:** Overview (`overview`, Dashboard) · Pipeline (`pipeline`, Board) · Accounts (`accounts`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A tall product tile with a lime sphere cluster, frosted advantages glass, and thick lime growth bars.
 - **Layout:** 56px dark icon rail · top bar with pill nav and avatars · breadcrumb + title + date/actions · 12-col bento: product hero (3, tall) · activity (5) · revenue (4) · spend (5) · virtual cards (4)
 - **Responsive:** ≤1180px: rail becomes bottom or top chips · ≤960px: product full width, charts 2-col · ≤640px: single column, action chips scroll
@@ -679,6 +719,8 @@ _Glacier Ops · original owner reference (`reference.png`; recreation `shot.jpg`
 A data-dense dark-blue radial HUD for cold-ops monitoring: a multi-ring dial with SVG glacier topography, cyan accents, and a ring of compact charts, gauges and a viewfinder.
 
 - **Use cases:** Analytics & BI · **Mode:** dark · **Mood:** tactical, icy, technical, dense, nocturnal
+- **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A cyan-rimmed multi-ring dial whose core is a hand-drawn glacier topographic sphere, ringed by lock segments and flanked by dense miniature charts.
 - **Layout:** Top bar (brand, sector tabs, 4 status orbs) · 12-column body: left chart stack · center multi-ring topo dial · right viewfinder + lines + dual gauges · full-width bottom area wave
 - **Responsive:** ≤1180px: dial full width on top, side stacks become two columns below · ≤960px: single column, dial scales down, bottom chart first after dial · ≤640px: status orbs wrap, tabs scroll
@@ -709,6 +751,8 @@ _Citadel Wall · original owner reference (`reference.png`; recreation `shot.jpg
 A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central SVG sphere-and-cube hologram, arc gauges, dense charts and a four-block spark footer for fictional orbital logistics.
 
 - **Use cases:** Analytics & BI, Logistics & fleet · **Mode:** dark · **Mood:** tactical, glowing, dense, command-center, futuristic
+- **Pages:** Overview (`overview`, Dashboard) · Fleet (`fleet`, List) · Shipments (`shipments`, Board) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A cyan-glow cube locked inside a translucent sphere on a scan-line pedestal, framed by HUD brackets on a deep navy wall.
 - **Layout:** Tech title bar · three columns (left identity/charts/status · center hologram · right KPI grid/gauges/bars) · bottom four-metric spark strip
 - **Responsive:** ≤1180px: hologram on top, side columns two-up below · ≤960px: single column stacks · ≤640px: gauges wrap, footer 2×2
@@ -744,6 +788,8 @@ _Canopy Reforest · original owner reference (`reference.jpg`; recreation `shot.
 An organic reforestation tracker in forest green, bark brown and tan: a leafy code-drawn hero with a big rounded headline, a deep green band of four site figures and six soft, colour-blocked tiles for species, planting, soil, tasks and crews.
 
 - **Use cases:** Projects & tasks, Analytics & BI · **Mode:** dark · **Mood:** organic, calm, earthy, friendly, soft
+- **Pages:** Overview (`overview`, Dashboard) · Tasks (`tasks`, Board) · Sites (`sites`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Overlapping green and tan leaves with fine veins, drawn from one SVG path, spilling over a bark-brown wedge in the hero.
 - **Layout:** Centred 1240px column, 20px gaps · top bar (brand, 4-item nav, bell) · 380px hero (copy left, leaf artwork right, CTA + site switcher) · 4-column metrics band · 3×2 grid of colour-blocked tiles (species bars, monthly planting bars, soil gauges, landscape tile, checklist, crews)
 - **Responsive:** ≤980px: tiles 2 columns, metrics band 2×2 · ≤640px: single column, leaves move above the headline, site switcher and CTA full width
@@ -774,6 +820,8 @@ _Lull Sleep · original owner reference (`reference.jpg`; recreation `shot.jpg`,
 A one-night sleep report in soft lavender: a pastel sky hero with a crescent moon and a round score, a stage timeline you can filter by stage, a stage-split donut, a week of nights to pick from, logged habits that move the score, and bedroom conditions.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** calm, gentle, dreamy, reassuring, soft
+- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A pastel blue-to-pink sky with a glowing crescent and white clouds, holding a white round score, above soft white cards with rounded lavender stage blocks.
 - **Layout:** Top bar (wordmark, centred pill nav, avatar) · 250px sky hero: date, serif headline with italic second half, 3 chips, 200px round score · 12-column grid: timeline (8) + stage split (4, two rows) · night stats strip (8) · bottom row: last seven nights bar chart (5), habits (4), bedroom (3)
 - **Responsive:** ≤1100px: 2 columns (timeline and stats full width, split + week, habits + bedroom) · ≤700px: single column, nav on its own row, score under the headline, stats 2×2, fewer time labels
@@ -804,6 +852,8 @@ _Pearlwell Dental · original owner reference (`reference.jpg`; recreation `shot
 A soft mint patient portal for a dental clinic: one saturated next-visit card with a code-drawn tooth and shield, a health-score ring, a booking calendar with times and dentists, a searchable treatment price list and a tappable tooth chart.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** clean, friendly, reassuring, fresh, soft
+- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** One deep-teal next-visit card holding a glossy white SVG tooth with a shield, set among white cards on a mint field that warms to peach in the corner.
 - **Layout:** 230px sticky sidebar (brand, 5 nav links, emergency note) · main: greeting header with search and avatar · 12-column grid: next visit (5) + score (3) + treatments (4, two rows) · booking card (8, two rows: month calendar left, times, dentists and confirm right) · tooth chart (4)
 - **Responsive:** ≤1180px: sidebar becomes a top bar, grid 2 columns · ≤700px: icon tab bar with labels, single column, calendar above times
@@ -834,6 +884,8 @@ _Folio Club · original owner reference (`reference.png`; recreation `shot.jpg`,
 A soft dark reading club: book shelf and friends on the left, a current-book hero with five colorful metric tiles (progress, time, level, streak, badges), a friends/club/global leaderboard, and a live activity feed.
 
 - **Use cases:** Education, Music & media · **Mode:** dark · **Mood:** cosy, social, playful, soft, dark
+- **Pages:** Overview (`overview`, Dashboard) · Library (`library`, List) · Progress (`progress`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Five saturated pastel metric tiles — gold progress with overlapping friend avatars on the bar, orange time, purple level, green streak, sky badges — floating on soft charcoal glass.
 - **Layout:** Left rail (profile, books, friends, settings) · center stack (current book hero, metric tile grid, leaderboard) · right activity feed
 - **Responsive:** ≤1180px: activity under center, rail stays · ≤960px: rail becomes horizontal strip · ≤640px: single column, tiles 1-wide, feed last
@@ -864,6 +916,8 @@ _Tidebath Showroom · original owner reference (`reference.jpg`; recreation `sho
 A soft-light bathroom showroom: curved SVG 3-bay room carousel with hotspot markers and a 6m² badge, above a four-column board for inspirations, product icons, store search and contact.
 
 - **Use cases:** E-commerce & retail, Hospitality & food · **Mode:** light · **Mood:** airy, minimal, clean, sculptural, calm
+- **Pages:** Overview (`overview`, Dashboard) · Catalog (`catalog`, List) · Orders (`orders`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A soft white cylindrical stage holding three angled bathroom bays drawn in SVG, with blue tide-wave hotspot markers and a recessed circular 6m² badge.
 - **Layout:** Centered Tidebath mark + 4 nav links · curved 3-bay SVG carousel with prev/next, hotspots and 6m² badge · 4-column lower board (inspirations + social · product icons + store search · downloads · contact)
 - **Responsive:** ≤1100px: carousel scales, board becomes 2×2 · ≤700px: nav wraps under brand, carousel full-bleed with stacked arrows, board single column
@@ -894,6 +948,8 @@ _Copper Radar · original owner reference (`reference.jpg`; recreation `shot.jpg
 A soft-light SOC ops board: copper accents on white, concentric radar arcs with invented vendor chips, a live incident feed, dashed severity bars, automation steps and a timeline footer.
 
 - **Use cases:** Analytics & BI · **Mode:** light · **Mood:** alert, clean, soft, operational, focused
+- **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Soft white SOC shell with copper accents and a large semi-circular radar of concentric arcs dotted with invented vendor chips.
 - **Layout:** Top bar (brand · soft pill tabs · utilities) · Dynamic View (injection + incidents · radar · live feed) · 4-card row (Sources, Assets, Alerts, Automation) · timeline footer
 - **Responsive:** ≤1180px: feed under radar · ≤960px: side cards stack, 2×2 bottom grid · ≤640px: single column, tabs scroll, timeline wraps
@@ -924,6 +980,8 @@ _Meridian Labs · original owner reference (`reference.jpg`; recreation `shot.jp
 A soft health diagnostics board: filterable doctor test cards, a code-drawn DNA helix centerpiece, a vitamin supplement grid with SVG bottles, and a week schedule strip with an orange highlight day.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** soft, clinical, calm, airy, reassuring
+- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A soft off-white diagnostics layout centered on a code-drawn DNA helix, with an orange-highlighted day on the week strip and SVG vitamin bottles instead of product photos.
 - **Layout:** Top bar: brand · circular icon nav · profile · three columns: personal tests + filter pills · DNA helix · vitamin grid · full-width week schedule strip
 - **Responsive:** ≤1180px: vitamins under tests, DNA stays · ≤960px: single column, DNA shortens · ≤640px: test cards and week strip scroll horizontally inside
@@ -959,6 +1017,8 @@ _Ridgeline Trails · original owner reference (`reference.jpg`; recreation `shot
 A two-tone visitor report for a trail network: a pale, quiet upper half where a misty code-drawn mountain range fades in from the right, then a wave edge into a charcoal lower half of raised pie dials, thin bars and a gold ring gauge.
 
 - **Use cases:** Travel & places, Analytics & BI · **Mode:** light · **Mood:** quiet, editorial, misty, monochrome, considered
+- **Pages:** Overview (`overview`, Dashboard) · Routes (`routes`, List) · Journal (`journal`, Detail) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Grey mountain ridges separated by bands of mist, with an ochre forest on the front slope, dissolving into the page and cut off by a wave edge into the charcoal half.
 - **Layout:** One framed board, max 1280px, thick dark bezel · upper half (pale): centred title + period toggle, left column of 2 ring stats, 2 big numbers and a line chart, right column mountain art with a conditions card · wave-shaped edge · lower half (charcoal): 4 columns (thin bar list, 2 pie dials with legends, ring gauge + small table)
 - **Responsive:** ≤1080px: upper half stacks and the mountains move to a 330px strip above the wave; lower half 2×2 · ≤640px: single column, 230px mountain strip, full-width period toggle, legends as 44px rows
@@ -994,6 +1054,8 @@ _Zest Health · original owner reference (`reference.png`; recreation `shot.jpg`
 A bold lime health overview with a charcoal sidebar, overlapping energy bubbles, heart and activity tiles, a wellness dot-matrix index, and a dark sleep-analysis panel with hatched month bars.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** bold, fresh, energetic, playful, clear
+- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Three overlapping kcal bubbles (lilac, charcoal, lime) beside a charcoal sleep panel with hatched month bars and one highlighted month.
 - **Layout:** 240px dark sidebar (brand, nav with badges, upgrade card) · main: profile + search header · title row with date · bento: energy bubbles (tall) · heart · activity · wellness dot index (tall) · sleep analysis (wide dark)
 - **Responsive:** ≤1180px: sidebar collapses to top nav, bento 2 columns · ≤960px: upgrade hidden · ≤640px: single column, bubbles stack
@@ -1029,6 +1091,8 @@ _Pulsar Analytics · original owner reference (`reference.jpg`; recreation `shot
 A dark neon product-analytics overview: glossy metric orbs that switch the main chart, layered violet and mint wave areas over a purple floor glow, a ticked uptime dial and gradient pillar bars.
 
 - **Use cases:** Analytics & BI, SaaS admin · **Mode:** dark · **Mood:** neon, technical, moody, glossy, futuristic
+- **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Violet and mint wave areas rising out of a blurred purple floor glow, with glossy sphere-like metric buttons above.
 - **Layout:** Top bar (brand, 4-item nav, pill search, range toggle, bell, avatar) · 3 columns at 1440px: 288px left rail (uptime dial, health donut, hourly bars) · fluid centre (4 metric orbs, wave chart, 3 sparkline tiles) · 304px right rail (channel pillars, top events, regions) · 18px gaps
 - **Responsive:** ≤1180px: centre column spans full width on top, rails sit side by side below, search hides · ≤960px: nav wraps under the bar, orbs 2×2 · ≤640px: single column, orbs stack, chart 200px tall
@@ -1059,6 +1123,8 @@ _Hollow Vault · original owner reference (`reference.jpg`; recreation `shot.jpg
 A dark-neon rewards hub for a fantasy game. Eight code-drawn relics ring a glowing chest; open it with keys earned from quests and see what you win. Drop rates are shown openly, your haul fills in below, and guild chat runs down the right.
 
 - **Use cases:** Music & media · **Mode:** dark · **Mood:** playful, magical, vivid, immersive, dark
+- **Pages:** Overview (`overview`, Dashboard) · Library (`library`, List) · Activity (`activity`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A wheel of eight glowing SVG relics around a brass-bound chest, with a soft indigo glow and rarity-coloured card tops.
 - **Layout:** 3 columns: 240px menu (realm nav, today's quests that award keys) · main: title + key balance, relic wheel with chest core, chest contents with rarity filter, your haul · 320px guild chat with composer
 - **Responsive:** ≤1180px: chat moves under the main column · ≤760px: single column, nav 2×2, wheel labels hidden, chest copy trimmed
@@ -1094,6 +1160,8 @@ _Mallow Music · original owner reference (`reference.jpg`; recreation `shot.jpg
 A claymorphic listening dashboard for a music app: puffy pastel tiles with soft inner highlights, a peach hero with code-drawn clay headphones and a plant, a now-playing bar you can scrub, colourful weekly listening bars, a genre donut, recently played songs and a daily mix drawn as a cosy room.
 
 - **Use cases:** Music & media · **Mode:** light · **Mood:** cosy, playful, warm, soft, friendly
+- **Pages:** Overview (`overview`, Dashboard) · Library (`library`, List) · Activity (`activity`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Puffy clay surfaces with an outer shadow and an inner highlight, in cream, sage, peach, butter and sky, with glossy SVG headphones on the hero shelf.
 - **Layout:** 220px clay sidebar (avatar, 6 links, Plus card) · main: title + search + bell · peach hero (art 220px, greeting, plant) · now-playing bar · 4 stat tiles · listening bars (1.25fr) + top genres (1fr) · recently played + daily mix
 - **Responsive:** ≤1100px: sidebar becomes a top block, stats 2×2 · ≤700px: single column, nav in 3×2 grid, hero art above copy, player wraps to two rows
@@ -1124,6 +1192,8 @@ _Dune Panels · original owner reference (`reference.jpg`; recreation `shot.jpg`
 A skeuomorphic soft-UI analytics board in sand, sage and slate: blue fabric wave backdrop, dual donuts, a recessed neumorphic donut well, pill search, icon shelves and a 2×2 analytics grid under dark headers.
 
 - **Use cases:** Analytics & BI · **Mode:** light · **Mood:** tactile, calm, organic, matte, soft
+- **Pages:** Overview (`overview`, Dashboard) · Reports (`reports`, Report) · Segments (`segments`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Sand, sage and slate panels with multi-layer neumorphic shadows, a draped blue fabric wave, and a large donut seated in a deeply recessed circular well.
 - **Layout:** Fabric wave backdrop · top search on slate strip · dual donut sand panel · sage recessed donut well · 3×3 icon grid · range pills · slate 2×2 analytics donut grid with dark headers throughout
 - **Responsive:** ≤1100px: two-column wrap, wave softens · ≤700px: single column, icon grid 3×3 retained, search full width, analytics 2×2 stacks
@@ -1154,6 +1224,8 @@ _Pebble Studio · original owner reference (`reference.jpg`; recreation `shot.jp
 A cream-and-pink soft-UI studio admin: extruded nav pills, overlapping peach/pink SVG pebble blobs, circular knobs, layered wave dunes, and a gradient torus beside a tick-mark dial — all on neumorphic clay surfaces.
 
 - **Use cases:** SaaS admin · **Mode:** light · **Mood:** tactile, playful, soft, warm, calm
+- **Pages:** Overview (`overview`, Dashboard) · Workspace (`workspace`, List) · People (`people`, List) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Cream soft-UI board with extruded pills, overlapping peach/pink pebble blobs, circular knobs, layered wave dunes, and a rainbow torus beside a tick-mark dial.
 - **Layout:** Top extruded pill nav · blob stage + torus/dial analytics · wave dunes + knobs + lite slider · pastel activity feed + KPI pill strip
 - **Responsive:** ≤1180px: two-column bento · ≤960px: nav wraps, torus under blobs · ≤640px: single column, knobs in a row, feed last
@@ -1184,6 +1256,8 @@ _Orbit Clay · original owner reference (`reference.jpg`; recreation `shot.jpg`,
 Cream, forest and gold claymorphism for an immersive media console: twin phone panels with a gold-ring astronaut helmet, a START pill, and a calibration landscape where a gold sphere rides a vertical rail beside stacked KPIs.
 
 - **Use cases:** Music & media · **Mode:** light · **Mood:** tactile, playful, premium, earthy, curious
+- **Pages:** Overview (`overview`, Dashboard) · Library (`library`, List) · Activity (`activity`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** Soft cream clay phones with a thick gold ring framing an abstract forest-green astronaut helmet, and a gold sphere on a vertical rail over clay mountains.
 - **Layout:** Split stage · twin phone panels: mission phone (score, gold-ring helmet, pager, START) · calibration phone (KPI stack, clay terrain, gold sphere rail, foot icons)
 - **Responsive:** ≤1100px: panels stack centred · ≤700px: single phone width, stage padding shrinks, foot icons wrap
@@ -1214,6 +1288,8 @@ _Ember Rooms · original owner reference (`reference.jpg`; recreation `shot.jpg`
 A soft neumorphic indoor lighting console: orange accent, left icon rail, pill search, and a large centre stage with an SVG pendant lamp, orbiting room dots, intensity slider, schedule, line charts and a video-sim room panel.
 
 - **Use cases:** Smart home & IoT · **Mode:** light · **Mood:** tactile, soft, warm, calm, orange
+- **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
+- **Motion:** _none yet_
 - **Signature:** A soft extruded well with a grey SVG pendant lamp hanging inside concentric orbit rings, orange room dots and a bright orange power control.
 - **Layout:** 64px icon rail · top (search, brand, undo/redo/settings) · soft main well: left stack (intensity, schedule, arc dial) · centre pendant stage with orbit room dots · right stack (line chart, spark, video-sim)
 - **Responsive:** ≤1180px: right stack drops under centre · ≤960px: rail becomes top strip · ≤640px: single column, room dots scroll, charts full width

@@ -1,11 +1,11 @@
 {
   "id": "hearth-nest",
-  "checked": "2026-11-13",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/hearth-nest/",
+      "url": "/dashboards/hearth-nest/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/hearth-nest/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/hearth-nest",
+      "url": "/dashboards/hearth-nest#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/hearth-nest/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/hearth-nest/index.html",
+      "url": "/dashboards/hearth-nest/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/hearth-nest/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/hearth-nest/",
+      "url": "/dashboards/hearth-nest/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/hearth-nest/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/hearth-nest/?variant=cedar",
+      "url": "/dashboards/hearth-nest/?variant=cedar#/overview",
       "width": 1440,
       "variant": "cedar",
       "final_path": "/dashboards/hearth-nest/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/hearth-nest/?variant=frost",
+      "url": "/dashboards/hearth-nest/?variant=frost#/overview",
       "width": 1440,
       "variant": "frost",
       "final_path": "/dashboards/hearth-nest/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=cedar#/overview",
+      "width": 1440,
+      "variant": "cedar",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=cedar#/overview",
+      "width": 375,
+      "variant": "cedar",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=frost#/overview",
+      "width": 1440,
+      "variant": "frost",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=frost#/overview",
+      "width": 375,
+      "variant": "frost",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/#/rooms",
+      "width": 1440,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/#/rooms",
+      "width": 375,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=cedar#/rooms",
+      "width": 1440,
+      "variant": "cedar",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=cedar#/rooms",
+      "width": 375,
+      "variant": "cedar",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=frost#/rooms",
+      "width": 1440,
+      "variant": "frost",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=frost#/rooms",
+      "width": 375,
+      "variant": "frost",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/#/devices",
+      "width": 1440,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/#/devices",
+      "width": 375,
+      "variant": "default",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=cedar#/devices",
+      "width": 1440,
+      "variant": "cedar",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=cedar#/devices",
+      "width": 375,
+      "variant": "cedar",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=frost#/devices",
+      "width": 1440,
+      "variant": "frost",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=frost#/devices",
+      "width": 375,
+      "variant": "frost",
+      "page": "devices",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/#/energy",
+      "width": 1440,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/#/energy",
+      "width": 375,
+      "variant": "default",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=cedar#/energy",
+      "width": 1440,
+      "variant": "cedar",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=cedar#/energy",
+      "width": 375,
+      "variant": "cedar",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=frost#/energy",
+      "width": 1440,
+      "variant": "frost",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=frost#/energy",
+      "width": 375,
+      "variant": "frost",
+      "page": "energy",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=cedar#/settings",
+      "width": 1440,
+      "variant": "cedar",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=cedar#/settings",
+      "width": 375,
+      "variant": "cedar",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=frost#/settings",
+      "width": 1440,
+      "variant": "frost",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/hearth-nest/?variant=frost#/settings",
+      "width": 375,
+      "variant": "frost",
+      "page": "settings",
       "errors": []
     },
     {

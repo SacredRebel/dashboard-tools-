@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/horizon-weather/",
+      "url": "/dashboards/horizon-weather/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/horizon-weather/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/horizon-weather",
+      "url": "/dashboards/horizon-weather#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/horizon-weather/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/horizon-weather/index.html",
+      "url": "/dashboards/horizon-weather/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/horizon-weather/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/horizon-weather/",
+      "url": "/dashboards/horizon-weather/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/horizon-weather/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/horizon-weather/?variant=dawn",
+      "url": "/dashboards/horizon-weather/?variant=dawn#/overview",
       "width": 1440,
       "variant": "dawn",
       "final_path": "/dashboards/horizon-weather/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/horizon-weather/?variant=night",
+      "url": "/dashboards/horizon-weather/?variant=night#/overview",
       "width": 1440,
       "variant": "night",
       "final_path": "/dashboards/horizon-weather/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=dawn#/overview",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=dawn#/overview",
+      "width": 375,
+      "variant": "dawn",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=night#/overview",
+      "width": 1440,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=night#/overview",
+      "width": 375,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/#/forecast",
+      "width": 1440,
+      "variant": "default",
+      "page": "forecast",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/#/forecast",
+      "width": 375,
+      "variant": "default",
+      "page": "forecast",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=dawn#/forecast",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "forecast",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=dawn#/forecast",
+      "width": 375,
+      "variant": "dawn",
+      "page": "forecast",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=night#/forecast",
+      "width": 1440,
+      "variant": "night",
+      "page": "forecast",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=night#/forecast",
+      "width": 375,
+      "variant": "night",
+      "page": "forecast",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/#/maps",
+      "width": 1440,
+      "variant": "default",
+      "page": "maps",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/#/maps",
+      "width": 375,
+      "variant": "default",
+      "page": "maps",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=dawn#/maps",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "maps",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=dawn#/maps",
+      "width": 375,
+      "variant": "dawn",
+      "page": "maps",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=night#/maps",
+      "width": 1440,
+      "variant": "night",
+      "page": "maps",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=night#/maps",
+      "width": 375,
+      "variant": "night",
+      "page": "maps",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=dawn#/settings",
+      "width": 1440,
+      "variant": "dawn",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=dawn#/settings",
+      "width": 375,
+      "variant": "dawn",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=night#/settings",
+      "width": 1440,
+      "variant": "night",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/horizon-weather/?variant=night#/settings",
+      "width": 375,
+      "variant": "night",
+      "page": "settings",
       "errors": []
     },
     {

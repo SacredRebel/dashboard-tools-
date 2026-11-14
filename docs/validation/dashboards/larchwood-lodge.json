@@ -1,11 +1,11 @@
 {
   "id": "larchwood-lodge",
-  "checked": "2026-11-13",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/larchwood-lodge/",
+      "url": "/dashboards/larchwood-lodge/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/larchwood-lodge/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/larchwood-lodge",
+      "url": "/dashboards/larchwood-lodge#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/larchwood-lodge/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/larchwood-lodge/index.html",
+      "url": "/dashboards/larchwood-lodge/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/larchwood-lodge/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/larchwood-lodge/",
+      "url": "/dashboards/larchwood-lodge/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/larchwood-lodge/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/larchwood-lodge/?variant=birch",
+      "url": "/dashboards/larchwood-lodge/?variant=birch#/overview",
       "width": 1440,
       "variant": "birch",
       "final_path": "/dashboards/larchwood-lodge/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/larchwood-lodge/?variant=pine",
+      "url": "/dashboards/larchwood-lodge/?variant=pine#/overview",
       "width": 1440,
       "variant": "pine",
       "final_path": "/dashboards/larchwood-lodge/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=birch#/overview",
+      "width": 1440,
+      "variant": "birch",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=birch#/overview",
+      "width": 375,
+      "variant": "birch",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=pine#/overview",
+      "width": 1440,
+      "variant": "pine",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=pine#/overview",
+      "width": 375,
+      "variant": "pine",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/#/rooms",
+      "width": 1440,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/#/rooms",
+      "width": 375,
+      "variant": "default",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=birch#/rooms",
+      "width": 1440,
+      "variant": "birch",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=birch#/rooms",
+      "width": 375,
+      "variant": "birch",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=pine#/rooms",
+      "width": 1440,
+      "variant": "pine",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=pine#/rooms",
+      "width": 375,
+      "variant": "pine",
+      "page": "rooms",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/#/guests",
+      "width": 1440,
+      "variant": "default",
+      "page": "guests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/#/guests",
+      "width": 375,
+      "variant": "default",
+      "page": "guests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=birch#/guests",
+      "width": 1440,
+      "variant": "birch",
+      "page": "guests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=birch#/guests",
+      "width": 375,
+      "variant": "birch",
+      "page": "guests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=pine#/guests",
+      "width": 1440,
+      "variant": "pine",
+      "page": "guests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=pine#/guests",
+      "width": 375,
+      "variant": "pine",
+      "page": "guests",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=birch#/settings",
+      "width": 1440,
+      "variant": "birch",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=birch#/settings",
+      "width": 375,
+      "variant": "birch",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=pine#/settings",
+      "width": 1440,
+      "variant": "pine",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/larchwood-lodge/?variant=pine#/settings",
+      "width": 375,
+      "variant": "pine",
+      "page": "settings",
       "errors": []
     },
     {

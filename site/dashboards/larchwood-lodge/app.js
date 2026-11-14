@@ -111,5 +111,61 @@
   $('[data-acts]').addEventListener('click', (e) => { const b = e.target.closest('[data-act]'); if (!b) return; const x = ACTS[+b.dataset.act]; x.mine = !x.mine; renderActs(); const nb = $(`[data-act="${b.dataset.act}"]`); (nb || $('[data-actf] [aria-pressed="true"]')).focus(); });
   $('[data-alarms]').addEventListener('click', (e) => { const b = e.target.closest('[data-al]'); if (!b) return; AL[+b.dataset.al].on = !AL[+b.dataset.al].on; renderAlarms(); $(`[data-al="${b.dataset.al}"]`).focus(); });
   renderTemp(); renderWx(); renderScenes(); renderActs(); renderAlarms();
+/* === DB multipage bootstrap (generated; polish pass replaces stubs) === */
+  (function wirePages() {
+    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"rooms","name":"Rooms","pattern":"List"},{"id":"guests","name":"Guests","pattern":"List"},{"id":"settings","name":"Settings","pattern":"Settings"}];
+    const main = document.querySelector('main') || document.body;
+    let stub = document.querySelector('[data-db-stub]');
+    if (!stub) {
+      stub = document.createElement('section');
+      stub.setAttribute('data-db-stub', '');
+      stub.hidden = true;
+      stub.setAttribute('aria-live', 'polite');
+      main.appendChild(stub);
+    }
+    function setOverviewVisible(on) {
+      [...main.children].forEach((ch) => {
+        if (ch === stub) return;
+        if (on) {
+          ch.hidden = false;
+          ch.removeAttribute('data-db-overview-hide');
+        } else {
+          ch.hidden = true;
+          ch.setAttribute('data-db-overview-hide', '');
+        }
+      });
+      stub.hidden = on;
+    }
+    function renderStub(page) {
+      const rows = [
+        ['Status', 'Sample · ready'],
+        ['Records', '24'],
+        ['Updated', 'Today'],
+      ];
+      stub.innerHTML = '<h1>' + page.name + '</h1>'
+        + '<p class="db-sample">Sample data · fictional</p>'
+        + '<p>This page is part of the multi-page shell. The polish pass fills it with real ' + page.name.toLowerCase() + ' UI in the same design language as Overview.</p>'
+        + '<div class="db-stub-panel" role="list">'
+        + rows.map(([k, v]) => '<div class="db-stub-row" role="listitem"><span>' + k + '</span><strong class="num">' + v + '</strong></div>').join('')
+        + '</div>';
+    }
+    document.querySelectorAll('a[href]').forEach((a) => {
+      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+      if (!label) return;
+      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
+        || (label === 'home' && p.id === 'overview')
+        || (label === 'dashboard' && p.id === 'overview'));
+      if (hit) a.setAttribute('href', '#/' + hit.id);
+    });
+    if (!window.DB || typeof window.DB.route !== 'function') {
+      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+      return;
+    }
+    window.DB.route(PAGES, (id, page) => {
+      if (id === PAGES[0].id) setOverviewVisible(true);
+      else { setOverviewVisible(false); renderStub(page); }
+    });
+  })();
+/* === /DB multipage bootstrap === */
   document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end
 })();
