@@ -785,15 +785,15 @@ Rounded shapes, pastel fills, playful illustration-free warmth. Health, educatio
 
 _Canopy Reforest · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-An organic reforestation tracker in forest green, bark brown and tan: a leafy code-drawn hero with a big rounded headline, a deep green band of four site figures and six soft, colour-blocked tiles for species, planting, soil, tasks and crews.
+An organic reforestation tracker in forest green, bark brown and tan: a leafy photo hero with a rounded headline, a deep green band of four site figures and six soft, colour-blocked tiles for species, planting, soil, forest scene, tasks and crews — plus Tasks, Sites and Settings pages.
 
 - **Use cases:** Projects & tasks, Analytics & BI · **Mode:** dark · **Mood:** organic, calm, earthy, friendly, soft
 - **Pages:** Overview (`overview`, Dashboard) · Tasks (`tasks`, Board) · Sites (`sites`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
+- **Motion:** count-up, stagger, chart-draw, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** Overlapping green and tan leaves with fine veins, drawn from one SVG path, spilling over a bark-brown wedge in the hero.
-- **Layout:** Centred 1240px column, 20px gaps · top bar (brand, 4-item nav, bell) · 380px hero (copy left, leaf artwork right, CTA + site switcher) · 4-column metrics band · 3×2 grid of colour-blocked tiles (species bars, monthly planting bars, soil gauges, landscape tile, checklist, crews)
-- **Responsive:** ≤980px: tiles 2 columns, metrics band 2×2 · ≤640px: single column, leaves move above the headline, site switcher and CTA full width
-- **Fonts:** Outfit / Nunito Sans · **Palette:** bg `#1f3a2b`, surface `#2c5a44`, text `#f6efdc`, muted `#d3d9c4`, accent `#ecc79a`, leaf `#3f7a40`, bark `#6a4130`, tan `#dcb98c`
+- **Layout:** Centred 1240px column · top bar · diagonal hero (copy left, leaf photo right) · 4-column metrics band · 3×2 colour tiles including forest photo
+- **Responsive:** ≤980px tiles 2 columns · ≤640px single column, leaves move above the headline
+- **Fonts:** Fraunces / Nunito Sans · **Palette:** bg `#1f3a2b`, surface `#2c5a44`, text `#f6efdc`, muted `#d3d9c4`, accent `#ecc79a`, leaf `#3f7a40`, bark `#6a4130`, tan `#dcb98c`
 - **Variants:** Forest, Autumn, Birch · **Closest toolkit theme:** `grove`
 
 **Best for**
@@ -806,7 +806,7 @@ An organic reforestation tracker in forest green, bark brown and tan: a leafy co
 - Finance, security or other serious, high-precision domains
 - Products that need many chart colours: the palette is deliberately narrow
 
-**Components:** Hero with headline, lede and pill CTA · Site switcher (segmented) · Metrics band with ringed icons · Horizontal share bars · Bar chart with hover/focus values · Selectable capsule gauges · Illustrated landscape tile with caption · Checklist · Crew list with initials
+**Components:** Diagonal sage/bark hero · Photo leaf cluster · Site switcher · Metrics band · Species share bars · Monthly planting bars · Soil gauges · Forest floor photo tile · Checklist · Crew list · Tasks board · Settings form
 
 ---
 

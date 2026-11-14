@@ -606,7 +606,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "An organic reforestation tracker in forest green, bark brown and tan: a leafy code-drawn hero with a big rounded headline, a deep green band of four site figures and six soft, colour-blocked tiles for species, planting, soil, tasks and crews.",
+      "summary": "An organic reforestation tracker in forest green, bark brown and tan: a leafy photo hero with a rounded headline, a deep green band of four site figures and six soft, colour-blocked tiles for species, planting, soil, forest scene, tasks and crews — plus Tasks, Sites and Settings pages.",
       "mood": [
         "organic",
         "calm",
@@ -626,19 +626,22 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Centred 1240px column, 20px gaps · top bar (brand, 4-item nav, bell) · 380px hero (copy left, leaf artwork right, CTA + site switcher) · 4-column metrics band · 3×2 grid of colour-blocked tiles (species bars, monthly planting bars, soil gauges, landscape tile, checklist, crews)",
-        "responsive": "≤980px: tiles 2 columns, metrics band 2×2 · ≤640px: single column, leaves move above the headline, site switcher and CTA full width"
+        "structure": "Centred 1240px column · top bar · diagonal hero (copy left, leaf photo right) · 4-column metrics band · 3×2 colour tiles including forest photo",
+        "responsive": "≤980px tiles 2 columns · ≤640px single column, leaves move above the headline"
       },
       "components": [
-        "Hero with headline, lede and pill CTA",
-        "Site switcher (segmented)",
-        "Metrics band with ringed icons",
-        "Horizontal share bars",
-        "Bar chart with hover/focus values",
-        "Selectable capsule gauges",
-        "Illustrated landscape tile with caption",
+        "Diagonal sage/bark hero",
+        "Photo leaf cluster",
+        "Site switcher",
+        "Metrics band",
+        "Species share bars",
+        "Monthly planting bars",
+        "Soil gauges",
+        "Forest floor photo tile",
         "Checklist",
-        "Crew list with initials"
+        "Crew list",
+        "Tasks board",
+        "Settings form"
       ],
       "signature": "Overlapping green and tan leaves with fine veins, drawn from one SVG path, spilling over a bark-brown wedge in the hero.",
       "palette": {
@@ -652,7 +655,7 @@
         "tan": "#dcb98c"
       },
       "fonts": {
-        "display": "Outfit",
+        "display": "Fraunces",
         "sans": "Nunito Sans"
       },
       "variants": [
@@ -682,7 +685,17 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied landing-page concept with placeholder text. It was turned into a dashboard (a reforestation tracker): brand, copy and all figures are invented. The leaf photography and the forest photo tile were replaced with SVG drawings themed by CSS variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied leaf-landing concept. Brand, copy and figures are invented. Leaf cluster and forest floor are AI-generated originals (not traced from the reference). Owner original stored as reference.jpg.",
+        "credits": [
+          {
+            "credit": "AI-generated original — overlapping green and golden leaves on bark/sage field",
+            "role": "media/leaves.webp"
+          },
+          {
+            "credit": "AI-generated original — sunlit forest floor with god rays",
+            "role": "media/forest.webp"
+          }
+        ]
       },
       "path": "site/dashboards/canopy-reforest/",
       "reference": "reference.jpg",
@@ -708,7 +721,18 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "chart-draw",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "ridgeline-trails",

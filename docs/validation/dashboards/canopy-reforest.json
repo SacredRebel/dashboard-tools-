@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/canopy-reforest/",
+      "url": "/dashboards/canopy-reforest/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/canopy-reforest/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/canopy-reforest",
+      "url": "/dashboards/canopy-reforest#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/canopy-reforest/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/canopy-reforest/index.html",
+      "url": "/dashboards/canopy-reforest/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/canopy-reforest/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/canopy-reforest/",
+      "url": "/dashboards/canopy-reforest/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/canopy-reforest/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/canopy-reforest/?variant=autumn",
+      "url": "/dashboards/canopy-reforest/?variant=autumn#/overview",
       "width": 1440,
       "variant": "autumn",
       "final_path": "/dashboards/canopy-reforest/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/canopy-reforest/?variant=birch",
+      "url": "/dashboards/canopy-reforest/?variant=birch#/overview",
       "width": 1440,
       "variant": "birch",
       "final_path": "/dashboards/canopy-reforest/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=autumn#/overview",
+      "width": 1440,
+      "variant": "autumn",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=autumn#/overview",
+      "width": 375,
+      "variant": "autumn",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=birch#/overview",
+      "width": 1440,
+      "variant": "birch",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=birch#/overview",
+      "width": 375,
+      "variant": "birch",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/#/tasks",
+      "width": 1440,
+      "variant": "default",
+      "page": "tasks",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/#/tasks",
+      "width": 375,
+      "variant": "default",
+      "page": "tasks",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=autumn#/tasks",
+      "width": 1440,
+      "variant": "autumn",
+      "page": "tasks",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=autumn#/tasks",
+      "width": 375,
+      "variant": "autumn",
+      "page": "tasks",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=birch#/tasks",
+      "width": 1440,
+      "variant": "birch",
+      "page": "tasks",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=birch#/tasks",
+      "width": 375,
+      "variant": "birch",
+      "page": "tasks",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/#/sites",
+      "width": 1440,
+      "variant": "default",
+      "page": "sites",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/#/sites",
+      "width": 375,
+      "variant": "default",
+      "page": "sites",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=autumn#/sites",
+      "width": 1440,
+      "variant": "autumn",
+      "page": "sites",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=autumn#/sites",
+      "width": 375,
+      "variant": "autumn",
+      "page": "sites",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=birch#/sites",
+      "width": 1440,
+      "variant": "birch",
+      "page": "sites",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=birch#/sites",
+      "width": 375,
+      "variant": "birch",
+      "page": "sites",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=autumn#/settings",
+      "width": 1440,
+      "variant": "autumn",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=autumn#/settings",
+      "width": 375,
+      "variant": "autumn",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=birch#/settings",
+      "width": 1440,
+      "variant": "birch",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/canopy-reforest/?variant=birch#/settings",
+      "width": 375,
+      "variant": "birch",
+      "page": "settings",
       "errors": []
     },
     {

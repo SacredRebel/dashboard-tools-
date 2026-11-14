@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `canopy-reforest` (Phase C — total 23).
+Next: `citadel-wall` (Phase C — total 23).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -12,7 +12,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 2 | pulsar-analytics | Pulsar Analytics | 3 | 3 | 3 | 4 | 3 | 2 | 3 | 3 | 24 | central terrain viz gone; different panel grid; abstract ref language | queued |
 | 3 | solstice-energy | Solstice Energy | 4 | 3 | 4 | 4 | 3 | 3 | 4 | 4 | 29 | less HUD noise; softer 3D mountains; fewer micro widgets | queued |
 | 4 | kumo-payroll | Kumo Payroll | 5 | 4 | 4 | 5 | 4 | 4 | 4 | 5 | 35 | no koi foreground; lighter atmospheric depth | queued |
-| 5 | canopy-reforest | Canopy Reforest | 2 | 3 | 3 | 4 | 3 | 3 | 3 | 2 | 23 | mobile ref vs desktop; different grid; hero structure mismatch | queued |
+| 5 | canopy-reforest | Canopy Reforest | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | leaf photo + forest tile; diagonal hero; multipage + motion | polished 23→36 |
 | 6 | ridgeline-trails | Ridgeline Trails | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | photo mountains → vector; dial styling simplified | queued |
 | 7 | haven-listings | Haven Listings | 4 | 3 | 4 | 3 | 4 | 2 | 4 | 3 | 27 | villa photo → dune illustration; cooler ref palette | queued |
 | 8 | aura-ring | Aura Ring | 5 | 4 | 4 | 2 | 3 | 3 | 4 | 3 | 28 | light glass ref vs dark shot; missing brain 3D | queued |
@@ -52,7 +52,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 Sorted by ascending **total** (Phase C polish sequence):
 
 1. ~~`lull-sleep` — 19~~ → polished (36.5)
-2. `canopy-reforest` — 23
+2. ~~`canopy-reforest` — 23~~ → polished (36)
 3. `citadel-wall` — 23
 4. `dune-panels` — 23
 5. `pulsar-analytics` — 24
