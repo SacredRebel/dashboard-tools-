@@ -71,6 +71,10 @@ const dash = json('catalog/dashboards.json');
   const PAGE_PATTERNS = new Set(['Dashboard', 'List', 'Detail', 'Board', 'Form', 'Settings', 'Calendar', 'Inbox', 'Report']);
   const motionIds = new Set((dash.motion_patterns || []).map((m) => m.id));
   if (!dash.motion_patterns?.length) errors.push('dashboards.json: motion_patterns list is required');
+  const fxIds = new Set((dash.fx_effects || []).map((m) => m.id));
+  if (!dash.fx_effects?.length) errors.push('dashboards.json: fx_effects list is required');
+  const materialIds = new Set((dash.material_recipes || []).map((m) => m.id));
+  if (!dash.material_recipes?.length) errors.push('dashboards.json: material_recipes list is required');
   for (const d of dash.dashboards) {
     const where = `dashboard "${d.id}"`;
     if (!/^[a-z0-9-]+$/.test(d.id)) errors.push(`${where}: id must be kebab-case`);
@@ -108,6 +112,10 @@ const dash = json('catalog/dashboards.json');
     }
     if (!Array.isArray(d.motion)) errors.push(`${where}: motion must be an array (may be empty until polish)`);
     else for (const m of d.motion) if (!motionIds.has(m)) errors.push(`${where}: unknown motion id "${m}"`);
+    if (!Array.isArray(d.fx)) errors.push(`${where}: fx must be an array of effect ids`);
+    else for (const m of d.fx) if (!fxIds.has(m)) errors.push(`${where}: unknown fx id "${m}"`);
+    if (!Array.isArray(d.materials) || !d.materials.length) errors.push(`${where}: materials must be a non-empty array of recipe ids`);
+    else for (const m of d.materials) if (!materialIds.has(m)) errors.push(`${where}: unknown materials id "${m}"`);
 
     if (existsSync(join(root, d.path, 'style.css'))) {
       const css = rd(d.path + 'style.css');

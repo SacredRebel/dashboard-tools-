@@ -32,6 +32,7 @@ You are an AI agent asked to **design and build a dashboard** (for example a CRM
 | 2 | [docs/framework/00-overview.md](docs/framework/00-overview.md) | The 8 phases on one page |
 | 3 | The phase doc for the phase you are in: `docs/framework/0N-*.md` | Step-by-step instructions, inputs, outputs, tools |
 | 4 | [docs/design/02-rulebook.md](docs/design/02-rulebook.md) | Hard design rules (before any UI work) |
+| 4a | [docs/design/08-polish-standard.md](docs/design/08-polish-standard.md) · [10-materials.md](docs/design/10-materials.md) · [11-hero-art-direction.md](docs/design/11-hero-art-direction.md) · [12-microinteractions.md](docs/design/12-microinteractions.md) · [13-high-end-checklist.md](docs/design/13-high-end-checklist.md) | Template-grade polish (fidelity L1–L5, materials, hero art, FX) |
 | 5 | [docs/crm/](docs/crm/) (if building a CRM) | Data model, views, features |
 | 5a | [docs/dashboards/README.md](docs/dashboards/README.md) (Direction phase, or "make it look like this") | Pick a complete reference dashboard by style and use case from `catalog/dashboards.json`; add new ones with [01-add-a-dashboard.md](docs/dashboards/01-add-a-dashboard.md) |
 | 6 | [docs/stack/](docs/stack/) (before Build) | Stack, data/auth, GitHub + Vercel workflow, performance & privacy contract |

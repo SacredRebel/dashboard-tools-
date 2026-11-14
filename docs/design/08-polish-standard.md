@@ -2,7 +2,21 @@
 
 What “polished” means for dashboards in `site/dashboards/`. This doc sits **after** layout and themes pass: the UI is correct; polish makes it feel **intentional, dense with craft, and faithful to each entry’s reference** without copying reference assets.
 
-Pair with [02-rulebook.md](02-rulebook.md) (hard rules), [05-anti-patterns.md](05-anti-patterns.md), and [09-motion-system.md](09-motion-system.md). Tokens live in [design-system/tokens.css](../../design-system/tokens.css).
+Pair with [02-rulebook.md](02-rulebook.md) (hard rules), [05-anti-patterns.md](05-anti-patterns.md), [09-motion-system.md](09-motion-system.md), [10-materials.md](10-materials.md), [11-hero-art-direction.md](11-hero-art-direction.md), [12-microinteractions.md](12-microinteractions.md), and [13-high-end-checklist.md](13-high-end-checklist.md). Tokens live in [design-system/tokens.css](../../design-system/tokens.css).
+
+---
+
+## Fidelity levels (L1–L5)
+
+| Level | Name | Means |
+|---|---|---|
+| **L1** | Layout | Grid, proportions, module order and whitespace match the reference at 1440; phone and tablet compositions are designed. |
+| **L2** | Materials | Surfaces use shared recipes (glass, clay, neu, holo…). No one-off shadow stacks. |
+| **L3** | Art | Signature hero scene present, sharp at 2×, layered when depth matters, credited, never a trace of `reference.*`. |
+| **L4** | Motion | Reveal, count, chart draw, route transition, ambient/parallax on hero; reduced-motion and offscreen pause honored. |
+| **L5** | Interaction depth | Dense secondary pages, real filters/search/drawers/forms with four states, cross-page selection. |
+
+**Template-grade** = all five levels pass and every [POLISH-AUDIT](../validation/dashboards/POLISH-AUDIT.md) axis is ≥ 4.5 with evidence (fidelity sheets). Anything less stays `needs work` honestly.
 
 ---
 
@@ -15,6 +29,7 @@ A gallery dashboard is **polished** when:
 3. Imagery and decoration follow the **imagery rules** below—no hotlinks, no reference copies, credits recorded when stock is used.
 4. Motion uses tokens only, respects `prefers-reduced-motion`, and pauses offscreen via `DB.onVisible` (see [09-motion-system.md](09-motion-system.md)).
 5. Screenshots at **375px and 1280px** show no horizontal scroll, no console errors, and no “template slop” (rainbow gradients, floating labels, 12px tables).
+6. It reaches **template-grade** (L1–L5) or the audit row states remaining gaps without inflated scores.
 
 Polish does **not** mean more widgets. It means **fewer visible compromises**.
 
