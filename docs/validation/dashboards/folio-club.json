@@ -1,11 +1,11 @@
 {
   "id": "folio-club",
-  "checked": "2026-11-13",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/folio-club/",
+      "url": "/dashboards/folio-club/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/folio-club/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/folio-club",
+      "url": "/dashboards/folio-club#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/folio-club/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/folio-club/index.html",
+      "url": "/dashboards/folio-club/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/folio-club/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/folio-club/",
+      "url": "/dashboards/folio-club/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/folio-club/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/folio-club/?variant=parchment",
+      "url": "/dashboards/folio-club/?variant=parchment#/overview",
       "width": 1440,
       "variant": "parchment",
       "final_path": "/dashboards/folio-club/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/folio-club/?variant=night",
+      "url": "/dashboards/folio-club/?variant=night#/overview",
       "width": 1440,
       "variant": "night",
       "final_path": "/dashboards/folio-club/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=parchment#/overview",
+      "width": 1440,
+      "variant": "parchment",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=parchment#/overview",
+      "width": 375,
+      "variant": "parchment",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=night#/overview",
+      "width": 1440,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=night#/overview",
+      "width": 375,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/#/library",
+      "width": 1440,
+      "variant": "default",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/#/library",
+      "width": 375,
+      "variant": "default",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=parchment#/library",
+      "width": 1440,
+      "variant": "parchment",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=parchment#/library",
+      "width": 375,
+      "variant": "parchment",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=night#/library",
+      "width": 1440,
+      "variant": "night",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=night#/library",
+      "width": 375,
+      "variant": "night",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/#/progress",
+      "width": 1440,
+      "variant": "default",
+      "page": "progress",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/#/progress",
+      "width": 375,
+      "variant": "default",
+      "page": "progress",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=parchment#/progress",
+      "width": 1440,
+      "variant": "parchment",
+      "page": "progress",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=parchment#/progress",
+      "width": 375,
+      "variant": "parchment",
+      "page": "progress",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=night#/progress",
+      "width": 1440,
+      "variant": "night",
+      "page": "progress",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=night#/progress",
+      "width": 375,
+      "variant": "night",
+      "page": "progress",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=parchment#/settings",
+      "width": 1440,
+      "variant": "parchment",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=parchment#/settings",
+      "width": 375,
+      "variant": "parchment",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=night#/settings",
+      "width": 1440,
+      "variant": "night",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/folio-club/?variant=night#/settings",
+      "width": 375,
+      "variant": "night",
+      "page": "settings",
       "errors": []
     },
     {
