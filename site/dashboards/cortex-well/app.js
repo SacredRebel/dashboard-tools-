@@ -118,33 +118,6 @@
   $('[data-clock]').textContent = fmtDate(dayOffset(0), { day: 'numeric', month: 'short' }) +
     ', ' + new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
 
-  // Signature: SVG brain resting in a frosted glass bowl
-  $('[data-brain]').innerHTML = `<svg viewBox="0 0 280 260" role="img" aria-label="Brain activity illustration">
-    <defs>
-      <linearGradient id="cx-br" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" style="stop-color:var(--brain-3)"/>
-        <stop offset="0.45" style="stop-color:var(--brain-1)"/>
-        <stop offset="1" style="stop-color:var(--brain-2)"/>
-      </linearGradient>
-      <linearGradient id="cx-bowl" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" style="stop-color:var(--bowl)" stop-opacity="0.95"/>
-        <stop offset="1" style="stop-color:var(--surface)" stop-opacity="0.35"/>
-      </linearGradient>
-      <filter id="cx-soft"><feGaussianBlur stdDeviation="2.5"/></filter>
-    </defs>
-    <ellipse cx="140" cy="228" rx="108" ry="18" fill="var(--accent)" opacity="0.12" filter="url(#cx-soft)"/>
-    <path d="M40 175 Q40 250 140 250 Q240 250 240 175" fill="url(#cx-bowl)" stroke="var(--border)" stroke-width="2"/>
-    <path d="M48 175 Q48 235 140 238 Q232 235 232 175" fill="none" stroke="var(--glass-2)" stroke-width="3" opacity="0.7"/>
-    <g transform="translate(40 18)">
-      <path d="M100 28 C72 18 42 34 38 68 C18 74 12 104 28 124 C14 148 34 172 62 168 C70 188 100 196 118 176 C138 196 168 186 174 164 C202 172 220 148 208 124 C226 104 218 72 196 68 C192 36 160 18 132 28 C122 14 108 16 100 28Z" fill="url(#cx-br)"/>
-      <path d="M100 40 C88 56 92 80 100 96 M132 36 C140 58 136 86 128 108 M70 70 C58 90 62 118 78 138 M168 72 C180 96 176 128 158 146 M100 96 C112 110 122 110 132 98 M78 138 C96 150 120 152 148 140" fill="none" stroke="var(--surface)" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
-      <path d="M100 28 V176 M132 28 V176" fill="none" stroke="var(--brain-3)" stroke-width="1.5" opacity="0.35"/>
-      <circle cx="86" cy="78" r="5" fill="var(--surface)" opacity="0.55"/>
-      <circle cx="148" cy="92" r="4" fill="var(--surface)" opacity="0.5"/>
-      <circle cx="112" cy="132" r="4.5" fill="var(--pink)" opacity="0.7"/>
-    </g>
-  </svg>`;
-
   $('[data-waves]').innerHTML = `<svg viewBox="0 0 280 72" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0 40 C30 18 50 58 80 36 S130 10 160 34 S220 60 280 28" fill="none" style="stroke:var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
     <path d="M0 48 C40 28 60 62 100 44 S150 20 190 42 S240 58 280 36" fill="none" style="stroke:var(--pink)" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
@@ -163,23 +136,25 @@
     all: 'All activity · blended score 88 · keep the evening wind-down.',
   };
   const VIEW_COPY = {
-    dash: '',
+    overview: '',
     analytics: 'Analytics view · sample trends for the last 7 days.',
     reports: 'Reports view · export stubs stay fictional.',
   };
 
-  let view = 'dash';
+  let view = 'overview';
   let pill = 'heart';
   let sleepMode = 'night';
   let sleepFocus = 4;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
 
   const PERF = {
-    dash: { labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], values: [42, 48, 45, 58, 62, 70, 74] },
+    overview: { labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], values: [42, 48, 45, 58, 62, 70, 74] },
     analytics: { labels: ['W1', 'W2', 'W3', 'W4'], values: [55, 60, 58, 68] },
     reports: { labels: [], values: [] },
   };
   const HR = {
-    dash: {
+    overview: {
       labels: ['6a', '9a', '12p', '3p', '6p', '9p'],
       a: [72, 78, 88, 82, 90, 76],
       b: [68, 74, 80, 78, 84, 70],
@@ -193,6 +168,25 @@
     },
     reports: { labels: [], a: [], b: [], c: [] },
   };
+
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 700, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
   const SLEEP_N = [28, 45, 62, 80, 92, 78, 55, 40, 70, 88, 74, 50, 36, 58, 82, 68, 44, 30];
   const SLEEP_W = [62, 70, 55, 80, 74, 68, 72];
 
@@ -290,11 +284,19 @@
   }
 
   function setView(v) {
-    view = v;
-    $('[data-viewnote]').textContent = VIEW_COPY[v];
+    view = v in PERF ? v : 'overview';
+    $('[data-viewnote]').textContent = VIEW_COPY[view] || '';
+    $$('[data-views] [data-v]').forEach((a) => {
+      if (a.dataset.v === view) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    $$('[data-pages] [data-v]').forEach((a) => {
+      if (a.dataset.v === view) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
     renderPerf();
     renderHr();
-    if (v === 'reports') {
+    if (view === 'reports') {
       $('[data-sleep-err]').hidden = false;
       $('[data-sleep-err]').textContent = 'Reports view has no sleep cycles. Switch to Dashboard.';
     } else {
@@ -302,20 +304,11 @@
     }
   }
 
-  seg($('[data-views]'), (v) => {
-    if (v === undefined) return;
-    const btn = document.activeElement;
-    if (btn && btn.classList.contains('cx-nav-search')) {
-      $('[data-viewnote]').textContent = 'Search is a sample stub · try Analytics.';
-      return;
-    }
-    setView(v);
-  });
-  // search button sits in the seg group without data-v — handle separately
-  $('[data-views]').addEventListener('click', (e) => {
+  $('[data-views]')?.addEventListener('click', (e) => {
     const s = e.target.closest('.cx-nav-search');
     if (!s) return;
     $('[data-viewnote]').textContent = 'Search is a sample stub · try Analytics.';
+    toast('Search · sample');
   });
 
   seg($('[data-pills]'), (v) => setPill(v));
@@ -328,25 +321,139 @@
     }
     renderSleep();
   });
-  seg($('[data-pages]'), () => {
-    $('[data-viewnote]').textContent = 'Board page sample · content stays on page 1 in this demo.';
-  });
 
   $$('.cx-railbtn').forEach((b) => {
     b.addEventListener('click', () => {
       $$('.cx-railbtn').forEach((x) => x.removeAttribute('aria-current'));
       if (!b.classList.contains('cx-logout')) b.setAttribute('aria-current', 'page');
-      else $('[data-viewnote]').textContent = 'Sign-out is a sample stub.';
+      else { $('[data-viewnote]').textContent = 'Sign-out is a sample stub.'; toast('Sign-out · sample'); }
     });
   });
-  $('.cx-expand').addEventListener('click', () => {
+  $('.cx-expand')?.addEventListener('click', () => {
     $('[data-viewnote]').textContent = 'Expand is decorative in this gallery slice.';
+    toast('Expand · sample');
   });
-  $('.cx-bell').addEventListener('click', () => {
+  $('.cx-bell')?.addEventListener('click', () => {
     $('[data-viewnote]').textContent = '3 sample alerts · recovery tip, sleep score, breath reminder.';
+    toast('3 alerts · sample');
   });
 
   setPill('heart');
-  setView('dash');
+  setView('overview');
+  countUp($('[data-bpm]'), 83);
+  countUp($('[data-wave-score]'), 92, { format: (n) => `${Math.round(n)}%` });
+
+  function staggerReveal() {
+    $$('.cx-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
+      el.classList.add('cx-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Dashboard', pattern: 'Dashboard' },
+    { id: 'analytics', name: 'Analytics', pattern: 'Report' },
+    { id: 'reports', name: 'Reports', pattern: 'Report' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+
+  function pageHtml(page) {
+    if (page.id === 'analytics') {
+      return `<section class="cx-page" data-db-page="analytics" aria-labelledby="p-h">
+        <h1 id="p-h">Analytics</h1>
+        <p class="cx-page-lead">Weekly wellness trends. Sample data · fictional · not medical advice.</p>
+        <div class="cx-seg" role="group" aria-label="Analytics state" data-an-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-an-body></div>
+      </section>`;
+    }
+    if (page.id === 'reports') {
+      return `<section class="cx-page" data-db-page="reports" aria-labelledby="p-h">
+        <h1 id="p-h">Reports</h1>
+        <p class="cx-page-lead">Export stubs stay fictional in this gallery slice.</p>
+        <div class="cx-page-grid">
+          <article class="cx-page-card"><div class="cx-row"><strong>Sleep summary</strong><span>PDF</span></div></article>
+          <article class="cx-page-card"><div class="cx-row"><strong>Heart log</strong><span>CSV</span></div></article>
+          <article class="cx-page-card"><div class="cx-row"><strong>Breath cadence</strong><span>PDF</span></div></article>
+        </div>
+        <button type="button" class="cx-btn" data-export>Export pack</button>
+      </section>`;
+    }
+    return `<section class="cx-page"><h1>${page.name}</h1></section>`;
+  }
+
+  function wirePage(host, page) {
+    if (page.id === 'analytics') {
+      const body = host.querySelector('[data-an-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="cx-loading" role="status"><p>Syncing trends…</p><div class="cx-skel"></div><div class="cx-skel"></div></div>`;
+          return;
+        }
+        if (state === 'empty') {
+          body.innerHTML = `<div class="cx-empty-state"><p>No analytics yet this week.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="cx-error"><p>Could not load analytics.</p><button type="button" class="cx-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="cx-page-grid">
+          <article class="cx-page-card"><div class="cx-row"><span>Focus score</span><strong class="num">88</strong></div></article>
+          <article class="cx-page-card"><div class="cx-row"><span>Recovery</span><strong class="num">2h</strong></div></article>
+          <article class="cx-page-card"><div class="cx-row"><span>Breath calm</span><strong class="num">14/m</strong></div></article>
+        </div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-an-tabs]'), (v) => paint(v));
+    }
+    if (page.id === 'reports') {
+      host.querySelector('[data-export]')?.addEventListener('click', () => toast('Export queued · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+    });
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
+    window.DB.route(PAGES, (id, page) => {
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setView(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
+    });
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

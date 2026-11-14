@@ -1,8 +1,28 @@
-/* Pebble Studio: soft-UI admin — blobs, knobs, dunes, torus + dial.
+/* Pebble Studio: soft-UI admin — clay photo props, knobs, dunes, dial + multipage.
    Fictional sample data only. No timers, no network. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 650, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
   const ICON = {
     search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
     bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>',
@@ -63,50 +83,16 @@
   paintIcons();
 
   const MOODS = {
-    clay: { title: 'Soft clay kit', lede: 'Overlapping forms for the spring board.', a: '--peach', b: '--candy' },
-    candy: { title: 'Candy pile', lede: 'Pink-forward pebbles for campaign frames.', a: '--candy', b: '--sky' },
-    mint: { title: 'Mint stack', lede: 'Cooler dunes for export previews.', a: '--mint', b: '--peach' },
+    clay: { title: 'Soft clay kit', lede: 'Overlapping forms for the spring board.', filter: 'none' },
+    candy: { title: 'Candy pile', lede: 'Pink-forward pebbles for campaign frames.', filter: 'hue-rotate(-12deg) saturate(1.15)' },
+    mint: { title: 'Mint stack', lede: 'Cooler dunes for export previews.', filter: 'hue-rotate(48deg) saturate(0.95)' },
   };
   let mood = 'clay', clarity = 72, lite = 42, range = 7, feedFilter = 'all', feedState = 'populated';
 
-  function blobs(a, b) {
-    return `<svg viewBox="0 0 360 210" preserveAspectRatio="xMidYMid meet">
-      <defs>
-        <radialGradient id="pb-b1" cx="35%" cy="30%"><stop offset="0" style="stop-color:var(--butter)"/><stop offset="1" style="stop-color:var(${a})"/></radialGradient>
-        <radialGradient id="pb-b2" cx="40%" cy="35%"><stop offset="0" style="stop-color:var(--surface)"/><stop offset="1" style="stop-color:var(${b})"/></radialGradient>
-        <filter id="pb-soft"><feGaussianBlur stdDeviation="0.4"/></filter>
-      </defs>
-      <ellipse cx="118" cy="118" rx="92" ry="78" fill="url(#pb-b1)" opacity="0.95"/>
-      <ellipse cx="118" cy="118" rx="92" ry="78" fill="none" stroke="rgb(255 255 255 / 0.45)" stroke-width="3"/>
-      <ellipse cx="210" cy="104" rx="88" ry="74" fill="url(#pb-b2)" opacity="0.92"/>
-      <ellipse cx="210" cy="104" rx="88" ry="74" fill="none" stroke="rgb(255 255 255 / 0.4)" stroke-width="3"/>
-      <ellipse cx="96" cy="96" rx="28" ry="18" fill="rgb(255 255 255 / 0.35)"/>
-      <ellipse cx="188" cy="82" rx="24" ry="14" fill="rgb(255 255 255 / 0.3)"/>
-      <circle cx="286" cy="148" r="22" fill="var(--mint)" opacity="0.85"/>
-      <circle cx="54" cy="156" r="14" fill="var(--sky)" opacity="0.8"/>
-    </svg>`;
-  }
   function floatKnob() {
     return `<button type="button" class="pb-knob" data-float aria-label="Accent knob" aria-pressed="false">
       <span class="pb-knobface" style="--knob:var(--sky)"><i></i></span>
     </button>`;
-  }
-  function torus() {
-    return `<svg viewBox="0 0 220 180">
-      <defs>
-        <linearGradient id="pb-torus" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" style="stop-color:var(--candy)"/>
-          <stop offset="0.35" style="stop-color:var(--sky)"/>
-          <stop offset="0.7" style="stop-color:var(--mint)"/>
-          <stop offset="1" style="stop-color:var(--butter)"/>
-        </linearGradient>
-        <radialGradient id="pb-hole" cx="50%" cy="45%"><stop offset="0" style="stop-color:var(--surface)"/><stop offset="1" style="stop-color:var(--surface-2)"/></radialGradient>
-      </defs>
-      <ellipse cx="110" cy="96" rx="88" ry="58" fill="none" stroke="url(#pb-torus)" stroke-width="28"/>
-      <ellipse cx="110" cy="96" rx="88" ry="58" fill="none" stroke="rgb(255 255 255 / 0.35)" stroke-width="6" stroke-dasharray="2 6"/>
-      <ellipse cx="110" cy="96" rx="42" ry="28" fill="url(#pb-hole)"/>
-      <ellipse cx="78" cy="70" rx="18" ry="8" fill="rgb(255 255 255 / 0.35)"/>
-    </svg>`;
   }
   function tickDial(pct) {
     const ticks = Array.from({ length: 48 }, (_, i) => {
@@ -170,15 +156,15 @@
     const m = MOODS[mood];
     $('[data-stage-title]').textContent = m.title;
     $('[data-stage-lede]').textContent = m.lede;
-    $('[data-blobs]').innerHTML = blobs(m.a, m.b);
+    const img = $('[data-pebble-img]');
+    if (img) img.style.filter = m.filter;
     $('[data-float-knob]').innerHTML = floatKnob();
   }
   function renderDial() {
     $('[data-tickdial]').innerHTML = tickDial(clarity);
-    $('[data-dial-val]').textContent = String(clarity);
+    countUp($('[data-dial-val]'), clarity);
     $('[data-mix-meta]').textContent = `${clarity + 12} · ${clarity >= 70 ? 'stable' : 'tuning'}`;
   }
-  function renderTorus() { $('[data-torus]').innerHTML = torus(); }
   function renderDunes() {
     $('[data-dunes]').innerHTML = dunes();
     const mult = range === 7 ? 1 : 1.35;
@@ -234,9 +220,10 @@
     feedFilter = v === 'mixes' ? 'mix' : v === 'team' ? 'team' : 'all';
     $$('[data-feedfilter] button[data-v]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === feedFilter)));
     renderFeed();
+    toast(`${v} · sample`);
   });
-  seg($('[data-mood]'), (v) => { mood = v; renderStage(); });
-  seg($('[data-range]'), (v) => { range = +v; renderDunes(); });
+  seg($('[data-mood]'), (v) => { mood = v; renderStage(); toast(`${v} mood · sample`); });
+  seg($('[data-range]'), (v) => { range = +v; renderDunes(); toast(`${range}d · sample`); });
   seg($('[data-feedfilter]'), (v) => {
     feedFilter = v;
     feedState = 'populated';
@@ -244,19 +231,21 @@
     renderFeed();
   });
 
-  $('[data-dial-dec]').addEventListener('click', () => { clarity = Math.max(0, clarity - 4); renderDial(); });
-  $('[data-dial-inc]').addEventListener('click', () => { clarity = Math.min(100, clarity + 4); renderDial(); });
+  $('[data-dial-dec]').addEventListener('click', () => { clarity = Math.max(0, clarity - 4); renderDial(); toast(`Clarity ${clarity}`); });
+  $('[data-dial-inc]').addEventListener('click', () => { clarity = Math.min(100, clarity + 4); renderDial(); toast(`Clarity ${clarity}`); });
   $('[data-knobs]').addEventListener('click', (e) => {
     const b = e.target.closest('[data-knob]'); if (!b) return;
     knob = b.dataset.knob;
     const k = KNOBS.find((x) => x.id === knob);
     k.v = Math.min(100, k.v + 6);
     renderKnobs();
+    toast(`${k.label} ${k.v} · sample`);
   });
   $('[data-float-knob]').addEventListener('click', (e) => {
     const b = e.target.closest('[data-float]'); if (!b) return;
     const on = b.getAttribute('aria-pressed') === 'true';
     b.setAttribute('aria-pressed', String(!on));
+    toast(`Accent ${!on ? 'on' : 'off'} · sample`);
   });
   $('[data-lite]').addEventListener('input', (e) => { lite = +e.target.value; renderLite(); });
   $('[data-export]').addEventListener('click', (e) => {
@@ -266,7 +255,9 @@
     $$('[data-feedfilter] button[data-v]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === 'all')));
     FEED.unshift({ id: Date.now(), t: 'mix', title: 'Soft frame exported', detail: `Lite ${lite}% · clarity ${clarity}`, icon: 'download', tone: '--peach', when: 0 });
     renderFeed();
+    toast('Soft frame exported · sample');
   });
+  $('[data-bell]')?.addEventListener('click', () => toast('2 alerts · sample'));
   $('[data-q]').addEventListener('input', (e) => {
     const q = e.target.value.trim().toLowerCase();
     if (!q) { feedState = 'populated'; renderFeed(); return; }
@@ -282,8 +273,144 @@
   });
   $$('[data-kpi]').forEach((b) => b.addEventListener('click', () => {
     $$('[data-kpi]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    toast(`${b.dataset.kpi} · sample`);
   }));
 
-  renderStage(); renderTorus(); renderDial(); renderDunes(); renderKnobs(); renderMix(); renderLite(); renderFeed();
+  renderStage(); renderDial(); renderDunes(); renderKnobs(); renderMix(); renderLite(); renderFeed();
+  countUp($('[data-kpi-projects]'), 28);
+  countUp($('[data-kpi-exports]'), 146);
+  countUp($('[data-kpi-seats]'), 12);
+  countUp($('[data-kpi-streak]'), 9);
+
+  function staggerReveal() {
+    $$('.pb-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
+      el.classList.add('pb-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'workspace', name: 'Workspace', pattern: 'List' },
+    { id: 'people', name: 'People', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+  function setNav(id) {
+    $$('.pb-pages a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      if (href === `#/${id}`) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  function pageHtml(page) {
+    if (page.id === 'workspace') {
+      return `<section class="pb-page" data-db-page="workspace" aria-labelledby="p-h">
+        <h1 id="p-h">Workspace</h1>
+        <p class="pb-page-lead">Boards and clay kits in this studio.</p>
+        <div class="pb-page-seg" role="group" aria-label="Workspace state" data-ws-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-ws-body></div>
+      </section>`;
+    }
+    if (page.id === 'people') {
+      return `<section class="pb-page" data-db-page="people" aria-labelledby="p-h">
+        <h1 id="p-h">People</h1>
+        <p class="pb-page-lead">Editors and reviewers on Soft Clay.</p>
+        <div class="pb-page-grid">
+          <article class="pb-page-card"><div class="pb-row"><strong>Mira Chen</strong><span>Editor</span></div></article>
+          <article class="pb-page-card"><div class="pb-row"><strong>Noah Park</strong><span>Reviewer</span></div></article>
+        </div>
+        <button type="button" class="pb-btn" data-invite>Invite teammate</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="pb-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="pb-page-lead">Export defaults and clay mood.</p>
+        <div class="pb-page-grid">
+          <article class="pb-page-card"><div class="pb-row"><strong>Default mood</strong><span>Clay</span></div></article>
+          <article class="pb-page-card"><div class="pb-row"><strong>Export size</strong><span>1440×900</span></div></article>
+        </div>
+        <button type="button" class="pb-btn ghost" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="pb-page"><h1>${page.name}</h1></section>`;
+  }
+  function wirePage(host, page) {
+    if (page.id === 'workspace') {
+      const body = host.querySelector('[data-ws-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="pb-loading" role="status"><p>Loading boards…</p><div class="pb-skelrow"></div><div class="pb-skelrow"></div></div>`;
+          return;
+        }
+        if (state === 'empty') {
+          body.innerHTML = `<div class="pb-empty"><p>No boards yet. Start a soft clay kit.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="pb-error"><p>Could not load workspace.</p><button type="button" class="pb-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="pb-page-grid">
+          <article class="pb-page-card"><div class="pb-row"><span>Spring board</span><strong>12 frames</strong></div></article>
+          <article class="pb-page-card"><div class="pb-row"><span>Candy pile</span><strong>8 frames</strong></div></article>
+        </div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-ws-tabs]'), (v) => paint(v));
+    }
+    if (page.id === 'people') {
+      host.querySelector('[data-invite]')?.addEventListener('click', () => toast('Invite sent · sample'));
+    }
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+    });
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
+    window.DB.route(PAGES, (id, page) => {
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
+    });
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

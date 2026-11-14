@@ -6,124 +6,131 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Hearth Nest · Dashboard Tools gallery</title>
-  <meta name="description" content="Cinematic dark smart-home board with amber glow, SVG living-room hero, weather, AQI, thermostat and power. Sample data.">
+  <meta name="description" content="Cinematic dark smart-home board with amber glow, living-room photo hero, weather, AQI, thermostat and power. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Outfit:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="hn">
+  <div class="hn" data-db-app>
     <aside class="hn-rail" aria-label="Home sections">
-      <a class="hn-mark" href="#" aria-label="Hearth Nest home"><span data-icon="home"></span></a>
+      <a class="hn-mark" href="#/overview" aria-label="Hearth Nest home"><span data-icon="home"></span></a>
       <nav class="hn-nav" aria-label="Primary">
-        <a href="#" aria-current="page" aria-label="Home"><span data-icon="home"></span></a>
-        <a href="#" aria-label="Devices"><span data-icon="bulb"></span></a>
-        <a href="#" aria-label="Scenes"><span data-icon="grid"></span></a>
-        <a href="#" aria-label="Energy"><span data-icon="bolt"></span></a>
-        <a href="#" aria-label="Security"><span data-icon="shield"></span></a>
-        <a href="#" aria-label="Settings"><span data-icon="settings"></span></a>
+        <a href="#/overview" aria-current="page" aria-label="Home"><span data-icon="home"></span></a>
+        <a href="#/devices" aria-label="Devices"><span data-icon="bulb"></span></a>
+        <a href="#/rooms" aria-label="Rooms"><span data-icon="grid"></span></a>
+        <a href="#/energy" aria-label="Energy"><span data-icon="bolt"></span></a>
+        <a href="#/settings" aria-label="Security"><span data-icon="shield"></span></a>
+        <a href="#/settings" aria-label="Settings"><span data-icon="settings"></span></a>
       </nav>
       <div class="hn-plant" aria-hidden="true" data-plant></div>
     </aside>
 
     <div class="hn-shell">
       <header class="hn-top">
-        <a class="hn-brand" href="#"><span class="hn-logo" aria-hidden="true"></span><span>Hearth Nest</span></a>
-        <label class="hn-search"><span class="vh">Search rooms and devices</span><span data-icon="search"></span><input type="search" placeholder="Search rooms or devices" autocomplete="off"></label>
-        <button class="hn-ico" type="button" aria-label="Notifications"><span data-icon="bell"></span><i class="hn-dotn" aria-hidden="true"></i></button>
+        <a class="hn-brand" href="#/overview"><span class="hn-logo" aria-hidden="true"></span><span>Hearth Nest</span></a>
+        <label class="hn-search"><span class="vh">Search rooms and devices</span><span data-icon="search"></span><input type="search" placeholder="Search rooms or devices" autocomplete="off" data-search></label>
+        <button class="hn-ico" type="button" aria-label="Notifications" data-bell><span data-icon="bell"></span><i class="hn-dotn" aria-hidden="true"></i></button>
         <div class="hn-user"><span class="hn-avatar" aria-hidden="true"></span><span><b>Mara Ellison</b><small>Home owner</small></span></div>
       </header>
 
-      <main class="hn-main">
-        <div class="hn-left">
-          <section class="hn-card hn-wx" aria-labelledby="hn-wx-h">
-            <div class="hn-wxart" data-wxart aria-hidden="true"></div>
-            <div class="hn-wxbody">
-              <div class="hn-wxmeta"><span>Cedar Falls</span><time data-wxdate></time></div>
-              <h2 id="hn-wx-h" class="num">26°C</h2>
-              <p>Partly cloudy</p>
-              <ul class="hn-wxstats">
-                <li><span data-icon="drop"></span><span>Humidity<br><b class="num">62%</b></span></li>
-                <li><span data-icon="wind"></span><span>Wind<br><b class="num">12 km/h</b></span></li>
-                <li><span data-icon="leaf"></span><span>Air<br><b>Good</b></span></li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="hn-card hn-aqi" aria-labelledby="hn-aqi-h">
-            <h2 id="hn-aqi-h" class="vh">Air quality</h2>
-            <div class="hn-aqirow">
-              <div class="hn-aqigauge" data-aqi></div>
-              <div class="hn-aqidetail">
-                <p class="hn-k">PM2.5</p>
-                <p class="num hn-pm">12 <small>µg/m³</small></p>
-                <div class="hn-sparkbox" data-pmspark role="img" aria-label="PM2.5 trend, steady and low"></div>
-              </div>
-            </div>
-          </section>
-
-          <section class="hn-card hn-thermo" aria-labelledby="hn-th-h">
-            <div class="hn-thead">
-              <h2 id="hn-th-h">Climate</h2>
-              <button class="hn-eco" type="button" aria-pressed="true"><span data-icon="leaf"></span> Eco mode</button>
-            </div>
-            <div class="hn-dialwrap">
-              <button type="button" data-t="-0.5" aria-label="Lower temperature">−</button>
-              <div class="hn-dial" data-dial></div>
-              <button type="button" data-t="0.5" aria-label="Raise temperature">+</button>
-            </div>
-          </section>
-        </div>
-
-        <div class="hn-right">
-          <div class="hn-rooms" role="group" aria-label="Rooms" data-rooms>
-            <button type="button" data-v="living" aria-pressed="true">Living Room</button>
-            <button type="button" data-v="kitchen" aria-pressed="false">Kitchen</button>
-            <button type="button" data-v="bedroom" aria-pressed="false">Bedroom</button>
-            <button type="button" data-v="garage" aria-pressed="false">Garage</button>
-            <button type="button" data-v="studio" aria-pressed="false">Studio</button>
-          </div>
-
-          <section class="hn-hero" aria-labelledby="hn-hero-h">
-            <h2 id="hn-hero-h" class="vh">Living room controls</h2>
-            <div class="hn-scene" data-scene aria-hidden="true"></div>
-            <div class="hn-nodes" data-nodes></div>
-            <div class="hn-bright">
-              <span data-icon="sun"></span>
-              <input type="range" min="0" max="100" value="70" aria-label="Brightness" data-bright>
-              <output class="num" data-brightout>70%</output>
-              <button type="button" class="hn-pwr" aria-pressed="true" aria-label="Room power" data-roompwr><span data-icon="power"></span></button>
-            </div>
-            <div class="hn-live">
-              <span class="hn-livepill"><i aria-hidden="true"></i> Live</span>
-              <button type="button">4K View</button>
-              <button type="button" aria-label="Expand"><span data-icon="expand"></span></button>
-            </div>
-            <p class="hn-roomnote" data-roomnote aria-live="polite"></p>
-          </section>
-
-          <div class="hn-bottom">
-            <section class="hn-devs" aria-label="Devices" data-devs></section>
-            <section class="hn-card hn-power" aria-labelledby="hn-pw-h">
-              <div class="hn-thead">
-                <div>
-                  <h2 id="hn-pw-h">Power use</h2>
-                  <p class="num hn-pwkwh">6.8 <small>kWh</small></p>
+      <main class="hn-main-host" data-main>
+        <div class="hn-overview" data-page-panel="overview">
+          <div class="hn-main">
+            <div class="hn-left">
+              <section class="hn-card hn-wx hn-reveal" aria-labelledby="hn-wx-h">
+                <div class="hn-wxart" data-wxart aria-hidden="true"></div>
+                <div class="hn-wxbody">
+                  <div class="hn-wxmeta"><span>Cedar Falls</span><time data-wxdate></time></div>
+                  <h2 id="hn-wx-h" class="num" data-wx-temp>26°C</h2>
+                  <p>Partly cloudy</p>
+                  <ul class="hn-wxstats">
+                    <li><span data-icon="drop"></span><span>Humidity<br><b class="num">62%</b></span></li>
+                    <li><span data-icon="wind"></span><span>Wind<br><b class="num">12 km/h</b></span></li>
+                    <li><span data-icon="leaf"></span><span>Air<br><b>Good</b></span></li>
+                  </ul>
                 </div>
-                <p class="hn-delta"><span data-icon="trendDown"></span> −18% vs last week</p>
+              </section>
+
+              <section class="hn-card hn-aqi hn-reveal" aria-labelledby="hn-aqi-h">
+                <h2 id="hn-aqi-h" class="vh">Air quality</h2>
+                <div class="hn-aqirow">
+                  <div class="hn-aqigauge" data-aqi></div>
+                  <div class="hn-aqidetail">
+                    <p class="hn-k">PM2.5</p>
+                    <p class="num hn-pm"><span data-pm>12</span> <small>µg/m³</small></p>
+                    <div class="hn-sparkbox" data-pmspark role="img" aria-label="PM2.5 trend, steady and low"></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="hn-card hn-thermo hn-reveal" aria-labelledby="hn-th-h">
+                <div class="hn-thead">
+                  <h2 id="hn-th-h">Climate</h2>
+                  <button class="hn-eco" type="button" aria-pressed="true"><span data-icon="leaf"></span> Eco mode</button>
+                </div>
+                <div class="hn-dialwrap">
+                  <button type="button" data-t="-0.5" aria-label="Lower temperature">−</button>
+                  <div class="hn-dial" data-dial></div>
+                  <button type="button" data-t="0.5" aria-label="Raise temperature">+</button>
+                </div>
+              </section>
+            </div>
+
+            <div class="hn-right">
+              <div class="hn-rooms hn-reveal" role="group" aria-label="Rooms" data-rooms>
+                <button type="button" data-v="living" aria-pressed="true">Living Room</button>
+                <button type="button" data-v="kitchen" aria-pressed="false">Kitchen</button>
+                <button type="button" data-v="bedroom" aria-pressed="false">Bedroom</button>
+                <button type="button" data-v="garage" aria-pressed="false">Garage</button>
+                <button type="button" data-v="studio" aria-pressed="false">Studio</button>
               </div>
-              <div data-power role="img" aria-label="Weekly power consumption"></div>
-            </section>
+
+              <section class="hn-hero hn-reveal" aria-labelledby="hn-hero-h">
+                <h2 id="hn-hero-h" class="vh">Living room controls</h2>
+                <div class="hn-scene" data-scene>
+                  <img class="hn-photo hn-ambient" src="media/living-room.webp" width="1280" height="720" alt="Living room camera view (sample)" decoding="async">
+                </div>
+                <div class="hn-nodes" data-nodes></div>
+                <div class="hn-bright">
+                  <span data-icon="sun"></span>
+                  <input type="range" min="0" max="100" value="70" aria-label="Brightness" data-bright>
+                  <output class="num" data-brightout>70%</output>
+                  <button type="button" class="hn-pwr" aria-pressed="true" aria-label="Room power" data-roompwr><span data-icon="power"></span></button>
+                </div>
+                <div class="hn-live">
+                  <span class="hn-livepill"><i class="hn-pulse" aria-hidden="true"></i> Live</span>
+                  <button type="button" data-4k>4K View</button>
+                  <button type="button" aria-label="Expand" data-expand><span data-icon="expand"></span></button>
+                </div>
+                <p class="hn-roomnote" data-roomnote aria-live="polite"></p>
+              </section>
+
+              <div class="hn-bottom">
+                <section class="hn-devs hn-reveal" aria-label="Devices" data-devs></section>
+                <section class="hn-card hn-power hn-reveal" aria-labelledby="hn-pw-h">
+                  <div class="hn-thead">
+                    <div>
+                      <h2 id="hn-pw-h">Power use</h2>
+                      <p class="num hn-pwkwh"><span data-kwh>6.8</span> <small>kWh</small></p>
+                    </div>
+                    <p class="hn-delta"><span data-icon="trendDown"></span> −18% vs last week</p>
+                  </div>
+                  <div data-power role="img" aria-label="Weekly power consumption"></div>
+                </section>
+              </div>
+            </div>
           </div>
+          <footer class="hn-eco-foot hn-reveal"><span data-icon="leaf"></span> Save energy · a quieter, greener home</footer>
         </div>
       </main>
-
-      <footer class="hn-eco-foot"><span data-icon="leaf"></span> Save energy · a quieter, greener home</footer>
     </div>
   </div>
+  <div class="hn-toast" data-toast hidden role="status"></div>
   <p class="db-sample hn-sample">Sample data · fictional home and readings</p>
   <script src="app.js"></script>
 </body>

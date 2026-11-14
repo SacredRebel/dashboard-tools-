@@ -1,8 +1,9 @@
-/* Aura Ring: sample data, ring and body artwork, charts and interactions.
-   All data is fictional sample data. No timers, no network. */
+/* Aura Ring: painted ring + brain, multipage + motion. Sample data only. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
   const ICON = {
     sparkle: '<path d="M12 3l1.8 5.200L19 10l-5.2 1.800L12 17l-1.8-5.200L5 10l5.2-1.800zM19 16l.8 2.200L22 19l-2.2.8L19 22l-.8-2.200L16 19l2.2-.8z"/>',
     bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>',
@@ -14,7 +15,25 @@
     brain: '<path d="M12 4.500v15M12 6a3 3 0 0 0-5.5-1.500A3 3 0 0 0 4 9a3.5 3.5 0 0 0 .5 6A3.5 3.5 0 0 0 12 17M12 6a3 3 0 0 1 5.5-1.500A3 3 0 0 1 20 9a3.5 3.5 0 0 1-.5 6A3.5 3.5 0 0 1 12 17"/>',
   };
   const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  const paintIcons = (host = document) => $$('[data-icon]', host).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 650, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
   const fmtNum = (v) => v.toLocaleString('en-US');
   const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
   const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
@@ -87,15 +106,11 @@
 
   // ---------------------------------------------------------------- artwork
   function renderArt() {
-    $('[data-ring]').innerHTML = `<svg viewBox="0 0 200 150">
-      <defs><linearGradient id="ar-m1" x1="0" y1="0" x2="1" y2="1">${st(0, '--metal-1')}${st(0.45, '--metal-2')}${st(0.6, '--metal-1')}${st(1, '--metal-3')}</linearGradient>
-      <linearGradient id="ar-m2" x1="0" y1="0" x2="0" y2="1">${st(0, '--metal-3')}${st(1, '--metal-2')}</linearGradient></defs>
-      <g transform="rotate(-18 100 75)"><ellipse cx="100" cy="75" rx="74" ry="52" fill="url(#ar-m1)"/><ellipse cx="100" cy="83" rx="58" ry="37" fill="url(#ar-m2)"/><ellipse cx="100" cy="88" rx="52" ry="30" fill="var(--haze-4)"/>
-      <path d="M40,60 C60,30 130,24 164,52" fill="none" stroke="var(--metal-1)" stroke-width="4" stroke-linecap="round" opacity="0.9"/><g fill="var(--good)"><circle cx="82" cy="52" r="2.500"/><circle cx="100" cy="50" r="2.500"/><circle cx="118" cy="52" r="2.500"/></g></g></svg>`;
+    /* Ring photo is static in markup (media/ring.webp). */
     $('[data-figure]').innerHTML = `<svg viewBox="0 0 100 220" role="img" aria-label="Outline of a standing figure"><defs><linearGradient id="ar-fg" x1="0" y1="0" x2="1" y2="1">${st(0, '--figure-1')}${st(1, '--figure-2')}</linearGradient></defs>
       <ellipse cx="50" cy="212" rx="34" ry="6" fill="var(--figure-2)" opacity="0.5"/>
       <g fill="url(#ar-fg)"><circle cx="50" cy="18" r="13"/><path d="M34,38 Q50,32 66,38 L84,90 Q86,96 80,97 Q76,97 74,92 L65,62 L64,108 L70,196 Q71,206 63,206 Q57,206 56,198 L50,128 L44,198 Q43,206 37,206 Q29,206 30,196 L36,108 L35,62 L26,92 Q24,97 20,97 Q14,96 16,90 Z"/></g></svg>` +
-      SPOTS.map((s, i) => `<button class="ar-spot" data-spot="${i}" style="left:${s.x}%;top:${s.y}%" aria-pressed="${i === spot}" aria-label="${s.name}"></button>`).join('');
+      SPOTS.map((s, i) => `<button type="button" class="ar-spot" data-spot="${i}" style="left:${s.x}%;top:${s.y}%" aria-pressed="${i === spot}" aria-label="${s.name}"></button>`).join('');
   }
 
   // ---------------------------------------------------------------- sample data
@@ -114,7 +129,7 @@
   function renderView() {
     const v = VIEWS[view], word = v.score >= 80 ? 'Excellent' : v.score >= 65 ? 'Good' : v.score >= 50 ? 'Fair' : 'Needs care';
     $('[data-headline]').innerHTML = v.head; $('[data-tip]').textContent = v.tip; $('[data-summary]').textContent = v.sum;
-    $('[data-score-name]').textContent = v.name; $('[data-score]').textContent = v.score;
+    $('[data-score-name]').textContent = v.name; countUp($('[data-score]'), v.score);
     const s = $('[data-state]'); s.textContent = word; s.style.setProperty('--state', `var(${v.score >= 65 ? '--good' : '--chart-2'})`);
     $('[data-gauge]').innerHTML = `<div role="img" aria-label="${v.name} ${v.score} out of 100">${arcGauge(v.score / 100, { size: 150, w: 8, from: -150, to: 150, color: '--chart-1', knob: true })}</div><span>${svg({ overview: 'heartPulse', sleep: 'moon', recovery: 'bolt', activity: 'activity', stress: 'brain' }[view], 1.4)}</span>`;
   }
@@ -126,9 +141,162 @@
   }
 
   // ---------------------------------------------------------------- events
-  seg($('[data-tabs]'), (v) => { view = v; renderView(); });
+  seg($('[data-tabs]'), (v) => { view = v; renderView(); toast(`${v} · sample`); });
   renderArt();
-  $('[data-figure]').addEventListener('click', (e) => { const b = e.target.closest('[data-spot]'); if (!b) return; spot = +b.dataset.spot; renderBody(); });
+  $('[data-figure]').addEventListener('click', (e) => { const b = e.target.closest('[data-spot]'); if (!b) return; spot = +b.dataset.spot; renderBody(); toast(`${SPOTS[spot].name} · sample`); });
+  $('[data-bell]')?.addEventListener('click', () => toast('2 alerts · sample'));
+  $('[data-device]')?.addEventListener('click', () => toast('Device settings · sample'));
+  $('[data-analysis]')?.addEventListener('click', () => toast('Full analysis · sample'));
   renderView(); renderBody(); renderCharts();
-  document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end
+  countUp($('[data-bpm]'), 62);
+  countUp($('[data-stress-n]'), 46);
+  countUp($('[data-batt]'), 84, { format: (n) => `${Math.round(n)}%` });
+
+  function staggerReveal() {
+    $$('.ar-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 35 * i}ms`);
+      el.classList.add('ar-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'vitals', name: 'Vitals', pattern: 'Report' },
+    { id: 'appointments', name: 'Appointments', pattern: 'Calendar' },
+    { id: 'records', name: 'Records', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+  function setNav(id) {
+    $$('.ar-pages a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      if (href === `#/${id}`) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  function pageHtml(page) {
+    if (page.id === 'vitals') {
+      return `<section class="ar-page" data-db-page="vitals" aria-labelledby="p-h">
+        <h1 id="p-h">Vitals</h1>
+        <p class="ar-page-lead">Ring sensors and trends. Sample data · fictional · not medical advice.</p>
+        <div class="ar-seg" role="group" aria-label="Vitals state" data-vitals-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-vitals-body></div>
+      </section>`;
+    }
+    if (page.id === 'appointments') {
+      return `<section class="ar-page" data-db-page="appointments" aria-labelledby="p-h">
+        <h1 id="p-h">Appointments</h1>
+        <p class="ar-page-lead">Upcoming check-ins and coach calls.</p>
+        <div class="ar-page-grid">
+          <article class="ar-page-card"><div class="ar-row"><strong>Sleep coach</strong><span>Tue 10:00</span></div></article>
+          <article class="ar-page-card"><div class="ar-row"><strong>Recovery review</strong><span>Fri 15:30</span></div></article>
+        </div>
+        <button type="button" class="ar-btn" data-book-appt>Book a slot</button>
+      </section>`;
+    }
+    if (page.id === 'records') {
+      return `<section class="ar-page" data-db-page="records" aria-labelledby="p-h">
+        <h1 id="p-h">Records</h1>
+        <p class="ar-page-lead">Exports and nightly summaries.</p>
+        <div class="ar-page-grid">
+          <article class="ar-page-card"><div class="ar-row"><strong>Nightly PDF</strong><span>Ready</span></div></article>
+          <article class="ar-page-card"><div class="ar-row"><strong>HR CSV</strong><span>Ready</span></div></article>
+        </div>
+        <button type="button" class="ar-btn ghost" data-export-rec>Export pack</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="ar-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="ar-page-lead">Ring preferences and alerts.</p>
+        <div class="ar-page-grid">
+          <article class="ar-page-card"><div class="ar-row"><strong>Bedtime tip</strong><span>On</span></div></article>
+          <article class="ar-page-card"><div class="ar-row"><strong>Stress nudge</strong><span>On</span></div></article>
+        </div>
+        <button type="button" class="ar-btn ghost" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="ar-page"><h1>${page.name}</h1></section>`;
+  }
+  function wirePage(host, page) {
+    if (page.id === 'vitals') {
+      const body = host.querySelector('[data-vitals-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="ar-loading" role="status"><p>Syncing ring…</p><div class="ar-skel"></div><div class="ar-skel"></div></div>`;
+          return;
+        }
+        if (state === 'empty') {
+          body.innerHTML = `<div class="ar-empty"><p>No vitals yet tonight.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="ar-error"><p>Could not load vitals.</p><button type="button" class="ar-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="ar-page-grid">
+          <article class="ar-page-card"><div class="ar-row"><span>Resting HR</span><strong class="num">58</strong></div></article>
+          <article class="ar-page-card"><div class="ar-row"><span>HRV</span><strong class="num">62</strong></div></article>
+          <article class="ar-page-card"><div class="ar-row"><span>Skin temp</span><strong class="num">Normal</strong></div></article>
+        </div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-vitals-tabs]'), (v) => paint(v));
+    }
+    if (page.id === 'appointments') {
+      host.querySelector('[data-book-appt]')?.addEventListener('click', () => toast('Slot booked · sample'));
+    }
+    if (page.id === 'records') {
+      host.querySelector('[data-export-rec]')?.addEventListener('click', () => toast('Export queued · sample'));
+    }
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+    });
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
+    window.DB.route(PAGES, (id, page) => {
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
+    });
+  }
+
+  document.documentElement.dataset.ready = 'true';
 })();

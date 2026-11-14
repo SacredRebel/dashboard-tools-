@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/aura-ring/",
+      "url": "/dashboards/aura-ring/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/aura-ring/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/aura-ring",
+      "url": "/dashboards/aura-ring#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/aura-ring/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/aura-ring/index.html",
+      "url": "/dashboards/aura-ring/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/aura-ring/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/aura-ring/",
+      "url": "/dashboards/aura-ring/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/aura-ring/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/aura-ring/?variant=lagoon",
+      "url": "/dashboards/aura-ring/?variant=lagoon#/overview",
       "width": 1440,
       "variant": "lagoon",
       "final_path": "/dashboards/aura-ring/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/aura-ring/?variant=pearl",
+      "url": "/dashboards/aura-ring/?variant=pearl#/overview",
       "width": 1440,
       "variant": "pearl",
       "final_path": "/dashboards/aura-ring/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=lagoon#/overview",
+      "width": 1440,
+      "variant": "lagoon",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=lagoon#/overview",
+      "width": 375,
+      "variant": "lagoon",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=pearl#/overview",
+      "width": 1440,
+      "variant": "pearl",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=pearl#/overview",
+      "width": 375,
+      "variant": "pearl",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/#/vitals",
+      "width": 1440,
+      "variant": "default",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/#/vitals",
+      "width": 375,
+      "variant": "default",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=lagoon#/vitals",
+      "width": 1440,
+      "variant": "lagoon",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=lagoon#/vitals",
+      "width": 375,
+      "variant": "lagoon",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=pearl#/vitals",
+      "width": 1440,
+      "variant": "pearl",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=pearl#/vitals",
+      "width": 375,
+      "variant": "pearl",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/#/appointments",
+      "width": 1440,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/#/appointments",
+      "width": 375,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=lagoon#/appointments",
+      "width": 1440,
+      "variant": "lagoon",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=lagoon#/appointments",
+      "width": 375,
+      "variant": "lagoon",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=pearl#/appointments",
+      "width": 1440,
+      "variant": "pearl",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=pearl#/appointments",
+      "width": 375,
+      "variant": "pearl",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/#/records",
+      "width": 1440,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/#/records",
+      "width": 375,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=lagoon#/records",
+      "width": 1440,
+      "variant": "lagoon",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=lagoon#/records",
+      "width": 375,
+      "variant": "lagoon",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=pearl#/records",
+      "width": 1440,
+      "variant": "pearl",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=pearl#/records",
+      "width": 375,
+      "variant": "pearl",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=lagoon#/settings",
+      "width": 1440,
+      "variant": "lagoon",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=lagoon#/settings",
+      "width": 375,
+      "variant": "lagoon",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=pearl#/settings",
+      "width": 1440,
+      "variant": "pearl",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/aura-ring/?variant=pearl#/settings",
+      "width": 375,
+      "variant": "pearl",
+      "page": "settings",
       "errors": []
     },
     {

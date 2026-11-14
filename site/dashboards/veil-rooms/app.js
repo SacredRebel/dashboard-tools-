@@ -1,7 +1,30 @@
-/* Veil Rooms: grey-glass smart-home sample. Fictional data. No timers, no network. */
+/* Veil Rooms: grey smart-home board — album photo, fixtures, multipage.
+   Fictional data. No timers, no network. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
+
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 650, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
   const ICON = {
     home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
     camera: '<path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/>',
@@ -24,19 +47,7 @@
     chevLeft: '<path d="m15 18-6-6 6-6"/>',
   };
   const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
-  const fmtNum = (v) => v.toLocaleString('en-US');
-  const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
-  const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
-  const niceStep = (raw) => { const p = 10 ** Math.floor(Math.log10(raw || 1)); const f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; };
-  function scale(vals, o) {
-    let min = o.min ?? Math.min(...vals), max = o.max ?? Math.max(...vals);
-    const step = o.step || niceStep((max - min || 1) / (o.ticks || 4));
-    min = Math.floor(min / step) * step; max = Math.ceil(max / step) * step; if (max === min) max = min + step;
-    const ticks = []; for (let v = min; v <= max + step / 1e6; v += step) ticks.push(+v.toFixed(6));
-    return { min, max, ticks };
-  }
-  // segmented control / tabs: buttons carry data-v, the pressed one gets aria-pressed="true"
+  const paintIcons = (rootEl = document) => $$('[data-icon]', rootEl).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
   function seg(group, onChange) {
     group.addEventListener('click', (e) => {
       const b = e.target.closest('button[data-v]'); if (!b) return;
@@ -55,23 +66,39 @@
     'bed-b': 'Bedroom B · guest mode off',
     'bed-c': 'Bedroom C · blackout blinds linked',
   };
+  const ROOMS = [
+    { id: 'living', name: 'Living room', devices: 6 },
+    { id: 'study', name: 'Study', devices: 3 },
+    { id: 'bed-a', name: 'Bedroom A', devices: 4 },
+    { id: 'bed-b', name: 'Bedroom B', devices: 3 },
+    { id: 'bed-c', name: 'Bedroom C', devices: 0 },
+  ];
+  const DEVS = [
+    { n: 'Main light', s: 'Living · 72%', on: true },
+    { n: 'Air conditioner', s: 'Living · 25°C', on: true },
+    { n: 'Media player', s: 'River Lights', on: true },
+    { n: 'Mesh wifi', s: '3 devices online', on: true },
+    { n: 'Air purifier', s: 'PM2.5 21', on: true },
+    { n: 'Smart lock', s: 'Front door locked', on: true },
+  ];
   const grid = $('.vr-grid'), emp = $('[data-empty]'), err = $('[data-error]');
-  function showRoom(v) {
+  function showRoom(v, { quiet = false } = {}) {
     $('[data-roomhint]').textContent = ROOM_COPY[v] || '';
     const empty = v === 'bed-c';
     grid.hidden = empty; emp.hidden = !empty; err.hidden = true;
     grid.dataset.state = empty ? 'empty' : 'populated';
+    if (!quiet) toast(ROOM_COPY[v] || v);
   }
-  seg($('[data-rooms]'), showRoom);
-  showRoom('living');
+  seg($('[data-rooms]'), (v) => showRoom(v));
+  showRoom('living', { quiet: true });
   $('[data-back]').addEventListener('click', () => {
     const b = $('[data-rooms] [data-v="living"]');
     $$('[data-rooms] button[data-v]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
     showRoom('living');
   });
-  $('[data-retry]').addEventListener('click', () => { err.hidden = true; grid.hidden = false; grid.dataset.state = 'populated'; });
+  $('[data-retry]').addEventListener('click', () => { err.hidden = true; grid.hidden = false; grid.dataset.state = 'populated'; toast('Devices reloaded · sample'); });
+  $('[data-add-room]')?.addEventListener('click', () => toast('Add room · sample'));
 
-  // main light
   const mlBright = $('[data-mlbright]'), mlOut = $('[data-mlbout]');
   const syncMl = () => { mlOut.textContent = mlBright.value + '%'; };
   mlBright.addEventListener('input', syncMl); syncMl();
@@ -79,41 +106,46 @@
     const on = e.currentTarget.getAttribute('aria-pressed') !== 'true';
     e.currentTarget.setAttribute('aria-pressed', String(on));
     mlBright.disabled = !on; $('[data-mltemp]').disabled = !on;
+    toast(on ? 'Main light on · sample' : 'Main light off · sample');
   });
 
-  // AC
   let ac = 25, acOn = true;
   function renderAc() {
     $('[data-actemp]').textContent = ac + '°C';
     $('[data-acnote]').textContent = acOn ? `Cooling to ${ac}°C` : 'Standby';
     $$('[data-ac]').forEach((b) => { b.disabled = !acOn || (+b.dataset.ac < 0 && ac <= 16) || (+b.dataset.ac > 0 && ac >= 30); });
   }
-  $$('[data-ac]').forEach((b) => b.addEventListener('click', () => { ac = Math.min(30, Math.max(16, ac + +b.dataset.ac)); renderAc(); }));
-  $('[data-acpwr]').addEventListener('click', (e) => { acOn = e.currentTarget.getAttribute('aria-pressed') !== 'true'; e.currentTarget.setAttribute('aria-pressed', String(acOn)); renderAc(); });
+  $$('[data-ac]').forEach((b) => b.addEventListener('click', () => { ac = Math.min(30, Math.max(16, ac + +b.dataset.ac)); renderAc(); toast(`AC ${ac}°C`); }));
+  $('[data-acpwr]').addEventListener('click', (e) => {
+    acOn = e.currentTarget.getAttribute('aria-pressed') !== 'true';
+    e.currentTarget.setAttribute('aria-pressed', String(acOn));
+    renderAc();
+    toast(acOn ? 'AC on · sample' : 'AC standby · sample');
+  });
 
-  // media art + play
-  $('[data-album]').innerHTML = `<svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="vr-al" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--cool)"/><stop offset="1" style="stop-color:var(--warm)"/></linearGradient></defs><rect width="240" height="120" style="fill:url(#vr-al)"/><path d="M0 80 L40 50 L80 70 L130 30 L180 60 L240 40 V120 H0Z" style="fill:var(--bg)" opacity=".35"/></svg>`;
   $('[data-play]').addEventListener('click', (e) => {
     const on = e.currentTarget.getAttribute('aria-pressed') !== 'true';
     e.currentTarget.setAttribute('aria-pressed', String(on));
     e.currentTarget.setAttribute('aria-label', on ? 'Pause' : 'Play');
     e.currentTarget.innerHTML = svg(on ? 'pause' : 'play');
+    toast(on ? 'Playing River Lights' : 'Paused');
   });
+  $$('[data-skip]').forEach((b) => b.addEventListener('click', () => toast(+b.dataset.skip > 0 ? 'Next track · sample' : 'Previous track · sample')));
 
-  // simple power toggles
   ['wifipwr', 'aqpwr'].forEach((k) => {
     $(`[data-${k}]`).addEventListener('click', (e) => {
       const on = e.currentTarget.getAttribute('aria-pressed') !== 'true';
       e.currentTarget.setAttribute('aria-pressed', String(on));
+      toast(`${k === 'wifipwr' ? 'Wifi' : 'Purifier'} ${on ? 'on' : 'off'} · sample`);
     });
   });
   $('[data-lock]').addEventListener('click', (e) => {
     const locked = e.currentTarget.getAttribute('aria-pressed') !== 'true';
     e.currentTarget.setAttribute('aria-pressed', String(locked));
     e.currentTarget.setAttribute('aria-label', locked ? 'Unlock front door' : 'Lock front door');
+    toast(locked ? 'Front door locked' : 'Front door unlocked');
   });
 
-  // fixtures panel
   const FIX = [
     { id: 'main', n: 'Main light', on: true, kind: 'sliders', temp: 3200, bright: 70 },
     { id: 'chand', n: 'Chandelier', on: false, kind: 'sliders', temp: 2800, bright: 40 },
@@ -137,9 +169,18 @@
   }
   $('[data-fixtures]').addEventListener('click', (e) => {
     const tog = e.target.closest('[data-fixtog]');
-    if (tog) { const f = FIX[+tog.dataset.fixtog]; f.on = !f.on; renderFix(); $(`[data-fixtog="${tog.dataset.fixtog}"]`).focus(); return; }
+    if (tog) {
+      const f = FIX[+tog.dataset.fixtog]; f.on = !f.on; renderFix();
+      toast(`${f.n} ${f.on ? 'on' : 'off'}`);
+      $(`[data-fixtog="${tog.dataset.fixtog}"]`)?.focus();
+      return;
+    }
     const st = e.target.closest('[data-step]');
-    if (st) { FIX[+st.dataset.fix].step = +st.dataset.step; renderFix(); $(`[data-fix="${st.dataset.fix}"][data-step="${st.dataset.step}"]`).focus(); }
+    if (st) {
+      FIX[+st.dataset.fix].step = +st.dataset.step; renderFix();
+      toast(`${FIX[+st.dataset.fix].n} · ${STEP_L[+st.dataset.step]}`);
+      $(`[data-fix="${st.dataset.fix}"][data-step="${st.dataset.step}"]`)?.focus();
+    }
   });
   $('[data-fixtures]').addEventListener('input', (e) => {
     const t = e.target.closest('[data-fixt]'); if (t) FIX[+t.dataset.fixt].temp = +t.value;
@@ -148,9 +189,161 @@
   $('[data-collapse]').addEventListener('click', () => {
     const pane = $('.vr-lightpane');
     const collapsed = pane.toggleAttribute('data-collapsed');
-    pane.style.display = collapsed ? 'none' : '';
+    pane.hidden = collapsed;
+    toast(collapsed ? 'Light panel hidden' : 'Light panel shown');
   });
 
   renderAc(); renderFix();
+  countUp($('[data-pm]'), 21);
+  countUp($('[data-mlbout]'), 72, { format: (n) => Math.round(n) + '%' });
+
+  function staggerReveal() {
+    $$('.vr-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
+      el.classList.add('vr-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'rooms', name: 'Rooms', pattern: 'List' },
+    { id: 'devices', name: 'Devices', pattern: 'List' },
+    { id: 'energy', name: 'Energy', pattern: 'Report' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+
+  function setNav(id) {
+    $$('.vr-nav a').forEach((a) => {
+      const match = (a.getAttribute('href') || '') === `#/${id}`;
+      if (match) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  function pageHtml(page) {
+    if (page.id === 'rooms') {
+      return `<section class="vr-page" data-db-page="rooms" aria-labelledby="p-h">
+        <h1 id="p-h">Rooms</h1>
+        <p class="vr-page-lead">Zones in Scarlett’s home. Sample data · fictional.</p>
+        <div class="vr-page-seg" role="group" aria-label="Rooms state" data-rooms-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-rooms-body></div>
+      </section>`;
+    }
+    if (page.id === 'devices') {
+      return `<section class="vr-page" data-db-page="devices" aria-labelledby="p-h">
+        <h1 id="p-h">Devices</h1>
+        <p class="vr-page-lead">Every controllable endpoint on the mesh.</p>
+        <div class="vr-page-grid" data-dev-list></div>
+      </section>`;
+    }
+    if (page.id === 'energy') {
+      return `<section class="vr-page" data-db-page="energy" aria-labelledby="p-h">
+        <h1 id="p-h">Energy</h1>
+        <p class="vr-page-lead">Lighting and climate draw this week. Sample readings only.</p>
+        <div class="vr-page-grid">
+          <article class="vr-page-card"><div class="vr-row"><span>This week</span><strong class="num">42 kWh</strong></div></article>
+          <article class="vr-page-card"><div class="vr-row"><span>Peak evening</span><strong class="num">9.1 kWh</strong></div></article>
+          <article class="vr-page-card"><div class="vr-row"><span>vs last week</span><strong class="num">−8%</strong></div></article>
+        </div>
+        <button type="button" class="vr-btn" data-energy-report>Open usage report</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="vr-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="vr-page-lead">Home preferences and guest access.</p>
+        <div class="vr-page-grid">
+          <article class="vr-page-card"><div class="vr-row"><strong>Night scenes</strong><span>On</span></div></article>
+          <article class="vr-page-card"><div class="vr-row"><strong>Guest PIN</strong><span>Off</span></div></article>
+          <article class="vr-page-card"><div class="vr-row"><strong>Door alerts</strong><span>On</span></div></article>
+        </div>
+        <button type="button" class="vr-btn ghost" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="vr-page"><h1>${page.name}</h1></section>`;
+  }
+
+  function wirePage(host, page) {
+    if (page.id === 'rooms') {
+      const body = host.querySelector('[data-rooms-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="vr-loading" role="status"><p>Syncing rooms…</p><div class="vr-skel"></div><div class="vr-skel"></div></div>`;
+          return;
+        }
+        if (state === 'empty') {
+          body.innerHTML = `<div class="vr-empty-block"><p>No rooms configured yet.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="vr-error-block"><p>Could not load rooms.</p><button type="button" class="vr-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="vr-page-grid">${ROOMS.map((r) =>
+          `<article class="vr-page-card"><div class="vr-row"><strong>${r.name}</strong><span class="num vr-chip">${r.devices}</span></div><p class="vr-meta">${r.devices ? 'Linked devices' : 'Empty room'}</p></article>`
+        ).join('')}</div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-rooms-tabs]'), (v) => paint(v));
+    }
+    if (page.id === 'devices') {
+      host.querySelector('[data-dev-list]').innerHTML = DEVS.map((d) =>
+        `<article class="vr-page-card"><div class="vr-row"><strong>${d.n}</strong><span class="vr-chip">${d.on ? 'On' : 'Off'}</span></div><p class="vr-meta">${d.s}</p></article>`
+      ).join('');
+    }
+    if (page.id === 'energy') {
+      host.querySelector('[data-energy-report]')?.addEventListener('click', () => toast('Usage report · sample'));
+    }
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+    });
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
+    window.DB.route(PAGES, (id, page) => {
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
+    });
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

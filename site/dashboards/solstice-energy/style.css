@@ -10,8 +10,9 @@
   --border: rgb(255 255 255 / 0.08);
   --border-strong: rgb(255 255 255 / 0.18);
   --text: #f3eee7;
-  --text-muted: #b5afa6;
-  --text-subtle: #8f8980;
+  --text-muted: #c4bdb3;
+  --text-subtle: #a39b91;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --accent: #ff9a4a;
   --accent-fg: #26150a;
   --accent-soft: rgb(255 154 74 / 0.16);
@@ -75,7 +76,9 @@ body { background: var(--bg); }
 .se-nav a:hover { color: var(--text); }
 .se-nav a[aria-current="page"] { color: var(--text); border-bottom-color: var(--accent); }
 .se-date { margin-left: auto; font-size: 14px; color: var(--text-muted); white-space: nowrap; }
-.se-iconbtn { flex: none; width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--surface); color: var(--text); }
+.se-iconbtn { flex: none; width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--surface); color: var(--text); text-decoration: none; transition: transform 160ms var(--ease-out); }
+.se-iconbtn:hover { transform: translateY(-1px); }
+.se-iconbtn:active { transform: scale(0.96); }
 .se-iconbtn svg { width: 18px; height: 18px; }
 .se-seg { display: inline-flex; padding: 3px; border-radius: var(--radius-md); background: var(--surface-sunken); border: 1px solid var(--border); }
 .se-seg button { min-height: 32px; padding: 0 12px; border: 0; border-radius: var(--radius-sm); background: none; color: var(--text-muted); font-size: 13px; font-weight: 500; }
@@ -97,10 +100,16 @@ body { background: var(--bg); }
 .se-self-ring b { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-display); font-size: 20px; font-weight: 500; }
 .se-self p { font-size: 14px; color: var(--text-muted); } .se-self p b { display: block; color: var(--text); font-weight: 500; }
 
-/* ---------------------------------------------------------------- hero: sun-path arc over mountains (signature) */
+/* ---------------------------------------------------------------- hero: sun-path arc over mountain photo (signature) */
 .se-hero { position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: 520px; padding-bottom: 0; }
 .se-hero-art { position: absolute; inset: 0 0 124px 0; pointer-events: none; }
-.se-hero-art svg { width: 100%; height: 100%; }
+.se-mountains {
+  position: absolute; inset: auto 0 0 0; width: 100%; height: 58%;
+  object-fit: cover; object-position: center bottom;
+  opacity: 0.88; mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 100%);
+}
+.se-arc { position: absolute; inset: 0; }
+.se-arc svg { width: 100%; height: 100%; }
 .se-hero > :not(.se-hero-art) { position: relative; z-index: 1; }
 .se-hero-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .se-hero h1 { font-family: var(--font-display); font-size: 44px; font-weight: 400; line-height: 1.1; }
@@ -111,17 +120,24 @@ body { background: var(--bg); }
 .se-hero-side b { display: block; font-family: var(--font-display); font-size: 24px; font-weight: 500; color: var(--text); }
 .se-hero-chart { margin-top: auto; padding-top: 150px; }
 .se-hero-chart .se-plot .grid line { stroke: var(--grid); }
-.se-hero-chart .se-y, .se-hero-chart .se-x { color: var(--chart-2); }
-.se-hero-chart .se-x { z-index: 2; padding: 0 5px; border-radius: 6px; background: var(--surface); }
+.se-hero-chart .se-y, .se-hero-chart .se-x {
+  z-index: 2; color: var(--text); font-size: 13px; font-weight: 500;
+  padding: 2px 6px; border-radius: 6px; background: var(--surface);
+}
 .se-legend { position: relative; z-index: 2; justify-self: start; display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 6px; padding: 2px 8px; border-radius: 8px; background: var(--surface); font-size: 13px; color: var(--text-muted); }
 .se-legend li { display: flex; align-items: center; gap: 6px; }
 .se-legend i { width: 14px; height: 3px; border-radius: 2px; }
 .se-hint { margin-left: auto; color: var(--text-subtle); }
-.se-strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); margin: 14px -20px 0; padding: 0 20px; background: var(--surface-sunken); border-top: 1px solid var(--border); }
+.se-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 14px -20px 0; padding: 0 20px; background: var(--surface-sunken); border-top: 1px solid var(--border); }
 .se-strip > div { padding: 12px 0; }
-.se-strip dt { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+.se-strip dt { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
 .se-strip dd { margin: 0; font-family: var(--font-display); font-size: 18px; font-weight: 500; color: var(--chart-1); }
 .se-strip > div:nth-child(even) dd { color: var(--chart-2); }
+.se-chip {
+  display: inline-flex; align-items: center; min-height: 28px; padding: 2px 10px;
+  border-radius: var(--radius-pill); background: var(--surface); color: var(--text);
+  font-size: 13px; font-weight: 600; border: 1px solid var(--border);
+}
 
 /* ---------------------------------------------------------------- lower panels */
 .se-half .se-plot { --bar-w: 16px; --bar-r: 2px; --bar-gap: 6px; }
@@ -137,11 +153,12 @@ body { background: var(--bg); }
 .se-dial strong { display: block; color: var(--text); font-weight: 500; font-size: 14px; }
 .se-sites { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .se-site { display: grid; justify-items: center; gap: 10px; border: 0; background: none; padding: 0; font-size: 13px; color: var(--text-muted); text-align: center; }
-.se-site-art { position: relative; width: min(100%, 112px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: linear-gradient(180deg, var(--s1), var(--s2)); box-shadow: 0 0 0 1px var(--border-strong); transition: transform 180ms ease; }
-.se-site-art::before, .se-site-art::after { content: ""; position: absolute; inset: 0; }
-.se-site-art::before { background: var(--s3); clip-path: polygon(0 100%, 0 70%, 22% 52%, 38% 66%, 58% 40%, 78% 62%, 100% 48%, 100% 100%); }
-.se-site-art::after { background: var(--s4); clip-path: polygon(0 100%, 0 84%, 30% 72%, 52% 82%, 74% 68%, 100% 80%, 100% 100%); }
-.se-site:hover .se-site-art { transform: scale(1.04); }
+.se-site-art {
+  width: min(100%, 112px); aspect-ratio: 1; border-radius: 50%; object-fit: cover;
+  box-shadow: 0 0 0 1px var(--border-strong); transition: transform 180ms var(--ease-out);
+}
+.se-site:hover .se-site-art { transform: translateY(-2px) scale(1.03); }
+.se-site:active .se-site-art { transform: scale(0.97); }
 .se-site[aria-pressed="true"] .se-site-art { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--accent); }
 .se-site strong { display: block; color: var(--text); font-weight: 500; font-size: 14px; }
 
@@ -202,8 +219,71 @@ body { background: var(--bg); }
   .se-hero-chart { padding-top: 110px; }
   .se-hero-art { bottom: 150px; }
   .se-hero-chart .se-plot { --plot-h: 130px !important; }
-  .se-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 14px -16px 0; padding: 0 16px; }
+  .se-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 14px -16px 0; padding: 0 16px; }
   .se-hint { margin-left: 0; width: 100%; }
   .se-dials, .se-sites { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .se-big b { font-size: 48px; }
+}
+
+/* ---------------------------------------------------------------- multipage + motion */
+.se-page {
+  display: grid; gap: 16px; padding: 8px 4px 24px;
+  animation: seIn 220ms var(--ease-out) both;
+}
+.se-page h1 { margin: 0; font-family: var(--font-display); font-size: clamp(22px, 3vw, 34px); font-weight: 500; letter-spacing: 0.02em; }
+.se-page-lead { margin: 0; color: var(--text-muted); font-size: 14px; max-width: 65ch; }
+.se-page-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.se-page-card {
+  padding: 14px 16px; border-radius: var(--radius-md);
+  background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow);
+  display: grid; gap: 6px;
+}
+.se-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.se-meta { margin: 0; font-size: 13px; color: var(--text-muted); }
+.se-page-seg {
+  display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; width: fit-content;
+  border-radius: var(--radius-md); background: var(--surface-sunken); border: 1px solid var(--border);
+}
+.se-page-seg button {
+  min-height: 40px; padding: 0 14px; border: 0; border-radius: var(--radius-sm);
+  background: none; color: var(--text-muted); font: inherit; font-size: 13px; font-weight: 500;
+}
+.se-page-seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); }
+.se-btn {
+  min-height: 44px; padding: 0 18px; width: fit-content; border: 0;
+  border-radius: var(--radius-pill); background: var(--accent); color: var(--accent-fg);
+  font: inherit; font-weight: 600; transition: transform 160ms var(--ease-out);
+}
+.se-btn:hover { transform: translateY(-1px); }
+.se-btn:active { transform: scale(0.97); }
+.se-btn.ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+.se-loading, .se-empty-block, .se-error-block {
+  padding: 18px; border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--border);
+}
+.se-skel {
+  height: 48px; margin-top: 10px; border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, var(--surface-sunken) 25%, var(--surface-2) 50%, var(--surface-sunken) 75%);
+  background-size: 200% 100%;
+  animation: seShimmer 1.2s linear infinite;
+}
+.se-toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+  z-index: 40; min-height: 44px; padding: 10px 18px; border-radius: var(--radius-pill);
+  background: var(--text); color: var(--bg); font-size: 14px; font-weight: 600;
+  box-shadow: 0 12px 28px rgb(0 0 0 / 0.35);
+}
+.se-toast[hidden] { display: none !important; }
+.se-reveal-in {
+  animation: seIn 280ms var(--ease-out) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+.se-ambient { animation: seGlow 5s var(--ease-out) infinite alternate; }
+@keyframes seIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes seGlow { from { opacity: 0.78; } to { opacity: 0.95; } }
+@keyframes seShimmer { to { background-position: -200% 0; } }
+[data-motion-paused="1"] .se-ambient,
+[data-motion-paused="1"] .se-skel { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .se-page, .se-skel, .se-ambient, .se-reveal-in { animation: none !important; }
+  .se-iconbtn, .se-site-art, .se-btn { transition: none; }
 }

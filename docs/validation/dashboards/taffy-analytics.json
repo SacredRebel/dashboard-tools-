@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/taffy-analytics/",
+      "url": "/dashboards/taffy-analytics/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/taffy-analytics/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/taffy-analytics",
+      "url": "/dashboards/taffy-analytics#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/taffy-analytics/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/taffy-analytics/index.html",
+      "url": "/dashboards/taffy-analytics/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/taffy-analytics/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/taffy-analytics/",
+      "url": "/dashboards/taffy-analytics/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/taffy-analytics/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/taffy-analytics/?variant=mint",
+      "url": "/dashboards/taffy-analytics/?variant=mint#/overview",
       "width": 1440,
       "variant": "mint",
       "final_path": "/dashboards/taffy-analytics/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/taffy-analytics/?variant=dusk",
+      "url": "/dashboards/taffy-analytics/?variant=dusk#/overview",
       "width": 1440,
       "variant": "dusk",
       "final_path": "/dashboards/taffy-analytics/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=mint#/overview",
+      "width": 1440,
+      "variant": "mint",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=mint#/overview",
+      "width": 375,
+      "variant": "mint",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=dusk#/overview",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=dusk#/overview",
+      "width": 375,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/#/workspace",
+      "width": 1440,
+      "variant": "default",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/#/workspace",
+      "width": 375,
+      "variant": "default",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=mint#/workspace",
+      "width": 1440,
+      "variant": "mint",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=mint#/workspace",
+      "width": 375,
+      "variant": "mint",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=dusk#/workspace",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=dusk#/workspace",
+      "width": 375,
+      "variant": "dusk",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/#/people",
+      "width": 1440,
+      "variant": "default",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/#/people",
+      "width": 375,
+      "variant": "default",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=mint#/people",
+      "width": 1440,
+      "variant": "mint",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=mint#/people",
+      "width": 375,
+      "variant": "mint",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=dusk#/people",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=dusk#/people",
+      "width": 375,
+      "variant": "dusk",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=mint#/settings",
+      "width": 1440,
+      "variant": "mint",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=mint#/settings",
+      "width": 375,
+      "variant": "mint",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=dusk#/settings",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/taffy-analytics/?variant=dusk#/settings",
+      "width": 375,
+      "variant": "dusk",
+      "page": "settings",
       "errors": []
     },
     {

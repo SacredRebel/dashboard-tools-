@@ -1,22 +1,11 @@
 {
   "id": "glacier-ops",
   "checked": "2026-11-14",
-  "ok": false,
+  "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/glacier-ops/",
-      "width": 1440,
-      "variant": "default",
-      "final_path": "/dashboards/glacier-ops/",
-      "overflow_px": 0,
-      "errors": [
-        "low contrast 1.02:1 (large, needs 3) \"1842\" 28px, text rgb(215, 244, 255) on ~rgb(150, 197, 219) at x692 y512",
-        "low contrast 2.23:1 (needs 4.5) \"m ASL\" 12px, text rgb(215, 244, 255) on ~rgb(108, 163, 190) at x700 y547"
-      ]
-    },
-    {
-      "url": "/dashboards/glacier-ops",
+      "url": "/dashboards/glacier-ops/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/glacier-ops/",
@@ -24,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/glacier-ops/index.html",
+      "url": "/dashboards/glacier-ops#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/glacier-ops/",
@@ -32,37 +21,204 @@
       "errors": []
     },
     {
-      "url": "/dashboards/glacier-ops/",
+      "url": "/dashboards/glacier-ops/index.html#/overview",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/glacier-ops/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/glacier-ops/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 1.00:1 (large, needs 3) \"1842\" 28px, text rgb(215, 244, 255) on ~rgb(158, 202, 223) at x166 y353",
-        "low contrast 2.26:1 (needs 4.5) \"m ASL\" 12px, text rgb(215, 244, 255) on ~rgb(54, 105, 135) at x172 y380"
-      ]
+      "errors": []
     },
     {
-      "url": "/dashboards/glacier-ops/?variant=cobalt",
+      "url": "/dashboards/glacier-ops/?variant=cobalt#/overview",
       "width": 1440,
       "variant": "cobalt",
       "final_path": "/dashboards/glacier-ops/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 1.00:1 (large, needs 3) \"1842\" 28px, text rgb(224, 232, 255) on ~rgb(150, 166, 215) at x692 y512",
-        "low contrast 2.11:1 (needs 4.5) \"m ASL\" 12px, text rgb(224, 232, 255) on ~rgb(121, 140, 197) at x700 y547"
-      ]
+      "errors": []
     },
     {
-      "url": "/dashboards/glacier-ops/?variant=night",
+      "url": "/dashboards/glacier-ops/?variant=night#/overview",
       "width": 1440,
       "variant": "night",
       "final_path": "/dashboards/glacier-ops/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 1.00:1 (large, needs 3) \"1842\" 28px, text rgb(216, 255, 242) on ~rgb(146, 204, 184) at x692 y512",
-        "low contrast 2.12:1 (needs 4.5) \"m ASL\" 12px, text rgb(216, 255, 242) on ~rgb(114, 180, 159) at x700 y547"
-      ]
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=cobalt#/overview",
+      "width": 1440,
+      "variant": "cobalt",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=cobalt#/overview",
+      "width": 375,
+      "variant": "cobalt",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=night#/overview",
+      "width": 1440,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=night#/overview",
+      "width": 375,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/#/reports",
+      "width": 1440,
+      "variant": "default",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/#/reports",
+      "width": 375,
+      "variant": "default",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=cobalt#/reports",
+      "width": 1440,
+      "variant": "cobalt",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=cobalt#/reports",
+      "width": 375,
+      "variant": "cobalt",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=night#/reports",
+      "width": 1440,
+      "variant": "night",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=night#/reports",
+      "width": 375,
+      "variant": "night",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/#/segments",
+      "width": 1440,
+      "variant": "default",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/#/segments",
+      "width": 375,
+      "variant": "default",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=cobalt#/segments",
+      "width": 1440,
+      "variant": "cobalt",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=cobalt#/segments",
+      "width": 375,
+      "variant": "cobalt",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=night#/segments",
+      "width": 1440,
+      "variant": "night",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=night#/segments",
+      "width": 375,
+      "variant": "night",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=cobalt#/settings",
+      "width": 1440,
+      "variant": "cobalt",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=cobalt#/settings",
+      "width": 375,
+      "variant": "cobalt",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=night#/settings",
+      "width": 1440,
+      "variant": "night",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/glacier-ops/?variant=night#/settings",
+      "width": 375,
+      "variant": "night",
+      "page": "settings",
+      "errors": []
     },
     {
       "url": "/#/dashboards/glacier-ops",

@@ -366,7 +366,7 @@ Physical damped-spring motion (tension ~100, friction ~20) for things the user d
 - Integrate with RK4 at display rate; settle when velocity and offset are tiny
 - Respect reduced motion: jump to the end state
 
-**Pairs with:** [Showcase patterns (this repo)](uiux.md#showcase-patterns) · [Motion (Framer Motion)](libraries.md#motion-lib)
+**Pairs with:** [Showcase patterns (this repo)](uiux.md#showcase-patterns) · [Motion (motion.dev)](motion.md#motion-lib)
 
 **If not installed:** follow [docs/design/07-showcase-patterns.md](../../docs/design/07-showcase-patterns.md)
 

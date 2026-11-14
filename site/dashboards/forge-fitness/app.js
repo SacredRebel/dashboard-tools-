@@ -3,6 +3,26 @@
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 700, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
   const ICON = {
     home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
     user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
@@ -99,30 +119,6 @@
   const rangeStart = dayOffset(-10), rangeEnd = dayOffset(0);
   $('[data-range-label]').textContent = `${fmtDate(rangeStart, { day: 'numeric', month: 'short' })} – ${fmtDate(rangeEnd, { day: 'numeric', month: 'short', year: 'numeric' })}`;
 
-  // ---------------------------------------------------------------- atmosphere (no real faces)
-  $('[data-scene]').innerHTML = `<svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <radialGradient id="ff-vignette" cx="55%" cy="42%" r="55%"><stop offset="0" stop-color="transparent"/><stop offset="1" style="stop-color:var(--bg)" stop-opacity=".9"/></radialGradient>
-      <linearGradient id="ff-fig" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--figure)" stop-opacity=".9"/><stop offset="1" style="stop-color:var(--figure)" stop-opacity=".35"/></linearGradient>
-    </defs>
-    <rect width="1400" height="900" fill="transparent"/>
-    <ellipse cx="780" cy="420" rx="220" ry="280" fill="url(#ff-fig)" opacity=".55"/>
-    <g fill="none" stroke="var(--accent)" stroke-width="2" opacity=".25">
-      <path d="M620 280c40-60 120-80 180-40"/>
-      <path d="M700 520c60 40 140 30 200-20"/>
-    </g>
-    <g transform="translate(680 220)" fill="url(#ff-fig)">
-      <ellipse cx="90" cy="48" rx="42" ry="48"/>
-      <path d="M48 100c10-8 70-12 90 0l28 120c4 18-6 28-22 26l-20-40-14 160h-36l-12-160-22 42c-14 4-26-6-22-24z"/>
-      <path d="M20 210c-30 10-50 50-36 78M170 210c40 8 60 48 40 80" stroke="var(--figure)" stroke-width="18" stroke-linecap="round" fill="none"/>
-    </g>
-    <g opacity=".2" stroke="var(--chart-2)" fill="none" stroke-width="1.5">
-      <rect x="180" y="620" width="160" height="40" rx="8"/><rect x="220" y="560" width="80" height="60" rx="6"/>
-      <circle cx="1180" cy="200" r="48"/><circle cx="1180" cy="200" r="28"/>
-    </g>
-    <rect width="1400" height="900" fill="url(#ff-vignette)"/>
-  </svg>`;
-
   // ---------------------------------------------------------------- activity grid
   const CATS = ['Browsing', 'Conversation', 'Phone'];
   const HOURS = ['08', '12', '18', '22'];
@@ -201,26 +197,34 @@
   $('[data-act-legend]').addEventListener('click', (e) => {
     const b = e.target.closest('[data-cat]'); if (!b) return;
     actFilter = b.dataset.cat; renderAct();
+    toast(actFilter === 'all' ? 'All activity · sample' : `${CATS[+actFilter]} · sample`);
   });
   $('[data-heart]').addEventListener('click', (e) => {
     const b = e.target.closest('[data-hr]'); if (!b) return;
     hrDay = +b.dataset.hr; renderHeart();
+    toast(`${DAYS[hrDay]} · ${HR[hrDay]} bpm`);
     $('[data-hr="' + hrDay + '"]').focus();
   });
   $('[data-pills]').addEventListener('click', (e) => {
     const b = e.target.closest('[data-pill]'); if (!b) return;
     pill = +b.dataset.pill; renderEnergy();
+    toast(PILLS[pill].title);
     $('[data-pill="' + pill + '"]').focus();
   });
   $('[data-report]').addEventListener('click', () => {
     const el = $('[data-act-state]');
     el.hidden = false;
     el.textContent = `Report drafted for ${fmtDate(rangeStart, { month: 'short', day: 'numeric' })}–${fmtDate(rangeEnd, { month: 'short', day: 'numeric' })} · fictional sample.`;
+    toast('Report drafted · sample');
   });
   $('[data-wallet]').addEventListener('click', () => {
     const n = $('[data-well]');
-    n.textContent = String(Math.min(99, (+n.textContent || 87) + 1));
+    const next = Math.min(99, (+n.textContent || 87) + 1);
+    n.textContent = String(next);
+    toast(`Wellness ${next} · sample`);
   });
+  $('[data-search]')?.addEventListener('click', () => toast('Search metrics · sample'));
+  $('[data-edit]')?.addEventListener('click', () => toast('Edit layout · sample'));
   $('[data-ask]').addEventListener('keydown', (e) => {
     if (e.key !== 'Enter') return;
     e.preventDefault();
@@ -229,10 +233,156 @@
     el.textContent = e.target.value.trim()
       ? `Forge notes: “${e.target.value.trim()}” — try checking sleep debt next.`
       : 'Ask about steps, sleep, or recovery to get a tip.';
+    toast('Forge reply · sample');
   });
 
   renderAct();
   renderHeart();
   renderEnergy();
+  countUp($('[data-steps]'), 19840, { format: (n) => fmtNum(Math.round(n)) });
+  countUp($('[data-well]'), 87);
+  countUp($('[data-focus]'), 73);
+
+  function staggerReveal() {
+    $$('.ff-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
+      el.classList.add('ff-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'activity', name: 'Activity', pattern: 'Report' },
+    { id: 'sessions', name: 'Sessions', pattern: 'Calendar' },
+    { id: 'history', name: 'History', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+  function setNav(id) {
+    $$('.ff-rail a').forEach((a) => {
+      const match = (a.getAttribute('href') || '') === `#/${id}`;
+      if (match) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  function pageHtml(page) {
+    if (page.id === 'activity') {
+      return `<section class="ff-page" data-db-page="activity" aria-labelledby="p-h">
+        <h1 id="p-h">Activity</h1>
+        <p class="ff-page-lead">Resting metrics for this week. Sample data · fictional.</p>
+        <div class="ff-page-grid">
+          <article class="ff-page-card"><div class="ff-row"><span>Resting HR</span><strong class="num">63 BPM</strong></div></article>
+          <article class="ff-page-card"><div class="ff-row"><span>Sleep</span><strong class="num">7h 45m</strong></div></article>
+          <article class="ff-page-card"><div class="ff-row"><span>Recovery</span><strong class="num">82%</strong></div></article>
+        </div>
+      </section>`;
+    }
+    if (page.id === 'sessions') {
+      return `<section class="ff-page" data-db-page="sessions" aria-labelledby="p-h">
+        <h1 id="p-h">Sessions</h1>
+        <p class="ff-page-lead">Coaching sessions on the calendar. Sample data · fictional.</p>
+        <div class="ff-page-seg" role="group" aria-label="Sessions state" data-sess-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-sess-body></div>
+      </section>`;
+    }
+    if (page.id === 'history') {
+      return `<section class="ff-page" data-db-page="history" aria-labelledby="p-h">
+        <h1 id="p-h">History</h1>
+        <p class="ff-page-lead">Recent training logs.</p>
+        <div class="ff-page-grid">
+          <article class="ff-page-card"><div class="ff-row"><strong>Tempo run</strong><span class="ff-chip">8.2 km</span></div></article>
+          <article class="ff-page-card"><div class="ff-row"><strong>Strength A</strong><span class="ff-chip">48 min</span></div></article>
+          <article class="ff-page-card"><div class="ff-row"><strong>Mobility</strong><span class="ff-chip">22 min</span></div></article>
+        </div>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="ff-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="ff-page-lead">Coach preferences and privacy stubs.</p>
+        <div class="ff-page-grid">
+          <article class="ff-page-card"><div class="ff-row"><strong>Wearable sync</strong><span>On</span></div></article>
+          <article class="ff-page-card"><div class="ff-row"><strong>Coach digests</strong><span>Weekly</span></div></article>
+          <article class="ff-page-card"><div class="ff-row"><strong>Share metrics</strong><span>Team only</span></div></article>
+        </div>
+        <button type="button" class="ff-btn ff-btn-accent" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="ff-page"><h1>${page.name}</h1></section>`;
+  }
+  function wirePage(host, page) {
+    if (page.id === 'sessions') {
+      const body = host.querySelector('[data-sess-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="ff-loading" role="status"><p>Syncing sessions…</p><div class="ff-skel"></div><div class="ff-skel"></div></div>`;
+          return;
+        }
+        if (state === 'empty') {
+          body.innerHTML = `<div class="ff-empty-block"><p>No sessions booked this week.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="ff-error-block"><p>Could not load sessions.</p><button type="button" class="ff-btn" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="ff-page-grid">
+          <article class="ff-page-card"><div class="ff-row"><strong>Form check</strong><span class="ff-chip">Tue 07:30</span></div></article>
+          <article class="ff-page-card"><div class="ff-row"><strong>Recovery review</strong><span class="ff-chip">Thu 18:00</span></div></article>
+          <article class="ff-page-card"><div class="ff-row"><strong>Race plan</strong><span class="ff-chip">Sat 09:00</span></div></article>
+        </div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-sess-tabs]'), (v) => paint(v));
+    }
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+    });
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
+    window.DB.route(PAGES, (id, page) => {
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
+    });
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

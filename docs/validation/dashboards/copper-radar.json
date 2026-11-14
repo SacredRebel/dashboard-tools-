@@ -1,27 +1,11 @@
 {
   "id": "copper-radar",
   "checked": "2026-11-14",
-  "ok": false,
+  "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/copper-radar/",
-      "width": 1440,
-      "variant": "default",
-      "final_path": "/dashboards/copper-radar/",
-      "overflow_px": 0,
-      "errors": [
-        "low contrast 3.64:1 (needs 4.5) \"1\" 14px, text rgb(220, 38, 38) on ~rgb(249, 216, 216) at x82 y362",
-        "low contrast 2.14:1 (needs 4.5) \"CobaltGate\" 12px, text rgb(28, 35, 43) on ~rgb(255, 255, 255) at x431 y352",
-        "low contrast 3.09:1 (needs 4.5) \"M\" 12px, text rgb(28, 35, 43) on ~rgb(253, 232, 214) at x582 y318",
-        "low contrast 2.28:1 (needs 4.5) \"MapleDNS\" 12px, text rgb(28, 35, 43) on ~rgb(255, 255, 255) at x605 y318",
-        "low contrast 2.39:1 (needs 4.5) \"HarborMesh\" 12px, text rgb(28, 35, 43) on ~rgb(201, 203, 205) at x785 y275",
-        "low contrast 2.95:1 (needs 4.5) \"QuillAuth\" 12px, text rgb(28, 35, 43) on ~rgb(170, 173, 176) at x831 y410",
-        "low contrast 3.43:1 (needs 4.5) \"View Timeline\" 14px, text rgb(255, 255, 255) on ~rgb(202, 100, 30) at x1242 y965"
-      ]
-    },
-    {
-      "url": "/dashboards/copper-radar",
+      "url": "/dashboards/copper-radar/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/copper-radar/",
@@ -29,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/copper-radar/index.html",
+      "url": "/dashboards/copper-radar#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/copper-radar/",
@@ -37,64 +21,204 @@
       "errors": []
     },
     {
-      "url": "/dashboards/copper-radar/",
+      "url": "/dashboards/copper-radar/index.html#/overview",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/copper-radar/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/copper-radar/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 3.64:1 (needs 4.5) \"1\" 14px, text rgb(220, 38, 38) on ~rgb(249, 216, 216) at x52 y414",
-        "low contrast 1.93:1 (needs 4.5) \"N\" 12px, text rgb(28, 35, 43) on ~rgb(139, 59, 13) at x118 y889",
-        "low contrast 2.06:1 (needs 4.5) \"NimbusID\" 12px, text rgb(28, 35, 43) on ~rgb(140, 59, 13) at x127 y889",
-        "low contrast 3.53:1 (needs 4.5) \"RidgeHost\" 12px, text rgb(28, 35, 43) on ~rgb(255, 255, 255) at x92 y824",
-        "low contrast 3.28:1 (needs 4.5) \"C\" 12px, text rgb(28, 35, 43) on ~rgb(230, 197, 174) at x76 y725",
-        "low contrast 3.47:1 (needs 4.5) \"CobaltGate\" 12px, text rgb(28, 35, 43) on ~rgb(215, 216, 217) at x85 y725",
-        "low contrast 3.26:1 (needs 4.5) \"MapleDNS\" 12px, text rgb(28, 35, 43) on ~rgb(255, 255, 255) at x154 y711",
-        "low contrast 3.33:1 (needs 4.5) \"H\" 12px, text rgb(28, 35, 43) on ~rgb(213, 170, 142) at x216 y694",
-        "low contrast 3.46:1 (needs 4.5) \"HarborMesh\" 12px, text rgb(28, 35, 43) on ~rgb(181, 183, 186) at x225 y694",
-        "low contrast 2.83:1 (needs 4.5) \"QuillAuth\" 12px, text rgb(28, 35, 43) on ~rgb(226, 227, 228) at x243 y748",
-        "low contrast 3.71:1 (needs 4.5) \"View Timeline\" 14px, text rgb(255, 255, 255) on ~rgb(207, 106, 35) at x128 y2494"
-      ]
+      "errors": []
     },
     {
-      "url": "/dashboards/copper-radar/?variant=slate",
+      "url": "/dashboards/copper-radar/?variant=slate#/overview",
       "width": 1440,
       "variant": "slate",
       "final_path": "/dashboards/copper-radar/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 3.64:1 (needs 4.5) \"1\" 14px, text rgb(220, 38, 38) on ~rgb(249, 216, 216) at x82 y362",
-        "low contrast 2.59:1 (needs 4.5) \"C\" 12px, text rgb(23, 32, 51) on ~rgb(217, 228, 242) at x409 y352",
-        "low contrast 1.34:1 (needs 4.5) \"CobaltGate\" 12px, text rgb(23, 32, 51) on ~rgb(255, 255, 255) at x431 y352",
-        "low contrast 1.42:1 (needs 4.5) \"M\" 12px, text rgb(23, 32, 51) on ~rgb(217, 228, 242) at x582 y318",
-        "low contrast 1.09:1 (needs 4.5) \"MapleDNS\" 12px, text rgb(23, 32, 51) on ~rgb(255, 255, 255) at x605 y318",
-        "low contrast 1.42:1 (needs 4.5) \"H\" 12px, text rgb(23, 32, 51) on ~rgb(217, 228, 242) at x762 y275",
-        "low contrast 1.25:1 (needs 4.5) \"HarborMesh\" 12px, text rgb(23, 32, 51) on ~rgb(255, 255, 255) at x785 y275",
-        "low contrast 1.42:1 (needs 4.5) \"Q\" 12px, text rgb(23, 32, 51) on ~rgb(217, 228, 242) at x808 y410",
-        "low contrast 2.04:1 (needs 4.5) \"QuillAuth\" 12px, text rgb(23, 32, 51) on ~rgb(255, 255, 255) at x831 y410",
-        "low contrast 2.30:1 (needs 4.5) \"M\" 12px, text rgb(23, 32, 51) on ~rgb(255, 255, 255) at x723 y297",
-        "low contrast 3.25:1 (needs 4.5) \"C\" 12px, text rgb(23, 32, 51) on ~rgb(249, 250, 251) at x862 y309"
-      ]
+      "errors": []
     },
     {
-      "url": "/dashboards/copper-radar/?variant=ember",
+      "url": "/dashboards/copper-radar/?variant=ember#/overview",
       "width": 1440,
       "variant": "ember",
       "final_path": "/dashboards/copper-radar/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 3.64:1 (needs 4.5) \"1\" 14px, text rgb(220, 38, 38) on ~rgb(249, 216, 216) at x82 y362",
-        "low contrast 2.78:1 (needs 4.5) \"C\" 12px, text rgb(42, 24, 20) on ~rgb(250, 222, 222) at x409 y352",
-        "low contrast 1.33:1 (needs 4.5) \"CobaltGate\" 12px, text rgb(42, 24, 20) on ~rgb(255, 255, 255) at x431 y352",
-        "low contrast 1.69:1 (needs 4.5) \"M\" 12px, text rgb(42, 24, 20) on ~rgb(250, 222, 222) at x582 y318",
-        "low contrast 1.09:1 (needs 4.5) \"MapleDNS\" 12px, text rgb(42, 24, 20) on ~rgb(255, 255, 255) at x605 y318",
-        "low contrast 1.69:1 (needs 4.5) \"H\" 12px, text rgb(42, 24, 20) on ~rgb(250, 222, 222) at x762 y275",
-        "low contrast 1.24:1 (needs 4.5) \"HarborMesh\" 12px, text rgb(42, 24, 20) on ~rgb(255, 255, 255) at x785 y275",
-        "low contrast 1.69:1 (needs 4.5) \"Q\" 12px, text rgb(42, 24, 20) on ~rgb(250, 222, 222) at x808 y410",
-        "low contrast 2.04:1 (needs 4.5) \"QuillAuth\" 12px, text rgb(42, 24, 20) on ~rgb(255, 255, 255) at x831 y410",
-        "low contrast 2.62:1 (needs 4.5) \"M\" 12px, text rgb(42, 24, 20) on ~rgb(255, 255, 255) at x723 y297",
-        "low contrast 3.25:1 (needs 4.5) \"C\" 12px, text rgb(42, 24, 20) on ~rgb(253, 247, 247) at x862 y309"
-      ]
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=slate#/overview",
+      "width": 1440,
+      "variant": "slate",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=slate#/overview",
+      "width": 375,
+      "variant": "slate",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=ember#/overview",
+      "width": 1440,
+      "variant": "ember",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=ember#/overview",
+      "width": 375,
+      "variant": "ember",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/#/reports",
+      "width": 1440,
+      "variant": "default",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/#/reports",
+      "width": 375,
+      "variant": "default",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=slate#/reports",
+      "width": 1440,
+      "variant": "slate",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=slate#/reports",
+      "width": 375,
+      "variant": "slate",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=ember#/reports",
+      "width": 1440,
+      "variant": "ember",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=ember#/reports",
+      "width": 375,
+      "variant": "ember",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/#/segments",
+      "width": 1440,
+      "variant": "default",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/#/segments",
+      "width": 375,
+      "variant": "default",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=slate#/segments",
+      "width": 1440,
+      "variant": "slate",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=slate#/segments",
+      "width": 375,
+      "variant": "slate",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=ember#/segments",
+      "width": 1440,
+      "variant": "ember",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=ember#/segments",
+      "width": 375,
+      "variant": "ember",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=slate#/settings",
+      "width": 1440,
+      "variant": "slate",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=slate#/settings",
+      "width": 375,
+      "variant": "slate",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=ember#/settings",
+      "width": 1440,
+      "variant": "ember",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/copper-radar/?variant=ember#/settings",
+      "width": 375,
+      "variant": "ember",
+      "page": "settings",
+      "errors": []
     },
     {
       "url": "/#/dashboards/copper-radar",

@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/prism-workspace/",
+      "url": "/dashboards/prism-workspace/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/prism-workspace/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/prism-workspace",
+      "url": "/dashboards/prism-workspace#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/prism-workspace/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/prism-workspace/index.html",
+      "url": "/dashboards/prism-workspace/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/prism-workspace/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/prism-workspace/",
+      "url": "/dashboards/prism-workspace/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/prism-workspace/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/prism-workspace/?variant=aqua",
+      "url": "/dashboards/prism-workspace/?variant=aqua#/overview",
       "width": 1440,
       "variant": "aqua",
       "final_path": "/dashboards/prism-workspace/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/prism-workspace/?variant=obsidian",
+      "url": "/dashboards/prism-workspace/?variant=obsidian#/overview",
       "width": 1440,
       "variant": "obsidian",
       "final_path": "/dashboards/prism-workspace/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=aqua#/overview",
+      "width": 1440,
+      "variant": "aqua",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=aqua#/overview",
+      "width": 375,
+      "variant": "aqua",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=obsidian#/overview",
+      "width": 1440,
+      "variant": "obsidian",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=obsidian#/overview",
+      "width": 375,
+      "variant": "obsidian",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/#/workspace",
+      "width": 1440,
+      "variant": "default",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/#/workspace",
+      "width": 375,
+      "variant": "default",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=aqua#/workspace",
+      "width": 1440,
+      "variant": "aqua",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=aqua#/workspace",
+      "width": 375,
+      "variant": "aqua",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=obsidian#/workspace",
+      "width": 1440,
+      "variant": "obsidian",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=obsidian#/workspace",
+      "width": 375,
+      "variant": "obsidian",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/#/people",
+      "width": 1440,
+      "variant": "default",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/#/people",
+      "width": 375,
+      "variant": "default",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=aqua#/people",
+      "width": 1440,
+      "variant": "aqua",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=aqua#/people",
+      "width": 375,
+      "variant": "aqua",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=obsidian#/people",
+      "width": 1440,
+      "variant": "obsidian",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=obsidian#/people",
+      "width": 375,
+      "variant": "obsidian",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=aqua#/settings",
+      "width": 1440,
+      "variant": "aqua",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=aqua#/settings",
+      "width": 375,
+      "variant": "aqua",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=obsidian#/settings",
+      "width": 1440,
+      "variant": "obsidian",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/prism-workspace/?variant=obsidian#/settings",
+      "width": 375,
+      "variant": "obsidian",
+      "page": "settings",
       "errors": []
     },
     {

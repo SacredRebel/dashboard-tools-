@@ -135,26 +135,6 @@ Consistent open-source icon set (shadcn default).
 
 ---
 
-<a id="motion-lib"></a>
-### Motion (Framer Motion)
-
-`https://motion.dev` · library · **recommended** · phases: Build
-
-Animation library for React with layout animations.
-
-**Use when**
-- Board card moves, slide-overs, list reordering
-
-**Avoid when**
-- Simple hovers (use CSS)
-
-**How to use**
-- Respect the motion rule tokens (100-300ms)
-
-**Docs:** https://motion.dev
-
----
-
 <a id="recharts"></a>
 ### Recharts
 
@@ -223,7 +203,7 @@ Native browser API that morphs matching elements between two states or pages (li
 - Give the source and destination the same view-transition-name
 - Skip under prefers-reduced-motion
 
-**Pairs with:** [Showcase patterns (this repo)](uiux.md#showcase-patterns) · [Motion (Framer Motion)](libraries.md#motion-lib)
+**Pairs with:** [Showcase patterns (this repo)](uiux.md#showcase-patterns) · [Motion (motion.dev)](motion.md#motion-lib)
 
 **If not installed:** follow [docs/design/07-showcase-patterns.md](../../docs/design/07-showcase-patterns.md)
 

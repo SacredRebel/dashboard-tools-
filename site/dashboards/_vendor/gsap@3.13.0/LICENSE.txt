@@ -1,0 +1,5 @@
+GSAP 3.13.0 — Standard "No Charge" license
+https://gsap.com/standard-license
+
+Permitted for most websites free of charge under GreenSock's standard license.
+Club GSAP plugins are NOT included. Do not use CDNs for gallery dashboards; this folder is the vendored copy.

@@ -1,8 +1,17 @@
-/* Tidebath Showroom: curved 3-bay SVG carousel, hotspots, store search.
+/* Tidebath Showroom: photo room carousel, hotspots, multipage + motion.
    Fictional brand and data. No timers, no network. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
   const ICON = {
     chevLeft: '<path d="m15 18-6-6 6-6"/>',
     chevRight: '<path d="m9 6 6 6-6 6"/>',
@@ -45,46 +54,37 @@
     <circle cx="18" cy="8" r="3.2" fill="var(--accent)"/>
   </svg>`;
 
-  /* —— rooms (fictional layouts) —— */
+  /* —— rooms (fictional layouts + photo media) —— */
   const ROOMS = [
     {
       id: 'coral',
       name: 'Coral Compact · 6 m²',
       size: '6',
-      wall: '#f0f2f5',
-      floor: '#3a414c',
-      accent: 'var(--orange)',
-      accentD: 'var(--orange-d)',
+      photo: 'media/room-coral.webp',
       fixtures: [
-        { id: 'tub', label: 'Oval tub', detail: 'Cast acrylic · 150 cm · soft overflow', x: 52, y: 58 },
-        { id: 'tap', label: 'Wall tap', detail: 'Brushed chrome mixer · dual handle', x: 48, y: 38 },
-        { id: 'vanity', label: 'Orange vanity', detail: 'Lacquered oak · two drawers', x: 72, y: 48 },
+        { id: 'tub', label: 'Oval tub', detail: 'Cast acrylic · 150 cm · soft overflow', x: 38, y: 62 },
+        { id: 'tap', label: 'Wall tap', detail: 'Brushed chrome mixer · dual handle', x: 48, y: 36 },
+        { id: 'vanity', label: 'Orange vanity', detail: 'Lacquered oak · two drawers', x: 68, y: 52 },
       ],
     },
     {
       id: 'mist',
       name: 'Mist Round · 5.5 m²',
       size: '5.5',
-      wall: '#e8eef2',
-      floor: '#5a6a78',
-      accent: '#7a93a8',
-      accentD: '#5a7388',
+      photo: 'media/room-mist.webp',
       fixtures: [
-        { id: 'mirror', label: 'Round mirror', detail: 'Frosted rim · LED halo 3000 K', x: 50, y: 32 },
-        { id: 'basin', label: 'Pedestal basin', detail: 'Fine ceramic · soft overflow', x: 50, y: 52 },
-        { id: 'shower', label: 'Walk-in glass', detail: '8 mm clear · brushed rail', x: 78, y: 45 },
+        { id: 'mirror', label: 'Round mirror', detail: 'Frosted rim · LED halo 3000 K', x: 50, y: 28 },
+        { id: 'basin', label: 'Pedestal basin', detail: 'Fine ceramic · soft overflow', x: 42, y: 58 },
+        { id: 'shower', label: 'Walk-in glass', detail: '8 mm clear · brushed rail', x: 72, y: 48 },
       ],
     },
     {
       id: 'timber',
       name: 'Timber Check · 7 m²',
       size: '7',
-      wall: '#f5f0ea',
-      floor: '#2c241c',
-      accent: '#8b5a3c',
-      accentD: '#6a4028',
+      photo: 'media/room-timber.webp',
       fixtures: [
-        { id: 'wc', label: 'Wall-hung WC', detail: 'Rimless · soft-close seat', x: 30, y: 55 },
+        { id: 'wc', label: 'Wall-hung WC', detail: 'Rimless · soft-close seat', x: 28, y: 58 },
         { id: 'cabinet', label: 'Walnut cabinet', detail: 'Solid walnut · matte lacquer', x: 68, y: 48 },
         { id: 'floor', label: 'Checkered floor', detail: 'Porcelain 20×20 · matte', x: 50, y: 78 },
       ],
@@ -93,10 +93,7 @@
       id: 'slate',
       name: 'Slate Niche · 6.5 m²',
       size: '6.5',
-      wall: '#eceff3',
-      floor: '#2a323c',
-      accent: '#4a6fa5',
-      accentD: '#345380',
+      photo: 'media/room-slate.webp',
       fixtures: [
         { id: 'niche', label: 'Shower niche', detail: 'Recessed tile · LED strip', x: 70, y: 40 },
         { id: 'bench', label: 'Stone bench', detail: 'Honed basalt · heated', x: 55, y: 62 },
@@ -108,123 +105,26 @@
   let idx = 0;
   let activeHot = 0;
 
-  function bayInterior(r, w, h, ox) {
-    const floorY = h * 0.62;
-    const tiles = [];
-    for (let y = 8; y < floorY - 4; y += 14) {
-      for (let x = 6; x < w - 6; x += 14) {
-        tiles.push(`<rect x="${ox + x}" y="${y}" width="12" height="12" fill="var(--tile-w)" opacity="0.55" rx="1"/>`);
-      }
-    }
-    const floorTiles = [];
-    for (let y = floorY; y < h - 10; y += 12) {
-      for (let x = 4; x < w - 4; x += 12) {
-        const odd = ((x / 12) + (y / 12)) % 2 < 1;
-        floorTiles.push(`<rect x="${ox + x}" y="${y}" width="11" height="11" fill="${odd ? r.floor : '#4a525c'}" opacity="0.95" rx="0.5"/>`);
-      }
-    }
-    /* fixtures vary slightly by room id */
-    let fixtures = '';
-    if (r.id === 'coral' || r.id === 'slate') {
-      fixtures = `
-        <ellipse cx="${ox + w * 0.38}" cy="${floorY + 18}" rx="38" ry="16" fill="var(--tile-w)" stroke="var(--chrome)" stroke-width="2"/>
-        <ellipse cx="${ox + w * 0.38}" cy="${floorY + 16}" rx="30" ry="10" fill="var(--surface-2)"/>
-        <rect x="${ox + w * 0.62}" y="${floorY - 48}" width="48" height="58" rx="4" fill="${r.accent}"/>
-        <rect x="${ox + w * 0.64}" y="${floorY - 42}" width="40" height="8" rx="2" fill="${r.accentD}" opacity="0.5"/>
-        <rect x="${ox + w * 0.64}" y="${floorY - 28}" width="40" height="8" rx="2" fill="${r.accentD}" opacity="0.5"/>
-        <ellipse cx="${ox + w * 0.74}" cy="${floorY - 56}" rx="16" ry="6" fill="var(--tile-w)" stroke="var(--chrome)" stroke-width="1.5"/>
-        <rect x="${ox + w * 0.18}" y="${floorY - 36}" width="22" height="36" rx="4" fill="var(--tile-w)" stroke="var(--chrome)" stroke-width="1.5"/>
-        <circle cx="${ox + w * 0.48}" cy="${floorY - 8}" r="3" fill="var(--chrome)"/>
-        <path d="M${ox + w * 0.48} ${floorY - 20} v12" stroke="var(--chrome)" stroke-width="2"/>`;
-    } else if (r.id === 'mist') {
-      fixtures = `
-        <circle cx="${ox + w * 0.5}" cy="${h * 0.28}" r="28" fill="none" stroke="var(--chrome)" stroke-width="3"/>
-        <circle cx="${ox + w * 0.5}" cy="${h * 0.28}" r="22" fill="var(--surface)" opacity="0.4"/>
-        <ellipse cx="${ox + w * 0.5}" cy="${floorY + 8}" rx="22" ry="10" fill="var(--tile-w)" stroke="var(--chrome)" stroke-width="1.5"/>
-        <rect x="${ox + w * 0.46}" y="${floorY - 28}" width="8" height="32" rx="2" fill="var(--chrome)"/>
-        <rect x="${ox + w * 0.72}" y="${h * 0.2}" width="4" height="${floorY - h * 0.2}" fill="var(--chrome)" opacity="0.7"/>
-        <rect x="${ox + w * 0.72}" y="${h * 0.2}" width="36" height="${floorY - h * 0.2}" fill="var(--glass)" stroke="var(--chrome)" stroke-width="1"/>`;
-    } else {
-      fixtures = `
-        <rect x="${ox + w * 0.18}" y="${floorY - 40}" width="28" height="40" rx="6" fill="var(--tile-w)" stroke="var(--chrome)" stroke-width="1.5"/>
-        <rect x="${ox + w * 0.55}" y="${floorY - 52}" width="56" height="62" rx="3" fill="${r.accent}"/>
-        <rect x="${ox + w * 0.58}" y="${floorY - 46}" width="50" height="10" rx="2" fill="${r.accentD}" opacity="0.45"/>
-        <path d="M${ox + 8} ${floorY} h${w - 16}" stroke="${r.floor}" stroke-width="2" opacity="0.3"/>
-        <g opacity="0.35">${Array.from({ length: 6 }, (_, i) =>
-          `<rect x="${ox + 12 + i * 22}" y="${floorY + 4}" width="18" height="18" fill="${i % 2 ? '#fff' : r.floor}"/>`).join('')}</g>`;
-    }
-    return `
-      <rect x="${ox}" y="0" width="${w}" height="${h}" fill="${r.wall}"/>
-      ${tiles.join('')}
-      <rect x="${ox}" y="${floorY}" width="${w}" height="${h - floorY}" fill="${r.floor}" opacity="0.35"/>
-      ${floorTiles.join('')}
-      ${fixtures}
-      <rect x="${ox}" y="0" width="6" height="${h}" fill="var(--surface)" opacity="0.85"/>
-      <rect x="${ox + w - 6}" y="0" width="6" height="${h}" fill="var(--surface)" opacity="0.85"/>`;
-  }
-
   function renderCarousel() {
     const n = ROOMS.length;
     const left = ROOMS[(idx - 1 + n) % n];
     const mid = ROOMS[idx];
     const right = ROOMS[(idx + 1) % n];
-    const W = 920, H = 420;
-
-    const platform = `
-      <ellipse cx="460" cy="390" rx="420" ry="48" fill="var(--stage-deep)" opacity="0.55"/>
-      <path d="M40 340 Q460 420 880 340 L860 300 Q460 370 60 300 Z" fill="var(--stage)"/>
-      <path d="M60 300 Q460 370 860 300" fill="none" stroke="var(--surface)" stroke-width="3" opacity="0.7"/>
-      <path d="M80 310 Q460 378 840 310" fill="none" stroke="var(--stage-deep)" stroke-width="1.5" opacity="0.5"/>`;
-
-    /* three perspective bays on the curved stage */
-    const bayW = 220, bayH = 250;
-    const bays = [
-      { room: left, x: 70, y: 70, skew: -0.18, scale: 0.88, opacity: 0.72 },
-      { room: mid, x: 350, y: 40, skew: 0, scale: 1, opacity: 1 },
-      { room: right, x: 630, y: 70, skew: 0.18, scale: 0.88, opacity: 0.72 },
-    ];
-
-    const baySvg = bays.map((b, i) => {
-      const ox = 0;
-      const inner = bayInterior(b.room, bayW, bayH, ox);
-      const tx = b.x + (1 - b.scale) * bayW * 0.15;
-      const ty = b.y + (1 - b.scale) * 20;
-      return `<g transform="translate(${tx} ${ty}) scale(${b.scale}) skewX(${b.skew * 40})" opacity="${b.opacity}">
-        <rect x="-4" y="-8" width="${bayW + 8}" height="${bayH + 16}" rx="4" fill="var(--surface)" filter="url(#tb-shade)"/>
-        ${inner}
-        <rect x="-2" y="-6" width="8" height="${bayH + 12}" fill="var(--surface)"/>
-        <rect x="${bayW - 6}" y="-6" width="8" height="${bayH + 12}" fill="var(--surface)"/>
-        ${i === 1 ? '' : `<rect x="0" y="0" width="${bayW}" height="${bayH}" fill="var(--bg)" opacity="0.15"/>`}
-      </g>`;
-    }).join('');
-
     const host = $('[data-carousel]');
-    host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${mid.name}">
-      <defs>
-        <filter id="tb-shade" x="-10%" y="-10%" width="120%" height="130%">
-          <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#283246" flood-opacity="0.18"/>
-        </filter>
-        <linearGradient id="tb-glow" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="var(--surface)" stop-opacity="0.9"/>
-          <stop offset="1" stop-color="var(--stage)" stop-opacity="0.2"/>
-        </linearGradient>
-      </defs>
-      <rect width="${W}" height="${H}" fill="url(#tb-glow)" opacity="0.01"/>
-      ${platform}
-      ${baySvg}
-    </svg>
-    <div class="tb-hots" data-hots></div>`;
+    const bay = (room, side) => `<article class="tb-bay tb-bay-${side}${side === 'mid' ? ' tb-ambient' : ''}" aria-hidden="${side !== 'mid'}">
+      <img src="${room.photo}" width="1024" height="1024" alt="" decoding="async">
+      ${side === 'mid' ? '<div class="tb-hots" data-hots></div>' : ''}
+    </article>`;
+    host.innerHTML = `<div class="tb-platform" aria-hidden="true"></div>
+      <div class="tb-bays" role="img" aria-label="${mid.name}">
+        ${bay(left, 'left')}${bay(mid, 'mid')}${bay(right, 'right')}
+      </div>`;
 
-    /* hotspots for center bay only */
-    const hots = mid.fixtures.map((f, i) => {
-      const leftPct = 38 + (f.x - 50) * 0.42;
-      const topPct = 18 + f.y * 0.55;
-      return `<button type="button" class="tb-hot" style="left:${leftPct}%;top:${topPct}%" data-hot="${i}"
+    const hots = mid.fixtures.map((f, i) => `<button type="button" class="tb-hot" style="left:${f.x}%;top:${f.y}%" data-hot="${i}"
         aria-pressed="${i === activeHot}" aria-label="${f.label}">
         ${svg('wave', 1.8)}
         ${i === activeHot ? `<span class="tb-hot-label">Look closer</span>` : ''}
-      </button>`;
-    }).join('');
+      </button>`).join('');
     $('[data-hots]', host).innerHTML = hots;
 
     $('[data-roomname]').textContent = mid.name;
@@ -235,6 +135,7 @@
         activeHot = +btn.dataset.hot;
         renderCarousel();
         showTip(mid.fixtures[activeHot]);
+        toast(`${mid.fixtures[activeHot].label} · sample`);
         $(`[data-hot="${activeHot}"]`, host)?.focus();
       });
     });
@@ -253,11 +154,13 @@
     idx = (idx - 1 + ROOMS.length) % ROOMS.length;
     activeHot = 0;
     renderCarousel();
+    toast(`${ROOMS[idx].name} · sample`);
   });
   $('[data-next]').addEventListener('click', () => {
     idx = (idx + 1) % ROOMS.length;
     activeHot = 0;
     renderCarousel();
+    toast(`${ROOMS[idx].name} · sample`);
   });
 
   /* —— lower board —— */
@@ -357,5 +260,137 @@
   });
 
   renderCarousel();
+
+  function staggerReveal() {
+    $$('.tb-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 45 * i}ms`);
+      el.classList.add('tb-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'catalog', name: 'Catalog', pattern: 'List' },
+    { id: 'orders', name: 'Orders', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+  function setNav(id) {
+    $$('.tb-pages a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      if (href === `#/${id}`) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  function pageHtml(page) {
+    if (page.id === 'catalog') {
+      return `<section class="tb-page" data-db-page="catalog" aria-labelledby="p-h">
+        <h1 id="p-h">Catalog</h1>
+        <p class="tb-page-lead">Fixtures for compact layouts. English copy · fictional Tidebath line.</p>
+        <div class="tb-page-seg" role="group" aria-label="Catalog state" data-cat-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-cat-body></div>
+      </section>`;
+    }
+    if (page.id === 'orders') {
+      return `<section class="tb-page" data-db-page="orders" aria-labelledby="p-h">
+        <h1 id="p-h">Orders</h1>
+        <p class="tb-page-lead">Showroom sample orders.</p>
+        <div class="tb-page-grid">
+          <article class="tb-page-card"><div class="tb-row"><strong>Coral Compact kit</strong><span>Packed</span></div></article>
+          <article class="tb-page-card"><div class="tb-row"><strong>Mist Round taps</strong><span>Shipped</span></div></article>
+        </div>
+        <button type="button" class="tb-btn" data-new-order>Place sample order</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="tb-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="tb-page-lead">Locale stays English for this fictional brand.</p>
+        <div class="tb-page-grid">
+          <article class="tb-page-card"><div class="tb-row"><strong>Language</strong><span>English</span></div></article>
+          <article class="tb-page-card"><div class="tb-row"><strong>Units</strong><span>Metric</span></div></article>
+        </div>
+        <button type="button" class="tb-btn ghost" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="tb-page"><h1>${page.name}</h1></section>`;
+  }
+  function wirePage(host, page) {
+    if (page.id === 'catalog') {
+      const body = host.querySelector('[data-cat-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="tb-loading" role="status"><p>Loading catalog…</p><div class="tb-skel"></div><div class="tb-skel"></div></div>`;
+          return;
+        }
+        if (state === 'empty') {
+          body.innerHTML = `<div class="tb-empty"><p>No fixtures in this filter.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="tb-error"><p>Could not load catalog.</p><button type="button" class="tb-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="tb-page-grid">
+          <article class="tb-page-card"><div class="tb-row"><span>Oval tub</span><strong>Coral</strong></div></article>
+          <article class="tb-page-card"><div class="tb-row"><span>Walk-in glass</span><strong>Mist</strong></div></article>
+          <article class="tb-page-card"><div class="tb-row"><span>Walnut vanity</span><strong>Timber</strong></div></article>
+        </div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-cat-tabs]'), (v) => paint(v));
+    }
+    if (page.id === 'orders') {
+      host.querySelector('[data-new-order]')?.addEventListener('click', () => toast('Order placed · sample'));
+    }
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+    });
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
+    window.DB.route(PAGES, (id, page) => {
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
+    });
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

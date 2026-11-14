@@ -68,6 +68,9 @@ const dash = json('catalog/dashboards.json');
 {
   const fam = new Set(dash.style_families.map((x) => x.id)), uc = new Set(dash.use_cases.map((x) => x.id));
   const seen = new Set(), nums = new Set();
+  const PAGE_PATTERNS = new Set(['Dashboard', 'List', 'Detail', 'Board', 'Form', 'Settings', 'Calendar', 'Inbox', 'Report']);
+  const motionIds = new Set((dash.motion_patterns || []).map((m) => m.id));
+  if (!dash.motion_patterns?.length) errors.push('dashboards.json: motion_patterns list is required');
   for (const d of dash.dashboards) {
     const where = `dashboard "${d.id}"`;
     if (!/^[a-z0-9-]+$/.test(d.id)) errors.push(`${where}: id must be kebab-case`);
@@ -91,6 +94,21 @@ const dash = json('catalog/dashboards.json');
       if (!/^reference\.(jpe?g|png|webp)$/i.test(d.reference)) errors.push(`${where}: reference must be reference.jpg|jpeg|png|webp (got ${d.reference})`);
       else if (!existsSync(join(root, d.path, d.reference))) errors.push(`${where}: ${d.path}${d.reference} missing`);
     }
+    if (!Array.isArray(d.pages) || d.pages.length < 3) errors.push(`${where}: pages must be an array of at least 3 entries`);
+    else {
+      const pids = new Set();
+      d.pages.forEach((pg, i) => {
+        if (!pg?.id || !/^[a-z0-9-]+$/.test(pg.id)) errors.push(`${where}: pages[${i}].id must be kebab-case`);
+        if (pids.has(pg.id)) errors.push(`${where}: duplicate page id ${pg.id}`);
+        pids.add(pg.id);
+        if (!pg.name) errors.push(`${where}: pages[${i}].name missing`);
+        if (!PAGE_PATTERNS.has(pg.pattern)) errors.push(`${where}: pages[${i}].pattern must be one of ${[...PAGE_PATTERNS].join('|')}`);
+      });
+      if (d.pages[0]?.id !== 'overview') errors.push(`${where}: pages[0].id must be "overview" (the reference screen)`);
+    }
+    if (!Array.isArray(d.motion)) errors.push(`${where}: motion must be an array (may be empty until polish)`);
+    else for (const m of d.motion) if (!motionIds.has(m)) errors.push(`${where}: unknown motion id "${m}"`);
+
     if (existsSync(join(root, d.path, 'style.css'))) {
       const css = rd(d.path + 'style.css');
       for (const v of (d.variants || []).slice(1)) if (!css.includes(`[data-variant="${v.id}"]`)) errors.push(`${where}: style.css has no [data-variant="${v.id}"] block`);
@@ -202,7 +220,9 @@ for (const c of catalog.categories) {
         ? `_${d.name} · original owner reference (\`${d.reference}\`; recreation \`shot.jpg\`, card \`thumb.jpg\`)._`
         : `_${d.name} · 1440×900 recreation screenshot (also \`thumb.jpg\` for cards)._`;
       md += `<a id="${d.id}"></a>\n### ${d.number}. ${d.name}\n\n![${d.name} ${d.reference ? 'original reference' : 'recreation shot'}](../../${heroImg})\n\n${heroCap}\n\n${d.summary}\n\n`;
-      md += `- **Use cases:** ${d.use_cases.map((u) => ucName[u]).join(', ')} · **Mode:** ${d.mode} · **Mood:** ${d.mood.join(', ')}\n- **Signature:** ${d.signature}\n- **Layout:** ${d.layout.structure}\n- **Responsive:** ${d.layout.responsive}\n- **Fonts:** ${d.fonts.display} / ${d.fonts.sans} · **Palette:** ${Object.entries(d.palette).map(([k, v]) => `${k} \`${v}\``).join(', ')}\n- **Variants:** ${d.variants.map((v) => v.name).join(', ')}${d.maps_to_theme ? ` · **Closest toolkit theme:** \`${d.maps_to_theme}\`` : ''}\n\n`;
+      const pageLine = (d.pages || []).map((pg) => `${pg.name} (\`${pg.id}\`, ${pg.pattern})`).join(' · ');
+      const motionLine = (d.motion || []).length ? d.motion.join(', ') : '_none yet_';
+      md += `- **Use cases:** ${d.use_cases.map((u) => ucName[u]).join(', ')} · **Mode:** ${d.mode} · **Mood:** ${d.mood.join(', ')}\n- **Pages:** ${pageLine || '_none_'}\n- **Motion:** ${motionLine}\n- **Signature:** ${d.signature}\n- **Layout:** ${d.layout.structure}\n- **Responsive:** ${d.layout.responsive}\n- **Fonts:** ${d.fonts.display} / ${d.fonts.sans} · **Palette:** ${Object.entries(d.palette).map(([k, v]) => `${k} \`${v}\``).join(', ')}\n- **Variants:** ${d.variants.map((v) => v.name).join(', ')}${d.maps_to_theme ? ` · **Closest toolkit theme:** \`${d.maps_to_theme}\`` : ''}\n\n`;
       md += `**Best for**\n${d.best_for.map((x) => `- ${x}`).join('\n')}\n\n**Avoid when**\n${d.avoid_when.map((x) => `- ${x}`).join('\n')}\n\n**Components:** ${d.components.join(' · ')}\n\n---\n\n`;
     }
   }

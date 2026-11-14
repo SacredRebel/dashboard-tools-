@@ -1,8 +1,10 @@
-/* Atrium Living: glass smart-home room console over SVG atrium scene.
+/* Atrium Living: glass smart-home over living-room photo, multipage + motion.
    All data is fictional sample data. No timers, no network. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
   const ICON = {
     grid: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
     bulb: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.900c.600.5 1 1.2 1 2.100h5c0-.900.4-1.6 1-2.100A6 6 0 0 0 12 3z"/>',
@@ -28,7 +30,25 @@
     tv: '<rect x="2.5" y="5" width="19" height="12.5" rx="2"/><path d="M8 21h8"/>',
   };
   const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  const paintIcons = (host = document) => $$('[data-icon]', host).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 700, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
   const fmtNum = (v) => v.toLocaleString('en-US');
   const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
   const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
@@ -159,49 +179,8 @@
   let poster = 0;
   let app = 0;
 
-  // ---------------------------------------------------------------- SVG room backdrop
   function renderScene() {
-    $('[data-scene]').innerHTML = `<svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <linearGradient id="al-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" style="stop-color:var(--cool)" stop-opacity=".35"/>
-          <stop offset="1" style="stop-color:var(--bg)"/>
-        </linearGradient>
-        <linearGradient id="al-floor" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" style="stop-color:var(--floor)"/>
-          <stop offset="1" style="stop-color:var(--floor-2)"/>
-        </linearGradient>
-        <linearGradient id="al-win" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" style="stop-color:var(--cool)" stop-opacity=".55"/>
-          <stop offset="1" style="stop-color:var(--accent)" stop-opacity=".25"/>
-        </linearGradient>
-      </defs>
-      <rect width="1440" height="900" style="fill:var(--bg)"/>
-      <rect y="0" width="1440" height="520" style="fill:var(--wall)"/>
-      <rect y="0" width="1440" height="520" style="fill:var(--wall-2)" opacity=".35"/>
-      <rect x="180" y="70" width="520" height="340" rx="8" style="fill:url(#al-win)"/>
-      <rect x="180" y="70" width="520" height="340" rx="8" fill="none" style="stroke:var(--glass-edge)" stroke-width="10"/>
-      <path d="M440 70 V410 M180 240 H700" fill="none" style="stroke:var(--glass-edge)" stroke-width="6" opacity=".7"/>
-      <rect y="520" width="1440" height="380" style="fill:url(#al-floor)"/>
-      <path d="M0 520 H1440" style="stroke:var(--floor-2)" stroke-width="4" opacity=".4"/>
-      <ellipse cx="360" cy="620" rx="220" ry="36" style="fill:var(--floor-2)" opacity=".25"/>
-      <rect x="180" y="500" width="360" height="110" rx="18" style="fill:var(--sofa)"/>
-      <rect x="200" y="470" width="70" height="50" rx="12" style="fill:var(--surface)"/>
-      <rect x="450" y="470" width="70" height="50" rx="12" style="fill:var(--surface)"/>
-      <g transform="translate(980 360)">
-        <rect x="40" y="80" width="14" height="160" rx="4" style="fill:var(--floor-2)"/>
-        <ellipse cx="48" cy="70" rx="70" ry="90" style="fill:var(--plant)" opacity=".85"/>
-        <ellipse cx="10" cy="100" rx="40" ry="55" style="fill:var(--plant)" opacity=".7"/>
-        <ellipse cx="90" cy="110" rx="36" ry="50" style="fill:var(--plant)" opacity=".75"/>
-      </g>
-      <g transform="translate(1180 430)">
-        <rect x="20" y="60" width="10" height="100" rx="3" style="fill:var(--floor-2)"/>
-        <ellipse cx="24" cy="50" rx="48" ry="60" style="fill:var(--plant)"/>
-      </g>
-      <rect x="860" y="280" width="90" height="240" rx="10" style="fill:var(--surface-2)" opacity=".55"/>
-      <circle cx="1200" cy="160" r="48" style="fill:var(--accent)" opacity=".18"/>
-      <circle cx="200" cy="140" r="70" style="fill:url(#al-sky)" opacity=".5"/>
-    </svg>`;
+    /* Photo backdrop is static in markup (media/room.webp). */
   }
 
   function renderDial() {
@@ -236,18 +215,11 @@
   function renderCamera() {
     const stamp = fmtDate(dayOffset(0), { month: 'short', day: 'numeric' }) + ' · foyer';
     if (!camOn) {
-      $('[data-camera]').innerHTML = `<div style="display:grid;place-items:center;height:100%;color:var(--text-muted);font-size:14px">Camera off</div>`;
+      $('[data-camera]').innerHTML = `<div class="al-camoff">Camera off</div>`;
       $('[data-camnote]').textContent = 'Powered down. Tap power to wake the foyer camera.';
       return;
     }
-    $('[data-camera]').innerHTML = `<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <rect width="400" height="250" style="fill:var(--wall-2)"/>
-      <rect x="40" y="40" width="180" height="120" rx="6" style="fill:var(--cool)" opacity=".25"/>
-      <rect x="240" y="70" width="100" height="140" rx="4" style="fill:var(--floor-2)" opacity=".5"/>
-      <rect x="0" y="180" width="400" height="70" style="fill:var(--floor)" opacity=".55"/>
-      <circle cx="320" cy="50" r="18" style="fill:var(--accent)" opacity=".35"/>
-      <text x="14" y="28" fill="var(--text)" font-size="12" font-family="Manrope,sans-serif" opacity=".8">${stamp}</text>
-    </svg>`;
+    $('[data-camera]').innerHTML = `<img class="al-camphoto" src="media/camera.webp" width="960" height="720" alt="Foyer camera view (sample)" decoding="async"><span class="al-camstamp num">${stamp}</span>${recording ? '<span class="al-camrec"><i class="al-pulse"></i> REC</span>' : ''}`;
     $('[data-camnote]').textContent = recording ? 'Recording foyer clip…' : `Live · ${stamp}`;
   }
 
@@ -393,19 +365,163 @@
   });
 
   $$('[data-cam]').forEach((b) => b.addEventListener('click', () => {
-    if (b.dataset.cam === 'power') { camOn = !camOn; if (!camOn) recording = false; }
-    if (b.dataset.cam === 'record' && camOn) { recording = !recording; b.setAttribute('aria-pressed', String(recording)); }
-    if (b.dataset.cam === 'shot' && camOn) $('[data-camnote]').textContent = 'Still saved to Atrium album (sample).';
-    if (b.dataset.cam === 'zoom' && camOn) $('[data-camnote]').textContent = 'Zoom 1.4× · foyer';
+    if (b.dataset.cam === 'power') { camOn = !camOn; if (!camOn) recording = false; toast(camOn ? 'Camera on · sample' : 'Camera off · sample'); }
+    if (b.dataset.cam === 'record' && camOn) { recording = !recording; b.setAttribute('aria-pressed', String(recording)); toast(recording ? 'Recording · sample' : 'Stopped · sample'); }
+    if (b.dataset.cam === 'shot' && camOn) { $('[data-camnote]').textContent = 'Still saved to Atrium album (sample).'; toast('Still saved · sample'); }
+    if (b.dataset.cam === 'zoom' && camOn) { $('[data-camnote]').textContent = 'Zoom 1.4× · foyer'; toast('Zoom 1.4× · sample'); }
     renderCamera();
-  }));
-
-  $$('.al-railbtn').forEach((b) => b.addEventListener('click', () => {
-    $$('.al-railbtn').forEach((x) => x.removeAttribute('aria-current'));
-    b.setAttribute('aria-current', 'page');
   }));
 
   renderAll();
   renderLock();
+  countUp($('[data-outside]'), 24, { format: (n) => `${Math.round(n)}°` });
+
+  function staggerReveal() {
+    $$('.al-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 35 * i}ms`);
+      el.classList.add('al-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'rooms', name: 'Rooms', pattern: 'List' },
+    { id: 'devices', name: 'Devices', pattern: 'List' },
+    { id: 'energy', name: 'Energy', pattern: 'Report' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+  function setNav(id) {
+    $$('.al-railnav a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      if (href === `#/${id}`) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  function pageHtml(page) {
+    if (page.id === 'rooms') {
+      return `<section class="al-page" data-db-page="rooms" aria-labelledby="p-h">
+        <h1 id="p-h">Rooms</h1>
+        <p class="al-page-lead">Zones on this floor. Sample data · fictional.</p>
+        <div class="al-seg" role="group" aria-label="Rooms state" data-rooms-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-rooms-body></div>
+      </section>`;
+    }
+    if (page.id === 'devices') {
+      return `<section class="al-page" data-db-page="devices" aria-labelledby="p-h">
+        <h1 id="p-h">Devices</h1>
+        <p class="al-page-lead">Lights, lock, camera and speaker on the mesh.</p>
+        <div class="al-page-grid">
+          <article class="al-page-card"><div class="al-row"><strong>Ceiling lights</strong><span>On</span></div></article>
+          <article class="al-page-card"><div class="al-row"><strong>Front door</strong><span>Locked</span></div></article>
+          <article class="al-page-card"><div class="al-row"><strong>Foyer camera</strong><span>Online</span></div></article>
+          <article class="al-page-card"><div class="al-row"><strong>Nook speaker</strong><span>On</span></div></article>
+        </div>
+      </section>`;
+    }
+    if (page.id === 'energy') {
+      return `<section class="al-page" data-db-page="energy" aria-labelledby="p-h">
+        <h1 id="p-h">Energy</h1>
+        <p class="al-page-lead">Home draw summaries. Sample readings only.</p>
+        <div class="al-page-grid">
+          <article class="al-page-card"><div class="al-row"><span>This month</span><strong class="num">557 kWh</strong></div></article>
+          <article class="al-page-card"><div class="al-row"><span>Peak day</span><strong class="num">80 kWh</strong></div></article>
+          <article class="al-page-card"><div class="al-row"><span>Living Room share</span><strong class="num">38%</strong></div></article>
+        </div>
+        <button type="button" class="al-btn" data-energy-export>Export energy CSV</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="al-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="al-page-lead">Household preferences and alert stubs.</p>
+        <div class="al-page-grid">
+          <article class="al-page-card"><div class="al-row"><strong>Push alerts</strong><span>On</span></div></article>
+          <article class="al-page-card"><div class="al-row"><strong>Guest mode</strong><span>Off</span></div></article>
+          <article class="al-page-card"><div class="al-row"><strong>Auto lock</strong><span>22:00</span></div></article>
+        </div>
+        <button type="button" class="al-btn ghost" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="al-page"><h1>${page.name}</h1></section>`;
+  }
+  function wirePage(host, page) {
+    if (page.id === 'rooms') {
+      const body = host.querySelector('[data-rooms-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="al-loading" role="status"><p>Syncing rooms…</p><div class="al-skel"></div><div class="al-skel"></div></div>`;
+          return;
+        }
+        if (state === 'empty') {
+          body.innerHTML = `<div class="al-empty"><p>No rooms configured yet.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="al-error"><p>Could not load rooms.</p><button type="button" class="al-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="al-page-grid">${Object.entries(ROOMS).map(([id, r]) =>
+          `<article class="al-page-card"><div class="al-row"><strong>${r.title}</strong><span class="num">${r.temp}°</span></div><p class="al-meta">${r.place}</p></article>`
+        ).join('')}</div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-rooms-tabs]'), (v) => paint(v));
+    }
+    if (page.id === 'energy') {
+      host.querySelector('[data-energy-export]')?.addEventListener('click', () => toast('Energy CSV · sample'));
+    }
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+    });
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
+    window.DB.route(PAGES, (id, page) => {
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      const top = $('.al-top');
+      if (top) top.hidden = !isOverview;
+      document.documentElement.dataset.alPage = id;
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
+    });
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

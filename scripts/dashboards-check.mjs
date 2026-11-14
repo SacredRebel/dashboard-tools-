@@ -29,6 +29,9 @@
  * Writes:
  *   site/dashboards/<id>/thumb.jpg  — 720×450 gallery card (viewport 1440×900 @ 0.5× DPR)
  *   site/dashboards/<id>/shot.jpg   — 1440×900 recreation screenshot (@ 1× DPR)
+ *   site/dashboards/<id>/shot@2x.jpg — 1440×900 @ 2× DPR
+ *   site/dashboards/<id>/frames/desktop.jpg|tablet.jpg|phone.jpg — overview device frames
+ *   site/dashboards/<id>/frames/pages/<page>.jpg — each catalog page @ 1440×900
  *   site/dashboards/<id>/reference.* — optional owner-supplied original (catalog "reference")
  *   docs/validation/dashboards/<id>.json — check evidence
  * Exit 1 on any problem. Requires Playwright (preinstalled in Claude cloud sessions; elsewhere:
@@ -147,44 +150,124 @@ async function textAudit(page) {
   }, { items, png });
 }
 
+async function capture(page, path) {
+  await page.screenshot({ path, type: 'jpeg', quality: 88 });
+}
+
 for (const d of list) {
   const dir = join(site, 'dashboards', d.id);
   const problems = [];
   const runs = [];
   if (!existsSync(join(dir, 'index.html'))) { console.error(`✖ ${d.id}: site/dashboards/${d.id}/index.html missing`); failed++; continue; }
+  if (!d.pages?.length) { console.error(`✖ ${d.id}: catalog pages missing`); failed++; continue; }
   const p = `/dashboards/${d.id}`;
+  const overviewHash = `#/${d.pages[0].id}`;
+  const framesDir = join(dir, 'frames');
+  const pagesDir = join(framesDir, 'pages');
+  mkdirSync(pagesDir, { recursive: true });
+
   const shots = [
-    [1440, 900, `${p}/`, 'default', true],
-    [1440, 900, p, 'default'],
-    [1440, 900, `${p}/index.html`, 'default'],
-    [375, 812, `${p}/`, 'default'],
-    ...d.variants.filter((v) => v.id !== 'default').map((v) => [1440, 900, `${p}/?variant=${v.id}`, v.id]),
+    [1440, 900, `${p}/${overviewHash}`, 'default', 'thumb'],
+    [1440, 900, p + overviewHash, 'default', null],
+    [1440, 900, `${p}/index.html${overviewHash}`, 'default', null],
+    [375, 812, `${p}/${overviewHash}`, 'default', null],
+    ...d.variants.filter((v) => v.id !== 'default').map((v) => [1440, 900, `${p}/?variant=${v.id}${overviewHash}`, v.id, null]),
   ];
-  for (const [w, h, url, variant, thumb] of shots) {
-    const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: thumb ? 0.5 : 1 });
+  for (const [w, h, url, variant, shotKind] of shots) {
+    const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: shotKind === 'thumb' ? 0.5 : 1 });
     const errs = []; watch(page, errs);
     await page.goto(base + url, { waitUntil: 'load' });
-    await page.waitForTimeout(700);
+    await page.waitForTimeout(800);
     const info = await inspect(page);
     judge(info, errs);
     if (variant !== 'default' && !(await page.evaluate((v) => document.documentElement.dataset.variant === v, variant))) errs.push(`variant ${variant} not applied`);
-    if (url.endsWith('/') || url.includes('?variant=')) errs.push(...(await textAudit(page)));
-    if (thumb && !errs.length) {
-      // Gallery card: half-res JPEG. Canonical 1:1 reference: full 1440×900 JPEG of the same viewport.
+    // empty main check
+    const emptyMain = await page.evaluate(() => {
+      const m = document.querySelector('main');
+      if (!m) return 'no <main>';
+      const text = (m.innerText || '').trim();
+      return text.length < 8 ? 'empty <main>' : null;
+    });
+    if (emptyMain) errs.push(emptyMain);
+    // nav links must point at known pages
+    const badNav = await page.evaluate((ids) => {
+      const bad = [];
+      document.querySelectorAll('a[href^="#/"]').forEach((a) => {
+        const id = (a.getAttribute('href') || '').replace(/^#\/?/, '').split(/[/?#]/)[0];
+        if (id && !ids.includes(id)) bad.push(id);
+      });
+      return bad;
+    }, d.pages.map((pg) => pg.id));
+    if (badNav.length) errs.push(`nav points to unknown page(s): ${[...new Set(badNav)].join(', ')}`);
+    if (url.includes('/#/') || url.endsWith(overviewHash) || url.includes('?variant=')) errs.push(...(await textAudit(page)));
+    if (shotKind === 'thumb' && !errs.length) {
       await page.screenshot({ path: join(dir, 'thumb.jpg'), type: 'jpeg', quality: 82 });
       const full = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
       const ferrs = []; watch(full, ferrs);
       await full.goto(base + url, { waitUntil: 'load' });
-      await full.waitForTimeout(700);
+      await full.waitForTimeout(800);
       judge(await inspect(full), ferrs);
-      if (!ferrs.length) await full.screenshot({ path: join(dir, 'shot.jpg'), type: 'jpeg', quality: 88 });
-      else problems.push(...ferrs.map((e) => `[shot ${url}] ${e}`));
+      if (!ferrs.length) {
+        await capture(full, join(dir, 'shot.jpg'));
+        const hi = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 });
+        const herrs = []; watch(hi, herrs);
+        await hi.goto(base + url, { waitUntil: 'load' });
+        await hi.waitForTimeout(800);
+        judge(await inspect(hi), herrs);
+        if (!herrs.length) await capture(hi, join(dir, 'shot@2x.jpg'));
+        else problems.push(...herrs.map((e) => `[shot@2x] ${e}`));
+        await hi.close();
+      } else problems.push(...ferrs.map((e) => `[shot ${url}] ${e}`));
       await full.close();
     }
     runs.push({ url, width: w, variant, final_path: info.path, overflow_px: info.overflow, errors: errs });
     problems.push(...errs.map((e) => `[${w} ${url}] ${e}`));
     await page.close();
   }
+
+  // Every catalog page × default + each variant at 1440 and 375
+  for (const pg of d.pages) {
+    for (const variant of d.variants) {
+      for (const [w, h] of [[1440, 900], [375, 812]]) {
+        const q = variant.id === 'default' ? '' : `?variant=${variant.id}`;
+        const url = `${p}/${q}#/${pg.id}`;
+        const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 1 });
+        const errs = []; watch(page, errs);
+        await page.goto(base + url, { waitUntil: 'load' });
+        await page.waitForTimeout(700);
+        judge(await inspect(page), errs);
+        const emptyMain = await page.evaluate(() => {
+          const m = document.querySelector('main');
+          if (!m) return 'no <main>';
+          return ((m.innerText || '').trim().length < 8) ? 'empty <main>' : null;
+        });
+        if (emptyMain) errs.push(emptyMain);
+        if (await page.evaluate((id) => document.documentElement.dataset.page !== id, pg.id)) errs.push(`dataset.page != ${pg.id}`);
+        errs.push(...(await textAudit(page)));
+        if (!errs.length && variant.id === 'default' && w === 1440) {
+          await capture(page, join(pagesDir, `${pg.id}.jpg`));
+        }
+        runs.push({ url, width: w, variant: variant.id, page: pg.id, errors: errs });
+        problems.push(...errs.map((e) => `[page ${pg.id} ${w} ${variant.id}] ${e}`));
+        await page.close();
+      }
+    }
+  }
+
+  // Device frames of overview
+  if (!problems.length) {
+    for (const [name, w, h] of [['desktop', 1440, 900], ['tablet', 1024, 768], ['phone', 390, 844]]) {
+      const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 1 });
+      const errs = []; watch(page, errs);
+      await page.goto(`${base}${p}/#/${d.pages[0].id}`, { waitUntil: 'load' });
+      await page.waitForTimeout(700);
+      judge(await inspect(page), errs);
+      if (!errs.length) await capture(page, join(framesDir, `${name}.jpg`));
+      else problems.push(...errs.map((e) => `[frame ${name}] ${e}`));
+      await page.close();
+    }
+  }
+
   // gallery detail page: the preview iframe must render the dashboard, not a bare skeleton
   {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
@@ -200,7 +283,7 @@ for (const d of list) {
   }
   writeFileSync(join(root, 'docs/validation/dashboards', `${d.id}.json`), JSON.stringify({ id: d.id, checked: new Date().toISOString().slice(0, 10), ok: !problems.length, server: 'worst-case clean URLs (see scripts/dashboards-check.mjs)', runs }, null, 2) + '\n');
   if (problems.length) { failed++; console.error(`✖ ${d.id}\n  ${problems.join('\n  ')}`); }
-  else console.log(`✔ ${d.id}: ${runs.length} renders clean (3 URL forms, phone, ${d.variants.length - 1} variants, gallery preview, pixel contrast, text ≥ 12px) · thumb.jpg + shot.jpg written`);
+  else console.log(`✔ ${d.id}: pages=${d.pages.length}, variants=${d.variants.length}, frames + shot@2x · pixel contrast · text ≥ 12px`);
 }
 await browser.close();
 server.close();

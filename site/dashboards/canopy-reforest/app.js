@@ -1,8 +1,8 @@
-/* Canopy Reforest: sample data, leaf artwork, charts and interactions.
-   All data is fictional sample data. No timers, no network. */
+/* Canopy Reforest — organic leaf-landing board. Sample data. No polling / network. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ICON = {
     leaf: '<path d="M5 19c0-9 5-14 15-14 0 10-5 15-14 15"/><path d="M4 21c2-6 6-10 11-12"/>',
     bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>',
@@ -14,11 +14,18 @@
     heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>',
     globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/>',
   };
-  const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[n] || ''}</svg>`;
+  $$('[data-icon]').forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'tasks', name: 'Tasks', pattern: 'Board' },
+    { id: 'sites', name: 'Sites', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+
   const fmtNum = (v) => v.toLocaleString('en-US');
-  const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
-  const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
+  const fmtDate = (d, o = { month: 'short' }) => d.toLocaleDateString('en-US', o);
   const niceStep = (raw) => { const p = 10 ** Math.floor(Math.log10(raw || 1)); const f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; };
   function scale(vals, o) {
     let min = o.min ?? Math.min(...vals), max = o.max ?? Math.max(...vals);
@@ -27,7 +34,12 @@
     const ticks = []; for (let v = min; v <= max + step / 1e6; v += step) ticks.push(+v.toFixed(6));
     return { min, max, ticks };
   }
-  // segmented control / tabs: buttons carry data-v, the pressed one gets aria-pressed="true"
+  function toast(msg) {
+    const t = $('[data-toast]');
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
   function seg(group, onChange) {
     group.addEventListener('click', (e) => {
       const b = e.target.closest('button[data-v]'); if (!b) return;
@@ -35,15 +47,13 @@
       onChange(b.dataset.v, b);
     });
   }
-  // Bar chart built from HTML columns (each column is a focusable button). Grouped by default, stacked with o.stacked.
-  // o: { labels, series: [{ name, color, values }], fmt, h, label, max, ticks, active, onPick, stacked }
   function barChart(el, o) {
     const fmt = o.fmt || fmtNum, n = o.labels.length;
-    const tot = o.labels.map((_, i) => (o.stacked ? o.series.reduce((a, s) => a + s.values[i], 0) : Math.max(...o.series.map((s) => s.values[i]))));
+    const tot = o.labels.map((_, i) => Math.max(...o.series.map((s) => s.values[i])));
     const { max, ticks } = scale(tot, { min: 0, max: o.max, ticks: o.ticks, step: o.step });
     el.innerHTML = `<div class="cr-plot cr-barplot" style="--plot-h:${o.h || 200}px" role="group" aria-label="${o.label}">
       ${o.noAxis ? '' : ticks.map((v) => `<span class="cr-y num" style="top:calc(var(--plot-h) * ${(1 - v / max).toFixed(4)})">${fmt(v)}</span><span class="cr-gl" style="top:calc(var(--plot-h) * ${(1 - v / max).toFixed(4)})"></span>`).join('')}
-      <div class="cr-cols">${o.labels.map((l, i) => `<button class="cr-col${o.stacked ? ' stack' : ''}${o.active === i ? ' on' : ''}" aria-label="${l}: ${o.series.map((s) => `${s.name ? s.name + ' ' : ''}${fmt(s.values[i])}`).join(', ')}"${o.onPick ? ` aria-pressed="${o.active === i}"` : ''}>${o.series.map((s) => `<span class="cr-bar" style="height:${((s.values[i] / max) * 100).toFixed(2)}%;--bar:var(${s.color})"></span>`).join('')}</button>`).join('')}</div>
+      <div class="cr-cols">${o.labels.map((l, i) => `<button type="button" class="cr-col" aria-label="${l}: ${o.series.map((s) => `${fmt(s.values[i])}`).join(', ')}">${o.series.map((s) => `<span class="cr-bar" style="height:${((s.values[i] / max) * 100).toFixed(2)}%;--bar:var(${s.color})"></span>`).join('')}</button>`).join('')}</div>
       <div class="cr-xs">${o.labels.map((l) => `<span>${l}</span>`).join('')}</div>
       <span class="cr-tip num" hidden></span>
     </div>`;
@@ -52,37 +62,18 @@
       tip.hidden = i < 0; if (i < 0) return;
       tip.innerHTML = `<b>${o.labels[i]}</b> ${o.series.map((s) => fmt(s.values[i])).join(' · ')}`;
       tip.className = `cr-tip num${i === 0 ? ' l' : i === n - 1 ? ' r' : ''}`;
-      tip.style.left = ((i + 0.5) / n) * 100 + '%'; tip.style.top = `calc(var(--plot-h) * ${(1 - tot[i] / max).toFixed(4)})`;
+      tip.style.left = ((i + 0.5) / n) * 100 + '%';
+      tip.style.top = `calc(var(--plot-h) * ${(1 - tot[i] / max).toFixed(4)})`;
     };
-    $$('.cr-col', el).forEach((b, i) => { b.addEventListener('mouseenter', () => show(i)); b.addEventListener('focus', () => show(i)); b.addEventListener('blur', () => show(-1)); if (o.onPick) b.addEventListener('click', () => o.onPick(i)); });
+    $$('.cr-col', el).forEach((b, i) => {
+      b.addEventListener('mouseenter', () => show(i));
+      b.addEventListener('focus', () => show(i));
+      b.addEventListener('blur', () => show(-1));
+    });
     $('.cr-cols', el).addEventListener('mouseleave', () => show(-1));
-  }
-  paintIcons();
-
-  // ---------------------------------------------------------------- artwork: leaves are one path, rotated and tinted
-  const stop = (o, c) => `<stop offset="${o}" style="stop-color:var(${c})"/>`;
-  function leaf(x, y, len, rot, tone, wide = 0.36) {
-    const w = len * wide, veins = [0.22, 0.38, 0.54, 0.7].map((t) => { const yy = -len * t, s = w * (1 - Math.abs(t - 0.45) * 1.1); return `M0,${yy} L${s.toFixed(1)},${(yy - len * 0.1).toFixed(1)} M0,${yy} L${(-s).toFixed(1)},${(yy - len * 0.1).toFixed(1)}`; }).join(' ');
-    return `<g transform="translate(${x} ${y}) rotate(${rot})"><path d="M0,0 C${w},${-len * 0.25} ${w},${-len * 0.7} 0,${-len} C${-w},${-len * 0.7} ${-w},${-len * 0.25} 0,0 Z" fill="url(#cr-${tone})"/><path d="M0,${len * 0.12} L0,${-len} ${veins}" fill="none" stroke="var(--vein)" stroke-width="1.4" stroke-linecap="round"/></g>`;
-  }
-  function renderArt() {
-    $('[data-art]').innerHTML = `<svg viewBox="0 0 1200 380" preserveAspectRatio="xMaxYMid slice">
-      <defs>${[['a', '--leaf-2', '--leaf-1'], ['b', '--leaf-1', '--surface-sunken'], ['c', '--leaf-3', '--leaf-4'], ['d', '--leaf-4', '--earth']].map(([id, c1, c2]) => `<linearGradient id="cr-${id}" x1="0" y1="0" x2="1" y2="1">${stop(0, c1)}${stop(1, c2)}</linearGradient>`).join('')}</defs>
-      <path d="M760,0 L1200,0 1200,380 700,380 Z" fill="var(--earth)"/><path d="M0,380 L0,310 150,380 Z" fill="var(--earth)"/>
-      ${leaf(1150, 260, 300, -18, 'b', 0.42)}${leaf(1010, 250, 240, 12, 'a')}${leaf(900, 60, 190, 150, 'a', 0.32)}${leaf(780, 120, 170, -60, 'a', 0.3)}
-      ${leaf(1190, 120, 220, -150, 'b')}${leaf(700, 360, 230, 28, 'c', 0.34)}${leaf(760, 420, 330, 62, 'd', 0.44)}${leaf(1060, 400, 200, -8, 'b', 0.4)}${leaf(880, 250, 150, -30, 'a', 0.34)}
-    </svg>`;
-    $('[data-scene]').innerHTML = `<svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
-      <defs><linearGradient id="cr-sk" x1="0" y1="0" x2="0" y2="1">${stop(0, '--chart-1')}${stop(1, '--leaf-2')}</linearGradient><radialGradient id="cr-su"><stop offset="0" style="stop-color:var(--on-scene)" stop-opacity="0.9"/><stop offset="1" style="stop-color:var(--on-scene)" stop-opacity="0"/></radialGradient></defs>
-      <rect width="400" height="260" fill="url(#cr-sk)"/><circle cx="150" cy="70" r="120" fill="url(#cr-su)"/>
-      <g fill="var(--on-scene)" opacity="0.16"><path d="M150,70 L60,260 110,260 Z"/><path d="M150,70 L170,260 230,260 Z"/><path d="M150,70 L300,260 360,260 Z"/></g>
-      <path d="M0,170 C80,140 150,160 220,150 S340,130 400,150 L400,260 L0,260 Z" fill="var(--leaf-1)" opacity="0.75"/>
-      ${[[300, 150, 1.3], [350, 170, 1], [250, 175, 0.9], [40, 180, 1.1], [90, 190, 0.8]].map(([x, y, s]) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-3" y="0" width="6" height="40" fill="var(--earth)"/><path d="M0,-70 L26,-20 14,-20 32,10 -32,10 -14,-20 -26,-20 Z" fill="var(--surface-sunken)"/></g>`).join('')}
-      <path d="M0,215 C100,195 260,205 400,200 L400,260 L0,260 Z" fill="var(--leaf-4)"/>
-    </svg>`;
+    requestAnimationFrame(() => el.querySelector('.cr-barplot')?.classList.add('is-on'));
   }
 
-  // ---------------------------------------------------------------- sample data
   const months = Array.from({ length: 8 }, (_, i) => fmtDate(new Date(new Date().getFullYear(), new Date().getMonth() - 7 + i, 1), { month: 'short' }));
   const SITES = [
     { id: 'ridge', name: 'Hollow Ridge', trees: 18420, surv: 91, ha: 46.5, co2: 212, planted: [900, 1400, 2100, 2800, 3300, 2900, 2600, 2420], species: [['Red alder', 34], ['Douglas fir', 27], ['Bigleaf maple', 21], ['Western hemlock', 18]], soil: [62, 48, 71, 39], lede: 'Forty-six hectares of logged hillside, replanted plot by plot. Here is how the young trees are doing this season.' },
@@ -91,30 +82,234 @@
   ];
   const TASKS = ['Water plots C and D', 'Replace 40 failed saplings', 'Mulch the north terrace', 'Photograph plot markers', 'Send crew roster for the weekend'];
   const CREWS = [['Ridge Runners', 14, 'RR'], ['Saturday Shovels', 22, 'SS'], ['Fernhill School', 31, 'FS'], ['Mossback Crew', 9, 'MC']];
-  let site = SITES[0], plot = 0; const done = new Set([0]);
+  let site = SITES[0], plot = 0;
+  const done = new Set([0]);
 
-  // ---------------------------------------------------------------- renderers
+  function countUp(el, target) {
+    if (reduce) { el.textContent = typeof target === 'number' ? fmtNum(target) : String(target); return; }
+    const numeric = typeof target === 'number';
+    const end = numeric ? target : parseFloat(String(target));
+    const suffix = numeric ? '' : String(target).replace(/[\d.,]/g, '');
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / 700);
+      const eased = 1 - (1 - t) ** 3;
+      const val = Math.round(end * eased);
+      el.textContent = numeric ? fmtNum(val) : `${val}${suffix}`;
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
   function renderSite() {
-    $('[data-site-name]').textContent = site.name; $('[data-lede]').textContent = site.lede;
-    $('[data-band]').innerHTML = [['leaf', fmtNum(site.trees), 'Trees planted', `${fmtNum(site.planted[7])} this month`], ['heart', site.surv + '%', 'Survival rate', 'After the first dry season'], ['map', site.ha + ' ha', 'Area restored', `${Math.round(site.ha / 0.62)}% of the site plan`], ['globe', site.co2 + ' t', 'Carbon stored', 'Estimated, per year']]
-      .map(([ic, v, n, note]) => `<article class="cr-metric"><span class="cr-metric-ic">${svg(ic, 1.5)}</span><b class="num">${v}</b><p>${n}</p><small>${note}</small></article>`).join('');
+    $('[data-site-name]').textContent = site.name;
+    $('[data-lede]').textContent = site.lede;
+    $('[data-band]').innerHTML = [
+      ['leaf', site.trees, 'Trees planted', `${fmtNum(site.planted[7])} this month`, true],
+      ['heart', site.surv + '%', 'Survival rate', 'After the first dry season', false],
+      ['map', site.ha + ' ha', 'Area restored', `${Math.round(site.ha / 0.62)}% of the site plan`, false],
+      ['globe', site.co2 + ' t', 'Carbon stored', 'Estimated, per year', false],
+    ].map(([ic, v, n, note, num]) => `<article class="cr-metric"><span class="cr-metric-ic">${svg(ic, 1.5)}</span><b class="num" data-kpi="${num ? v : ''}" data-kpi-raw="${v}">${v}</b><p>${n}</p><small>${note}</small></article>`).join('');
+    $$('[data-kpi]', $('[data-band]')).forEach((el) => {
+      if (el.dataset.kpi) countUp(el, +el.dataset.kpi);
+    });
     $('[data-species]').innerHTML = site.species.map(([n, p]) => `<li>${n}<b class="num">${p}%</b><i style="--w:${(p / site.species[0][1]) * 100}%"></i></li>`).join('');
+    requestAnimationFrame(() => $('[data-species]')?.classList.add('is-on'));
     barChart($('[data-growth]'), { labels: months, series: [{ name: 'Planted', color: '--chart-1', values: site.planted }], h: 120, noAxis: true, label: `Trees planted each month at ${site.name}` });
-    $('[data-scene-title]').textContent = site.name; $('[data-scene-note]').textContent = `${site.ha} hectares · first planted 4 seasons ago`;
+    $('[data-scene-title]').textContent = site.name;
+    $('[data-scene-note]').textContent = `${site.ha} hectares · first planted 4 seasons ago`;
     renderSoil();
   }
   function renderSoil() {
-    const v = site.soil[plot], word = v < 35 ? 'dry: water within two days' : v < 60 ? 'fair: check again this week' : 'well watered';
-    $('[data-soil]').innerHTML = site.soil.map((s, i) => `<button class="cr-plotbtn" data-plot="${i}" aria-pressed="${i === plot}" aria-label="Plot ${'ABCD'[i]}: ${s}% moisture"><span class="cr-drop" style="--lv:${s}%"></span><b class="num">${s}%</b>Plot ${'ABCD'[i]}</button>`).join('') + `<p class="cr-soil-note" aria-live="polite">Plot ${'ABCD'[plot]} is ${word}.</p>`;
+    const v = site.soil[plot];
+    const word = v < 35 ? 'dry: water within two days' : v < 60 ? 'fair: check again this week' : 'well watered';
+    $('[data-soil]').innerHTML = site.soil.map((s, i) => `<button type="button" class="cr-plotbtn" data-plot="${i}" aria-pressed="${i === plot}" aria-label="Plot ${'ABCD'[i]}: ${s}% moisture"><span class="cr-drop" style="--lv:${s}%"></span><b class="num">${s}%</b>Plot ${'ABCD'[i]}</button>`).join('') + `<p class="cr-soil-note" aria-live="polite">Plot ${'ABCD'[plot]} is ${word}.</p>`;
+    requestAnimationFrame(() => $('[data-soil]')?.classList.add('is-on'));
   }
-  function renderTasks() { $('[data-tasks]').innerHTML = TASKS.map((t, i) => `<li><label><input type="checkbox" data-task="${i}"${done.has(i) ? ' checked' : ''}><span>${t}</span></label></li>`).join(''); }
+  function renderTasksOverview() {
+    $('[data-tasks]').innerHTML = TASKS.map((t, i) => `<li><label><input type="checkbox" data-task="${i}"${done.has(i) ? ' checked' : ''}><span>${t}</span></label></li>`).join('');
+  }
 
-  // ---------------------------------------------------------------- events
-  $('[data-sites]').innerHTML = SITES.map((s, i) => `<button data-v="${s.id}" aria-pressed="${i === 0}">${s.name}</button>`).join('');
-  seg($('[data-sites]'), (v) => { site = SITES.find((s) => s.id === v); plot = 0; renderSite(); });
-  $('[data-soil]').addEventListener('click', (e) => { const b = e.target.closest('[data-plot]'); if (!b) return; plot = +b.dataset.plot; renderSoil(); $(`[data-plot="${plot}"]`).focus(); });
-  $('[data-tasks]').addEventListener('change', (e) => { const i = +e.target.dataset.task; e.target.checked ? done.add(i) : done.delete(i); });
+  $('[data-sites]').innerHTML = SITES.map((s, i) => `<button type="button" data-v="${s.id}" aria-pressed="${i === 0}">${s.name}</button>`).join('');
+  seg($('[data-sites]'), (v) => { site = SITES.find((s) => s.id === v); plot = 0; $('[data-species]')?.classList.remove('is-on'); $('[data-soil]')?.classList.remove('is-on'); renderSite(); toast(`Showing ${site.name}`); });
+  $('[data-soil]').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-plot]'); if (!b) return;
+    plot = +b.dataset.plot; $('[data-soil]')?.classList.remove('is-on'); renderSoil();
+  });
+  $('[data-tasks]').addEventListener('change', (e) => {
+    const i = +e.target.dataset.task;
+    e.target.checked ? done.add(i) : done.delete(i);
+  });
   $('[data-crews]').innerHTML = CREWS.map(([n, c, ini]) => `<li><i>${ini}</i>${n}<span class="num">${c} people</span></li>`).join('');
-  renderArt(); renderSite(); renderTasks();
-  document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end
+  $('[data-log]')?.addEventListener('click', () => toast('Planting logged (sample)'));
+  $('[data-bell]')?.addEventListener('click', () => toast('2 site alerts · sample'));
+
+  function animateOverview() {
+    const root = $('[data-page-panel="overview"]');
+    if (!root || root.hidden) return;
+    const bits = ['.cr-hero', '.cr-band', ...$$('.cr-tile', root).map(() => null)];
+    const els = [$('.cr-hero', root), $('.cr-band', root), ...$$('.cr-tile', root)].filter(Boolean);
+    els.forEach((c, i) => {
+      c.style.opacity = reduce ? '1' : '0';
+      c.style.transform = reduce ? 'none' : 'translateY(12px)';
+      if (!reduce) {
+        setTimeout(() => {
+          c.style.transition = 'opacity 220ms var(--ease, ease), transform 220ms var(--ease, ease)';
+          c.style.opacity = '1'; c.style.transform = 'none';
+        }, 50 * i);
+      }
+    });
+    void bits;
+  }
+
+  renderSite();
+  renderTasksOverview();
+
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+
+  function pageHtml(page) {
+    if (page.id === 'tasks') {
+      return `<section class="cr-page" aria-labelledby="p-h">
+        <h1 id="p-h">Tasks</h1>
+        <p class="cr-page-lead">Weekly fieldwork for ${site.name}. Sample data · fictional.</p>
+        <div class="cr-toolbar">
+          <div class="cr-seg" role="group" aria-label="Filter">
+            <button type="button" data-v="all" aria-pressed="true">All</button>
+            <button type="button" data-v="open" aria-pressed="false">Open</button>
+            <button type="button" data-v="done" aria-pressed="false">Done</button>
+          </div>
+          <button type="button" class="cr-cta" data-refresh>Refresh</button>
+        </div>
+        <div data-task-board class="cr-page-grid"></div>
+      </section>`;
+    }
+    if (page.id === 'sites') {
+      return `<section class="cr-page" aria-labelledby="p-h">
+        <h1 id="p-h">Sites</h1>
+        <p class="cr-page-lead">Compare restored hectares across the season.</p>
+        <label class="cr-row">Search <input data-site-q type="search" placeholder="Filter sites" style="min-height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2);color:var(--text)"></label>
+        <div class="cr-page-grid" data-site-list></div>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="cr-page" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="cr-page-lead">Crew alerts for Canopy. Nothing is saved in this demo.</p>
+        <form class="cr-card" data-settings onsubmit="return false">
+          <label class="cr-row">Weekly digests <button type="button" class="cr-cta" data-digest aria-pressed="true" style="min-height:40px;padding:0 16px">On</button></label>
+          <label class="cr-row">Lead email <input name="email" type="email" placeholder="you@example.com" style="min-height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);min-width:220px"></label>
+          <p class="cr-error" data-form-err hidden style="color:#ffb4a8;margin-top:8px">Enter a valid email to save.</p>
+          <button type="submit" class="cr-cta" style="margin-top:12px">Save preferences</button>
+        </form>
+      </section>`;
+    }
+    return `<section class="cr-page"><h1>${page.name}</h1><p class="cr-page-lead">Sample data · fictional</p></section>`;
+  }
+
+  function wirePage(host, page) {
+    if (page.id === 'tasks') {
+      const board = host.querySelector('[data-task-board]');
+      const paint = (filter = 'all') => {
+        const rows = TASKS.map((t, i) => ({ t, i, done: done.has(i) }))
+          .filter((r) => filter === 'all' || (filter === 'done' ? r.done : !r.done));
+        if (!rows.length) {
+          board.innerHTML = `<div class="cr-empty"><p>No ${filter} tasks.</p></div>`;
+          return;
+        }
+        board.innerHTML = rows.map((r) => `<article class="cr-card"><label class="cr-row"><span>${r.t}</span><input type="checkbox" data-task="${r.i}"${r.done ? ' checked' : ''}></label></article>`).join('');
+        board.querySelectorAll('[data-task]').forEach((inp) => {
+          inp.addEventListener('change', () => {
+            const i = +inp.dataset.task;
+            inp.checked ? done.add(i) : done.delete(i);
+            renderTasksOverview();
+            paint(host.querySelector('[aria-pressed="true"]')?.dataset.v || 'all');
+          });
+        });
+      };
+      paint('all');
+      seg(host.querySelector('.cr-seg'), (v) => paint(v));
+      host.querySelector('[data-refresh]')?.addEventListener('click', () => {
+        board.innerHTML = `<div class="cr-loading" role="status"><p>Syncing fieldwork…</p><div class="cr-skel"></div><div class="cr-skel"></div></div>`;
+        setTimeout(() => { paint(host.querySelector('[aria-pressed="true"]')?.dataset.v || 'all'); toast('Tasks refreshed (sample)'); }, reduce ? 0 : 650);
+      });
+    }
+    if (page.id === 'sites') {
+      const list = host.querySelector('[data-site-list]');
+      const paint = (q = '') => {
+        const rows = SITES.filter((s) => !q || s.name.toLowerCase().includes(q));
+        if (!rows.length) {
+          list.innerHTML = `<div class="cr-empty"><p>No sites match “${q}”.</p><button type="button" class="cr-cta" data-clear>Clear search</button></div>`;
+          list.querySelector('[data-clear]')?.addEventListener('click', () => { host.querySelector('[data-site-q]').value = ''; paint(''); });
+          return;
+        }
+        list.innerHTML = rows.map((s) => `<article class="cr-card"><h2 style="margin:0 0 8px;font-family:var(--font-display);font-size:20px">${s.name}</h2><div class="cr-row"><span>Trees</span><strong class="num">${fmtNum(s.trees)}</strong></div><div class="cr-row"><span>Area</span><strong class="num">${s.ha} ha</strong></div><button type="button" class="cr-cta" data-pick="${s.id}" style="margin-top:10px;min-height:40px;padding:0 16px">Open on overview</button></article>`).join('');
+        list.querySelectorAll('[data-pick]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            site = SITES.find((s) => s.id === btn.dataset.pick);
+            plot = 0;
+            $$('[data-sites] button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === site.id)));
+            renderSite();
+            location.hash = '#/overview';
+            toast(`${site.name} selected`);
+          });
+        });
+      };
+      paint();
+      host.querySelector('[data-site-q]')?.addEventListener('input', (e) => paint(e.target.value.trim().toLowerCase()));
+    }
+    if (page.id === 'settings') {
+      const form = host.querySelector('[data-settings]');
+      const digest = host.querySelector('[data-digest]');
+      digest?.addEventListener('click', () => {
+        const on = digest.getAttribute('aria-pressed') !== 'true';
+        digest.setAttribute('aria-pressed', String(on));
+        digest.textContent = on ? 'On' : 'Off';
+        toast(on ? 'Digests on' : 'Digests off');
+      });
+      form?.addEventListener('submit', () => {
+        const err = host.querySelector('[data-form-err]');
+        const email = form.email.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.hidden = false; return; }
+        err.hidden = true;
+        toast(`Preferences saved for ${email}`);
+      });
+    }
+  }
+
+  let stub = null;
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+
+  window.DB.route(PAGES, (id, page) => {
+    const isOverview = id === 'overview';
+    overview.hidden = !isOverview;
+    const host = ensureStub();
+    host.hidden = isOverview;
+    if (!isOverview) {
+      host.innerHTML = pageHtml(page);
+      wirePage(host, page);
+    } else {
+      animateOverview();
+      $('[data-species]')?.classList.add('is-on');
+      $('[data-soil]')?.classList.add('is-on');
+      $$('.cr-barplot').forEach((p) => p.classList.add('is-on'));
+    }
+  });
+
+  // pause leaf sway offscreen
+  const leaves = $('.cr-hero-leaves');
+  if (leaves && window.DB?.onVisible) {
+    window.DB.onVisible(leaves, (vis) => {
+      leaves.style.animationPlayState = vis && !reduce ? 'running' : 'paused';
+    });
+  }
+
+  document.documentElement.dataset.ready = 'true';
 })();

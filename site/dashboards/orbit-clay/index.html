@@ -6,102 +6,116 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Orbit Clay · Dashboard Tools gallery</title>
-  <meta name="description" content="Cream, forest and gold claymorphism twin-phone media console with astronaut helmet and calibration rail. Sample data.">
+  <meta name="description" content="Cream, forest and gold claymorphism twin-phone media console with clay astronaut helmet photo and dune landscape. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="oc">
-    <header class="oc-brandbar">
-      <a class="oc-brand" href="#" aria-label="Orbit Clay home">
-        <span class="oc-mark" aria-hidden="true"></span>
-        <span>Orbit Clay</span>
-      </a>
-      <p class="oc-tag">Calibration media · fictional run</p>
-      <div class="oc-modes" role="group" aria-label="Run mode" data-modes>
-        <button type="button" data-v="orbit" aria-pressed="true">Orbit</button>
-        <button type="button" data-v="drift" aria-pressed="false">Drift</button>
-        <button type="button" data-v="dock" aria-pressed="false">Dock</button>
-      </div>
-    </header>
-
-    <main class="oc-stage" aria-label="Twin phone console">
-      <!-- Left phone: mission / helmet -->
-      <section class="oc-phone oc-phone-a" aria-labelledby="oc-a-h">
-        <h2 id="oc-a-h" class="vh">Mission phone</h2>
-        <div class="oc-a-top">
-          <p class="oc-score num" data-score>227</p>
-          <button type="button" class="oc-knob" aria-label="Mission status" data-knob aria-pressed="false">
-            <i></i><i></i>
-          </button>
-        </div>
-
-        <div class="oc-well" data-helmet role="img" aria-label="Abstract astronaut helmet in a gold ring"></div>
-
-        <div class="oc-pager" role="tablist" aria-label="Mission pages" data-pager>
-          <button type="button" role="tab" aria-selected="true" data-page="0" aria-label="Mission 1"></button>
-          <button type="button" role="tab" aria-selected="false" data-page="1" aria-label="Mission 2"></button>
-          <button type="button" role="tab" aria-selected="false" data-page="2" aria-label="Mission 3"></button>
-          <button type="button" role="tab" aria-selected="false" data-page="3" aria-label="Mission 4"></button>
-          <button type="button" role="tab" aria-selected="false" data-page="4" aria-label="Mission 5"></button>
-        </div>
-
-        <div class="oc-houses" role="group" aria-label="Base markers">
-          <button type="button" class="oc-house" data-base="alpha" aria-pressed="true" aria-label="Base Alpha"><span data-icon="home"></span></button>
-          <button type="button" class="oc-house" data-base="beta" aria-pressed="false" aria-label="Base Beta"><span data-icon="home"></span></button>
-        </div>
-
-        <p class="oc-mission" data-mission aria-live="polite">Mission Nova · Base Alpha</p>
-
-        <button type="button" class="oc-start" data-start aria-pressed="false">START</button>
-      </section>
-
-      <!-- Right phone: calibration landscape -->
-      <section class="oc-phone oc-phone-b" aria-labelledby="oc-b-h">
-        <h2 id="oc-b-h" class="vh">Calibration phone</h2>
-        <div class="oc-b-sky">
-          <div class="oc-kpis" aria-label="Run metrics">
-            <div>
-              <span class="oc-kpi-label">Altitude</span>
-              <p class="oc-kpi num" data-kpi-a>3330</p>
-            </div>
-            <div>
-              <span class="oc-kpi-label">Signal</span>
-              <p class="oc-kpi oc-kpi-mid num" data-kpi-b>11 009</p>
-            </div>
-            <div>
-              <span class="oc-kpi-label">Thrust</span>
-              <p class="oc-kpi num" data-kpi-c>3 007</p>
-            </div>
+  <div class="oc" data-db-app>
+    <div class="oc-stage-wrap" data-main>
+      <div class="oc-overview" data-page-panel="overview">
+        <header class="oc-brandbar oc-reveal">
+          <a class="oc-brand" href="#/overview" aria-label="Orbit Clay home">
+            <span class="oc-mark" aria-hidden="true"></span>
+            <span>Orbit Clay</span>
+          </a>
+          <nav class="oc-nav" aria-label="Primary">
+            <a href="#/overview" aria-current="page">Overview</a>
+            <a href="#/library">Library</a>
+            <a href="#/activity">Activity</a>
+            <a href="#/settings">Settings</a>
+          </nav>
+          <p class="oc-tag">Calibration media · fictional run</p>
+          <div class="oc-modes" role="group" aria-label="Run mode" data-modes>
+            <button type="button" data-v="orbit" aria-pressed="true">Orbit</button>
+            <button type="button" data-v="drift" aria-pressed="false">Drift</button>
+            <button type="button" data-v="dock" aria-pressed="false">Dock</button>
           </div>
-          <p class="oc-runnote" data-runnote>Idle · set altitude then start</p>
-        </div>
+        </header>
 
-        <div class="oc-terrain" data-terrain>
-          <div class="oc-land" data-land aria-hidden="true"></div>
-          <label class="oc-rail">
-            <span class="vh">Calibration altitude</span>
-            <input type="range" min="0" max="100" value="62" orient="vertical" data-alt>
-            <span class="oc-sphere" data-sphere aria-hidden="true"></span>
-          </label>
-          <button type="button" class="oc-nest" data-lock aria-pressed="false">LOCK</button>
-        </div>
+        <main class="oc-stage" aria-label="Twin phone console">
+          <section class="oc-phone oc-phone-a oc-reveal" aria-labelledby="oc-a-h">
+            <h2 id="oc-a-h" class="vh">Mission phone</h2>
+            <div class="oc-a-top">
+              <p class="oc-score num" data-score>227</p>
+              <button type="button" class="oc-knob" aria-label="Mission status" data-knob aria-pressed="false">
+                <i></i><i></i>
+              </button>
+            </div>
 
-        <footer class="oc-foot" aria-label="Quick tools">
-          <button type="button" aria-label="Target"><span data-icon="target"></span></button>
-          <span class="num" data-foot-l>0</span>
-          <button type="button" aria-label="Layers"><span data-icon="layers"></span></button>
-          <span class="num" data-foot-r>5</span>
-          <button type="button" aria-label="Settings"><span data-icon="settings"></span></button>
-        </footer>
-      </section>
-    </main>
+            <div class="oc-well" data-helmet role="img" aria-label="Clay astronaut helmet in a gold ring">
+              <img class="oc-helmet oc-ambient" src="media/helmet.webp" width="640" height="640" alt="" decoding="async">
+            </div>
 
-    <p class="db-sample oc-sample">Sample data · fictional · Orbit Clay</p>
+            <div class="oc-pager" role="tablist" aria-label="Mission pages" data-pager>
+              <button type="button" role="tab" aria-selected="true" data-page="0" aria-label="Mission 1"></button>
+              <button type="button" role="tab" aria-selected="false" data-page="1" aria-label="Mission 2"></button>
+              <button type="button" role="tab" aria-selected="false" data-page="2" aria-label="Mission 3"></button>
+              <button type="button" role="tab" aria-selected="false" data-page="3" aria-label="Mission 4"></button>
+              <button type="button" role="tab" aria-selected="false" data-page="4" aria-label="Mission 5"></button>
+            </div>
+
+            <div class="oc-houses" role="group" aria-label="Base markers">
+              <button type="button" class="oc-house" data-base="alpha" aria-pressed="true" aria-label="Base Alpha"><span data-icon="home"></span></button>
+              <button type="button" class="oc-house" data-base="beta" aria-pressed="false" aria-label="Base Beta"><span data-icon="home"></span></button>
+            </div>
+
+            <p class="oc-mission" data-mission aria-live="polite">Mission Nova · Base Alpha</p>
+
+            <button type="button" class="oc-start" data-start aria-pressed="false">START</button>
+          </section>
+
+          <section class="oc-phone oc-phone-b oc-reveal" aria-labelledby="oc-b-h">
+            <h2 id="oc-b-h" class="vh">Calibration phone</h2>
+            <div class="oc-b-sky">
+              <div class="oc-kpis" aria-label="Run metrics">
+                <div>
+                  <span class="oc-kpi-label">Altitude</span>
+                  <p class="oc-kpi num" data-kpi-a>3330</p>
+                </div>
+                <div>
+                  <span class="oc-kpi-label">Signal</span>
+                  <p class="oc-kpi oc-kpi-mid num" data-kpi-b>11 009</p>
+                </div>
+                <div>
+                  <span class="oc-kpi-label">Thrust</span>
+                  <p class="oc-kpi num" data-kpi-c>3 007</p>
+                </div>
+              </div>
+              <p class="oc-runnote" data-runnote>Idle · set altitude then start</p>
+            </div>
+
+            <div class="oc-terrain" data-terrain>
+              <div class="oc-land" data-land aria-hidden="true">
+                <img class="oc-dunes" src="media/dunes.webp" width="960" height="720" alt="" decoding="async">
+              </div>
+              <label class="oc-rail">
+                <span class="vh">Calibration altitude</span>
+                <input type="range" min="0" max="100" value="62" orient="vertical" data-alt>
+                <span class="oc-sphere" data-sphere aria-hidden="true"></span>
+              </label>
+              <button type="button" class="oc-nest" data-lock aria-pressed="false">LOCK</button>
+            </div>
+
+            <footer class="oc-foot" aria-label="Quick tools">
+              <button type="button" aria-label="Target"><span data-icon="target"></span></button>
+              <span class="num" data-foot-l>0</span>
+              <button type="button" aria-label="Layers"><span data-icon="layers"></span></button>
+              <span class="num" data-foot-r>5</span>
+              <button type="button" aria-label="Open settings" data-go-settings><span data-icon="settings"></span></button>
+            </footer>
+          </section>
+        </main>
+
+        <p class="db-sample oc-sample">Sample data · fictional · Orbit Clay</p>
+      </div>
+    </div>
+    <div class="oc-toast" data-toast hidden role="status" aria-live="polite"></div>
   </div>
   <script src="app.js"></script>
 </body>

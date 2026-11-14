@@ -1,8 +1,9 @@
-/* Haven Listings: sample data, dusk scene with a code-drawn house, filters and interactions.
-   All data is fictional sample data. No timers, no network. */
+/* Haven Listings: dusk villa photo hero, multipage + motion. Sample data only. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
   const ICON = {
     home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
     search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
@@ -24,7 +25,25 @@
     calendar: '<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/>',
   };
   const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  const paintIcons = (host = document) => $$('[data-icon]', host).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 600, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
   const fmtNum = (v) => v.toLocaleString('en-US');
   const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
   const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
@@ -87,39 +106,6 @@
   }
   paintIcons();
 
-  // ---------------------------------------------------------------- scene: sky, hills and a curved glass house, themed by CSS variables
-  function renderScene() {
-    const st = (o, c, a = 1) => `<stop offset="${o}" style="stop-color:var(${c});stop-opacity:${a}"/>`;
-    const win = (x, y, w, h, r) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="url(#hl-glow)"/>`;
-    const mull = (x, y, h) => `<rect x="${x}" y="${y}" width="5" height="${h}" fill="var(--shell-2)"/>`;
-    $('[data-scene]').innerHTML = `<svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice">
-      <defs>
-        <linearGradient id="hl-sky" x1="0" y1="0" x2="0" y2="1">${st(0, '--sky-1')}${st(0.55, '--sky-2')}${st(0.85, '--sky-3')}</linearGradient>
-        <linearGradient id="hl-shell" x1="0" y1="0" x2="0" y2="1">${st(0, '--shell-1')}${st(1, '--shell-2')}</linearGradient>
-        <linearGradient id="hl-glow" x1="0" y1="0" x2="0" y2="1">${st(0, '--glow-1')}${st(0.55, '--glow-2')}${st(1, '--room')}</linearGradient>
-        <linearGradient id="hl-ground" x1="0" y1="0" x2="0" y2="1">${st(0, '--ground-1')}${st(1, '--ground-2')}</linearGradient>
-        <radialGradient id="hl-halo">${st(0, '--glow-1', 0.55)}${st(1, '--glow-1', 0)}</radialGradient>
-      </defs>
-      <rect width="1200" height="600" fill="url(#hl-sky)"/>
-      <g fill="var(--cloud)" opacity="0.3"><ellipse cx="260" cy="150" rx="260" ry="26"/><ellipse cx="820" cy="110" rx="300" ry="30"/><ellipse cx="1040" cy="210" rx="220" ry="20"/><ellipse cx="520" cy="240" rx="200" ry="16"/></g>
-      <path d="M0,430 L120,380 220,410 330,360 470,420 600,390 760,430 900,380 1040,410 1200,370 L1200,600 L0,600 Z" fill="var(--hill)" opacity="0.6"/>
-      <path d="M0,500 C300,470 800,470 1200,490 L1200,600 L0,600 Z" fill="url(#hl-ground)"/>
-      <ellipse cx="760" cy="430" rx="420" ry="150" fill="url(#hl-halo)"/>
-      <!-- upper pod -->
-      <path d="M560,400 C540,300 640,262 780,270 C900,250 1100,240 1230,290 L1230,410 Z" fill="url(#hl-shell)" stroke="var(--shell-2)" stroke-width="3"/>
-      <path d="M610,392 C600,330 680,300 790,304 C900,290 1080,286 1230,318 L1230,400 Z" fill="url(#hl-glow)"/>
-      ${mull(700, 302, 96)}${mull(820, 296, 104)}${mull(960, 290, 110)}${mull(1100, 296, 106)}
-      <rect x="716" y="330" width="34" height="62" fill="var(--sky-1)" opacity="0.75"/><rect x="900" y="330" width="34" height="62" fill="var(--sky-1)" opacity="0.75"/>
-      <!-- lower deck -->
-      <path d="M150,470 C150,410 250,396 420,398 L1230,398 L1230,430 L900,432 C940,470 900,530 820,532 L230,532 C180,532 150,510 150,470 Z" fill="url(#hl-shell)" stroke="var(--shell-2)" stroke-width="3"/>
-      ${win(210, 428, 640, 84, 42)}
-      ${mull(360, 428, 84)}${mull(520, 428, 84)}${mull(690, 428, 84)}
-      <g fill="var(--room)" opacity="0.7"><rect x="400" y="478" width="90" height="20" rx="6"/><rect x="560" y="470" width="60" height="28" rx="6"/><rect x="250" y="450" width="40" height="34" rx="4"/></g>
-      <path d="M130,540 C400,520 900,524 1200,536 L1200,600 L130,600 Z" fill="var(--ground-1)" opacity="0.8"/>
-      <g fill="var(--hill)"><path d="M1010,560 l10,-46 l10,46 Z M1040,566 l8,-34 l8,34 Z M92,566 l10,-40 l10,40 Z"/></g>
-    </svg>`;
-  }
-
   // ---------------------------------------------------------------- sample data
   const HOMES = [
     { id: 'h1', mode: 'buy', name: 'Lunette House', place: 'Marrow Bay', type: 'Villa', price: 1240000, beds: 4, baths: 3, area: 312, addr: '18 Tidewater Lane', blurb: 'A long curved shell of glass and plaster that follows the dune line, with a heated deck facing the evening light.' },
@@ -147,15 +133,15 @@
   }
   function render() {
     const list = matches(), h = current(), per = state.mode === 'rent' ? ' / month' : '';
-    $('[data-count]').textContent = list.length;
+    countUp($('[data-count]'), list.length);
     $('[data-find-note]').textContent = list.length ? `${list.length === 1 ? 'One home' : list.length + ' homes'} to ${state.mode} ${state.place ? 'in ' + state.place : 'across three areas'}. Use the arrow to step through them.` : 'Nothing fits these filters yet.';
     $('[data-next]').disabled = list.length < 2; $('[data-clear]').hidden = !(state.place || state.type || state.max);
     $('[data-detail]').innerHTML = h ? `<div class="hl-detail-head"><div><h2>${h.name}</h2><address>${svg('pin')}${h.addr}, ${h.place}</address></div></div>
         <p>${h.blurb}</p><p class="hl-price num">${money(h.price)}<small>${per}</small></p>
         <ul class="hl-specs"><li>${svg('ruler')}${h.area} m²</li><li>${svg('bed')}${h.beds} bedroom${h.beds > 1 ? 's' : ''}</li><li>${svg('drop')}${h.baths} bath${h.baths > 1 ? 's' : ''}</li><li>${svg('building')}${h.type}</li></ul>
-        <div class="hl-acts"><button data-act="save" aria-pressed="${saved.has(h.id)}">${svg('heart')}${saved.has(h.id) ? 'Saved' : 'Save'}</button><button data-act="keep" aria-pressed="${kept.has(h.id)}">${svg('bookmark')}${kept.has(h.id) ? 'Comparing' : 'Compare'}</button><button data-act="share">${svg('send')}Share</button></div>`
+        <div class="hl-acts"><button type="button" data-act="save" aria-pressed="${saved.has(h.id)}">${svg('heart')}${saved.has(h.id) ? 'Saved' : 'Save'}</button><button type="button" data-act="keep" aria-pressed="${kept.has(h.id)}">${svg('bookmark')}${kept.has(h.id) ? 'Comparing' : 'Compare'}</button><button type="button" data-act="share">${svg('send')}Share</button></div>`
       : `<h2>No homes match</h2><p class="hl-none">Try a higher max price or a different area, or clear the filters to see everything to ${state.mode}.</p>`;
-    $('[data-homes]').innerHTML = list.length ? list.map((x) => `<li><button class="hl-home" data-home="${x.id}" aria-pressed="${h && x.id === h.id}"><span class="hl-thumb" style="--tr:${x.type === 'Villa' ? '18px 18px 3px 3px' : x.type === 'Cabin' ? '50% 50% 0 0' : '2px'}"></span><span><b>${x.name}</b><small>${x.place} · ${x.type} · ${x.beds} bed</small></span><span class="num">${shortM(x.price)}</span></button></li>`).join('') : '<li class="hl-none">No homes match these filters.</li>';
+    $('[data-homes]').innerHTML = list.length ? list.map((x) => `<li><button type="button" class="hl-home" data-home="${x.id}" aria-pressed="${h && x.id === h.id}"><span class="hl-thumb${x.type === 'Villa' ? ' photo' : ''}" style="--tr:${x.type === 'Villa' ? '18px 18px 3px 3px' : x.type === 'Cabin' ? '50% 50% 0 0' : '2px'}"></span><span><b>${x.name}</b><small>${x.place} · ${x.type} · ${x.beds} bed</small></span><span class="num">${shortM(x.price)}</span></button></li>`).join('') : '<li class="hl-none">No homes match these filters.</li>';
     if (h) { const v = history(h); $('[data-price-meta]').textContent = h.name;
       lineChart($('[data-price]'), { labels: Array.from({ length: 8 }, (_, i) => fmtDate(new Date(new Date().getFullYear(), new Date().getMonth() - 21 + i * 3, 1), { month: 'short', year: '2-digit' })), series: [{ name: per ? 'Rent' : 'Price', color: '--chart-1', values: v }], fmt: shortM, h: 170, ticks: 3, xEvery: 2, label: `Price history for ${h.name} over two years` });
     } else { $('[data-price-meta]').textContent = ''; $('[data-price]').innerHTML = '<p class="hl-none">Pick a home to see its price history.</p>'; }
@@ -165,14 +151,155 @@
   }
 
   // ---------------------------------------------------------------- events
-  seg($('[data-mode]'), (v) => { Object.assign(state, { mode: v, max: 0 }); fillSelects(); render(); });
+  seg($('[data-mode]'), (v) => { Object.assign(state, { mode: v, max: 0 }); fillSelects(); render(); toast(`${v === 'buy' ? 'Buy' : 'Rent'} · sample`); });
   form.addEventListener('change', () => { Object.assign(state, { place: form.place.value, type: form.type.value, max: +form.max.value }); render(); });
   form.addEventListener('submit', (e) => e.preventDefault());
-  $('[data-clear]').addEventListener('click', () => { Object.assign(state, { place: '', type: '', max: 0 }); fillSelects(); render(); form.place.focus(); });
-  $('[data-next]').addEventListener('click', () => { const l = matches(), i = l.indexOf(current()); state.sel = l[(i + 1) % l.length].id; render(); });
+  $('[data-clear]').addEventListener('click', () => { Object.assign(state, { place: '', type: '', max: 0 }); fillSelects(); render(); form.place.focus(); toast('Filters cleared · sample'); });
+  $('[data-next]').addEventListener('click', () => { const l = matches(), i = l.indexOf(current()); state.sel = l[(i + 1) % l.length].id; render(); toast('Next match · sample'); });
   $('[data-homes]').addEventListener('click', (e) => { const b = e.target.closest('[data-home]'); if (!b) return; state.sel = b.dataset.home; render(); $(`[data-home="${state.sel}"]`).focus(); });
-  $('[data-detail]').addEventListener('click', (e) => { const b = e.target.closest('[data-act]'), h = current(); if (!b || !h) return; const set = b.dataset.act === 'save' ? saved : b.dataset.act === 'keep' ? kept : null; if (!set) return; set.has(h.id) ? set.delete(h.id) : set.add(h.id); render(); $(`[data-act="${b.dataset.act}"]`).focus(); });
-  $('[data-book]').addEventListener('click', () => { const h = current(); if (!h) return; viewings.push({ home: h.id, day: 7 + viewings.length, time: '11:00 am' }); render(); });
-  renderScene(); fillSelects(); render();
-  document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end
+  $('[data-detail]').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-act]'), h = current(); if (!b || !h) return;
+    if (b.dataset.act === 'share') { toast('Share link · sample'); return; }
+    const set = b.dataset.act === 'save' ? saved : b.dataset.act === 'keep' ? kept : null;
+    if (!set) return;
+    set.has(h.id) ? set.delete(h.id) : set.add(h.id);
+    render();
+    $(`[data-act="${b.dataset.act}"]`)?.focus();
+    toast(`${b.dataset.act === 'save' ? 'Saved' : 'Compare'} · sample`);
+  });
+  $('[data-book]').addEventListener('click', () => { const h = current(); if (!h) return; viewings.push({ home: h.id, day: 7 + viewings.length, time: '11:00 am' }); render(); toast('Viewing booked · sample'); });
+  fillSelects(); render();
+
+  function staggerReveal() {
+    $$('.hl-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
+      el.classList.add('hl-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'listings', name: 'Listings', pattern: 'List' },
+    { id: 'showings', name: 'Showings', pattern: 'Calendar' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+  function setNav(id) {
+    $$('.hl-rail a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      if (href === `#/${id}`) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  function pageHtml(page) {
+    if (page.id === 'listings') {
+      return `<section class="hl-page" data-db-page="listings" aria-labelledby="p-h">
+        <h1 id="p-h">Listings</h1>
+        <p class="hl-page-lead">All curated homes. Sample data · fictional.</p>
+        <div class="hl-seg" role="group" aria-label="Listings state" data-list-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-list-body></div>
+      </section>`;
+    }
+    if (page.id === 'showings') {
+      return `<section class="hl-page" data-db-page="showings" aria-labelledby="p-h">
+        <h1 id="p-h">Showings</h1>
+        <p class="hl-page-lead">Upcoming viewings on the calendar.</p>
+        <div class="hl-page-grid" data-show-list></div>
+        <button type="button" class="hl-btn" data-book-page>Request a slot</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="hl-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="hl-page-lead">Alerts and preference stubs.</p>
+        <div class="hl-page-grid">
+          <article class="hl-page-card"><div class="hl-row"><strong>Price alerts</strong><span>On</span></div></article>
+          <article class="hl-page-card"><div class="hl-row"><strong>New listings</strong><span>Daily</span></div></article>
+          <article class="hl-page-card"><div class="hl-row"><strong>Saved searches</strong><span>2</span></div></article>
+        </div>
+        <button type="button" class="hl-btn ghost" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="hl-page"><h1>${page.name}</h1></section>`;
+  }
+  function wirePage(host, page) {
+    if (page.id === 'listings') {
+      const body = host.querySelector('[data-list-body]');
+      const paint = (stateName = 'ready') => {
+        if (stateName === 'loading') {
+          body.innerHTML = `<div class="hl-loading" role="status"><p>Syncing listings…</p><div class="hl-skel"></div><div class="hl-skel"></div></div>`;
+          return;
+        }
+        if (stateName === 'empty') {
+          body.innerHTML = `<div class="hl-empty"><p>No listings in this market yet.</p></div>`;
+          return;
+        }
+        if (stateName === 'error') {
+          body.innerHTML = `<div class="hl-error"><p>Could not load listings.</p><button type="button" class="hl-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="hl-page-grid">${HOMES.map((h) =>
+          `<article class="hl-page-card"><div class="hl-row"><strong>${h.name}</strong><span class="num">${shortM(h.price)}</span></div><p class="hl-meta">${h.place} · ${h.type} · ${h.beds} bed</p></article>`
+        ).join('')}</div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-list-tabs]'), (v) => paint(v));
+    }
+    if (page.id === 'showings') {
+      host.querySelector('[data-show-list]').innerHTML = viewings.map((v) => {
+        const d = dayOffset(v.day), x = HOMES.find((q) => q.id === v.home);
+        return `<article class="hl-page-card"><div class="hl-row"><strong>${x.name}</strong><span class="num">${d.getDate()} ${fmtDate(d, { month: 'short' })}</span></div><p class="hl-meta">${fmtDate(d, { weekday: 'long' })}, ${v.time}</p></article>`;
+      }).join('');
+      host.querySelector('[data-book-page]')?.addEventListener('click', () => toast('Slot requested · sample'));
+    }
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+    });
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
+    window.DB.route(PAGES, (id, page) => {
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
+    });
+  }
+
+  document.documentElement.dataset.ready = 'true';
 })();

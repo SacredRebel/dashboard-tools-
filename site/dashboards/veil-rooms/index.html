@@ -6,147 +6,155 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Veil Rooms · Dashboard Tools gallery</title>
-  <meta name="description" content="Grey glass smart-home board with room pills, device cards and a Light fixtures panel. Sample data.">
+  <meta name="description" content="Grey smart-home board with room pills, device cards, album art and a Light fixtures panel. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="vr">
+  <div class="vr" data-db-app>
     <aside class="vr-rail" aria-label="Sections">
       <nav class="vr-nav" aria-label="Primary">
-        <a href="#" aria-current="page" aria-label="Home"><span data-icon="home"></span></a>
-        <a href="#" aria-label="Cameras"><span data-icon="camera"></span></a>
-        <a href="#" aria-label="Blinds"><span data-icon="grid"></span></a>
-        <a href="#" aria-label="Adjust"><span data-icon="sliders"></span></a>
-        <a href="#" aria-label="Settings"><span data-icon="settings"></span></a>
+        <a href="#/overview" aria-current="page" aria-label="Home"><span data-icon="home"></span></a>
+        <a href="#/rooms" aria-label="Rooms"><span data-icon="camera"></span></a>
+        <a href="#/devices" aria-label="Devices"><span data-icon="grid"></span></a>
+        <a href="#/energy" aria-label="Energy"><span data-icon="sliders"></span></a>
+        <a href="#/settings" aria-label="Settings"><span data-icon="settings"></span></a>
       </nav>
       <span class="vr-avatar" aria-hidden="true" title="Scarlett Vale"></span>
     </aside>
 
-    <div class="vr-centre">
-      <header class="vr-top">
-        <ul class="vr-chips" aria-label="Environment">
-          <li><span data-icon="thermo"></span><span class="num">28°C</span></li>
-          <li><span data-icon="drop"></span><span class="num">78%</span></li>
-          <li><span data-icon="wind"></span><span>1.0 kPa</span></li>
-        </ul>
-        <div class="vr-clock"><span data-icon="sun"></span><span class="num">26°C</span><time datetime="12:45">12:45</time></div>
-      </header>
+    <main class="vr-shell" data-main>
+      <div class="vr-overview" data-page-panel="overview">
+        <div class="vr-centre">
+          <header class="vr-top vr-reveal">
+            <ul class="vr-chips" aria-label="Environment">
+              <li><span data-icon="thermo"></span><span class="num">28°C</span></li>
+              <li><span data-icon="drop"></span><span class="num">78%</span></li>
+              <li><span data-icon="wind"></span><span>1.0 kPa</span></li>
+            </ul>
+            <div class="vr-clock"><span data-icon="sun"></span><span class="num">26°C</span><time datetime="12:45">12:45</time></div>
+          </header>
 
-      <h1 class="vr-hello">Hi Scarlett, have a great day.</h1>
+          <h1 class="vr-hello vr-reveal">Hi Scarlett, have a great day.</h1>
 
-      <div class="vr-rooms" role="group" aria-label="Rooms" data-rooms>
-        <button type="button" class="vr-add" aria-label="Add room"><span data-icon="plus"></span></button>
-        <button type="button" data-v="living" aria-pressed="true">Living room</button>
-        <button type="button" data-v="study" aria-pressed="false">Study</button>
-        <button type="button" data-v="bed-a" aria-pressed="false">Bedroom A</button>
-        <button type="button" data-v="bed-b" aria-pressed="false">Bedroom B</button>
-        <button type="button" data-v="bed-c" aria-pressed="false">Bedroom C</button>
+          <div class="vr-rooms vr-reveal" role="group" aria-label="Rooms" data-rooms>
+            <button type="button" class="vr-add" aria-label="Add room" data-add-room><span data-icon="plus"></span></button>
+            <button type="button" data-v="living" aria-pressed="true">Living room</button>
+            <button type="button" data-v="study" aria-pressed="false">Study</button>
+            <button type="button" data-v="bed-a" aria-pressed="false">Bedroom A</button>
+            <button type="button" data-v="bed-b" aria-pressed="false">Bedroom B</button>
+            <button type="button" data-v="bed-c" aria-pressed="false">Bedroom C</button>
+          </div>
+          <p class="vr-roomhint" data-roomhint aria-live="polite"></p>
+
+          <div class="vr-grid vr-reveal" data-state="populated">
+            <section class="vr-card vr-lightmain" aria-labelledby="vr-ml-h">
+              <div class="vr-cardtop">
+                <h2 id="vr-ml-h">Main light</h2>
+                <button class="vr-pwr" type="button" aria-pressed="true" data-mlpwr aria-label="Main light power"><span data-icon="power"></span></button>
+              </div>
+              <p class="vr-meta">4 devices linked</p>
+              <label class="vr-slider"><span class="vh">Colour temperature</span>
+                <input type="range" min="2700" max="6500" value="3200" data-mltemp>
+                <span class="vr-tempbar" aria-hidden="true"></span>
+              </label>
+              <label class="vr-slider"><span class="vr-slabel"><span data-icon="sun"></span> Brightness</span>
+                <input type="range" min="0" max="100" value="72" data-mlbright>
+                <output class="num" data-mlbout>72%</output>
+              </label>
+            </section>
+
+            <section class="vr-card vr-ac" aria-labelledby="vr-ac-h">
+              <div class="vr-cardtop">
+                <h2 id="vr-ac-h">Air conditioner</h2>
+                <button class="vr-pwr" type="button" aria-pressed="true" data-acpwr aria-label="AC power"><span data-icon="power"></span></button>
+              </div>
+              <div class="vr-acctrl">
+                <button type="button" data-ac="-1" aria-label="Lower AC temperature">−</button>
+                <output class="num" data-actemp>25°C</output>
+                <button type="button" data-ac="1" aria-label="Raise AC temperature">+</button>
+              </div>
+              <p class="vr-meta" data-acnote>Cooling to 25°C</p>
+            </section>
+
+            <section class="vr-card vr-media" aria-labelledby="vr-med-h">
+              <h2 id="vr-med-h" class="vh">Media player</h2>
+              <div class="vr-album" data-album>
+                <img class="vr-albumphoto vr-ambient" src="media/album.webp" width="1024" height="1024" alt="River Lights album art (sample)" decoding="async">
+              </div>
+              <div class="vr-track">
+                <b>River Lights</b>
+                <small>Nova Quill</small>
+              </div>
+              <div class="vr-transport" role="group" aria-label="Playback">
+                <button type="button" aria-label="Previous track" data-skip="-1"><span data-icon="skipB"></span></button>
+                <button type="button" class="vr-play" aria-pressed="true" data-play aria-label="Pause"><span data-icon="pause"></span></button>
+                <button type="button" aria-label="Next track" data-skip="1"><span data-icon="skipF"></span></button>
+              </div>
+              <div class="vr-progress" role="presentation"><i style="width:42%"></i></div>
+            </section>
+
+            <section class="vr-card vr-wifi" aria-labelledby="vr-wifi-h">
+              <div class="vr-cardtop">
+                <h2 id="vr-wifi-h">Mesh wifi</h2>
+                <button class="vr-pwr" type="button" aria-pressed="true" data-wifipwr aria-label="Wifi power"><span data-icon="power"></span></button>
+              </div>
+              <div class="vr-speeds">
+                <div><span class="vr-meta">Down</span><p class="num" data-down>5.8 <small>MB/s</small></p></div>
+                <div><span class="vr-meta">Up</span><p class="num" data-up>6.2 <small>MB/s</small></p></div>
+              </div>
+              <p class="vr-meta"><span data-icon="wifi"></span> 3 devices · Online</p>
+            </section>
+
+            <section class="vr-card vr-purify" aria-labelledby="vr-aq-h">
+              <div class="vr-banner ok">Good air quality</div>
+              <div class="vr-cardtop">
+                <h2 id="vr-aq-h">Air purifier</h2>
+                <button class="vr-pwr" type="button" aria-pressed="true" data-aqpwr aria-label="Purifier power"><span data-icon="power"></span></button>
+              </div>
+              <p class="num vr-pm"><span data-pm>21</span> <small>µg/m³ PM2.5</small></p>
+              <p class="vr-meta">Mode · Auto</p>
+            </section>
+
+            <section class="vr-card vr-lock" aria-labelledby="vr-lock-h">
+              <div class="vr-banner cool">Front door</div>
+              <div class="vr-cardtop">
+                <h2 id="vr-lock-h">Smart lock</h2>
+                <button class="vr-pwr vr-lockbtn" type="button" aria-pressed="true" data-lock aria-label="Lock front door"><span data-icon="lock"></span></button>
+              </div>
+              <p class="vr-meta">Last opened <time data-locktime></time></p>
+              <p class="vr-meta"><span data-icon="shield"></span> Fingerprint ready</p>
+            </section>
+          </div>
+
+          <div class="vr-empty" hidden data-empty>
+            <p>No devices in this room yet.</p>
+            <button type="button" data-back>Back to Living room</button>
+          </div>
+          <div class="vr-error" hidden data-error>
+            <p>Could not load devices. Check the hub link.</p>
+            <button type="button" data-retry>Try again</button>
+          </div>
+        </div>
+
+        <aside class="vr-lightpane vr-reveal" aria-labelledby="vr-lp-h">
+          <div class="vr-lphead">
+            <h2 id="vr-lp-h">Light</h2>
+            <button type="button" class="vr-collapse" aria-label="Collapse light panel" data-collapse><span data-icon="chevLeft"></span></button>
+          </div>
+          <p class="vr-lpmeta"><span data-icon="sun"></span> <span class="num">26°C</span> · <time>12:45</time></p>
+          <div class="vr-fixtures" data-fixtures></div>
+        </aside>
+        <p class="db-sample vr-sample">Sample data · fictional home and resident</p>
       </div>
-      <p class="vr-roomhint" data-roomhint aria-live="polite"></p>
-
-      <div class="vr-grid" data-state="populated">
-        <section class="vr-card vr-lightmain" aria-labelledby="vr-ml-h">
-          <div class="vr-cardtop">
-            <h2 id="vr-ml-h">Main light</h2>
-            <button class="vr-pwr" type="button" aria-pressed="true" data-mlpwr aria-label="Main light power"><span data-icon="power"></span></button>
-          </div>
-          <p class="vr-meta">4 devices linked</p>
-          <label class="vr-slider"><span class="vh">Colour temperature</span>
-            <input type="range" min="2700" max="6500" value="3200" data-mltemp>
-            <span class="vr-tempbar" aria-hidden="true"></span>
-          </label>
-          <label class="vr-slider"><span class="vr-slabel"><span data-icon="sun"></span> Brightness</span>
-            <input type="range" min="0" max="100" value="72" data-mlbright>
-            <output class="num" data-mlbout>72%</output>
-          </label>
-        </section>
-
-        <section class="vr-card vr-ac" aria-labelledby="vr-ac-h">
-          <div class="vr-cardtop">
-            <h2 id="vr-ac-h">Air conditioner</h2>
-            <button class="vr-pwr" type="button" aria-pressed="true" data-acpwr aria-label="AC power"><span data-icon="power"></span></button>
-          </div>
-          <div class="vr-acctrl">
-            <button type="button" data-ac="-1" aria-label="Lower AC temperature">−</button>
-            <output class="num" data-actemp>25°C</output>
-            <button type="button" data-ac="1" aria-label="Raise AC temperature">+</button>
-          </div>
-          <p class="vr-meta" data-acnote>Cooling to 25°C</p>
-        </section>
-
-        <section class="vr-card vr-media" aria-labelledby="vr-med-h">
-          <h2 id="vr-med-h" class="vh">Media player</h2>
-          <div class="vr-album" data-album aria-hidden="true"></div>
-          <div class="vr-track">
-            <b>River Lights</b>
-            <small>Nova Quill</small>
-          </div>
-          <div class="vr-transport" role="group" aria-label="Playback">
-            <button type="button" aria-label="Previous track"><span data-icon="skipB"></span></button>
-            <button type="button" class="vr-play" aria-pressed="true" data-play aria-label="Pause"><span data-icon="pause"></span></button>
-            <button type="button" aria-label="Next track"><span data-icon="skipF"></span></button>
-          </div>
-          <div class="vr-progress" role="presentation"><i style="width:42%"></i></div>
-        </section>
-
-        <section class="vr-card vr-wifi" aria-labelledby="vr-wifi-h">
-          <div class="vr-cardtop">
-            <h2 id="vr-wifi-h">Mesh wifi</h2>
-            <button class="vr-pwr" type="button" aria-pressed="true" data-wifipwr aria-label="Wifi power"><span data-icon="power"></span></button>
-          </div>
-          <div class="vr-speeds">
-            <div><span class="vr-meta">Down</span><p class="num">5.8 <small>MB/s</small></p></div>
-            <div><span class="vr-meta">Up</span><p class="num">6.2 <small>MB/s</small></p></div>
-          </div>
-          <p class="vr-meta"><span data-icon="wifi"></span> 3 devices · Online</p>
-        </section>
-
-        <section class="vr-card vr-purify" aria-labelledby="vr-aq-h">
-          <div class="vr-banner ok">Good air quality</div>
-          <div class="vr-cardtop">
-            <h2 id="vr-aq-h">Air purifier</h2>
-            <button class="vr-pwr" type="button" aria-pressed="true" data-aqpwr aria-label="Purifier power"><span data-icon="power"></span></button>
-          </div>
-          <p class="num vr-pm">21 <small>µg/m³ PM2.5</small></p>
-          <p class="vr-meta">Mode · Auto</p>
-        </section>
-
-        <section class="vr-card vr-lock" aria-labelledby="vr-lock-h">
-          <div class="vr-banner cool">Front door</div>
-          <div class="vr-cardtop">
-            <h2 id="vr-lock-h">Smart lock</h2>
-            <button class="vr-pwr vr-lockbtn" type="button" aria-pressed="true" data-lock aria-label="Lock front door"><span data-icon="lock"></span></button>
-          </div>
-          <p class="vr-meta">Last opened <time data-locktime></time></p>
-          <p class="vr-meta"><span data-icon="shield"></span> Fingerprint ready</p>
-        </section>
-      </div>
-
-      <div class="vr-empty" hidden data-empty>
-        <p>No devices in this room yet.</p>
-        <button type="button" data-back>Back to Living room</button>
-      </div>
-      <div class="vr-error" hidden data-error>
-        <p>Could not load devices. Check the hub link.</p>
-        <button type="button" data-retry>Try again</button>
-      </div>
-    </div>
-
-    <aside class="vr-lightpane" aria-labelledby="vr-lp-h">
-      <div class="vr-lphead">
-        <h2 id="vr-lp-h">Light</h2>
-        <button type="button" class="vr-collapse" aria-label="Collapse light panel" data-collapse><span data-icon="chevLeft"></span></button>
-      </div>
-      <p class="vr-lpmeta"><span data-icon="sun"></span> <span class="num">26°C</span> · <time>12:45</time></p>
-      <div class="vr-fixtures" data-fixtures></div>
-    </aside>
+    </main>
   </div>
-  <p class="db-sample vr-sample">Sample data · fictional home and resident</p>
+  <div class="vr-toast" data-toast hidden role="status"></div>
   <script src="app.js"></script>
 </body>
 </html>

@@ -1,7 +1,27 @@
-/* Orbit Clay: twin-phone clay console — fictional missions, helmet SVG, calibration rail. */
+/* Orbit Clay: twin-phone clay console — fictional missions, helmet photo, calibration rail. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 700, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
   const ICON = {
     home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
     target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
@@ -50,53 +70,6 @@
   let running = false;
   let locked = false;
 
-  function helmetSvg() {
-    return `<svg viewBox="0 0 220 220" aria-hidden="true">
-      <defs>
-        <linearGradient id="oc-gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="var(--gold-2)"/><stop offset="55%" stop-color="var(--gold)"/><stop offset="1" stop-color="var(--gold-deep)"/>
-        </linearGradient>
-        <linearGradient id="oc-helm" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="var(--forest-2)"/><stop offset="1" stop-color="var(--forest)"/>
-        </linearGradient>
-        <radialGradient id="oc-wellg" cx="40%" cy="35%" r="60%">
-          <stop offset="0" stop-color="var(--cream)"/><stop offset="1" stop-color="var(--cream-2)"/>
-        </radialGradient>
-      </defs>
-      <circle cx="110" cy="110" r="100" fill="url(#oc-wellg)"/>
-      <circle cx="110" cy="110" r="86" fill="none" stroke="url(#oc-gold)" stroke-width="14"/>
-      <circle cx="110" cy="110" r="74" fill="none" stroke="var(--cream)" stroke-width="3" opacity="0.5"/>
-      <!-- helmet shell -->
-      <ellipse cx="110" cy="118" rx="48" ry="56" fill="url(#oc-helm)"/>
-      <path d="M70 118 C70 78 150 78 150 118 L150 148 C150 168 130 178 110 178 C90 178 70 168 70 148 Z" fill="url(#oc-helm)"/>
-      <!-- visor -->
-      <ellipse cx="118" cy="112" rx="28" ry="30" fill="none" stroke="url(#oc-gold)" stroke-width="5"/>
-      <ellipse cx="118" cy="112" rx="22" ry="24" fill="var(--forest)" opacity="0.35"/>
-      <path d="M100 100 C112 96 128 100 134 112" fill="none" stroke="var(--gold-2)" stroke-width="2" opacity="0.55"/>
-      <!-- ear mesh -->
-      <rect x="58" y="100" width="16" height="36" rx="6" fill="url(#oc-gold)"/>
-      <path d="M62 108 h8 M62 116 h8 M62 124 h8" stroke="var(--forest)" stroke-width="1.5" opacity="0.55"/>
-      <rect x="146" y="100" width="16" height="36" rx="6" fill="url(#oc-gold)" opacity="0.85"/>
-      <!-- collar -->
-      <path d="M78 168 C90 180 130 180 142 168" fill="none" stroke="url(#oc-gold)" stroke-width="6" stroke-linecap="round"/>
-    </svg>`;
-  }
-
-  function landSvg() {
-    return `<svg viewBox="0 0 380 420" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="oc-clayg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="var(--cream)"/><stop offset="1" stop-color="var(--cream-2)"/>
-        </linearGradient>
-      </defs>
-      <path d="M0 90 L40 110 L70 40 L110 120 L160 20 L200 100 L235 10 L280 95 L330 50 L380 110 V420 H0 Z" fill="url(#oc-clayg)"/>
-      <path d="M0 160 L60 140 L120 180 L180 130 L240 170 L300 145 L380 175 V420 H0 Z" fill="var(--cream-2)" opacity="0.85"/>
-      <path d="M0 240 L80 220 L160 260 L240 230 L320 250 L380 235 V420 H0 Z" fill="var(--surface-2)" opacity="0.55"/>
-      <ellipse cx="90" cy="300" rx="40" ry="14" fill="var(--forest)" opacity="0.06"/>
-      <ellipse cx="280" cy="320" rx="50" ry="16" fill="var(--forest)" opacity="0.05"/>
-    </svg>`;
-  }
-
   function fmt(n) {
     return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   }
@@ -108,8 +81,9 @@
     const altitude = Math.round(1800 + alt * 28);
     const thrust = Math.round(thrustBase + alt * 6 + (running ? 220 : 0));
     const signal = Math.round(m.signal + alt * 8 - (locked ? 0 : 40));
+    const score = m.score + (running ? 12 : 0);
 
-    $('[data-score]').textContent = String(m.score + (running ? 12 : 0));
+    countUp($('[data-score]'), score, { format: (n) => String(Math.round(n)) });
     $('[data-kpi-a]').textContent = fmt(altitude);
     $('[data-kpi-b]').textContent = fmt(signal);
     $('[data-kpi-c]').textContent = fmt(thrust);
@@ -131,10 +105,7 @@
     $('[data-alt]').disabled = locked;
   }
 
-  $('[data-helmet]').innerHTML = helmetSvg();
-  $('[data-land]').innerHTML = landSvg();
-
-  seg($('[data-modes]'), (v) => { mode = v; render(); });
+  seg($('[data-modes]'), (v) => { mode = v; toast(`${MODES[mode].label} · sample`); render(); });
 
   $('[data-pager]').addEventListener('click', (e) => {
     const b = e.target.closest('[data-page]');
@@ -155,21 +126,155 @@
 
   $('[data-start]').addEventListener('click', () => {
     running = !running;
+    toast(running ? 'Run started · sample' : 'Run paused · sample');
     render();
   });
 
   $('[data-lock]').addEventListener('click', () => {
     locked = !locked;
+    toast(locked ? 'Rail locked · sample' : 'Rail unlocked · sample');
     render();
   });
 
   $('[data-knob]').addEventListener('click', () => {
     const on = $('[data-knob]').getAttribute('aria-pressed') === 'true';
     $('[data-knob]').setAttribute('aria-pressed', String(!on));
+    toast(!on ? 'Status armed · sample' : 'Status idle · sample');
   });
 
   $('[data-alt]').addEventListener('input', render);
+  $('[data-go-settings]')?.addEventListener('click', () => { location.hash = '#/settings'; });
 
   render();
+
+  function staggerReveal() {
+    $$('.oc-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 45 * i}ms`);
+      el.classList.add('oc-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'library', name: 'Library', pattern: 'List' },
+    { id: 'activity', name: 'Activity', pattern: 'Report' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+
+  function setNav(id) {
+    $$('.oc-nav a').forEach((a) => {
+      const match = (a.getAttribute('href') || '') === `#/${id}`;
+      if (match) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  function pageHtml(page) {
+    if (page.id === 'library') {
+      return `<section class="oc-page" data-db-page="library" aria-labelledby="p-h">
+        <h1 id="p-h">Library</h1>
+        <p class="oc-page-lead">Saved missions and helmet packs. Sample data · fictional.</p>
+        <div class="oc-page-seg" role="group" aria-label="Library state" data-lib-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-lib-body></div>
+      </section>`;
+    }
+    if (page.id === 'activity') {
+      return `<section class="oc-page" data-db-page="activity" aria-labelledby="p-h">
+        <h1 id="p-h">Activity</h1>
+        <p class="oc-page-lead">Recent calibration runs.</p>
+        <div class="oc-page-grid">
+          ${MISSIONS.map((m) => `<article class="oc-page-card"><div class="oc-row"><strong>${m.name}</strong><span class="oc-chip num">${m.score}</span></div><p class="oc-meta">Signal ${fmt(m.signal)}</p></article>`).join('')}
+        </div>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="oc-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="oc-page-lead">Console preferences and haptics stubs.</p>
+        <div class="oc-page-grid">
+          <article class="oc-page-card"><div class="oc-row"><strong>Clay depth</strong><span class="oc-chip">Soft</span></div></article>
+          <article class="oc-page-card"><div class="oc-row"><strong>Rail lock</strong><span class="oc-chip">Manual</span></div></article>
+          <article class="oc-page-card"><div class="oc-row"><strong>Helmet pack</strong><span class="oc-chip">Nova</span></div></article>
+        </div>
+        <button type="button" class="oc-btn" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="oc-page"><h1>${page.name}</h1></section>`;
+  }
+
+  function wirePage(host, page) {
+    if (page.id === 'library') {
+      const body = host.querySelector('[data-lib-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="oc-loading" role="status"><p>Syncing library…</p><div class="oc-skel"></div><div class="oc-skel"></div></div>`;
+          return;
+        }
+        if (state === 'empty') {
+          body.innerHTML = `<div class="oc-empty-block"><p>No saved missions yet.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="oc-error-block"><p>Could not load library.</p><button type="button" class="oc-btn" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="oc-page-grid">${MISSIONS.map((m) =>
+          `<article class="oc-page-card"><div class="oc-row"><strong>${m.name}</strong><span class="oc-chip">Pack</span></div><p class="oc-meta">Score ${m.score}</p></article>`
+        ).join('')}</div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-lib-tabs]'), (v) => paint(v));
+    }
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+    });
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
+    window.DB.route(PAGES, (id, page) => {
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
+    });
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

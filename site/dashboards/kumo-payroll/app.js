@@ -69,26 +69,7 @@
     const flower = (x, y, s, r) => `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})">${[0, 72, 144, 216, 288].map((a) => `<ellipse cx="0" cy="-9" rx="6" ry="9" transform="rotate(${a})" fill="url(#kp-pet)"/>`).join('')}<circle r="3" fill="var(--moon-1)"/></g>`;
     const hill = (d, fill, o = 0.55) => `<path d="${d}" fill="var(${fill})"/><path d="${d.split(' L')[0]}" fill="none" stroke="var(--ink)" stroke-width="1.2" opacity="${o}"/>`;
     const blooms = [[60, 40, 1.5, 10], [128, 78, 1.2, 40], [196, 52, 1.6, 70], [250, 118, 1.3, 20], [318, 96, 1.1, 55], [36, 150, 1.4, 30], [100, 196, 1.2, 80], [372, 150, 1, 15], [176, 150, 0.9, 60], [300, 30, 1.2, 0], [420, 118, 0.8, 45]];
-    $('[data-scene]').innerHTML = `<svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMin slice">
-      <defs>
-        <linearGradient id="kp-sky" x1="0" y1="0" x2="0" y2="1">${stop(0, '--sky-1')}${stop(0.45, '--sky-2')}${stop(1, '--sky-1')}</linearGradient>
-        <radialGradient id="kp-moon" cx="0.4" cy="0.38">${stop(0, '--moon-1')}${stop(1, '--moon-2')}</radialGradient>
-        <radialGradient id="kp-halo">${stop(0.35, '--moon-2', 0.5)}${stop(1, '--moon-2', 0)}</radialGradient>
-        <radialGradient id="kp-pet" cx="0.5" cy="1">${stop(0, '--petal-2')}${stop(1, '--petal')}</radialGradient>
-      </defs>
-      <rect width="1440" height="900" fill="url(#kp-sky)"/>
-      <circle cx="930" cy="170" r="300" fill="url(#kp-halo)"/>
-      <circle cx="930" cy="170" r="132" fill="url(#kp-moon)"/>
-      <g fill="var(--moon-2)" opacity="0.28"><circle cx="890" cy="130" r="26"/><circle cx="968" cy="212" r="18"/><circle cx="960" cy="110" r="10"/></g>
-      <g fill="none" stroke="var(--sky-1)" stroke-width="3" stroke-linecap="round"><path d="M1056 110q10-10 20 0q10-10 20 0"/><path d="M1108 150q7-7 14 0q7-7 14 0"/><path d="M1010 60q6-6 12 0q6-6 12 0"/></g>
-      ${hill('M0,330 C140,250 260,270 380,320 S620,240 760,300 S1000,210 1160,280 S1360,230 1440,270 L1440,900 L0,900 Z', '--hill-1', 0.35)}
-      ${hill('M0,420 C120,360 300,340 430,400 S700,330 860,390 S1150,320 1280,380 S1400,360 1440,372 L1440,900 L0,900 Z', '--hill-2', 0.5)}
-      ${hill('M0,560 C200,470 330,520 520,560 S820,470 1010,540 S1300,480 1440,530 L1440,900 L0,900 Z', '--hill-3', 0.6)}
-      <g fill="none" stroke="var(--ink)" stroke-width="1" opacity="0.35">${[0, 1, 2, 3, 4].map((i) => `<path d="M0,${640 + i * 44} C240,${590 + i * 44} 380,${690 + i * 44} 720,${640 + i * 44} S1200,${590 + i * 44} 1440,${650 + i * 44}"/>`).join('')}</g>
-      <path d="M-20,20 C80,60 150,70 230,96 S360,110 450,140 M150,70 C130,120 90,150 40,170 M230,96 C250,60 280,40 320,24" fill="none" stroke="var(--branch)" stroke-width="9" stroke-linecap="round"/>
-      ${blooms.map((b) => flower(...b)).join('')}
-      <g fill="var(--petal)" opacity="0.8"><ellipse cx="520" cy="210" rx="7" ry="4" transform="rotate(30 520 210)"/><ellipse cx="610" cy="120" rx="6" ry="3" transform="rotate(-20 610 120)"/><ellipse cx="700" cy="250" rx="6" ry="3" transform="rotate(50 700 250)"/><ellipse cx="1240" cy="330" rx="6" ry="3" transform="rotate(10 1240 330)"/></g>
-    </svg>`;
+    $('[data-scene]');
   }
 
   // ---------------------------------------------------------------- sample data: five monthly pay periods ending this month
@@ -136,5 +117,149 @@
   $('[data-nav]').addEventListener('click', (e) => { const a = e.target.closest('a'); if (!a) return; e.preventDefault(); $$('a', $('[data-nav]')).forEach((x) => x.removeAttribute('aria-current')); a.setAttribute('aria-current', 'page'); });
   $('[data-steps]').innerHTML = STEPS.map(([n, t, m]) => `<li><time>${fmtDate(dayOffset(n))}</time>${t}<span>${m}</span></li>`).join('');
   renderScene(); renderAll();
+/* === DB multipage polish (auto-upgraded) === */
+  (function wirePages() {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"people","name":"People","pattern":"List"},{"id":"payroll","name":"Payroll","pattern":"Report"},{"id":"settings","name":"Settings","pattern":"Settings"}];
+    const root = document.querySelector('[data-db-app]') || document.body;
+    let toastEl = document.querySelector('[data-toast]');
+    if (!toastEl) {
+      toastEl = document.createElement('div');
+      toastEl.className = 'dbp-toast';
+      toastEl.setAttribute('data-toast', '');
+      toastEl.hidden = true;
+      toastEl.setAttribute('role', 'status');
+      toastEl.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toastEl);
+    }
+    function toast(msg) {
+      toastEl.textContent = msg; toastEl.hidden = false;
+      clearTimeout(toast._id); toast._id = setTimeout(() => { toastEl.hidden = true; }, 2200);
+    }
+    const main = document.querySelector('main') || document.body;
+    let stub = document.querySelector('[data-db-stub]');
+    if (!stub) {
+      stub = document.createElement('section');
+      stub.setAttribute('data-db-stub', '');
+      stub.hidden = true;
+      stub.setAttribute('aria-live', 'polite');
+      main.appendChild(stub);
+    }
+    function setOverviewVisible(on) {
+      [...main.children].forEach((ch) => {
+        if (ch === stub) return;
+        if (on) { ch.hidden = false; ch.removeAttribute('data-db-overview-hide'); }
+        else { ch.hidden = true; ch.setAttribute('data-db-overview-hide', ''); }
+      });
+      stub.hidden = on;
+    }
+    function pageHtml(page) {
+
+    if (page.id === 'people') {
+      return `<section class="dbp-page" data-db-page="people" aria-labelledby="p-h">
+        <h1 id="p-h">People</h1>
+        <p class="dbp-lead">Sample data · fictional.</p>
+        <div class="dbp-seg" role="group" aria-label="People state" data-dbp-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-dbp-body></div>
+      </section>`;
+    }
+    if (page.id === 'payroll') {
+      return `<section class="dbp-page" data-db-page="payroll" aria-labelledby="p-h">
+        <h1 id="p-h">Payroll</h1>
+        <p class="dbp-lead">Sample data · fictional.</p>
+        <div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>This run</strong><span class="dbp-chip">$184k</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Pending</strong><span class="dbp-chip">12</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Exceptions</strong><span class="dbp-chip">2</span></div></article></div>
+        <button type="button" class="dbp-btn" data-dbp-action>Open payroll</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="dbp-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="dbp-lead">Sample data · fictional.</p>
+        <div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Units</strong><span class="dbp-chip">Celsius</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Eco mode</strong><span class="dbp-chip">On</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Alerts</strong><span class="dbp-chip">Push</span></div></article></div>
+        <button type="button" class="dbp-btn" data-dbp-action>Open settings</button>
+      </section>`;
+    }
+      return `<section class="dbp-page"><h1>${page.name}</h1></section>`;
+    }
+    function wirePage(page) {
+      if (page.id === 'people') {
+        const body = stub.querySelector('[data-dbp-body]');
+        const paint = (state = 'ready') => {
+          if (state === 'loading') {
+            body.innerHTML = `<div class="dbp-state"><p>Loading…</p><div class="dbp-skel"></div><div class="dbp-skel"></div></div>`;
+            return;
+          }
+          if (state === 'empty') {
+            body.innerHTML = `<div class="dbp-state"><p>Nothing here yet.</p></div>`;
+            return;
+          }
+          if (state === 'error') {
+            body.innerHTML = `<div class="dbp-state"><p>Could not load.</p><button type="button" class="dbp-btn" data-retry>Retry</button></div>`;
+            stub.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+            return;
+          }
+          body.innerHTML = `<div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Noor Abbasi</strong><span class="dbp-chip">Owner</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Kai Lindgren</strong><span class="dbp-chip">Admin</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Marta Ruiz</strong><span class="dbp-chip">Member</span></div></article></div>`;
+        };
+        paint('ready');
+        const tabs = stub.querySelector('[data-dbp-tabs]');
+        tabs?.addEventListener('click', (e) => {
+          const b = e.target.closest('button[data-v]'); if (!b) return;
+          tabs.querySelectorAll('button[data-v]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+          paint(b.dataset.v);
+        });
+      }
+      stub.querySelector('[data-dbp-action]')?.addEventListener('click', () => toast(page.name + ' · sample'));
+      stub.querySelector('[data-save-settings], [data-dbp-action]')?.addEventListener('click', () => {});
+    }
+    document.querySelectorAll('a[href]').forEach((a) => {
+      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+      if (!label) return;
+      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
+        || (label === 'home' && p.id === 'overview')
+        || (label === 'dashboard' && p.id === 'overview'));
+      if (hit) a.setAttribute('href', '#/' + hit.id);
+    });
+    // map common rail buttons if present
+    document.querySelectorAll('[data-rail] button[data-v]').forEach((b) => {
+      const map = { home: 'overview', climate: 'rooms', fan: 'devices', eco: 'energy', settings: 'settings' };
+      const id = map[b.dataset.v] || b.dataset.v;
+      if (PAGES.some((p) => p.id === id)) {
+        b.addEventListener('click', () => { location.hash = '#/' + id; });
+      }
+    });
+    if (window.DB?.onVisible) {
+      window.DB.onVisible(root, (visible) => {
+        document.documentElement.dataset.motionPaused = visible ? '' : '1';
+      });
+    }
+    if (!window.DB || typeof window.DB.route !== 'function') {
+      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+      return;
+    }
+    const seen = new Set();
+    window.DB.route(PAGES, (id, page) => {
+      if (id === PAGES[0].id) {
+        setOverviewVisible(true);
+        if (!seen.has('overview')) {
+          seen.add('overview');
+          document.querySelectorAll('.kp-reveal, .dbp-reveal').forEach((el, i) => {
+            el.style.setProperty('--reveal-delay', (reduce ? 0 : 40 * i) + 'ms');
+            el.classList.add('kp-reveal-in', 'dbp-reveal-in');
+          });
+        }
+      } else {
+        setOverviewVisible(false);
+        stub.innerHTML = pageHtml(page);
+        wirePage(page);
+      }
+      seen.add(id);
+    });
+  })();
+/* === /DB multipage polish === */
   document.documentElement.dataset.ready = 'true'; // contract: tells dashboards-check.mjs the script ran to the end
 })();

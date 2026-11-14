@@ -182,7 +182,7 @@
 
   function renderDual() {
     const [a, b] = RANGES[range].dual;
-    const pct = (parts) => parts.reduce((s, p) => s + p.value, 0);
+    const pct = (parts) => parts.reduce((s, p) => s + (p.v ?? p.value ?? 0), 0);
     $('[data-dual]').innerHTML = [a, b].map((parts, i) => {
       const label = i === 0 ? 'Channels' : 'Devices';
       const top = parts.slice().sort((x, y) => y.v - x.v)[0];
@@ -306,5 +306,150 @@
   $('[data-q]').addEventListener('input', renderFeed);
 
   renderAll();
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'reports', name: 'Reports', pattern: 'Report' },
+    { id: 'segments', name: 'Segments', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const SEGMENTS = [
+    { name: 'Organic', share: 42 },
+    { name: 'Paid', share: 28 },
+    { name: 'Referral', share: 18 },
+    { name: 'Direct', share: 12 },
+  ];
+
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+  function pageHtml(page) {
+    if (page.id === 'reports') {
+      return `<section class="du-page" aria-labelledby="p-h">
+        <h1 id="p-h">Reports</h1>
+        <p class="du-page-lead">Exportable snapshots for the selected window. Sample data · fictional.</p>
+        <div class="du-page-grid">
+          <article class="du-card"><div class="du-row"><span>Traffic mix PDF</span><button type="button" data-export="mix">Export</button></div></article>
+          <article class="du-card"><div class="du-row"><span>Share well CSV</span><button type="button" data-export="well">Export</button></div></article>
+          <article class="du-card"><div class="du-row"><span>Signal grid PNG</span><button type="button" data-export="quad">Export</button></div></article>
+        </div>
+        <button type="button" data-refresh style="min-height:44px;padding:0 16px;border:0;border-radius:999px;background:var(--accent);color:var(--accent-fg);font-weight:600">Refresh reports</button>
+        <div data-report-body></div>
+      </section>`;
+    }
+    if (page.id === 'segments') {
+      return `<section class="du-page" aria-labelledby="p-h">
+        <h1 id="p-h">Segments</h1>
+        <p class="du-page-lead">Channel shares for the active range.</p>
+        <label class="du-row">Search <input data-seg-q type="search" placeholder="Filter segments" style="min-height:44px;padding:0 12px;border-radius:12px;border:0;background:var(--surface-2);box-shadow:var(--neo-in)"></label>
+        <div class="du-page-grid" data-seg-list></div>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="du-page" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="du-page-lead">Panel density for Dune. Nothing is saved in this demo.</p>
+        <form class="du-card" data-settings onsubmit="return false">
+          <label class="du-row">Default range
+            <select name="range" style="min-height:44px;border-radius:12px;border:0;background:var(--surface);padding:0 10px;box-shadow:var(--neo-in)">
+              <option value="24">24h</option><option value="48">48h</option><option value="72">72h</option>
+            </select>
+          </label>
+          <label class="du-row">Clay depth <button type="button" data-depth aria-pressed="true">Deep</button></label>
+          <p class="du-error" data-form-err hidden style="color:#b42318;margin-top:8px">Pick a default range.</p>
+          <button type="submit" style="margin-top:12px;min-height:44px;padding:0 16px;border:0;border-radius:999px;background:var(--accent);color:var(--accent-fg);font-weight:600">Save prefs</button>
+        </form>
+      </section>`;
+    }
+    return `<section class="du-page"><h1>${page.name}</h1><p class="du-page-lead">Sample data · fictional</p></section>`;
+  }
+  function wirePage(host, page) {
+    if (page.id === 'reports') {
+      host.querySelectorAll('[data-export]').forEach((btn) => {
+        btn.addEventListener('click', () => toast(`Exported ${btn.dataset.export} (sample)`));
+      });
+      host.querySelector('[data-refresh]')?.addEventListener('click', () => {
+        const body = host.querySelector('[data-report-body]');
+        body.innerHTML = `<div class="du-loading" role="status"><p>Building report pack…</p><div class="du-skel"></div><div class="du-skel"></div></div>`;
+        setTimeout(() => { body.innerHTML = ''; toast('Reports ready (sample)'); }, reduce ? 0 : 650);
+      });
+    }
+    if (page.id === 'segments') {
+      const list = host.querySelector('[data-seg-list]');
+      const paint = (q = '') => {
+        const rows = SEGMENTS.filter((s) => !q || s.name.toLowerCase().includes(q));
+        if (!rows.length) {
+          list.innerHTML = `<div class="du-empty"><p>No segments match.</p></div>`;
+          return;
+        }
+        list.innerHTML = rows.map((s) => `<article class="du-card"><div class="du-row"><strong>${s.name}</strong><span class="num">${s.share}%</span></div></article>`).join('');
+      };
+      paint();
+      host.querySelector('[data-seg-q]')?.addEventListener('input', (e) => paint(e.target.value.trim().toLowerCase()));
+    }
+    if (page.id === 'settings') {
+      const form = host.querySelector('[data-settings]');
+      const depth = host.querySelector('[data-depth]');
+      depth?.addEventListener('click', () => {
+        const on = depth.getAttribute('aria-pressed') !== 'true';
+        depth.setAttribute('aria-pressed', String(on));
+        depth.textContent = on ? 'Deep' : 'Flat';
+        toast(on ? 'Clay depth on' : 'Clay depth off');
+      });
+      form?.addEventListener('submit', () => {
+        const err = host.querySelector('[data-form-err]');
+        if (!form.range.value) { err.hidden = false; return; }
+        err.hidden = true;
+        toast(`Default range ${form.range.value}h saved`);
+      });
+    }
+  }
+
+  window.DB.route(PAGES, (id, page) => {
+    const isOverview = id === 'overview';
+    overview.hidden = !isOverview;
+    const host = ensureStub();
+    host.hidden = isOverview;
+    if (!isOverview) {
+      host.innerHTML = pageHtml(page);
+      wirePage(host, page);
+    } else if (!reduce) {
+      $$('.du-panel', overview).forEach((p, i) => {
+        p.style.opacity = '0';
+        p.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+          p.style.transition = 'opacity 220ms ease, transform 220ms ease';
+          p.style.opacity = '1';
+          p.style.transform = 'none';
+        }, 40 * i);
+      });
+    }
+  });
+
+  const wave = $('[data-wave]');
+  if (wave && window.DB?.onVisible) {
+    window.DB.onVisible(wave, (vis) => {
+      const svg = wave.querySelector('svg');
+      if (svg) svg.style.animationPlayState = vis && !reduce ? 'running' : 'paused';
+    });
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

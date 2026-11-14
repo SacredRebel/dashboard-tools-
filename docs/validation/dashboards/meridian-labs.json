@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/meridian-labs/",
+      "url": "/dashboards/meridian-labs/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/meridian-labs/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/meridian-labs",
+      "url": "/dashboards/meridian-labs#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/meridian-labs/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/meridian-labs/index.html",
+      "url": "/dashboards/meridian-labs/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/meridian-labs/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/meridian-labs/",
+      "url": "/dashboards/meridian-labs/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/meridian-labs/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/meridian-labs/?variant=citrus",
+      "url": "/dashboards/meridian-labs/?variant=citrus#/overview",
       "width": 1440,
       "variant": "citrus",
       "final_path": "/dashboards/meridian-labs/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/meridian-labs/?variant=night",
+      "url": "/dashboards/meridian-labs/?variant=night#/overview",
       "width": 1440,
       "variant": "night",
       "final_path": "/dashboards/meridian-labs/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=citrus#/overview",
+      "width": 1440,
+      "variant": "citrus",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=citrus#/overview",
+      "width": 375,
+      "variant": "citrus",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=night#/overview",
+      "width": 1440,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=night#/overview",
+      "width": 375,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/#/vitals",
+      "width": 1440,
+      "variant": "default",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/#/vitals",
+      "width": 375,
+      "variant": "default",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=citrus#/vitals",
+      "width": 1440,
+      "variant": "citrus",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=citrus#/vitals",
+      "width": 375,
+      "variant": "citrus",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=night#/vitals",
+      "width": 1440,
+      "variant": "night",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=night#/vitals",
+      "width": 375,
+      "variant": "night",
+      "page": "vitals",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/#/appointments",
+      "width": 1440,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/#/appointments",
+      "width": 375,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=citrus#/appointments",
+      "width": 1440,
+      "variant": "citrus",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=citrus#/appointments",
+      "width": 375,
+      "variant": "citrus",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=night#/appointments",
+      "width": 1440,
+      "variant": "night",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=night#/appointments",
+      "width": 375,
+      "variant": "night",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/#/records",
+      "width": 1440,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/#/records",
+      "width": 375,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=citrus#/records",
+      "width": 1440,
+      "variant": "citrus",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=citrus#/records",
+      "width": 375,
+      "variant": "citrus",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=night#/records",
+      "width": 1440,
+      "variant": "night",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=night#/records",
+      "width": 375,
+      "variant": "night",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=citrus#/settings",
+      "width": 1440,
+      "variant": "citrus",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=citrus#/settings",
+      "width": 375,
+      "variant": "citrus",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=night#/settings",
+      "width": 1440,
+      "variant": "night",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/meridian-labs/?variant=night#/settings",
+      "width": 375,
+      "variant": "night",
+      "page": "settings",
       "errors": []
     },
     {

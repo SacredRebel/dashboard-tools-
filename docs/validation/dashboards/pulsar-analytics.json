@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/pulsar-analytics/",
+      "url": "/dashboards/pulsar-analytics/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/pulsar-analytics/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pulsar-analytics",
+      "url": "/dashboards/pulsar-analytics#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/pulsar-analytics/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pulsar-analytics/index.html",
+      "url": "/dashboards/pulsar-analytics/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/pulsar-analytics/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pulsar-analytics/",
+      "url": "/dashboards/pulsar-analytics/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/pulsar-analytics/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pulsar-analytics/?variant=ember",
+      "url": "/dashboards/pulsar-analytics/?variant=ember#/overview",
       "width": 1440,
       "variant": "ember",
       "final_path": "/dashboards/pulsar-analytics/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pulsar-analytics/?variant=daylight",
+      "url": "/dashboards/pulsar-analytics/?variant=daylight#/overview",
       "width": 1440,
       "variant": "daylight",
       "final_path": "/dashboards/pulsar-analytics/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=ember#/overview",
+      "width": 1440,
+      "variant": "ember",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=ember#/overview",
+      "width": 375,
+      "variant": "ember",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=daylight#/overview",
+      "width": 1440,
+      "variant": "daylight",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=daylight#/overview",
+      "width": 375,
+      "variant": "daylight",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/#/traffic",
+      "width": 1440,
+      "variant": "default",
+      "page": "traffic",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/#/traffic",
+      "width": 375,
+      "variant": "default",
+      "page": "traffic",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=ember#/traffic",
+      "width": 1440,
+      "variant": "ember",
+      "page": "traffic",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=ember#/traffic",
+      "width": 375,
+      "variant": "ember",
+      "page": "traffic",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=daylight#/traffic",
+      "width": 1440,
+      "variant": "daylight",
+      "page": "traffic",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=daylight#/traffic",
+      "width": 375,
+      "variant": "daylight",
+      "page": "traffic",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/#/events",
+      "width": 1440,
+      "variant": "default",
+      "page": "events",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/#/events",
+      "width": 375,
+      "variant": "default",
+      "page": "events",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=ember#/events",
+      "width": 1440,
+      "variant": "ember",
+      "page": "events",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=ember#/events",
+      "width": 375,
+      "variant": "ember",
+      "page": "events",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=daylight#/events",
+      "width": 1440,
+      "variant": "daylight",
+      "page": "events",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=daylight#/events",
+      "width": 375,
+      "variant": "daylight",
+      "page": "events",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/#/regions",
+      "width": 1440,
+      "variant": "default",
+      "page": "regions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/#/regions",
+      "width": 375,
+      "variant": "default",
+      "page": "regions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=ember#/regions",
+      "width": 1440,
+      "variant": "ember",
+      "page": "regions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=ember#/regions",
+      "width": 375,
+      "variant": "ember",
+      "page": "regions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=daylight#/regions",
+      "width": 1440,
+      "variant": "daylight",
+      "page": "regions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pulsar-analytics/?variant=daylight#/regions",
+      "width": 375,
+      "variant": "daylight",
+      "page": "regions",
       "errors": []
     },
     {

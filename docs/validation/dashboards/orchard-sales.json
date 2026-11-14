@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/orchard-sales/",
+      "url": "/dashboards/orchard-sales/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/orchard-sales/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/orchard-sales",
+      "url": "/dashboards/orchard-sales#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/orchard-sales/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/orchard-sales/index.html",
+      "url": "/dashboards/orchard-sales/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/orchard-sales/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/orchard-sales/",
+      "url": "/dashboards/orchard-sales/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/orchard-sales/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/orchard-sales/?variant=citrus",
+      "url": "/dashboards/orchard-sales/?variant=citrus#/overview",
       "width": 1440,
       "variant": "citrus",
       "final_path": "/dashboards/orchard-sales/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/orchard-sales/?variant=graphite",
+      "url": "/dashboards/orchard-sales/?variant=graphite#/overview",
       "width": 1440,
       "variant": "graphite",
       "final_path": "/dashboards/orchard-sales/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=citrus#/overview",
+      "width": 1440,
+      "variant": "citrus",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=citrus#/overview",
+      "width": 375,
+      "variant": "citrus",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=graphite#/overview",
+      "width": 1440,
+      "variant": "graphite",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=graphite#/overview",
+      "width": 375,
+      "variant": "graphite",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/#/pipeline",
+      "width": 1440,
+      "variant": "default",
+      "page": "pipeline",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/#/pipeline",
+      "width": 375,
+      "variant": "default",
+      "page": "pipeline",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=citrus#/pipeline",
+      "width": 1440,
+      "variant": "citrus",
+      "page": "pipeline",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=citrus#/pipeline",
+      "width": 375,
+      "variant": "citrus",
+      "page": "pipeline",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=graphite#/pipeline",
+      "width": 1440,
+      "variant": "graphite",
+      "page": "pipeline",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=graphite#/pipeline",
+      "width": 375,
+      "variant": "graphite",
+      "page": "pipeline",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/#/accounts",
+      "width": 1440,
+      "variant": "default",
+      "page": "accounts",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/#/accounts",
+      "width": 375,
+      "variant": "default",
+      "page": "accounts",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=citrus#/accounts",
+      "width": 1440,
+      "variant": "citrus",
+      "page": "accounts",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=citrus#/accounts",
+      "width": 375,
+      "variant": "citrus",
+      "page": "accounts",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=graphite#/accounts",
+      "width": 1440,
+      "variant": "graphite",
+      "page": "accounts",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=graphite#/accounts",
+      "width": 375,
+      "variant": "graphite",
+      "page": "accounts",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=citrus#/settings",
+      "width": 1440,
+      "variant": "citrus",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=citrus#/settings",
+      "width": 375,
+      "variant": "citrus",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=graphite#/settings",
+      "width": 1440,
+      "variant": "graphite",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orchard-sales/?variant=graphite#/settings",
+      "width": 375,
+      "variant": "graphite",
+      "page": "settings",
       "errors": []
     },
     {

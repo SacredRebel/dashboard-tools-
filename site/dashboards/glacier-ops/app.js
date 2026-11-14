@@ -281,7 +281,8 @@
         <g transform="translate(${ix} ${iy})" style="color:${locked ? 'var(--accent)' : 'var(--text-muted)'}">${lockMark(locked)}</g>`;
     }).join('');
 
-    $('[data-dial]').innerHTML = `<svg viewBox="0 0 400 400" role="img" aria-label="Glacier core dial for ${s.name}, elevation ${s.elev} meters">
+    const dialHost = $('[data-dial]');
+    dialHost.innerHTML = `<svg viewBox="0 0 400 400" role="img" aria-label="Glacier core dial for ${s.name}, elevation ${s.elev} meters">
       <defs>
         <radialGradient id="go-core" cx="50%" cy="42%" r="55%">
           <stop offset="0" style="stop-color:var(--topo-1)"/>
@@ -308,9 +309,10 @@
         <ellipse cx="200" cy="255" rx="70" ry="14" style="fill:var(--accent)" opacity=".12"/>
       </g>
       <circle cx="200" cy="200" r="108" fill="none" style="stroke:var(--accent)" stroke-width="1.5" opacity=".5"/>
-      <text x="200" y="198" text-anchor="middle" fill="var(--text)" font-family="Rajdhani,sans-serif" font-size="28" font-weight="700">${s.elev}</text>
-      <text x="200" y="218" text-anchor="middle" fill="var(--text-muted)" font-family="IBM Plex Sans,sans-serif" font-size="12" letter-spacing="1">m ASL</text>
-    </svg>`;
+          </svg>`;
+    let chip = dialHost.parentElement.querySelector('.go-elevchip');
+    if (!chip) { chip = document.createElement('div'); chip.className = 'go-elevchip'; dialHost.parentElement.appendChild(chip); }
+    chip.innerHTML = `<strong class="num">${s.elev}</strong><span>m ASL</span>`;
     $('[data-dialnote]').textContent = `${s.name} · rim ${rimFocus + 1}/12 ${s.locks[rimFocus] ? 'locked' : 'open'} · ${fmtDate(dayOffset(0), { weekday: 'short', month: 'short', day: 'numeric' })}`;
     $('[data-rim]').innerHTML = s.locks.map((locked, i) =>
       `<button type="button" data-rim-i="${i}" aria-pressed="${i === rimFocus}">${svg(locked ? 'lock' : 'unlock')}${i + 1}</button>`
@@ -359,5 +361,149 @@
   });
 
   renderAll();
+/* === DB multipage polish (auto-upgraded) === */
+  (function wirePages() {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"reports","name":"Reports","pattern":"Report"},{"id":"segments","name":"Segments","pattern":"List"},{"id":"settings","name":"Settings","pattern":"Settings"}];
+    const root = document.querySelector('[data-db-app]') || document.body;
+    let toastEl = document.querySelector('[data-toast]');
+    if (!toastEl) {
+      toastEl = document.createElement('div');
+      toastEl.className = 'dbp-toast';
+      toastEl.setAttribute('data-toast', '');
+      toastEl.hidden = true;
+      toastEl.setAttribute('role', 'status');
+      toastEl.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toastEl);
+    }
+    function toast(msg) {
+      toastEl.textContent = msg; toastEl.hidden = false;
+      clearTimeout(toast._id); toast._id = setTimeout(() => { toastEl.hidden = true; }, 2200);
+    }
+    const main = document.querySelector('main') || document.body;
+    let stub = document.querySelector('[data-db-stub]');
+    if (!stub) {
+      stub = document.createElement('section');
+      stub.setAttribute('data-db-stub', '');
+      stub.hidden = true;
+      stub.setAttribute('aria-live', 'polite');
+      main.appendChild(stub);
+    }
+    function setOverviewVisible(on) {
+      [...main.children].forEach((ch) => {
+        if (ch === stub) return;
+        if (on) { ch.hidden = false; ch.removeAttribute('data-db-overview-hide'); }
+        else { ch.hidden = true; ch.setAttribute('data-db-overview-hide', ''); }
+      });
+      stub.hidden = on;
+    }
+    function pageHtml(page) {
+
+    if (page.id === 'reports') {
+      return `<section class="dbp-page" data-db-page="reports" aria-labelledby="p-h">
+        <h1 id="p-h">Reports</h1>
+        <p class="dbp-lead">Sample data · fictional.</p>
+        <div class="dbp-seg" role="group" aria-label="Reports state" data-dbp-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-dbp-body></div>
+      </section>`;
+    }
+    if (page.id === 'segments') {
+      return `<section class="dbp-page" data-db-page="segments" aria-labelledby="p-h">
+        <h1 id="p-h">Segments</h1>
+        <p class="dbp-lead">Sample data · fictional.</p>
+        <div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Critical</strong><span class="dbp-chip">2</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Warn</strong><span class="dbp-chip">5</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Info</strong><span class="dbp-chip">11</span></div></article></div>
+        <button type="button" class="dbp-btn" data-dbp-action>Open segments</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="dbp-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="dbp-lead">Sample data · fictional.</p>
+        <div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Units</strong><span class="dbp-chip">Celsius</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Eco mode</strong><span class="dbp-chip">On</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Alerts</strong><span class="dbp-chip">Push</span></div></article></div>
+        <button type="button" class="dbp-btn" data-dbp-action>Open settings</button>
+      </section>`;
+    }
+      return `<section class="dbp-page"><h1>${page.name}</h1></section>`;
+    }
+    function wirePage(page) {
+      if (page.id === 'reports') {
+        const body = stub.querySelector('[data-dbp-body]');
+        const paint = (state = 'ready') => {
+          if (state === 'loading') {
+            body.innerHTML = `<div class="dbp-state"><p>Loading…</p><div class="dbp-skel"></div><div class="dbp-skel"></div></div>`;
+            return;
+          }
+          if (state === 'empty') {
+            body.innerHTML = `<div class="dbp-state"><p>Nothing here yet.</p></div>`;
+            return;
+          }
+          if (state === 'error') {
+            body.innerHTML = `<div class="dbp-state"><p>Could not load.</p><button type="button" class="dbp-btn" data-retry>Retry</button></div>`;
+            stub.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+            return;
+          }
+          body.innerHTML = `<div class="dbp-grid"><article class="dbp-card"><div class="dbp-row"><strong>Incidents</strong><span class="dbp-chip">4</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>MTTR</strong><span class="dbp-chip">18m</span></div></article><article class="dbp-card"><div class="dbp-row"><strong>Open</strong><span class="dbp-chip">1</span></div></article></div>`;
+        };
+        paint('ready');
+        const tabs = stub.querySelector('[data-dbp-tabs]');
+        tabs?.addEventListener('click', (e) => {
+          const b = e.target.closest('button[data-v]'); if (!b) return;
+          tabs.querySelectorAll('button[data-v]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+          paint(b.dataset.v);
+        });
+      }
+      stub.querySelector('[data-dbp-action]')?.addEventListener('click', () => toast(page.name + ' · sample'));
+      stub.querySelector('[data-save-settings], [data-dbp-action]')?.addEventListener('click', () => {});
+    }
+    document.querySelectorAll('a[href]').forEach((a) => {
+      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+      if (!label) return;
+      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
+        || (label === 'home' && p.id === 'overview')
+        || (label === 'dashboard' && p.id === 'overview'));
+      if (hit) a.setAttribute('href', '#/' + hit.id);
+    });
+    // map common rail buttons if present
+    document.querySelectorAll('[data-rail] button[data-v]').forEach((b) => {
+      const map = { home: 'overview', climate: 'rooms', fan: 'devices', eco: 'energy', settings: 'settings' };
+      const id = map[b.dataset.v] || b.dataset.v;
+      if (PAGES.some((p) => p.id === id)) {
+        b.addEventListener('click', () => { location.hash = '#/' + id; });
+      }
+    });
+    if (window.DB?.onVisible) {
+      window.DB.onVisible(root, (visible) => {
+        document.documentElement.dataset.motionPaused = visible ? '' : '1';
+      });
+    }
+    if (!window.DB || typeof window.DB.route !== 'function') {
+      console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+      return;
+    }
+    const seen = new Set();
+    window.DB.route(PAGES, (id, page) => {
+      if (id === PAGES[0].id) {
+        setOverviewVisible(true);
+        if (!seen.has('overview')) {
+          seen.add('overview');
+          document.querySelectorAll('.go-reveal, .dbp-reveal').forEach((el, i) => {
+            el.style.setProperty('--reveal-delay', (reduce ? 0 : 40 * i) + 'ms');
+            el.classList.add('go-reveal-in', 'dbp-reveal-in');
+          });
+        }
+      } else {
+        setOverviewVisible(false);
+        stub.innerHTML = pageHtml(page);
+        wirePage(page);
+      }
+      seen.add(id);
+    });
+  })();
+/* === /DB multipage polish === */
   document.documentElement.dataset.ready = 'true';
 })();

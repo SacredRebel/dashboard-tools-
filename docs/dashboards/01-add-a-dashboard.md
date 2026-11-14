@@ -39,10 +39,14 @@ site/dashboards/<id>/
   app.js       ← sample data, icons, code-drawn art, interactions (optional but usual)
   thumb.jpg      ← generated in step 6 (720×450 gallery card), never hand-made
   shot.jpg       ← generated in step 6 (1440×900 recreation screenshot), never hand-made
+  shot@2x.jpg    ← generated in step 6 (1440×900 @ 2× DPR)
+  frames/        ← desktop/tablet/phone + pages/<page>.jpg from dashboards-check
   reference.jpg  ← (or .png) the owner's original reference image, copied in for 1:1 comparison
 ```
 
-Working copies of owner-supplied references live in `inputs/dashboards/` (gitignored while building). When the owner asks to keep them in the gallery, copy each into `site/dashboards/<id>/reference.jpg` (or `.png`) and set `"reference": "reference.jpg"` on the catalog entry. The gallery detail then toggles **Live** vs **Original reference**. `shot.jpg` stays as a QA capture from `dashboards-check` — it is not shown in the gallery UI.
+Working copies of owner-supplied references live in `inputs/dashboards/` (gitignored while building). When the owner asks to keep them in the gallery, copy each into `site/dashboards/<id>/reference.jpg` (or `.png`) and set `"reference": "reference.jpg"` on the catalog entry. The gallery detail toggles **Live** / **Original reference** / **Compare** (A/B slider). `shot.jpg` is a QA capture — not a separate gallery tab.
+
+**Multi-page:** every dashboard is a small app with ≥3 hash routes (`#/overview`, …) via `DB.route(pages, render)` in `../_shared/frame.js`. Catalog `pages` lists them (first id must be `overview`). Nav links use `#/<page-id>`. No extra HTML files.
 
 ### index.html skeleton (copy and adapt)
 

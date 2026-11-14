@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/forge-fitness/",
+      "url": "/dashboards/forge-fitness/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/forge-fitness/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/forge-fitness",
+      "url": "/dashboards/forge-fitness#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/forge-fitness/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/forge-fitness/index.html",
+      "url": "/dashboards/forge-fitness/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/forge-fitness/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/forge-fitness/",
+      "url": "/dashboards/forge-fitness/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/forge-fitness/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/forge-fitness/?variant=ember",
+      "url": "/dashboards/forge-fitness/?variant=ember#/overview",
       "width": 1440,
       "variant": "ember",
       "final_path": "/dashboards/forge-fitness/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/forge-fitness/?variant=ice",
+      "url": "/dashboards/forge-fitness/?variant=ice#/overview",
       "width": 1440,
       "variant": "ice",
       "final_path": "/dashboards/forge-fitness/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ember#/overview",
+      "width": 1440,
+      "variant": "ember",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ember#/overview",
+      "width": 375,
+      "variant": "ember",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ice#/overview",
+      "width": 1440,
+      "variant": "ice",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ice#/overview",
+      "width": 375,
+      "variant": "ice",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/#/activity",
+      "width": 1440,
+      "variant": "default",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/#/activity",
+      "width": 375,
+      "variant": "default",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ember#/activity",
+      "width": 1440,
+      "variant": "ember",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ember#/activity",
+      "width": 375,
+      "variant": "ember",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ice#/activity",
+      "width": 1440,
+      "variant": "ice",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ice#/activity",
+      "width": 375,
+      "variant": "ice",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/#/sessions",
+      "width": 1440,
+      "variant": "default",
+      "page": "sessions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/#/sessions",
+      "width": 375,
+      "variant": "default",
+      "page": "sessions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ember#/sessions",
+      "width": 1440,
+      "variant": "ember",
+      "page": "sessions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ember#/sessions",
+      "width": 375,
+      "variant": "ember",
+      "page": "sessions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ice#/sessions",
+      "width": 1440,
+      "variant": "ice",
+      "page": "sessions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ice#/sessions",
+      "width": 375,
+      "variant": "ice",
+      "page": "sessions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/#/history",
+      "width": 1440,
+      "variant": "default",
+      "page": "history",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/#/history",
+      "width": 375,
+      "variant": "default",
+      "page": "history",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ember#/history",
+      "width": 1440,
+      "variant": "ember",
+      "page": "history",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ember#/history",
+      "width": 375,
+      "variant": "ember",
+      "page": "history",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ice#/history",
+      "width": 1440,
+      "variant": "ice",
+      "page": "history",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ice#/history",
+      "width": 375,
+      "variant": "ice",
+      "page": "history",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ember#/settings",
+      "width": 1440,
+      "variant": "ember",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ember#/settings",
+      "width": 375,
+      "variant": "ember",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ice#/settings",
+      "width": 1440,
+      "variant": "ice",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/forge-fitness/?variant=ice#/settings",
+      "width": 375,
+      "variant": "ice",
+      "page": "settings",
       "errors": []
     },
     {

@@ -1,21 +1,11 @@
 {
   "id": "orbit-clay",
   "checked": "2026-11-14",
-  "ok": false,
+  "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/orbit-clay/",
-      "width": 1440,
-      "variant": "default",
-      "final_path": "/dashboards/orbit-clay/",
-      "overflow_px": 0,
-      "errors": [
-        "low contrast 2.18:1 (needs 4.5) \"Sample data · fictional · Orbit \" 12px, text rgb(92, 116, 104) on ~rgb(31, 57, 45) at x631 y873"
-      ]
-    },
-    {
-      "url": "/dashboards/orbit-clay",
+      "url": "/dashboards/orbit-clay/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/orbit-clay/",
@@ -23,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/orbit-clay/index.html",
+      "url": "/dashboards/orbit-clay#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/orbit-clay/",
@@ -31,31 +21,203 @@
       "errors": []
     },
     {
-      "url": "/dashboards/orbit-clay/",
+      "url": "/dashboards/orbit-clay/index.html#/overview",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/orbit-clay/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/orbit-clay/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 2.13:1 (needs 4.5) \"Sample data · fictional · Orbit \" 12px, text rgb(92, 116, 104) on ~rgb(194, 166, 128) at x98 y1592"
-      ]
+      "errors": []
     },
     {
-      "url": "/dashboards/orbit-clay/?variant=moss",
+      "url": "/dashboards/orbit-clay/?variant=moss#/overview",
       "width": 1440,
       "variant": "moss",
       "final_path": "/dashboards/orbit-clay/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 2.27:1 (needs 4.5) \"Sample data · fictional · Orbit \" 12px, text rgb(81, 104, 92) on ~rgb(168, 184, 154) at x631 y873"
-      ]
+      "errors": []
     },
     {
-      "url": "/dashboards/orbit-clay/?variant=dusk",
+      "url": "/dashboards/orbit-clay/?variant=dusk#/overview",
       "width": 1440,
       "variant": "dusk",
       "final_path": "/dashboards/orbit-clay/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=moss#/overview",
+      "width": 1440,
+      "variant": "moss",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=moss#/overview",
+      "width": 375,
+      "variant": "moss",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=dusk#/overview",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=dusk#/overview",
+      "width": 375,
+      "variant": "dusk",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/#/library",
+      "width": 1440,
+      "variant": "default",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/#/library",
+      "width": 375,
+      "variant": "default",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=moss#/library",
+      "width": 1440,
+      "variant": "moss",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=moss#/library",
+      "width": 375,
+      "variant": "moss",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=dusk#/library",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=dusk#/library",
+      "width": 375,
+      "variant": "dusk",
+      "page": "library",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/#/activity",
+      "width": 1440,
+      "variant": "default",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/#/activity",
+      "width": 375,
+      "variant": "default",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=moss#/activity",
+      "width": 1440,
+      "variant": "moss",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=moss#/activity",
+      "width": 375,
+      "variant": "moss",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=dusk#/activity",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=dusk#/activity",
+      "width": 375,
+      "variant": "dusk",
+      "page": "activity",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=moss#/settings",
+      "width": 1440,
+      "variant": "moss",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=moss#/settings",
+      "width": 375,
+      "variant": "moss",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=dusk#/settings",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/orbit-clay/?variant=dusk#/settings",
+      "width": 375,
+      "variant": "dusk",
+      "page": "settings",
       "errors": []
     },
     {

@@ -1,8 +1,30 @@
-/* Ember Rooms: soft neumorphic lighting console with pendant lamp, rooms, charts and video-sim.
+/* Ember Rooms: soft neumorphic lighting console — pendant photo, rooms, charts, multipage.
    All data is fictional sample data. No timers, no network. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = $('[data-db-app]') || document.body;
+
+  function toast(msg) {
+    const t = $('[data-toast]');
+    if (!t) return;
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._id);
+    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
+  }
+  function countUp(el, to, { duration = 700, format = (n) => String(Math.round(n)) } = {}) {
+    if (!el) return;
+    if (reduce) { el.textContent = format(to); return; }
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
   const ICON = {
     home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
     bulb: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.900c.600.5 1 1.2 1 2.100h5c0-.900.4-1.6 1-2.100A6 6 0 0 0 12 3z"/>',
@@ -22,7 +44,7 @@
     pause: '<path d="M8 5v14M16 5v14"/>',
   };
   const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+  const paintIcons = (rootEl = document) => $$('[data-icon]', rootEl).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
   const fmtNum = (v) => v.toLocaleString('en-US');
   const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
   const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
@@ -34,7 +56,6 @@
     const ticks = []; for (let v = min; v <= max + step / 1e6; v += step) ticks.push(+v.toFixed(6));
     return { min, max, ticks };
   }
-  // segmented control / tabs: buttons carry data-v, the pressed one gets aria-pressed="true"
   function seg(group, onChange) {
     group.addEventListener('click', (e) => {
       const b = e.target.closest('button[data-v]'); if (!b) return;
@@ -42,7 +63,7 @@
       onChange(b.dataset.v, b);
     });
   }
-  function smooth(pts) { // Catmull-Rom to cubic Bezier
+  function smooth(pts) {
     let p = `M${pts[0][0]},${pts[0][1]}`;
     for (let i = 0; i < pts.length - 1; i++) {
       const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
@@ -51,8 +72,6 @@
     return p;
   }
   let chartId = 0;
-  // Line / area chart: SVG draws the shape, HTML labels sit over it (so text never scales), hover and focus show values.
-  // o: { labels, series: [{ name, color: '--chart-1', values, fill, dash }], fmt, h, label, curve, dots, min, max, ticks, step }
   function lineChart(el, o) {
     const fmt = o.fmt || fmtNum, n = o.labels.length, W = 600, H = 200;
     const { min, max, ticks } = scale(o.series.flatMap((s) => s.values), o);
@@ -83,14 +102,12 @@
     $$('.er-hit button', el).forEach((b, i) => { b.addEventListener('mouseenter', () => show(i)); b.addEventListener('focus', () => show(i)); b.addEventListener('blur', () => show(-1)); if (o.onPick) b.addEventListener('click', () => o.onPick(i)); });
     $('.er-hit', el).addEventListener('mouseleave', () => show(-1));
   }
-  // Arc gauge. Angles in degrees, 0 = up, clockwise. Returns an SVG string with a track and a value arc.
   const polar = (cx, cy, r, deg) => [cx + r * Math.sin((deg * Math.PI) / 180), cy - r * Math.cos((deg * Math.PI) / 180)];
   const arcPath = (cx, cy, r, a0, a1) => { const [x0, y0] = polar(cx, cy, r, a0), [x1, y1] = polar(cx, cy, r, a1); return `M${x0.toFixed(2)},${y0.toFixed(2)} A${r},${r} 0 ${Math.abs(a1 - a0) > 180 ? 1 : 0} ${a1 > a0 ? 1 : 0} ${x1.toFixed(2)},${y1.toFixed(2)}`; };
   function arcGauge(pct, { size = 160, w = 12, from = -120, to = 120, color = '--accent', knob = false } = {}) {
     const c = size / 2, r = (size - w) / 2 - (knob ? 4 : 0), end = from + (to - from) * Math.max(0, Math.min(1, pct)), [kx, ky] = polar(c, c, r, end);
     return `<svg viewBox="0 0 ${size} ${size}" aria-hidden="true"><path class="track" d="${arcPath(c, c, r, from, to)}" fill="none" stroke-width="${w}" stroke-linecap="round"/><path d="${arcPath(c, c, r, from, Math.max(end, from + 0.01))}" fill="none" stroke-width="${w}" stroke-linecap="round" style="stroke:var(${color})"/>${knob ? `<circle class="knob" cx="${kx.toFixed(2)}" cy="${ky.toFixed(2)}" r="${w * 0.75}"/>` : ''}</svg>`;
   }
-  // Tiny trend line. Returns an SVG string; stretches to its box.
   function spark(vals, { color = '--chart-1', fill = 0.25, w = 120, h = 36 } = {}) {
     const mn = Math.min(...vals), mx = Math.max(...vals), pts = vals.map((v, i) => [(i / (vals.length - 1)) * w, h - 3 - ((v - mn) / (mx - mn || 1)) * (h - 6)]);
     const d = 'M' + pts.map((p) => p.map((n) => n.toFixed(1)).join(',')).join(' L'), id = `er-s${++sparkId}`;
@@ -100,15 +117,21 @@
   paintIcons();
 
   const ROOMS = [
-    { id: 'living', label: 'LR', name: 'Living Room', icon: 'home', on: 7, total: 12, angle: -90 },
-    { id: 'kitchen', label: 'KT', name: 'Kitchen', icon: 'flame', on: 4, total: 6, angle: -30 },
-    { id: 'bed', label: 'BR', name: 'Bedroom', icon: 'moon', on: 2, total: 4, angle: 25 },
-    { id: 'study', label: 'ST', name: 'Study', icon: 'book', on: 3, total: 5, angle: 80 },
-    { id: 'bath', label: 'BA', name: 'Bath', icon: 'drop', on: 1, total: 3, angle: 145 },
-    { id: 'hall', label: 'HL', name: 'Hall', icon: 'door', on: 5, total: 8, angle: -145 },
+    { id: 'living', label: 'LR', name: 'Living Room', on: 7, total: 12, angle: -90, devices: 6 },
+    { id: 'kitchen', label: 'KT', name: 'Kitchen', on: 4, total: 6, angle: -30, devices: 5 },
+    { id: 'bed', label: 'BR', name: 'Bedroom', on: 2, total: 4, angle: 25, devices: 4 },
+    { id: 'study', label: 'ST', name: 'Study', on: 3, total: 5, angle: 80, devices: 3 },
+    { id: 'bath', label: 'BA', name: 'Bath', on: 1, total: 3, angle: 145, devices: 2 },
+    { id: 'hall', label: 'HL', name: 'Hall', on: 5, total: 8, angle: -145, devices: 3 },
   ];
-  // flame/moon/book/drop/door may not all be in kit list — use only declared icons for paintIcons;
-  // room buttons get inline svg() calls with icons we listed OR we extend the kit list.
+  const DEVICES = [
+    { n: 'Pendant cluster', s: 'Living · dimmable', on: true },
+    { n: 'Under-cabinet strip', s: 'Kitchen · warm', on: true },
+    { n: 'Bedside pair', s: 'Bedroom · scene', on: false },
+    { n: 'Desk task lamp', s: 'Study · cool', on: true },
+    { n: 'Climate dial', s: 'Hall · 23°C', on: true },
+    { n: 'Hall runner', s: 'Hall · night', on: true },
+  ];
 
   const USAGE = {
     day: {
@@ -131,44 +154,27 @@
   let scene = true;
   let startIdx = 0;
   let endIdx = 1;
+  let climate = 23;
   const STARTS = ['7:00 AM', '8:30 AM', '9:00 AM'];
   const ENDS = ['4:30 PM', '6:00 PM', '10:00 PM'];
 
-  // Pendant lamp SVG (signature)
   function renderLamp() {
-    const glow = power ? Math.max(0.15, bright / 100) : 0;
-    $('[data-lamp]').classList.toggle('is-off', !power);
-    $('[data-lamp]').innerHTML = `<svg viewBox="0 0 200 260" aria-hidden="true">
-      <defs>
-        <linearGradient id="er-shade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" style="stop-color:var(--lamp)"/>
-          <stop offset="1" style="stop-color:var(--lamp-2)"/>
-        </linearGradient>
-        <radialGradient id="er-glow" cx="50%" cy="40%" r="50%">
-          <stop offset="0" style="stop-color:var(--accent)" stop-opacity="${(glow * 0.55).toFixed(2)}"/>
-          <stop offset="1" style="stop-color:var(--accent)" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <line x1="100" y1="0" x2="100" y2="48" style="stroke:var(--lamp-2)" stroke-width="3"/>
-      <circle cx="100" cy="8" r="5" style="fill:var(--lamp-2)"/>
-      <ellipse cx="100" cy="200" rx="70" ry="36" fill="url(#er-glow)"/>
-      <path d="M55 55 Q100 48 145 55 L160 120 Q100 155 40 120 Z" fill="url(#er-shade)"/>
-      <path d="M62 58 Q100 52 138 58 L148 110 Q100 136 52 110 Z" fill="var(--surface)" opacity="0.18"/>
-      <ellipse cx="100" cy="55" rx="48" ry="10" style="fill:var(--lamp-2)"/>
-      <path d="M88 120 L92 155 H108 L112 120" style="fill:var(--lamp)" opacity="0.85"/>
-      <ellipse cx="100" cy="158" rx="22" ry="8" style="fill:var(--lamp-2)"/>
-      <ellipse cx="100" cy="168" rx="16" ry="6" style="fill:var(--accent)" opacity="${glow.toFixed(2)}"/>
-      <ellipse cx="100" cy="175" rx="40" ry="14" style="fill:var(--accent)" opacity="${(glow * 0.25).toFixed(2)}"/>
-    </svg>`;
+    const glow = power ? Math.max(0.12, bright / 100) : 0;
+    const lamp = $('[data-lamp]');
+    lamp.classList.toggle('is-off', !power);
+    lamp.style.setProperty('--glow', glow.toFixed(2));
+    const img = $('.er-lampphoto', lamp);
+    if (img) {
+      img.style.filter = power
+        ? `brightness(${0.85 + glow * 0.35}) saturate(${0.9 + glow * 0.2})`
+        : 'brightness(0.7) grayscale(0.35)';
+    }
   }
 
   function placeRooms() {
     const el = $('[data-rooms]');
-    // Use icons from kit + a few extras via svg() only if in ICON — extend kit marker below if needed.
-    // Room dots use letter labels for reliability; icons where available.
     el.innerHTML = ROOMS.map((r, i) => {
       const rad = ((r.angle - 90) * Math.PI) / 180;
-      // place on middle ring (~32% from center → 50% ± 32%)
       const dist = 36;
       const x = 50 + Math.cos(rad) * dist;
       const y = 50 + Math.sin(rad) * dist;
@@ -234,27 +240,16 @@
     }
     err.hidden = true;
     $('[data-live]').textContent = playing ? 'Preview' : 'Live';
-    $('[data-feed]').innerHTML = `<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <rect width="400" height="250" style="fill:var(--room-wall)"/>
-      <rect x="0" y="170" width="400" height="80" style="fill:var(--room-floor)"/>
-      <rect x="40" y="50" width="140" height="90" rx="4" fill="var(--blue)" opacity="0.2"/>
-      <rect x="48" y="58" width="124" height="74" rx="2" fill="var(--surface)" opacity="0.08"/>
-      <path d="M220 120 h120 a12 12 0 0 1 12 12 v38 h-144 v-38 a12 12 0 0 1 12-12z" fill="var(--lamp)" opacity="0.35"/>
-      <rect x="300" y="40" width="8" height="70" rx="2" style="fill:var(--lamp-2)"/>
-      <path d="M280 40 h48 l-8 28 h-32z" style="fill:var(--lamp)"/>
-      <ellipse cx="304" cy="78" rx="36" ry="20" style="fill:var(--accent)" opacity="${power ? 0.25 : 0.05}"/>
-      <rect x="30" y="150" width="50" height="60" rx="4" fill="var(--lamp-2)" opacity="0.4"/>
-    </svg>
-    <p class="er-feed-tag">${r.name}</p>
-    <button type="button" class="er-play" data-play aria-pressed="${playing}" aria-label="${playing ? 'Pause' : 'Play'} room preview">
-      <span></span>
-    </button>`;
+    $('[data-feed]').innerHTML = `
+      <img class="er-feedphoto" src="media/room.webp" width="1280" height="720" alt="${r.name} camera view (sample)" decoding="async">
+      <p class="er-feed-tag er-chip">${r.name}</p>
+      <button type="button" class="er-play" data-play aria-pressed="${playing}" aria-label="${playing ? 'Pause' : 'Play'} room preview"></button>`;
     const btn = $('[data-play]');
     btn.innerHTML = svg(playing ? 'pause' : 'play');
     btn.addEventListener('click', () => {
       playing = !playing;
       renderFeed();
-      $('[data-note]').textContent = playing ? `Playing ${r.name} preview (sample).` : `Paused ${r.name} feed.`;
+      toast(playing ? `Playing ${r.name} preview · sample` : `Paused ${r.name} feed`);
     });
   }
 
@@ -266,13 +261,12 @@
     renderLamp();
   }
 
-  // Events
   $('[data-rooms]').addEventListener('click', (e) => {
     const b = e.target.closest('[data-v]'); if (!b) return;
     room = ROOMS.findIndex((r) => r.id === b.dataset.v);
     renderReadout();
     renderFeed();
-    $('[data-note]').textContent = `Focused ${ROOMS[room].name}.`;
+    toast(`Focused ${ROOMS[room].name}`);
   });
 
   $('[data-bright]').addEventListener('input', (e) => setBright(e.target.value));
@@ -282,24 +276,27 @@
     renderLamp();
     renderTrend();
     renderFeed();
+    toast(power ? 'Lights on · sample' : 'Lights off · sample');
   });
   $('[data-scene]').addEventListener('click', () => {
     scene = !scene;
     renderDial();
+    toast(scene ? 'Scene · Soft amber' : 'Scene · Cool white');
   });
   $('[data-start]').addEventListener('click', () => {
     startIdx = (startIdx + 1) % STARTS.length;
     $('[data-start]').textContent = STARTS[startIdx];
-    $('[data-note]').textContent = `Schedule starts ${STARTS[startIdx]}.`;
+    toast(`Schedule starts ${STARTS[startIdx]}`);
   });
   $('[data-end]').addEventListener('click', () => {
     endIdx = (endIdx + 1) % ENDS.length;
     $('[data-end]').textContent = ENDS[endIdx];
-    $('[data-note]').textContent = `Schedule ends ${ENDS[endIdx]}.`;
+    toast(`Schedule ends ${ENDS[endIdx]}`);
   });
   seg($('[data-range]'), (v) => {
     range = v;
     renderUsage();
+    toast(`${v} usage · sample`);
   });
   $('[data-q]').addEventListener('keydown', (e) => {
     if (e.key !== 'Enter') return;
@@ -307,7 +304,7 @@
     const q = e.target.value.trim().toLowerCase();
     const i = ROOMS.findIndex((r) => r.name.toLowerCase().includes(q) || r.id.includes(q));
     if (i < 0) {
-      $('[data-note]').textContent = q ? `No room matches “${q}”.` : 'Type a room name and press Enter.';
+      toast(q ? `No room matches “${q}”` : 'Type a room name and press Enter');
       $('[data-usage-empty]').hidden = false;
       $('[data-usage-empty]').textContent = 'Search returned no rooms for this filter.';
       return;
@@ -315,23 +312,17 @@
     room = i;
     renderReadout();
     renderFeed();
-    $('[data-note]').textContent = `Jumped to ${ROOMS[i].name}.`;
+    toast(`Jumped to ${ROOMS[i].name}`);
   });
   $('[data-undo]').addEventListener('click', () => {
     setBright(Math.max(0, bright - 8));
-    $('[data-note]').textContent = 'Undid brightness nudge (sample).';
+    toast('Undid brightness nudge · sample');
   });
   $('[data-redo]').addEventListener('click', () => {
     setBright(Math.min(100, bright + 8));
-    $('[data-note]').textContent = 'Redid brightness nudge (sample).';
+    toast('Redid brightness nudge · sample');
   });
-  $$('.er-railbtn').forEach((b) => {
-    b.addEventListener('click', () => {
-      $$('.er-railbtn').forEach((x) => x.removeAttribute('aria-current'));
-      b.setAttribute('aria-current', 'page');
-      $('[data-note]').textContent = `${b.getAttribute('aria-label')} selected (sample).`;
-    });
-  });
+  $('[data-menu]')?.addEventListener('click', () => toast('Menu · sample'));
 
   placeRooms();
   setBright(68);
@@ -339,5 +330,200 @@
   renderUsage();
   renderTrend();
   renderFeed();
+  countUp($('[data-on]'), ROOMS[0].on);
+  countUp($('[data-total]'), ROOMS[0].total);
+
+  function staggerReveal() {
+    $$('.er-reveal').forEach((el, i) => {
+      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
+      el.classList.add('er-reveal-in');
+    });
+  }
+
+  const PAGES = [
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'rooms', name: 'Rooms', pattern: 'List' },
+    { id: 'devices', name: 'Devices', pattern: 'List' },
+    { id: 'energy', name: 'Energy', pattern: 'Report' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ];
+  const main = $('[data-main]');
+  const overview = $('[data-page-panel="overview"]');
+  let stub = null;
+  const seenPages = new Set();
+
+  function ensureStub() {
+    if (stub) return stub;
+    stub = document.createElement('div');
+    stub.setAttribute('data-db-stub-host', '');
+    stub.hidden = true;
+    main.appendChild(stub);
+    return stub;
+  }
+
+  function setNav(id) {
+    $$('.er-railnav a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      const match = href === `#/${id}` || (id === 'overview' && href === '#/overview');
+      if (match) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  function pageHtml(page) {
+    if (page.id === 'rooms') {
+      return `<section class="er-page" data-db-page="rooms" aria-labelledby="p-h">
+        <h1 id="p-h">Rooms</h1>
+        <p class="er-page-lead">Lighting zones in this home. Sample data · fictional.</p>
+        <div class="er-page-seg" role="group" aria-label="Rooms state" data-rooms-tabs>
+          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        </div>
+        <div data-rooms-body></div>
+      </section>`;
+    }
+    if (page.id === 'devices') {
+      return `<section class="er-page" data-db-page="devices" aria-labelledby="p-h">
+        <h1 id="p-h">Devices</h1>
+        <p class="er-page-lead">Lighting endpoints plus the climate dial from the kit collage.</p>
+        <div class="er-page-grid er-devices-layout">
+          <article class="er-page-card er-climate">
+            <div class="er-panelhead"><h2>Climate</h2><span class="er-chip num" data-climate-out>23°C</span></div>
+            <div class="er-climate-dial" data-climate-dial></div>
+            <div class="er-climate-btns">
+              <button type="button" data-climate="-1" aria-label="Lower temperature">−</button>
+              <button type="button" class="er-cool" data-cool aria-pressed="true"><span data-icon="snow"></span> Cool air</button>
+              <button type="button" data-climate="1" aria-label="Raise temperature">+</button>
+            </div>
+          </article>
+          <div class="er-page-grid" data-dev-list></div>
+        </div>
+      </section>`;
+    }
+    if (page.id === 'energy') {
+      return `<section class="er-page" data-db-page="energy" aria-labelledby="p-h">
+        <h1 id="p-h">Energy</h1>
+        <p class="er-page-lead">Weekly lighting draw. Sample readings only.</p>
+        <div class="er-page-grid">
+          <article class="er-page-card"><div class="er-row"><span>This week</span><strong class="num">48 kWh</strong></div></article>
+          <article class="er-page-card"><div class="er-row"><span>Peak evening</span><strong class="num">28 kWh</strong></div></article>
+          <article class="er-page-card"><div class="er-row"><span>vs last week</span><strong class="num">−12%</strong></div></article>
+        </div>
+        <div class="er-page-card" data-energy-chart></div>
+        <button type="button" class="er-btn" data-energy-report>Open usage report</button>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="er-page" data-db-page="settings" aria-labelledby="p-h">
+        <h1 id="p-h">Settings</h1>
+        <p class="er-page-lead">Home preferences and scene defaults.</p>
+        <div class="er-page-grid">
+          <article class="er-page-card"><div class="er-row"><strong>Night scenes</strong><span>On</span></div></article>
+          <article class="er-page-card"><div class="er-row"><strong>Guest access</strong><span>Off</span></div></article>
+          <article class="er-page-card"><div class="er-row"><strong>Camera previews</strong><span>Allowed</span></div></article>
+        </div>
+        <button type="button" class="er-btn ghost" data-save-settings>Save preferences</button>
+      </section>`;
+    }
+    return `<section class="er-page"><h1>${page.name}</h1></section>`;
+  }
+
+  function wirePage(host, page) {
+    if (page.id === 'rooms') {
+      const body = host.querySelector('[data-rooms-body]');
+      const paint = (state = 'ready') => {
+        if (state === 'loading') {
+          body.innerHTML = `<div class="er-loading" role="status"><p>Syncing rooms…</p><div class="er-skel"></div><div class="er-skel"></div></div>`;
+          return;
+        }
+        if (state === 'empty') {
+          body.innerHTML = `<div class="er-empty-block"><p>No rooms configured yet.</p></div>`;
+          return;
+        }
+        if (state === 'error') {
+          body.innerHTML = `<div class="er-error-block"><p>Could not load rooms.</p><button type="button" class="er-btn ghost" data-retry>Retry</button></div>`;
+          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
+          return;
+        }
+        body.innerHTML = `<div class="er-page-grid">${ROOMS.map((r) =>
+          `<article class="er-page-card"><div class="er-row"><strong>${r.name}</strong><span class="num er-chip">${r.on}/${r.total}</span></div><p class="er-meta">${r.devices} devices · orbit ${r.label}</p></article>`
+        ).join('')}</div>`;
+      };
+      paint('ready');
+      seg(host.querySelector('[data-rooms-tabs]'), (v) => paint(v));
+    }
+    if (page.id === 'devices') {
+      const paintClimate = () => {
+        const pct = (climate - 16) / (30 - 16);
+        host.querySelector('[data-climate-dial]').innerHTML =
+          `<div class="er-climwrap" role="img" aria-label="Climate ${climate} degrees">${arcGauge(pct, { size: 160, w: 14, from: -135, to: 135, color: '--accent', knob: true })}
+           <span class="er-climval num">${climate}<small>°C</small></span></div>`;
+        host.querySelector('[data-climate-out]').textContent = climate + '°C';
+      };
+      paintClimate();
+      paintIcons(host);
+      host.querySelectorAll('[data-climate]').forEach((b) => {
+        b.addEventListener('click', () => {
+          climate = Math.max(16, Math.min(30, climate + +b.dataset.climate));
+          paintClimate();
+          toast(`Climate ${climate}°C · sample`);
+        });
+      });
+      host.querySelector('[data-cool]')?.addEventListener('click', (e) => {
+        const on = e.currentTarget.getAttribute('aria-pressed') !== 'true';
+        e.currentTarget.setAttribute('aria-pressed', String(on));
+        toast(on ? 'Cool air on · sample' : 'Cool air off · sample');
+      });
+      host.querySelector('[data-dev-list]').innerHTML = DEVICES.map((d) =>
+        `<article class="er-page-card"><div class="er-row"><strong>${d.n}</strong><span class="er-chip">${d.on ? 'On' : 'Off'}</span></div><p class="er-meta">${d.s}</p></article>`
+      ).join('');
+    }
+    if (page.id === 'energy') {
+      lineChart(host.querySelector('[data-energy-chart]'), {
+        labels: USAGE.week.labels,
+        series: [{ name: 'Load', color: '--chart-1', values: USAGE.week.a, fill: 0.25 }],
+        fmt: (v) => v + ' kWh',
+        h: 140,
+        ticks: 3,
+        min: 0,
+        label: 'Weekly lighting energy',
+      });
+      host.querySelector('[data-energy-report]')?.addEventListener('click', () => toast('Usage report · sample'));
+    }
+    if (page.id === 'settings') {
+      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    }
+  }
+
+  if (window.DB?.onVisible) {
+    window.DB.onVisible(root, (visible) => {
+      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+    });
+  }
+
+  if (!window.DB || typeof window.DB.route !== 'function') {
+    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
+  } else {
+    window.DB.route(PAGES, (id, page) => {
+      const isOverview = id === 'overview';
+      overview.hidden = !isOverview;
+      const host = ensureStub();
+      host.hidden = isOverview;
+      setNav(id);
+      if (!isOverview) {
+        host.innerHTML = pageHtml(page);
+        paintIcons(host);
+        wirePage(host, page);
+      } else if (!seenPages.has('overview')) {
+        seenPages.add('overview');
+        staggerReveal();
+      }
+      seenPages.add(id);
+      $('[data-note]').textContent = isOverview ? '' : `${page.name} · sample`;
+    });
+  }
+
   document.documentElement.dataset.ready = 'true';
 })();

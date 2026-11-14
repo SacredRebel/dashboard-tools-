@@ -6,18 +6,19 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Cortex Well · Dashboard Tools gallery</title>
-  <meta name="description" content="Lilac glass wellness dashboard with an SVG brain in a frosted bowl, activity pills, sleep bars and heart bpm. Sample data.">
+  <meta name="description" content="Lilac glass wellness dashboard with a painted brain in a frosted bowl, activity pills, sleep bars and heart bpm. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="cx">
+  <div class="cx" data-db-app>
     <aside class="cx-rail" aria-label="Primary">
-      <a class="cx-brand" href="#" aria-label="Cortex Well home"><span class="cx-mark" aria-hidden="true">cx</span></a>
+      <a class="cx-brand" href="#/overview" aria-label="Cortex Well home"><span class="cx-mark" aria-hidden="true">cx</span></a>
       <nav class="cx-railnav" aria-label="Sections">
         <button type="button" class="cx-railbtn" aria-current="page" aria-label="Profile"><span data-icon="user"></span></button>
         <button type="button" class="cx-railbtn" aria-label="Wellness"><span data-icon="leaf"></span></button>
@@ -37,9 +38,9 @@
         </div>
         <nav class="cx-nav" role="group" aria-label="Views" data-views>
           <button type="button" class="cx-nav-search" aria-label="Search"><span data-icon="search"></span></button>
-          <button type="button" data-v="dash" aria-pressed="true">Dashboard</button>
-          <button type="button" data-v="analytics" aria-pressed="false">Analytics</button>
-          <button type="button" data-v="reports" aria-pressed="false">Reports</button>
+          <a href="#/overview" data-v="overview">Dashboard</a>
+          <a href="#/analytics" data-v="analytics">Analytics</a>
+          <a href="#/reports" data-v="reports">Reports</a>
         </nav>
         <div class="cx-utils">
           <button type="button" class="cx-bell" aria-label="Notifications, 3 unread"><span data-icon="bell"></span><i class="cx-badge" aria-hidden="true"></i></button>
@@ -47,12 +48,13 @@
         </div>
       </header>
 
-      <h1 class="cx-title">What’s Up With Your Health, <em>TODAY!</em></h1>
+      <h1 class="cx-title cx-reveal">What’s Up With Your Health, <em>TODAY!</em></h1>
       <p class="cx-viewnote" data-viewnote aria-live="polite"></p>
 
-      <main class="cx-board">
+      <main class="cx-board" data-main>
+        <div data-page-panel="overview" class="cx-overview">
         <div class="cx-left">
-          <section class="cx-card cx-perf" aria-labelledby="cx-perf-h">
+          <section class="cx-card cx-perf cx-reveal" aria-labelledby="cx-perf-h">
             <div class="cx-cardhead">
               <h2 id="cx-perf-h">Performance</h2>
               <span class="cx-chip good">Rising</span>
@@ -94,7 +96,9 @@
             <i class="cx-orb o1"></i><i class="cx-orb o2"></i><i class="cx-orb o3"></i><i class="cx-orb o4"></i>
           </div>
           <div class="cx-stage">
-            <div class="cx-brainwrap" data-brain aria-hidden="true"></div>
+            <figure class="cx-brainwrap cx-ambient">
+              <img src="media/brain.webp" width="520" height="520" alt="Brain in frosted glass bowl (sample art)" decoding="async">
+            </figure>
             <svg class="cx-leads" viewBox="0 0 520 420" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
               <g class="cx-lead-lines" fill="none" stroke="var(--lead)" stroke-width="1.5" stroke-linecap="round">
                 <path d="M250 180 C320 140, 360 120, 420 100"/>
@@ -149,19 +153,20 @@
             <p class="cx-empty" data-hr-empty hidden>Heart series empty for Reports. Open Dashboard.</p>
           </section>
         </div>
+        </div>
       </main>
 
       <footer class="cx-foot">
         <div class="cx-dots" role="group" aria-label="Board pages" data-pages>
-          <button type="button" data-v="0" aria-pressed="true" aria-label="Page 1"></button>
-          <button type="button" data-v="1" aria-pressed="false" aria-label="Page 2"></button>
-          <button type="button" data-v="2" aria-pressed="false" aria-label="Page 3"></button>
-          <button type="button" data-v="3" aria-pressed="false" aria-label="Page 4"></button>
+          <a href="#/overview" data-v="overview" aria-label="Dashboard"></a>
+          <a href="#/analytics" data-v="analytics" aria-label="Analytics"></a>
+          <a href="#/reports" data-v="reports" aria-label="Reports"></a>
         </div>
         <button type="button" class="cx-expand" aria-label="Expand board"><span data-icon="expand"></span></button>
       </footer>
       <p class="db-sample">Sample data · fictional · not medical advice</p>
     </div>
+    <div class="cx-toast" data-toast hidden role="status"></div>
   </div>
   <script src="app.js"></script>
 </body>

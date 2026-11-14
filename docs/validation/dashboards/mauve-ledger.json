@@ -1,33 +1,11 @@
 {
   "id": "mauve-ledger",
   "checked": "2026-11-14",
-  "ok": false,
+  "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/mauve-ledger/",
-      "width": 1440,
-      "variant": "default",
-      "final_path": "/dashboards/mauve-ledger/",
-      "overflow_px": 0,
-      "errors": [
-        "low contrast 1.47:1 (needs 4.5) \"JO\" 12px, text rgb(255, 255, 255) on ~rgb(215, 209, 243) at x1281 y39",
-        "low contrast 3.71:1 (needs 4.5) \"Here’s your ledger for\" 15px, text rgb(110, 104, 144) on ~rgb(236, 210, 237) at x104 y152",
-        "low contrast 3.70:1 (needs 4.5) \"Saturday, November 14\" 15px, text rgb(110, 104, 144) on ~rgb(239, 210, 237) at x262 y152",
-        "low contrast 3.70:1 (needs 4.5) \"-11%\" 12px, text rgb(220, 38, 38) on ~rgb(248, 218, 225) at x272 y385",
-        "low contrast 2.57:1 (needs 4.5) \"+6%\" 12px, text rgb(22, 163, 74) on ~rgb(214, 231, 225) at x492 y385",
-        "low contrast 1.10:1 (needs 4.5) \"In progress\" 14px, text rgb(255, 255, 255) on ~rgb(243, 244, 253) at x1035 y346",
-        "low contrast 2.56:1 (needs 4.5) \"+5%\" 12px, text rgb(22, 163, 74) on ~rgb(212, 231, 225) at x1166 y723",
-        "low contrast 3.20:1 (needs 4.5) \"People\" 12px, text rgb(139, 133, 168) on ~rgb(246, 244, 252) at x1035 y832",
-        "low contrast 3.20:1 (needs 4.5) \"New users\" 12px, text rgb(139, 133, 168) on ~rgb(246, 244, 252) at x1257 y832",
-        "low contrast 3.36:1 (needs 4.5) \"Pending\" 14px, text rgb(139, 133, 168) on ~rgb(251, 250, 255) at x1166 y1106",
-        "low contrast 3.36:1 (needs 4.5) \"Pending\" 14px, text rgb(139, 133, 168) on ~rgb(251, 250, 255) at x1174 y1254",
-        "low contrast 3.36:1 (needs 4.5) \"Pending\" 14px, text rgb(139, 133, 168) on ~rgb(251, 250, 255) at x1162 y1328",
-        "low contrast 2.15:1 (needs 4.5) \"Sample data · fictional company \" 12px, text rgb(139, 133, 168) on ~rgb(211, 202, 245) at x600 y1406"
-      ]
-    },
-    {
-      "url": "/dashboards/mauve-ledger",
+      "url": "/dashboards/mauve-ledger/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/mauve-ledger/",
@@ -35,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mauve-ledger/index.html",
+      "url": "/dashboards/mauve-ledger#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/mauve-ledger/",
@@ -43,68 +21,204 @@
       "errors": []
     },
     {
-      "url": "/dashboards/mauve-ledger/",
+      "url": "/dashboards/mauve-ledger/index.html#/overview",
+      "width": 1440,
+      "variant": "default",
+      "final_path": "/dashboards/mauve-ledger/",
+      "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/mauve-ledger/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 3.69:1 (needs 4.5) \"HR and payroll\" 13px, text rgb(110, 104, 144) on ~rgb(242, 244, 253) at x307 y88",
-        "low contrast 1.47:1 (needs 4.5) \"JO\" 12px, text rgb(255, 255, 255) on ~rgb(215, 209, 243) at x306 y26",
-        "low contrast 3.70:1 (needs 4.5) \"Here’s your ledger for\" 15px, text rgb(110, 104, 144) on ~rgb(232, 211, 239) at x14 y190",
-        "low contrast 3.66:1 (needs 4.5) \"Saturday, November 14\" 15px, text rgb(110, 104, 144) on ~rgb(216, 215, 245) at x172 y190",
-        "low contrast 3.69:1 (needs 4.5) \"-11%\" 12px, text rgb(220, 38, 38) on ~rgb(243, 219, 226) at x182 y789",
-        "low contrast 2.56:1 (needs 4.5) \"+6%\" 12px, text rgb(22, 163, 74) on ~rgb(212, 231, 225) at x189 y832",
-        "low contrast 1.09:1 (needs 4.5) \"In progress\" 14px, text rgb(255, 255, 255) on ~rgb(246, 244, 252) at x33 y1183",
-        "low contrast 2.48:1 (needs 4.5) \"+5%\" 12px, text rgb(22, 163, 74) on ~rgb(209, 227, 227) at x177 y1560",
-        "low contrast 3.18:1 (needs 4.5) \"People\" 12px, text rgb(139, 133, 168) on ~rgb(246, 243, 252) at x33 y1669",
-        "low contrast 3.16:1 (needs 4.5) \"New users\" 12px, text rgb(139, 133, 168) on ~rgb(245, 243, 252) at x282 y1669",
-        "low contrast 2.22:1 (needs 4.5) \"Sample data · fictional company \" 12px, text rgb(139, 133, 168) on ~rgb(211, 201, 244) at x67 y2243"
-      ]
+      "errors": []
     },
     {
-      "url": "/dashboards/mauve-ledger/?variant=blush",
+      "url": "/dashboards/mauve-ledger/?variant=blush#/overview",
       "width": 1440,
       "variant": "blush",
       "final_path": "/dashboards/mauve-ledger/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 1.58:1 (needs 4.5) \"JO\" 12px, text rgb(255, 255, 255) on ~rgb(229, 197, 217) at x1281 y39",
-        "low contrast 3.72:1 (needs 4.5) \"Here’s your ledger for\" 15px, text rgb(110, 104, 144) on ~rgb(249, 209, 218) at x104 y152",
-        "low contrast 3.74:1 (needs 4.5) \"Saturday, November 14\" 15px, text rgb(110, 104, 144) on ~rgb(248, 209, 220) at x262 y152",
-        "low contrast 3.71:1 (needs 4.5) \"-11%\" 12px, text rgb(220, 38, 38) on ~rgb(250, 218, 220) at x272 y385",
-        "low contrast 2.58:1 (needs 4.5) \"+6%\" 12px, text rgb(22, 163, 74) on ~rgb(218, 231, 221) at x492 y385",
-        "low contrast 1.08:1 (needs 4.5) \"In progress\" 14px, text rgb(255, 255, 255) on ~rgb(251, 244, 250) at x1035 y346",
-        "low contrast 2.58:1 (needs 4.5) \"+5%\" 12px, text rgb(22, 163, 74) on ~rgb(217, 231, 222) at x1166 y723",
-        "low contrast 3.23:1 (needs 4.5) \"People\" 12px, text rgb(139, 133, 168) on ~rgb(252, 244, 248) at x1035 y832",
-        "low contrast 3.23:1 (needs 4.5) \"New users\" 12px, text rgb(139, 133, 168) on ~rgb(252, 244, 248) at x1257 y832",
-        "low contrast 3.36:1 (needs 4.5) \"Pending\" 14px, text rgb(139, 133, 168) on ~rgb(251, 250, 255) at x1166 y1106",
-        "low contrast 3.36:1 (needs 4.5) \"Pending\" 14px, text rgb(139, 133, 168) on ~rgb(251, 250, 255) at x1174 y1254",
-        "low contrast 3.36:1 (needs 4.5) \"Pending\" 14px, text rgb(139, 133, 168) on ~rgb(251, 250, 255) at x1162 y1328",
-        "low contrast 2.22:1 (needs 4.5) \"Sample data · fictional company \" 12px, text rgb(139, 133, 168) on ~rgb(244, 195, 220) at x600 y1406"
-      ]
+      "errors": []
     },
     {
-      "url": "/dashboards/mauve-ledger/?variant=slate",
+      "url": "/dashboards/mauve-ledger/?variant=slate#/overview",
       "width": 1440,
       "variant": "slate",
       "final_path": "/dashboards/mauve-ledger/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 1.53:1 (needs 4.5) \"JO\" 12px, text rgb(255, 255, 255) on ~rgb(206, 206, 242) at x1281 y39",
-        "low contrast 3.88:1 (needs 4.5) \"Here’s your ledger for\" 15px, text rgb(92, 102, 133) on ~rgb(204, 212, 248) at x104 y152",
-        "low contrast 3.89:1 (needs 4.5) \"Saturday, November 14\" 15px, text rgb(92, 102, 133) on ~rgb(205, 213, 246) at x262 y152",
-        "low contrast 3.65:1 (needs 4.5) \"-11%\" 12px, text rgb(220, 38, 38) on ~rgb(239, 219, 228) at x272 y385",
-        "low contrast 2.56:1 (needs 4.5) \"+6%\" 12px, text rgb(22, 163, 74) on ~rgb(209, 232, 225) at x492 y385",
-        "low contrast 1.09:1 (needs 4.5) \"In progress\" 14px, text rgb(255, 255, 255) on ~rgb(244, 244, 252) at x1035 y346",
-        "low contrast 2.57:1 (needs 4.5) \"+5%\" 12px, text rgb(22, 163, 74) on ~rgb(210, 232, 224) at x1166 y723",
-        "low contrast 3.18:1 (needs 4.5) \"People\" 12px, text rgb(139, 133, 168) on ~rgb(243, 244, 251) at x1035 y832",
-        "low contrast 3.18:1 (needs 4.5) \"New users\" 12px, text rgb(139, 133, 168) on ~rgb(243, 244, 251) at x1257 y832",
-        "low contrast 3.36:1 (needs 4.5) \"Pending\" 14px, text rgb(139, 133, 168) on ~rgb(251, 250, 255) at x1166 y1106",
-        "low contrast 3.36:1 (needs 4.5) \"Pending\" 14px, text rgb(139, 133, 168) on ~rgb(251, 250, 255) at x1174 y1254",
-        "low contrast 3.36:1 (needs 4.5) \"Pending\" 14px, text rgb(139, 133, 168) on ~rgb(251, 250, 255) at x1162 y1328",
-        "low contrast 2.08:1 (needs 4.5) \"Sample data · fictional company \" 12px, text rgb(139, 133, 168) on ~rgb(193, 201, 242) at x600 y1406"
-      ]
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/overview",
+      "width": 1440,
+      "variant": "blush",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/overview",
+      "width": 375,
+      "variant": "blush",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/overview",
+      "width": 1440,
+      "variant": "slate",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/overview",
+      "width": 375,
+      "variant": "slate",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/transactions",
+      "width": 1440,
+      "variant": "default",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/transactions",
+      "width": 375,
+      "variant": "default",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/transactions",
+      "width": 1440,
+      "variant": "blush",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/transactions",
+      "width": 375,
+      "variant": "blush",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/transactions",
+      "width": 1440,
+      "variant": "slate",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/transactions",
+      "width": 375,
+      "variant": "slate",
+      "page": "transactions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/budgets",
+      "width": 1440,
+      "variant": "default",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/budgets",
+      "width": 375,
+      "variant": "default",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/budgets",
+      "width": 1440,
+      "variant": "blush",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/budgets",
+      "width": 375,
+      "variant": "blush",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/budgets",
+      "width": 1440,
+      "variant": "slate",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/budgets",
+      "width": 375,
+      "variant": "slate",
+      "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/settings",
+      "width": 1440,
+      "variant": "blush",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/settings",
+      "width": 375,
+      "variant": "blush",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/settings",
+      "width": 1440,
+      "variant": "slate",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/settings",
+      "width": 375,
+      "variant": "slate",
+      "page": "settings",
+      "errors": []
     },
     {
       "url": "/#/dashboards/mauve-ledger",

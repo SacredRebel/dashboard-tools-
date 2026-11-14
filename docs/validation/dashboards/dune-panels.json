@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/dune-panels/",
+      "url": "/dashboards/dune-panels/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/dune-panels/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/dune-panels",
+      "url": "/dashboards/dune-panels#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/dune-panels/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/dune-panels/index.html",
+      "url": "/dashboards/dune-panels/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/dune-panels/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/dune-panels/",
+      "url": "/dashboards/dune-panels/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/dune-panels/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/dune-panels/?variant=coastal",
+      "url": "/dashboards/dune-panels/?variant=coastal#/overview",
       "width": 1440,
       "variant": "coastal",
       "final_path": "/dashboards/dune-panels/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/dune-panels/?variant=ember",
+      "url": "/dashboards/dune-panels/?variant=ember#/overview",
       "width": 1440,
       "variant": "ember",
       "final_path": "/dashboards/dune-panels/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=coastal#/overview",
+      "width": 1440,
+      "variant": "coastal",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=coastal#/overview",
+      "width": 375,
+      "variant": "coastal",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=ember#/overview",
+      "width": 1440,
+      "variant": "ember",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=ember#/overview",
+      "width": 375,
+      "variant": "ember",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/#/reports",
+      "width": 1440,
+      "variant": "default",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/#/reports",
+      "width": 375,
+      "variant": "default",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=coastal#/reports",
+      "width": 1440,
+      "variant": "coastal",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=coastal#/reports",
+      "width": 375,
+      "variant": "coastal",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=ember#/reports",
+      "width": 1440,
+      "variant": "ember",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=ember#/reports",
+      "width": 375,
+      "variant": "ember",
+      "page": "reports",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/#/segments",
+      "width": 1440,
+      "variant": "default",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/#/segments",
+      "width": 375,
+      "variant": "default",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=coastal#/segments",
+      "width": 1440,
+      "variant": "coastal",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=coastal#/segments",
+      "width": 375,
+      "variant": "coastal",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=ember#/segments",
+      "width": 1440,
+      "variant": "ember",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=ember#/segments",
+      "width": 375,
+      "variant": "ember",
+      "page": "segments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=coastal#/settings",
+      "width": 1440,
+      "variant": "coastal",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=coastal#/settings",
+      "width": 375,
+      "variant": "coastal",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=ember#/settings",
+      "width": 1440,
+      "variant": "ember",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/dune-panels/?variant=ember#/settings",
+      "width": 375,
+      "variant": "ember",
+      "page": "settings",
       "errors": []
     },
     {
