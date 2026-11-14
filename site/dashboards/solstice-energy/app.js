@@ -145,13 +145,16 @@
     const stops = (a) => a.map(([o, c]) => `<stop offset="${o}" style="stop-color:var(${c})"/>`).join('');
     $('[data-arc]').innerHTML = `<svg viewBox="0 0 900 430" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
       <defs>
-        <linearGradient id="se-arc" x1="0" y1="1" x2="1" y2="0.2">${stops([[0, '--arc-2'], [0.45, '--arc-1'], [0.8, '--arc-2'], [1, '--arc-3']])}</linearGradient>
-        <radialGradient id="se-sun"><stop offset="0" style="stop-color:var(--arc-1)"/><stop offset="1" style="stop-color:var(--arc-1);stop-opacity:0"/></radialGradient>
+        <linearGradient id="se-arc" x1="0" y1="1" x2="1" y2="0.15">${stops([[0, '--arc-3'], [0.22, '--arc-2'], [0.5, '--arc-1'], [0.78, '--arc-2'], [1, '--arc-3']])}</linearGradient>
+        <linearGradient id="se-arc-glow" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="var(--arc-2)" stop-opacity="0"/><stop offset="0.5" stop-color="var(--arc-1)" stop-opacity="0.55"/><stop offset="1" stop-color="var(--arc-3)" stop-opacity="0"/></linearGradient>
+        <radialGradient id="se-sun"><stop offset="0" style="stop-color:var(--arc-1)"/><stop offset="0.45" style="stop-color:var(--arc-1);stop-opacity:0.55"/><stop offset="1" style="stop-color:var(--arc-1);stop-opacity:0"/></radialGradient>
+        <filter id="se-bloom" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
-      <path d="M${cx - R},${cy} A${R},${R} 0 0 1 ${cx + R},${cy}" fill="none" stroke="url(#se-arc)" stroke-width="26"/>
-      <path d="M${cx - R + 34},${cy} A${R - 34},${R - 34} 0 0 1 ${cx + R - 34},${cy}" fill="none" stroke="url(#se-arc)" stroke-width="1.5" opacity="0.55"/>
-      <circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="34" fill="url(#se-sun)"/>
-      <circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="8" fill="var(--arc-1)" stroke="var(--surface)" stroke-width="3"/>
+      <path d="M${cx - R - 20},${cy} A${R + 20},${R + 20} 0 0 1 ${cx + R + 20},${cy}" fill="none" stroke="url(#se-arc-glow)" stroke-width="54" opacity="0.55"/>
+      <path d="M${cx - R},${cy} A${R},${R} 0 0 1 ${cx + R},${cy}" fill="none" stroke="url(#se-arc)" stroke-width="38" stroke-linecap="round" filter="url(#se-bloom)"/>
+      <path d="M${cx - R + 48},${cy} A${R - 48},${R - 48} 0 0 1 ${cx + R - 48},${cy}" fill="none" stroke="url(#se-arc)" stroke-width="1.5" opacity="0.45"/>
+      <circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="48" fill="url(#se-sun)"/>
+      <circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="11" fill="var(--arc-1)" stroke="var(--surface)" stroke-width="3"/>
     </svg>`;
   }
 

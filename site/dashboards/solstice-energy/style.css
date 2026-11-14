@@ -101,26 +101,45 @@ body { background: var(--bg); }
 .se-self p { font-size: 14px; color: var(--text-muted); } .se-self p b { display: block; color: var(--text); font-weight: 500; }
 
 /* ---------------------------------------------------------------- hero: sun-path arc over mountain photo (signature) */
-.se-hero { position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: 520px; padding-bottom: 0; }
-.se-hero-art { position: absolute; inset: 0 0 124px 0; pointer-events: none; }
-.se-mountains {
-  position: absolute; inset: auto 0 0 0; width: 100%; height: 62%;
-  object-fit: cover; object-position: center 70%;
-  opacity: 0.92; mask-image: linear-gradient(180deg, transparent 0%, #000 24%, #000 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 24%, #000 100%);
-  filter: saturate(1.08) contrast(1.04);
+.se-hero { position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: 560px; padding-bottom: 0; }
+.se-hero-art {
+  position: absolute; inset: 0 0 108px 0; pointer-events: none;
+  background:
+    radial-gradient(60% 48% at 50% 8%, color-mix(in srgb, var(--arc-1) 28%, transparent), transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--sky-1, var(--bg)) 40%, transparent), transparent 55%);
 }
-.se-arc { position: absolute; inset: 0; }
+.se-mountains {
+  position: absolute; inset: auto 0 0 0; width: 100%; height: 72%;
+  object-fit: cover; object-position: center 68%;
+  opacity: 0.96; mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
+  filter: saturate(1.12) contrast(1.06);
+}
+.se-arc { position: absolute; inset: -4% 0 8% 0; }
 .se-arc svg { width: 100%; height: 100%; }
 .se-hero > :not(.se-hero-art) { position: relative; z-index: 1; }
-.se-hero-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
-.se-hero h1 { font-family: var(--font-display); font-size: 44px; font-weight: 400; line-height: 1.1; }
-.se-hero h1 small { font-size: 15px; font-family: var(--font-sans); color: var(--text-muted); }
+.se-hero-head {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+  padding: 10px 12px; border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 28px rgb(0 0 0 / 0.18);
+}
+.se-hero-head .se-eyebrow {
+  display: inline-flex; padding: 2px 8px; border-radius: 6px;
+  background: var(--surface); color: var(--text); font-weight: 600;
+}
+.se-hero h1 { font-family: var(--font-display); font-size: 44px; font-weight: 400; line-height: 1.1; color: var(--text); }
+.se-hero h1 small {
+  font-size: 15px; font-family: var(--font-sans); color: var(--text);
+  padding: 2px 8px; border-radius: 6px; background: var(--surface); font-weight: 600;
+}
 .se-hero-side { display: flex; align-items: center; gap: 12px; }
 .se-ring { width: 76px; }
 .se-hero-side p { font-size: 13px; color: var(--text-muted); line-height: 1.3; }
 .se-hero-side b { display: block; font-family: var(--font-display); font-size: 24px; font-weight: 500; color: var(--text); }
-.se-hero-chart { margin-top: auto; padding-top: 120px; }
+.se-hero-chart { margin-top: auto; padding-top: 132px; }
+.se-hero-chart .line { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--chart-1) 45%, transparent)); }
 .se-hero-chart .se-plot .grid line { stroke: var(--grid); }
 .se-hero-chart .se-y, .se-hero-chart .se-x {
   z-index: 2; color: var(--text); font-size: 13px; font-weight: 500;
