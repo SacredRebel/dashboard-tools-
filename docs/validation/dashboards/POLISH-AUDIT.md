@@ -27,14 +27,14 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | canopy-reforest | 4 | 4 | 4 | 4 | 4 | 4.5 | 4 | 4 | 32.5 | Layered leaves + clay tiles; Survey→Plant→Water→Measure icon-steps | deep G3 started |
 | larchwood-lodge | 4 | 4 | 4 | 4 | 4 | 4.5 | 4 | 4 | 32.5 | Arched lake hero + glass bento; branded Rooms/Guests/Settings | deep G3 started |
 | aether-pane | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 32 | Floating glass shell + office art; AA daylight nav; branded secondaries | deep G3 started |
-| horizon-weather | 4 | 4 | 4.5 | 4 | 3.5 | 4 | 3.5 | 4 | 31.5 | Gate-green; opaque copy plate; not cinematic twin yet | gate-green |
-| kumo-payroll | 4 | 4 | 4 | 4 | 3.5 | 4.5 | 3.5 | 4 | 31.5 | Moon/pagoda/koi/waves scene + Happy teams quote; still shy of glass-panel twin | deep G2 started |
+| horizon-weather | 4 | 4 | 4.5 | 4 | 4 | 4.5 | 4 | 4 | 33 | Full-scroll coast + cinematic glass now; still shy of full twin density | deep G3 started |
+| kumo-payroll | 4 | 4 | 4 | 4 | 4 | 4.5 | 4 | 4 | 32.5 | Moon/pagoda scene + frosted glass panel/quote; shy of gold-edge twin density | deep G3 started |
 | haven-listings | 4 | 4 | 4 | 4 | 3.5 | 4 | 3.5 | 4 | 31 | Outer main + density; villa art OK | gate-green |
 | aura-ring | 4 | 4 | 4 | 4 | 3.5 | 3.5 | 3.5 | 3.5 | 30 | Dense contrast fixed; ring/brain upscaled | gate-green |
 | lull-sleep | 4 | 4 | 4 | 4.5 | 4 | 4 | 4 | 4 | 32.5 | Media DPI fixed; glass board strong | gate-green |
 | copper-radar | 4 | 4 | 4 | 4 | 3.5 | 4 | 4 | 4 | 31.5 | Radar-hero + glowing half-arc + HTML vendor mark chips on ring | deep G3 started |
-| ember-rooms | 3.5 | 4 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 29 | Larger lamp+orbit stage, icon chips, gate-safe labels; still shy of reference radial-control twin | deep G3 started |
-| tidebath-showroom | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 3.5 | 28.5 | CSS 3D carousel + srcset rooms; not yet reference curved-showroom twin | deep G3 started |
+| ember-rooms | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 32 | Radial brightness arc + labeled orbit chips; lamp overlay still shy of exact twin | deep G3 started |
+| tidebath-showroom | 4 | 3.5 | 3.5 | 3.5 | 4.5 | 4 | 4 | 4 | 31 | Deeper curved 3D carousel + tilted floor; not continuous cylinder yet | deep G3 started |
 | meridian-labs | 4 | 4 | 3.5 | 4 | 3.5 | 4 | 3.5 | 4 | 30.5 | Three-column board + week-calendar G3 (orange Fri, dose chips); DNA contained | deep G3 started |
 | citadel-wall | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29 | New holo cube + pedestal/circuit aura | deep G2 started |
 | glacier-ops | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Topo dial center + AA plates | deep G2 started |
@@ -44,8 +44,8 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | hollow-vault | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Witch hero + phone bottom nav; relic ring OK | deep G2 started |
 | pearlwell-dental | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay tooth/arch + phone nav | deep G2 started |
 | vitalis-care | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay heart/doctor + phone nav | deep G2 started |
-| solstice-energy | 4 | 4 | 3.5 | 4 | 3.5 | 4 | 3.5 | 4 | 30.5 | Site portals + branded secondary pages; still shy of full cinematic twin | deep G3 started |
-| pulsar-analytics | 4 | 4 | 3.5 | 4 | 4 | 4 | 3.5 | 4 | 31 | Neon glow wave + branded Traffic/Events/Regions denser than kit | deep G3 started |
+| solstice-energy | 4 | 4 | 4 | 4 | 4 | 4.5 | 4 | 4 | 32.5 | Sun-path bloom + mountain plate + branded secondaries; pixel twin still shy | deep G3 started |
+| pulsar-analytics | 4 | 4 | 4 | 4 | 4.5 | 4.5 | 4 | 4 | 33 | Stronger neon terrain/mesh + glass labels; pixel twin still shy | deep G3 started |
 | orbit-clay | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay helmet + dune peaks refresh | deep G2 started |
 | taffy-analytics | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay sphere-in-torus prop | deep G2 started |
 | pebble-studio | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay pebbles + torus dial | deep G2 started |
@@ -58,9 +58,10 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 2. ~~meridian-labs week-calendar G3 · solstice / pulsar / taffy / pebble / dune~~  
 3. ~~dense secondary hero kit · solstice/pulsar branded pages · orbit helmet/dunes~~  
 4. ~~Larchwood / Aether / Canopy icon-steps / Copper vendor ring~~  
-5. Optional Solstice/Pulsar cinematic twin · remaining shy twins · full-38 after each push batch
+5. ~~Solstice/Pulsar cinematic deepen · Horizon / Ember radial / Tidebath curve / Kumo glass~~  
+6. Architect review of draft PR #6 · optional pixel-fidelity follow-ups (see HANDOFF gaps)
 
 ## Verification log
 
-- Touched ✔: larchwood, aether, canopy, copper  
-- Prior: dense-kit, solstice, pulsar, orbit, meridian, taffy, pebble, dune, clima, hollow, pearlwell, vitalis, mallow, kumo, citadel, glacier, forge, ridgeline, ember, tidebath — see HANDOFF
+- Touched ✔: solstice, pulsar, horizon, ember, tidebath, kumo  
+- Prior: larchwood, aether, canopy, copper, dense-kit, orbit, meridian, taffy, pebble, dune, clima, hollow, pearlwell, vitalis, mallow, citadel, glacier, forge, ridgeline — see HANDOFF
