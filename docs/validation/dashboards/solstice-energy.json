@@ -1,7 +1,7 @@
 {
   "id": "solstice-energy",
   "checked": "2026-11-14",
-  "ok": false,
+  "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -10,15 +10,7 @@
       "variant": "default",
       "final_path": "/dashboards/solstice-energy/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 1.14:1 (needs 4.5) \"kW at\" 15px, text rgb(196, 189, 179) on ~rgb(254, 153, 85) at x45 y1267",
-        "low contrast 1.16:1 (needs 4.5) \"14:00\" 15px, text rgb(196, 189, 179) on ~rgb(252, 151, 101) at x87 y1267",
-        "low contrast 3.50:1 (needs 4.5) \"Generation\" 13px, text rgb(196, 189, 179) on ~rgb(126, 72, 30) at x73 y1646",
-        "low contrast 2.74:1 (needs 4.5) \"Consumption\" 13px, text rgb(196, 189, 179) on ~rgb(172, 105, 46) at x73 y1672",
-        "low contrast 1.57:1 (needs 4.5) \"%\" 13px, text rgb(243, 238, 231) on ~rgb(63, 214, 192) at x82 y2408",
-        "low contrast 1.80:1 (large, needs 3) \"68\" 24px, text rgb(243, 238, 231) on ~rgb(36, 37, 42) at x57 y2392",
-        "low contrast 1.57:1 (large, needs 3) \"11.8\" 24px, text rgb(243, 238, 231) on ~rgb(39, 94, 90) at x69 y2392"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy#/overview",
@@ -26,15 +18,7 @@
       "variant": "default",
       "final_path": "/dashboards/solstice-energy/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 1.14:1 (needs 4.5) \"kW at\" 15px, text rgb(196, 189, 179) on ~rgb(253, 152, 95) at x45 y1267",
-        "low contrast 1.16:1 (needs 4.5) \"14:00\" 15px, text rgb(196, 189, 179) on ~rgb(40, 41, 46) at x87 y1267",
-        "low contrast 3.48:1 (needs 4.5) \"Generation\" 13px, text rgb(196, 189, 179) on ~rgb(129, 76, 33) at x73 y1646",
-        "low contrast 2.65:1 (needs 4.5) \"Consumption\" 13px, text rgb(196, 189, 179) on ~rgb(166, 97, 39) at x73 y1672",
-        "low contrast 1.57:1 (needs 4.5) \"%\" 13px, text rgb(243, 238, 231) on ~rgb(63, 214, 192) at x82 y2408",
-        "low contrast 1.57:1 (large, needs 3) \"68\" 24px, text rgb(243, 238, 231) on ~rgb(27, 31, 35) at x57 y2392",
-        "low contrast 1.57:1 (large, needs 3) \"11.8\" 24px, text rgb(243, 238, 231) on ~rgb(43, 107, 100) at x69 y2392"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/index.html#/overview",
@@ -42,15 +26,7 @@
       "variant": "default",
       "final_path": "/dashboards/solstice-energy/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 1.14:1 (needs 4.5) \"kW at\" 15px, text rgb(196, 189, 179) on ~rgb(253, 152, 95) at x45 y1267",
-        "low contrast 1.16:1 (needs 4.5) \"14:00\" 15px, text rgb(196, 189, 179) on ~rgb(40, 41, 46) at x87 y1267",
-        "low contrast 3.48:1 (needs 4.5) \"Generation\" 13px, text rgb(196, 189, 179) on ~rgb(129, 76, 33) at x73 y1646",
-        "low contrast 2.65:1 (needs 4.5) \"Consumption\" 13px, text rgb(196, 189, 179) on ~rgb(166, 97, 39) at x73 y1672",
-        "low contrast 1.57:1 (needs 4.5) \"%\" 13px, text rgb(243, 238, 231) on ~rgb(63, 214, 192) at x82 y2408",
-        "low contrast 1.57:1 (large, needs 3) \"68\" 24px, text rgb(243, 238, 231) on ~rgb(27, 31, 35) at x57 y2392",
-        "low contrast 1.57:1 (large, needs 3) \"11.8\" 24px, text rgb(243, 238, 231) on ~rgb(43, 107, 100) at x69 y2392"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/#/overview",
@@ -58,11 +34,7 @@
       "variant": "default",
       "final_path": "/dashboards/solstice-energy/",
       "overflow_px": 1,
-      "errors": [
-        "low contrast 1.14:1 (needs 4.5) \"14:00\" 15px, text rgb(196, 189, 179) on ~rgb(254, 153, 79) at x29 y1448",
-        "low contrast 1.57:1 (needs 4.5) \"%\" 13px, text rgb(243, 238, 231) on ~rgb(36, 37, 42) at x66 y2625",
-        "low contrast 1.57:1 (large, needs 3) \"68\" 24px, text rgb(243, 238, 231) on ~rgb(36, 37, 42) at x39 y2609"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=glacier#/overview",
@@ -70,15 +42,7 @@
       "variant": "glacier",
       "final_path": "/dashboards/solstice-energy/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 1.07:1 (needs 4.5) \"kW at\" 15px, text rgb(179, 193, 201) on ~rgb(102, 191, 247) at x45 y1267",
-        "low contrast 1.13:1 (needs 4.5) \"14:00\" 15px, text rgb(179, 193, 201) on ~rgb(33, 42, 49) at x87 y1267",
-        "low contrast 3.52:1 (needs 4.5) \"Generation\" 13px, text rgb(179, 193, 201) on ~rgb(129, 76, 33) at x73 y1646",
-        "low contrast 2.67:1 (needs 4.5) \"Consumption\" 13px, text rgb(179, 193, 201) on ~rgb(166, 97, 39) at x73 y1672",
-        "low contrast 1.30:1 (needs 4.5) \"%\" 13px, text rgb(234, 242, 246) on ~rgb(142, 230, 200) at x82 y2408",
-        "low contrast 1.30:1 (large, needs 3) \"68\" 24px, text rgb(234, 242, 246) on ~rgb(23, 30, 36) at x57 y2392",
-        "low contrast 1.30:1 (large, needs 3) \"11.8\" 24px, text rgb(234, 242, 246) on ~rgb(72, 113, 104) at x69 y2392"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=paper#/overview",
@@ -86,107 +50,56 @@
       "variant": "paper",
       "final_path": "/dashboards/solstice-energy/",
       "overflow_px": 0,
-      "errors": [
-        "low contrast 2.24:1 (needs 4.5) \"kW at\" 15px, text rgb(95, 83, 72) on ~rgb(223, 109, 61) at x45 y1267",
-        "low contrast 2.20:1 (needs 4.5) \"14:00\" 15px, text rgb(95, 83, 72) on ~rgb(247, 243, 235) at x87 y1267",
-        "low contrast 1.37:1 (needs 4.5) \"Generation\" 13px, text rgb(95, 83, 72) on ~rgb(153, 99, 55) at x73 y1646",
-        "low contrast 1.84:1 (needs 4.5) \"Consumption\" 13px, text rgb(95, 83, 72) on ~rgb(190, 120, 61) at x73 y1672",
-        "low contrast 2.61:1 (needs 4.5) \"%\" 13px, text rgb(42, 33, 26) on ~rgb(11, 111, 100) at x82 y2408",
-        "low contrast 3.88:1 (needs 4.5) \"Consumption by hour\" 15px, text rgb(185, 81, 15) on ~rgb(248, 244, 236) at x45 y2587"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/#/overview",
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": [
-        "page content spans 37% of the main width (need ≥ 70%)",
-        "low contrast 1.14:1 (needs 4.5) \"kW at\" 15px, text rgb(196, 189, 179) on ~rgb(253, 152, 95) at x45 y1267",
-        "low contrast 1.16:1 (needs 4.5) \"14:00\" 15px, text rgb(196, 189, 179) on ~rgb(40, 41, 46) at x87 y1267",
-        "low contrast 3.49:1 (needs 4.5) \"Generation\" 13px, text rgb(196, 189, 179) on ~rgb(129, 75, 33) at x73 y1646",
-        "low contrast 2.67:1 (needs 4.5) \"Consumption\" 13px, text rgb(196, 189, 179) on ~rgb(166, 97, 39) at x73 y1672",
-        "low contrast 1.57:1 (needs 4.5) \"%\" 13px, text rgb(243, 238, 231) on ~rgb(63, 214, 192) at x82 y2408",
-        "low contrast 1.57:1 (large, needs 3) \"68\" 24px, text rgb(243, 238, 231) on ~rgb(27, 31, 35) at x57 y2392",
-        "low contrast 1.57:1 (large, needs 3) \"11.8\" 24px, text rgb(243, 238, 231) on ~rgb(43, 107, 100) at x69 y2392"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/#/overview",
       "width": 375,
       "variant": "default",
       "page": "overview",
-      "errors": [
-        "low contrast 1.14:1 (needs 4.5) \"14:00\" 15px, text rgb(196, 189, 179) on ~rgb(254, 153, 79) at x29 y1448",
-        "low contrast 1.57:1 (needs 4.5) \"%\" 13px, text rgb(243, 238, 231) on ~rgb(36, 37, 42) at x66 y2625",
-        "low contrast 1.57:1 (large, needs 3) \"68\" 24px, text rgb(243, 238, 231) on ~rgb(36, 37, 42) at x39 y2609"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=glacier#/overview",
       "width": 1440,
       "variant": "glacier",
       "page": "overview",
-      "errors": [
-        "page content spans 37% of the main width (need ≥ 70%)",
-        "low contrast 1.07:1 (needs 4.5) \"kW at\" 15px, text rgb(179, 193, 201) on ~rgb(102, 191, 247) at x45 y1267",
-        "low contrast 1.13:1 (needs 4.5) \"14:00\" 15px, text rgb(179, 193, 201) on ~rgb(33, 42, 49) at x87 y1267",
-        "low contrast 3.54:1 (needs 4.5) \"Generation\" 13px, text rgb(179, 193, 201) on ~rgb(128, 76, 33) at x73 y1646",
-        "low contrast 2.70:1 (needs 4.5) \"Consumption\" 13px, text rgb(179, 193, 201) on ~rgb(165, 97, 39) at x73 y1672",
-        "low contrast 1.30:1 (needs 4.5) \"%\" 13px, text rgb(234, 242, 246) on ~rgb(142, 230, 200) at x82 y2408",
-        "low contrast 1.30:1 (large, needs 3) \"68\" 24px, text rgb(234, 242, 246) on ~rgb(23, 30, 36) at x57 y2392",
-        "low contrast 1.30:1 (large, needs 3) \"11.8\" 24px, text rgb(234, 242, 246) on ~rgb(72, 113, 104) at x69 y2392"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=glacier#/overview",
       "width": 375,
       "variant": "glacier",
       "page": "overview",
-      "errors": [
-        "low contrast 1.05:1 (needs 4.5) \"14:00\" 15px, text rgb(179, 193, 201) on ~rgb(94, 197, 245) at x29 y1448",
-        "low contrast 1.30:1 (needs 4.5) \"%\" 13px, text rgb(234, 242, 246) on ~rgb(29, 37, 44) at x66 y2625",
-        "low contrast 1.30:1 (large, needs 3) \"68\" 24px, text rgb(234, 242, 246) on ~rgb(29, 37, 44) at x39 y2609"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=paper#/overview",
       "width": 1440,
       "variant": "paper",
       "page": "overview",
-      "errors": [
-        "page content spans 37% of the main width (need ≥ 70%)",
-        "low contrast 2.24:1 (needs 4.5) \"kW at\" 15px, text rgb(95, 83, 72) on ~rgb(223, 109, 61) at x45 y1267",
-        "low contrast 2.20:1 (needs 4.5) \"14:00\" 15px, text rgb(95, 83, 72) on ~rgb(247, 243, 235) at x87 y1267",
-        "low contrast 1.38:1 (needs 4.5) \"Generation\" 13px, text rgb(95, 83, 72) on ~rgb(153, 100, 56) at x73 y1646",
-        "low contrast 1.85:1 (needs 4.5) \"Consumption\" 13px, text rgb(95, 83, 72) on ~rgb(190, 121, 62) at x73 y1672",
-        "low contrast 2.61:1 (needs 4.5) \"%\" 13px, text rgb(42, 33, 26) on ~rgb(11, 111, 100) at x82 y2408",
-        "low contrast 3.88:1 (needs 4.5) \"Consumption by hour\" 15px, text rgb(185, 81, 15) on ~rgb(248, 244, 236) at x45 y2587"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=paper#/overview",
       "width": 375,
       "variant": "paper",
       "page": "overview",
-      "errors": [
-        "low contrast 3.78:1 (needs 4.5) \"Strings\" 15px, text rgb(185, 81, 15) on ~rgb(236, 229, 219) at x29 y546",
-        "low contrast 2.29:1 (needs 4.5) \"14:00\" 15px, text rgb(95, 83, 72) on ~rgb(225, 111, 47) at x29 y1448",
-        "low contrast 3.78:1 (needs 4.5) \"Output\" 15px, text rgb(185, 81, 15) on ~rgb(236, 230, 219) at x29 y2178",
-        "low contrast 3.85:1 (needs 4.5) \"Storage and flow\" 15px, text rgb(185, 81, 15) on ~rgb(247, 242, 233) at x29 y2519",
-        "low contrast 2.61:1 (needs 4.5) \"%\" 13px, text rgb(42, 33, 26) on ~rgb(251, 248, 242) at x66 y2625",
-        "low contrast 3.88:1 (needs 4.5) \"Consumption by hour\" 15px, text rgb(185, 81, 15) on ~rgb(239, 233, 223) at x29 y2943",
-        "low contrast 3.77:1 (needs 4.5) \"Sites\" 15px, text rgb(185, 81, 15) on ~rgb(231, 224, 214) at x29 y3231"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/#/rooms",
       "width": 1440,
       "variant": "default",
       "page": "rooms",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/#/rooms",
@@ -200,9 +113,7 @@
       "width": 1440,
       "variant": "glacier",
       "page": "rooms",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=glacier#/rooms",
@@ -216,9 +127,7 @@
       "width": 1440,
       "variant": "paper",
       "page": "rooms",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=paper#/rooms",
@@ -232,9 +141,7 @@
       "width": 1440,
       "variant": "default",
       "page": "devices",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/#/devices",
@@ -248,9 +155,7 @@
       "width": 1440,
       "variant": "glacier",
       "page": "devices",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=glacier#/devices",
@@ -264,9 +169,7 @@
       "width": 1440,
       "variant": "paper",
       "page": "devices",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=paper#/devices",
@@ -280,9 +183,7 @@
       "width": 1440,
       "variant": "default",
       "page": "energy",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/#/energy",
@@ -296,9 +197,7 @@
       "width": 1440,
       "variant": "glacier",
       "page": "energy",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=glacier#/energy",
@@ -312,9 +211,7 @@
       "width": 1440,
       "variant": "paper",
       "page": "energy",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=paper#/energy",
@@ -328,9 +225,7 @@
       "width": 1440,
       "variant": "default",
       "page": "settings",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/#/settings",
@@ -344,9 +239,7 @@
       "width": 1440,
       "variant": "glacier",
       "page": "settings",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=glacier#/settings",
@@ -360,9 +253,7 @@
       "width": 1440,
       "variant": "paper",
       "page": "settings",
-      "errors": [
-        "page content spans 19% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/solstice-energy/?variant=paper#/settings",

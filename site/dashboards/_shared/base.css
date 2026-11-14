@@ -41,9 +41,9 @@ img, svg { display: block; max-width: 100%; }
   backdrop-filter: blur(var(--mat-glass-dark-blur)) saturate(1.25);
 }
 .mat-clay {
-  background: var(--mat-clay-fill);
-  border: 1px solid var(--mat-clay-edge);
-  box-shadow: var(--mat-clay-shadow), var(--mat-clay-inset);
+  background: var(--mat-clay-fill, var(--surface-solid, var(--surface, var(--bg))));
+  border: 1px solid var(--mat-clay-edge, var(--border));
+  box-shadow: var(--mat-clay-shadow, var(--shadow-sm, none)), var(--mat-clay-inset, inset 0 1px 0 rgb(255 255 255 / 0.35));
 }
 .mat-neu {
   background: var(--mat-neu-fill);

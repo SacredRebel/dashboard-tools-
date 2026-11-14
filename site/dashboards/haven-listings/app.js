@@ -302,11 +302,13 @@
   }
 
   
+/* reveal-boot */
+if (typeof staggerReveal === "function") staggerReveal();
 /* === DB multipage polish (dense kit) === */
 (function wirePages() {
   const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"listings","name":"Listings","pattern":"List"},{"id":"showings","name":"Showings","pattern":"Calendar"},{"id":"settings","name":"Settings","pattern":"Settings"}];
   const root = document.querySelector('[data-db-app]') || document.body;
-  const main = document.querySelector('main') || document.body;
+  const main = document.querySelector('main[data-main]') || document.querySelector('main') || document.body;
   let overview = main.querySelector('[data-page-panel="overview"]');
   if (!overview) {
     overview = document.createElement('div');

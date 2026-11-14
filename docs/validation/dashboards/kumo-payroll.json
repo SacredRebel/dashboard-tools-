@@ -1,7 +1,7 @@
 {
   "id": "kumo-payroll",
   "checked": "2026-11-14",
-  "ok": false,
+  "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -57,10 +57,7 @@
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 33% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/#/overview",
@@ -74,10 +71,7 @@
       "width": 1440,
       "variant": "jade",
       "page": "overview",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 33% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=jade#/overview",
@@ -91,10 +85,7 @@
       "width": 1440,
       "variant": "sakura",
       "page": "overview",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 33% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=sakura#/overview",
@@ -108,10 +99,7 @@
       "width": 1440,
       "variant": "default",
       "page": "people",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 27% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/#/people",
@@ -125,10 +113,7 @@
       "width": 1440,
       "variant": "jade",
       "page": "people",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 27% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=jade#/people",
@@ -142,10 +127,7 @@
       "width": 1440,
       "variant": "sakura",
       "page": "people",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 27% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=sakura#/people",
@@ -159,10 +141,7 @@
       "width": 1440,
       "variant": "default",
       "page": "payroll",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 27% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/#/payroll",
@@ -176,10 +155,7 @@
       "width": 1440,
       "variant": "jade",
       "page": "payroll",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 27% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=jade#/payroll",
@@ -193,10 +169,7 @@
       "width": 1440,
       "variant": "sakura",
       "page": "payroll",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 27% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=sakura#/payroll",
@@ -210,10 +183,7 @@
       "width": 1440,
       "variant": "default",
       "page": "settings",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 27% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/#/settings",
@@ -227,10 +197,7 @@
       "width": 1440,
       "variant": "jade",
       "page": "settings",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 27% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=jade#/settings",
@@ -244,10 +211,7 @@
       "width": 1440,
       "variant": "sakura",
       "page": "settings",
-      "errors": [
-        "low-res image: media/landscape.webp is 1280px for 1483px rendered (need ≥ 2226px or a srcset 2x)",
-        "page content spans 27% of the main width (need ≥ 70%)"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/kumo-payroll/?variant=sakura#/settings",

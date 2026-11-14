@@ -344,6 +344,8 @@
   }
 
   
+/* reveal-boot */
+if (typeof staggerReveal === "function") staggerReveal();
 /* === DB multipage polish (dense kit) === */
 (function wirePages() {
   const PAGES = [{"id":"overview","name":"Quest vault","pattern":"Dashboard"},{"id":"quests","name":"Quest board","pattern":"List"},{"id":"arena","name":"Arena","pattern":"Board"},{"id":"guild","name":"Guild hall","pattern":"List"}];

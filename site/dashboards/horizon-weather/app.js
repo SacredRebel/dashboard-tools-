@@ -217,6 +217,8 @@
   }
 
   selectDay(0, false);
+  // Reveal must run even when dense-kit owns routing (legacy route may be skipped).
+  staggerReveal();
 
   const PAGES = [
     { id: 'overview', name: 'Overview', pattern: 'Dashboard' },

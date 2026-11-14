@@ -397,6 +397,8 @@
   }
 
   
+/* reveal-boot */
+if (typeof staggerReveal === "function") staggerReveal();
 /* === DB multipage polish (dense kit) === */
 (function wirePages() {
   const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"rooms","name":"Arrays","pattern":"List"},{"id":"devices","name":"Storage","pattern":"List"},{"id":"energy","name":"Reports","pattern":"Report"},{"id":"settings","name":"Settings","pattern":"Settings"}];

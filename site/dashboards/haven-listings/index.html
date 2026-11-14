@@ -21,11 +21,11 @@
 </head>
 <body>
   <div class="hl" data-db-app>
-    <div data-main>
+    <main data-main>
       <div class="hl-overview" data-page-panel="overview">
         <section class="hl-stage hl-reveal" aria-label="Featured home">
           <div class="hl-scene" data-scene aria-hidden="true">
-            <img class="hl-photo hl-ambient" src="media/villa.webp" width="1440" height="810" alt="" decoding="async">
+            <img class="hl-photo hl-ambient" src="media/villa@2x.webp" srcset="media/villa.webp 1x, media/villa@2x.webp 2x" width="1440" height="810" alt="" decoding="async">
           </div>
 
           <header class="hl-top">
@@ -63,7 +63,7 @@
           <article class="hl-detail" data-detail aria-live="polite"></article>
         </section>
 
-        <main class="hl-below">
+        <section class="hl-below">
           <section class="hl-card hl-list hl-reveal" aria-labelledby="hl-list-h">
             <div class="hl-card-head"><h2 id="hl-list-h">Matching homes</h2><button type="button" class="hl-link" data-clear>Clear filters</button></div>
             <ul class="hl-homes" data-homes></ul>
@@ -77,10 +77,21 @@
             <ul class="hl-views" data-views></ul>
             <button type="button" class="hl-book" data-book>Book a viewing</button>
           </section>
-        </main>
+          <section class="hl-card hl-reveal" aria-labelledby="hl-agent-h">
+            <div class="hl-card-head"><h2 id="hl-agent-h">Agent notes</h2><span class="hl-meta">Sample</span></div>
+            <ul class="hl-views" data-agent-notes>
+              <li><span>Open house prep</span><b>Sat 11:00</b></li>
+              <li><span>Inspection window</span><b>Tue–Thu</b></li>
+              <li><span>Offer readiness</span><b>Docs ready</b></li>
+              <li><span>Neighborhood brief</span><b>Schools · parks</b></li>
+              <li><span>Comps refresh</span><b>3 new</b></li>
+              <li><span>Buyer shortlist</span><b>8 homes</b></li>
+            </ul>
+          </section>
+        </section>
         <p class="db-sample hl-foot">Sample data · fictional</p>
       </div>
-    </div>
+    </main>
   </div>
   <div class="hl-toast" data-toast hidden role="status"></div>
   <script src="app.js"></script>
