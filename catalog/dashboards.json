@@ -3855,7 +3855,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A cream-and-pink soft-UI studio admin: extruded nav pills, overlapping peach/pink SVG pebble blobs, circular knobs, layered wave dunes, and a gradient torus beside a tick-mark dial — all on neumorphic clay surfaces.",
+      "summary": "A cream-and-pink soft-UI studio admin: extruded nav pills, clay pebble photo props, circular knobs, layered wave dunes, and a clay torus beside a tick-mark dial — plus Workspace, People and Settings.",
       "mood": [
         "tactile",
         "playful",
@@ -3879,21 +3879,19 @@
         "responsive": "≤1180px: two-column bento · ≤960px: nav wraps, torus under blobs · ≤640px: single column, knobs in a row, feed last"
       },
       "components": [
-        "Extruded soft nav pills",
-        "Overlapping peach/pink SVG pebble blobs",
+        "Extruded soft nav pills and pages nav",
+        "Clay pebble photo stage with mood filters",
         "Floating circular knobs with ± controls",
         "Wave-dune SVG analytics card",
-        "Gradient torus + tick dial card",
-        "Neumorphic KPI pills",
-        "Lite range slider card",
-        "Pastel activity feed with loading/empty/error/populated"
+        "Clay torus photo + tick dial card",
+        "Neumorphic KPI pills"
       ],
-      "signature": "Cream soft-UI board with extruded pills, overlapping peach/pink pebble blobs, circular knobs, layered wave dunes, and a rainbow torus beside a tick-mark dial.",
+      "signature": "Clay pebble and torus photo props on neumorphic cream surfaces, with extruded soft pills and a clarity dial.",
       "palette": {
         "bg": "#efe6df",
         "surface": "#f7f1eb",
         "text": "#3a2c28",
-        "muted": "#6a564e",
+        "muted": "#4a3a34",
         "accent": "#a84f42",
         "peach": "#f0b49a",
         "candy": "#e9a6b5",
@@ -3930,7 +3928,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied soft-UI / neumorphic kit render. Brand (Pebble Studio), copy and metrics are fictional. Product photos and original marks were replaced with SVG blobs, dunes, torus and knobs. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied soft-UI / neumorphic kit render. Brand (Pebble Studio), copy and metrics are fictional. Kit collage tightened into one dashboard; pebble and torus props use gallery media (`media/pebbles.webp`, `media/torus.webp`). Fidelity pass used local tesseract OCR + palette sample on reference.jpg. Owner original stored as `reference.jpg`."
       },
       "path": "site/dashboards/pebble-studio/",
       "reference": "reference.jpg",
@@ -3956,7 +3954,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "copper-radar",

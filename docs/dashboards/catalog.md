@@ -1221,15 +1221,15 @@ A skeuomorphic soft-UI analytics board in sand, sage and slate: fabric wave back
 
 _Pebble Studio · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A cream-and-pink soft-UI studio admin: extruded nav pills, overlapping peach/pink SVG pebble blobs, circular knobs, layered wave dunes, and a gradient torus beside a tick-mark dial — all on neumorphic clay surfaces.
+A cream-and-pink soft-UI studio admin: extruded nav pills, clay pebble photo props, circular knobs, layered wave dunes, and a clay torus beside a tick-mark dial — plus Workspace, People and Settings.
 
 - **Use cases:** SaaS admin · **Mode:** light · **Mood:** tactile, playful, soft, warm, calm
 - **Pages:** Overview (`overview`, Dashboard) · Workspace (`workspace`, List) · People (`people`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Cream soft-UI board with extruded pills, overlapping peach/pink pebble blobs, circular knobs, layered wave dunes, and a rainbow torus beside a tick-mark dial.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Clay pebble and torus photo props on neumorphic cream surfaces, with extruded soft pills and a clarity dial.
 - **Layout:** Top extruded pill nav · blob stage + torus/dial analytics · wave dunes + knobs + lite slider · pastel activity feed + KPI pill strip
 - **Responsive:** ≤1180px: two-column bento · ≤960px: nav wraps, torus under blobs · ≤640px: single column, knobs in a row, feed last
-- **Fonts:** Nunito / Nunito · **Palette:** bg `#efe6df`, surface `#f7f1eb`, text `#3a2c28`, muted `#6a564e`, accent `#a84f42`, peach `#f0b49a`, candy `#e9a6b5`, mint `#9fcfbe`
+- **Fonts:** Nunito / Nunito · **Palette:** bg `#efe6df`, surface `#f7f1eb`, text `#3a2c28`, muted `#4a3a34`, accent `#a84f42`, peach `#f0b49a`, candy `#e9a6b5`, mint `#9fcfbe`
 - **Variants:** Cream, Coral, Moss · **Closest toolkit theme:** `blush`
 
 **Best for**
@@ -1242,7 +1242,7 @@ A cream-and-pink soft-UI studio admin: extruded nav pills, overlapping peach/pin
 - Dark, technical security brands
 - Brands that need flat, sharp corners
 
-**Components:** Extruded soft nav pills · Overlapping peach/pink SVG pebble blobs · Floating circular knobs with ± controls · Wave-dune SVG analytics card · Gradient torus + tick dial card · Neumorphic KPI pills · Lite range slider card · Pastel activity feed with loading/empty/error/populated
+**Components:** Extruded soft nav pills and pages nav · Clay pebble photo stage with mood filters · Floating circular knobs with ± controls · Wave-dune SVG analytics card · Clay torus photo + tick dial card · Neumorphic KPI pills
 
 ---
 

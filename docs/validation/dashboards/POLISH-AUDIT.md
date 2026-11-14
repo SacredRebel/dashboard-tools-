@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `pebble-studio` (Phase C — total 28).
+Next: `ember-rooms` (Phase C — total 28).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -38,7 +38,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 28 | mauve-ledger | Mauve Ledger | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | lighter glass than ref; no email table block | queued |
 | 29 | tidebath-showroom | Tidebath Showroom | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | photo rooms + EN copy; multipage + motion | polished 28→36 |
 | 30 | dune-panels | Dune Panels | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | fabric photo + clay depth; NaN fixed; multipage | polished 23→36 |
-| 31 | pebble-studio | Pebble Studio | 4 | 3 | 3 | 4 | 3 | 3 | 4 | 4 | 28 | kit collage → single dashboard; less abstract blobs | queued |
+| 31 | pebble-studio | Pebble Studio | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay photo props; multipage + motion | polished 28→36 |
 | 32 | copper-radar | Copper Radar | 5 | 4 | 4 | 4 | 3 | 3 | 5 | 5 | 33 | vendor logos swapped for fiction; similar match | queued |
 | 33 | orbit-clay | Orbit Clay | 4 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 30 | desktop frame vs pure mobile ref | queued |
 | 34 | saffron-dusk | Saffron Dusk | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | fewer glass sparkles; 3D memoji → flat avatar | queued |
@@ -68,7 +68,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 15. ~~`larchwood-lodge` — 28~~ → polished (36)
 16. ~~`taffy-analytics` — 28~~ → polished (36)
 17. ~~`tidebath-showroom` — 28~~ → polished (36)
-18. `pebble-studio` — 28
+18. ~~`pebble-studio` — 28~~ → polished (36)
 19. `ember-rooms` — 28
 20. `solstice-energy` — 29
 21. `plumage-survey` — 29
