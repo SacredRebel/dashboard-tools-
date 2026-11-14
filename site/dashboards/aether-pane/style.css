@@ -87,16 +87,16 @@ body { background: var(--bg); overflow-x: hidden; }
   background: linear-gradient(160deg, var(--atm-1), var(--atm-2) 50%, var(--atm-3));
 }
 .ae-office {
-  width: 100%; height: 100%; object-fit: cover; object-position: center;
-  filter: blur(6px) saturate(0.85) brightness(0.55);
-  transform: scale(1.08);
+  width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
+  filter: blur(5px) saturate(0.9) brightness(0.5) contrast(1.05);
+  transform: scale(1.1);
 }
 .ae-atmosphere::after {
   content: ""; position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 70% 50% at 20% 30%, rgb(0 120 160 / 0.28), transparent 60%),
-    radial-gradient(ellipse 60% 45% at 80% 70%, rgb(20 60 100 / 0.32), transparent 55%),
-    linear-gradient(180deg, rgb(4 10 16 / 0.45), rgb(4 10 16 / 0.72));
+    radial-gradient(ellipse 70% 50% at 20% 30%, rgb(0 120 160 / 0.32), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 80% 70%, rgb(20 60 100 / 0.36), transparent 55%),
+    linear-gradient(180deg, rgb(4 10 16 / 0.35), rgb(4 10 16 / 0.78));
 }
 .ae-ambient { animation: aeDrift 8s var(--ease-out) infinite alternate; }
 @keyframes aeDrift {
@@ -115,29 +115,46 @@ body { background: var(--bg); overflow-x: hidden; }
 .ae-shell {
   position: relative; z-index: 1; width: min(1180px, 100%);
   padding: 18px 18px 20px;
-  border-radius: calc(var(--radius-lg) + 8px);
-  background: color-mix(in srgb, var(--glass) 92%, transparent);
-  backdrop-filter: blur(22px) saturate(1.2);
-  border: 1px solid var(--border);
+  border-radius: calc(var(--radius-lg) + 10px);
+  background: color-mix(in srgb, var(--glass) 78%, transparent);
+  backdrop-filter: blur(28px) saturate(1.35);
+  -webkit-backdrop-filter: blur(28px) saturate(1.35);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
   box-shadow:
-    0 0 0 1px rgb(255 255 255 / 0.04) inset,
-    0 30px 80px rgb(0 0 0 / 0.45),
-    0 0 60px var(--glow);
-  transform: perspective(1400px) rotateX(2.5deg) rotateY(-3deg);
-  transform-origin: 50% 60%;
+    0 0 0 1px rgb(255 255 255 / 0.06) inset,
+    inset 0 1px 0 rgb(255 255 255 / 0.1),
+    0 40px 100px rgb(0 0 0 / 0.55),
+    0 0 80px var(--glow),
+    0 0 1px var(--accent);
+  transform: perspective(1600px) rotateX(3.5deg) rotateY(-4.5deg) translateY(-6px);
+  transform-origin: 50% 70%;
+}
+.ae-shell::before {
+  content: ""; position: absolute; inset: 10px; border-radius: inherit; pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.04);
 }
 @media (max-width: 960px) {
+  .ae-shell { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
   .ae-shell { transform: none; }
 }
 .ae-nav { display: flex; gap: 4px; flex-wrap: wrap; }
 .ae-nav a {
   min-height: 36px; padding: 0 12px; border-radius: var(--radius-pill);
-  color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600;
+  color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600;
   display: inline-flex; align-items: center;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border: 1px solid var(--border);
   transition: transform var(--dur-1) var(--ease-out), background-color var(--dur-2) var(--ease-out);
 }
-.ae-nav a[aria-current="page"] { background: var(--accent-soft); color: var(--text); }
+.ae-nav a[aria-current="page"] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
 .ae-nav a:hover { transform: translateY(-1px); color: var(--text); }
+.ae-updated {
+  padding: 4px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  border: 1px solid var(--border); color: var(--text); font-weight: 600;
+}
 
 .ae-top {
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
@@ -163,7 +180,7 @@ body { background: var(--bg); overflow-x: hidden; }
   background: none; color: var(--text-muted); font-size: 13px; font-weight: 600;
 }
 .ae-seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); box-shadow: 0 0 16px var(--glow); }
-.ae-updated { font-size: 13px; color: var(--text-subtle); }
+.ae-updated { font-size: 13px; color: var(--text); }
 
 .ae-grid {
   display: grid;
@@ -174,9 +191,12 @@ body { background: var(--bg); overflow-x: hidden; }
 .ae-mod {
   min-width: 0; padding: 14px 14px 12px;
   border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
   border: 1px solid var(--border);
-  box-shadow: inset 0 0 24px rgb(0 240 255 / 0.03);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.06),
+    inset 0 0 28px rgb(0 240 255 / 0.04),
+    0 0 28px color-mix(in srgb, var(--glow) 30%, transparent);
 }
 .ae-mod-h {
   display: flex; align-items: center; justify-content: space-between; gap: 8px;
@@ -218,8 +238,9 @@ body { background: var(--bg); overflow-x: hidden; }
 .ae-perf-num {
   font-family: var(--font-display); font-size: clamp(40px, 5vw, 56px);
   font-weight: 700; line-height: 1; letter-spacing: -0.03em;
-  color: var(--text); text-shadow: 0 0 24px var(--glow);
+  color: var(--text); text-shadow: 0 0 28px var(--glow), 0 0 2px var(--accent);
 }
+.ae-plot .line { filter: drop-shadow(0 0 5px var(--glow)); }
 .ae-perf h2 { margin-top: 6px; font-size: 14px; font-weight: 500; color: var(--text-muted); text-transform: none; letter-spacing: 0; }
 .ae-dots { display: inline-flex; gap: 10px; margin-top: 12px; }
 .ae-dots button {

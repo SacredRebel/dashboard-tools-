@@ -434,7 +434,68 @@ if (typeof staggerReveal === "function") staggerReveal();
   }
   main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
   if (window.DB?.onVisible) window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
-  if (window.DB?.dense) window.DB.dense.mount({ main, overview, pages: PAGES, brand: "Aether Pane" });
+  if (window.DB?.dense) {
+    const D = window.DB.dense;
+    window.DB.dense.mount({
+      main, overview, pages: PAGES, brand: "Aether Pane",
+      renderPage(page) {
+        if (page.id === 'reports') {
+          return `
+            ${D.kpiRow([{ to: 84.2, decimals: 1, suffix: '%', cap: 'Perf index', label: '84.2' }, { to: 5.1, decimals: 1, suffix: '%', cap: 'Journey', label: '5.1' }, { to: 3, cap: 'Channels', label: '3' }, { to: 10, cap: 'Weeks', label: '10' }])}
+            ${D.heroCard('Q4 report pack', 'Glass HUD snapshot for revenue, performance and journey. Export stays sample-only.', 'Report')}
+            ${D.tableCard('Channel register', ['Channel', 'Attainment', 'Delta'], [
+              { id: 'r1', cells: ['Direct', '<span class="num">70%</span>', '+4'] },
+              { id: 'r2', cells: ['Partner', '<span class="num">92%</span>', '+6'] },
+              { id: 'r3', cells: ['Trial', '<span class="num">38%</span>', '−2'] },
+              { id: 'r4', cells: ['Self-serve', '<span class="num">61%</span>', '+3'] },
+              { id: 'r5', cells: ['Enterprise', '<span class="num">88%</span>', '+1'] },
+              { id: 'r6', cells: ['Renewals', '<span class="num">95%</span>', '+2'] },
+            ])}
+            ${D.chartCard('Revenue weeks', 'bars')}
+            ${D.chartCard('Signal mix', 'line')}
+            ${D.listCard('Packs', [{ k: 'Board PDF', v: 'Ready' }, { k: 'CSV export', v: 'Ready' }, { k: 'Journey brief', v: 'Draft' }, { k: 'Segment cut', v: 'Queued' }, { k: 'Exec note', v: 'Gate' }, { k: 'Archive', v: 'Ok' }])}
+            ${D.listCard('Watch', [{ k: 'Trial drop', v: 'Watch' }, { k: 'Partner lag', v: 'Ok' }, { k: 'Perf dip Thu', v: 'Ok' }, { k: 'Night spike', v: 'Info' }])}`;
+        }
+        if (page.id === 'segments') {
+          return `
+            ${D.kpiRow([{ to: 6, cap: 'Segments', label: '6' }, { to: 2, cap: 'Active tests', label: '2' }, { to: 18, cap: 'Rules', label: '18' }, { to: 4, cap: 'Owners', label: '4' }])}
+            ${D.heroCard('Segment map', 'Journey cohorts for the glass pane. Open a row for the sample rule set.', 'List')}
+            ${D.tableCard('Segment register', ['Segment', 'Share', 'Owner'], [
+              { id: 's1', cells: ['New trial', '<span class="num">22%</span>', 'Growth'] },
+              { id: 's2', cells: ['Activated', '<span class="num">31%</span>', 'Lifecycle'] },
+              { id: 's3', cells: ['Checkout stall', '<span class="num">14%</span>', 'Growth'] },
+              { id: 's4', cells: ['Partner-led', '<span class="num">18%</span>', 'Partners'] },
+              { id: 's5', cells: ['Enterprise', '<span class="num">9%</span>', 'AE'] },
+              { id: 's6', cells: ['Churn risk', '<span class="num">6%</span>', 'CS'] },
+              { id: 's7', cells: ['Power users', '<span class="num">8%</span>', 'Product'] },
+              { id: 's8', cells: ['Dormant', '<span class="num">5%</span>', 'CS'] },
+            ])}
+            ${D.chartCard('Share mix', 'bars')}
+            ${D.chartCard('Journey wave', 'line')}
+            ${D.listCard('Rules', [{ k: 'Pricing hold > 2m', v: 'On' }, { k: 'Trial day 3 nudge', v: 'On' }, { k: 'Partner handoff', v: 'Gate' }, { k: 'Night quiet', v: 'On' }, { k: 'Enterprise SLA', v: 'Ok' }, { k: 'Dormant 30d', v: 'Watch' }])}
+            ${D.listCard('Tests', [{ k: 'Checkout copy B', v: 'Running' }, { k: 'Trial CTA', v: 'Running' }, { k: 'Pricing order', v: 'Queued' }, { k: 'Partner badge', v: 'Done' }])}`;
+        }
+        if (page.id === 'settings') {
+          return `
+            ${D.kpiRow([{ to: 3, cap: 'Ranges', label: '3' }, { to: 2, cap: 'Themes', label: '2' }, { to: 1, cap: 'Gates', label: '1' }, { to: 14, cap: 'Retention', label: '14' }])}
+            ${D.heroCard('Pane preferences', 'Glass HUD defaults, retention and approval gates. Sample only — nothing is persisted.', 'Settings')}
+            ${D.tableCard('Preference register', ['Setting', 'Value', 'Scope'], [
+              { id: 'p1', cells: ['Default range', 'Q4', 'HUD'] },
+              { id: 'p2', cells: ['Glow intensity', 'High', 'Display'] },
+              { id: 'p3', cells: ['Office blur', 'On', 'Atmosphere'] },
+              { id: 'p4', cells: ['Export PII', 'Off', 'Privacy'] },
+              { id: 'p5', cells: ['Retention', '14 days', 'Data'] },
+              { id: 'p6', cells: ['Approval gate', 'On', 'Ops'] },
+            ])}
+            ${D.listCard('Channels', [{ k: 'Direct', v: 'Tracked' }, { k: 'Partner', v: 'Tracked' }, { k: 'Trial', v: 'Tracked' }, { k: 'Paid', v: 'Off' }])}
+            ${D.listCard('Approvals', [{ k: 'Public share', v: 'Gate' }, { k: 'Vendor sync', v: 'Off' }, { k: 'Night jobs', v: 'Ok' }, { k: 'AI summary', v: 'Gate' }])}
+            ${D.chartCard('Alert volume', 'bars')}
+            ${D.chartCard('Load', 'line')}`;
+        }
+        return null;
+      },
+    });
+  }
 })();
 /* === /DB multipage polish === */
 document.documentElement.dataset.ready = 'true';
