@@ -29,3 +29,4 @@ Hero and secondary renders are **original** GenerateImage outputs (or code-drawn
 | _(pending deep polish)_ | | |
 
 | cortex-well | `media/brain.webp`, `brain@2x.webp`, `brain-bg.webp`, `brain-mid.webp` | Original GenerateImage still life (brain in frosted bowl); not a copy of reference.* |
+| mallow-music | media/head.webp, head@2x.webp | Original GenerateImage clay headphones portrait |

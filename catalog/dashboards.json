@@ -1807,12 +1807,14 @@
         "reveal",
         "count",
         "draw",
+        "spotlight",
+        "parallax",
+        "ambient",
         "route"
       ],
       "materials": [
-        "neu",
         "clay",
-        "tile3d"
+        "neu"
       ]
     },
     {
