@@ -144,11 +144,47 @@ body { background: var(--bg); }
   .mm-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 700px) {
-  .mm { padding: 10px; gap: 12px; } .mm-main { gap: 12px; }
-  .mm-side { grid-template-columns: minmax(0, 1fr); padding: 12px; } .mm-me { justify-content: start; }
-  .mm-side nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; } .mm-side nav a { padding: 0 8px; gap: 6px; font-size: 14px; }
+  .mm {
+    display: grid; grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    padding: 10px 10px calc(10px + env(safe-area-inset-bottom, 0px));
+    gap: 12px;
+  }
+  .mm-main { gap: 12px; order: 1; padding-bottom: 8px; }
+  .mm-side {
+    order: 2; position: sticky; bottom: 0; z-index: 6;
+    grid-template-columns: minmax(0, 1fr); padding: 8px 10px;
+    border-radius: 20px;
+    background: color-mix(in srgb, var(--side) 94%, transparent);
+    box-shadow: var(--clay);
+  }
+  .mm-me { display: none; }
+  .mm-plus { display: none; }
+  .mm-side nav {
+    display: flex; flex-wrap: nowrap; gap: 4px; overflow-x: auto;
+    scrollbar-width: none; justify-content: space-between;
+  }
+  .mm-side nav a {
+    flex: 1 1 auto; min-width: 44px; min-height: 44px; padding: 0 10px;
+    justify-content: center; gap: 4px; font-size: 12px;
+  }
+  .mm-side nav a svg { width: 18px; height: 18px; }
   .mm-top { flex-wrap: wrap; } .mm-top h1 { font-size: 26px; } .mm-search { order: 3; width: 100%; }
-  .mm-hero { grid-template-columns: minmax(0, 1fr) 90px; padding: 16px; } .mm-heroart { grid-column: 1 / -1; max-width: 200px; } .mm-herocopy h2 { font-size: 23px; }
+  /* Phone composition: hero art stays face-first, not a cropped blob */
+  .mm-hero {
+    grid-template-columns: 112px minmax(0, 1fr);
+    align-items: center; gap: 12px; min-height: 0; padding: 14px;
+  }
+  .mm-heroart {
+    grid-column: auto; max-width: none; width: 112px; height: 112px;
+    border-radius: 50%; overflow: hidden; box-shadow: var(--clay);
+  }
+  .mm-heroart img {
+    width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block;
+  }
+  .mm-plant { display: none; }
+  .mm-herocopy h2 { font-size: 20px; }
+  .mm-herocopy p { font-size: 14px; margin: 4px 0 12px; }
   .mm-row, .mm-gbody { grid-template-columns: minmax(0, 1fr); } .mm-donut { max-width: 170px; margin: 0 auto; }
   .mm-stats { gap: 12px; } .mm-stat b { font-size: 24px; }
   .mm-player { grid-template-columns: 52px minmax(0, 1fr) 48px; } .mm-scrub { grid-column: 1 / 3; } .mm-time { text-align: right; }
