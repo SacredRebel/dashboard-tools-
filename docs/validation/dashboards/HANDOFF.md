@@ -6,41 +6,40 @@ PR: https://github.com/SacredRebel/dashboard-tools-/pull/6 (draft — **do not m
 
 ## Done this stretch
 
-### Dense secondary kit (`b8d85a8`)
-- Hero focus band on every secondary page; body uses a real 12-col grid
-- Opaque AA eyebrow plates; drawer chrome in `pageShell` for custom bodies
+### Larchwood Lodge (`c1a2822`)
+- Arched lake hero + lake@2x srcset; glass bento tiles
+- Branded Rooms / Guests / Settings dense bodies
 
-### Solstice Energy (`04a3508`)
-- Circular site photo portals in storage dials; output bar + load overlay line
-- Arrays / Storage / Reports / Settings: Solstice-themed dense bodies
+### Aether Pane (`069d414`)
+- Stronger floating glass shell + office atmosphere art (1x ≥ DPI)
+- Opaque AA daylight nav / Updated plates
+- Branded Reports / Segments / Settings dense bodies
 
-### Pulsar Analytics (`5632f22`)
-- Stronger neon terrain glow wave
-- Traffic / Events / Regions: Pulsar-themed dense bodies (thin-page safe)
+### Canopy Reforest (`b4b91ec`)
+- Band is Survey → Plant → Water → Measure icon-steps (not KPI strip)
 
-### Orbit Clay (`0488c86`)
-- Clay helmet + dune peaks refresh with srcset
-
-### Frame refresh (`9bbab18`)
-- Gallery frames reshot after dense hero kit (full-38)
+### Copper Radar (`9fd5dca`)
+- HTML vendor mark chips on the radar ring + AA legend
+- SVG keeps geometry dots only (no sub-12px SVG text)
 
 ### Earlier this branch
-- Meridian week G3 · Solstice/Pulsar/Taffy/Pebble/Dune heroes · Clima/Hollow/Pearlwell/Vitalis/Mallow · Kumo/Citadel/Glacier/Forge/Ridgeline/Ember/Tidebath/Copper/Cortex
+- Dense secondary kit · Solstice/Pulsar branded pages · Orbit helmet/dunes  
+- Meridian week G3 · Taffy/Pebble/Dune heroes · Clima/Hollow/Pearlwell/Vitalis/Mallow · Kumo/Citadel/Glacier/Forge/Ridgeline/Ember/Tidebath/Cortex
 
 ## Check results
 
-Touched ✔: dense-kit (spot: cortex/mallow/meridian/taffy/dune/pebble/citadel) · `solstice-energy` · `pulsar-analytics` · `orbit-clay`  
+Touched ✔: `larchwood-lodge` · `aether-pane` · `canopy-reforest` · `copper-radar`  
 **Full-38 confirmation: 38/38 ✔** (`node scripts/dashboards-check.mjs`, exit 0).
 
 ## Still open (architect)
 
-1. Remaining shy reference twins (larchwood, aether, canopy band, copper vendor ring, etc.).
-2. Optional deeper Solstice/Pulsar layout still shy of full cinematic twins.
+1. Optional deeper Solstice/Pulsar cinematic layout (still shy of full twins).
+2. Remaining catalog-order shy twins (horizon, ember radial, tidebath curve, kumo glass panel, etc.).
 3. ManagePullRequest often unavailable — preserve human PR body; compare URL below.
 
 ## Next
-1. Larchwood / Aether / remaining catalog-order shy twins  
-2. Optional deeper Solstice/Pulsar cinematic layout  
+1. Optional Solstice/Pulsar cinematic deepen  
+2. Next shy twins by POLISH-AUDIT score / catalog order  
 3. Refresh PR body when write tools available  
 
 ## Compare
