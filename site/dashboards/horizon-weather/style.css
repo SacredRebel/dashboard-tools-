@@ -49,9 +49,22 @@
 .hw-stage { min-width: 0; }
 .hw-overview[hidden] { display: none !important; }
 .hw-main { position: relative; padding: 22px 28px 28px; display: grid; gap: 18px; align-content: start; overflow: hidden; min-width: 0; }
-.hw-scene { position: absolute; inset: 0 0 auto 0; height: 560px; z-index: 0; pointer-events: none; overflow: hidden; }
-.hw-coast { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 40%; }
-.hw-vignette { position: absolute; inset: 0; background: linear-gradient(90deg, var(--bg) 0%, rgb(11 15 23 / 0.88) 32%, rgb(11 15 23 / 0.45) 58%, rgb(11 15 23 / 0.35) 100%), linear-gradient(180deg, rgb(11 15 23 / 0.35) 0%, rgb(11 15 23 / 0.15) 40%, var(--bg) 100%); }
+.hw-scene {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  /* Full-scroll cinematic plate — no hard seam under the fold. */
+  min-height: 100%;
+}
+.hw-coast {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 70% 32%;
+  filter: saturate(1.08) contrast(1.04);
+}
+.hw-vignette {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, var(--bg) 0%, rgb(11 15 23 / 0.9) 28%, rgb(11 15 23 / 0.42) 58%, rgb(11 15 23 / 0.28) 100%),
+    linear-gradient(180deg, rgb(11 15 23 / 0.28) 0%, rgb(11 15 23 / 0.12) 36%, rgb(11 15 23 / 0.55) 72%, var(--bg) 100%);
+}
 .hw-main > :not(.hw-scene) { position: relative; z-index: 1; }
 
 /* ---------------------------------------------------------------- sidebar */
@@ -84,13 +97,14 @@
 .hw-avatar { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; }
 
 /* ---------------------------------------------------------------- hero */
-.hw-hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px; align-items: end; padding: 22px 0 4px; min-height: 250px; }
+.hw-hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px; align-items: end; padding: 28px 0 8px; min-height: 280px; }
 .hw-hero-copy {
   position: relative; z-index: 2; isolation: isolate;
-  padding: 14px 16px; max-width: 36rem;
-  /* Fully opaque copy plate — never sample the coast behind body copy. */
+  padding: 18px 20px; max-width: 36rem; border-radius: var(--radius-lg);
+  /* Opaque cinematic plate with glass rim — AA-safe over coast. */
   background: #070a10;
-  box-shadow: 0 0 0 8px #070a10;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 0 0 6px #070a10, 0 24px 48px rgb(0 0 0 / 0.35), inset 0 1px 0 rgb(255 255 255 / 0.06);
 }
 .hw-kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); }
 .hw-kicker::after { content: ""; width: 34px; height: 1px; background: currentColor; opacity: 0.8; }
@@ -102,9 +116,11 @@
 }
 .hw-now {
   display: grid; grid-template-columns: auto 1fr; gap: 8px 18px; align-items: center; justify-self: start;
-  padding: 14px 16px; border-radius: var(--radius-lg);
-  background: rgb(11 15 23 / 0.9); border: 1px solid var(--border-strong);
-  box-shadow: var(--shadow-md);
+  padding: 18px 20px; border-radius: var(--radius-lg);
+  background: color-mix(in srgb, #0b0f17 92%, transparent);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgb(255 255 255 / 0.06);
+  backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 .hw-now-loc { grid-column: 1 / -1; display: inline-flex; align-items: center; gap: 8px; font-size: 15px; background: none; border: 0; padding: 0; color: var(--text); }
 .hw-now-loc svg { width: 17px; height: 17px; color: var(--accent); }
@@ -128,8 +144,11 @@
 .hw-day-name { font-weight: 600; font-size: 15px; }
 .hw-day-cond { font-size: 12px; color: var(--text-muted); }
 .hw-day-temps { grid-column: 1 / -1; margin-top: 14px; display: flex; gap: 8px; align-items: baseline; justify-content: center; }
-.hw-day-temps b { font-size: 22px; font-weight: 500; }
-.hw-day-temps span { font-size: 14px; color: var(--text-muted); }
+.hw-day-temps b { font-size: 22px; font-weight: 500; color: var(--text); }
+.hw-day-temps span {
+  font-size: 14px; font-weight: 650; color: var(--text);
+  padding: 2px 6px; border-radius: 6px; background: color-mix(in srgb, var(--surface-2, #1b1c24) 92%, #000);
+}
 
 /* ---------------------------------------------------------------- cards */
 .hw-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
