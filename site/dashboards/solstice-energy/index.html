@@ -6,74 +6,103 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Solstice Energy · Dashboard Tools gallery</title>
-  <meta name="description" content="Cinematic solar monitoring dashboard: a sun-path arc over a code-drawn mountain range, output curves, storage dials and site picker. Sample data.">
+  <meta name="description" content="Cinematic solar monitoring dashboard: a sun-path arc over a soft mountain photo, output curves, storage dials and site picker. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="se">
+  <div class="se" data-db-app>
     <header class="se-top">
-      <a class="se-brand" href="#" aria-label="Solstice home"><span class="se-brand-mark" aria-hidden="true"></span>Solstice</a>
+      <a class="se-brand" href="#/overview" aria-label="Solstice home"><span class="se-brand-mark" aria-hidden="true"></span>Solstice</a>
       <nav class="se-nav" aria-label="Main">
-        <a href="#" aria-current="page">Live</a><a href="#">Arrays</a><a href="#">Storage</a><a href="#">Reports</a>
+        <a href="#/overview" aria-current="page">Live</a>
+        <a href="#/rooms">Arrays</a>
+        <a href="#/devices">Storage</a>
+        <a href="#/energy">Reports</a>
+        <a href="#/settings">Settings</a>
       </nav>
       <span class="se-date" data-date></span>
-      <button class="se-iconbtn" aria-label="Alerts"><span data-icon="bell"></span></button>
-      <button class="se-iconbtn" aria-label="Settings"><span data-icon="settings"></span></button>
+      <button type="button" class="se-iconbtn" aria-label="Alerts" data-bell><span data-icon="bell"></span></button>
+      <a class="se-iconbtn" href="#/settings" aria-label="Settings"><span data-icon="settings"></span></a>
     </header>
 
-    <main class="se-main">
-      <aside class="se-panel se-rail" aria-labelledby="se-rail-h">
-        <p class="se-eyebrow" id="se-rail-h">Generated today</p>
-        <p class="se-big"><b class="num" data-today></b><span>kWh</span></p>
-        <p class="se-note" data-today-note></p>
-        <h2 class="se-h2">Strings</h2>
-        <table class="se-table">
-          <thead><tr><th scope="col">String</th><th scope="col">kW</th><th scope="col">State</th></tr></thead>
-          <tbody data-strings></tbody>
-        </table>
-        <div class="se-self" data-self></div>
-      </aside>
+    <div data-main>
+      <div class="se-overview" data-page-panel="overview">
+        <main class="se-main">
+          <aside class="se-panel se-rail se-reveal" aria-labelledby="se-rail-h">
+            <p class="se-eyebrow" id="se-rail-h">Generated today</p>
+            <p class="se-big"><b class="num" data-today></b><span>kWh</span></p>
+            <p class="se-note" data-today-note></p>
+            <h2 class="se-h2">Strings</h2>
+            <table class="se-table">
+              <thead><tr><th scope="col">String</th><th scope="col">kW</th><th scope="col">State</th></tr></thead>
+              <tbody data-strings></tbody>
+            </table>
+            <div class="se-self" data-self></div>
+          </aside>
 
-      <section class="se-panel se-hero" aria-labelledby="se-hero-h">
-        <div class="se-hero-art" data-art></div>
-        <div class="se-hero-head">
-          <div><p class="se-eyebrow">Sun path · <span data-site-name></span></p><h1 id="se-hero-h"><span class="num" data-now-kw></span> <small>kW at <span data-now-time></span></small></h1></div>
-          <div class="se-hero-side"><div class="se-ring" data-hero-ring></div><p><b class="num" data-peak></b><span>peak today</span></p></div>
-        </div>
-        <div class="se-hero-chart" data-hero-chart></div>
-        <ul class="se-legend"><li><i style="background:var(--chart-1)"></i>Generation</li><li><i style="background:var(--chart-3)"></i>Consumption</li><li class="se-hint">Pick an hour to move the sun</li></ul>
-        <dl class="se-strip" data-strip></dl>
-      </section>
+          <section class="se-panel se-hero se-reveal" aria-labelledby="se-hero-h">
+            <div class="se-hero-art" data-art>
+              <img class="se-mountains se-ambient" src="media/mountains.webp" width="1280" height="720" alt="" decoding="async">
+              <div class="se-arc" data-arc></div>
+            </div>
+            <div class="se-hero-head">
+              <div>
+                <p class="se-eyebrow">Sun path · <span data-site-name></span></p>
+                <h1 id="se-hero-h"><span class="num" data-now-kw></span> <small>kW at <span data-now-time></span></small></h1>
+              </div>
+              <div class="se-hero-side">
+                <div class="se-ring" data-hero-ring></div>
+                <p><b class="num" data-peak></b><span>peak today</span></p>
+              </div>
+            </div>
+            <div class="se-hero-chart" data-hero-chart></div>
+            <ul class="se-legend">
+              <li><i style="background:var(--chart-1)"></i>Generation</li>
+              <li><i style="background:var(--chart-3)"></i>Consumption</li>
+              <li class="se-hint">Pick an hour to move the sun</li>
+            </ul>
+            <dl class="se-strip" data-strip></dl>
+          </section>
 
-      <section class="se-panel se-half" aria-labelledby="se-out-h">
-        <div class="se-head"><h2 class="se-h2" id="se-out-h">Output</h2>
-          <div class="se-seg" role="group" aria-label="Output range" data-range><button data-v="week" aria-pressed="true">Week</button><button data-v="month" aria-pressed="false">Month</button><button data-v="year" aria-pressed="false">Year</button></div></div>
-        <p class="se-big sm"><b class="num" data-out-total></b><span data-out-unit></span></p>
-        <div data-out></div>
-      </section>
+          <section class="se-panel se-half se-reveal" aria-labelledby="se-out-h">
+            <div class="se-head">
+              <h2 class="se-h2" id="se-out-h">Output</h2>
+              <div class="se-seg" role="group" aria-label="Output range" data-range>
+                <button type="button" data-v="week" aria-pressed="true">Week</button>
+                <button type="button" data-v="month" aria-pressed="false">Month</button>
+                <button type="button" data-v="year" aria-pressed="false">Year</button>
+              </div>
+            </div>
+            <p class="se-big sm"><b class="num" data-out-total></b><span data-out-unit></span></p>
+            <div data-out></div>
+          </section>
 
-      <section class="se-panel se-half" aria-labelledby="se-store-h">
-        <div class="se-head"><h2 class="se-h2" id="se-store-h">Storage and flow</h2></div>
-        <div class="se-dials" data-dials></div>
-      </section>
+          <section class="se-panel se-half se-reveal" aria-labelledby="se-store-h">
+            <div class="se-head"><h2 class="se-h2" id="se-store-h">Storage and flow</h2></div>
+            <div class="se-dials" data-dials></div>
+          </section>
 
-      <section class="se-panel se-half" aria-labelledby="se-use-h">
-        <div class="se-head"><h2 class="se-h2" id="se-use-h">Consumption by hour</h2><span class="se-tag" data-use-avg></span></div>
-        <div data-use></div>
-      </section>
+          <section class="se-panel se-half se-reveal" aria-labelledby="se-use-h">
+            <div class="se-head"><h2 class="se-h2" id="se-use-h">Consumption by hour</h2><span class="se-tag se-chip" data-use-avg></span></div>
+            <div data-use></div>
+          </section>
 
-      <section class="se-panel se-half" aria-labelledby="se-sites-h">
-        <div class="se-head"><h2 class="se-h2" id="se-sites-h">Sites</h2><span class="se-tag">4 online</span></div>
-        <div class="se-sites" role="group" aria-label="Choose a site" data-sites></div>
-      </section>
-    </main>
-    <p class="db-sample se-foot">Sample data · fictional</p>
+          <section class="se-panel se-half se-reveal" aria-labelledby="se-sites-h">
+            <div class="se-head"><h2 class="se-h2" id="se-sites-h">Sites</h2><span class="se-tag se-chip">4 online</span></div>
+            <div class="se-sites" role="group" aria-label="Choose a site" data-sites></div>
+          </section>
+        </main>
+        <p class="db-sample se-foot">Sample data · fictional</p>
+      </div>
+    </div>
   </div>
+  <div class="se-toast" data-toast hidden role="status"></div>
   <script src="app.js"></script>
 </body>
 </html>

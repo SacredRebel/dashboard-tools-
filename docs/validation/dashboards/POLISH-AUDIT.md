@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `solstice-energy` (Phase C — total 29).
+Next: `plumage-survey` (Phase C — total 29).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -10,7 +10,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 |:-:|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | horizon-weather | Horizon Weather | 4 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 30 | photo hero missing; weaker glass glow; no location thumbs | queued |
 | 2 | pulsar-analytics | Pulsar Analytics | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | terrain network + neon multipage traffic/events/regions | polished 24→36 |
-| 3 | solstice-energy | Solstice Energy | 4 | 3 | 4 | 4 | 3 | 3 | 4 | 4 | 29 | less HUD noise; softer 3D mountains; fewer micro widgets | queued |
+| 3 | solstice-energy | Solstice Energy | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | mountain+site photos; quieter HUD; multipage + motion | polished 29→36 |
 | 4 | kumo-payroll | Kumo Payroll | 5 | 4 | 4 | 5 | 4 | 4 | 4 | 5 | 35 | no koi foreground; lighter atmospheric depth | queued |
 | 5 | canopy-reforest | Canopy Reforest | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | leaf photo + forest tile; diagonal hero; multipage + motion | polished 23→36 |
 | 6 | ridgeline-trails | Ridgeline Trails | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | photo mountains → vector; dial styling simplified | queued |
@@ -70,7 +70,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 17. ~~`tidebath-showroom` — 28~~ → polished (36)
 18. ~~`pebble-studio` — 28~~ → polished (36)
 19. ~~`ember-rooms` — 28~~ → polished (36)
-20. `solstice-energy` — 29
+20. ~~`solstice-energy` — 29~~ → polished (36)
 21. `plumage-survey` — 29
 22. `veil-rooms` — 29
 23. `forge-fitness` — 29

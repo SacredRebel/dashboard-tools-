@@ -88,15 +88,15 @@ A cinematic weather home: painted sunset landscape behind glass panels, an edito
 
 _Solstice Energy · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A cinematic solar-monitoring board: a thick gradient sun-path arc rises over a code-drawn mountain range, with generation and load curves on a teal grid, a readout strip, storage dials and round site thumbnails.
+A cinematic solar-monitoring board: a thick gradient sun-path arc rises over a soft mountain photo, with generation and load curves on a teal grid, a tighter readout strip, storage dials and photo site thumbs.
 
 - **Use cases:** Analytics & BI, Smart home & IoT · **Mode:** dark · **Mood:** cinematic, warm, technical, atmospheric, instrument-like
-- **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** A thick yellow-to-orange-to-pink arc tracing the sun's path, cut by faceted orange mountains drawn in SVG; the sun dot moves to the hour you pick.
+- **Pages:** Overview (`overview`, Dashboard) · Arrays (`rooms`, List) · Storage (`devices`, List) · Reports (`energy`, Report) · Settings (`settings`, Settings)
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** A thick yellow-to-orange-to-pink arc tracing the sun's path over a soft mountain photo; the sun dot moves to the hour you pick.
 - **Layout:** Slim top bar (brand, 4-item nav, date, 2 icon buttons) · 12-column grid at 1440px, 18px gaps: 3-column rail (today's total, strings table, self-powered ring) + 9-column hero (sun arc scene, hourly chart, 6-item readout strip) · then 2×2 half-width panels (output bars with range toggle, 4 storage dials, hourly load bars, 4 site thumbnails)
 - **Responsive:** ≤1180px: hero full width on top, rail becomes a two-column panel below · ≤760px: single column, hero chart 130px, readout strip 3×2, dials and sites 2×2
-- **Fonts:** Chakra Petch / IBM Plex Sans · **Palette:** bg `#17181c`, surface `#24252a`, text `#f3eee7`, muted `#b5afa6`, accent `#ff9a4a`, teal `#3fd6c0`, coral `#ff6a5c`, pink `#f08ad0`
+- **Fonts:** Chakra Petch / IBM Plex Sans · **Palette:** bg `#17181c`, surface `#24252a`, text `#f3eee7`, muted `#c4bdb3`, accent `#ff9a4a`, teal `#3fd6c0`, coral `#ff6a5c`, pink `#f08ad0`
 - **Variants:** Ember, Glacier, Paper · **Closest toolkit theme:** `ember`
 
 **Best for**
@@ -109,7 +109,7 @@ A cinematic solar-monitoring board: a thick gradient sun-path arc rises over a c
 - Brands that need a neutral, corporate look
 - Data with no natural day cycle or location
 
-**Components:** Sun-path arc scene with movable sun · Two-series hourly line chart (pick an hour) · Readout strip (6 values) · Hero number with unit · Status table with state dots · Progress rings and liquid-fill dial · Bar chart with range toggle · Round landscape site picker
+**Components:** Sun-path arc scene with movable sun over mountain photo · Two-series hourly line chart (pick an hour) · Readout strip (4 values) · Hero number with unit · Status table with state dots · Progress rings and liquid-fill dial · Bar chart with range toggle · Round landscape photo site picker
 
 ---
 
