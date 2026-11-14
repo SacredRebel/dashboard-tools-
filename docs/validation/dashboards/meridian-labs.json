@@ -1,7 +1,7 @@
 {
   "id": "meridian-labs",
   "checked": "2026-11-14",
-  "ok": true,
+  "ok": false,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -34,7 +34,9 @@
       "variant": "default",
       "final_path": "/dashboards/meridian-labs/",
       "overflow_px": 0,
-      "errors": []
+      "errors": [
+        "low contrast 3.81:1 (needs 4.5) \"1.8 mg\" 12px, text rgb(20, 26, 40) on ~rgb(169, 200, 194) at x209 y1274"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/?variant=citrus#/overview",
@@ -64,7 +66,9 @@
       "width": 375,
       "variant": "default",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low contrast 3.81:1 (needs 4.5) \"1.8 mg\" 12px, text rgb(20, 26, 40) on ~rgb(169, 200, 194) at x209 y1274"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/?variant=citrus#/overview",
@@ -78,7 +82,9 @@
       "width": 375,
       "variant": "citrus",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low contrast 3.81:1 (needs 4.5) \"1.8 mg\" 12px, text rgb(20, 26, 40) on ~rgb(169, 200, 194) at x209 y1274"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/?variant=night#/overview",
@@ -92,21 +98,29 @@
       "width": 375,
       "variant": "night",
       "page": "overview",
-      "errors": []
+      "errors": [
+        "low contrast 3.81:1 (needs 4.5) \"1.8 mg\" 12px, text rgb(20, 26, 40) on ~rgb(169, 200, 194) at x209 y1274"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/#/vitals",
       "width": 1440,
       "variant": "default",
       "page": "vitals",
-      "errors": []
+      "errors": [
+        "low contrast 3.68:1 (needs 4.5) \"7 days\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x984 y665",
+        "low contrast 3.68:1 (needs 4.5) \"Ready\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x1138 y665"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/#/vitals",
       "width": 375,
       "variant": "default",
       "page": "vitals",
-      "errors": []
+      "errors": [
+        "low contrast 3.68:1 (needs 4.5) \"7 days\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x47 y1519",
+        "low contrast 3.68:1 (needs 4.5) \"Ready\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x47 y1577"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/?variant=citrus#/vitals",
@@ -141,14 +155,20 @@
       "width": 1440,
       "variant": "default",
       "page": "appointments",
-      "errors": []
+      "errors": [
+        "low contrast 3.68:1 (needs 4.5) \"7 days\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x984 y665",
+        "low contrast 3.68:1 (needs 4.5) \"Ready\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x1138 y665"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/#/appointments",
       "width": 375,
       "variant": "default",
       "page": "appointments",
-      "errors": []
+      "errors": [
+        "low contrast 3.68:1 (needs 4.5) \"7 days\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x47 y1540",
+        "low contrast 3.68:1 (needs 4.5) \"Ready\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x47 y1598"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/?variant=citrus#/appointments",
@@ -183,14 +203,20 @@
       "width": 1440,
       "variant": "default",
       "page": "records",
-      "errors": []
+      "errors": [
+        "low contrast 3.68:1 (needs 4.5) \"7 days\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x984 y665",
+        "low contrast 3.68:1 (needs 4.5) \"Ready\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x1138 y665"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/#/records",
       "width": 375,
       "variant": "default",
       "page": "records",
-      "errors": []
+      "errors": [
+        "low contrast 3.68:1 (needs 4.5) \"7 days\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x47 y1519",
+        "low contrast 3.68:1 (needs 4.5) \"Ready\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x47 y1577"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/?variant=citrus#/records",
@@ -225,14 +251,20 @@
       "width": 1440,
       "variant": "default",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "low contrast 3.68:1 (needs 4.5) \"7 days\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x984 y665",
+        "low contrast 3.68:1 (needs 4.5) \"Ready\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x1138 y665"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/#/settings",
       "width": 375,
       "variant": "default",
       "page": "settings",
-      "errors": []
+      "errors": [
+        "low contrast 3.68:1 (needs 4.5) \"7 days\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x47 y1519",
+        "low contrast 3.68:1 (needs 4.5) \"Ready\" 13px, text rgb(255, 255, 255) on ~rgb(91, 124, 250) at x47 y1577"
+      ]
     },
     {
       "url": "/dashboards/meridian-labs/?variant=citrus#/settings",

@@ -132,7 +132,7 @@ body {
   min-height: 100vh;
 }
 .sd {
-  max-width: 1180px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 18px 18px 28px;
   overflow-x: clip;
@@ -175,13 +175,15 @@ body {
 
 .sd-stage {
   display: flex;
-  justify-content: center;
-  gap: 40px;
+  justify-content: space-between;
+  gap: 32px;
   flex-wrap: wrap;
   align-items: stretch;
+  width: 100%;
 }
 .sd-phone {
-  width: min(100%, 390px);
+  width: min(100%, 460px);
+  flex: 1 1 420px;
   min-height: 760px;
   display: flex;
   flex-direction: column;
@@ -863,10 +865,19 @@ body {
 [data-variant="night"] .sd-today .sd-arc-labels span,
 [data-variant="night"] .sd-today .sd-arc-labels b,
 [data-variant="night"] .sd-today .sd-meta,
-[data-variant="night"] .sd-today .sd-countdown,
 [data-variant="night"] .sd-today .sd-card h3 {
   color: #f4f0e6 !important;
   background: #10160f !important;
   padding: 2px 6px;
-  border-radius: 6px;
+  border-radius: 0;
+  box-shadow: 0 0 0 4px #10160f;
+}
+[data-variant="night"] .sd-today .sd-countdown {
+  color: #f4f0e6 !important;
+  background: #10160f !important;
+  padding: 8px 12px;
+  border-radius: 0;
+  box-shadow: 0 0 0 8px #10160f;
+  width: fit-content;
+  margin-left: auto;
 }

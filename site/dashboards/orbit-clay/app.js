@@ -283,7 +283,7 @@ if (typeof staggerReveal === "function") staggerReveal();
 (function wirePages() {
   const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"library","name":"Library","pattern":"List"},{"id":"activity","name":"Activity","pattern":"Report"},{"id":"settings","name":"Settings","pattern":"Settings"}];
   const root = document.querySelector('[data-db-app]') || document.body;
-  const main = document.querySelector('main') || document.body;
+  const main = document.querySelector('main[data-main]') || document.querySelector('main') || document.body;
   let overview = main.querySelector('[data-page-panel="overview"]');
   if (!overview) {
     overview = document.createElement('div');

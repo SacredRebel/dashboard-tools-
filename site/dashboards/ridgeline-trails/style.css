@@ -226,3 +226,57 @@ body { background: var(--bg); }
 .dbp-btn { background: #1a1f2e !important; color: #ffffff !important; }
 .dbp-card strong, .dbp-row, .dbp-page p { color: #141414 !important; }
 
+/* Dense kit: force opaque light panels (dusk mauve bg fails AA with muted ink). */
+[data-db-page-host] .db-dense-page {
+  --db-dense-fill: #ffffff;
+  --db-dense-fill-2: #f3f4f7;
+  --mat-clay-fill: #ffffff;
+  --text: #141414;
+  --text-muted: #3a3f4d;
+  --text-subtle: #5a6170;
+  --accent: #1a1f2e;
+  --accent-fg: #ffffff;
+  --border: #d7dae2;
+  background: #ffffff !important;
+  color: #141414 !important;
+}
+[data-db-page-host] .db-dense-page .db-dense-lead,
+[data-db-page-host] .db-dense-page .db-dense-muted,
+[data-db-page-host] .db-dense-page .db-dense-kpi span,
+[data-db-page-host] .db-dense-page .db-dense-table th {
+  color: #3a3f4d !important;
+}
+[data-db-page-host] .db-dense-page .db-dense-kpi,
+[data-db-page-host] .db-dense-page .db-dense-card,
+[data-db-page-host] .db-dense-page .db-dense-seg,
+[data-db-page-host] .db-dense-page .db-dense-list article {
+  background: #f3f4f7 !important;
+  color: #141414 !important;
+}
+[data-variant="pine"] [data-db-page-host] .db-dense-page {
+  --db-dense-fill: #1a2421;
+  --db-dense-fill-2: #24312d;
+  --mat-clay-fill: #1a2421;
+  --text: #eaf1ec;
+  --text-muted: #b3c2ba;
+  --text-subtle: #93a39b;
+  --accent: #9fd0b5;
+  --accent-fg: #0f1614;
+  --border: rgb(255 255 255 / 0.14);
+  background: #1a2421 !important;
+  color: #eaf1ec !important;
+}
+[data-variant="pine"] [data-db-page-host] .db-dense-page .db-dense-lead,
+[data-variant="pine"] [data-db-page-host] .db-dense-page .db-dense-muted,
+[data-variant="pine"] [data-db-page-host] .db-dense-page .db-dense-kpi span,
+[data-variant="pine"] [data-db-page-host] .db-dense-page .db-dense-table th {
+  color: #b3c2ba !important;
+}
+[data-variant="pine"] [data-db-page-host] .db-dense-page .db-dense-kpi,
+[data-variant="pine"] [data-db-page-host] .db-dense-page .db-dense-card,
+[data-variant="pine"] [data-db-page-host] .db-dense-page .db-dense-seg,
+[data-variant="pine"] [data-db-page-host] .db-dense-page .db-dense-list article {
+  background: #24312d !important;
+  color: #eaf1ec !important;
+}
+

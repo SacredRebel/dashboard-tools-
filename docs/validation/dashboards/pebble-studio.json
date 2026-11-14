@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/pebble-studio/",
+      "url": "/dashboards/pebble-studio/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/pebble-studio/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pebble-studio",
+      "url": "/dashboards/pebble-studio#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/pebble-studio/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pebble-studio/index.html",
+      "url": "/dashboards/pebble-studio/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/pebble-studio/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pebble-studio/",
+      "url": "/dashboards/pebble-studio/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/pebble-studio/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pebble-studio/?variant=coral",
+      "url": "/dashboards/pebble-studio/?variant=coral#/overview",
       "width": 1440,
       "variant": "coral",
       "final_path": "/dashboards/pebble-studio/",
@@ -45,11 +45,179 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pebble-studio/?variant=moss",
+      "url": "/dashboards/pebble-studio/?variant=moss#/overview",
       "width": 1440,
       "variant": "moss",
       "final_path": "/dashboards/pebble-studio/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=coral#/overview",
+      "width": 1440,
+      "variant": "coral",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=coral#/overview",
+      "width": 375,
+      "variant": "coral",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=moss#/overview",
+      "width": 1440,
+      "variant": "moss",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=moss#/overview",
+      "width": 375,
+      "variant": "moss",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/#/workspace",
+      "width": 1440,
+      "variant": "default",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/#/workspace",
+      "width": 375,
+      "variant": "default",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=coral#/workspace",
+      "width": 1440,
+      "variant": "coral",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=coral#/workspace",
+      "width": 375,
+      "variant": "coral",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=moss#/workspace",
+      "width": 1440,
+      "variant": "moss",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=moss#/workspace",
+      "width": 375,
+      "variant": "moss",
+      "page": "workspace",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/#/people",
+      "width": 1440,
+      "variant": "default",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/#/people",
+      "width": 375,
+      "variant": "default",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=coral#/people",
+      "width": 1440,
+      "variant": "coral",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=coral#/people",
+      "width": 375,
+      "variant": "coral",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=moss#/people",
+      "width": 1440,
+      "variant": "moss",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=moss#/people",
+      "width": 375,
+      "variant": "moss",
+      "page": "people",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/#/settings",
+      "width": 1440,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/#/settings",
+      "width": 375,
+      "variant": "default",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=coral#/settings",
+      "width": 1440,
+      "variant": "coral",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=coral#/settings",
+      "width": 375,
+      "variant": "coral",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=moss#/settings",
+      "width": 1440,
+      "variant": "moss",
+      "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pebble-studio/?variant=moss#/settings",
+      "width": 375,
+      "variant": "moss",
+      "page": "settings",
       "errors": []
     },
     {

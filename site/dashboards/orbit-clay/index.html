@@ -21,7 +21,7 @@
 </head>
 <body>
   <div class="oc" data-db-app>
-    <div class="oc-stage-wrap" data-main>
+    <main class="oc-stage-wrap" data-main>
       <div class="oc-overview" data-page-panel="overview">
         <header class="oc-brandbar oc-reveal">
           <a class="oc-brand" href="#/overview" aria-label="Orbit Clay home">
@@ -42,7 +42,7 @@
           </div>
         </header>
 
-        <main class="oc-stage" aria-label="Twin phone console">
+        <section class="oc-stage" aria-label="Twin phone console">
           <section class="oc-phone oc-phone-a oc-reveal" aria-labelledby="oc-a-h">
             <h2 id="oc-a-h" class="vh">Mission phone</h2>
             <div class="oc-a-top">
@@ -114,11 +114,19 @@
               <button type="button" aria-label="Open settings" data-go-settings><span data-icon="settings"></span></button>
             </footer>
           </section>
-        </main>
+        </section>
 
+        <section class="oc-strip oc-reveal" aria-label="Mission strip">
+          <article><h3>Telemetry</h3><p class="num" data-strip-a>62%</p><span>Altitude lock</span></article>
+          <article><h3>Signal</h3><p class="num" data-strip-b>11k</p><span>Uplink steady</span></article>
+          <article><h3>Thrust</h3><p class="num" data-strip-c>3.0k</p><span>Idle burn</span></article>
+          <article><h3>Bases</h3><p>Alpha · Beta</p><span>Two pads live</span></article>
+          <article><h3>Crew</h3><p>Nova-4</p><span>Sample roster</span></article>
+          <article><h3>Next</h3><p>Drift pass</p><span>After lock</span></article>
+        </section>
         <p class="db-sample oc-sample">Sample data · fictional · Orbit Clay</p>
       </div>
-    </div>
+    </main>
     <div class="oc-toast" data-toast hidden role="status" aria-live="polite"></div>
   </div>
   <script src="app.js"></script>
