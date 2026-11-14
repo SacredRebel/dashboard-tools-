@@ -56,12 +56,12 @@ Dark, moody, scenic backdrops (painted or photographic) with glass panels and on
 
 _Horizon Weather · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A cinematic weather home: painted sunset landscape behind glass panels, an editorial serif headline, a 7-day forecast strip with a glowing selected day, a smooth gold temperature curve and a mood card.
+A cinematic dark weather board: sunset coast photo hero, gold-accent glass forecast cards, forest story panel, and circular city location thumbs — plus Forecast, Maps and Settings pages.
 
 - **Use cases:** Weather & climate, Travel & places · **Mode:** dark · **Mood:** cinematic, calm, premium, warm, editorial
 - **Pages:** Overview (`overview`, Dashboard) · Forecast (`forecast`, Report) · Maps (`maps`, Detail) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Code-drawn sunset landscape (SVG, themed by CSS variables) fading into the dark UI, with a gold glow ring on the selected day.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Painted-feeling sunset coast photograph behind frosted gold glass cards, with circular city thumbs along the popular locations strip.
 - **Layout:** Fixed left sidebar (brand, 5-item nav, quote) · top bar (pill search, bell, avatar) · hero (headline left, current conditions right) over a painted scene · 7-day strip · 3 columns: area chart, details list, story card · popular-locations row
 - **Responsive:** ≤1180px: chart spans full width above details + story · ≤960px: sidebar becomes a top bar, hero stacks · ≤640px: single column, icon-only nav, day strip scrolls horizontally
 - **Fonts:** Cormorant Garamond / Manrope · **Palette:** bg `#0b0f17`, surface `#121722`, text `#f4efe6`, muted `#b7b2a8`, accent `#e2b26a`, sky `#6b4a5a`, glow `#e59a5c`
@@ -77,7 +77,7 @@ A cinematic weather home: painted sunset landscape behind glass panels, an edito
 - Light-mode-only brands
 - Low-end devices that struggle with backdrop blur
 
-**Components:** Pill search with accent button · Hero metric (big thin temperature) · Selectable forecast cards (listbox, arrow keys) · Area chart with range toggle and hover/focus values · Key-value details list with icons · Image story card with serif quote · Circular location thumbnails · Ghost button
+**Components:** Photo coast hero with vignette · Slim brand sidebar with ridge mark · Pill search with gold go button · 7-day forecast scroller · Temperature trend chart · Weather details list · Forest photo story card · Circular location thumbs · Forecast / Maps / Settings multipage views
 
 ---
 

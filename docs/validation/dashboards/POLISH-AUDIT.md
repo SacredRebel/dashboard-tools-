@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `horizon-weather` (Phase C — total 30).
+Next: `prism-workspace` (Phase C — total 30).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -8,7 +8,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 
 | # | id | name | layout | density | type | color | depth | imagery | detail | overall | total | top gaps | status |
 |:-:|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | horizon-weather | Horizon Weather | 4 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 30 | photo hero missing; weaker glass glow; no location thumbs | queued |
+| 1 | horizon-weather | Horizon Weather | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | coast+forest photos; location thumbs; multipage + motion | polished 30→36 |
 | 2 | pulsar-analytics | Pulsar Analytics | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | terrain network + neon multipage traffic/events/regions | polished 24→36 |
 | 3 | solstice-energy | Solstice Energy | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | mountain+site photos; quieter HUD; multipage + motion | polished 29→36 |
 | 4 | kumo-payroll | Kumo Payroll | 5 | 4 | 4 | 5 | 4 | 4 | 4 | 5 | 35 | no koi foreground; lighter atmospheric depth | queued |
@@ -74,7 +74,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 21. ~~`plumage-survey` — 29~~ → polished (36)
 22. ~~`veil-rooms` — 29~~ → polished (36)
 23. ~~`forge-fitness` — 29~~ → polished (36)
-24. `horizon-weather` — 30
+24. ~~`horizon-weather` — 30~~ → polished (36)
 25. `prism-workspace` — 30
 26. `orbit-clay` — 30
 27. `clima-pane` — 30

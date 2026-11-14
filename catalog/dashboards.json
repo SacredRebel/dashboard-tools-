@@ -140,7 +140,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A cinematic weather home: painted sunset landscape behind glass panels, an editorial serif headline, a 7-day forecast strip with a glowing selected day, a smooth gold temperature curve and a mood card.",
+      "summary": "A cinematic dark weather board: sunset coast photo hero, gold-accent glass forecast cards, forest story panel, and circular city location thumbs \u2014 plus Forecast, Maps and Settings pages.",
       "mood": [
         "cinematic",
         "calm",
@@ -164,16 +164,17 @@
         "responsive": "\u22641180px: chart spans full width above details + story \u00b7 \u2264960px: sidebar becomes a top bar, hero stacks \u00b7 \u2264640px: single column, icon-only nav, day strip scrolls horizontally"
       },
       "components": [
-        "Pill search with accent button",
-        "Hero metric (big thin temperature)",
-        "Selectable forecast cards (listbox, arrow keys)",
-        "Area chart with range toggle and hover/focus values",
-        "Key-value details list with icons",
-        "Image story card with serif quote",
-        "Circular location thumbnails",
-        "Ghost button"
+        "Photo coast hero with vignette",
+        "Slim brand sidebar with ridge mark",
+        "Pill search with gold go button",
+        "7-day forecast scroller",
+        "Temperature trend chart",
+        "Weather details list",
+        "Forest photo story card",
+        "Circular location thumbs",
+        "Forecast / Maps / Settings multipage views"
       ],
-      "signature": "Code-drawn sunset landscape (SVG, themed by CSS variables) fading into the dark UI, with a gold glow ring on the selected day.",
+      "signature": "Painted-feeling sunset coast photograph behind frosted gold glass cards, with circular city thumbs along the popular locations strip.",
       "palette": {
         "bg": "#0b0f17",
         "surface": "#121722",
@@ -241,7 +242,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     },
     {
       "id": "pulsar-analytics",
