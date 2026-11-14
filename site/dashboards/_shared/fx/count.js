@@ -1,7 +1,7 @@
 /** Count-up: tabular numbers, locale + decimals, runs when visible. */
 export function mountCount(root = document) {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const nodes = [...root.querySelectorAll('[data-fx="count"]')];
+  const nodes = [...root.querySelectorAll('[data-fx~="count"]')];
   if (!nodes.length) return () => {};
 
   function run(el) {

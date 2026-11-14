@@ -1,6 +1,6 @@
 /** Pointer-follow radial highlight on cards. */
 export function mountSpotlight(root = document) {
-  const nodes = [...root.querySelectorAll('[data-fx="spotlight"]')];
+  const nodes = [...root.querySelectorAll('[data-fx~="spotlight"]')];
   if (!nodes.length) return () => {};
   const clean = [];
   nodes.forEach((el) => {

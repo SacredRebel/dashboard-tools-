@@ -1,6 +1,6 @@
 /** FLIP insert/remove for live feeds. Exposes el.fxList = { add, remove }. */
 export function mountList(root = document) {
-  const hosts = [...root.querySelectorAll('[data-fx="list"]')];
+  const hosts = [...root.querySelectorAll('[data-fx~="list"]')];
   if (!hosts.length) return () => {};
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 

@@ -1,6 +1,6 @@
 /** Per-word reveal for hero titles only. */
 export function mountSplit(root = document) {
-  const nodes = [...root.querySelectorAll('[data-fx="split"]')];
+  const nodes = [...root.querySelectorAll('[data-fx~="split"]')];
   if (!nodes.length) return () => {};
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 

@@ -11,9 +11,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="../_shared/fx/fx.css">
+  <link rel="stylesheet" href="../_shared/icons/icons.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
+  <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/icons/index.js"></script>
 </head>
 <body>
   <div class="cx" data-db-app>
@@ -40,7 +44,8 @@
           <button type="button" class="cx-nav-search" aria-label="Search"><span data-icon="search"></span></button>
           <a href="#/overview" data-v="overview">Dashboard</a>
           <a href="#/analytics" data-v="analytics">Analytics</a>
-          <a href="#/reports" data-v="reports">Reports</a>
+          <a href="#/vitals" data-v="vitals">Vitals</a>
+          <a href="#/settings" data-v="settings">Settings</a>
         </nav>
         <div class="cx-utils">
           <button type="button" class="cx-bell" aria-label="Notifications, 3 unread"><span data-icon="bell"></span><i class="cx-badge" aria-hidden="true"></i></button>
@@ -54,12 +59,12 @@
       <main class="cx-board" data-main>
         <div data-page-panel="overview" class="cx-overview">
         <div class="cx-left">
-          <section class="cx-card cx-perf cx-reveal" aria-labelledby="cx-perf-h">
+          <section class="cx-card cx-perf mat-glass" data-fx="reveal spotlight" aria-labelledby="cx-perf-h">
             <div class="cx-cardhead">
               <h2 id="cx-perf-h">Performance</h2>
               <span class="cx-chip good">Rising</span>
             </div>
-            <div data-perf></div>
+            <div data-perf data-fx="draw"></div>
             <p class="cx-empty" data-perf-empty hidden>No performance samples for this view. Switch back to Dashboard.</p>
           </section>
 
@@ -96,8 +101,9 @@
             <i class="cx-orb o1"></i><i class="cx-orb o2"></i><i class="cx-orb o3"></i><i class="cx-orb o4"></i>
           </div>
           <div class="cx-stage">
-            <figure class="cx-brainwrap cx-ambient">
-              <img src="media/brain.webp" width="520" height="520" alt="Brain in frosted glass bowl (sample art)" decoding="async">
+            <figure class="cx-brainwrap" data-fx="parallax">
+              <img data-fx-layer="1" class="cx-brain-bg" src="media/brain-bg.webp" width="1440" height="1440" alt="" decoding="async" aria-hidden="true">
+              <img data-fx-layer="2" data-fx="ambient" data-fx-dur="12" src="media/brain@2x.webp" srcset="media/brain.webp 1x, media/brain@2x.webp 2x" width="720" height="720" alt="Brain in frosted glass bowl (sample art)" decoding="async">
             </figure>
             <svg class="cx-leads" viewBox="0 0 520 420" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
               <g class="cx-lead-lines" fill="none" stroke="var(--lead)" stroke-width="1.5" stroke-linecap="round">
@@ -132,9 +138,9 @@
         </section>
 
         <div class="cx-right">
-          <section class="cx-card cx-sleep" aria-labelledby="cx-sleep-h">
+          <section class="cx-card cx-sleep mat-glass" data-fx="reveal spotlight" aria-labelledby="cx-sleep-h">
             <div class="cx-cardhead">
-              <h2 id="cx-sleep-h"><span class="num" data-sleep-h>7:45</span>h Sleep</h2>
+              <h2 id="cx-sleep-h"><span class="num" data-sleep-h data-fx="count" data-to="7.45" data-decimals="2" data-suffix="h">7.45h</span> Sleep</h2>
               <div class="cx-seg" role="group" aria-label="Sleep range" data-sleep-range>
                 <button type="button" data-v="night" aria-pressed="true">Night</button>
                 <button type="button" data-v="week" aria-pressed="false">Week</button>
@@ -144,12 +150,12 @@
             <p class="cx-err" data-sleep-err hidden>Couldn’t load sleep cycles. Try Night instead.</p>
           </section>
 
-          <section class="cx-card cx-hr" aria-labelledby="cx-hr-h">
+          <section class="cx-card cx-hr mat-glass" data-fx="reveal spotlight" aria-labelledby="cx-hr-h">
             <div class="cx-cardhead">
-              <h2 id="cx-hr-h"><span class="cx-heart-ic" data-icon="heart" aria-hidden="true"></span> <span class="num" data-bpm>83</span><small>bpm</small></h2>
+              <h2 id="cx-hr-h"><span class="cx-heart-ic" data-icon="heart" data-anim="hover" aria-hidden="true"></span> <span class="num" data-fx="count" data-to="83" data-bpm>83</span><small>bpm</small></h2>
               <span class="cx-muted">Resting · now</span>
             </div>
-            <div data-hr></div>
+            <div data-hr data-fx="draw"></div>
             <p class="cx-empty" data-hr-empty hidden>Heart series empty for Reports. Open Dashboard.</p>
           </section>
         </div>
@@ -160,7 +166,8 @@
         <div class="cx-dots" role="group" aria-label="Board pages" data-pages>
           <a href="#/overview" data-v="overview" aria-label="Dashboard"></a>
           <a href="#/analytics" data-v="analytics" aria-label="Analytics"></a>
-          <a href="#/reports" data-v="reports" aria-label="Reports"></a>
+          <a href="#/vitals" data-v="vitals" aria-label="Vitals"></a>
+          <a href="#/settings" data-v="settings" aria-label="Settings"></a>
         </div>
         <button type="button" class="cx-expand" aria-label="Expand board"><span data-icon="expand"></span></button>
       </footer>

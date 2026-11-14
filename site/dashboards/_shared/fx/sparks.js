@@ -1,7 +1,7 @@
 /** Canvas sparks ≤ 40 particles on click (feedback only). */
 export function mountSparks(root = document) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
-  const nodes = [...root.querySelectorAll('[data-fx="sparks"]')];
+  const nodes = [...root.querySelectorAll('[data-fx~="sparks"]')];
   if (!nodes.length) return () => {};
   const clean = [];
 

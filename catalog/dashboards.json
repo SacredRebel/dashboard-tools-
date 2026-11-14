@@ -5127,7 +5127,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A lilac-glass wellness overview: frosted cards float over a soft pink–lilac haze around a painted brain in a glass bowl, with lead lines to Heart, Breath, Brain and All activity pills, sleep bars and a multi-line heart chart.",
+      "summary": "Lilac glass wellness board: three-column layout with a brain-in-bowl hero, orbit chips, activity pills, sleep and heart rails, plus Analytics, Vitals and Settings pages.",
       "mood": [
         "ethereal",
         "soft",
@@ -5218,9 +5218,14 @@
           "pattern": "Report"
         },
         {
-          "id": "reports",
-          "name": "Reports",
-          "pattern": "Report"
+          "id": "vitals",
+          "name": "Vitals",
+          "pattern": "List"
+        },
+        {
+          "id": "settings",
+          "name": "Settings",
+          "pattern": "Settings"
         }
       ],
       "motion": [
@@ -5238,6 +5243,10 @@
         "reveal",
         "count",
         "draw",
+        "spotlight",
+        "parallax",
+        "ambient",
+        "magnet",
         "route"
       ],
       "materials": [

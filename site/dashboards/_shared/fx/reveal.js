@@ -1,7 +1,7 @@
 /** Stagger reveal: cards enter 12px up + fade, 40ms stagger, once per page view. */
 export function mountReveal(root = document) {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const nodes = [...root.querySelectorAll('[data-fx="reveal"]')];
+  const nodes = [...root.querySelectorAll('[data-fx~="reveal"]')];
   if (!nodes.length) return () => {};
   if (reduce) {
     nodes.forEach((el) => el.classList.add('is-in'));

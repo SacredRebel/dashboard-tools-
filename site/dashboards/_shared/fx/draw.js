@@ -1,7 +1,7 @@
 /** Chart draw-in: stroke dash for lines, scaleY for bars, sweep for arcs. */
 export function mountDraw(root = document) {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hosts = [...root.querySelectorAll('[data-fx="draw"]')];
+  const hosts = [...root.querySelectorAll('[data-fx~="draw"]')];
   if (!hosts.length) return () => {};
 
   function prep(host) {

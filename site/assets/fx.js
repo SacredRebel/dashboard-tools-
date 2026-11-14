@@ -83,12 +83,10 @@ window.FxPage = {
     row.innerHTML = icons.map((n) => `<button type="button" class="s-iconbtn" title="${n}" aria-label="${n}" data-icon="${n}" data-anim="hover" style="width:44px;height:44px"></button>`).join('');
 
     // Load shared FX + icons modules
-    const base = new URL('../dashboards/_shared/', import.meta?.url || location.href);
-    // import.meta may be unavailable in classic script — use relative paths from site root
-    const fxHref = 'dashboards/_shared/fx/index.js';
-    const icHref = 'dashboards/_shared/icons/index.js';
-    import(new URL(fxHref, location.href).href).then((m) => m.bootFx(main)).catch(() => {});
-    import(new URL(icHref, location.href).href).then((m) => m.paintIcons(main)).catch(() => {});
+    const fxHref = new URL('dashboards/_shared/fx/index.js', location.href).href;
+    const icHref = new URL('dashboards/_shared/icons/index.js', location.href).href;
+    import(fxHref).then((m) => m.bootFx(main)).catch(() => {});
+    import(icHref).then((m) => m.paintIcons(main)).catch(() => {});
 
     const box = main.querySelector('[data-fx-reduce]');
     box?.addEventListener('change', () => {

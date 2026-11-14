@@ -1,6 +1,6 @@
 /** Digit-roll odometer for KPIs that change on interaction. */
 export function mountOdo(root = document) {
-  const nodes = [...root.querySelectorAll('[data-fx="odo"]')];
+  const nodes = [...root.querySelectorAll('[data-fx~="odo"]')];
   if (!nodes.length) return () => {};
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 

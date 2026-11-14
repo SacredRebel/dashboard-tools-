@@ -1,7 +1,7 @@
 /** Pointer + scroll parallax ≤ 12px for layered hero art. */
 export function mountParallax(root = document) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
-  const hosts = [...root.querySelectorAll('[data-fx="parallax"]')];
+  const hosts = [...root.querySelectorAll('[data-fx~="parallax"]')];
   if (!hosts.length) return () => {};
   const clean = [];
 

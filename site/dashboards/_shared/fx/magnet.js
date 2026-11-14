@@ -2,7 +2,7 @@
 export function mountMagnet(root = document) {
   if (matchMedia('(pointer: coarse)').matches) return () => {};
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
-  const nodes = [...root.querySelectorAll('[data-fx="magnet"]')];
+  const nodes = [...root.querySelectorAll('[data-fx~="magnet"]')];
   if (!nodes.length) return () => {};
   const clean = [];
   nodes.forEach((el) => {

@@ -353,45 +353,197 @@
   const PAGES = [
     { id: 'overview', name: 'Dashboard', pattern: 'Dashboard' },
     { id: 'analytics', name: 'Analytics', pattern: 'Report' },
-    { id: 'reports', name: 'Reports', pattern: 'Report' },
+    { id: 'vitals', name: 'Vitals', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
   ];
   const main = $('[data-main]');
   const overview = $('[data-page-panel="overview"]');
-  let stub = null;
+  let pageHost = null;
   const seenPages = new Set();
-  function ensureStub() {
-    if (stub) return stub;
-    stub = document.createElement('div');
-    stub.setAttribute('data-db-stub-host', '');
-    stub.hidden = true;
-    main.appendChild(stub);
-    return stub;
+  function ensureHost() {
+    if (pageHost) return pageHost;
+    pageHost = document.createElement('div');
+    pageHost.setAttribute('data-db-page-host', '');
+    pageHost.hidden = true;
+    main.appendChild(pageHost);
+    return pageHost;
   }
+
+  const VITAL_ROWS = [
+    { id: 'hr', name: 'Resting heart', value: '83 bpm', status: 'Steady', note: '7-day mean 81' },
+    { id: 'sleep', name: 'Sleep last night', value: '7.45 h', status: 'Good', note: 'Deep 1.8 h' },
+    { id: 'breath', name: 'Breath cadence', value: '14 / min', status: 'Calm', note: 'Coherence ok' },
+    { id: 'focus', name: 'Focus block', value: '2.0 h', status: 'Rising', note: 'Lilac load' },
+    { id: 'steps', name: 'Hills climbed', value: '3', status: 'On track', note: 'Goal 4' },
+    { id: 'spo2', name: 'Blood oxygen', value: '98%', status: 'Normal', note: 'Sample only' },
+    { id: 'temp', name: 'Skin temp Δ', value: '−0.2°', status: 'Stable', note: 'Night baseline' },
+    { id: 'hrv', name: 'HRV', value: '62 ms', status: 'Recovering', note: 'Morning read' },
+  ];
 
   function pageHtml(page) {
     if (page.id === 'analytics') {
       return `<section class="cx-page" data-db-page="analytics" aria-labelledby="p-h">
-        <h1 id="p-h">Analytics</h1>
-        <p class="cx-page-lead">Weekly wellness trends. Sample data · fictional · not medical advice.</p>
-        <div class="cx-seg" role="group" aria-label="Analytics state" data-an-tabs>
-          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
-          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
-          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
-          <button type="button" data-v="error" aria-pressed="false">Error</button>
+        <div class="cx-page-head">
+          <div>
+            <h1 id="p-h">Analytics</h1>
+            <p class="cx-page-lead">Weekly wellness trends. Sample data · fictional · not medical advice.</p>
+          </div>
+          <div class="cx-page-toolbar">
+            <div class="cx-seg" role="group" aria-label="Range" data-an-range>
+              <button type="button" data-v="7d" aria-pressed="true">7 days</button>
+              <button type="button" data-v="30d" aria-pressed="false">30 days</button>
+            </div>
+            <div class="cx-seg" role="group" aria-label="View state" data-an-tabs>
+              <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+              <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+              <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+              <button type="button" data-v="error" aria-pressed="false">Error</button>
+            </div>
+          </div>
         </div>
-        <div data-an-body></div>
+        <div data-an-body class="cx-page" style="display:contents"></div>
       </section>`;
     }
-    if (page.id === 'reports') {
-      return `<section class="cx-page" data-db-page="reports" aria-labelledby="p-h">
-        <h1 id="p-h">Reports</h1>
-        <p class="cx-page-lead">Export stubs stay fictional in this gallery slice.</p>
-        <div class="cx-page-grid">
-          <article class="cx-page-card"><div class="cx-row"><strong>Sleep summary</strong><span>PDF</span></div></article>
-          <article class="cx-page-card"><div class="cx-row"><strong>Heart log</strong><span>CSV</span></div></article>
-          <article class="cx-page-card"><div class="cx-row"><strong>Breath cadence</strong><span>PDF</span></div></article>
+    if (page.id === 'vitals') {
+      return `<section class="cx-page" data-db-page="vitals" aria-labelledby="p-h">
+        <div class="cx-page-head">
+          <div>
+            <h1 id="p-h">Vitals</h1>
+            <p class="cx-page-lead">Search and open a reading. Selection syncs from the dashboard pills.</p>
+          </div>
+          <div class="cx-page-toolbar">
+            <label class="vh" for="cx-vital-q">Search vitals</label>
+            <input id="cx-vital-q" type="search" placeholder="Search vitals" data-vital-q>
+            <div class="cx-seg" role="group" aria-label="Sort" data-vital-sort>
+              <button type="button" data-v="name" aria-pressed="true">Name</button>
+              <button type="button" data-v="status" aria-pressed="false">Status</button>
+            </div>
+          </div>
         </div>
-        <button type="button" class="cx-btn" data-export>Export pack</button>
+        <div class="cx-kpi-row">
+          <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="8">8</b><span>Signals</span></div>
+          <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="83">83</b><span>Resting bpm</span></div>
+          <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="7.45" data-decimals="2">7.45</b><span>Sleep hours</span></div>
+          <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="98">98</b><span>SpO₂ %</span></div>
+        </div>
+        <section class="cx-card wide mat-glass" data-fx="reveal">
+          <div class="cx-cardhead"><h2>Readings</h2><span class="cx-muted" data-vital-count></span></div>
+          <div data-vital-list></div>
+          <p class="cx-empty" data-vital-empty hidden>No vitals match that search. Clear the query or try “sleep”.</p>
+        </section>
+        <section class="cx-card span6 mat-glass" data-fx="reveal"><div class="cx-cardhead"><h2>Trend</h2></div><div data-vital-chart data-fx="draw"></div></section>
+        <section class="cx-card span6 mat-glass" data-fx="reveal"><div class="cx-cardhead"><h2>Notes</h2></div>
+          <div class="cx-list-dense">
+            <article><span>Keep evening wind-down</span><strong class="num">22:30</strong></article>
+            <article><span>Hydration reminder</span><strong>On</strong></article>
+            <article><span>Coach check-in</span><strong>Thu</strong></article>
+            <article><span>Sample lab panel</span><strong>Queued</strong></article>
+          </div>
+        </section>
+        <div class="cx-drawer-scrim" data-drawer-scrim hidden></div>
+        <aside class="cx-drawer" data-drawer hidden role="dialog" aria-modal="true" aria-labelledby="cx-drawer-h">
+          <h2 id="cx-drawer-h">Vital detail</h2>
+          <p data-drawer-body></p>
+          <button type="button" class="cx-btn" data-drawer-close>Close detail</button>
+        </aside>
+      </section>`;
+    }
+    if (page.id === 'settings') {
+      return `<section class="cx-page" data-db-page="settings" aria-labelledby="p-h">
+        <div class="cx-page-head">
+          <div>
+            <h1 id="p-h">Settings</h1>
+            <p class="cx-page-lead">Units, alerts and AI coaching. Changes stay in this session only.</p>
+          </div>
+          <div class="cx-page-toolbar">
+            <div class="cx-seg" role="group" aria-label="Settings view state" data-set-state>
+              <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+              <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+              <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+              <button type="button" data-v="error" aria-pressed="false">Error</button>
+            </div>
+          </div>
+        </div>
+        <div class="cx-kpi-row">
+          <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="12">12</b><span>Devices linked</span></div>
+          <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="3">3</b><span>Alert rules</span></div>
+          <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="2">2</b><span>Coaches</span></div>
+          <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="98">98</b><span>Sync health %</span></div>
+        </div>
+        <section class="cx-card span6 mat-glass" data-fx="reveal">
+          <div class="cx-cardhead"><h2>Preferences</h2></div>
+          <div class="cx-list-dense" data-set-body>
+            <article><span>Units</span>
+              <div class="cx-seg" data-set-units role="group" aria-label="Units">
+                <button type="button" data-v="metric" aria-pressed="true">Metric</button>
+                <button type="button" data-v="us" aria-pressed="false">US</button>
+              </div>
+            </article>
+            <article><span>Night alerts</span>
+              <button type="button" class="fx-toggle" role="switch" aria-checked="true" data-set-alerts aria-label="Night alerts"><span class="fx-thumb"></span></button>
+            </article>
+            <article><span>Focus goal (hours)</span>
+              <input class="fx-slider" data-set-focus type="range" min="1" max="4" step="0.5" value="2" aria-label="Focus goal hours" style="--fx-fill:50%">
+              <strong class="num" data-focus-readout>2.0</strong>
+            </article>
+            <article><span>Quiet hours</span><strong class="num">22:00–06:30</strong></article>
+            <article><span>Week starts</span><strong>Monday</strong></article>
+            <article><span>Theme follow</span><strong>System</strong></article>
+            <article><span>Haptics</span><strong>On</strong></article>
+            <article><span>Sample mode</span><strong>Gallery</strong></article>
+          </div>
+        </section>
+        <section class="cx-card span6 mat-glass" data-fx="reveal">
+          <div class="cx-cardhead"><h2>AI coaching</h2></div>
+          <p class="cx-page-lead">Suggest a wind-down plan. Requires your approval before anything is saved.</p>
+          <button type="button" class="cx-btn cx-btn-solid" data-ai-suggest>Suggest wind-down</button>
+          <div data-ai-gate hidden style="margin-top:12px">
+            <p>Apply sample plan “Dim lights · 22:15 · no screens”?</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+              <button type="button" class="cx-btn cx-btn-solid" data-ai-approve>Approve plan</button>
+              <button type="button" class="cx-btn ghost" data-ai-reject>Dismiss</button>
+            </div>
+          </div>
+          <div class="cx-list-dense" style="margin-top:14px">
+            <article><span>Last suggestion</span><strong>Wind-down</strong></article>
+            <article><span>Pending approvals</span><strong class="num">0</strong></article>
+            <article><span>Coach tone</span><strong>Calm</strong></article>
+            <article><span>Auto-apply</span><strong>Off</strong></article>
+            <article><span>History retained</span><strong>14 days</strong></article>
+            <article><span>Export coaching log</span><strong>CSV</strong></article>
+          </div>
+        </section>
+        <section class="cx-card wide mat-glass" data-fx="reveal">
+          <div class="cx-cardhead"><h2>Connected sources</h2><span class="cx-muted">Sample</span></div>
+          <table class="cx-table"><thead><tr><th>Source</th><th>Status</th><th>Last sync</th></tr></thead><tbody>
+            <tr><td>Ring band</td><td>Online</td><td class="num">2m ago</td></tr>
+            <tr><td>Sleep mat</td><td>Online</td><td class="num">8m ago</td></tr>
+            <tr><td>Breath coach</td><td>Standby</td><td class="num">1h ago</td></tr>
+            <tr><td>Lab panel feed</td><td>Queued</td><td class="num">Yesterday</td></tr>
+            <tr><td>Calendar</td><td>Online</td><td class="num">12m ago</td></tr>
+            <tr><td>Weather assist</td><td>Online</td><td class="num">5m ago</td></tr>
+          </tbody></table>
+        </section>
+        <section class="cx-card span6 mat-glass" data-fx="reveal">
+          <div class="cx-cardhead"><h2>Profile</h2></div>
+          <form data-profile-form class="cx-list-dense" novalidate>
+            <label>Display name<input name="name" required minlength="2" value="Anna Vale" style="min-height:44px;width:100%;padding:0 12px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text)"></label>
+            <label>Email<input name="email" type="email" required value="anna@example.test" style="min-height:44px;width:100%;padding:0 12px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text)"></label>
+            <p class="cx-err" data-form-err hidden>Enter a name (2+ characters) and a valid email like name@example.test.</p>
+            <button type="submit" class="cx-btn cx-btn-solid">Save profile</button>
+          </form>
+        </section>
+        <section class="cx-card span6 mat-glass" data-fx="reveal">
+          <div class="cx-cardhead"><h2>Privacy</h2></div>
+          <div class="cx-list-dense">
+            <article><span>Share with coach</span><strong>On</strong></article>
+            <article><span>Research opt-in</span><strong>Off</strong></article>
+            <article><span>Export my data</span><strong>Ready</strong></article>
+            <article><span>Delete sample workspace</span><strong>Gallery only</strong></article>
+            <article><span>Session storage</span><strong>Local</strong></article>
+            <article><span>Analytics cookies</span><strong>Off</strong></article>
+          </div>
+        </section>
       </section>`;
     }
     return `<section class="cx-page"><h1>${page.name}</h1></section>`;
@@ -400,31 +552,165 @@
   function wirePage(host, page) {
     if (page.id === 'analytics') {
       const body = host.querySelector('[data-an-body]');
+      let range = '7d';
       const paint = (state = 'ready') => {
         if (state === 'loading') {
-          body.innerHTML = `<div class="cx-loading" role="status"><p>Syncing trends…</p><div class="cx-skel"></div><div class="cx-skel"></div></div>`;
+          body.innerHTML = `<div class="cx-card full" role="status"><p>Syncing trends…</p><div class="cx-skel"></div><div class="cx-skel"></div><div class="cx-skel"></div></div>`;
           return;
         }
         if (state === 'empty') {
-          body.innerHTML = `<div class="cx-empty-state"><p>No analytics yet this week.</p></div>`;
+          body.innerHTML = `<div class="cx-card full cx-empty-state"><p>No analytics yet this week.</p><button type="button" class="cx-btn" data-fill>Load sample week</button></div>`;
+          host.querySelector('[data-fill]')?.addEventListener('click', () => paint('ready'));
           return;
         }
         if (state === 'error') {
-          body.innerHTML = `<div class="cx-error"><p>Could not load analytics.</p><button type="button" class="cx-btn ghost" data-retry>Retry</button></div>`;
+          body.innerHTML = `<div class="cx-card full cx-error"><p>Could not load analytics. Check the sample feed and retry.</p><button type="button" class="cx-btn ghost" data-retry>Retry sync</button></div>`;
           host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
           return;
         }
-        body.innerHTML = `<div class="cx-page-grid">
-          <article class="cx-page-card"><div class="cx-row"><span>Focus score</span><strong class="num">88</strong></div></article>
-          <article class="cx-page-card"><div class="cx-row"><span>Recovery</span><strong class="num">2h</strong></div></article>
-          <article class="cx-page-card"><div class="cx-row"><span>Breath calm</span><strong class="num">14/m</strong></div></article>
-        </div>`;
+        const n = range === '7d' ? 7 : 14;
+        const labels = range === '7d'
+          ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+          : Array.from({ length: n }, (_, i) => `D${i + 1}`);
+        const focus = labels.map((_, i) => 62 + ((i * 7) % 23));
+        const sleep = labels.map((_, i) => 6.2 + ((i * 3) % 11) / 10);
+        body.innerHTML = `
+          <div class="cx-kpi-row">
+            <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="88">88</b><span>Focus score</span></div>
+            <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="2">2</b><span>Recovery hours</span></div>
+            <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="14">14</b><span>Breath / min</span></div>
+            <div class="cx-kpi" data-fx="reveal"><b class="num" data-fx="count" data-to="${range === '7d' ? 92 : 89}">${range === '7d' ? 92 : 89}</b><span>Sleep quality %</span></div>
+          </div>
+          <section class="cx-card wide mat-glass" data-fx="reveal spotlight"><div class="cx-cardhead"><h2>Focus trend</h2><span class="cx-muted">${range}</span></div><div data-an-focus data-fx="draw"></div></section>
+          <section class="cx-card span6 mat-glass" data-fx="reveal"><div class="cx-cardhead"><h2>Sleep hours</h2></div><div data-an-sleep data-fx="draw"></div></section>
+          <section class="cx-card span6 mat-glass" data-fx="reveal"><div class="cx-cardhead"><h2>Highlights</h2></div>
+            <div class="cx-list-dense">
+              <article><span>Best focus day</span><strong>Thu</strong></article>
+              <article><span>Longest sleep</span><strong class="num">7.9 h</strong></article>
+              <article><span>Breath calm streak</span><strong class="num">4 d</strong></article>
+              <article><span>Hills vs goal</span><strong class="num">75%</strong></article>
+              <article><span>HRV morning</span><strong class="num">62 ms</strong></article>
+              <article><span>Coach notes</span><strong>3</strong></article>
+            </div>
+          </section>`;
+        lineChart(host.querySelector('[data-an-focus]'), {
+          labels, label: 'Focus score', h: 180, curve: true, fill: 0.25,
+          series: [{ name: 'Focus', color: '--chart-1', values: focus, fill: 0.3 }],
+        });
+        barChart(host.querySelector('[data-an-sleep]'), {
+          labels: labels.slice(0, 7), label: 'Sleep hours', h: 160,
+          series: [{ name: 'Sleep', color: '--chart-2', values: sleep.slice(0, 7) }],
+          fmt: (v) => v.toFixed(1),
+        });
+        if (window.DB?.fx) window.DB.fx.remount(host);
       };
       paint('ready');
       seg(host.querySelector('[data-an-tabs]'), (v) => paint(v));
+      seg(host.querySelector('[data-an-range]'), (v) => { range = v; paint('ready'); });
     }
-    if (page.id === 'reports') {
-      host.querySelector('[data-export]')?.addEventListener('click', () => toast('Export queued · sample'));
+    if (page.id === 'vitals') {
+      let sort = 'name';
+      let q = '';
+      let selected = null;
+      try { selected = sessionStorage.getItem('cx-vital'); } catch (_) {}
+      const list = host.querySelector('[data-vital-list]');
+      const empty = host.querySelector('[data-vital-empty]');
+      const drawer = host.querySelector('[data-drawer]');
+      const scrim = host.querySelector('[data-drawer-scrim]');
+      const openDrawer = (row) => {
+        selected = row.id;
+        try { sessionStorage.setItem('cx-vital', row.id); } catch (_) {}
+        host.querySelector('[data-drawer-body]').textContent = `${row.name}: ${row.value}. ${row.note}. Status ${row.status}. Sample data only.`;
+        drawer.hidden = scrim.hidden = false;
+        const prev = document.activeElement;
+        drawer.dataset.prev = '';
+        host.querySelector('[data-drawer-close]').focus();
+        const trap = (e) => {
+          if (e.key === 'Escape') { close(); }
+        };
+        const close = () => {
+          drawer.hidden = scrim.hidden = true;
+          document.removeEventListener('keydown', trap);
+          if (prev && prev.focus) prev.focus();
+        };
+        document.addEventListener('keydown', trap);
+        host.querySelector('[data-drawer-close]').onclick = close;
+        scrim.onclick = close;
+      };
+      const render = () => {
+        let rows = VITAL_ROWS.filter((r) => !q || `${r.name} ${r.status}`.toLowerCase().includes(q));
+        rows = rows.slice().sort((a, b) => (sort === 'status' ? a.status.localeCompare(b.status) : a.name.localeCompare(b.name)));
+        host.querySelector('[data-vital-count]').textContent = `${rows.length} shown`;
+        empty.hidden = rows.length > 0;
+        list.innerHTML = rows.length ? `<table class="cx-table"><thead><tr><th>Signal</th><th>Value</th><th>Status</th></tr></thead><tbody>${rows.map((r) => `<tr data-id="${r.id}" aria-selected="${r.id === selected}"><td>${r.name}</td><td class="num">${r.value}</td><td>${r.status}</td></tr>`).join('')}</tbody></table>` : '';
+        list.querySelectorAll('tr[data-id]').forEach((tr) => {
+          tr.addEventListener('click', () => openDrawer(VITAL_ROWS.find((r) => r.id === tr.dataset.id)));
+          tr.addEventListener('keydown', (e) => { if (e.key === 'Enter') tr.click(); });
+          tr.tabIndex = 0;
+        });
+      };
+      host.querySelector('[data-vital-q]').addEventListener('input', (e) => { q = e.target.value.trim().toLowerCase(); render(); });
+      seg(host.querySelector('[data-vital-sort]'), (v) => { sort = v; render(); });
+      lineChart(host.querySelector('[data-vital-chart]'), {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        label: 'Composite vital index', h: 160,
+        series: [{ name: 'Index', color: '--accent', values: [72, 74, 71, 78, 80, 76, 82], fill: 0.25 }],
+      });
+      render();
+      if (selected) {
+        const row = VITAL_ROWS.find((r) => r.id === selected);
+        if (row) openDrawer(row);
+      }
+      if (window.DB?.fx) window.DB.fx.remount(host);
+    }
+    if (page.id === 'settings') {
+      const wirePrefs = () => {
+        seg(host.querySelector('[data-set-units]'), (v) => toast(`Units · ${v}`));
+        const tog = host.querySelector('[data-set-alerts]');
+        tog?.addEventListener('click', () => {
+          const on = tog.getAttribute('aria-checked') !== 'true';
+          tog.setAttribute('aria-checked', String(on));
+          toast(on ? 'Night alerts on' : 'Night alerts off');
+        });
+        const slider = host.querySelector('[data-set-focus]');
+        const readout = host.querySelector('[data-focus-readout]');
+        slider?.addEventListener('input', () => {
+          const v = Number(slider.value);
+          readout.textContent = v.toFixed(1);
+          slider.style.setProperty('--fx-fill', `${((v - 1) / 3) * 100}%`);
+        });
+        const gate = host.querySelector('[data-ai-gate]');
+        host.querySelector('[data-ai-suggest]')?.addEventListener('click', () => { gate.hidden = false; });
+        host.querySelector('[data-ai-approve]')?.addEventListener('click', () => { gate.hidden = true; toast('Plan approved · sample'); });
+        host.querySelector('[data-ai-reject]')?.addEventListener('click', () => { gate.hidden = true; toast('Plan dismissed'); });
+        host.querySelector('[data-profile-form]')?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const fd = new FormData(e.target);
+          const name = String(fd.get('name') || '').trim();
+          const email = String(fd.get('email') || '').trim();
+          const err = host.querySelector('[data-form-err]');
+          if (name.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            err.hidden = false;
+            return;
+          }
+          err.hidden = true;
+          toast('Profile saved · sample');
+        });
+      };
+      wirePrefs();
+      const stateHost = host.querySelector('[data-set-state]');
+      if (stateHost) {
+        seg(stateHost, (v) => {
+          const body = host.querySelector('[data-set-body]');
+          if (!body) return;
+          if (v === 'loading') body.innerHTML = `<div class="cx-skel"></div><div class="cx-skel"></div><div class="cx-skel"></div>`;
+          else if (v === 'empty') body.innerHTML = `<p>No preferences yet. <button type="button" class="cx-btn cx-btn-solid" data-fill>Restore defaults</button></p>`;
+          else if (v === 'error') body.innerHTML = `<p class="cx-err">Could not load preferences. <button type="button" class="cx-btn ghost" data-retry>Retry</button></p>`;
+          else location.hash = '#/settings';
+          body.querySelector('[data-fill],[data-retry]')?.addEventListener('click', () => { location.hash = '#/settings'; });
+        });
+      }
+      if (window.DB?.fx) window.DB.fx.remount(host);
     }
   }
 
@@ -434,15 +720,25 @@
     });
   }
 
+  // Nav links: keep analytics; map reports → vitals for old hashes
+  $$('.cx-nav a[href="#/reports"]').forEach((a) => { a.setAttribute('href', '#/vitals'); a.dataset.v = 'vitals'; a.textContent = 'Vitals'; });
+  // ensure settings link exists
+  const nav = $('[data-views]');
+  if (nav && !nav.querySelector('a[href="#/settings"]')) {
+    const a = document.createElement('a');
+    a.href = '#/settings'; a.dataset.v = 'settings'; a.textContent = 'Settings';
+    nav.appendChild(a);
+  }
+
   if (!window.DB || typeof window.DB.route !== 'function') {
     console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
   } else {
     window.DB.route(PAGES, (id, page) => {
       const isOverview = id === 'overview';
       overview.hidden = !isOverview;
-      const host = ensureStub();
+      const host = ensureHost();
       host.hidden = isOverview;
-      setView(id);
+      setView(id === 'vitals' ? 'analytics' : id);
       if (!isOverview) {
         host.innerHTML = pageHtml(page);
         paintIcons(host);
@@ -450,10 +746,18 @@
       } else if (!seenPages.has('overview')) {
         seenPages.add('overview');
         staggerReveal();
+        if (window.DB?.fx) window.DB.fx.remount(overview);
       }
       seenPages.add(id);
     });
   }
+
+  // Cross-page: heart pill → vitals
+  $('[data-pills]')?.addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-v]');
+    if (!b) return;
+    try { sessionStorage.setItem('cx-vital', b.dataset.v === 'breath' ? 'breath' : b.dataset.v === 'brain' ? 'focus' : b.dataset.v === 'all' ? 'hrv' : 'hr'); } catch (_) {}
+  });
 
   document.documentElement.dataset.ready = 'true';
 })();

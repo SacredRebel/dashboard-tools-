@@ -2,7 +2,7 @@
 export function mountTilt(root = document) {
   if (matchMedia('(pointer: coarse)').matches) return () => {};
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
-  const nodes = [...root.querySelectorAll('[data-fx="tilt"]')];
+  const nodes = [...root.querySelectorAll('[data-fx~="tilt"]')];
   if (!nodes.length) return () => {};
   const clean = [];
   nodes.forEach((el) => {

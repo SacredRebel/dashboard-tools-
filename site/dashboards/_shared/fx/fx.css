@@ -1,33 +1,33 @@
 /* Gallery FX: data-fx effects. Tokens only; reduced-motion + offscreen pause. */
-[data-fx="reveal"] {
+[data-fx~="reveal"] {
   opacity: 0;
   transform: translateY(12px);
   transition: opacity var(--dur-3, 200ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
     transform var(--dur-3, 200ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 }
-[data-fx="reveal"].is-in {
+[data-fx~="reveal"].is-in {
   opacity: 1;
   transform: none;
 }
-[data-motion-paused="1"] [data-fx="reveal"],
-[data-motion-paused="1"] [data-fx="ambient"],
-[data-motion-paused="1"] [data-fx="shine"]::after,
-[data-motion-paused="1"] [data-fx="sparks"] {
+[data-motion-paused="1"] [data-fx~="reveal"],
+[data-motion-paused="1"] [data-fx~="ambient"],
+[data-motion-paused="1"] [data-fx~="shine"]::after,
+[data-motion-paused="1"] [data-fx~="sparks"] {
   animation-play-state: paused !important;
 }
 
-[data-fx="count"],
-[data-fx="odo"] {
+[data-fx~="count"],
+[data-fx~="odo"] {
   font-variant-numeric: tabular-nums;
 }
 
-[data-fx="spotlight"] {
+[data-fx~="spotlight"] {
   position: relative;
   overflow: hidden;
   --fx-spot-x: 50%;
   --fx-spot-y: 50%;
 }
-[data-fx="spotlight"]::before {
+[data-fx~="spotlight"]::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -41,18 +41,18 @@
   );
   z-index: 0;
 }
-[data-fx="spotlight"]:hover::before,
-[data-fx="spotlight"]:focus-within::before {
+[data-fx~="spotlight"]:hover::before,
+[data-fx~="spotlight"]:focus-within::before {
   opacity: 1;
 }
-[data-fx="spotlight"] > * { position: relative; z-index: 1; }
+[data-fx~="spotlight"] > * { position: relative; z-index: 1; }
 
-[data-fx="tilt"] {
+[data-fx~="tilt"] {
   transform-style: preserve-3d;
   transition: transform var(--dur-3, 200ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
   position: relative;
 }
-[data-fx="tilt"] .fx-glare {
+[data-fx~="tilt"] .fx-glare {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -62,19 +62,19 @@
   mix-blend-mode: soft-light;
   transition: opacity var(--dur-2, 150ms);
 }
-[data-fx="tilt"].is-tilting .fx-glare { opacity: 0.55; }
+[data-fx~="tilt"].is-tilting .fx-glare { opacity: 0.55; }
 
-[data-fx="magnet"] {
+[data-fx~="magnet"] {
   transition: transform var(--dur-2, 150ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
   display: inline-flex;
 }
 
-[data-fx="shine"] {
+[data-fx~="shine"] {
   position: relative;
   overflow: hidden;
   display: inline-block;
 }
-[data-fx="shine"]::after {
+[data-fx~="shine"]::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -82,21 +82,21 @@
   background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 0.45) 50%, transparent 65%);
   pointer-events: none;
 }
-[data-fx="shine"]:hover::after,
-[data-fx="shine"]:focus-visible::after {
+[data-fx~="shine"]:hover::after,
+[data-fx~="shine"]:focus-visible::after {
   transition: transform var(--dur-4, 300ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
   transform: translateX(120%);
 }
 
-[data-fx="parallax"] {
+[data-fx~="parallax"] {
   will-change: transform;
 }
-[data-fx="parallax"] [data-fx-layer] {
+[data-fx~="parallax"] [data-fx-layer] {
   will-change: transform;
   transition: transform var(--dur-2, 150ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-[data-fx="ambient"] {
+[data-fx~="ambient"] {
   animation: fx-ambient var(--fx-ambient-dur, 14s) ease-in-out infinite alternate;
 }
 @keyframes fx-ambient {
@@ -104,45 +104,45 @@
   to { transform: translate3d(var(--fx-ax, 6px), var(--fx-ay, -4px), 0) scale(1.02); filter: brightness(1.04); }
 }
 
-[data-fx="split"] .fx-word {
+[data-fx~="split"] .fx-word {
   display: inline-block;
   opacity: 0;
   transform: translateY(0.4em);
   transition: opacity var(--dur-3, 200ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
     transform var(--dur-3, 200ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 }
-[data-fx="split"].is-in .fx-word {
+[data-fx~="split"].is-in .fx-word {
   opacity: 1;
   transform: none;
 }
 
-[data-fx="draw"] .fx-draw-line {
+[data-fx~="draw"] .fx-draw-line {
   stroke-dasharray: var(--fx-len, 1000);
   stroke-dashoffset: var(--fx-len, 1000);
   transition: stroke-dashoffset var(--dur-4, 300ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 }
-[data-fx="draw"].is-in .fx-draw-line { stroke-dashoffset: 0; }
-[data-fx="draw"] .fx-draw-bar {
+[data-fx~="draw"].is-in .fx-draw-line { stroke-dashoffset: 0; }
+[data-fx~="draw"] .fx-draw-bar {
   transform-origin: bottom center;
   transform: scaleY(0);
   transition: transform var(--dur-4, 300ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 }
-[data-fx="draw"].is-in .fx-draw-bar { transform: scaleY(1); }
-[data-fx="draw"] .fx-draw-arc {
+[data-fx~="draw"].is-in .fx-draw-bar { transform: scaleY(1); }
+[data-fx~="draw"] .fx-draw-arc {
   stroke-dasharray: var(--fx-len, 1000);
   stroke-dashoffset: var(--fx-len, 1000);
   transition: stroke-dashoffset var(--dur-4, 300ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 }
-[data-fx="draw"].is-in .fx-draw-arc { stroke-dashoffset: 0; }
+[data-fx~="draw"].is-in .fx-draw-arc { stroke-dashoffset: 0; }
 
-[data-fx="list"] .fx-list-item {
+[data-fx~="list"] .fx-list-item {
   transition: opacity var(--dur-3, 200ms), transform var(--dur-3, 200ms);
 }
-[data-fx="list"] .fx-list-item.is-enter {
+[data-fx~="list"] .fx-list-item.is-enter {
   opacity: 0;
   transform: translateY(8px);
 }
-[data-fx="list"] .fx-list-item.is-leave {
+[data-fx~="list"] .fx-list-item.is-leave {
   opacity: 0;
   transform: translateY(-6px);
 }
@@ -204,24 +204,24 @@ html.fx-vt-pending::view-transition-new(root) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-fx="reveal"],
-  [data-fx="split"] .fx-word,
-  [data-fx="draw"] .fx-draw-line,
-  [data-fx="draw"] .fx-draw-bar,
-  [data-fx="draw"] .fx-draw-arc,
-  [data-fx="tilt"],
-  [data-fx="magnet"],
-  [data-fx="parallax"] [data-fx-layer] {
+  [data-fx~="reveal"],
+  [data-fx~="split"] .fx-word,
+  [data-fx~="draw"] .fx-draw-line,
+  [data-fx~="draw"] .fx-draw-bar,
+  [data-fx~="draw"] .fx-draw-arc,
+  [data-fx~="tilt"],
+  [data-fx~="magnet"],
+  [data-fx~="parallax"] [data-fx-layer] {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
     stroke-dashoffset: 0 !important;
   }
-  [data-fx="ambient"],
-  [data-fx="shine"]::after {
+  [data-fx~="ambient"],
+  [data-fx~="shine"]::after {
     animation: none !important;
     transition: none !important;
     transform: none !important;
   }
-  [data-fx="reveal"] { opacity: 1; transform: none; }
+  [data-fx~="reveal"] { opacity: 1; transform: none; }
 }
