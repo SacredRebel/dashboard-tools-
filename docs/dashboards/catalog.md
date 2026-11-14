@@ -15,7 +15,7 @@
 | 7 | [Haven Listings](#haven-listings) | Glass & glow | Real estate | light | Dusk, Sunrise, Midnight | [site/dashboards/haven-listings/](../../site/dashboards/haven-listings/) |
 | 8 | [Aura Ring](#aura-ring) | Glass & glow | Health & fitness | dark | Haze, Lagoon, Pearl | [site/dashboards/aura-ring/](../../site/dashboards/aura-ring/) |
 | 9 | [Lull Sleep](#lull-sleep) | Soft & friendly | Health & fitness | light | Lavender, Dawn, Nightfall | [site/dashboards/lull-sleep/](../../site/dashboards/lull-sleep/) |
-| 10 | [Pearlwell Dental](#smile-dental) | Soft & friendly | Health & fitness | light | Mint, Coral, Deep sea | [site/dashboards/smile-dental/](../../site/dashboards/smile-dental/) |
+| 10 | [Pearlwell Dental](#pearlwell-dental) | Soft & friendly | Health & fitness | light | Mint, Coral, Deep sea | [site/dashboards/pearlwell-dental/](../../site/dashboards/pearlwell-dental/) |
 | 11 | [Vitalis Care](#vitalis-care) | Bento grid | Health & fitness | light | Teal, Sage, Night | [site/dashboards/vitalis-care/](../../site/dashboards/vitalis-care/) |
 | 12 | [Mallow Music](#mallow-music) | Tactile & neumorphic | Music & media | light | Cream, Berry, Cocoa | [site/dashboards/mallow-music/](../../site/dashboards/mallow-music/) |
 | 13 | [Taffy Analytics](#taffy-analytics) | Minimal & airy | SaaS admin, Analytics & BI | light | Taffy, Mint, Dusk | [site/dashboards/taffy-analytics/](../../site/dashboards/taffy-analytics/) |
@@ -794,10 +794,10 @@ A one-night sleep report in soft lavender: a pastel sky hero with a crescent moo
 
 ---
 
-<a id="smile-dental"></a>
+<a id="pearlwell-dental"></a>
 ### 10. Pearlwell Dental
 
-![Pearlwell Dental original reference](../../site/dashboards/smile-dental/reference.jpg)
+![Pearlwell Dental original reference](../../site/dashboards/pearlwell-dental/reference.jpg)
 
 _Pearlwell Dental · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
@@ -807,7 +807,7 @@ A soft mint patient portal for a dental clinic: one saturated next-visit card wi
 - **Signature:** One deep-teal next-visit card holding a glossy white SVG tooth with a shield, set among white cards on a mint field that warms to peach in the corner.
 - **Layout:** 230px sticky sidebar (brand, 5 nav links, emergency note) · main: greeting header with search and avatar · 12-column grid: next visit (5) + score (3) + treatments (4, two rows) · booking card (8, two rows: month calendar left, times, dentists and confirm right) · tooth chart (4)
 - **Responsive:** ≤1180px: sidebar becomes a top bar, grid 2 columns · ≤700px: icon tab bar with labels, single column, calendar above times
-- **Fonts:** Nunito / Nunito · **Palette:** bg `#eaf5f2`, surface `#ffffff`, text `#173836`, muted `#4a6663`, accent `#0f7f75`, teal `#18a596`, peach `#fbe3d4`, warn `#b4542e`
+- **Fonts:** Nunito / Nunito · **Palette:** bg `#eaf5f2`, surface `#ffffff`, text `#173836`, muted `#4a6663`, accent `#0f7f75`, teal `#0e7f73`, peach `#fbe3d4`, warn `#b4542e`
 - **Variants:** Mint, Coral, Deep sea · **Closest toolkit theme:** `coastal`
 
 **Best for**

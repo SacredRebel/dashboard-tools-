@@ -101,7 +101,7 @@
   let ch = 0;
   function renderCaps() {
     const max = Math.max(...CH.map((c) => c.v));
-    $('[data-caps]').innerHTML = CH.map((c, i) => `<button data-ch="${i}" aria-pressed="${i === ch}" aria-label="${c.n}: ${c.v} sign-ups"><i style="height:${((c.v / max) * 92).toFixed(1)}%;--cap:var(${c.c});--cap-d:var(${c.c}-d)"></i><span class="num">${c.v}</span></button>`).join('');
+    $('[data-caps]').innerHTML = CH.map((c, i) => `<button data-ch="${i}" aria-pressed="${i === ch}" aria-label="${c.n}: ${c.v} sign-ups"><i style="height:${((c.v / max) * 92).toFixed(1)}%;--cap:var(${c.c});--cap-d:var(${c.c}-d)"></i><span class="num" style="color:var(${c.c}-ink, var(--cap-ink))">${c.v}</span></button>`).join('');
     const tot = CH.reduce((a, c) => a + c.v, 0);
     $('[data-capnote]').innerHTML = `<b>${CH[ch].n}</b>, ${Math.round((CH[ch].v / tot) * 100)}% of ${fmtNum(tot)} sign-ups. ${CH[ch].note}`;
   }

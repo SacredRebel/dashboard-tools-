@@ -32,7 +32,7 @@ Task: turn the 32 reference images the owner supplied into original gallery dash
 | 11-colorpsych-dark.jpg | — | — | — | — | — | — | — | skipped: colour psychology chart |
 | 12-wellness-ring-tablet.jpg | 8 | `site/dashboards/aura-ring/` | Aura Ring | glass | health | dark | 3 | 10cf17b, c9c2c90 |
 | 13-wellness-ring-flat.jpg | 9 | `site/dashboards/lull-sleep/` | Lull Sleep | soft | health | light | 3 | e19ae36 |
-| 14-dental-mobile.jpg | 10 | `site/dashboards/smile-dental/` | Pearlwell Dental | soft | health | light | 3 | c3d1e4d |
+| 14-dental-mobile.jpg | 10 | `site/dashboards/pearlwell-dental/` | Pearlwell Dental | soft | health | light | 3 | c3d1e4d |
 | 15-medical-mobile.jpg | 11 | `site/dashboards/vitalis-care/` | Vitalis Care | bento | health | light | 3 | 032d86d |
 | 16-music-clay.jpg | 12 | `site/dashboards/mallow-music/` | Mallow Music | skeuo | media | light | 3 | 21e705a |
 | 17-pastel-3d-kit.jpg | 13 | `site/dashboards/taffy-analytics/` | Taffy Analytics | minimal | saas-admin, analytics | light | 3 | a1ea4c5 |
@@ -98,3 +98,22 @@ Devin also attached the helper scripts and per-dashboard source notes as `devin-
 - Hollow Vault was deliberately reframed from paid crypto loot boxes to keys earned in play with drop rates shown.
 - Final full pass not yet run for the whole gallery: `node scripts/build.mjs`, `node scripts/dashboards-check.mjs` (all), `node scripts/screenshot.mjs`, and a visual review of all screenshots.
 - No shared files (`_shared/`, `design-system/`, `tools.json`, `AGENTS.md`) were changed.
+
+## Architect review (Claude, 2026-11-13), read before building 22–32
+
+All 16 Devin dashboards were reviewed visually (thumbnails + 375px renders) and re-checked. Quality is high and every one reads as its own style. Changes made in review:
+
+- **New automatic checks** in `scripts/dashboards-check.mjs`: text contrast measured on the **real pixels behind each text** in every variant (catches text over art/gradients), and a **12px minimum text size**. All 17 now pass. Expect these to catch you: read the "Contrast lessons" section in `docs/dashboards/01-add-a-dashboard.md`.
+- **Contrast fixes** (all were real failures):
+  - Haven Listings: hero copy over light art now sits on a scrim panel
+  - Taffy Analytics: dusk capsule numbers get their own ink token
+  - Canopy Reforest: deeper hero greens/rust; eyebrow uses `--text`
+  - Pearlwell Dental: teal/coral hero dark enough for white text
+  - Kumo Payroll: sakura active nav uses a `--nav-active` token
+  - Solstice Energy: hour labels lifted above the sun arc, dial units on a chip, legend above the art, glacier muted text lighter
+  - Horizon Weather: dawn sky darker behind the temperature, stronger phone scrim, 11px labels raised to 12px
+- **Renamed** `smile-dental` → `pearlwell-dental` so the id matches the brand. Rule now in the workflow: the id starts with the brand word.
+- `unknownBg=4` (Prism, Plumage) was the gradient-clipped headline number and glass panels; the new pixel check measures them and both pass.
+- Hollow Vault's reframe (keys earned in play, drop rates shown, no purchases) is approved.
+- Class prefixes in use: pa se kp cr rt hl ar ls pd vc mm tf pw pl hv lw (pick a new one for each new dashboard).
+

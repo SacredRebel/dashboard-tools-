@@ -21,7 +21,11 @@
  *   /dashboards/<id>/ at 375×812, and ?variant=<v> for every extra variant at 1440×900
  *   the gallery detail page /#/dashboards/<id> and inspects the preview iframe
  * and fails on: console/page errors, any HTTP response >= 400, unstyled page (body background
- * transparent), app.js not finished (<html data-ready="true"> missing), horizontal overflow.
+ * transparent), app.js not finished (<html data-ready="true"> missing), horizontal overflow,
+ * text smaller than 12px, and text contrast measured on the REAL pixels behind each text
+ * (works over gradients, images and SVG art): fails below 3.9:1 for normal text or 2.6:1 for
+ * large text (WCAG 4.5 / 3 with a margin for anti-aliasing). Disabled controls and
+ * gradient-clipped text are skipped.
  * Writes:
  *   site/dashboards/<id>/thumb.jpg  — 720×450 gallery card (viewport 1440×900 @ 0.5× DPR)
  *   site/dashboards/<id>/shot.jpg   — 1440×900 recreation screenshot (@ 1× DPR)
@@ -94,6 +98,55 @@ function watch(page, errs) {
   page.on('requestfailed', (r) => { if (r.url().startsWith(base)) errs.push('request failed: ' + r.url().replace(base, '')); });
 }
 
+// ---------------------------------------------------------------- pixel contrast + minimum text size
+async function textAudit(page) {
+  const items = await page.evaluate(() => {
+    const res = []; const seen = new Set();
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      const t = walker.currentNode; if (!t.textContent.trim()) continue;
+      const el = t.parentElement; if (seen.has(el)) continue; seen.add(el);
+      const s = getComputedStyle(el);
+      if (s.visibility === 'hidden' || +s.opacity === 0 || el.closest('.vh,[aria-hidden="true"],[disabled],[aria-disabled="true"],script,style,noscript')) continue;
+      let clip = false; for (let a = el, k = 0; a && k < 4; a = a.parentElement, k++) { const cs = getComputedStyle(a); if (cs.backgroundClip === 'text' || cs.webkitBackgroundClip === 'text') clip = true; }
+      if (clip) continue;
+      const r = document.createRange(); r.selectNodeContents(t); const rc = r.getBoundingClientRect();
+      if (rc.width < 2 || rc.height < 2) continue;
+      res.push({ text: t.textContent.trim().slice(0, 32), color: s.color, size: parseFloat(s.fontSize), weight: +s.fontWeight || 400, x: rc.left + scrollX, y: rc.top + scrollY, w: rc.width, h: rc.height });
+    }
+    return res;
+  });
+  const style = await page.addStyleTag({ content: '*{color:transparent!important;-webkit-text-fill-color:transparent!important;text-shadow:none!important;caret-color:transparent!important}::placeholder{color:transparent!important}' });
+  await page.waitForTimeout(120);
+  const png = (await page.screenshot({ fullPage: true })).toString('base64');
+  await style.evaluate((n) => n.remove());
+  return page.evaluate(async ({ items, png }) => {
+    const img = new Image(); img.src = 'data:image/png;base64,' + png; await img.decode();
+    const cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height;
+    const cx = cv.getContext('2d', { willReadFrequently: true }); cx.drawImage(img, 0, 0);
+    const k = img.width / document.documentElement.clientWidth; // device scale
+    const lin = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+    const L = (r, g, b) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+    const pc = document.createElement('canvas').getContext('2d');
+    const rgba = (c) => { pc.clearRect(0, 0, 1, 1); pc.fillStyle = '#000'; pc.fillStyle = c; pc.fillRect(0, 0, 1, 1); const d = pc.getImageData(0, 0, 1, 1).data; return [d[0], d[1], d[2], d[3] / 255]; };
+    const out = [];
+    for (const it of items) {
+      if (it.size < 12) { out.push(`text below 12px (${it.size}px): "${it.text}"`); continue; }
+      const x0 = Math.max(0, Math.floor(it.x * k)), y0 = Math.max(0, Math.floor(it.y * k)), w = Math.min(cv.width - x0, Math.ceil(it.w * k)), h = Math.min(cv.height - y0, Math.ceil(it.h * k));
+      if (w < 1 || h < 1) continue;
+      const data = cx.getImageData(x0, y0, w, h).data; const fg = rgba(it.color); const ratios = [];
+      for (let i = 0; i < data.length; i += 4 * 3) {
+        const a = fg[3], r = fg[0] * a + data[i] * (1 - a), g = fg[1] * a + data[i + 1] * (1 - a), b = fg[2] * a + data[i + 2] * (1 - a);
+        const l1 = L(r, g, b), l2 = L(data[i], data[i + 1], data[i + 2]); ratios.push((Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05));
+      }
+      ratios.sort((p, q) => p - q); const r10 = ratios[Math.floor(ratios.length / 10)];
+      const large = it.size >= 24 || (it.size >= 18.66 && it.weight >= 600); const min = large ? 2.6 : 3.9;
+      if (r10 < min) { const m = Math.floor(data.length / 8) * 4; out.push(`low contrast ${r10.toFixed(2)}:1 (${large ? 'large, needs 3' : 'needs 4.5'}) "${it.text}" ${it.size}px, text ${it.color} on ~rgb(${data[m]}, ${data[m + 1]}, ${data[m + 2]}) at x${Math.round(it.x)} y${Math.round(it.y)}`); }
+    }
+    return out;
+  }, { items, png });
+}
+
 for (const d of list) {
   const dir = join(site, 'dashboards', d.id);
   const problems = [];
@@ -115,6 +168,7 @@ for (const d of list) {
     const info = await inspect(page);
     judge(info, errs);
     if (variant !== 'default' && !(await page.evaluate((v) => document.documentElement.dataset.variant === v, variant))) errs.push(`variant ${variant} not applied`);
+    if (url.endsWith('/') || url.includes('?variant=')) errs.push(...(await textAudit(page)));
     if (thumb && !errs.length) {
       // Gallery card: half-res JPEG. Canonical 1:1 reference: full 1440×900 JPEG of the same viewport.
       await page.screenshot({ path: join(dir, 'thumb.jpg'), type: 'jpeg', quality: 82 });
@@ -146,7 +200,7 @@ for (const d of list) {
   }
   writeFileSync(join(root, 'docs/validation/dashboards', `${d.id}.json`), JSON.stringify({ id: d.id, checked: new Date().toISOString().slice(0, 10), ok: !problems.length, server: 'worst-case clean URLs (see scripts/dashboards-check.mjs)', runs }, null, 2) + '\n');
   if (problems.length) { failed++; console.error(`✖ ${d.id}\n  ${problems.join('\n  ')}`); }
-  else console.log(`✔ ${d.id}: ${runs.length} renders clean (3 URL forms, phone, ${d.variants.length - 1} variants, gallery preview) · thumb.jpg + shot.jpg written`);
+  else console.log(`✔ ${d.id}: ${runs.length} renders clean (3 URL forms, phone, ${d.variants.length - 1} variants, gallery preview, pixel contrast, text ≥ 12px) · thumb.jpg + shot.jpg written`);
 }
 await browser.close();
 server.close();

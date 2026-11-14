@@ -957,7 +957,7 @@
       "reference": "reference.jpg"
     },
     {
-      "id": "smile-dental",
+      "id": "pearlwell-dental",
       "number": 10,
       "name": "Pearlwell Dental",
       "style_family": "soft",
@@ -1007,7 +1007,7 @@
         "text": "#173836",
         "muted": "#4a6663",
         "accent": "#0f7f75",
-        "teal": "#18a596",
+        "teal": "#0e7f73",
         "peach": "#fbe3d4",
         "warn": "#b4542e"
       },
@@ -1044,7 +1044,7 @@
         "type": "screenshot",
         "note": "Recreated in original code from a user-supplied concept sheet of six dental phone screens. The screens were merged into one responsive desktop portal; names, photos and copy were not reused and all patients, dentists and prices are invented. 3D tooth renders and props were replaced with an SVG tooth, shield and tooth chart. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/smile-dental/",
+      "path": "site/dashboards/pearlwell-dental/",
       "reference": "reference.jpg"
     },
     {

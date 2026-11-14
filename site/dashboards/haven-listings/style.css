@@ -69,7 +69,7 @@ body { background: var(--bg); }
 .hl-rail a svg { width: 18px; height: 18px; }
 .hl-rail a:hover { background: var(--surface-2); color: var(--text); }
 .hl-rail a[aria-current="page"] { background: var(--accent); color: var(--accent-fg); }
-.hl-copy { grid-column: 2; grid-row: 2; padding: 6px 0 0 10px; color: var(--on-scene); text-shadow: 0 1px 14px var(--scene-shade); max-width: 560px; }
+.hl-copy { grid-column: 2; grid-row: 2; justify-self: start; padding: 18px 24px 20px; color: var(--on-scene); text-shadow: 0 1px 14px var(--scene-shade); max-width: 560px; border-radius: var(--radius-lg); background: linear-gradient(110deg, var(--scene-shade), color-mix(in oklab, var(--scene-shade) 55%, transparent)); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .hl-copy h1 { font-family: var(--font-display); font-size: 64px; font-weight: 500; line-height: 1; letter-spacing: -0.02em; }
 .hl-copy p { margin-top: 14px; max-width: 36ch; font-size: 16px; line-height: 1.5; }
 .hl-find { grid-column: 2; grid-row: 3; justify-self: start; width: min(100%, 330px); padding: 22px; border-radius: var(--radius-md) var(--radius-md) var(--radius-md) var(--radius-lg); background: var(--surface); }
@@ -174,7 +174,7 @@ body { background: var(--bg); }
   .hl-filters select { min-height: 44px; text-align: right; }
   .hl-rail { grid-column: 1; grid-row: auto; display: flex; justify-content: space-between; width: 100%; }
   .hl-copy, .hl-find, .hl-detail { grid-column: 1; grid-row: auto; }
-  .hl-copy { padding: 4px; } .hl-copy h1 { font-size: 38px; } .hl-copy p { font-size: 15px; }
+  .hl-copy { padding: 14px 16px; background: var(--scene-shade); } .hl-copy h1 { font-size: 38px; } .hl-copy p { font-size: 15px; }
   .hl-below { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .hl-list { grid-column: auto; }
 }

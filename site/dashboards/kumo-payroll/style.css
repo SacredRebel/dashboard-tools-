@@ -3,6 +3,7 @@
    Token names match design-system/tokens.css. Variants: default (moonlit gold), jade, sakura.
    ========================================================================= */
 :root {
+  --nav-active: linear-gradient(180deg, var(--chart-2), var(--chart-1));
   --bg: #0b0d14;
   --surface: #151823;
   --surface-2: #1d2130;
@@ -40,6 +41,7 @@
   --petal: #f4e3b0; --petal-2: #e3a66a; --branch: #2b3a30;
 }
 [data-variant="sakura"] {
+  --nav-active: linear-gradient(180deg, #b5524c, #8f3531);
   --bg: #f6e6e2; --surface: #fffaf7; --surface-2: #fbeeea; --surface-sunken: #f3dfda;
   --border: rgb(120 60 60 / 0.14); --border-strong: rgb(150 80 70 / 0.4);
   --text: #2f1f22; --text-muted: #65504f; --text-subtle: #7a6462;
@@ -56,7 +58,7 @@ body { background: var(--bg); }
 .kp-scene { position: fixed; inset: 0; z-index: 0; }
 .kp-scene svg { width: 100%; height: 100%; display: block; }
 .kp { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 210px 24px 28px; }
-.kp-foot { text-align: center; margin-top: 16px; }
+.kp-foot { text-align: center; margin-top: 16px; color: var(--text-muted); }
 .kp-panel { display: grid; grid-template-columns: 216px minmax(0, 1fr); border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--border-strong); box-shadow: var(--shadow), inset 0 1px 0 rgb(255 255 255 / 0.06); overflow: hidden; }
 
 /* ---------------------------------------------------------------- sidebar */
@@ -69,7 +71,7 @@ body { background: var(--bg); }
 .kp-nav a { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 14px; border-radius: var(--radius-md); color: var(--text-muted); text-decoration: none; font-size: 14px; transition: background-color 160ms ease, color 160ms ease; }
 .kp-nav a svg { width: 18px; height: 18px; flex: none; }
 .kp-nav a:hover { color: var(--text); background: var(--accent-soft); }
-.kp-nav a[aria-current="page"] { background: linear-gradient(180deg, var(--chart-2), var(--chart-1)); color: var(--accent-fg); font-weight: 600; }
+.kp-nav a[aria-current="page"] { background: var(--nav-active); color: var(--accent-fg); font-weight: 600; }
 
 /* ---------------------------------------------------------------- main */
 .kp-main { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; padding: 22px; min-width: 0; }

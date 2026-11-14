@@ -1,0 +1,21 @@
+---
+description: Rules for building gallery dashboards in site/dashboards/ (Dashboard Tools)
+globs: site/dashboards/**, catalog/dashboards.json
+alwaysApply: false
+---
+
+You are adding or editing a gallery dashboard. Before writing code, read:
+
+1. `AGENTS.md` (repo rules)
+2. `docs/dashboards/01-add-a-dashboard.md` (the exact workflow, the URL guard, contrast lessons, definition of done)
+3. `docs/validation/dashboards/HANDOFF.md` (status, what's left, review notes)
+4. One finished dashboard as a template, e.g. `site/dashboards/larchwood-lodge/` (index.html, style.css, app.js)
+
+Non-negotiables:
+- One folder `site/dashboards/<brand>-<domain>/` with index.html, style.css, app.js; thumb.jpg comes only from `node scripts/dashboards-check.mjs <id>`.
+- URL guard script first in `<head>`; relative paths only; `app.js` ends with `document.documentElement.dataset.ready = 'true';`.
+- Tokens on `:root` (toolkit names) + two `[data-variant]` blocks overriding tokens only; components use `var(--…)` only; unique 2-letter class prefix.
+- Original work: new brand name, no copied logos/photos/copy; art drawn in SVG/CSS; fictional data labeled "Sample data · fictional".
+- Text ≥ 12px (body ≥ 14px), contrast passes the pixel check in every variant, 44px tap targets on phone, keyboard + visible focus, no polling, no network calls.
+- Never commit anything from `inputs/`. Never edit `_shared/`, `site/assets/`, `scripts/`, other dashboards, or generated files (`site/data/data.js`, `docs/dashboards/catalog.md`) by hand.
+- Done means: `node scripts/build.mjs` ✔, `node scripts/dashboards-check.mjs <id>` ✔, thumbnail looked at, gallery preview checked over HTTP (`npx serve site`), one commit per dashboard.

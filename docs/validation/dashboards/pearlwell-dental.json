@@ -1,59 +1,59 @@
 {
-  "id": "smile-dental",
-  "checked": "2026-11-13",
+  "id": "pearlwell-dental",
+  "checked": "2026-11-14",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/smile-dental/",
+      "url": "/dashboards/pearlwell-dental/",
       "width": 1440,
       "variant": "default",
-      "final_path": "/dashboards/smile-dental/",
+      "final_path": "/dashboards/pearlwell-dental/",
       "overflow_px": 0,
       "errors": []
     },
     {
-      "url": "/dashboards/smile-dental",
+      "url": "/dashboards/pearlwell-dental",
       "width": 1440,
       "variant": "default",
-      "final_path": "/dashboards/smile-dental/",
+      "final_path": "/dashboards/pearlwell-dental/",
       "overflow_px": 0,
       "errors": []
     },
     {
-      "url": "/dashboards/smile-dental/index.html",
+      "url": "/dashboards/pearlwell-dental/index.html",
       "width": 1440,
       "variant": "default",
-      "final_path": "/dashboards/smile-dental/",
+      "final_path": "/dashboards/pearlwell-dental/",
       "overflow_px": 0,
       "errors": []
     },
     {
-      "url": "/dashboards/smile-dental/",
+      "url": "/dashboards/pearlwell-dental/",
       "width": 375,
       "variant": "default",
-      "final_path": "/dashboards/smile-dental/",
+      "final_path": "/dashboards/pearlwell-dental/",
       "overflow_px": 0,
       "errors": []
     },
     {
-      "url": "/dashboards/smile-dental/?variant=coral",
+      "url": "/dashboards/pearlwell-dental/?variant=coral",
       "width": 1440,
       "variant": "coral",
-      "final_path": "/dashboards/smile-dental/",
+      "final_path": "/dashboards/pearlwell-dental/",
       "overflow_px": 0,
       "errors": []
     },
     {
-      "url": "/dashboards/smile-dental/?variant=deepsea",
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea",
       "width": 1440,
       "variant": "deepsea",
-      "final_path": "/dashboards/smile-dental/",
+      "final_path": "/dashboards/pearlwell-dental/",
       "overflow_px": 0,
       "errors": []
     },
     {
-      "url": "/#/dashboards/smile-dental",
+      "url": "/#/dashboards/pearlwell-dental",
       "width": 1280,
       "variant": "gallery preview",
       "errors": []

@@ -11,8 +11,8 @@ The exact workflow for turning **one reference screenshot** into **one gallery d
 - Working copies of reference images live in `inputs/dashboards/` (gitignored). While building, keep them there. When the owner wants the original in the gallery for 1:1 comparison, copy it to `site/dashboards/<id>/reference.jpg` (or `.png`) and set `"reference"` on the catalog entry — that file **is** committed.
 - Process images in filename order. Give each dashboard:
   - `number`: next free integer in `catalog/dashboards.json`
-  - `id`: kebab-case, `<original-name>-<domain>`, e.g. `horizon-weather`, `ledger-finance`, `pulse-fitness`
-  - `name`: a **new brand name you invent**. Never reuse the brand/logo text in the screenshot (the reference said "Skyview"; ours is "Horizon")
+  - `id`: kebab-case, `<brand>-<domain>`, e.g. `horizon-weather`, `ledger-finance`, `pulse-fitness`
+  - `name`: a **new brand name you invent**. The `id` must start with the same brand word (`pearlwell-dental` for "Pearlwell Dental"). If you rename the brand later, rename the folder and id too. Never reuse the brand/logo text in the screenshot (the reference said "Skyview"; ours is "Horizon")
 
 ## 1. Analyse the screenshot (write it down before coding)
 
@@ -108,6 +108,15 @@ Vercel's clean URLs turn `/dashboards/<id>/index.html` into `/dashboards/<id>`, 
 
 Open `site/dashboards/<id>/index.html` directly in a browser (file:// works). Put it side by side with the reference at 1440px and iterate until layout, proportions, palette and signature read as **the same style**. Being pixel-perfect is not the goal. It must look as polished as the reference and keep its character.
 
+### Contrast lessons from the first 17 dashboards (all of these failed review once)
+
+- **Text over artwork** (hero copy on a painted sky, a photo, a leaf illustration): put it on a panel or scrim (`background: linear-gradient(…, var(--scene-shade), transparent)` + a little blur), or darken the art behind it. A text-shadow alone doesn't count.
+- **Labels inside colored shapes** (numbers inside pastel pills, units inside a filled gauge): give them their own ink token (`--cap-ink`) or a small chip (`background: var(--surface); padding: 4px 6px`). Re-check **every variant**: a dark variant often turns one pastel shape dark.
+- **White text on a mid-tone brand color** (teal, coral, rose buttons and cards): darken the brand color in that context until it reaches 4.5:1 (e.g. teal `#18a596` became `#0e7f73`).
+- **Muted text on colored cards** (eyebrows on a green hero): use `--text`, not `--text-muted`.
+- **Chart labels under chart shapes**: lift the labels above the shape (`z-index` + a surface chip) or move them.
+- **Variant blocks override tokens only.** When one variant needs a different look for one component, add a token (`--nav-active`) used by the component and override it in the variant.
+
 ## 4. Add the catalog entry
 
 Append to `dashboards` in `catalog/dashboards.json`. Copy the `horizon-weather` entry as the template and fill **every** field:
@@ -149,7 +158,7 @@ It validates the entry: enums, required fields, palette hex, variant blocks pres
 node scripts/dashboards-check.mjs <id>
 ```
 
-It serves `site/` over HTTP with worst-case clean-URL rules (not file://), then loads `/dashboards/<id>/`, `/dashboards/<id>` and `/dashboards/<id>/index.html` at 1440×900, the folder URL at 375×812, every variant, and the gallery preview iframe at `#/dashboards/<id>`. It fails on console errors, any 404, an unstyled page, a missing `data-ready`, or horizontal overflow. It writes `thumb.jpg` (720×450 gallery card), `shot.jpg` (1440×900 recreation capture for QA), and `docs/validation/dashboards/<id>.json`. Then run `node scripts/build.mjs` again so the catalog picks up the assets. Gallery fidelity check: **Live** vs **Original reference** (`reference.*`).
+It serves `site/` over HTTP with worst-case clean-URL rules (not file://), then loads `/dashboards/<id>/`, `/dashboards/<id>` and `/dashboards/<id>/index.html` at 1440×900, the folder URL at 375×812, every variant, and the gallery preview iframe at `#/dashboards/<id>`. It fails on console errors, any 404, an unstyled page, a missing `data-ready`, horizontal overflow, **text smaller than 12px**, or **low contrast measured on the real pixels behind each text** (it hides the text, screenshots, and compares every text color with what is actually underneath, so it catches text over gradients, photos and SVG art). The limits are 3.9:1 for normal text and 2.6:1 for large text (WCAG 4.5 and 3 with a margin for anti-aliasing). Disabled controls and gradient-clipped text are skipped. The failure message gives the text, its color, the background it measured and the position. It writes `thumb.jpg` (720×450 gallery card), `shot.jpg` (1440×900 recreation capture for QA) and `docs/validation/dashboards/<id>.json`. Then run `node scripts/build.mjs` again so the catalog picks up the assets. Gallery fidelity check: **Live** vs **Original reference** (`reference.*`). Open the thumbnail and look at it: it is what people see in the gallery.
 
 ## 7. Verify in the gallery
 
@@ -171,7 +180,7 @@ One commit per dashboard, message: `Add dashboard <number>: <Name> (<style famil
 - [ ] Fictional sample data, labeled
 - [ ] Interactive parts work by mouse and keyboard; focus visible
 - [ ] URL guard first in `<head>`, relative paths only, `app.js` ends with `dataset.ready = 'true'`
-- [ ] `node scripts/build.mjs` passes, `node scripts/dashboards-check.mjs <id>` passes
+- [ ] `node scripts/build.mjs` passes, `node scripts/dashboards-check.mjs <id>` passes (includes pixel contrast and the 12px minimum in every variant)
 - [ ] Gallery preview at `#/dashboards/<id>` (over HTTP) shows the full styled dashboard in Desktop, Tablet and Phone
 - [ ] Thumbnail looked at; gallery card and detail preview work
 - [ ] One commit, nothing from `inputs/`
