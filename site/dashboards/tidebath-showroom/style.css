@@ -205,37 +205,77 @@ body {
 .tb-overview[hidden], [data-db-stub-host][hidden] { display: none !important; }
 .tb-carousel {
   position: relative;
-  width: min(920px, 100%);
-  aspect-ratio: 920 / 420;
-  filter: drop-shadow(0 24px 40px rgb(40 50 70 / 0.14));
+  width: min(980px, 100%);
+  aspect-ratio: 980 / 480;
+  perspective: 1400px;
+  perspective-origin: 50% 60%;
+  filter: drop-shadow(0 28px 48px rgb(40 50 70 / 0.18));
 }
 .tb-platform {
-  position: absolute; left: 6%; right: 6%; bottom: 4%; height: 28%;
+  position: absolute; left: 4%; right: 4%; bottom: 2%; height: 34%;
   border-radius: 50%;
   background:
-    radial-gradient(ellipse at 50% 30%, var(--surface), transparent 55%),
+    radial-gradient(ellipse at 50% 28%, rgb(255 255 255 / 0.55), transparent 50%),
+    radial-gradient(ellipse at 50% 70%, rgb(20 28 40 / 0.18), transparent 60%),
     linear-gradient(180deg, var(--stage), var(--stage-deep));
-  box-shadow: 0 18px 40px rgb(40 50 70 / 0.12);
+  box-shadow:
+    0 22px 48px rgb(40 50 70 / 0.16),
+    inset 0 1px 0 rgb(255 255 255 / 0.45);
   z-index: 0;
+}
+.tb-platform::after {
+  content: "";
+  position: absolute; left: 38%; right: 38%; top: 42%; bottom: 22%;
+  border-radius: 50%;
+  background: rgb(20 28 40 / 0.22);
+  box-shadow: inset 0 6px 14px rgb(0 0 0 / 0.25);
 }
 .tb-bays {
   position: relative; z-index: 1; height: 100%;
-  display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 12px;
-  align-items: end; padding: 4% 6% 14%;
+  display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 8px;
+  align-items: end; padding: 2% 4% 16%;
+  transform-style: preserve-3d;
 }
 .tb-bay {
-  position: relative; overflow: hidden; border-radius: 10px 10px 4px 4px;
-  background: var(--surface); box-shadow: var(--soft-lg);
+  position: relative; overflow: hidden; border-radius: 12px 12px 6px 6px;
+  background: var(--surface);
+  box-shadow:
+    0 18px 36px rgb(40 50 70 / 0.2),
+    0 2px 0 rgb(255 255 255 / 0.5) inset;
   aspect-ratio: 4 / 5; max-height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 320ms var(--ease-out), opacity 280ms ease, filter 280ms ease;
 }
 .tb-bay img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-.tb-bay-left { transform: perspective(900px) rotateY(14deg) scale(0.92); opacity: 0.78; transform-origin: right center; }
-.tb-bay-right { transform: perspective(900px) rotateY(-14deg) scale(0.92); opacity: 0.78; transform-origin: left center; }
-.tb-bay-mid { z-index: 2; transform: translateY(-6%); }
+.tb-bay-left {
+  transform: translate3d(-6%, 8%, -80px) rotateY(38deg) rotateX(4deg) scale(0.86);
+  transform-origin: 100% 70%;
+  opacity: 0.72; filter: brightness(0.92) saturate(0.9);
+  z-index: 1;
+}
+.tb-bay-right {
+  transform: translate3d(6%, 8%, -80px) rotateY(-38deg) rotateX(4deg) scale(0.86);
+  transform-origin: 0% 70%;
+  opacity: 0.72; filter: brightness(0.92) saturate(0.9);
+  z-index: 1;
+}
+.tb-bay-mid {
+  z-index: 3;
+  transform: translate3d(0, -4%, 40px) rotateY(0deg) scale(1.02);
+  transform-origin: 50% 80%;
+  box-shadow:
+    0 28px 50px rgb(40 50 70 / 0.28),
+    0 0 0 1px rgb(255 255 255 / 0.35) inset;
+}
 .tb-ambient { animation: tbGlow 4.8s var(--ease-out) infinite alternate; }
 @keyframes tbGlow {
-  from { transform: translateY(-6%) scale(1); }
-  to { transform: translateY(-8%) scale(1.02); }
+  from { transform: translate3d(0, -4%, 40px) scale(1.02); }
+  to { transform: translate3d(0, -7%, 48px) scale(1.035); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tb-ambient { animation: none; }
+  .tb-bay { transition: none; }
 }
 .tb-arrow {
   position: absolute;

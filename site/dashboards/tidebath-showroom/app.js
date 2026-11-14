@@ -111,8 +111,12 @@
     const mid = ROOMS[idx];
     const right = ROOMS[(idx + 1) % n];
     const host = $('[data-carousel]');
+    const srcset = (photo) => {
+      const two = photo.replace(/\.webp$/, '@2x.webp');
+      return `src="${photo}" srcset="${photo} 1x, ${two} 2x"`;
+    };
     const bay = (room, side) => `<article class="tb-bay tb-bay-${side}${side === 'mid' ? ' tb-ambient' : ''}" aria-hidden="${side !== 'mid'}">
-      <img src="${room.photo}" width="1024" height="1024" alt="" decoding="async">
+      <img ${srcset(room.photo)} width="1600" height="1600" alt="" decoding="async">
       ${side === 'mid' ? '<div class="tb-hots" data-hots></div>' : ''}
     </article>`;
     host.innerHTML = `<div class="tb-platform" aria-hidden="true"></div>
