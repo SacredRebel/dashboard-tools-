@@ -1285,15 +1285,15 @@ Cream, forest and gold claymorphism for an immersive media console: twin phone p
 
 _Ember Rooms · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A soft neumorphic indoor lighting console: orange accent, left icon rail, pill search, and a large centre stage with an SVG pendant lamp, orbiting room dots, intensity slider, schedule, line charts and a video-sim room panel.
+A soft neumorphic indoor lighting console: orange accent, left icon rail, pill search, pendant lamp photo on orbit rings, intensity slider, schedule, climate dial on Devices, line charts and a photo room preview.
 
 - **Use cases:** Smart home & IoT · **Mode:** light · **Mood:** tactile, soft, warm, calm, orange
 - **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** A soft extruded well with a grey SVG pendant lamp hanging inside concentric orbit rings, orange room dots and a bright orange power control.
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** A soft extruded well with a matte pendant lamp photo hanging inside concentric orbit rings, orange room dots and a bright orange power control.
 - **Layout:** 64px icon rail · top (search, brand, undo/redo/settings) · soft main well: left stack (intensity, schedule, arc dial) · centre pendant stage with orbit room dots · right stack (line chart, spark, video-sim)
 - **Responsive:** ≤1180px: right stack drops under centre · ≤960px: rail becomes top strip · ≤640px: single column, room dots scroll, charts full width
-- **Fonts:** Outfit / Outfit · **Palette:** bg `#f2f1ef`, surface `#f7f6f4`, text `#2a2622`, muted `#5c564f`, accent `#c45500`, blue `#4a8fd8`, lamp `#9a9a9e`, well `#ecebe8`
+- **Fonts:** Outfit / Outfit · **Palette:** bg `#f2f1ef`, surface `#f7f6f4`, text `#2a2622`, muted `#4a443c`, accent `#c45500`, blue `#4a8fd8`, lamp `#9a9a9e`, well `#ecebe8`
 - **Variants:** Ember, Mist, Dusk · **Closest toolkit theme:** `linen`
 
 **Best for**
@@ -1306,7 +1306,7 @@ A soft neumorphic indoor lighting console: orange accent, left icon rail, pill s
 - Dense multi-device fleet admin
 - Dark cinematic brands that need scenic photography
 
-**Components:** Slim icon rail for home systems · Pill search field · Undo / redo / settings orb buttons · Horizontal intensity slider · Schedule start–end row · Circular brightness dial · SVG pendant lamp hero · Orbiting room picker dots · Power toggle and lights fraction · Multi-line energy chart · Secondary spark line · Video-sim panel with SVG room and play
+**Components:** Slim icon rail wired to multipage routes · Pill search field · Undo / redo / settings orb buttons · Horizontal intensity slider · Schedule start–end row · Circular brightness dial · Pendant lamp photo hero with glow · Orbiting room picker dots · Power toggle and lights fraction · Multi-line energy chart · Secondary spark line · Photo room preview with play · Climate dial on Devices page
 
 ---
 

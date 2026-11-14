@@ -4683,7 +4683,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A soft neumorphic indoor lighting console: orange accent, left icon rail, pill search, and a large centre stage with an SVG pendant lamp, orbiting room dots, intensity slider, schedule, line charts and a video-sim room panel.",
+      "summary": "A soft neumorphic indoor lighting console: orange accent, left icon rail, pill search, pendant lamp photo on orbit rings, intensity slider, schedule, climate dial on Devices, line charts and a photo room preview.",
       "mood": [
         "tactile",
         "soft",
@@ -4707,25 +4707,26 @@
         "responsive": "≤1180px: right stack drops under centre · ≤960px: rail becomes top strip · ≤640px: single column, room dots scroll, charts full width"
       },
       "components": [
-        "Slim icon rail for home systems",
+        "Slim icon rail wired to multipage routes",
         "Pill search field",
         "Undo / redo / settings orb buttons",
         "Horizontal intensity slider",
         "Schedule start–end row",
         "Circular brightness dial",
-        "SVG pendant lamp hero",
+        "Pendant lamp photo hero with glow",
         "Orbiting room picker dots",
         "Power toggle and lights fraction",
         "Multi-line energy chart",
         "Secondary spark line",
-        "Video-sim panel with SVG room and play"
+        "Photo room preview with play",
+        "Climate dial on Devices page"
       ],
-      "signature": "A soft extruded well with a grey SVG pendant lamp hanging inside concentric orbit rings, orange room dots and a bright orange power control.",
+      "signature": "A soft extruded well with a matte pendant lamp photo hanging inside concentric orbit rings, orange room dots and a bright orange power control.",
       "palette": {
         "bg": "#f2f1ef",
         "surface": "#f7f6f4",
         "text": "#2a2622",
-        "muted": "#5c564f",
+        "muted": "#4a443c",
         "accent": "#c45500",
         "blue": "#4a8fd8",
         "lamp": "#9a9a9e",
@@ -4762,7 +4763,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied soft neumorphic indoor-control concept. Brand (Ember Rooms) and all copy are invented English; Chinese brand marks were not reused. The 3D pendant and camera still were replaced with SVG. Lighting-primary layout chosen to stay distinct from climate-dial twins. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
+        "note": "Recreated in original code from a user-supplied soft neumorphic indoor-control collage (lamp + climate dial screens). Brand (Ember Rooms) and all copy are invented English; Chinese brand marks were not reused. Pendant and room camera use gallery media (`media/pendant.webp`, `media/room.webp`). Fidelity pass used local tesseract OCR + palette sample on reference.jpg. Owner original stored as `reference.jpg`."
       },
       "path": "site/dashboards/ember-rooms/",
       "reference": "reference.jpg",
@@ -4793,7 +4794,17 @@
           "pattern": "Settings"
         }
       ],
-      "motion": []
+      "motion": [
+        "count-up",
+        "stagger",
+        "hover-lift",
+        "press",
+        "page-transition",
+        "ambient",
+        "skeleton",
+        "toast",
+        "icon-state"
+      ]
     }
   ],
   "motion_patterns": [

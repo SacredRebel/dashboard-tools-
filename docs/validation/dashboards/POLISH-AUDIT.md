@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `ember-rooms` (Phase C — total 28).
+Next: `solstice-energy` (Phase C — total 29).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -45,7 +45,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 35 | clima-pane | Clima Pane | 5 | 4 | 4 | 4 | 3 | 2 | 4 | 4 | 30 | no background color spheres; flatter glass | queued |
 | 36 | meridian-labs | Meridian Labs | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 5 | 32 | softer metallic DNA; date/content drift | queued |
 | 37 | cortex-well | Cortex Well | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | painted brain bowl; glass depth; multipage + motion | polished 25→36 |
-| 38 | ember-rooms | Ember Rooms | 4 | 3 | 4 | 4 | 3 | 2 | 4 | 4 | 28 | single state vs 4 ref screens; lamp vs dial | queued |
+| 38 | ember-rooms | Ember Rooms | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | pendant+room photos; climate dial page; multipage + motion | polished 28→36 |
 
 ## Work order
 
@@ -69,7 +69,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 16. ~~`taffy-analytics` — 28~~ → polished (36)
 17. ~~`tidebath-showroom` — 28~~ → polished (36)
 18. ~~`pebble-studio` — 28~~ → polished (36)
-19. `ember-rooms` — 28
+19. ~~`ember-rooms` — 28~~ → polished (36)
 20. `solstice-energy` — 29
 21. `plumage-survey` — 29
 22. `veil-rooms` — 29

@@ -6,27 +6,28 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Ember Rooms · Dashboard Tools gallery</title>
-  <meta name="description" content="Soft neumorphic indoor lighting console with SVG pendant lamp, orbiting rooms, intensity slider and video-sim. Sample data.">
+  <meta name="description" content="Soft neumorphic indoor lighting console with pendant lamp photo, orbiting rooms, intensity slider and room camera. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="er">
+  <div class="er" data-db-app>
     <aside class="er-rail" aria-label="Home systems">
       <nav class="er-railnav" aria-label="Primary">
-        <button type="button" class="er-railbtn" aria-current="page" aria-label="Home"><span data-icon="home"></span></button>
-        <button type="button" class="er-railbtn" aria-label="Lighting"><span data-icon="bulb"></span></button>
-        <button type="button" class="er-railbtn" aria-label="Climate"><span data-icon="snow"></span></button>
-        <button type="button" class="er-railbtn" aria-label="Media"><span data-icon="tv"></span></button>
-        <button type="button" class="er-railbtn" aria-label="Security"><span data-icon="lock"></span></button>
-        <button type="button" class="er-railbtn" aria-label="Airflow"><span data-icon="fan"></span></button>
-        <button type="button" class="er-railbtn" aria-label="Blinds"><span data-icon="layers"></span></button>
+        <a href="#/overview" class="er-railbtn" aria-current="page" aria-label="Overview"><span data-icon="home"></span></a>
+        <a href="#/rooms" class="er-railbtn" aria-label="Rooms"><span data-icon="bulb"></span></a>
+        <a href="#/devices" class="er-railbtn" aria-label="Devices"><span data-icon="snow"></span></a>
+        <a href="#/energy" class="er-railbtn" aria-label="Energy"><span data-icon="tv"></span></a>
+        <a href="#/settings" class="er-railbtn" aria-label="Security"><span data-icon="lock"></span></a>
+        <a href="#/devices" class="er-railbtn" aria-label="Airflow"><span data-icon="fan"></span></a>
+        <a href="#/settings" class="er-railbtn" aria-label="Settings"><span data-icon="settings"></span></a>
       </nav>
-      <button type="button" class="er-railbtn" aria-label="Menu"><span data-icon="menu"></span></button>
+      <button type="button" class="er-railbtn" aria-label="Menu" data-menu><span data-icon="menu"></span></button>
     </aside>
 
     <div class="er-shell">
@@ -36,117 +37,120 @@
           <span data-icon="search" aria-hidden="true"></span>
           <input type="search" placeholder="Search rooms, scenes…" autocomplete="off" data-q>
         </label>
-        <h1 class="er-brand">Ember Rooms</h1>
+        <a class="er-brand" href="#/overview">Ember Rooms</a>
         <div class="er-tools">
           <button type="button" class="er-orb" aria-label="Undo" data-undo><span data-icon="refresh"></span></button>
           <button type="button" class="er-orb" aria-label="Redo" data-redo><span data-icon="arrowRight"></span></button>
-          <button type="button" class="er-orb" aria-label="Settings"><span data-icon="settings"></span></button>
+          <a class="er-orb er-orb-link" href="#/settings" aria-label="Settings"><span data-icon="settings"></span></a>
         </div>
       </header>
 
       <p class="er-note" data-note aria-live="polite"></p>
 
-      <main class="er-well">
-        <div class="er-side-l">
-          <section class="er-panel" aria-labelledby="er-int-h">
-            <div class="er-panelhead">
-              <h2 id="er-int-h">Intensity</h2>
-              <output class="num" data-bright-out>68%</output>
-            </div>
-            <label class="er-slider">
-              <span class="vh">Light intensity</span>
-              <input type="range" min="0" max="100" value="68" data-bright>
-            </label>
-          </section>
+      <main class="er-main-host" data-main>
+        <div class="er-overview" data-page-panel="overview">
+          <div class="er-well">
+            <div class="er-side-l">
+              <section class="er-panel er-reveal" aria-labelledby="er-int-h">
+                <div class="er-panelhead">
+                  <h2 id="er-int-h">Intensity</h2>
+                  <output class="num er-chip" data-bright-out>68%</output>
+                </div>
+                <label class="er-slider">
+                  <span class="vh">Light intensity</span>
+                  <input type="range" min="0" max="100" value="68" data-bright>
+                </label>
+              </section>
 
-          <section class="er-panel" aria-labelledby="er-sch-h">
-            <h2 id="er-sch-h">Schedule</h2>
-            <div class="er-sched">
-              <div>
-                <span data-icon="clock" aria-hidden="true"></span>
-                <div>
-                  <span class="er-k">Starts</span>
-                  <button type="button" class="er-time" data-start>8:30 AM</button>
+              <section class="er-panel er-reveal" aria-labelledby="er-sch-h">
+                <h2 id="er-sch-h">Schedule</h2>
+                <div class="er-sched">
+                  <div>
+                    <span data-icon="clock" aria-hidden="true"></span>
+                    <div>
+                      <span class="er-k">Starts</span>
+                      <button type="button" class="er-time" data-start>8:30 AM</button>
+                    </div>
+                  </div>
+                  <span class="er-sched-line" aria-hidden="true"></span>
+                  <div>
+                    <span data-icon="clock" aria-hidden="true"></span>
+                    <div>
+                      <span class="er-k">Ends</span>
+                      <button type="button" class="er-time" data-end>4:30 PM</button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="er-panel er-dialcard er-reveal" aria-labelledby="er-dial-h">
+                <h2 id="er-dial-h" class="vh">Brightness dial</h2>
+                <div class="er-dialwrap">
+                  <div class="er-dial" data-dial></div>
+                  <button type="button" class="er-dial-bulb" aria-label="Toggle accent scene" data-scene>
+                    <span data-icon="bulb"></span>
+                  </button>
+                </div>
+                <p class="er-muted er-pilllabel" data-dial-note>Scene · Soft amber</p>
+              </section>
+            </div>
+
+            <section class="er-stage er-reveal" aria-labelledby="er-stage-h">
+              <h2 id="er-stage-h" class="vh">Pendant lighting</h2>
+              <div class="er-orbits" data-orbits>
+                <i class="er-ring r1" aria-hidden="true"></i>
+                <i class="er-ring r2" aria-hidden="true"></i>
+                <i class="er-ring r3" aria-hidden="true"></i>
+                <div class="er-rooms" role="group" aria-label="Rooms" data-rooms></div>
+                <div class="er-lamp" data-lamp>
+                  <img class="er-lampphoto er-ambient" src="media/pendant.webp" width="1024" height="1024" alt="" decoding="async">
+                  <span class="er-lampglow" aria-hidden="true"></span>
+                </div>
+                <div class="er-readout">
+                  <p class="er-frac num"><span data-on>7</span><span class="er-slash">/</span><span data-total>12</span></p>
+                  <p class="er-lightlabel">LIGHT</p>
+                  <button type="button" class="er-pwr" aria-pressed="true" data-pwr aria-label="Room lights power">
+                    <span data-icon="power"></span>
+                  </button>
                 </div>
               </div>
-              <span class="er-sched-line" aria-hidden="true"></span>
-              <div>
-                <span data-icon="clock" aria-hidden="true"></span>
-                <div>
-                  <span class="er-k">Ends</span>
-                  <button type="button" class="er-time" data-end>4:30 PM</button>
+              <p class="er-roomhint" data-roomhint></p>
+            </section>
+
+            <div class="er-side-r">
+              <section class="er-panel er-reveal" aria-labelledby="er-en-h">
+                <div class="er-panelhead">
+                  <h2 id="er-en-h">Usage</h2>
+                  <div class="er-seg" role="group" aria-label="Usage range" data-range>
+                    <button type="button" data-v="day" aria-pressed="true">Day</button>
+                    <button type="button" data-v="week" aria-pressed="false">Week</button>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </section>
+                <div data-usage></div>
+                <p class="er-empty" data-usage-empty hidden>No usage samples for this filter.</p>
+              </section>
 
-          <section class="er-panel er-dialcard" aria-labelledby="er-dial-h">
-            <h2 id="er-dial-h" class="vh">Brightness dial</h2>
-            <div class="er-dialwrap">
-              <div class="er-dial" data-dial></div>
-              <button type="button" class="er-dial-bulb" aria-label="Toggle accent scene" data-scene>
-                <span data-icon="bulb"></span>
-              </button>
-            </div>
-            <p class="er-muted" data-dial-note>Scene · Soft amber</p>
-          </section>
-        </div>
+              <section class="er-panel er-reveal" aria-labelledby="er-trend-h">
+                <h2 id="er-trend-h">Trend</h2>
+                <div data-trend></div>
+              </section>
 
-        <section class="er-stage" aria-labelledby="er-stage-h">
-          <h2 id="er-stage-h" class="vh">Pendant lighting</h2>
-          <div class="er-orbits" data-orbits>
-            <i class="er-ring r1" aria-hidden="true"></i>
-            <i class="er-ring r2" aria-hidden="true"></i>
-            <i class="er-ring r3" aria-hidden="true"></i>
-            <div class="er-rooms" role="group" aria-label="Rooms" data-rooms></div>
-            <div class="er-lamp" data-lamp aria-hidden="true"></div>
-            <div class="er-readout">
-              <p class="er-frac num"><span data-on>7</span><span class="er-slash">/</span><span data-total>12</span></p>
-              <p class="er-lightlabel">LIGHT</p>
-              <button type="button" class="er-pwr" aria-pressed="true" data-pwr aria-label="Room lights power">
-                <span data-icon="power"></span>
-              </button>
+              <section class="er-panel er-video er-reveal" aria-labelledby="er-vid-h">
+                <div class="er-panelhead">
+                  <h2 id="er-vid-h">Room view</h2>
+                  <span class="er-live" data-live>Live</span>
+                </div>
+                <div class="er-feed" data-feed></div>
+                <p class="er-err" data-feed-err hidden>Camera offline. Pick another room.</p>
+              </section>
             </div>
           </div>
-          <p class="er-roomhint" data-roomhint></p>
-        </section>
-
-        <div class="er-side-r">
-          <section class="er-panel" aria-labelledby="er-en-h">
-            <div class="er-panelhead">
-              <h2 id="er-en-h">Usage</h2>
-              <div class="er-seg" role="group" aria-label="Usage range" data-range>
-                <button type="button" data-v="day" aria-pressed="true">Day</button>
-                <button type="button" data-v="week" aria-pressed="false">Week</button>
-              </div>
-            </div>
-            <div data-usage></div>
-            <p class="er-empty" data-usage-empty hidden>No usage samples for this filter.</p>
-          </section>
-
-          <section class="er-panel" aria-labelledby="er-trend-h">
-            <h2 id="er-trend-h">Trend</h2>
-            <div data-trend></div>
-          </section>
-
-          <section class="er-panel er-video" aria-labelledby="er-vid-h">
-            <div class="er-panelhead">
-              <h2 id="er-vid-h">Room view</h2>
-              <span class="er-live" data-live>Live</span>
-            </div>
-            <div class="er-feed" data-feed>
-              <button type="button" class="er-play" data-play aria-pressed="false" aria-label="Play room preview">
-                <span data-icon="play"></span>
-              </button>
-            </div>
-            <p class="er-err" data-feed-err hidden>Camera offline. Pick another room.</p>
-          </section>
+          <p class="db-sample">Sample data · fictional home · Ember Rooms</p>
         </div>
       </main>
-
-      <p class="db-sample">Sample data · fictional home · Ember Rooms</p>
     </div>
   </div>
+  <div class="er-toast" data-toast hidden role="status"></div>
   <script src="app.js"></script>
 </body>
 </html>
