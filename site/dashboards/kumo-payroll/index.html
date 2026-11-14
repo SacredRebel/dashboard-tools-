@@ -6,17 +6,18 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Kumo Payroll · Dashboard Tools gallery</title>
-  <meta name="description" content="Cinematic payroll dashboard: a moonlit, code-drawn ink landscape with blossoms behind a dark gold-edged panel. Sample data.">
+  <meta name="description" content="Cinematic payroll dashboard: a moonlit, moonlit landscape photo with blossoms behind a dark gold-edged panel. Sample data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="kp-scene" data-scene aria-hidden="true"></div>
-  <div class="kp">
+  <div class="kp-scene" data-scene aria-hidden="true"><img class="kp-land kp-ambient" src="media/landscape.webp" width="1280" height="720" alt="" decoding="async"></div>
+  <div class="kp" data-db-app>
     <div class="kp-panel">
       <aside class="kp-side">
         <a class="kp-brand" href="#" aria-label="Kumo Payroll home"><span data-icon="lotus"></span><b>Kumo Payroll</b><small>People · Pay · Time off</small></a>
