@@ -215,9 +215,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied concept screenshot. Brand name, photos and copy were replaced; the landscape is drawn in SVG. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied concept screenshot. Brand name, photos and copy were replaced; the landscape is drawn in SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/horizon-weather/"
+      "path": "site/dashboards/horizon-weather/",
+      "reference": "reference.jpg"
     },
     {
       "id": "pulsar-analytics",
@@ -307,9 +308,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied concept render of a dark analytics board. The render had no readable text, so brand, labels, metrics and all data are invented. Charts, dial and orbs are drawn in SVG and CSS. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied concept render of a dark analytics board. The render had no readable text, so brand, labels, metrics and all data are invented. Charts, dial and orbs are drawn in SVG and CSS. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/pulsar-analytics/"
+      "path": "site/dashboards/pulsar-analytics/",
+      "reference": "reference.jpg"
     },
     {
       "id": "solstice-energy",
@@ -398,9 +400,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied concept render with no readable text. The domain (solar monitoring), brand, labels and all data are invented. The mountain photo-style art and the round thumbnails were replaced with SVG and CSS landscapes themed by variables. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied concept render with no readable text. The domain (solar monitoring), brand, labels and all data are invented. The mountain photo-style art and the round thumbnails were replaced with SVG and CSS landscapes themed by variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/solstice-energy/"
+      "path": "site/dashboards/solstice-energy/",
+      "reference": "reference.jpg"
     },
     {
       "id": "kumo-payroll",
@@ -489,9 +492,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied concept illustration of a payroll dashboard. Brand name, labels, copy and figures were rewritten. The painted moon, hills and blossoms are redrawn as SVG themed by CSS variables; the pagoda, koi and lotus artwork were left out. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied concept illustration of a payroll dashboard. Brand name, labels, copy and figures were rewritten. The painted moon, hills and blossoms are redrawn as SVG themed by CSS variables; the pagoda, koi and lotus artwork were left out. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/kumo-payroll/"
+      "path": "site/dashboards/kumo-payroll/",
+      "reference": "reference.jpg"
     },
     {
       "id": "canopy-reforest",
@@ -581,9 +585,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied landing-page concept with placeholder text. It was turned into a dashboard (a reforestation tracker): brand, copy and all figures are invented. The leaf photography and the forest photo tile were replaced with SVG drawings themed by CSS variables. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied landing-page concept with placeholder text. It was turned into a dashboard (a reforestation tracker): brand, copy and all figures are invented. The leaf photography and the forest photo tile were replaced with SVG drawings themed by CSS variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/canopy-reforest/"
+      "path": "site/dashboards/canopy-reforest/",
+      "reference": "reference.jpg"
     },
     {
       "id": "ridgeline-trails",
@@ -672,9 +677,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied concept render with unreadable text. The domain (trail-network visitor report), name, labels and data are invented; the render's title wordmark was not reused. The mountain photograph was replaced with layered SVG ridges, mist gradients and triangle trees themed by CSS variables. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied concept render with unreadable text. The domain (trail-network visitor report), name, labels and data are invented; the render's title wordmark was not reused. The mountain photograph was replaced with layered SVG ridges, mist gradients and triangle trees themed by CSS variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/ridgeline-trails/"
+      "path": "site/dashboards/ridgeline-trails/",
+      "reference": "reference.jpg"
     },
     {
       "id": "haven-listings",
@@ -762,9 +768,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied design shot of a real-estate landing screen. The studio and product names, logo mark, headline, listing text and avatar were not reused; all homes, addresses and prices are invented. The rendered villa photo was replaced with an SVG house and sky themed by CSS variables. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied design shot of a real-estate landing screen. The studio and product names, logo mark, headline, listing text and avatar were not reused; all homes, addresses and prices are invented. The rendered villa photo was replaced with an SVG house and sky themed by CSS variables. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/haven-listings/"
+      "path": "site/dashboards/haven-listings/",
+      "reference": "reference.jpg"
     },
     {
       "id": "aura-ring",
@@ -853,9 +860,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied product shot of a wellness tablet app. The product and agency names, logo, avatar photo and copy were not reused; scores and text are invented. The ring photo, 3D body figure and brain render were replaced with an SVG ring, a simple SVG figure with selectable points and a CSS orb. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied product shot of a wellness tablet app. The product and agency names, logo, avatar photo and copy were not reused; scores and text are invented. The ring photo, 3D body figure and brain render were replaced with an SVG ring, a simple SVG figure with selectable points and a CSS orb. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/aura-ring/"
+      "path": "site/dashboards/aura-ring/",
+      "reference": "reference.jpg"
     },
     {
       "id": "lull-sleep",
@@ -943,9 +951,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Built in original code from a user-supplied flat shot of the same wellness screen as Aura Ring. To avoid a second copy it takes only the pastel gradient, white pills and two-weight headline, and turns them into a sleep detail page with its own layout and data. No names, logos, photos or copy from the shot were reused; sky, moon and clouds are SVG. The source image is not stored in the repo."
+        "note": "Built in original code from a user-supplied flat shot of the same wellness screen as Aura Ring. To avoid a second copy it takes only the pastel gradient, white pills and two-weight headline, and turns them into a sleep detail page with its own layout and data. No names, logos, photos or copy from the shot were reused; sky, moon and clouds are SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/lull-sleep/"
+      "path": "site/dashboards/lull-sleep/",
+      "reference": "reference.jpg"
     },
     {
       "id": "smile-dental",
@@ -1033,9 +1042,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied concept sheet of six dental phone screens. The screens were merged into one responsive desktop portal; names, photos and copy were not reused and all patients, dentists and prices are invented. 3D tooth renders and props were replaced with an SVG tooth, shield and tooth chart. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied concept sheet of six dental phone screens. The screens were merged into one responsive desktop portal; names, photos and copy were not reused and all patients, dentists and prices are invented. 3D tooth renders and props were replaced with an SVG tooth, shield and tooth chart. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/smile-dental/"
+      "path": "site/dashboards/smile-dental/",
+      "reference": "reference.jpg"
     },
     {
       "id": "vitalis-care",
@@ -1123,9 +1133,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied concept sheet of six medical phone screens (same set as Pearlwell Dental, different clinic). The screens were merged into a bento desktop layout that differs from Pearlwell's sidebar portal. Names, photos and copy were not reused; doctors, readings and records are invented and phone links use 555 numbers. 3D props were replaced with an SVG heart and charts. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied concept sheet of six medical phone screens (same set as Pearlwell Dental, different clinic). The screens were merged into a bento desktop layout that differs from Pearlwell's sidebar portal. Names, photos and copy were not reused; doctors, readings and records are invented and phone links use 555 numbers. 3D props were replaced with an SVG heart and charts. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/vitalis-care/"
+      "path": "site/dashboards/vitalis-care/",
+      "reference": "reference.jpg"
     },
     {
       "id": "mallow-music",
@@ -1213,9 +1224,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied claymorphism music-app render. Layout and mood were kept; the cartoon girl, photos, artist names and copy were not reused. Artists and songs are invented. Characters and photos were replaced with SVG headphones, a plant, a crown, generated cover art and a room scene. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied claymorphism music-app render. Layout and mood were kept; the cartoon girl, photos, artist names and copy were not reused. Artists and songs are invented. Characters and photos were replaced with SVG headphones, a plant, a crown, generated cover art and a room scene. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/mallow-music/"
+      "path": "site/dashboards/mallow-music/",
+      "reference": "reference.jpg"
     },
     {
       "id": "taffy-analytics",
@@ -1303,9 +1315,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied render of a pastel 3D UI kit with no real content (placeholder text). The capsule bars, round icon buttons, elastic switches and wave card were turned into a working analytics page with invented data. No artwork was copied; all shapes are CSS and SVG. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied render of a pastel 3D UI kit with no real content (placeholder text). The capsule bars, round icon buttons, elastic switches and wave card were turned into a working analytics page with invented data. No artwork was copied; all shapes are CSS and SVG. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/taffy-analytics/"
+      "path": "site/dashboards/taffy-analytics/",
+      "reference": "reference.jpg"
     },
     {
       "id": "prism-workspace",
@@ -1393,9 +1406,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied render of a liquid-glass UI kit with placeholder text. Its pill buttons, round icon buttons, suggestion list, switches, checkboxes, speech bubble and folder card became a working workspace-settings page with invented people and data. All shapes are CSS. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied render of a liquid-glass UI kit with placeholder text. Its pill buttons, round icon buttons, suggestion list, switches, checkboxes, speech bubble and folder card became a working workspace-settings page with invented people and data. All shapes are CSS. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/prism-workspace/"
+      "path": "site/dashboards/prism-workspace/",
+      "reference": "reference.jpg"
     },
     {
       "id": "plumage-survey",
@@ -1482,9 +1496,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied AI render of a dark dashboard with a painted parrot and leaves. The colour story, rings, gradient area charts and bars were kept. The painted bird and foliage were redrawn from scratch as simple SVG shapes, and the unreadable chart labels were replaced with an invented bird-survey dataset. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied AI render of a dark dashboard with a painted parrot and leaves. The colour story, rings, gradient area charts and bars were kept. The painted bird and foliage were redrawn from scratch as simple SVG shapes, and the unreadable chart labels were replaced with an invented bird-survey dataset. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/plumage-survey/"
+      "path": "site/dashboards/plumage-survey/",
+      "reference": "reference.jpg"
     },
     {
       "id": "hollow-vault",
@@ -1570,9 +1585,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied dribbble-style shot of a crypto 'chest battle' game screen. The wheel-around-a-chest layout, sidebar, item row and chat column were kept. The witch illustration, 3D item renders, coin balance and buy button were dropped. It was reframed as a keys-earned-by-play rewards hub with open drop rates and no purchases. Relics are simple SVG shapes. The source image is not stored in the repo."
+        "note": "Recreated in original code from a user-supplied dribbble-style shot of a crypto 'chest battle' game screen. The wheel-around-a-chest layout, sidebar, item row and chat column were kept. The witch illustration, 3D item renders, coin balance and buy button were dropped. It was reframed as a keys-earned-by-play rewards hub with open drop rates and no purchases. Relics are simple SVG shapes. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/hollow-vault/"
+      "path": "site/dashboards/hollow-vault/",
+      "reference": "reference.jpg"
     },
     {
       "id": "larchwood-lodge",
@@ -1661,9 +1677,10 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a small user-supplied render of plum widgets around an autumn mountain-lake painting. The widget-board feel, plum tones and central landscape were kept, and the widgets were given a cabin-guest job. The painting was redrawn as simple SVG shapes. The unreadable widget text was replaced with invented content. The source image is not stored in the repo."
+        "note": "Recreated in original code from a small user-supplied render of plum widgets around an autumn mountain-lake painting. The widget-board feel, plum tones and central landscape were kept, and the widgets were given a cabin-guest job. The painting was redrawn as simple SVG shapes. The unreadable widget text was replaced with invented content. Owner original stored as `reference.jpg` for 1:1 comparison in the gallery."
       },
-      "path": "site/dashboards/larchwood-lodge/"
+      "path": "site/dashboards/larchwood-lodge/",
+      "reference": "reference.jpg"
     },
     {
       "id": "hearth-nest",

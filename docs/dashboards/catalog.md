@@ -52,9 +52,9 @@ Dark, moody, scenic backdrops (painted or photographic) with glass panels and on
 <a id="horizon-weather"></a>
 ### 1. Horizon Weather
 
-![Horizon Weather recreation shot](../../site/dashboards/horizon-weather/shot.jpg)
+![Horizon Weather original reference](../../site/dashboards/horizon-weather/reference.jpg)
 
-_Horizon Weather · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Horizon Weather · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A cinematic weather home: painted sunset landscape behind glass panels, an editorial serif headline, a 7-day forecast strip with a glowing selected day, a smooth gold temperature curve and a mood card.
 
@@ -82,9 +82,9 @@ A cinematic weather home: painted sunset landscape behind glass panels, an edito
 <a id="solstice-energy"></a>
 ### 3. Solstice Energy
 
-![Solstice Energy recreation shot](../../site/dashboards/solstice-energy/shot.jpg)
+![Solstice Energy original reference](../../site/dashboards/solstice-energy/reference.jpg)
 
-_Solstice Energy · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Solstice Energy · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A cinematic solar-monitoring board: a thick gradient sun-path arc rises over a code-drawn mountain range, with generation and load curves on a teal grid, a readout strip, storage dials and round site thumbnails.
 
@@ -112,9 +112,9 @@ A cinematic solar-monitoring board: a thick gradient sun-path arc rises over a c
 <a id="kumo-payroll"></a>
 ### 4. Kumo Payroll
 
-![Kumo Payroll recreation shot](../../site/dashboards/kumo-payroll/shot.jpg)
+![Kumo Payroll original reference](../../site/dashboards/kumo-payroll/reference.jpg)
 
-_Kumo Payroll · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Kumo Payroll · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A moonlit payroll overview: a code-drawn ink landscape with a gold moon, layered hills and a blossom branch sits behind one dark, gold-edged panel holding KPI tiles, a gross/net bar chart, a deductions donut and time-off ring.
 
@@ -142,9 +142,9 @@ A moonlit payroll overview: a code-drawn ink landscape with a gold moon, layered
 <a id="plumage-survey"></a>
 ### 15. Plumage Bird Survey
 
-![Plumage Bird Survey recreation shot](../../site/dashboards/plumage-survey/shot.jpg)
+![Plumage Bird Survey original reference](../../site/dashboards/plumage-survey/reference.jpg)
 
-_Plumage Bird Survey · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Plumage Bird Survey · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A dark, cinematic monitoring dashboard for a volunteer coastal bird survey. A code-drawn, rainbow-feathered bird sits between walls of teal and amber leaves, framed by gradient region charts, coverage and nesting rings, habitat donuts, ranked species bars and an observation log you can filter by species.
 
@@ -237,9 +237,9 @@ Frosted translucent panels over gradients or blurred color fields, soft glows. M
 <a id="haven-listings"></a>
 ### 7. Haven Listings
 
-![Haven Listings recreation shot](../../site/dashboards/haven-listings/shot.jpg)
+![Haven Listings original reference](../../site/dashboards/haven-listings/reference.jpg)
 
-_Haven Listings · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Haven Listings · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A property browser built around one large dusk scene: a code-drawn curved house glows under a blue sky, white filter tabs notch into the top edge, and a frosted card shows the selected home. Listings, price history and viewings sit below.
 
@@ -267,9 +267,9 @@ A property browser built around one large dusk scene: a code-drawn curved house 
 <a id="aura-ring"></a>
 ### 8. Aura Ring
 
-![Aura Ring recreation shot](../../site/dashboards/aura-ring/shot.jpg)
+![Aura Ring original reference](../../site/dashboards/aura-ring/reference.jpg)
 
-_Aura Ring · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Aura Ring · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A wellness overview for a smart ring: frosted, softly bordered cards float over a periwinkle-to-pink haze, with a two-weight headline, a score dial, thin white line charts, a code-drawn metal ring and a tappable body map.
 
@@ -297,9 +297,9 @@ A wellness overview for a smart ring: frosted, softly bordered cards float over 
 <a id="prism-workspace"></a>
 ### 14. Prism Workspace
 
-![Prism Workspace recreation shot](../../site/dashboards/prism-workspace/shot.jpg)
+![Prism Workspace original reference](../../site/dashboards/prism-workspace/reference.jpg)
 
-_Prism Workspace · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Prism Workspace · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 Workspace settings in a light liquid-glass style: thick translucent pills with bright rims over soft pastel blobs. Invite people through a keyboard-friendly suggestion list, filter and remove members, tick permissions, flip notification switches and watch seats fill a folder-shaped plan card.
 
@@ -542,9 +542,9 @@ Lots of white space, hairlines, one accent, quiet type. Calm tools people use al
 <a id="taffy-analytics"></a>
 ### 13. Taffy Analytics
 
-![Taffy Analytics recreation shot](../../site/dashboards/taffy-analytics/shot.jpg)
+![Taffy Analytics original reference](../../site/dashboards/taffy-analytics/reference.jpg)
 
-_Taffy Analytics · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Taffy Analytics · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A calm pastel product-analytics dashboard for a design-tool startup: a serif headline number over a soft area chart, a row of glossy 3D capsules for sign-ups by channel, a rounded plan-mix ring, springy feature-flag switches and a release checklist.
 
@@ -577,9 +577,9 @@ Tiles of different sizes in a tight grid, each tile one idea. Great for overview
 <a id="vitalis-care"></a>
 ### 11. Vitalis Care
 
-![Vitalis Care recreation shot](../../site/dashboards/vitalis-care/shot.jpg)
+![Vitalis Care original reference](../../site/dashboards/vitalis-care/reference.jpg)
 
-_Vitalis Care · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Vitalis Care · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A bento-grid patient dashboard for a family clinic: a heart-rate tile with a code-drawn heart and pulse trace, coloured vital tiles, a deep-teal next-appointment tile, a searchable doctor directory that feeds a week-strip booking panel, a steps and sleep chart, and a records list.
 
@@ -607,9 +607,9 @@ A bento-grid patient dashboard for a family clinic: a heart-rate tile with a cod
 <a id="larchwood-lodge"></a>
 ### 17. Larchwood Lodge
 
-![Larchwood Lodge recreation shot](../../site/dashboards/larchwood-lodge/shot.jpg)
+![Larchwood Lodge original reference](../../site/dashboards/larchwood-lodge/reference.jpg)
 
-_Larchwood Lodge · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Larchwood Lodge · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A dusky plum bento guest hub for a mountain cabin. An autumn lake at sunset, drawn in SVG layers, greets the family. Around it sit tiles for cabin heat, daylight left, a five-day forecast, light scenes, activity booking, wake-up alarms and today's trail status.
 
@@ -737,9 +737,9 @@ Rounded shapes, pastel fills, playful illustration-free warmth. Health, educatio
 <a id="canopy-reforest"></a>
 ### 5. Canopy Reforest
 
-![Canopy Reforest recreation shot](../../site/dashboards/canopy-reforest/shot.jpg)
+![Canopy Reforest original reference](../../site/dashboards/canopy-reforest/reference.jpg)
 
-_Canopy Reforest · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Canopy Reforest · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 An organic reforestation tracker in forest green, bark brown and tan: a leafy code-drawn hero with a big rounded headline, a deep green band of four site figures and six soft, colour-blocked tiles for species, planting, soil, tasks and crews.
 
@@ -767,9 +767,9 @@ An organic reforestation tracker in forest green, bark brown and tan: a leafy co
 <a id="lull-sleep"></a>
 ### 9. Lull Sleep
 
-![Lull Sleep recreation shot](../../site/dashboards/lull-sleep/shot.jpg)
+![Lull Sleep original reference](../../site/dashboards/lull-sleep/reference.jpg)
 
-_Lull Sleep · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Lull Sleep · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A one-night sleep report in soft lavender: a pastel sky hero with a crescent moon and a round score, a stage timeline you can filter by stage, a stage-split donut, a week of nights to pick from, logged habits that move the score, and bedroom conditions.
 
@@ -797,9 +797,9 @@ A one-night sleep report in soft lavender: a pastel sky hero with a crescent moo
 <a id="smile-dental"></a>
 ### 10. Pearlwell Dental
 
-![Pearlwell Dental recreation shot](../../site/dashboards/smile-dental/shot.jpg)
+![Pearlwell Dental original reference](../../site/dashboards/smile-dental/reference.jpg)
 
-_Pearlwell Dental · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Pearlwell Dental · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A soft mint patient portal for a dental clinic: one saturated next-visit card with a code-drawn tooth and shield, a health-score ring, a booking calendar with times and dentists, a searchable treatment price list and a tappable tooth chart.
 
@@ -952,9 +952,9 @@ Big serif headlines, magazine layout, image-led storytelling. Brands, content, l
 <a id="ridgeline-trails"></a>
 ### 6. Ridgeline Trails
 
-![Ridgeline Trails recreation shot](../../site/dashboards/ridgeline-trails/shot.jpg)
+![Ridgeline Trails original reference](../../site/dashboards/ridgeline-trails/reference.jpg)
 
-_Ridgeline Trails · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Ridgeline Trails · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A two-tone visitor report for a trail network: a pale, quiet upper half where a misty code-drawn mountain range fades in from the right, then a wave edge into a charcoal lower half of raised pie dials, thin bars and a gold ring gauge.
 
@@ -1022,9 +1022,9 @@ Near-black canvas with vivid neon accents and gradients. Gaming, crypto, music, 
 <a id="pulsar-analytics"></a>
 ### 2. Pulsar Analytics
 
-![Pulsar Analytics recreation shot](../../site/dashboards/pulsar-analytics/shot.jpg)
+![Pulsar Analytics original reference](../../site/dashboards/pulsar-analytics/reference.jpg)
 
-_Pulsar Analytics · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Pulsar Analytics · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A dark neon product-analytics overview: glossy metric orbs that switch the main chart, layered violet and mint wave areas over a purple floor glow, a ticked uptime dial and gradient pillar bars.
 
@@ -1052,9 +1052,9 @@ A dark neon product-analytics overview: glossy metric orbs that switch the main 
 <a id="hollow-vault"></a>
 ### 16. Hollow Vault
 
-![Hollow Vault recreation shot](../../site/dashboards/hollow-vault/shot.jpg)
+![Hollow Vault original reference](../../site/dashboards/hollow-vault/reference.jpg)
 
-_Hollow Vault · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Hollow Vault · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A dark-neon rewards hub for a fantasy game. Eight code-drawn relics ring a glowing chest; open it with keys earned from quests and see what you win. Drop rates are shown openly, your haul fills in below, and guild chat runs down the right.
 
@@ -1087,9 +1087,9 @@ Soft extruded surfaces, depth, physical-feeling controls. Smart home, devices, a
 <a id="mallow-music"></a>
 ### 12. Mallow Music
 
-![Mallow Music recreation shot](../../site/dashboards/mallow-music/shot.jpg)
+![Mallow Music original reference](../../site/dashboards/mallow-music/reference.jpg)
 
-_Mallow Music · 1440×900 recreation screenshot (also `thumb.jpg` for cards)._
+_Mallow Music · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
 A claymorphic listening dashboard for a music app: puffy pastel tiles with soft inner highlights, a peach hero with code-drawn clay headphones and a plant, a now-playing bar you can scrub, colourful weekly listening bars, a genre donut, recently played songs and a daily mix drawn as a cosy room.
 
