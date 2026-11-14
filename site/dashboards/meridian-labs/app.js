@@ -216,14 +216,15 @@
   function renderWeek() {
     const start = weekStart();
     $('[data-month]').textContent = fmtDate(start, { month: 'long', year: 'numeric' });
+    const dots = ['--accent', '--chart-2', '--ok', '--accent', '--highlight', '--chart-2', '--ok'];
     const events = [
-      [{ t: '2:00 p.m.', label: '2 Tests', icon: 'flask' }],
-      [{ t: '9:00 a.m.', label: 'Vitamin C', icon: 'pill' }],
+      [{ t: '2:00 p.m.', label: '2 Tests', icon: 'flask', doses: 2 }],
+      [{ t: '9:00 a.m.', label: 'Vitamin C', icon: 'pill', doses: 1 }],
       [],
-      [{ t: '11:00 a.m.', label: 'OMEGA 3', icon: 'pill' }],
-      [{ t: '2:00 p.m.', label: '1 Advice', icon: 'stethoscope' }],
-      [{ t: '4:00 p.m.', label: 'Labs', icon: 'flask' }],
-      [{ t: '8:00 a.m.', label: 'Vitamin C', icon: 'pill' }],
+      [{ t: '11:00 a.m.', label: 'OMEGA 3', icon: 'pill', doses: 1 }],
+      [{ t: '2:00 p.m.', label: '1 Advice', icon: 'stethoscope', doses: 1 }],
+      [{ t: '4:00 p.m.', label: 'Labs', icon: 'flask', doses: 2 }],
+      [{ t: '8:00 a.m.', label: 'Vitamin C', icon: 'pill', doses: 1 }],
     ];
     const st = $('[data-week-state]');
     if (listState === 'loading') {
@@ -242,14 +243,29 @@
       return;
     }
     st.textContent = '';
+    const today = new Date();
     $('[data-week]').innerHTML = Array.from({ length: 7 }, (_, i) => {
       const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
       const ev = events[i] || [];
       const wd = fmtDate(d, { weekday: 'short' });
-      return `<button type="button" class="me-day" role="listitem" data-day="${i}" aria-pressed="${i === selectedDay}">
-        <span class="me-wd">${wd}${ev.length ? '<i aria-hidden="true"></i>' : ''}</span>
+      const isToday = d.getFullYear() === today.getFullYear()
+        && d.getMonth() === today.getMonth()
+        && d.getDate() === today.getDate();
+      const body = ev.length
+        ? `<span class="me-time">${ev[0].t}</span>
+           <span class="me-ev">${ev.map((e) =>
+             `<span class="me-ev-row">${svg(e.icon)}<b>${e.label}</b></span>
+              <span class="me-doses" aria-label="${e.doses} dose${e.doses > 1 ? 's' : ''}">${
+                Array.from({ length: Math.min(e.doses, 3) }, () =>
+                  `<span class="me-dosechip">${svg('pill')}<span class="num">${e.doses}</span></span>`
+                ).slice(0, 1).join('')
+              }</span>`
+           ).join('')}</span>`
+        : `<span class="me-free">Free</span>`;
+      return `<button type="button" class="me-day${isToday ? ' is-today' : ''}" role="listitem" data-day="${i}" aria-pressed="${i === selectedDay}" style="--dot:var(${dots[i]})">
+        <span class="me-wd">${wd}${ev.length || isToday ? '<i aria-hidden="true"></i>' : ''}</span>
         <span class="me-dd num">${d.getDate()}</span>
-        <span class="me-ev">${ev.map((e) => `<span>${svg(e.icon)} ${e.label}</span><span>${e.t}</span>`).join('') || '<span>Free</span>'}</span>
+        ${body}
       </button>`;
     }).join('');
   }

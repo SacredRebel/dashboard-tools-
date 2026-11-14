@@ -41,49 +41,51 @@
     </header>
 
     <main class="me-main">
-      <section class="me-tests" aria-labelledby="me-te-h">
-        <div class="me-sechead">
-          <button type="button" class="me-round" aria-label="Back" data-back><span data-icon="arrowLeft"></span></button>
-          <h1 id="me-te-h">Personal Tests and Analysis</h1>
-        </div>
-        <div class="me-filters" role="group" aria-label="Filter tests" data-filters></div>
-        <div class="me-carousel" data-tests tabindex="0" aria-label="Test cards"></div>
-        <p class="me-state" data-tests-state aria-live="polite"></p>
-      </section>
+      <div class="me-board">
+        <section class="me-tests" aria-labelledby="me-te-h">
+          <div class="me-sechead">
+            <button type="button" class="me-round" aria-label="Back" data-back><span data-icon="arrowLeft"></span></button>
+            <h1 id="me-te-h">Personal Tests and Analysis</h1>
+          </div>
+          <div class="me-filters" role="group" aria-label="Filter tests" data-filters></div>
+          <div class="me-carousel" data-tests tabindex="0" aria-label="Test cards"></div>
+          <p class="me-state" data-tests-state aria-live="polite"></p>
+        </section>
 
-      <section class="me-dna" aria-labelledby="me-dna-h">
-        <h2 id="me-dna-h" class="vh">DNA structure view</h2>
-        <div class="me-dnastats">
-          <p><b>B</b> Structure</p>
-          <p class="num"><b data-angstrom>23.3</b> Angstrom</p>
-        </div>
-        <div class="me-helix" data-helix aria-hidden="true"><img class="me-dna" src="media/dna@2x.webp" srcset="media/dna.webp 1x, media/dna@2x.webp 2x" width="825" height="1100" alt="" decoding="async"></div>
-        <div class="me-dnaorb" role="toolbar" aria-label="DNA tools" data-dnatools>
-          <button type="button" aria-label="Heart markers" data-tool="heart" aria-pressed="true"><span data-icon="heart"></span></button>
-          <button type="button" aria-label="Activity leads" data-tool="pulse" aria-pressed="false"><span data-icon="activity"></span></button>
-          <button type="button" aria-label="Scan frame" data-tool="scan" aria-pressed="false"><span data-icon="expand"></span></button>
-        </div>
-      </section>
+        <section class="me-dna" aria-labelledby="me-dna-h">
+          <h2 id="me-dna-h" class="vh">DNA structure view</h2>
+          <div class="me-dnastats">
+            <p><b>B</b> Structure</p>
+            <p class="num"><b data-angstrom>23.3</b> Angstrom</p>
+          </div>
+          <div class="me-helix" data-helix aria-hidden="true"><img class="me-dna" src="media/dna@2x.webp" srcset="media/dna.webp 1x, media/dna@2x.webp 2x" width="825" height="1100" alt="" decoding="async"></div>
+          <div class="me-dnaorb" role="toolbar" aria-label="DNA tools" data-dnatools>
+            <button type="button" aria-label="Heart markers" data-tool="heart" aria-pressed="true"><span data-icon="heart"></span></button>
+            <button type="button" aria-label="Activity leads" data-tool="pulse" aria-pressed="false"><span data-icon="activity"></span></button>
+            <button type="button" aria-label="Scan frame" data-tool="scan" aria-pressed="false"><span data-icon="expand"></span></button>
+          </div>
+        </section>
 
-      <section class="me-vits" aria-labelledby="me-vi-h">
-        <div class="me-sechead me-sechead-end">
-          <h2 id="me-vi-h">Your Vitamin Supplements</h2>
-          <button type="button" class="me-round" aria-label="Browse supplements" data-vitnext><span data-icon="arrowRight"></span></button>
+        <section class="me-vits" aria-labelledby="me-vi-h">
+          <div class="me-sechead me-sechead-end">
+            <h2 id="me-vi-h">Your Vitamin Supplements</h2>
+            <button type="button" class="me-round" aria-label="Browse supplements" data-vitnext><span data-icon="arrowRight"></span></button>
+          </div>
+          <div class="me-vitgrid" data-vits></div>
+          <div class="me-pages" role="group" aria-label="Supplement pages" data-vitpages></div>
+        </section>
+      </div>
+
+      <section class="me-week" aria-labelledby="me-wk-h">
+        <div class="me-weekhead">
+          <button type="button" class="me-round" aria-label="Previous week" data-wk="-1"><span data-icon="chevLeft"></span></button>
+          <h2 id="me-wk-h" data-month></h2>
+          <button type="button" class="me-round" aria-label="Next week" data-wk="1"><span data-icon="chevRight"></span></button>
         </div>
-        <div class="me-vitgrid" data-vits></div>
-        <div class="me-pages" role="group" aria-label="Supplement pages" data-vitpages></div>
+        <div class="me-weekstrip" data-week role="list"></div>
+        <p class="me-state" data-week-state aria-live="polite"></p>
       </section>
     </main>
-
-    <section class="me-week" aria-labelledby="me-wk-h">
-      <div class="me-weekhead">
-        <button type="button" class="me-round" aria-label="Previous week" data-wk="-1"><span data-icon="chevLeft"></span></button>
-        <h2 id="me-wk-h" data-month></h2>
-        <button type="button" class="me-round" aria-label="Next week" data-wk="1"><span data-icon="chevRight"></span></button>
-      </div>
-      <div class="me-weekstrip" data-week role="list"></div>
-      <p class="me-state" data-week-state aria-live="polite"></p>
-    </section>
 
     <p class="db-sample me-foot">Sample data · fictional</p>
   </div>

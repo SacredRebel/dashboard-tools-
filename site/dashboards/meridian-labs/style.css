@@ -222,20 +222,24 @@ body {
   margin-bottom: 22px;
   width: 100%;
 }
-.me-main > [data-page-panel="overview"],
-.me-main > .db-dense-page,
-.me-main > [data-db-page-host] > .db-dense-page {
+/* Three-column board (tests | DNA | vitamins). Lives inside overview even when
+   dense-pages sets overview to display:contents. */
+.me-board {
   display: grid;
   grid-template-columns: minmax(280px, 1.05fr) minmax(240px, 0.85fr) minmax(260px, 0.95fr);
   gap: 22px;
   align-items: start;
   width: 100%;
+  min-width: 0;
 }
 .me-main > [data-db-page-host] {
   width: 100%;
 }
 .me-main > [data-db-page-host] > .db-dense-page {
+  display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
 }
 .me-sechead {
   display: flex;
@@ -352,10 +356,14 @@ body {
 
 .me-dna {
   position: relative;
-  min-height: 420px;
+  z-index: 0;
+  min-height: 360px;
+  max-height: 520px;
+  overflow: hidden;
   display: grid;
   place-items: center;
   padding: 12px;
+  isolation: isolate;
 }
 .me-dnastats {
   position: absolute;
@@ -369,8 +377,9 @@ body {
 .me-dnastats b { color: var(--text); font-weight: 800; }
 .me-dnastats .num b { font-size: 22px; }
 .me-helix {
-  width: min(280px, 78%);
-  height: 460px;
+  width: min(240px, 72%);
+  height: 400px;
+  max-height: 400px;
   display: grid; place-items: center;
 }
 .me-helix svg { width: 100%; height: 100%; display: block; }
@@ -489,83 +498,160 @@ body {
 }
 
 .me-week {
-  padding: 18px;
+  position: relative;
+  z-index: 2;
+  margin-top: 4px;
+  padding: 20px 22px 22px;
   border-radius: var(--radius-lg);
   background: var(--surface);
   box-shadow: var(--shadow);
+  isolation: isolate;
 }
 .me-weekhead {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 14px;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 .me-weekhead h2 {
   font-size: 18px;
   font-weight: 700;
-  min-width: 160px;
-  text-align: center;
+  min-width: 0;
+  text-align: left;
+  letter-spacing: -0.02em;
 }
 .me-weekstrip {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 10px;
+  gap: 12px;
 }
 .me-day {
-  min-height: 140px;
-  padding: 12px;
+  min-height: 168px;
+  padding: 14px 12px 12px;
   border: 0;
   border-radius: var(--radius-md);
-  background: var(--surface-2);
+  background: var(--surface);
   color: var(--text);
   text-align: left;
   font: inherit;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.9) inset,
+    0 10px 22px rgb(26 29 36 / 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.me-day:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.95) inset,
+    0 14px 28px rgb(26 29 36 / 0.1);
 }
 .me-day[aria-pressed="true"] {
   background: var(--highlight);
   color: var(--highlight-fg);
-  box-shadow: 0 12px 28px color-mix(in srgb, var(--highlight) 40%, transparent);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.35) inset,
+    0 14px 30px color-mix(in srgb, var(--highlight) 42%, transparent);
 }
 .me-day .me-wd {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  opacity: 0.85;
-}
-.me-day .me-wd i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-.me-day[aria-pressed="true"] .me-wd i { background: var(--highlight-fg); }
-.me-day .me-dd {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-.me-day .me-ev {
-  margin-top: auto;
-  font-size: 12px;
-  font-weight: 600;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.me-day .me-ev span {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  align-self: flex-start;
+  min-height: 28px;
+  padding: 2px 8px 2px 6px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: transparent;
+}
+.me-day.is-today .me-wd {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+.me-day .me-wd i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dot, var(--accent));
+  flex-shrink: 0;
+}
+.me-day[aria-pressed="true"] .me-wd {
+  background: color-mix(in srgb, var(--highlight-fg) 12%, transparent);
+  color: var(--highlight-fg);
+}
+.me-day[aria-pressed="true"] .me-wd i { background: var(--highlight-fg); }
+.me-day .me-dd {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.me-day .me-time {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.me-day[aria-pressed="true"] .me-time { color: var(--highlight-fg); opacity: 0.85; }
+.me-day .me-ev {
+  margin-top: auto;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.me-day .me-ev-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.me-day .me-ev-row b {
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .me-day .me-ev svg { width: 14px; height: 14px; flex-shrink: 0; }
+.me-day .me-doses {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+.me-day .me-dosechip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 22px;
+  padding: 0 7px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+}
+.me-day[aria-pressed="true"] .me-dosechip {
+  background: color-mix(in srgb, var(--highlight-fg) 12%, #fff7ef);
+  color: var(--highlight-fg);
+}
+.me-day .me-free {
+  margin-top: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.me-day[aria-pressed="true"] .me-free { color: var(--highlight-fg); opacity: 0.8; }
+@media (prefers-reduced-motion: reduce) {
+  .me-day, .me-day:hover { transition: none; transform: none; }
+}
 
 .me-state {
   margin-top: 10px;
@@ -576,15 +662,16 @@ body {
 .me-foot { text-align: center; margin-top: 16px; }
 
 @media (max-width: 1180px) {
-  .me-main > [data-page-panel="overview"] {
+  .me-board {
     grid-template-columns: 1fr 1fr;
   }
-  .me-dna { grid-column: 1 / -1; min-height: 320px; }
-  .me-helix { height: 300px; }
+  .me-dna { grid-column: 1 / -1; min-height: 280px; max-height: 360px; }
+  .me-helix { height: 280px; max-height: 280px; }
 }
 @media (max-width: 960px) {
   .me { padding: 14px 16px 20px; }
-  .me-main > [data-page-panel="overview"] { grid-template-columns: 1fr; min-width: 0; }
+  .me-board { grid-template-columns: 1fr; min-width: 0; }
+  .me-dna { grid-column: auto; }
   .me-who { display: none; }
   .me-week { min-width: 0; overflow: hidden; }
   .me-weekstrip {
@@ -596,7 +683,7 @@ body {
     padding-bottom: 6px;
   }
   .me-day {
-    flex: 0 0 120px;
+    flex: 0 0 132px;
     scroll-snap-align: start;
   }
   .me-carousel { max-width: 100%; }
@@ -717,20 +804,93 @@ body {
   background: #ffffff !important;
   color: #141a28 !important;
 }
-.me-weekstrip [role="listitem"],
-.me-weekstrip > *,
-.me-weekstrip button,
-.me-weekstrip .me-day,
-.me-weekstrip span,
-.me-weekstrip b,
-.me-weekstrip time {
+.me-weekstrip .me-day {
   background: #ffffff !important;
   color: #141a28 !important;
   font-weight: 700 !important;
   opacity: 1 !important;
 }
-.me-weekstrip .me-evt,
-.me-weekstrip .me-evt * {
-  background: #fff7ef !important;
+.me-weekstrip .me-day .me-wd,
+.me-weekstrip .me-day .me-time,
+.me-weekstrip .me-day .me-free {
+  color: #555c6a !important;
+  background: transparent !important;
+  font-weight: 700 !important;
+}
+.me-weekstrip .me-day.is-today .me-wd {
+  background: #e8ecff !important;
   color: #141a28 !important;
+}
+.me-weekstrip .me-day .me-dd,
+.me-weekstrip .me-day .me-ev-row b {
+  color: #141a28 !important;
+  background: transparent !important;
+}
+.me-weekstrip .me-day .me-dosechip {
+  background: #eef0f4 !important;
+  color: #141a28 !important;
+}
+.me-weekstrip .me-day[aria-pressed="true"] {
+  background: #ff8a48 !important;
+  color: #1a1208 !important;
+}
+.me-weekstrip .me-day[aria-pressed="true"] .me-wd,
+.me-weekstrip .me-day[aria-pressed="true"] .me-time,
+.me-weekstrip .me-day[aria-pressed="true"] .me-free,
+.me-weekstrip .me-day[aria-pressed="true"] .me-dd,
+.me-weekstrip .me-day[aria-pressed="true"] .me-ev-row b {
+  color: #1a1208 !important;
+  background: transparent !important;
+}
+.me-weekstrip .me-day[aria-pressed="true"].is-today .me-wd {
+  background: rgb(26 18 8 / 0.12) !important;
+  color: #1a1208 !important;
+}
+.me-weekstrip .me-day[aria-pressed="true"] .me-dosechip {
+  background: #fff7ef !important;
+  color: #1a1208 !important;
+}
+[data-variant="citrus"] .me-weekstrip .me-day[aria-pressed="true"] {
+  background: #ff8a48 !important;
+  color: #1a0e06 !important;
+}
+[data-variant="night"] .me-week {
+  background: #1c212c !important;
+  color: #eef1f7 !important;
+}
+[data-variant="night"] .me-weekstrip .me-day {
+  background: #262c3a !important;
+  color: #eef1f7 !important;
+}
+[data-variant="night"] .me-weekstrip .me-day .me-wd,
+[data-variant="night"] .me-weekstrip .me-day .me-time,
+[data-variant="night"] .me-weekstrip .me-day .me-free {
+  color: #a8b0c0 !important;
+}
+[data-variant="night"] .me-weekstrip .me-day.is-today .me-wd {
+  background: #2a3358 !important;
+  color: #eef1f7 !important;
+}
+[data-variant="night"] .me-weekstrip .me-day .me-dd,
+[data-variant="night"] .me-weekstrip .me-day .me-ev-row b {
+  color: #eef1f7 !important;
+}
+[data-variant="night"] .me-weekstrip .me-day .me-dosechip {
+  background: #1c212c !important;
+  color: #eef1f7 !important;
+}
+[data-variant="night"] .me-weekstrip .me-day[aria-pressed="true"] {
+  background: #ff9a5c !important;
+  color: #1a1008 !important;
+}
+[data-variant="night"] .me-weekstrip .me-day[aria-pressed="true"] .me-wd,
+[data-variant="night"] .me-weekstrip .me-day[aria-pressed="true"] .me-time,
+[data-variant="night"] .me-weekstrip .me-day[aria-pressed="true"] .me-free,
+[data-variant="night"] .me-weekstrip .me-day[aria-pressed="true"] .me-dd,
+[data-variant="night"] .me-weekstrip .me-day[aria-pressed="true"] .me-ev-row b {
+  color: #1a1008 !important;
+}
+[data-variant="night"] .me-weekstrip .me-day[aria-pressed="true"] .me-dosechip {
+  background: #fff7ef !important;
+  color: #1a1008 !important;
 }
