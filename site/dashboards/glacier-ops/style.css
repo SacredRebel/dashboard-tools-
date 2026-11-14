@@ -217,7 +217,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
   box-shadow: var(--shadow), 0 0 40px var(--glow);
   min-width: 0;
 }
-.go-dial { position: relative; width: min(100%, 420px); aspect-ratio: 1; }
+.go-dial { position: relative; width: 100%; height: 100%; }
 .go-dial svg { width: 100%; height: 100%; display: block; }
 .go-dialnote { font-size: 13px; color: var(--text-muted); text-align: center; min-height: 1.2em; }
 .go-seglocks { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
@@ -268,21 +268,24 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
       "left right"
       "bot bot";
   }
-  .go-dial { width: min(100%, 360px); }
+  .go-dialwrap { width: min(100%, 360px); }
 }
 @media (max-width: 960px) {
   .go-main {
     grid-template-columns: 1fr;
     grid-template-areas: "center" "bot" "left" "right";
   }
-  .go-orbs { margin-left: 0; width: 100%; justify-content: flex-start; }
+  .go-orbs { margin-left: 0; width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+  .go-center, .go-dialwrap { max-width: 100%; }
 }
 @media (max-width: 640px) {
-  .go { padding: 12px; }
+  .go { padding: 12px; overflow-x: clip; max-width: 100%; }
   .go-tabs { width: 100%; }
   .go-brand { font-size: 18px; }
   .go-orb { width: 48px; height: 48px; }
   .go-orb b { font-size: 15px; }
+  .go-dialwrap { width: min(100%, 300px); }
+  .go-seglocks { max-width: 100%; }
 }
 
 /* --- polish multipage + motion (shared) --- */
@@ -328,14 +331,47 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
 }
 
 .go-dialwrap, .go-dial { position: relative; }
-.go-topo { position: absolute; inset: 18%; width: auto; height: auto; max-width: 64%; max-height: 64%; margin: auto; border-radius: 50%; opacity: 0.28; pointer-events: none; mix-blend-mode: screen; }
-.go-dial > *:not(.go-topo) { position: relative; z-index: 1; }
+.go-dialwrap {
+  position: relative; width: min(100%, 420px); max-width: 100%;
+  aspect-ratio: 1; display: grid; place-items: center;
+  overflow: hidden;
+}
+.go-topo {
+  position: absolute; inset: 24%;
+  width: auto; height: auto; max-width: 100%;
+  margin: auto; border-radius: 50%;
+  object-fit: cover; object-position: center 42%;
+  opacity: 0.7; pointer-events: none; z-index: 0;
+  box-shadow: 0 0 28px var(--glow);
+  filter: saturate(1.05) contrast(1.05);
+}
+.go-dial { position: relative; z-index: 1; width: 100%; height: 100%; max-width: 100%; }
+.go-dial svg { width: 100%; height: 100%; display: block; }
 
 .go-dialnote, .go-core .num, [data-dial] .num {
   display: inline-block; padding: 4px 10px; border-radius: 999px;
-  background: rgb(10 18 40 / 0.88); color: #e8eeff; font-weight: 650;
+  background: #070d1c !important; color: #e8eeff !important; font-weight: 650;
 }
 .go-dialnote { margin-top: 8px; }
+.go-orb, .go-orb b, .go-orb span {
+  background: #0a1424 !important;
+}
+.go-orb b { color: #7ef0ff !important; }
+.go-orb.bad b { color: #ff8a9a !important; }
+.go-orb span { color: #d7e6f2 !important; }
+.go-head h2, .go-tag, .go-brand, .go-tabs button[aria-pressed="true"] {
+  background: #0a1424 !important;
+  color: #e8eeff !important;
+  padding: 2px 8px; border-radius: 8px;
+}
+.go-tabs button[aria-pressed="true"] { color: #7ef0ff !important; }
+.go-x, .go-y, .go-xs span, .go-botnote, .go-seglocks button {
+  background: #070d1c !important;
+  color: #d7e6f2 !important;
+  border-radius: 6px;
+  padding: 1px 4px;
+}
+.go-seglocks button[aria-pressed="true"] { color: #7ef0ff !important; }
 
 /* forced AA surfaces for multipage stubs (all variants) */
 .dbp-page { background: #ffffff !important; color: #141414 !important; }
@@ -347,9 +383,8 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
 .dbp-card strong, .dbp-row, .dbp-page p { color: #141414 !important; }
 
 
-.go-dialwrap { position: relative; }
 .go-elevchip {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  position: absolute; left: 50%; bottom: 18%; transform: translateX(-50%);
   z-index: 3; display: grid; place-items: center; gap: 2px;
   min-width: 120px; padding: 10px 14px; border-radius: 16px;
   background: #070d1c; color: #ffffff; text-align: center;

@@ -299,17 +299,10 @@
       ${ticks}
       <circle cx="200" cy="200" r="160" fill="none" style="stroke:var(--border)" stroke-width="1"/>
       ${segs}
-      <circle cx="200" cy="200" r="118" style="fill:var(--topo-4)" stroke="var(--accent)" stroke-width="2" opacity="0.95"/>
-      <g clip-path="url(#go-clip)">
-        <circle cx="200" cy="200" r="108" fill="url(#go-core)"/>
-        <path d="M92 230 L130 170 160 200 190 130 220 175 250 120 280 165 310 145 310 310 92 310Z" fill="url(#go-ridge)" opacity=".85"/>
-        <path d="M110 250 L150 210 180 235 210 180 245 220 275 190 300 215 300 310 110 310Z" style="fill:var(--topo-3)" opacity=".7"/>
-        <path d="M140 195 L160 170 175 188 190 150 205 172" fill="none" style="stroke:var(--topo-1)" stroke-width="1.5" opacity=".7"/>
-        <path d="M210 160 L230 140 248 158 265 135" fill="none" style="stroke:var(--topo-1)" stroke-width="1.2" opacity=".55"/>
-        <ellipse cx="200" cy="255" rx="70" ry="14" style="fill:var(--accent)" opacity=".12"/>
-      </g>
-      <circle cx="200" cy="200" r="108" fill="none" style="stroke:var(--accent)" stroke-width="1.5" opacity=".5"/>
+      <circle cx="200" cy="200" r="118" style="fill:var(--topo-4)" stroke="var(--accent)" stroke-width="2" opacity="0.55"/>
+      <circle cx="200" cy="200" r="108" fill="none" style="stroke:var(--accent)" stroke-width="1.5" opacity=".45"/>
           </svg>`;
+    // Photo topo mountain sits in the dial well (CSS); keep rim SVG for locks/segments.
     let chip = dialHost.parentElement.querySelector('.go-elevchip');
     if (!chip) { chip = document.createElement('div'); chip.className = 'go-elevchip'; dialHost.parentElement.appendChild(chip); }
     chip.innerHTML = `<strong class="num">${s.elev}</strong><span>m ASL</span>`;
