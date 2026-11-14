@@ -42,8 +42,9 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | hollow-vault | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Witch hero + phone bottom nav; relic ring OK | deep G2 started |
 | pearlwell-dental | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay tooth/arch + phone nav | deep G2 started |
 | vitalis-care | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay heart/doctor + phone nav | deep G2 started |
-| solstice-energy | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29.5 | New copper mountain hero under arc; layout still shy of reference twin | deep G2 started |
-| pulsar-analytics | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29.5 | Neon terrain backdrop + glow chart layers | deep G2 started |
+| solstice-energy | 4 | 4 | 3.5 | 4 | 3.5 | 4 | 3.5 | 4 | 30.5 | Site portals + branded secondary pages; still shy of full cinematic twin | deep G3 started |
+| pulsar-analytics | 4 | 4 | 3.5 | 4 | 4 | 4 | 3.5 | 4 | 31 | Neon glow wave + branded Traffic/Events/Regions denser than kit | deep G3 started |
+| orbit-clay | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay helmet + dune peaks refresh | deep G2 started |
 | taffy-analytics | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay sphere-in-torus prop | deep G2 started |
 | pebble-studio | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay pebbles + torus dial | deep G2 started |
 | dune-panels | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Fabric dune folds 1x/2x | deep G2 started |
@@ -53,10 +54,11 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 
 1. ~~copper / ember / tidebath / kumo / citadel / glacier / forge / clima / hollow / pearlwell / vitalis / mallow phone~~  
 2. ~~meridian-labs week-calendar G3 · solstice / pulsar / taffy / pebble / dune~~  
-3. Remaining dense secondary pages / shy reference twins  
-4. Optional full-38 confirmation log after each push batch
+3. ~~dense secondary hero kit · solstice/pulsar branded pages · orbit helmet/dunes~~  
+4. Larchwood / Aether / remaining shy twins  
+5. Optional full-38 confirmation log after each push batch
 
 ## Verification log
 
-- Touched ✔: meridian, solstice, pulsar, taffy, pebble, dune  
-- Prior: clima, hollow, pearlwell, vitalis, mallow, kumo, citadel, glacier, forge, ridgeline, ember, tidebath — see HANDOFF
+- Touched ✔: dense-kit, solstice, pulsar, orbit (+ gallery frame refresh)  
+- Prior: meridian, taffy, pebble, dune, clima, hollow, pearlwell, vitalis, mallow, kumo, citadel, glacier, forge, ridgeline, ember, tidebath — see HANDOFF

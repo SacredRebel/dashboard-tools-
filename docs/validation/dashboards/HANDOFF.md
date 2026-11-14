@@ -6,42 +6,41 @@ PR: https://github.com/SacredRebel/dashboard-tools-/pull/6 (draft — **do not m
 
 ## Done this stretch
 
-### Meridian Labs (`816bb5a`)
-- Three-column `.me-board` (tests | DNA | vitamins) survives dense `display:contents`
-- Week-calendar G3: orange selected day, today chip, dose pills, AA surfaces; DNA no longer overlaps calendar
+### Dense secondary kit (`b8d85a8`)
+- Hero focus band on every secondary page; body uses a real 12-col grid
+- Opaque AA eyebrow plates; drawer chrome in `pageShell` for custom bodies
 
-### Solstice Energy (`d9c9099`)
-- Copper desert mountains.webp/@2x under sun-path arc
+### Solstice Energy (`04a3508`)
+- Circular site photo portals in storage dials; output bar + load overlay line
+- Arrays / Storage / Reports / Settings: Solstice-themed dense bodies
 
-### Pulsar Analytics (`3d89562`)
-- Neon terrain.webp/@2x under SVG mountain chart + glow layers
+### Pulsar Analytics (`5632f22`)
+- Stronger neon terrain glow wave
+- Traffic / Events / Regions: Pulsar-themed dense bodies (thin-page safe)
 
-### Taffy Analytics (`5c78769`)
-- Clay sphere-in-torus prop + srcset
+### Orbit Clay (`0488c86`)
+- Clay helmet + dune peaks refresh with srcset
 
-### Pebble Studio (`128e659`)
-- Clay pebbles + torus dial props with srcset
-
-### Dune Panels (`0e48ee9`)
-- Fabric dune folds at 1x/2x via `image-set`
+### Frame refresh (`9bbab18`)
+- Gallery frames reshot after dense hero kit (full-38)
 
 ### Earlier this branch
-- Clima / Hollow / Pearlwell / Vitalis / Mallow / Kumo / Citadel / Glacier / Forge / Ridgeline / Ember / Tidebath / Copper / Cortex / gates
+- Meridian week G3 · Solstice/Pulsar/Taffy/Pebble/Dune heroes · Clima/Hollow/Pearlwell/Vitalis/Mallow · Kumo/Citadel/Glacier/Forge/Ridgeline/Ember/Tidebath/Copper/Cortex
 
 ## Check results
 
-Touched ids ✔: `meridian-labs` `solstice-energy` `pulsar-analytics` `taffy-analytics` `pebble-studio` `dune-panels`  
+Touched ✔: dense-kit (spot: cortex/mallow/meridian/taffy/dune/pebble/citadel) · `solstice-energy` · `pulsar-analytics` · `orbit-clay`  
 **Full-38 confirmation: 38/38 ✔** (`node scripts/dashboards-check.mjs`, exit 0).
 
 ## Still open (architect)
 
-1. Remaining gallery boards still dense-kit on secondary pages / shy of reference twins.
-2. Optional deeper Solstice/Pulsar layout twins beyond hero art.
+1. Remaining shy reference twins (larchwood, aether, canopy band, copper vendor ring, etc.).
+2. Optional deeper Solstice/Pulsar layout still shy of full cinematic twins.
 3. ManagePullRequest often unavailable — preserve human PR body; compare URL below.
 
 ## Next
-1. Remaining dense secondary pages / shy reference twins  
-2. Optional deeper Solstice/Pulsar layout twins  
+1. Larchwood / Aether / remaining catalog-order shy twins  
+2. Optional deeper Solstice/Pulsar cinematic layout  
 3. Refresh PR body when write tools available  
 
 ## Compare
