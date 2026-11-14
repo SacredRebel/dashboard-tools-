@@ -849,12 +849,12 @@ A soft glass wellness board over a lavender sky: score and smart ring at the cen
 
 _Pearlwell Dental · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A soft mint patient portal for a dental clinic: one saturated next-visit card with a code-drawn tooth and shield, a health-score ring, a booking calendar with times and dentists, a searchable treatment price list and a tappable tooth chart.
+A soft mint patient portal for a dental clinic: clay tooth hero with teal shield, health-score ring, booking calendar, treatments list, interactive tooth chart over an arch photo, and Appointments / Records / Payments / Profile pages.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** clean, friendly, reassuring, fresh, soft
-- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** One deep-teal next-visit card holding a glossy white SVG tooth with a shield, set among white cards on a mint field that warms to peach in the corner.
+- **Pages:** Home (`overview`, Dashboard) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Payments (`payments`, List) · Profile (`profile`, Settings)
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** A clay tooth with teal shield on the deep-mint next-visit card, floating dental props, and an arch photo under the interactive tooth chart.
 - **Layout:** 230px sticky sidebar (brand, 5 nav links, emergency note) · main: greeting header with search and avatar · 12-column grid: next visit (5) + score (3) + treatments (4, two rows) · booking card (8, two rows: month calendar left, times, dentists and confirm right) · tooth chart (4)
 - **Responsive:** ≤1180px: sidebar becomes a top bar, grid 2 columns · ≤700px: icon tab bar with labels, single column, calendar above times
 - **Fonts:** Nunito / Nunito · **Palette:** bg `#eaf5f2`, surface `#ffffff`, text `#173836`, muted `#4a6663`, accent `#0f7f75`, teal `#0e7f73`, peach `#fbe3d4`, warn `#b4542e`
@@ -870,7 +870,7 @@ A soft mint patient portal for a dental clinic: one saturated next-visit card wi
 - Dense reporting or finance views
 - Brands that need a dark or dramatic look
 
-**Components:** Sidebar navigation with emergency note · Saturated next-visit card with actions · Score ring with explanation · Month calendar with closed days · Time-slot grid with taken slots · Dentist picker · Category chips and searchable price list · Interactive tooth chart with notes
+**Components:** Sidebar navigation with emergency note · Clay tooth hero on next-visit card · Floating toothbrush and mirror props · Quick-action row · Score ring with explanation · Month calendar with closed days · Time-slot grid with taken slots · Dentist picker · Category chips and searchable price list · Interactive tooth chart over arch photo · Appointments / Records / Payments / Profile pages
 
 ---
 

@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `pearlwell-dental` (Phase C — total 25).
+Next: `hollow-vault` (Phase C — total 25).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -17,7 +17,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 7 | haven-listings | Haven Listings | 4 | 3 | 4 | 3 | 4 | 2 | 4 | 3 | 27 | villa photo → dune illustration; cooler ref palette | queued |
 | 8 | aura-ring | Aura Ring | 5 | 4 | 4 | 2 | 3 | 3 | 4 | 3 | 28 | light glass ref vs dark shot; missing brain 3D | queued |
 | 9 | lull-sleep | Lull Sleep | 5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36.5 | was wrong product; now glass board + media ring/brain/body | polished 19→36.5 |
-| 10 | pearlwell-dental | Pearlwell Dental | 3 | 3 | 4 | 4 | 2 | 2 | 4 | 3 | 25 | mobile multi-screen vs web; no 3D props | queued |
+| 10 | pearlwell-dental | Pearlwell Dental | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay tooth+arch media; multipage + motion | polished 25→36 |
 | 11 | vitalis-care | Vitalis Care | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | clay doctor+heart media; props; multipage + motion | polished 24→36 |
 | 12 | mallow-music | Mallow Music | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | smaller 3D character; softer clay emboss | queued |
 | 13 | taffy-analytics | Taffy Analytics | 4 | 3 | 3 | 4 | 3 | 3 | 4 | 4 | 28 | abstract kit layout; added serif titles | queued |
@@ -57,7 +57,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 4. ~~`dune-panels` — 23~~ → polished (36)
 5. ~~`pulsar-analytics` — 24~~ → polished (36)
 6. ~~`vitalis-care` — 24~~ → polished (36)
-7. `pearlwell-dental` — 25
+7. ~~`pearlwell-dental` — 25~~ → polished (36)
 8. `hollow-vault` — 25
 9. `cortex-well` — 25
 10. `hearth-nest` — 26

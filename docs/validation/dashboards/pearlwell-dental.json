@@ -5,7 +5,7 @@
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
-      "url": "/dashboards/pearlwell-dental/",
+      "url": "/dashboards/pearlwell-dental/#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/pearlwell-dental/",
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pearlwell-dental",
+      "url": "/dashboards/pearlwell-dental#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/pearlwell-dental/",
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pearlwell-dental/index.html",
+      "url": "/dashboards/pearlwell-dental/index.html#/overview",
       "width": 1440,
       "variant": "default",
       "final_path": "/dashboards/pearlwell-dental/",
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pearlwell-dental/",
+      "url": "/dashboards/pearlwell-dental/#/overview",
       "width": 375,
       "variant": "default",
       "final_path": "/dashboards/pearlwell-dental/",
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pearlwell-dental/?variant=coral",
+      "url": "/dashboards/pearlwell-dental/?variant=coral#/overview",
       "width": 1440,
       "variant": "coral",
       "final_path": "/dashboards/pearlwell-dental/",
@@ -45,11 +45,221 @@
       "errors": []
     },
     {
-      "url": "/dashboards/pearlwell-dental/?variant=deepsea",
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea#/overview",
       "width": 1440,
       "variant": "deepsea",
       "final_path": "/dashboards/pearlwell-dental/",
       "overflow_px": 0,
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/#/overview",
+      "width": 1440,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/#/overview",
+      "width": 375,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=coral#/overview",
+      "width": 1440,
+      "variant": "coral",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=coral#/overview",
+      "width": 375,
+      "variant": "coral",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea#/overview",
+      "width": 1440,
+      "variant": "deepsea",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea#/overview",
+      "width": 375,
+      "variant": "deepsea",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/#/appointments",
+      "width": 1440,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/#/appointments",
+      "width": 375,
+      "variant": "default",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=coral#/appointments",
+      "width": 1440,
+      "variant": "coral",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=coral#/appointments",
+      "width": 375,
+      "variant": "coral",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea#/appointments",
+      "width": 1440,
+      "variant": "deepsea",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea#/appointments",
+      "width": 375,
+      "variant": "deepsea",
+      "page": "appointments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/#/records",
+      "width": 1440,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/#/records",
+      "width": 375,
+      "variant": "default",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=coral#/records",
+      "width": 1440,
+      "variant": "coral",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=coral#/records",
+      "width": 375,
+      "variant": "coral",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea#/records",
+      "width": 1440,
+      "variant": "deepsea",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea#/records",
+      "width": 375,
+      "variant": "deepsea",
+      "page": "records",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/#/payments",
+      "width": 1440,
+      "variant": "default",
+      "page": "payments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/#/payments",
+      "width": 375,
+      "variant": "default",
+      "page": "payments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=coral#/payments",
+      "width": 1440,
+      "variant": "coral",
+      "page": "payments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=coral#/payments",
+      "width": 375,
+      "variant": "coral",
+      "page": "payments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea#/payments",
+      "width": 1440,
+      "variant": "deepsea",
+      "page": "payments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea#/payments",
+      "width": 375,
+      "variant": "deepsea",
+      "page": "payments",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/#/profile",
+      "width": 1440,
+      "variant": "default",
+      "page": "profile",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/#/profile",
+      "width": 375,
+      "variant": "default",
+      "page": "profile",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=coral#/profile",
+      "width": 1440,
+      "variant": "coral",
+      "page": "profile",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=coral#/profile",
+      "width": 375,
+      "variant": "coral",
+      "page": "profile",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea#/profile",
+      "width": 1440,
+      "variant": "deepsea",
+      "page": "profile",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/pearlwell-dental/?variant=deepsea#/profile",
+      "width": 375,
+      "variant": "deepsea",
+      "page": "profile",
       "errors": []
     },
     {
