@@ -541,10 +541,10 @@ A light glass climate console on a beige field with soft orange and blue glass o
 
 _Cortex Well · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A lilac-glass wellness overview: frosted cards float over a soft pink–lilac haze around a painted brain in a glass bowl, with lead lines to Heart, Breath, Brain and All activity pills, sleep bars and a multi-line heart chart.
+Lilac glass wellness board: three-column layout with a brain-in-bowl hero, orbit chips, activity pills, sleep and heart rails, plus Analytics, Vitals and Settings pages.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** ethereal, soft, calm, premium, lilac
-- **Pages:** Dashboard (`overview`, Dashboard) · Analytics (`analytics`, Report) · Reports (`reports`, Report)
+- **Pages:** Dashboard (`overview`, Dashboard) · Analytics (`analytics`, Report) · Vitals (`vitals`, List) · Settings (`settings`, Settings)
 - **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** A painted brain in a frosted glass bowl at center stage, with glass activity pills on lead lines and soft floating orbs.
 - **Layout:** 64px icon rail · top (greeting, glass pill nav, bell, avatar) · headline · 12-column board: left stack (performance, sleep waves, 3 metric tiles) · centre brain bowl with activity pills · right stack (sleep bars, heart bpm) · footer dots
