@@ -175,7 +175,7 @@
     const el = $('[data-rooms]');
     el.innerHTML = ROOMS.map((r, i) => {
       const rad = ((r.angle - 90) * Math.PI) / 180;
-      const dist = 42;
+      const dist = 44;
       const x = 50 + Math.cos(rad) * dist;
       const y = 50 + Math.sin(rad) * dist;
       return `<button type="button" class="er-room" style="left:${x}%;top:${y}%" data-v="${r.id}" aria-pressed="${i === room}" aria-label="${r.name}"><span data-icon="${r.icon}"></span><span class="er-room-code">${r.label}</span></button>`;
@@ -183,11 +183,31 @@
     paintIcons(el);
   }
 
+  function renderRadial() {
+    const host = $('[data-radial]');
+    if (!host) return;
+    const pct = power ? bright / 100 : 0;
+    const size = 320, c = size / 2, r = 142, from = -150, to = 150;
+    const end = from + (to - from) * pct;
+    const ticks = Array.from({ length: 24 }, (_, i) => {
+      const a = from + ((to - from) * i) / 23;
+      const [x1, y1] = polar(c, c, r + 8, a);
+      const [x2, y2] = polar(c, c, r + (i % 3 === 0 ? 18 : 14), a);
+      return `<line class="tick" x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
+    }).join('');
+    host.innerHTML = `<svg viewBox="0 0 ${size} ${size}" aria-hidden="true">
+      <path class="track" d="${arcPath(c, c, r, from, to)}"/>
+      <path class="fill" d="${arcPath(c, c, r, from, Math.max(end, from + 0.5))}"/>
+      ${ticks}
+    </svg>`;
+  }
+
   function renderDial() {
     const pct = bright / 100;
     $('[data-dial]').innerHTML = `<div role="img" aria-label="Brightness ${bright} percent">${arcGauge(pct, { size: 140, w: 12, from: -135, to: 135, color: '--accent', knob: true })}</div>`;
     $('[data-dial-note]').textContent = scene ? 'Scene · Soft amber' : 'Scene · Cool white';
     $('[data-scene]').setAttribute('aria-pressed', String(scene));
+    renderRadial();
   }
 
   function renderReadout() {
@@ -275,6 +295,7 @@
     power = !power;
     renderReadout();
     renderLamp();
+    renderRadial();
     renderTrend();
     renderFeed();
     toast(power ? 'Lights on · sample' : 'Lights off · sample');

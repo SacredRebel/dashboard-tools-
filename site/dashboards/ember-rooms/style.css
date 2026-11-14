@@ -270,19 +270,26 @@ body {
 /* ---- centre pendant stage (fills the well — lamp + orbit dominate) ---- */
 .er-stage {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  min-width: 0; padding: 4px; min-height: 520px;
+  min-width: 0; padding: 4px; min-height: 560px;
 }
 .er-orbits {
   position: relative;
-  width: min(100%, 560px);
+  width: min(100%, 620px);
   aspect-ratio: 1;
   display: grid; place-items: center;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 50% 42%, rgb(255 255 255 / 0.55), transparent 42%),
-    radial-gradient(circle at 50% 55%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 55%);
-  box-shadow: var(--neo-inset);
+    radial-gradient(circle at 50% 40%, rgb(255 255 255 / 0.72), transparent 44%),
+    radial-gradient(circle at 50% 55%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 58%);
+  box-shadow: var(--neo-inset), 0 0 0 1px rgb(255 255 255 / 0.35);
 }
+.er-radial {
+  position: absolute; inset: 8%; z-index: 1; pointer-events: none;
+}
+.er-radial svg { width: 100%; height: 100%; }
+.er-radial .track { stroke: color-mix(in srgb, var(--border) 70%, var(--text-muted)); stroke-width: 10; fill: none; stroke-linecap: round; opacity: 0.55; }
+.er-radial .fill { stroke: var(--accent); stroke-width: 10; fill: none; stroke-linecap: round; filter: drop-shadow(0 0 10px var(--accent-soft)); }
+.er-radial .tick { stroke: color-mix(in srgb, var(--text-muted) 55%, transparent); stroke-width: 2; }
 .er-ring {
   position: absolute; border-radius: 50%;
   border: 2px solid color-mix(in srgb, var(--border) 80%, var(--text-muted));
@@ -291,34 +298,35 @@ body {
     0 0 0 1px rgb(255 255 255 / 0.25);
   pointer-events: none;
 }
-.er-ring.r1 { inset: 4%; opacity: 0.55; }
-.er-ring.r2 { inset: 14%; opacity: 0.85; border-style: dashed; border-width: 1.5px; }
-.er-ring.r3 { inset: 24%; opacity: 0.45; }
+.er-ring.r1 { inset: 3%; opacity: 0.5; }
+.er-ring.r2 { inset: 12%; opacity: 0.9; border-style: dashed; border-width: 1.75px; border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); }
+.er-ring.r3 { inset: 22%; opacity: 0.4; }
 .er-rooms { position: absolute; inset: 0; z-index: 3; }
 .er-room {
-  position: absolute; width: 52px; height: 52px; margin: -26px;
-  border: 0; border-radius: 50%;
+  position: absolute; width: auto; min-width: 56px; height: auto; margin: 0;
+  transform: translate(-50%, -50%);
+  border: 0; border-radius: 999px;
+  padding: 8px 12px 8px 8px;
   background: var(--surface); color: var(--text);
-  display: grid; place-items: center; gap: 0;
+  display: inline-flex; align-items: center; gap: 8px;
   box-shadow: var(--neo-sm);
   font-size: 12px; font-weight: 700;
-  transition: transform 160ms var(--ease-out), background 160ms ease, box-shadow 160ms ease;
+  transition: transform 160ms var(--ease-out), background 160ms ease, box-shadow 160ms ease, color 160ms ease;
 }
-.er-room svg { width: 18px; height: 18px; }
+.er-room svg { width: 18px; height: 18px; flex: none; }
 .er-room-code {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
-  font-size: 12px;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.04em; line-height: 1;
+  color: inherit;
 }
-.er-room:hover { transform: translateY(-2px) scale(1.04); }
-.er-room:active { transform: scale(0.96); }
+.er-room:hover { transform: translate(-50%, calc(-50% - 2px)) scale(1.04); }
+.er-room:active { transform: translate(-50%, -50%) scale(0.96); }
 .er-room[aria-pressed="true"] {
   background: var(--accent); color: var(--accent-fg);
   box-shadow: 0 0 0 8px var(--accent-soft), var(--neo-sm);
-  transform: scale(1.08);
+  transform: translate(-50%, -50%) scale(1.06);
 }
 .er-lamp {
-  position: relative; z-index: 2; width: 52%;
+  position: relative; z-index: 2; width: 48%;
   display: grid; place-items: center;
   transition: opacity 200ms ease;
 }
@@ -342,13 +350,14 @@ body {
 .er-lamp.is-off { opacity: 0.55; }
 .er-lamp.is-off .er-lampglow { opacity: 0.05; }
 .er-readout {
-  position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%);
+  position: absolute; bottom: 18%; left: 50%; transform: translateX(-50%);
   z-index: 4; text-align: center;
-  padding: 12px 16px; border-radius: var(--radius-md);
-  background: var(--surface);
-  box-shadow: var(--neo-sm);
+  padding: 14px 18px; border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  box-shadow: var(--neo-sm), inset 0 1px 0 rgb(255 255 255 / 0.65);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
 }
-.er-frac { font-size: 40px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin: 0; }
+.er-frac { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin: 0; }
 .er-slash { opacity: 0.35; margin: 0 2px; font-weight: 500; }
 .er-lightlabel {
   font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
