@@ -99,8 +99,16 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
 .ff-scene { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 55% 45%, var(--scene-2), var(--scene-1) 55%, var(--bg)); }
 .ff-athlete {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: 60% center; opacity: 0.42;
-  filter: saturate(0.85) contrast(1.05);
+  object-fit: cover; object-position: 52% 28%; opacity: 0.48;
+  filter: saturate(0.9) contrast(1.06);
+}
+@media (max-width: 640px) {
+  .ff-athlete { object-position: 48% 18%; opacity: 0.4; }
+  .ff-vignette {
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--bg) 35%, transparent), transparent 28%, color-mix(in srgb, var(--bg) 55%, transparent) 62%, var(--bg)),
+      linear-gradient(90deg, color-mix(in srgb, var(--bg) 80%, transparent), transparent 40%, transparent 70%, color-mix(in srgb, var(--bg) 75%, transparent));
+  }
 }
 .ff-vignette {
   position: absolute; inset: 0;
@@ -220,19 +228,27 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
   .ff-energy-copy { text-align: left; }
 }
 @media (max-width: 960px) {
-  .ff { grid-template-columns: 1fr; }
-  .ff-rail { flex-direction: row; justify-content: center; border-right: 0; border-bottom: 1px solid var(--glass-border); padding: 10px; }
-  .ff-rail-foot { margin-top: 0; margin-left: auto; }
+  .ff { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; }
+  .ff-rail {
+    order: 2; flex-direction: row; justify-content: space-around;
+    border-right: 0; border-top: 1px solid var(--glass-border); border-bottom: 0;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+    position: sticky; bottom: 0; z-index: 5;
+    background: rgb(8 9 12 / 0.88);
+  }
+  .ff-rail-foot { display: none; }
   .ff-activity, .ff-sleep, .ff-heart, .ff-well, .ff-focus { grid-column: span 6; }
   .ff-energy { grid-column: span 12; display: flex; }
 }
 @media (max-width: 640px) {
-  .ff-shell { padding: 12px 14px 20px; }
+  .ff-shell { padding: 12px 14px 88px; }
   .ff-activity, .ff-sleep, .ff-heart, .ff-well, .ff-focus, .ff-energy { grid-column: span 12; }
   .ff-huge { font-size: 44px; }
   .ff-tools { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
   .ff-who span:last-child { display: none; }
   .ff-ask { order: 3; flex-basis: 100%; }
+  .ff-grid { gap: 12px; }
+  .ff-card { backdrop-filter: blur(18px); }
 }
 
 /* multipage + motion */
