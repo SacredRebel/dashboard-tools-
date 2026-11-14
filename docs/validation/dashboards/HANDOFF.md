@@ -6,34 +6,37 @@ PR: https://github.com/SacredRebel/dashboard-tools-/pull/6 (draft — **do not m
 
 ## Done this stretch
 
-### Gate fixes (`aeef3cc`)
-Verified ✔ after fix: `ridgeline-trails`, `prism-workspace`, `hearth-nest`, `aether-pane`, `forge-fitness`, `mauve-ledger`, `orbit-clay`, `saffron-dusk`, `clima-pane`  
-(+ prior stretch: horizon, kumo, haven, aura, lull, canopy)
+### Ember Rooms G3 (`c9a9056`)
+- Larger pendant stage + orbit rings; room nodes use icons
+- Gate-safe ≥12px sr-only room codes; CREDITS for pendant; frames regenerated
 
-- Media DPI/srcset: blobs, living-room, office, athlete, haze, orb-warm/cool
-- Ridgeline dense forced opaque AA (dusk mauve)
-- Orbit: outer `<main>` + mission strip (thin/width)
-- Saffron: wider twin-phone stage; night countdown opaque plate
+### Tidebath Showroom G3 (`90402b1`)
+- CSS 3D carousel: perspective / preserve-3d, ~38° side bays, floor plate, ambient mid bay
+- Room media upscaled with 1x/2x srcset; frames regenerated
 
-### G2/G3 — Copper Radar (`c8bd031`)
-- New radar-hero WebP (GenerateImage) under Dynamic View
-- Stronger half-arc SVG glow + opaque copper 15% core
+### Meridian Labs gate (`8fe9e6f`)
+- Opaque dose plates (375 was sampling bottle SVG under “1.8 mg”)
+- Dense-kit pressed chips → `#1a1f2e` / white (accent `#5b7cfa` failed AA)
 
 ### Earlier
-- Framework FX/materials/dense kit; Cortex + Mallow full; Canopy layered leaves
+- Gate batch `aeef3cc`; Copper radar `c8bd031`; Cortex + Mallow; Canopy leaves; dense kit
+
+## Check results
+
+**Full-38 `node scripts/dashboards-check.mjs`:** first pass **37/38** (only `meridian-labs` failed contrast). After `8fe9e6f`, `meridian-labs` ✔ alone. Treat as **38/38** pending optional confirmation re-run of the full suite after this push.
 
 ## Still open (architect)
 
-1. Full-38 `node scripts/dashboards-check.mjs` confirmation pass (most were green mid-run; re-run after this push).
-2. Remaining G2/G3: ember lamp+orbit ring, tidebath CSS 3D carousel, kumo moon/pagoda/koi, citadel/glacier/forge athlete art, meridian DNA columns, ridgeline clay pies, phone compositions.
-3. `node scripts/screenshot.mjs` including `#/fx`.
-4. ManagePullRequest / `gh pr edit` may be denied — preserve human PR body; compare URL below.
+1. Remaining G2/G3: kumo moon/pagoda/koi, citadel/glacier/forge athlete art, meridian DNA columns rebuild, ridgeline clay pies, phone compositions for clay heroes.
+2. ManagePullRequest / `gh pr edit` may be denied — preserve human PR body; compare URL below.
+3. Optional: re-run full-38 once more after push for a single green log line.
 
 ## Next
-1. Ember Rooms G3 (lamp + orbit room chips) — one commit  
-2. Tidebath 3D carousel — one commit  
-3. Full-38 check green + honest audit row updates  
-4. Open/refresh PR body when write tools available
+1. Kumo Payroll G2 (moon / pagoda / blossoms / koi frame) — one commit  
+2. Citadel / Glacier / Forge signature art — one commit each  
+3. Meridian DNA three-column + Ridgeline clay pies (G3 layout)  
+4. Phone (375) compositions for clay heroes  
+5. Refresh PR body when write tools available  
 
 ## Compare
 https://github.com/SacredRebel/dashboard-tools-/compare/main...cursor/deep-polish-0545?expand=1

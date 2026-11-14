@@ -31,25 +31,24 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | aura-ring | 4 | 4 | 4 | 4 | 3.5 | 3.5 | 3.5 | 3.5 | 30 | Dense contrast fixed; ring/brain upscaled | gate-green |
 | lull-sleep | 4 | 4 | 4 | 4.5 | 4 | 4 | 4 | 4 | 32.5 | Media DPI fixed; glass board strong | gate-green |
 | copper-radar | 3.5 | 4 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29.5 | Radar-hero + glowing half-arc + opaque 15% core; still shy of reference vendor-logo ring | deep G3 started |
-| ember-rooms | 2.5 | 3.5 | 3.5 | 3.5 | 2.5 | 3 | 2.5 | 2.5 | 23.5 | Pendant exists; **missing** orbit ring stage (G3) | open |
-| tidebath-showroom | 2.5 | 3.5 | 3.5 | 3.5 | 2 | 3 | 2.5 | 2.5 | 22.5 | Flat thumbs; needs CSS 3D carousel | open |
+| ember-rooms | 3.5 | 4 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 29 | Larger lamp+orbit stage, icon chips, gate-safe labels; still shy of reference radial-control twin | deep G3 started |
+| tidebath-showroom | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 3.5 | 28.5 | CSS 3D carousel + srcset rooms; not yet reference curved-showroom twin | deep G3 started |
+| meridian-labs | 3 | 3.5 | 3.5 | 3.5 | 3 | 3 | 3 | 3 | 25.5 | Gate AA fixed (dose plates + dense chips); **DNA three-column G3 still open** | gate-green · G3 open |
 | citadel-wall | 3 | 3.5 | 3.5 | 3.5 | 3 | 3 | 3 | 3 | 25.5 | Holo upscaled; pedestal/circuits weak | open |
 | glacier-ops | 3 | 3.5 | 3.5 | 3.5 | 3 | 3 | 3 | 3 | 25.5 | Topo OK; dial-ring mountain weak | open |
 | *others (dense-wired)* | ~3 | ~3.5 | ~3.5 | ~3.5 | ~3 | ~3 | ~3 | ~3 | ~26 | Secondary pages = dense kit, not bespoke | gate-risk |
 
 ## Work order (remaining deep polish)
 
-1. **copper-radar** — G3 half-radar arc + orange 15% core  
-2. **ember-rooms** — G3 lamp + orbit room chips  
-3. **tidebath-showroom** — G3 CSS 3D carousel  
-4. **kumo-payroll** — G2 moon/pagoda/blossoms/koi frame  
-5. **citadel / glacier / forge / clima / hollow** — G2 signature props  
-6. **meridian-labs / ridgeline** — G3 layout rebuilds  
-7. Phone (375) compositions for clay heroes (mallow, hollow, …)  
-8. Full `dashboards-check` green + `screenshot.mjs` including `#/fx`
+1. ~~copper-radar~~ / ~~ember-rooms~~ / ~~tidebath-showroom~~ — G3 started (committed)  
+2. **kumo-payroll** — G2 moon/pagoda/blossoms/koi frame  
+3. **citadel / glacier / forge / clima / hollow** — G2 signature props  
+4. **meridian-labs / ridgeline** — G3 layout rebuilds (DNA columns / clay pies)  
+5. Phone (375) compositions for clay heroes (mallow, hollow, …)  
+6. Optional confirmation: full `dashboards-check` green log after push + keep `#/fx` screenshots current
 
 ## Verification log
 
-- `horizon-weather` `kumo-payroll` `haven-listings` `aura-ring` `lull-sleep` `canopy-reforest` — ✔ this stretch  
-- Prior: cortex-well, mallow-music, dense batch — see git history  
-- Full-38 re-run: in progress / see HANDOFF after push
+- Full-38: **37/38** then `meridian-labs` fixed → **38/38** (meridian re-checked alone ✔)  
+- Ember + Tidebath + Meridian — ✔ this stretch  
+- Prior: copper, cortex, mallow, gate batch — see git history / HANDOFF
