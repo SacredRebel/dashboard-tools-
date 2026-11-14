@@ -216,15 +216,15 @@ A cinematic dark smart-home board: amber accent, living-room photo hero with dev
 
 _Forge Fitness · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A cinematic dark fitness board: frosted glass cards for steps, sleep, heart, wellness and focus float over a code-drawn gym silhouette atmosphere, with an energy-and-recovery gauge on the right.
+A cinematic dark fitness board: frosted glass cards for steps, sleep, heart, wellness and focus float over an athlete gym photo atmosphere, with an energy-and-recovery gauge on the right.
 
 - **Use cases:** Health & fitness · **Mode:** dark · **Mood:** cinematic, athletic, moody, focused, premium
-- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
-- **Motion:** _none yet_
-- **Signature:** Glass metric cards floating over an SVG athlete/gym silhouette with orange and lime accents — no photographic faces.
+- **Pages:** Overview (`overview`, Dashboard) · Activity (`activity`, Report) · Sessions (`sessions`, Calendar) · History (`history`, List) · Settings (`settings`, Settings)
+- **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
+- **Signature:** Glass metric cards floating over an athlete gym photo with orange and lime accents.
 - **Layout:** 64px icon rail · top bar (brand, ask-anything search, add, avatar) · toolbar (search, edit, date range, add wallet, create report) · 12-column glass grid: activity · sleep · heart · wellness + focus + tall energy/recovery gauge
 - **Responsive:** ≤1180px: energy gauge drops below wellness/focus · ≤960px: icon rail becomes top chips, cards 2-col · ≤640px: single column, toolbar scrolls
-- **Fonts:** Syne / Manrope · **Palette:** bg `#0c0d10`, surface `#1a1c24`, text `#f4f1ea`, muted `#cfc8be`, accent `#ff6a2a`, lime `#c8f05a`, gold `#f5d76e`
+- **Fonts:** Syne / Manrope · **Palette:** bg `#0c0d10`, surface `#1a1c24`, text `#f4f1ea`, muted `#d8d1c7`, accent `#ff6a2a`, lime `#c8f05a`, gold `#f5d76e`
 - **Variants:** Forge, Ember, Ice · **Closest toolkit theme:** `ember`
 
 **Best for**
@@ -237,7 +237,7 @@ A cinematic dark fitness board: frosted glass cards for steps, sleep, heart, wel
 - Brands that need a bright, clinical look
 - Screens that must work without large decorative backgrounds
 
-**Components:** Slim icon rail · Ask-anything search field · Date-range chip and report actions · Steps activity category grid · Dual-line sleep chart · Heart-rate barbell week bars · Wellness score with wave art · Focus soundwave meter · Energy recovery semi-gauge with metric pills
+**Components:** Slim icon rail wired to multipage · Ask-anything search field · Date-range chip and report actions · Steps activity category grid · Dual-line sleep chart · Heart-rate barbell week bars · Wellness score with wave art · Focus soundwave meter · Energy recovery semi-gauge with metric pills · Athlete gym photo atmosphere
 
 ---
 

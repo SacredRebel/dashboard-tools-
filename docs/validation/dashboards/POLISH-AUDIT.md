@@ -1,6 +1,6 @@
 # Polish audit — gallery dashboards
 
-Next: `forge-fitness` (Phase C — total 29).
+Next: `horizon-weather` (Phase C — total 30).
 
 Priority polish targets (architect list): #18 hearth-nest, #21 glacier-ops, #23 citadel-wall, #30 dune-panels, #33 orbit-clay, #37 cortex-well, #26 zest-health, #28 mauve-ledger.
 
@@ -32,7 +32,7 @@ Track scores 0–5 per axis. **Total** = sum of scored columns.
 | 22 | folio-club | Folio Club | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | less background blur; different book cover | queued |
 | 23 | citadel-wall | Citadel Wall | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | hologram cube + HUD rings; multipage fleet/shipments | polished 23→36 |
 | 24 | aether-pane | Aether Pane | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | office photo + perspective pane; multipage + motion | polished 27→36 |
-| 25 | forge-fitness | Forge Fitness | 5 | 4 | 4 | 4 | 2 | 2 | 4 | 4 | 29 | athlete photo background removed | queued |
+| 25 | forge-fitness | Forge Fitness | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 36 | athlete photo atmosphere; multipage + motion | polished 29→36 |
 | 26 | zest-health | Zest Health | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 5 | 32 | no 3D rocket CTA; dot chart vs scatter | queued |
 | 27 | orchard-sales | Orchard Sales | 5 | 4 | 4 | 4 | 4 | 4 | 4 | 5 | 34 | minor copy/date drift only | queued |
 | 28 | mauve-ledger | Mauve Ledger | 5 | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 31 | lighter glass than ref; no email table block | queued |
@@ -73,7 +73,7 @@ Sorted by ascending **total** (Phase C polish sequence):
 20. ~~`solstice-energy` — 29~~ → polished (36)
 21. ~~`plumage-survey` — 29~~ → polished (36)
 22. ~~`veil-rooms` — 29~~ → polished (36)
-23. `forge-fitness` — 29
+23. ~~`forge-fitness` — 29~~ → polished (36)
 24. `horizon-weather` — 30
 25. `prism-workspace` — 30
 26. `orbit-clay` — 30
