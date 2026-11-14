@@ -166,28 +166,38 @@
       const [x2, y2] = polar(cx, cy, i % 3 === 0 ? 248 : 252, a);
       return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="var(--text-muted)" stroke-opacity="0.45" stroke-width="1.5"/>`;
     }).join('');
+    // Dot anchors in SVG; mark chips + labels as HTML overlays (≥12px / AA).
     const nodes = VENDORS.map((v) => {
       const [x, y] = polar(cx, cy, v.r * 250, v.a);
-      const w = Math.max(72, 18 + v.label.length * 7);
       return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})">
-        <circle r="6" fill="#1a120f" stroke="#fff7f2" stroke-width="2"/>
+        <circle r="8" fill="#fff7f2" stroke="var(--accent)" stroke-width="2.5"/>
       </g>`;
     }).join('');
     const flags = FLAGS.map((f) => {
       const [x, y] = polar(cx, cy, f.r * 250, f.a);
       if (f.kind === 'warn') {
         return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})">
-          <path d="M0,-8 L7,6 H-7 Z" fill="var(--sev-high)" stroke="var(--surface)" stroke-width="1"/>
-          
+          <path d="M0,-9 L8,7 H-8 Z" fill="var(--sev-high)" stroke="#fff7f2" stroke-width="1.5"/>
         </g>`;
       }
       return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})">
-        <circle r="12" fill="#fff7f2" stroke="#1a120f" stroke-width="1.5"/>
-        
+        <circle r="9" fill="#fff7f2" stroke="#1a120f" stroke-width="1.5"/>
       </g>`;
     }).join('');
     const sweep = resolved / 100;
     const sweepEnd = -180 + 180 * Math.min(1, sweep + 0.35);
+    const chipHtml = VENDORS.map((v) => {
+      const [x, y] = polar(cx, cy, Math.min(0.98, v.r + 0.08) * 250, v.a);
+      const left = (x / W) * 100;
+      const top = (y / H) * 100;
+      return `<span class="cp-vchip" style="left:${left.toFixed(2)}%;top:${top.toFixed(2)}%"><i aria-hidden="true">${v.mark}</i>${v.label}</span>`;
+    }).join('') + FLAGS.map((f) => {
+      const [x, y] = polar(cx, cy, f.r * 250, f.a);
+      const left = (x / W) * 100;
+      const top = (y / H) * 100;
+      const lab = f.kind === 'warn' ? '!' : f.kind;
+      return `<span class="cp-vchip cp-vflag" style="left:${left.toFixed(2)}%;top:${top.toFixed(2)}%">${lab}</span>`;
+    }).join('');
     $('[data-radar]').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Radar with ${VENDORS.length} fictional vendors and ${resolved}% manually resolved">
       <defs>
         <linearGradient id="cp-arc-glow" x1="0" y1="0" x2="1" y2="0">
@@ -197,19 +207,21 @@
         </linearGradient>
       </defs>
       ${rings.map((r, i) => `<path d="${arc(cx, cy, r, -180, 0)}" fill="none" stroke="${i === rings.length - 1 ? 'var(--accent)' : 'var(--border)'}" stroke-width="${i === rings.length - 1 ? 2 : 1.25}" stroke-opacity="${i === rings.length - 1 ? 0.55 : 0.9}" ${i % 2 === 1 ? 'stroke-dasharray="4 6"' : ''}/>`).join('')}
+      <circle cx="${cx}" cy="${cy}" r="42" fill="#1a120f" stroke="#3b241c" stroke-width="3"/>
       <path d="${arc(cx, cy, 236, -180, sweepEnd)}" fill="none" stroke="url(#cp-arc-glow)" stroke-width="6" stroke-linecap="round"/>
       <path d="${arc(cx, cy, 236, -180, sweepEnd)}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" opacity="0.95"/>
       ${ticks}
       <line x1="${cx - 260}" y1="${cy}" x2="${cx + 260}" y2="${cy}" stroke="var(--border)" stroke-width="1"/>
       ${nodes}${flags}
-    </svg>`;
-    $('[data-resolved-pct]').textContent = `${resolved}%`;
+    </svg>
+    <div class="cp-vendor-ring" data-vendor-ring aria-hidden="true">${chipHtml}</div>`;
+    $$('[data-resolved-pct]').forEach((el) => { el.textContent = `${resolved}%`; });
     const legend = $('[data-radar-legend]');
     if (legend) {
       legend.innerHTML = VENDORS.map((v) =>
         `<span class="cp-rlab"><i aria-hidden="true">${v.mark}</i>${v.label}</span>`
       ).join('') + FLAGS.map((f) =>
-        `<span class="cp-rlab cp-rflag" aria-hidden="true">${f.kind === 'warn' ? '!' : f.kind}</span>`
+        `<span class="cp-rlab cp-rflag" aria-hidden="true">${f.kind === 'warn' ? 'Alert' : f.kind}</span>`
       ).join('');
     }
 
