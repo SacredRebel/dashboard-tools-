@@ -31,7 +31,7 @@ PR: https://github.com/SacredRebel/dashboard-tools-/pull/6 (draft — **do not m
 ## Check results
 
 Touched ids ✔: `meridian-labs` `solstice-energy` `pulsar-analytics` `taffy-analytics` `pebble-studio` `dune-panels`  
-Prior full-38 at `3c2d8b5` was 38/38; re-run after this push if CI allows.
+**Full-38 confirmation: 38/38 ✔** (`node scripts/dashboards-check.mjs`, exit 0).
 
 ## Still open (architect)
 
@@ -40,8 +40,8 @@ Prior full-38 at `3c2d8b5` was 38/38; re-run after this push if CI allows.
 3. ManagePullRequest often unavailable — preserve human PR body; compare URL below.
 
 ## Next
-1. Optional full-38 confirmation on tip  
-2. Any remaining audit ≤3 clay/photo boards  
+1. Remaining dense secondary pages / shy reference twins  
+2. Optional deeper Solstice/Pulsar layout twins  
 3. Refresh PR body when write tools available  
 
 ## Compare
