@@ -13,9 +13,10 @@
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
+  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="go">
+  <div class="go" data-db-app>
     <header class="go-top">
       <a class="go-brand" href="#" aria-label="Glacier Ops home"><span class="go-mark" aria-hidden="true"></span>Glacier Ops</a>
       <nav class="go-tabs" aria-label="Sectors" data-sectors>
@@ -49,7 +50,7 @@
 
       <section class="go-center" aria-labelledby="go-core-h">
         <h2 class="vh" id="go-core-h">Core dial</h2>
-        <div class="go-dial" data-dial></div>
+        <div class="go-dialwrap"><img class="go-topo" src="media/topo.webp" width="800" height="800" alt="" decoding="async" aria-hidden="true"><div class="go-dial" data-dial></div></div>
         <p class="go-dialnote" data-dialnote aria-live="polite"></p>
         <div class="go-seglocks" role="group" aria-label="Rim locks" data-rim></div>
       </section>
