@@ -190,7 +190,7 @@
 }
 .db-ui-cal-day[aria-pressed="true"] {
   background: var(--accent, #3b82f6);
-  color: var(--on-accent, #fff);
+  color: #ffffff;
   border-color: transparent;
 }
 .db-ui-cal-day:focus-visible {

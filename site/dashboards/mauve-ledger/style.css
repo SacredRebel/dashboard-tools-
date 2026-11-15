@@ -12,6 +12,7 @@
   --text: #2a2740;
   --text-muted: #3a3550;
   --text-subtle: #8b85a8;
+  --on-accent: #ffffff;
   --accent: #6a58c8;
   --accent-fg: #ffffff;
   --accent-soft: rgb(106 88 200 / 0.22);
@@ -24,7 +25,7 @@
   --haze-3: #bfdbfe;
   --bar-soft: rgb(106 88 200 / 0.28);
   --on-dark: #ffffff;
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Space Grotesk", "Outfit", system-ui, sans-serif;
   --font-sans: "Outfit", system-ui, sans-serif;
   --radius-sm: 12px;
   --radius-md: 18px;
@@ -272,3 +273,9 @@ body {
 @media (prefers-reduced-motion: reduce) {
   [class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover { transform: none; }
 }
+
+[data-db-page-host] .db-ui-cal-day[aria-pressed="true"] {
+  color: #ffffff !important;
+  background: #4a3480 !important;
+}
+.ml-hello h1 { font-family: "Space Grotesk", "Outfit", system-ui, sans-serif !important; font-weight: 500 !important; }
