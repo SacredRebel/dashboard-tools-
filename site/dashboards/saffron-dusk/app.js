@@ -29,7 +29,7 @@
   }
   paintIcons();
 
-  const DAYS = [8, 9, 10, 11, 12, 13, 14];
+  const DAYS = [8, 9, 10, 11, 12, 13];
   const WINDOWS = {
     8: { imsak: '4:18 AM', iftar: '6:05 PM', left: 'Iftar in 2 hr 10 min', pct: 0.72 },
     9: { imsak: '4:15 AM', iftar: '6:08 PM', left: 'Iftar in 1 hr 34 min', pct: 0.86 },
@@ -65,9 +65,10 @@
   $('[data-dow]').textContent = fmtDate(new Date(), { weekday: 'short' });
 
   function renderDates() {
-    $('[data-dates]').innerHTML = DAYS.map((d) =>
-      `<button type="button" role="tab" aria-selected="${d === day}" data-day="${d}">${d}</button>`
-    ).join('');
+    $('[data-dates]').innerHTML = DAYS.map((d) => {
+      const on = d === day;
+      return `<button type="button" role="tab" aria-selected="${on}" aria-pressed="${on}" data-day="${d}">${d}</button>`;
+    }).join('');
   }
 
   function sunArc(pct) {
@@ -239,7 +240,17 @@
       console.error('DB.ui missing — load ../_shared/ui/index.js');
       return;
     }
-    window.DB.ui.mount({ main, overview, pages: PAGES, brand: "Saffron Dusk" });
+    window.DB.ui.mount({
+    renderPage(page) {
+      const rows=['Imsak prep','Water goal','Iftar gather','Night prayer','Journal','Community'].map((n,i)=>({id:'r'+i,cells:[n,i%2?'Done':'Soon',`<span class="num">${i+1}</span>`]}));
+      return `<div style="color:#14201c">
+        <div class="db-ui-grid">${[8,2,6,1.9].map((v,i)=>`<div class="db-ui-panel db-ui-kpi" style="background:#fff;color:#14201c"><b class="num">${v}</b><span style="color:#3a4a44">${['Sessions','Journeys','Glasses','Liters'][i]}</span></div>`).join('')}</div>
+        <section class="db-ui-panel" style="margin-top:1rem;background:#fff;color:#14201c"><h2>${page.name}</h2>
+        ${window.DB.ui.table({cols:['Ritual','Status','#'] ,rows})}
+        ${window.DB.ui.calendar({days:28,active:9})}</section>
+      </div>`;
+    },
+ main, overview, pages: PAGES, brand: "Saffron Dusk" });
     if (window.DB?.fx) window.DB.fx.remount(overview);
     void reduce;
   })();

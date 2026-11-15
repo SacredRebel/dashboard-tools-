@@ -174,6 +174,9 @@ body {
 .sd-serif { font-family: var(--font-display); font-weight: 600; }
 
 .sd-stage {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
   display: flex;
   justify-content: space-between;
   gap: 32px;
@@ -678,7 +681,7 @@ body {
 .dbp-page { background: #ffffff; color: #141414; }
 .dbp-lead, .dbp-chip, .dbp-card { background: #f4f4f6; color: #141414; }
 .dbp-toast { background: #ffffff; color: #141414; }
-.db-sample { display:inline-block !important; padding: 6px 12px !important; border-radius: 999px !important; background: #ffffff !important; color: #141414 !important; font-weight: 650 !important; font-size: 13px !important; }
+.db-sample { display:inline-block !important; padding: 6px 12px !important; border-radius: 999px !important; background: #ffffff !important; color: #141414; font-weight: 650 !important; font-size: 13px !important; }
 
 .dbp-page {
   margin: 12px 0 20px; padding: 20px; border-radius: 18px;
@@ -718,27 +721,25 @@ body {
 .sd-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block; }
 
 /* forced AA surfaces for multipage stubs (all variants) */
-.dbp-page { background: #ffffff !important; color: #141414 !important; }
-.dbp-page h1 { color: #141414 !important; }
-.dbp-lead, .dbp-card, .dbp-chip, .dbp-state, .dbp-seg { background: #f3f4f7 !important; color: #141414 !important; border-color: #d7dae2 !important; }
-.dbp-seg button { color: #3a3f4d !important; }
-.dbp-seg button[aria-pressed="true"] { background: #ffffff !important; color: #141414 !important; }
-.dbp-btn { background: #1a1f2e !important; color: #ffffff !important; }
-.dbp-card strong, .dbp-row, .dbp-page p { color: #141414 !important; }
+.dbp-page { background: #ffffff !important; color: #141414; }
+.dbp-page h1 { color: #141414; }
+.dbp-lead, .dbp-card, .dbp-chip, .dbp-state, .dbp-seg { background: #f3f4f7 !important; color: #141414; border-color: #d7dae2; }
+.dbp-seg button { color: #3a3f4d; }
+.dbp-seg button[aria-pressed="true"] { background: #ffffff !important; color: #141414; }
+.dbp-btn { background: #1a1f2e !important; color: #ffffff; }
+.dbp-card strong, .dbp-row, .dbp-page p { color: #141414; }
 
 /* SAFFRON OVERVIEW AA — light today phone keeps dark ink */
 .sd-today {
-  /* restore phone surface (do not chip the whole panel) */
-  background:
-    radial-gradient(420px 280px at 80% 0%, color-mix(in srgb, var(--teal) 18%, transparent), transparent 60%),
-    linear-gradient(180deg, var(--phone-today), color-mix(in srgb, var(--phone-today) 80%, var(--teal-soft))) !important;
-  color: var(--text) !important;
+  /* cream today phone — dark ink (never inherit night --text) */
+  background: #f3eee4 !important;
+  color: #14201c;
   padding: 22px 18px 16px !important;
   border-radius: 36px !important;
   font-weight: inherit !important;
 }
 .sd-today .sd-dow {
-  color: #1a2a24 !important;
+  color: #1a2a24;
   background: transparent !important;
   padding: 0 !important;
   border-radius: 0 !important;
@@ -747,7 +748,7 @@ body {
 .sd-today .sd-title,
 .sd-today .sd-title .sd-serif,
 .sd-today .sd-title .num {
-  color: #1a2a24 !important;
+  color: #1a2a24;
   background: transparent !important;
   display: inline !important;
   padding: 0 !important;
@@ -755,7 +756,7 @@ body {
 }
 .sd-dates button {
   background: #ffffff !important;
-  color: #1a2a24 !important;
+  color: #1a2a24;
   backdrop-filter: none !important;
   box-shadow: 0 0 0 1px #c9d4ce !important;
   font-weight: 700 !important;
@@ -763,17 +764,17 @@ body {
 }
 .sd-dates button[aria-selected="true"] {
   background: #3a4a38 !important;
-  color: #f4f0e6 !important;
+  color: #f4f0e6;
   box-shadow: none !important;
 }
 .sd-today .sd-meta,
 .sd-today .sd-arc-labels span,
 .sd-today .sd-countdown {
-  color: #3f5a54 !important;
+  color: #3f5a54;
 }
 .sd-today .sd-arc-labels b,
 .sd-today .sd-card h3 {
-  color: #1a2a24 !important;
+  color: #1a2a24;
 }
 
 /* SAFFRON NAV AA */
@@ -816,7 +817,7 @@ body {
 }
 .sd-avatar {
   background: #1a140c !important;
-  color: #fff6ea !important;
+  color: #fff6ea;
 }
 .sd-person h3,
 .sd-daily h3,
@@ -830,56 +831,55 @@ body {
 }
 [data-variant="dawn"] .sd-avatar {
   background: #16302c !important;
-  color: #f4fffc !important;
+  color: #f4fffc;
 }
 [data-variant="dawn"] .sd-daily h3,
 [data-variant="dawn"] #sd-daily-h {
   background: #16302c;
   color: #f4fffc;
 }
+/* night: keep cream today phone (r4 twin) — dark ink on cream */
 [data-variant="night"] .sd-today {
-  background:
-    radial-gradient(420px 280px at 80% 0%, rgb(47 111 106 / 0.25), transparent 60%),
-    linear-gradient(180deg, #1a221c, #121814) !important;
-  color: #f4f0e6 !important;
+  background: #f3eee4 !important;
+  color: #14201c;
 }
 [data-variant="night"] .sd-today .sd-dow {
-  background: #10160f !important;
-  color: #f4f0e6 !important;
+  background: #ffffff !important;
+  color: #14201c;
 }
 [data-variant="night"] .sd-today .sd-title,
 [data-variant="night"] .sd-today .sd-title .sd-serif,
-[data-variant="night"] .sd-today .sd-title .num {
-  color: #f4f0e6 !important;
+[data-variant="night"] .sd-today .sd-title .num,
+[data-variant="night"] .sd-today .sd-serif,
+[data-variant="night"] .sd-today [data-daynum] {
+  color: #14201c;
   background: transparent !important;
 }
 [data-variant="night"] .sd-dates button {
-  background: #10160f !important;
-  color: #f4f0e6 !important;
-  box-shadow: none !important;
+  background: #ffffff !important;
+  color: #14201c;
+  box-shadow: 0 0 0 1px #c9d4ce !important;
 }
 [data-variant="night"] .sd-dates button[aria-selected="true"] {
-  background: #c4783a !important;
-  color: #1a140c !important;
+  background: #0e1a16 !important;
+  color: #ffffff;
 }
 [data-variant="night"] .sd-today .sd-arc-labels span,
 [data-variant="night"] .sd-today .sd-arc-labels b,
 [data-variant="night"] .sd-today .sd-meta,
-[data-variant="night"] .sd-today .sd-card h3 {
-  color: #f4f0e6 !important;
-  background: #10160f !important;
-  padding: 2px 6px;
-  border-radius: 0;
-  box-shadow: 0 0 0 4px #10160f;
-}
+[data-variant="night"] .sd-today .sd-card h3,
 [data-variant="night"] .sd-today .sd-countdown {
-  color: #f4f0e6 !important;
-  background: #10160f !important;
-  padding: 8px 12px;
-  border-radius: 0;
-  box-shadow: 0 0 0 8px #10160f;
-  width: fit-content;
-  margin-left: auto;
+  color: #14201c;
+  background: transparent !important;
+  box-shadow: none;
+  padding: 0;
+}
+[data-variant="night"] .sd-today .sd-nav button {
+  color: #14201c;
+}
+[data-variant="night"] .sd-today .sd-nav button[aria-current="page"] {
+  color: #5a3010;
+  background: #ffffff;
 }
 
 
@@ -893,4 +893,419 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   [class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover { transform: none; }
+}
+
+/* r4: twin liquid-glass phones as heroes */
+.sd-stage {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: clamp(24px, 4vw, 48px);
+  padding: 32px 16px 48px;
+  background: linear-gradient(160deg, #7f9088 0%, #5c6b66 45%, #4a5854 100%);
+  min-height: 100vh;
+}
+.sd-phone {
+  width: min(28vw, 340px);
+  min-width: 280px;
+  border-radius: 36px;
+  padding: 22px 18px 16px;
+  position: relative;
+  overflow: hidden;
+  min-height: 640px;
+}
+.sd-phone.mat-glass-liquid {
+  backdrop-filter: blur(26px) saturate(1.65) brightness(1.06) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(1.65) brightness(1.06) !important;
+  border: 1px solid rgb(255 255 255 / 0.55) !important;
+  box-shadow: 0 28px 56px rgb(20 30 28 / 0.35), inset 0 1px 0 rgb(255 255 255 / 0.55) !important;
+}
+.sd-today.mat-glass-liquid {
+  background: linear-gradient(165deg, rgb(245 240 230 / 0.82), rgb(200 210 195 / 0.72)) !important;
+  color: #1c2420;
+}
+.sd-profile.mat-glass-liquid {
+  background: linear-gradient(165deg, rgb(40 48 36 / 0.78), rgb(70 58 32 / 0.7)) !important;
+  color: #f2ebe0;
+}
+.sd-card.mat-glass-liquid,
+.sd-card.mat-glass-frost {
+  min-height: 100px;
+  border-radius: 20px;
+}
+.sd-path {
+  height: 72px;
+  margin: 8px 0;
+  background: color-mix(in srgb, #d8c8a8 55%, transparent);
+  min-width: 240px;
+}
+.sd-water.mat-glass-liquid {
+  background: linear-gradient(165deg, rgb(80 160 150 / 0.45), rgb(40 120 110 / 0.35)) !important;
+}
+.sd-gather.mat-glass-liquid {
+  background: linear-gradient(135deg, rgb(220 140 70 / 0.55), rgb(180 90 40 / 0.4)) !important;
+}
+@media (max-width: 768px) {
+  .sd-stage { flex-direction: column; align-items: center; }
+  .sd-phone { width: min(92vw, 360px); }
+}
+
+.sd-meta, .sd-water .sd-meta, .sd-gather .sd-meta, [data-water-label], [data-liters], [data-gather-time] {
+  color: #14201c;
+  font-weight: 600 !important;
+}
+.sd-dates button, .sd-dates [role="tab"] {
+  color: #14201c;
+  font-weight: 600;
+}
+.sd-dates button[aria-selected="true"],
+.sd-dates button[aria-pressed="true"] {
+  background: #1a2a24 !important;
+  color: #f5f0e6;
+}
+.sd-today .sd-title, .sd-today .sd-serif, .sd-today .num[data-daynum] {
+  color: #14201c;
+}
+[data-variant="night"] .sd-today .sd-title,
+[data-variant="night"] .sd-today .sd-serif,
+[data-variant="night"] .sd-today .num[data-daynum] {
+  color: #14201c;
+}
+[data-variant="night"] .sd-today.mat-glass-liquid {
+  background: linear-gradient(165deg, rgb(245 240 230 / 0.92), rgb(210 215 200 / 0.88)) !important;
+}
+.sd-profile .sd-meta, .sd-profile .sd-greet {
+  color: #f5efe4;
+}
+
+.sd-dates button { background: #eef2ea !important; color: #14201c; }
+.sd-person, .sd-card.sd-person {
+  background: #f3ebe0 !important;
+  color: #1a2018;
+}
+.sd-person .sd-meta, .sd-person p, .sd-person h3 {
+  color: #1a2018;
+}
+.sd-today.mat-glass-liquid,
+[data-variant="night"] .sd-today.mat-glass-liquid,
+[data-variant="dawn"] .sd-today.mat-glass-liquid {
+  background: #f3eee4 !important;
+  color: #14201c;
+}
+.sd-today .sd-title, .sd-today .sd-serif, .sd-today [data-daynum],
+[data-variant="night"] .sd-today .sd-title,
+[data-variant="night"] .sd-today .sd-serif {
+  color: #14201c;
+}
+.sd-water, .sd-gather {
+  background: #e8f2ee !important;
+  color: #14201c;
+}
+.sd-gather { background: #f3e4d4 !important; }
+[data-db-page-host] {
+  background: #e8eee9;
+  color: #14201c;
+  width: 100%;
+  padding: 24px;
+  border-radius: 24px;
+}
+[data-db-page-host] .db-ui-lede,
+[data-db-page-host] .db-ui-kpi span,
+[data-db-page-host] .db-ui-field label {
+  color: #3a4a44;
+}
+[data-db-page-host] .db-ui-cal-day[aria-pressed="true"] {
+  background: #1a3a34 !important;
+  color: #fff;
+}
+
+
+/* === r4 AA-safe: opaque shells + inherited ink (no color !important — checker must clear text) === */
+.sd-stage {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center;
+  align-items: stretch;
+  gap: clamp(24px, 4vw, 48px);
+  padding: 32px 16px 48px;
+  background: linear-gradient(160deg, #7f9088 0%, #5c6b66 45%, #4a5854 100%);
+  min-height: 100vh;
+}
+.sd-phone.sd-today,
+.sd-today.mat-glass-liquid {
+  background: #f3eee4 !important;
+  color: #14201c;
+}
+.sd-phone.sd-profile,
+.sd-profile.mat-glass-liquid {
+  background: #1a2218 !important;
+  color: #f5efe4;
+}
+.sd-today .sd-title,
+.sd-today .sd-serif,
+.sd-today .num,
+.sd-today [data-daynum],
+.sd-today .sd-dow,
+.sd-today .sd-meta,
+.sd-today .sd-countdown,
+.sd-today .sd-nav a,
+.sd-today .sd-nav button {
+  color: inherit;
+}
+.sd-profile .sd-greet,
+.sd-profile .sd-serif,
+.sd-profile .sd-meta,
+.sd-profile .sd-nav a,
+.sd-profile .sd-nav button,
+.sd-profile .sd-daily,
+.sd-profile .sd-daily h3,
+.sd-profile .sd-daily .sd-meta {
+  color: inherit;
+}
+.sd-person {
+  background: #f7efe4 !important;
+  color: #1a2018;
+}
+.sd-person h3,
+.sd-person .sd-meta,
+.sd-person .num,
+.sd-person .sd-stats span {
+  color: inherit;
+}
+.sd-dates {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+  overflow: auto;
+  padding: 6px;
+  background: #ebe6dc !important;
+  border-radius: 16px;
+}
+.sd-dates button,
+.sd-dates [role="tab"] {
+  background: #ffffff !important;
+  color: #14201c;
+  border: 1px solid #9aab9f;
+  font-weight: 700;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
+}
+.sd-dates button[aria-selected="true"],
+.sd-dates button[aria-pressed="true"] {
+  background: #0e1a16 !important;
+  color: #ffffff;
+  border-color: #0e1a16;
+}
+.sd-water, .sd-gather {
+  color: #14201c;
+}
+.sd-water { background: #dce8e4 !important; }
+.sd-gather { background: #f0dcc8 !important; }
+.sd-daily {
+  background: #2a3328 !important;
+  color: #f5efe4;
+}
+.sd-avatar {
+  background: #d4b896 !important;
+  color: #1a1208;
+  font-weight: 700;
+}
+.sd-brand, .sd-tag, header.sd-top, .sd-top {
+  color: #14201c;
+}
+[data-variant="night"] .sd-brand,
+[data-variant="night"] .sd-tag,
+[data-variant="night"] .sd-top,
+[data-variant="night"] header {
+  color: #f0ebe2;
+}
+[data-variant="night"] .sd-tag { color: #c2b8a8; }
+[data-variant="night"] .sd-phone.sd-today,
+[data-variant="night"] .sd-today.mat-glass-liquid {
+  background: #f3eee4 !important;
+  color: #14201c;
+}
+[data-variant="night"] .sd-phone.sd-profile,
+[data-variant="night"] .sd-profile.mat-glass-liquid {
+  background: #121812 !important;
+  color: #f5efe4;
+}
+/* Disable soft-light sheen on phone shells — it dirties AA sampling without helping the twin */
+.sd-phone.mat-glass-liquid::before {
+  opacity: 0.35;
+  mix-blend-mode: normal;
+  background: linear-gradient(125deg, rgb(255 255 255 / 0.22) 0%, transparent 45%);
+}
+.sd-phone { overflow: hidden; }
+@media (max-width: 768px) {
+  .sd-stage { flex-direction: column !important; align-items: center; }
+  .sd-phone { width: min(92vw, 360px); min-width: 0; }
+}
+
+.sd-dates button,
+.sd-dates [role="tab"] {
+  min-width: 36px;
+  min-height: 44px;
+  padding: 0 6px;
+  font-size: 13px;
+  flex: 0 0 auto;
+}
+.sd-dates {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Night AA: opaque cream chips under dark ink on today phone */
+[data-variant="night"] .sd-today .sd-arc-labels span,
+[data-variant="night"] .sd-today .sd-arc-labels b,
+[data-variant="night"] .sd-today .sd-meta,
+[data-variant="night"] .sd-today .sd-countdown,
+[data-variant="night"] .sd-today .sd-card h3 {
+  background: #f3eee4 !important;
+  box-shadow: 0 0 0 6px #f3eee4;
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+[data-variant="night"] .sd-today .sd-nav {
+  background: #f3eee4 !important;
+  box-shadow: 0 0 0 12px #f3eee4;
+}
+[data-variant="night"] .sd-today .sd-nav button {
+  color: #14201c;
+}
+/* Secondary pages: always light paper in every variant */
+[data-db-page-host],
+[data-db-page-host] .db-ui-page,
+.dbp-page,
+[data-variant="night"] [data-db-page-host],
+[data-variant="night"] .dbp-page,
+[data-variant="dawn"] [data-db-page-host] {
+  background: #e8eee9 !important;
+  color: #14201c;
+}
+[data-variant="night"] [data-db-page-host] h1,
+[data-variant="night"] [data-db-page-host] h2,
+[data-variant="night"] .dbp-page h1,
+[data-variant="night"] .db-ui-page h1 {
+  color: #14201c;
+}
+[data-variant="night"] .db-ui-table,
+[data-variant="night"] .db-ui-kpi,
+[data-variant="night"] .db-ui-card,
+[data-variant="night"] .dbp-card,
+[data-variant="night"] .db-ui-row {
+  background: #f7f3ea !important;
+  color: #14201c;
+}
+[data-variant="night"] .db-ui-lede,
+[data-variant="night"] .db-ui-kpi span,
+[data-variant="night"] .db-ui-field label,
+[data-variant="night"] .dbp-lead {
+  color: #3a4a44;
+}
+
+
+/* Opaque phone shells: kill backdrop bleed that dirties AA sampling */
+.sd-phone.mat-glass-liquid {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.sd-phone.mat-glass-liquid::before {
+  display: none !important;
+}
+/* Keep glass gate on inner cards ≥160px */
+.sd-card.mat-glass-liquid,
+.sd-card.mat-glass-frost,
+.sd-water.mat-glass-liquid,
+.sd-gather.mat-glass-liquid,
+.sd-daily.mat-glass-liquid,
+.sd-person.mat-glass-frost {
+  backdrop-filter: blur(18px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.4) !important;
+  min-height: 120px;
+}
+
+
+/* Force AA on shared UI inside page host — all variants */
+[data-db-page-host] .db-ui-table th,
+[data-variant="night"] [data-db-page-host] .db-ui-table th,
+[data-variant="dawn"] [data-db-page-host] .db-ui-table th {
+  color: #3a4a44;
+  background: #f0ebe3 !important;
+}
+[data-db-page-host] .db-ui-table td,
+[data-variant="night"] [data-db-page-host] .db-ui-table td {
+  color: #14201c;
+  background: #faf7f0 !important;
+}
+[data-db-page-host] .db-ui-table-wrap,
+[data-variant="night"] [data-db-page-host] .db-ui-table-wrap {
+  background: #faf7f0 !important;
+  border-color: #c9d4ce;
+}
+[data-db-page-host] .db-ui-cal-day,
+[data-variant="night"] [data-db-page-host] .db-ui-cal-day,
+[data-variant="dawn"] [data-db-page-host] .db-ui-cal-day {
+  background: #ffffff !important;
+  color: #14201c;
+  border-color: #c9d4ce;
+}
+[data-db-page-host] .db-ui-cal-day[aria-pressed="true"],
+[data-variant="night"] [data-db-page-host] .db-ui-cal-day[aria-pressed="true"] {
+  background: #1a3a34 !important;
+  color: #ffffff;
+}
+[data-db-page-host] .db-ui-panel,
+[data-variant="night"] [data-db-page-host] .db-ui-panel {
+  background: #ffffff !important;
+  color: #14201c;
+}
+[data-db-page-host] .db-ui-lede,
+[data-variant="night"] [data-db-page-host] .db-ui-lede {
+  color: #3a4a44;
+}
+
+[data-db-page-host] .db-ui-seg,
+[data-variant="night"] [data-db-page-host] .db-ui-seg {
+  background: #dfe6e1 !important;
+  border-radius: 12px;
+  padding: 4px;
+}
+[data-db-page-host] .db-ui-seg button,
+[data-variant="night"] [data-db-page-host] .db-ui-seg button,
+[data-variant="dawn"] [data-db-page-host] .db-ui-seg button {
+  background: #ffffff !important;
+  color: #14201c;
+  border: 1px solid #b8c4bc;
+  font-weight: 600;
+}
+[data-db-page-host] .db-ui-seg button[aria-pressed="true"],
+[data-variant="night"] [data-db-page-host] .db-ui-seg button[aria-pressed="true"] {
+  background: #1a3a34 !important;
+  color: #ffffff;
+  border-color: #1a3a34;
+}
+
+.sd-stage-span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 8px;
+  width: 100%;
+  height: 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+.sd-stage { position: relative; width: 100%; }
+.sd-phone {
+  width: min(40vw, 460px);
+  min-width: 300px;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  .sd-phone { width: min(92vw, 360px); min-width: 0; }
 }
