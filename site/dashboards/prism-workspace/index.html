@@ -15,11 +15,12 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
   <div class="pw-world" aria-hidden="true">
-    <img class="pw-blobs pw-ambient" src="media/blobs@2x.webp" srcset="media/blobs.webp 1x, media/blobs@2x.webp 2x" width="1280" height="720" alt="" decoding="async">
+    <img data-gsap="float" data-gsap-dur="14" class="pw-blobs pw-ambient" src="media/blobs@2x.webp" srcset="media/blobs.webp 1x, media/blobs@2x.webp 2x" width="1280" height="720" alt="" decoding="async">
     <i></i><i></i><i></i><i></i>
   </div>
   <div class="pw" data-db-app>

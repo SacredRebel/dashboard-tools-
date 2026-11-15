@@ -385,3 +385,33 @@ body {
   .hv-seg button { min-height: 44px; }
   .hv-live { max-width: 100%; }
 }
+
+
+/* === r3 deep polish === */
+.hv-wheelcard.mat-glass-dense,
+.hv-card.mat-glass-dense {
+  background: color-mix(in srgb, var(--surface, #1a1224) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent, #c084fc) 35%, var(--border, #333));
+  box-shadow:
+    0 20px 48px rgb(0 0 0 / 0.45),
+    inset 0 1px 0 rgb(255 255 255 / 0.1),
+    0 0 0 1px color-mix(in srgb, var(--accent, #c084fc) 15%, transparent);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+}
+.hv-witch {
+  filter: drop-shadow(0 0 28px color-mix(in srgb, var(--accent, #c084fc) 40%, transparent));
+}
+.hv-chest img {
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent, #fbbf24) 45%, transparent));
+}
+.hv-wheel::before {
+  box-shadow: 0 0 40px color-mix(in srgb, var(--accent, #c084fc) 30%, transparent);
+}
+.hv-open:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent, #c084fc) 45%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hv-open:hover { transform: none; }
+}

@@ -15,6 +15,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -48,47 +49,47 @@
             <p class="ar-chip" data-tip></p>
           </section>
 
-          <section class="ar-card ar-score ar-reveal" aria-labelledby="ar-score-h">
+          <section class="ar-card mat-glass mat-hover-lift ar-score ar-reveal" aria-labelledby="ar-score-h">
             <div><h2 id="ar-score-h" data-score-name></h2><p class="ar-sub">Based on last night and today</p>
               <p class="ar-big num"><b data-score></b><span>/100</span></p><p class="ar-state" data-state></p></div>
             <div class="ar-gauge" data-gauge></div>
           </section>
 
-          <section class="ar-card ar-hr ar-reveal" aria-labelledby="ar-hr-h">
+          <section class="ar-card mat-glass mat-hover-lift ar-hr ar-reveal" aria-labelledby="ar-hr-h">
             <div class="ar-card-head"><div><h2 id="ar-hr-h">Heart rate</h2><p class="ar-sub">Today</p></div><p class="ar-val num"><b data-bpm>62</b> bpm</p></div>
             <div data-hr></div>
           </section>
 
-          <section class="ar-card ar-mini ar-reveal" aria-labelledby="ar-st-h">
+          <section class="ar-card mat-glass mat-hover-lift ar-mini ar-reveal" aria-labelledby="ar-st-h">
             <div class="ar-card-head"><div><h2 id="ar-st-h">Stress level</h2><p class="ar-sub">Medium</p></div><p class="ar-val num"><b data-stress-n>46</b>%</p></div>
             <div data-stress></div>
           </section>
-          <section class="ar-card ar-mini ar-reveal" aria-labelledby="ar-sl-h">
+          <section class="ar-card mat-glass mat-hover-lift ar-mini ar-reveal" aria-labelledby="ar-sl-h">
             <div class="ar-card-head"><div><h2 id="ar-sl-h">Sleep</h2><p class="ar-sub">Last night</p></div><p class="ar-val num"><b>7 h 24</b></p></div>
             <div data-sleep></div>
           </section>
 
-          <section class="ar-card ar-device ar-reveal" aria-labelledby="ar-dev-h">
+          <section class="ar-card mat-glass mat-hover-lift ar-device ar-reveal" aria-labelledby="ar-dev-h">
             <div class="ar-card-head"><div><h2 id="ar-dev-h">Aura ring</h2><p class="ar-sub"><i class="ar-live"></i>Connected</p></div></div>
             <div class="ar-ringart" data-ring aria-hidden="true">
-              <img class="ar-ringphoto ar-ambient" src="media/ring@2x.webp" srcset="media/ring.webp 1x, media/ring@2x.webp 2x" width="720" height="720" alt="" decoding="async">
+              <img data-gsap="float" data-gsap-dur="14" class="ar-ringphoto ar-ambient" src="media/ring@2x.webp" srcset="media/ring.webp 1x, media/ring@2x.webp 2x" width="720" height="720" alt="" decoding="async">
             </div>
             <div class="ar-batt"><span>Battery</span><b class="num" data-batt>84%</b><i role="img" aria-label="Battery 84%"><i style="width:84%"></i></i></div>
             <dl class="ar-rows"><div><dt>Sensors</dt><dd>All active</dd></div><div><dt>Skin temperature</dt><dd>Normal</dd></div><div><dt>Connection</dt><dd>Strong</dd></div></dl>
             <button type="button" class="ar-pill" data-device>Open device settings<span data-icon="chevRight"></span></button>
           </section>
 
-          <section class="ar-card ar-body ar-reveal" aria-labelledby="ar-body-h">
+          <section class="ar-card mat-glass mat-hover-lift ar-body ar-reveal" aria-labelledby="ar-body-h">
             <div class="ar-card-head"><div><h2 id="ar-body-h">Body map</h2><p class="ar-sub">Pick a point</p></div></div>
             <div class="ar-figure" data-figure></div>
             <p class="ar-note" data-body-note aria-live="polite"></p>
           </section>
 
-          <section class="ar-card ar-sum ar-reveal" aria-labelledby="ar-sum-h">
+          <section class="ar-card mat-glass mat-hover-lift ar-sum ar-reveal" aria-labelledby="ar-sum-h">
             <div><h2 id="ar-sum-h"><span data-icon="sparkle"></span>Daily summary</h2><p data-summary></p>
               <button type="button" class="ar-pill" data-analysis>Read the full analysis<span data-icon="chevRight"></span></button></div>
             <div class="ar-orb" aria-hidden="true">
-              <img class="ar-brain" src="media/brain@2x.webp" srcset="media/brain.webp 1x, media/brain@2x.webp 2x" width="640" height="640" alt="" decoding="async">
+              <img data-gsap="float" data-gsap-dur="14" class="ar-brain" src="media/brain@2x.webp" srcset="media/brain.webp 1x, media/brain@2x.webp 2x" width="640" height="640" alt="" decoding="async">
             </div>
           </section>
         </main>

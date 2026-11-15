@@ -15,6 +15,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -40,12 +41,12 @@
           <p class="hv-keys" aria-live="polite"><span data-icon="lock"></span><b class="num" data-keys>3</b> keys</p>
         </header>
 
-        <section class="hv-wheelcard hv-reveal" aria-labelledby="hv-chest-h">
-          <img class="hv-witch hv-ambient" src="media/witch.webp" srcset="media/witch.webp 1x, media/witch@2x.webp 2x" width="1600" height="2133" alt="" decoding="async">
+        <section class="hv-wheelcard mat-glass-dense hv-reveal" aria-labelledby="hv-chest-h">
+          <img data-gsap="float" data-gsap-dur="14" class="hv-witch hv-ambient" src="media/witch.webp" srcset="media/witch.webp 1x, media/witch@2x.webp 2x" width="1600" height="2133" alt="" decoding="async">
           <div class="hv-wheel" data-wheel>
             <div class="hv-core">
               <figure class="hv-chest hv-ambient">
-                <img src="media/chest@2x.webp" srcset="media/chest.webp 1x, media/chest@2x.webp 2x" width="220" height="220" alt="Moonwell chest (sample art)" decoding="async">
+                <img data-gsap="float" data-gsap-dur="14" src="media/chest@2x.webp" srcset="media/chest.webp 1x, media/chest@2x.webp 2x" width="220" height="220" alt="Moonwell chest (sample art)" decoding="async">
               </figure>
               <h2 id="hv-chest-h">Moonwell chest</h2>
               <p>Eight relics from the Moonwell quest line. Each open uses one key.</p>
@@ -56,7 +57,7 @@
           <aside class="hv-float" data-float hidden aria-live="polite"></aside>
         </section>
 
-        <section class="hv-card hv-reveal" aria-labelledby="hv-items-h">
+        <section class="hv-card mat-glass-dense mat-hover-lift hv-reveal" aria-labelledby="hv-items-h">
           <div class="hv-head">
             <h2 id="hv-items-h">In this chest</h2>
             <div class="hv-seg" role="group" aria-label="Filter by rarity" data-rarity>
@@ -68,12 +69,12 @@
           <ul class="hv-items" data-items></ul>
         </section>
 
-        <section class="hv-card hv-reveal" aria-labelledby="hv-live-h">
+        <section class="hv-card mat-glass-dense mat-hover-lift hv-reveal" aria-labelledby="hv-live-h">
           <div class="hv-head"><h2 id="hv-live-h">Live feed</h2><span class="hv-meta">Recent opens · sample</span></div>
           <div class="hv-live" data-live role="list"></div>
         </section>
 
-        <section class="hv-card hv-reveal" aria-labelledby="hv-inv-h">
+        <section class="hv-card mat-glass-dense mat-hover-lift hv-reveal" aria-labelledby="hv-inv-h">
           <div class="hv-head"><h2 id="hv-inv-h">Your haul</h2><span class="hv-meta" data-invcount></span></div>
           <ul class="hv-inv" data-inv></ul>
         </section>

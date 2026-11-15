@@ -15,6 +15,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -87,7 +88,7 @@
             <section class="vr-card vr-media" aria-labelledby="vr-med-h">
               <h2 id="vr-med-h" class="vh">Media player</h2>
               <div class="vr-album" data-album>
-                <img class="vr-albumphoto vr-ambient" src="media/album.webp" width="1024" height="1024" alt="River Lights album art (sample)" decoding="async">
+                <img data-gsap="float" data-gsap-dur="14" class="vr-albumphoto vr-ambient" src="media/album.webp" width="1024" height="1024" alt="River Lights album art (sample)" decoding="async">
               </div>
               <div class="vr-track">
                 <b>River Lights</b>

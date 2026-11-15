@@ -16,6 +16,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -49,8 +50,8 @@
 
           <section class="pl-art pl-reveal" aria-labelledby="pl-art-h">
             <div class="pl-artbox" data-art>
-              <img class="pl-leaves pl-ambient" src="media/leaves.webp" width="1280" height="720" alt="" decoding="async">
-              <img class="pl-bird pl-ambient" src="media/bird.webp" width="1024" height="1024" alt="Ember lorikeet illustration (sample)" decoding="async">
+              <img data-gsap="float" data-gsap-dur="14" class="pl-leaves pl-ambient" src="media/leaves.webp" width="1280" height="720" alt="" decoding="async">
+              <img data-gsap="float" data-gsap-dur="14" class="pl-bird pl-ambient" src="media/bird.webp" width="1024" height="1024" alt="Ember lorikeet illustration (sample)" decoding="async">
             </div>
             <div class="pl-artcap">
               <p class="pl-k">Bird of the season</p>

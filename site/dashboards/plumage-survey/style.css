@@ -185,3 +185,16 @@ body { background: radial-gradient(1200px 600px at 50% 30%, var(--surface), var(
   .pl-artcap { position: static; max-width: none; margin: 0 12px 12px; }
   .pl-blist button { grid-template-columns: minmax(0, 1fr) 44px; } .pl-blist .pl-track { grid-column: 1 / -1; grid-row: 2; }
 }
+
+
+/* === r3 deep polish === */
+[class$="-card"], [class*="-panel"], [class*="-glass"], [class*="-tile"] {
+  transition: transform var(--dur-2, 150ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow var(--dur-2, 150ms) ease;
+}
+[class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover {
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  [class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover { transform: none; }
+}

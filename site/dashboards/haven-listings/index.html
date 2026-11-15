@@ -15,6 +15,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -23,7 +24,7 @@
       <div class="hl-overview" data-page-panel="overview">
         <section class="hl-stage hl-reveal" aria-label="Featured home">
           <div class="hl-scene" data-scene aria-hidden="true">
-            <img class="hl-photo hl-ambient" src="media/villa@2x.webp" srcset="media/villa.webp 1x, media/villa@2x.webp 2x" width="1440" height="810" alt="" decoding="async">
+            <img data-gsap="float" data-gsap-dur="14" class="hl-photo hl-ambient" src="media/villa@2x.webp" srcset="media/villa.webp 1x, media/villa@2x.webp 2x" width="1440" height="810" alt="" decoding="async">
           </div>
 
           <header class="hl-top">

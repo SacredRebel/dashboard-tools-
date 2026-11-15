@@ -16,6 +16,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -36,7 +37,7 @@
         <main class="lw-grid">
           <section class="lw-tile lw-hero lw-reveal" aria-labelledby="lw-hero-h">
             <div class="lw-art" aria-hidden="true">
-              <img class="lw-lake lw-ambient" src="media/lake@2x.webp" srcset="media/lake.webp 1x, media/lake@2x.webp 2x" width="1600" height="900" alt="" decoding="async">
+              <img data-gsap="float" data-gsap-dur="14" class="lw-lake lw-ambient" src="media/lake@2x.webp" srcset="media/lake.webp 1x, media/lake@2x.webp 2x" width="1600" height="900" alt="" decoding="async">
             </div>
             <div class="lw-hero-copy"><p class="lw-k">Cabin 4 · Lakeside</p><h1 id="lw-hero-h">Good afternoon, Okafor family</h1><p>The larches are turning gold. Sunset over the lake is at <b data-sunset></b>.</p></div>
           </section>

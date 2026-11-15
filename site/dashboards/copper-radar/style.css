@@ -396,3 +396,16 @@ body { background-color: var(--bg); color: var(--text); font-family: var(--font-
   opacity: 0.18; pointer-events: none; border-radius: inherit; z-index: 0;
 }
 .cp-radarwrap > *:not(.cp-mesh) { position: relative; z-index: 1; }
+
+
+/* === r3 deep polish === */
+[class$="-card"], [class*="-panel"], [class*="-glass"], [class*="-tile"] {
+  transition: transform var(--dur-2, 150ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow var(--dur-2, 150ms) ease;
+}
+[class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover {
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  [class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover { transform: none; }
+}

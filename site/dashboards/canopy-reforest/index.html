@@ -16,6 +16,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -37,8 +38,8 @@
       <div data-page-panel="overview" class="cr-overview">
         <section class="cr-hero" aria-labelledby="cr-h1">
           <div class="cr-hero-split" aria-hidden="true"></div>
-          <img class="cr-hero-leaves" src="media/leaves@2x.webp" srcset="media/leaves.webp 1x, media/leaves@2x.webp 2x" width="1600" height="900" alt="" decoding="async">
-          <img class="cr-hero-leaves-fg" src="media/leaves.webp" srcset="media/leaves.webp 1x, media/leaves@2x.webp 2x" width="900" height="506" alt="" decoding="async">
+          <img data-gsap="float" data-gsap-dur="14" class="cr-hero-leaves" src="media/leaves@2x.webp" srcset="media/leaves.webp 1x, media/leaves@2x.webp 2x" width="1600" height="900" alt="" decoding="async">
+          <img data-gsap="float" data-gsap-dur="14" class="cr-hero-leaves-fg" src="media/leaves.webp" srcset="media/leaves.webp 1x, media/leaves@2x.webp 2x" width="900" height="506" alt="" decoding="async">
           <div class="cr-hero-copy">
             <p class="cr-eyebrow">Season 4 · <span data-site-name></span></p>
             <h1 id="cr-h1">Regrow<br>the ridge</h1>

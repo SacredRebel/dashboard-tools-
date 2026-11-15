@@ -16,6 +16,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -39,7 +40,7 @@
     <div data-page-panel="overview" class="cw-overview">
     <div class="cw-grid" aria-labelledby="cw-title">
       <div class="cw-stack cw-left">
-        <section class="cw-panel cw-id" aria-labelledby="cw-id-h">
+        <section class="cw-panel mat-holo mat-holo-frame mat-hover-lift cw-id" aria-labelledby="cw-id-h">
           <h2 id="cw-id-h" class="vh">Sector officer</h2>
           <div class="cw-id-body">
             <div class="cw-sil" aria-hidden="true"></div>
@@ -52,7 +53,7 @@
           <div class="cw-bars" data-id-bars></div>
         </section>
 
-        <section class="cw-panel" aria-labelledby="cw-flow-h">
+        <section class="cw-panel mat-holo mat-holo-frame mat-hover-lift" aria-labelledby="cw-flow-h">
           <div class="cw-panel-h"><h2 id="cw-flow-h">Lane throughput</h2>
             <div class="cw-seg" role="group" aria-label="Throughput range" data-flow-tabs>
               <button data-v="6h" aria-pressed="true">6h</button>
@@ -62,19 +63,19 @@
           <div data-flow></div>
         </section>
 
-        <section class="cw-panel" aria-labelledby="cw-load-h">
+        <section class="cw-panel mat-holo mat-holo-frame mat-hover-lift" aria-labelledby="cw-load-h">
           <div class="cw-panel-h"><h2 id="cw-load-h">Bay load</h2></div>
           <div data-load></div>
         </section>
 
-        <section class="cw-panel" aria-labelledby="cw-status-h">
+        <section class="cw-panel mat-holo mat-holo-frame mat-hover-lift" aria-labelledby="cw-status-h">
           <div class="cw-panel-h"><h2 id="cw-status-h">Sector status</h2></div>
           <ul class="cw-status" data-status></ul>
           <p class="cw-empty" data-status-empty hidden>No sectors reporting.</p>
         </section>
       </div>
 
-      <section class="cw-center" aria-labelledby="cw-hero-h">
+      <section class="cw-center mat-holo" data-fx="reveal" aria-labelledby="cw-hero-h">
         <h2 id="cw-hero-h" class="vh">Core hologram</h2>
         <div class="cw-holo" data-holo></div>
         <p class="cw-holo-cap"><span data-sector>Sector Meridian</span> · <b class="num" data-stability>98.4%</b> stability</p>
@@ -82,17 +83,17 @@
       </section>
 
       <div class="cw-stack cw-right">
-        <section class="cw-panel" aria-labelledby="cw-kpi-h">
+        <section class="cw-panel mat-holo mat-holo-frame mat-hover-lift" aria-labelledby="cw-kpi-h">
           <h2 id="cw-kpi-h" class="vh">Key metrics</h2>
           <div class="cw-kpis" data-kpis></div>
         </section>
 
-        <section class="cw-panel" aria-labelledby="cw-gauge-h">
+        <section class="cw-panel mat-holo mat-holo-frame mat-hover-lift" aria-labelledby="cw-gauge-h">
           <div class="cw-panel-h"><h2 id="cw-gauge-h">Grid levels</h2></div>
           <div class="cw-gauges" data-gauges></div>
         </section>
 
-        <section class="cw-panel" aria-labelledby="cw-cargo-h">
+        <section class="cw-panel mat-holo mat-holo-frame mat-hover-lift" aria-labelledby="cw-cargo-h">
           <div class="cw-panel-h"><h2 id="cw-cargo-h">Orbital cargo</h2>
             <div class="cw-seg" role="group" aria-label="Cargo series" data-cargo-tabs>
               <button data-v="in" aria-pressed="true">Inbound</button>

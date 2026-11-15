@@ -330,3 +330,18 @@ body {
   .pd-bookbody { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .pd-cal button, .pd-slots button, .pd-chips button, .pd-seg button { min-height: 44px; }
 }
+
+
+
+/* === r3 deep polish === */
+.pd-card.mat-clay {
+  box-shadow:
+    0 12px 30px rgb(40 70 90 / 0.1),
+    inset 0 1px 0 rgb(255 255 255 / 0.7),
+    inset 0 -1px 0 rgb(0 0 0 / 0.04);
+}
+.pd-arch-photo, .pd-arch img, img[src*="tooth"] {
+  filter: drop-shadow(0 16px 28px rgb(40 90 110 / 0.2));
+}
+.pd-card:hover { transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .pd-card:hover { transform: none; } }

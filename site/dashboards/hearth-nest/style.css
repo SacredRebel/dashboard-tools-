@@ -290,3 +290,16 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
   .hn-page, .hn-skel, .hn-ambient, .hn-pulse, .hn-reveal-in { animation: none !important; }
   .hn-nav a, .hn-ico, .hn-pwr, .hn-rooms button, .hn-dev, .hn-eco, .hn-btn { transition: none; }
 }
+
+
+/* === r3 deep polish === */
+[class$="-card"], [class*="-panel"], [class*="-glass"], [class*="-tile"] {
+  transition: transform var(--dur-2, 150ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow var(--dur-2, 150ms) ease;
+}
+[class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover {
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  [class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover { transform: none; }
+}

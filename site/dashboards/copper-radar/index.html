@@ -16,6 +16,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -59,8 +60,8 @@
       </div>
 
       <div class="cp-radarwrap" aria-labelledby="cp-dyn-h">
-        <img class="cp-mesh" src="media/mesh@2x.webp" srcset="media/mesh.webp 1x, media/mesh@2x.webp 2x" width="1280" height="720" alt="" decoding="async" aria-hidden="true">
-        <img class="cp-radar-hero" src="media/radar-hero@2x.webp" srcset="media/radar-hero.webp 1x, media/radar-hero@2x.webp 2x" width="1920" height="1080" alt="" decoding="async" aria-hidden="true">
+        <img data-gsap="float" data-gsap-dur="14" class="cp-mesh" src="media/mesh@2x.webp" srcset="media/mesh.webp 1x, media/mesh@2x.webp 2x" width="1280" height="720" alt="" decoding="async" aria-hidden="true">
+        <img data-gsap="float" data-gsap-dur="14" class="cp-radar-hero" src="media/radar-hero@2x.webp" srcset="media/radar-hero.webp 1x, media/radar-hero@2x.webp 2x" width="1920" height="1080" alt="" decoding="async" aria-hidden="true">
         <div class="cp-radarhead">
           <h2 id="cp-dyn-h">Dynamic View</h2>
           <b class="cp-endpoints num" data-endpoints>8.6K End Points</b>

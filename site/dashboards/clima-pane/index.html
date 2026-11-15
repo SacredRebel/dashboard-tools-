@@ -16,10 +16,11 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="cl-orbs" aria-hidden="true"><img src="media/orb-warm.webp" srcset="media/orb-warm.webp 1x, media/orb-warm@2x.webp 2x" width="1600" height="1600" alt="" decoding="async"><img src="media/orb-cool.webp" srcset="media/orb-cool.webp 1x, media/orb-cool@2x.webp 2x" width="1600" height="1600" alt="" decoding="async"><i></i></div>
+  <div class="cl-orbs" data-fx="parallax" aria-hidden="true"><img data-gsap="pulse" data-gsap-dur="14" src="media/orb-warm.webp" srcset="media/orb-warm.webp 1x, media/orb-warm@2x.webp 2x" width="1600" height="1600" alt="" decoding="async"><img data-gsap="pulse" data-gsap-dur="14" src="media/orb-cool.webp" srcset="media/orb-cool.webp 1x, media/orb-cool@2x.webp 2x" width="1600" height="1600" alt="" decoding="async"><i></i></div>
   <div class="cl" data-db-app>
     <aside class="cl-rail" aria-label="Primary">
       <nav class="cl-railnav" data-rail>
@@ -48,7 +49,7 @@
 
       <main class="cl-main">
         <div class="cl-side">
-          <section class="cl-glass cl-living" aria-labelledby="cl-lv-h">
+          <section class="cl-glass mat-glass mat-hover-lift cl-living" aria-labelledby="cl-lv-h">
             <div class="cl-cardhead">
               <span class="cl-ic" data-icon="home" aria-hidden="true"></span>
               <div>
@@ -64,7 +65,7 @@
             </ul>
           </section>
 
-          <section class="cl-glass cl-sched" aria-labelledby="cl-sc-h">
+          <section class="cl-glass mat-glass mat-hover-lift cl-sched" aria-labelledby="cl-sc-h">
             <div class="cl-cardhead">
               <span class="cl-ic" data-icon="clock" aria-hidden="true"></span>
               <div>
@@ -77,7 +78,7 @@
           </section>
         </div>
 
-        <section class="cl-glass cl-climate" aria-labelledby="cl-cl-h">
+        <section class="cl-glass mat-glass mat-hover-lift cl-climate" aria-labelledby="cl-cl-h">
           <div class="cl-cardhead cl-cardhead-center">
             <span class="cl-ic" data-icon="thermo" aria-hidden="true"></span>
             <div>
@@ -108,7 +109,7 @@
         </section>
 
         <div class="cl-side">
-          <section class="cl-glass cl-rooms" aria-labelledby="cl-rm-h">
+          <section class="cl-glass mat-glass mat-hover-lift cl-rooms" aria-labelledby="cl-rm-h">
             <div class="cl-cardhead">
               <span class="cl-ic" data-icon="grid" aria-hidden="true"></span>
               <div>
@@ -120,7 +121,7 @@
             <p class="cl-state cl-muted" data-rooms-state aria-live="polite"></p>
           </section>
 
-          <section class="cl-glass cl-modes" aria-labelledby="cl-md-h">
+          <section class="cl-glass mat-glass mat-hover-lift cl-modes" aria-labelledby="cl-md-h">
             <div class="cl-cardhead">
               <span class="cl-ic" data-icon="leaf" aria-hidden="true"></span>
               <div>

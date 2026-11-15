@@ -392,3 +392,35 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
 }
 .go-elevchip strong { font-size: 28px; line-height: 1; color: #ffffff; }
 .go-elevchip span { font-size: 13px; font-weight: 650; color: #ffffff; letter-spacing: 0.04em; }
+
+
+/* === r3 deep polish === */
+.go-panel.mat-holo {
+  border-radius: 14px;
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--accent, #3ecbff) 10%, transparent), color-mix(in srgb, var(--surface, #0b1524) 90%, transparent));
+  border: 1px solid color-mix(in srgb, var(--accent, #3ecbff) 32%, transparent);
+  box-shadow:
+    0 10px 28px rgb(0 0 0 / 0.35),
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    inset 0 0 24px color-mix(in srgb, var(--accent, #3ecbff) 6%, transparent);
+  backdrop-filter: blur(16px) saturate(1.25);
+  -webkit-backdrop-filter: blur(16px) saturate(1.25);
+}
+.go-dialwrap {
+  filter: drop-shadow(0 0 28px color-mix(in srgb, var(--accent, #3ecbff) 35%, transparent));
+}
+.go-topo {
+  opacity: 0.95;
+  mix-blend-mode: screen;
+}
+.go-orbs li, .go-twin > * {
+  transition: transform var(--dur-2, 150ms) ease, box-shadow var(--dur-2, 150ms) ease;
+}
+.go-orbs li:hover, .go-twin > *:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent, #3ecbff) 40%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .go-orbs li:hover, .go-twin > *:hover { transform: none; }
+}

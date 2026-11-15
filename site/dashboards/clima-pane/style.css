@@ -712,3 +712,28 @@ body {
 .dbp-btn { background: #1a1f2e !important; color: #ffffff !important; }
 .dbp-card strong, .dbp-row, .dbp-page p { color: #141414 !important; }
 
+
+
+/* === r3 deep polish === */
+.cl-glass.mat-glass {
+  background: color-mix(in srgb, var(--surface, #fff) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border, #ddd) 80%, transparent);
+  box-shadow:
+    0 16px 40px rgb(30 40 60 / 0.12),
+    inset 0 1px 0 rgb(255 255 255 / 0.55);
+  backdrop-filter: blur(20px) saturate(1.25);
+  -webkit-backdrop-filter: blur(20px) saturate(1.25);
+}
+.cl-dial {
+  filter: drop-shadow(0 12px 28px color-mix(in srgb, var(--accent, #f97316) 25%, transparent));
+}
+.cl-dialface b {
+  text-shadow: 0 2px 12px rgb(0 0 0 / 0.08);
+}
+.cl-orbs img {
+  filter: blur(0.2px) saturate(1.1);
+}
+.cl-modechip[aria-pressed="true"],
+.cl-roomchip[aria-pressed="true"] {
+  box-shadow: 0 0 0 1px var(--accent, #f97316), 0 8px 20px color-mix(in srgb, var(--accent, #f97316) 25%, transparent);
+}

@@ -16,6 +16,7 @@
   <script src="../_shared/dense-pages.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
 </head>
 <body>
   <div class="mm" data-db-app>
@@ -40,7 +41,7 @@
       </header>
 
       <section class="mm-hero" aria-labelledby="mm-hero-h">
-        <div class="mm-heroart" data-hero data-fx="parallax" aria-hidden="true"><img class="mm-head" data-fx="ambient" data-fx-dur="14" src="media/head.webp" srcset="media/head.webp 1x, media/head@2x.webp 2x" width="1600" height="1600" alt="" decoding="async"></div>
+        <div class="mm-heroart" data-hero data-fx="parallax" aria-hidden="true"><img data-gsap="float" data-gsap-dur="14" class="mm-head" data-fx="ambient" data-fx-dur="14" src="media/head.webp" srcset="media/head.webp 1x, media/head@2x.webp 2x" width="1600" height="1600" alt="" decoding="async"></div>
         <div class="mm-herocopy"><h2 id="mm-hero-h" data-greet></h2><p>Your Sunday slow-down mix is ready.</p><button class="mm-btn" data-playmix><span data-icon="play"></span>Play the mix</button></div>
         <div class="mm-plant" data-plant aria-hidden="true"></div>
       </section>

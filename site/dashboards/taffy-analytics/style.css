@@ -258,3 +258,14 @@ body { background: var(--bg); }
   .tf-page, .tf-skel, .tf-ambient, .tf-reveal-in { animation: none !important; }
   .tf-pages a, .tf-apps button, .tf-capsules button, .tf-btn { transition: none; }
 }
+
+
+/* === r3 deep polish === */
+.ta-card.mat-clay, .tf-card.mat-clay, [class*="card"].mat-clay {
+  box-shadow:
+    0 12px 30px rgb(80 50 90 / 0.1),
+    inset 0 1px 0 rgb(255 255 255 / 0.6);
+}
+img[src*="sphere"], img[src*="torus"], img[src*="clay"] {
+  filter: drop-shadow(0 16px 28px rgb(100 60 120 / 0.2));
+}

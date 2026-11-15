@@ -16,12 +16,13 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
   <div class="ae" data-db-app>
     <div class="ae-atmosphere" aria-hidden="true">
-      <img class="ae-office ae-ambient" src="media/office.webp" srcset="media/office.webp 1x, media/office@2x.webp 2x" width="2880" height="1620" alt="" decoding="async">
+      <img data-gsap="float" data-gsap-dur="14" class="ae-office ae-ambient" src="media/office.webp" srcset="media/office.webp 1x, media/office@2x.webp 2x" width="2880" height="1620" alt="" decoding="async">
     </div>
 
     <div data-main>

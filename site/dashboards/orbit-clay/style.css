@@ -675,3 +675,18 @@ body {
   .oc-reveal, .oc-reveal-in { opacity: 1; transform: none; transition: none; }
   .oc-ambient, .oc-skel { animation: none !important; }
 }
+
+
+
+/* === r3 deep polish === */
+.oc-nest.mat-clay, .oc-house.mat-clay {
+  box-shadow:
+    0 14px 36px rgb(50 40 30 / 0.14),
+    inset 0 1px 0 rgb(255 255 255 / 0.55);
+}
+.oc-helmet {
+  filter: drop-shadow(0 20px 36px rgb(40 30 20 / 0.3));
+}
+.oc-dunes img, .oc-land img {
+  filter: drop-shadow(0 10px 20px rgb(80 60 30 / 0.2));
+}
