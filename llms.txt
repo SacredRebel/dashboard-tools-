@@ -1,0 +1,55 @@
+# Dashboard Tools
+
+> A toolkit and playbook that lets an AI model design and build a polished, custom business dashboard: an onboarding interview, business-type recipes, a design rulebook, design tokens with 10 themes, 38 reference dashboards, a tool and skill catalog, and a step-by-step build process.
+
+If a person asked you to build a dashboard and gave you this repository, read START.md first and follow it. Ask the intake questions before you build anything. All paths below are raw files you can fetch.
+
+## Start here (read in this order)
+
+- [START.md](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/START.md): entry point: how to operate, what to read, the five-step flow, rules, definition of done
+- [Intake interview](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/onboarding/01-intake.md): three short rounds of questions with defaults
+- [Recipes by business type](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/onboarding/recipes.md): pages, records, numbers, steps and looks to propose ([JSON](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/catalog/recipes.json))
+- [Brief template](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/templates/brief.md): the one page the person approves
+- [Build playbook](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/onboarding/02-build-playbook.md): prototype first, then the working app; polish and delivery
+- [Design rulebook](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/design/02-rulebook.md): hard rules for spacing, type, color, motion, states, copy
+- [AGENTS.md](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/AGENTS.md): ground rules, definition of done, what is always wrong
+
+## Design system
+
+- [Tokens and themes (CSS)](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/design-system/tokens.css): every color, space, radius, shadow, font and duration; 10 themes
+- [Theme metadata](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/design-system/themes.json)
+- [Page patterns](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/design/03-page-patterns.md): List, Detail, Board, Dashboard, Form, Settings and their rules
+- [Data visualization](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/design/04-data-viz.md)
+- [Anti-patterns](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/design/05-anti-patterns.md)
+- [Polish standard](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/design/08-polish-standard.md) · [Motion system](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/design/09-motion-system.md) · [Materials](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/design/10-materials.md) · [Hero art direction](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/design/11-hero-art-direction.md) · [Microinteractions](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/design/12-microinteractions.md) · [High-end checklist](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/design/13-high-end-checklist.md)
+
+## Reference dashboards (pick the look)
+
+- [Gallery guide](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/dashboards/README.md)
+- [Gallery catalog (JSON)](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/catalog/dashboards.json): 38 dashboards with style family, use cases, palette, layout, mood, best for, avoid when
+- [Gallery catalog (readable)](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/dashboards/catalog.md)
+- Live preview of any dashboard: https://dashboard-tools-three.vercel.app/#/dashboards/<id>
+- Source of any dashboard: https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/site/dashboards/<id>/index.html, style.css, app.js
+
+## Starter code
+
+- [Starter index.html](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/templates/starter/index.html) · [style.css](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/templates/starter/style.css) · [app.js](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/templates/starter/app.js): working multi-page prototype skeleton with search, sort, board, slide-over form and all four data states
+
+## Tools and skills
+
+- [Tool catalog (JSON)](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/catalog/tools.json): every tool with phases, tier, use when, avoid when, how to use, fallback doc
+- [Tools by category](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/tools/README.md)
+
+## Full framework (careful route, eight phases with gates)
+
+- [Overview](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/framework/00-overview.md) · [Discover](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/framework/01-discover.md) · [Define](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/framework/02-define.md) · [Direction](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/framework/03-direction.md) · [Design](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/framework/04-design.md) · [Build](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/framework/05-build.md) · [Polish](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/framework/06-polish.md) · [Ship](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/framework/07-ship.md) · [Handover](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/framework/08-handover.md)
+
+## Working app (Level 2)
+
+- [Recommended stack](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/stack/01-recommended-stack.md) · [Data and auth](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/stack/02-data-and-auth.md) · [GitHub and Vercel](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/stack/03-github-vercel-workflow.md) · [Tokens to Tailwind](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/stack/04-tokens-to-tailwind.md) · [Performance and privacy](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/stack/05-performance-and-privacy.md)
+- [CRM data model](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/crm/data-model.md) · [Pipeline and views](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/crm/pipeline-and-views.md) · [CRM features](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/crm/features.md)
+- [Calendar hub](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/calendars/README.md): anything with dates, booking or sync
+
+## Templates
+
+- [Brief](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/templates/brief.md) · [Spec](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/templates/spec.md) · [Discovery questions](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/templates/discovery-questions.md) · [QA checklist](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/templates/qa-checklist.md) · [Handover guide](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/templates/handover-guide.md)

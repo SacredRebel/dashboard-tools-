@@ -1,0 +1,34 @@
+<!doctype html>
+<!-- Starter for a Level 1 clickable prototype. Copy this folder, copy design-system/tokens.css next to it,
+     set data-theme, then replace DATA and the page renderers in app.js with the brief's content. -->
+<html lang="en" data-theme="atelier">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../../design-system/tokens.css"><!-- after copying: href="tokens.css" -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="app">
+    <aside class="side" aria-label="Main">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><b data-brand>Business name</b></div>
+      <nav class="nav" data-nav></nav>
+      <p class="sample">Sample data · fictional</p>
+    </aside>
+    <main id="main" class="main" tabindex="-1">
+      <header class="top">
+        <div><h1 data-title></h1><p class="muted" data-subtitle></p></div>
+        <div class="top-actions" data-actions></div>
+      </header>
+      <div data-view></div>
+    </main>
+  </div>
+  <div class="drawer" data-drawer hidden role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <div class="drawer-panel" data-drawer-panel></div>
+  </div>
+  <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

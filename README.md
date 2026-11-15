@@ -4,7 +4,23 @@
 
 Point any capable AI agent (Claude, or another LLM with repo access) at this repository and it has everything it needs: which skills and tools to use and when, the design rules that make a dashboard feel premium, ten ready themes, a calendar hub, reference components, a CRM blueprint, and a phase-by-phase process with human approval gates.
 
-> **AI agent?** Read [AGENTS.md](AGENTS.md) first. It is your operating manual.
+> **AI agent?** Asked to build a dashboard? Start at [START.md](START.md). Maintaining this repo? Read [AGENTS.md](AGENTS.md).
+
+<a id="one-prompt-start"></a>
+## One-prompt start
+
+Paste this into any capable AI (Claude, ChatGPT, Gemini, Cursor, Claude Code…) and answer its questions:
+
+```
+Build me a dashboard for <my business, in a sentence>.
+
+Use this toolkit: https://github.com/SacredRebel/dashboard-tools-
+Read START.md in that repo first and follow it exactly: run the onboarding interview,
+show me the brief and three look options, then build, polish and deliver.
+(If you can't open the repo, fetch https://dashboard-tools-three.vercel.app/llms.txt)
+```
+
+What happens next: the AI asks three short rounds of questions (every one has a default, and "just build it" works), shows you a one-page brief with three looks from the [gallery](https://dashboard-tools-three.vercel.app/#/dashboards), and after your yes builds a clickable multi-page dashboard, polishes it and hands it over. Then you can ask for the working app with login and a database. How it works: [docs/onboarding/](docs/onboarding/README.md).
 
 ---
 
@@ -12,6 +28,7 @@ Point any capable AI agent (Claude, or another LLM with repo access) at this rep
 
 | | What | Where |
 |---|---|---|
+| 🚀 | **Onboarding**: one-prompt entry, intake interview, 15 business-type recipes, brief template, starter prototype, build playbook | [START.md](START.md) · [docs/onboarding/](docs/onboarding/README.md) · [catalog/recipes.json](catalog/recipes.json) · [templates/starter/](templates/starter/) |
 | 🧭 | **Framework**: 8 phases (Discover → Define → Direction → Design → Build → Polish → Ship → Handover), each with steps, tools and a gate | [docs/framework/](docs/framework/00-overview.md) |
 | 🧰 | **Tool catalog**: 198 curated skills, connectors, agents and libraries with *use when / avoid when / how / pairs with / fallback* | [catalog/tools.json](catalog/tools.json) · [docs/tools/](docs/tools/README.md) |
 | 📋 | **Full inventory**: all 499 installed skills across 40 plugins, rated for relevance | [catalog/inventory.json](catalog/inventory.json) |
@@ -30,6 +47,8 @@ Point any capable AI agent (Claude, or another LLM with repo access) at this rep
 ## Quick start
 
 ### Use it to build a dashboard
+
+Fastest: the [one-prompt start](#one-prompt-start) above. For a careful client project with a gate after every phase:
 
 1. Open your AI agent with this repo available (for example Claude Code on the web with this repo attached, or clone it into your project as `toolkit/`).
 2. Paste the kickoff prompt:

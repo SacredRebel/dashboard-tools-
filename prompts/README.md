@@ -4,7 +4,20 @@ Paste into any capable AI agent that has this repo available (cloned, or attache
 
 ---
 
-## 0. Kickoff (start any new dashboard project)
+## One prompt: onboarding to finished dashboard (fastest)
+
+```
+Build me a dashboard for <my business, in a sentence>.
+
+Use this toolkit: https://github.com/SacredRebel/dashboard-tools-
+Read START.md in that repo first and follow it exactly: run the onboarding interview,
+show me the brief and three look options, then build, polish and deliver.
+(If you can't open the repo, fetch https://dashboard-tools-three.vercel.app/llms.txt)
+```
+
+Add anything you already have (notes, a spreadsheet, your website, screenshots you like) and the AI will skip the questions those answer. Say "just build it" to take every default.
+
+## 0. Kickoff (start any new dashboard project, full framework with gates)
 
 ```
 You are building a dashboard for <client / business>. Use the toolkit repo

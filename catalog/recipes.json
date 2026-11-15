@@ -1,0 +1,1257 @@
+{
+  "version": 1,
+  "description": "Business-type recipes for the onboarding flow (START.md). Each is a starting point the agent proposes and the human edits. Gallery ids reference catalog/dashboards.json; themes reference design-system/themes.json; page patterns are named in docs/design/03-page-patterns.md.",
+  "recipes": [
+    {
+      "id": "service-crm",
+      "name": "Service business CRM",
+      "matches": [
+        "coach",
+        "consultant",
+        "freelancer",
+        "agency",
+        "photographer",
+        "designer",
+        "lawyer",
+        "accountant",
+        "contractor",
+        "wedding",
+        "clients",
+        "leads"
+      ],
+      "who": "Owner or a small team selling a service to a few dozen clients at a time",
+      "job": "See who needs attention today and move every client one step forward",
+      "pages": [
+        {
+          "name": "Today",
+          "pattern": "Dashboard",
+          "purpose": "KPIs, needs-attention list, upcoming follow-ups"
+        },
+        {
+          "name": "Clients",
+          "pattern": "List",
+          "purpose": "Search, filter, add; row opens the client"
+        },
+        {
+          "name": "Client",
+          "pattern": "Detail",
+          "purpose": "Overview, activity, notes, next step"
+        },
+        {
+          "name": "Pipeline",
+          "pattern": "Board",
+          "purpose": "Stages as columns, drag or 'Move to'"
+        },
+        {
+          "name": "Calendar",
+          "pattern": "Calendar",
+          "purpose": "Meetings and follow-ups"
+        },
+        {
+          "name": "Settings",
+          "pattern": "Settings",
+          "purpose": "Stages, profile, import and export"
+        }
+      ],
+      "entities": [
+        "client",
+        "contact",
+        "deal",
+        "activity",
+        "task",
+        "note"
+      ],
+      "kpis": [
+        "Active clients",
+        "Open pipeline value",
+        "Follow-ups due today",
+        "Won this month",
+        "Average days to close"
+      ],
+      "stages": [
+        "New lead",
+        "Discovery call",
+        "Proposal sent",
+        "Negotiating",
+        "Won",
+        "Lost"
+      ],
+      "integrations": [
+        "Google Calendar",
+        "Gmail",
+        "meeting notes (Fathom, Zoom)",
+        "invoicing"
+      ],
+      "gallery": [
+        "orchard-sales",
+        "mauve-ledger",
+        "kumo-payroll"
+      ],
+      "themes": [
+        "atelier",
+        "linen",
+        "blush"
+      ],
+      "notes": "Full blueprint in docs/crm/. Stage names come from the client's own words."
+    },
+    {
+      "id": "booking",
+      "name": "Appointments and bookings",
+      "matches": [
+        "salon",
+        "spa",
+        "barber",
+        "clinic",
+        "dentist",
+        "therapist",
+        "tutor",
+        "studio",
+        "appointments",
+        "booking",
+        "schedule",
+        "classes"
+      ],
+      "who": "Front desk or owner who lives in the calendar",
+      "job": "Fill the calendar, cut no-shows, know each customer's history",
+      "pages": [
+        {
+          "name": "Today",
+          "pattern": "Dashboard",
+          "purpose": "Today's appointments, gaps, no-show risk"
+        },
+        {
+          "name": "Calendar",
+          "pattern": "Calendar",
+          "purpose": "Day and week by staff member, drag to reschedule"
+        },
+        {
+          "name": "Customers",
+          "pattern": "List",
+          "purpose": "History, preferences, notes"
+        },
+        {
+          "name": "Customer",
+          "pattern": "Detail",
+          "purpose": "Visits, spend, next booking"
+        },
+        {
+          "name": "Services",
+          "pattern": "List",
+          "purpose": "Durations, prices, staff"
+        },
+        {
+          "name": "Settings",
+          "pattern": "Settings",
+          "purpose": "Hours, staff, reminders"
+        }
+      ],
+      "entities": [
+        "customer",
+        "appointment",
+        "service",
+        "staff",
+        "payment"
+      ],
+      "kpis": [
+        "Bookings today",
+        "Utilisation this week",
+        "No-show rate",
+        "Revenue this week",
+        "Rebooking rate"
+      ],
+      "stages": [
+        "Requested",
+        "Confirmed",
+        "Checked in",
+        "Completed",
+        "No-show"
+      ],
+      "integrations": [
+        "Google Calendar",
+        "SMS or email reminders",
+        "payments"
+      ],
+      "gallery": [
+        "pearlwell-dental",
+        "vitalis-care",
+        "meridian-labs"
+      ],
+      "themes": [
+        "coastal",
+        "blush",
+        "linen"
+      ],
+      "notes": "Calendar is the main screen: read docs/calendars/ before designing it."
+    },
+    {
+      "id": "real-estate",
+      "name": "Real estate and property",
+      "matches": [
+        "real estate",
+        "realtor",
+        "property",
+        "listings",
+        "rentals",
+        "landlord",
+        "broker",
+        "airbnb"
+      ],
+      "who": "Agent or small brokerage tracking listings and buyers",
+      "job": "Match people to properties and keep every viewing and offer moving",
+      "pages": [
+        {
+          "name": "Overview",
+          "pattern": "Dashboard",
+          "purpose": "New leads, viewings this week, offers out"
+        },
+        {
+          "name": "Listings",
+          "pattern": "List",
+          "purpose": "Cards with photo, price, status; filters"
+        },
+        {
+          "name": "Listing",
+          "pattern": "Detail",
+          "purpose": "Gallery, specs, price history, interested buyers"
+        },
+        {
+          "name": "Buyers",
+          "pattern": "List",
+          "purpose": "Requirements, budget, matched listings"
+        },
+        {
+          "name": "Viewings",
+          "pattern": "Calendar",
+          "purpose": "Schedule and feedback"
+        },
+        {
+          "name": "Deals",
+          "pattern": "Board",
+          "purpose": "Offer to close"
+        }
+      ],
+      "entities": [
+        "listing",
+        "buyer",
+        "owner",
+        "viewing",
+        "offer",
+        "document"
+      ],
+      "kpis": [
+        "Active listings",
+        "Viewings this week",
+        "Offers out",
+        "Average days on market",
+        "Commission pipeline"
+      ],
+      "stages": [
+        "Enquiry",
+        "Viewing booked",
+        "Offer made",
+        "Under contract",
+        "Closed"
+      ],
+      "integrations": [
+        "Google Calendar",
+        "maps",
+        "document signing"
+      ],
+      "gallery": [
+        "haven-listings",
+        "larchwood-lodge"
+      ],
+      "themes": [
+        "tide",
+        "linen",
+        "coastal"
+      ],
+      "notes": "Photos carry this dashboard: plan original imagery (docs/design/11-hero-art-direction.md)."
+    },
+    {
+      "id": "health-fitness",
+      "name": "Health, wellness and fitness",
+      "matches": [
+        "gym",
+        "trainer",
+        "fitness",
+        "yoga",
+        "nutrition",
+        "wellness",
+        "patients",
+        "health",
+        "wearable",
+        "sleep"
+      ],
+      "who": "Coach, practitioner or member tracking progress",
+      "job": "Show progress at a glance and what to do next",
+      "pages": [
+        {
+          "name": "Overview",
+          "pattern": "Dashboard",
+          "purpose": "Scores, trends, today's plan"
+        },
+        {
+          "name": "Members",
+          "pattern": "List",
+          "purpose": "Status, plan, last check-in"
+        },
+        {
+          "name": "Member",
+          "pattern": "Detail",
+          "purpose": "Metrics over time, programme, notes"
+        },
+        {
+          "name": "Programmes",
+          "pattern": "List",
+          "purpose": "Plans and sessions"
+        },
+        {
+          "name": "Schedule",
+          "pattern": "Calendar",
+          "purpose": "Sessions and classes"
+        },
+        {
+          "name": "Settings",
+          "pattern": "Settings",
+          "purpose": "Goals, units, alerts"
+        }
+      ],
+      "entities": [
+        "member",
+        "programme",
+        "session",
+        "measurement",
+        "goal"
+      ],
+      "kpis": [
+        "Active members",
+        "Check-ins this week",
+        "Goal completion",
+        "Churn risk",
+        "Revenue this month"
+      ],
+      "stages": [],
+      "integrations": [
+        "wearables",
+        "Google Calendar",
+        "payments"
+      ],
+      "gallery": [
+        "forge-fitness",
+        "zest-health",
+        "aura-ring",
+        "lull-sleep",
+        "cortex-well"
+      ],
+      "themes": [
+        "ember",
+        "atelier",
+        "aurora",
+        "blush"
+      ],
+      "notes": "Never present health numbers as medical advice; label sample data."
+    },
+    {
+      "id": "ecommerce",
+      "name": "Online store and orders",
+      "matches": [
+        "shop",
+        "store",
+        "ecommerce",
+        "orders",
+        "products",
+        "inventory",
+        "shopify",
+        "etsy",
+        "retail"
+      ],
+      "who": "Store owner checking sales, stock and orders",
+      "job": "Know what sold, what to ship and what is running out",
+      "pages": [
+        {
+          "name": "Overview",
+          "pattern": "Dashboard",
+          "purpose": "Sales, orders to ship, low stock"
+        },
+        {
+          "name": "Orders",
+          "pattern": "List",
+          "purpose": "Status filters, bulk actions"
+        },
+        {
+          "name": "Order",
+          "pattern": "Detail",
+          "purpose": "Items, customer, timeline"
+        },
+        {
+          "name": "Products",
+          "pattern": "List",
+          "purpose": "Stock, price, performance"
+        },
+        {
+          "name": "Customers",
+          "pattern": "List",
+          "purpose": "Lifetime value, last order"
+        },
+        {
+          "name": "Reports",
+          "pattern": "Report",
+          "purpose": "Revenue, channels, returns"
+        }
+      ],
+      "entities": [
+        "order",
+        "product",
+        "customer",
+        "inventory item",
+        "refund"
+      ],
+      "kpis": [
+        "Revenue today",
+        "Orders to ship",
+        "Average order value",
+        "Conversion rate",
+        "Low-stock items"
+      ],
+      "stages": [
+        "Paid",
+        "Packing",
+        "Shipped",
+        "Delivered",
+        "Returned"
+      ],
+      "integrations": [
+        "Shopify or Stripe",
+        "shipping",
+        "email"
+      ],
+      "gallery": [
+        "orchard-sales",
+        "tidebath-showroom",
+        "taffy-analytics"
+      ],
+      "themes": [
+        "atelier",
+        "linen",
+        "blush"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "restaurant-hospitality",
+      "name": "Restaurant, hotel and hospitality",
+      "matches": [
+        "restaurant",
+        "cafe",
+        "bar",
+        "hotel",
+        "lodge",
+        "bnb",
+        "reservations",
+        "tables",
+        "guests",
+        "catering"
+      ],
+      "who": "Manager running today's service",
+      "job": "See today's covers or arrivals and keep service smooth",
+      "pages": [
+        {
+          "name": "Today",
+          "pattern": "Dashboard",
+          "purpose": "Arrivals, covers, occupancy, issues"
+        },
+        {
+          "name": "Reservations",
+          "pattern": "Calendar",
+          "purpose": "Timeline by table or room"
+        },
+        {
+          "name": "Guests",
+          "pattern": "List",
+          "purpose": "Preferences, visits, notes"
+        },
+        {
+          "name": "Menu or Rooms",
+          "pattern": "List",
+          "purpose": "Availability and price"
+        },
+        {
+          "name": "Staff",
+          "pattern": "List",
+          "purpose": "Shifts"
+        },
+        {
+          "name": "Reports",
+          "pattern": "Report",
+          "purpose": "Revenue, occupancy, reviews"
+        }
+      ],
+      "entities": [
+        "reservation",
+        "guest",
+        "table or room",
+        "staff shift",
+        "review"
+      ],
+      "kpis": [
+        "Covers or arrivals today",
+        "Occupancy",
+        "Average spend",
+        "No-shows",
+        "Review score"
+      ],
+      "stages": [
+        "Booked",
+        "Confirmed",
+        "Seated or checked in",
+        "Completed",
+        "Cancelled"
+      ],
+      "integrations": [
+        "booking channel",
+        "payments",
+        "reviews"
+      ],
+      "gallery": [
+        "larchwood-lodge",
+        "tidebath-showroom",
+        "horizon-weather"
+      ],
+      "themes": [
+        "ember",
+        "linen",
+        "coastal"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "projects-agency",
+      "name": "Projects and agency work",
+      "matches": [
+        "agency",
+        "projects",
+        "tasks",
+        "team",
+        "studio",
+        "construction",
+        "production",
+        "deliverables",
+        "sprints"
+      ],
+      "who": "Team lead tracking work across clients",
+      "job": "Know what is due, who is overloaded and what is blocked",
+      "pages": [
+        {
+          "name": "Overview",
+          "pattern": "Dashboard",
+          "purpose": "Due this week, blocked, workload"
+        },
+        {
+          "name": "Projects",
+          "pattern": "List",
+          "purpose": "Status, owner, budget"
+        },
+        {
+          "name": "Project",
+          "pattern": "Detail",
+          "purpose": "Tasks, timeline, files, notes"
+        },
+        {
+          "name": "Board",
+          "pattern": "Board",
+          "purpose": "Tasks by status"
+        },
+        {
+          "name": "Timeline",
+          "pattern": "Calendar",
+          "purpose": "Milestones"
+        },
+        {
+          "name": "Team",
+          "pattern": "List",
+          "purpose": "Capacity"
+        }
+      ],
+      "entities": [
+        "project",
+        "task",
+        "client",
+        "milestone",
+        "time entry"
+      ],
+      "kpis": [
+        "Active projects",
+        "Tasks due this week",
+        "Blocked tasks",
+        "Hours logged",
+        "Budget used"
+      ],
+      "stages": [
+        "Backlog",
+        "In progress",
+        "Review",
+        "Done"
+      ],
+      "integrations": [
+        "Google Calendar",
+        "time tracking",
+        "file storage"
+      ],
+      "gallery": [
+        "prism-workspace",
+        "canopy-reforest",
+        "pebble-studio"
+      ],
+      "themes": [
+        "aurora",
+        "grove",
+        "blush"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "finance",
+      "name": "Finance, bookkeeping and payroll",
+      "matches": [
+        "finance",
+        "bookkeeping",
+        "invoices",
+        "payroll",
+        "expenses",
+        "budget",
+        "accounting",
+        "cash flow",
+        "hr"
+      ],
+      "who": "Owner or bookkeeper checking money in and out",
+      "job": "See cash position and what needs paying or chasing",
+      "pages": [
+        {
+          "name": "Overview",
+          "pattern": "Dashboard",
+          "purpose": "Balance, cash flow, due and overdue"
+        },
+        {
+          "name": "Transactions",
+          "pattern": "List",
+          "purpose": "Categorise, search, export"
+        },
+        {
+          "name": "Invoices",
+          "pattern": "List",
+          "purpose": "Status, chase overdue"
+        },
+        {
+          "name": "Payroll",
+          "pattern": "List",
+          "purpose": "Runs, people, approvals"
+        },
+        {
+          "name": "Budgets",
+          "pattern": "Report",
+          "purpose": "Plan against actual"
+        },
+        {
+          "name": "Settings",
+          "pattern": "Settings",
+          "purpose": "Accounts, categories"
+        }
+      ],
+      "entities": [
+        "account",
+        "transaction",
+        "invoice",
+        "employee",
+        "pay run",
+        "budget"
+      ],
+      "kpis": [
+        "Cash balance",
+        "Money in this month",
+        "Money out this month",
+        "Overdue invoices",
+        "Runway"
+      ],
+      "stages": [
+        "Draft",
+        "Sent",
+        "Overdue",
+        "Paid"
+      ],
+      "integrations": [
+        "bank feed",
+        "accounting software",
+        "payroll provider"
+      ],
+      "gallery": [
+        "mauve-ledger",
+        "kumo-payroll"
+      ],
+      "themes": [
+        "blush",
+        "noir",
+        "atelier"
+      ],
+      "notes": "Money needs exact numbers: tabular figures, currency formats, no rounding surprises."
+    },
+    {
+      "id": "saas-analytics",
+      "name": "SaaS admin and product analytics",
+      "matches": [
+        "saas",
+        "app",
+        "users",
+        "signups",
+        "mrr",
+        "churn",
+        "analytics",
+        "metrics",
+        "product",
+        "startup"
+      ],
+      "who": "Founder or product lead watching growth and usage",
+      "job": "See growth, retention and where users drop off",
+      "pages": [
+        {
+          "name": "Overview",
+          "pattern": "Dashboard",
+          "purpose": "Active users, revenue, churn, sign-ups"
+        },
+        {
+          "name": "Users",
+          "pattern": "List",
+          "purpose": "Plan, usage, health"
+        },
+        {
+          "name": "User",
+          "pattern": "Detail",
+          "purpose": "Events, billing, notes"
+        },
+        {
+          "name": "Funnels",
+          "pattern": "Report",
+          "purpose": "Sign-up to paid"
+        },
+        {
+          "name": "Revenue",
+          "pattern": "Report",
+          "purpose": "MRR movements"
+        },
+        {
+          "name": "Settings",
+          "pattern": "Settings",
+          "purpose": "Team, flags, alerts"
+        }
+      ],
+      "entities": [
+        "user",
+        "account",
+        "subscription",
+        "event",
+        "feature flag"
+      ],
+      "kpis": [
+        "Active users",
+        "MRR",
+        "Churn",
+        "Trial to paid",
+        "Net revenue retention"
+      ],
+      "stages": [],
+      "integrations": [
+        "Stripe",
+        "product analytics",
+        "support desk"
+      ],
+      "gallery": [
+        "pulsar-analytics",
+        "taffy-analytics",
+        "aether-pane",
+        "prism-workspace"
+      ],
+      "themes": [
+        "aurora",
+        "blush",
+        "tide"
+      ],
+      "notes": "Chart-heavy: read docs/design/04-data-viz.md and use the dataviz skill."
+    },
+    {
+      "id": "operations-logistics",
+      "name": "Operations, logistics and monitoring",
+      "matches": [
+        "logistics",
+        "fleet",
+        "warehouse",
+        "delivery",
+        "shipments",
+        "operations",
+        "monitoring",
+        "iot",
+        "sensors",
+        "control room",
+        "security"
+      ],
+      "who": "Operator watching live status",
+      "job": "Spot what is off and act before it becomes a problem",
+      "pages": [
+        {
+          "name": "Live",
+          "pattern": "Dashboard",
+          "purpose": "Status wall, alerts, key gauges"
+        },
+        {
+          "name": "Assets",
+          "pattern": "List",
+          "purpose": "Vehicles, sites or devices with state"
+        },
+        {
+          "name": "Asset",
+          "pattern": "Detail",
+          "purpose": "History, readings, map"
+        },
+        {
+          "name": "Shipments or Jobs",
+          "pattern": "Board",
+          "purpose": "In transit to delivered"
+        },
+        {
+          "name": "Alerts",
+          "pattern": "List",
+          "purpose": "Triage and acknowledge"
+        },
+        {
+          "name": "Reports",
+          "pattern": "Report",
+          "purpose": "Trends and SLAs"
+        }
+      ],
+      "entities": [
+        "asset",
+        "shipment or job",
+        "alert",
+        "site",
+        "reading"
+      ],
+      "kpis": [
+        "On-time rate",
+        "Active alerts",
+        "Utilisation",
+        "Throughput today",
+        "Mean time to resolve"
+      ],
+      "stages": [
+        "Planned",
+        "In transit",
+        "Delayed",
+        "Delivered"
+      ],
+      "integrations": [
+        "maps",
+        "telemetry feed",
+        "messaging"
+      ],
+      "gallery": [
+        "citadel-wall",
+        "glacier-ops",
+        "copper-radar",
+        "solstice-energy"
+      ],
+      "themes": [
+        "midnight",
+        "atelier",
+        "ember"
+      ],
+      "notes": "Live data arrives by subscription, never by polling (docs/stack/05-performance-and-privacy.md)."
+    },
+    {
+      "id": "smart-home",
+      "name": "Smart home and energy",
+      "matches": [
+        "smart home",
+        "home automation",
+        "thermostat",
+        "lights",
+        "energy",
+        "solar",
+        "devices",
+        "rooms"
+      ],
+      "who": "Resident or installer controlling rooms and devices",
+      "job": "Control the home quickly and see energy use",
+      "pages": [
+        {
+          "name": "Home",
+          "pattern": "Dashboard",
+          "purpose": "Rooms, climate, quick scenes"
+        },
+        {
+          "name": "Rooms",
+          "pattern": "List",
+          "purpose": "Devices per room"
+        },
+        {
+          "name": "Climate",
+          "pattern": "Detail",
+          "purpose": "Thermostat, schedule"
+        },
+        {
+          "name": "Energy",
+          "pattern": "Report",
+          "purpose": "Use, solar, cost"
+        },
+        {
+          "name": "Security",
+          "pattern": "List",
+          "purpose": "Cameras, locks, log"
+        },
+        {
+          "name": "Settings",
+          "pattern": "Settings",
+          "purpose": "Members, automations"
+        }
+      ],
+      "entities": [
+        "room",
+        "device",
+        "scene",
+        "schedule",
+        "reading"
+      ],
+      "kpis": [
+        "Indoor temperature",
+        "Energy today",
+        "Devices on",
+        "Solar generated",
+        "Alerts"
+      ],
+      "stages": [],
+      "integrations": [
+        "device hub",
+        "weather",
+        "energy provider"
+      ],
+      "gallery": [
+        "hearth-nest",
+        "clima-pane",
+        "atrium-living",
+        "veil-rooms",
+        "ember-rooms"
+      ],
+      "themes": [
+        "ember",
+        "linen",
+        "coastal",
+        "noir"
+      ],
+      "notes": "Controls must work by keyboard and touch; every slider shows its value."
+    },
+    {
+      "id": "education-community",
+      "name": "Courses, education and community",
+      "matches": [
+        "course",
+        "school",
+        "students",
+        "lessons",
+        "tutoring",
+        "community",
+        "members",
+        "club",
+        "reading",
+        "learning"
+      ],
+      "who": "Teacher or community lead tracking learners",
+      "job": "See who is progressing, who is stuck and what is next",
+      "pages": [
+        {
+          "name": "Overview",
+          "pattern": "Dashboard",
+          "purpose": "Progress, activity, upcoming"
+        },
+        {
+          "name": "Learners",
+          "pattern": "List",
+          "purpose": "Progress, last active"
+        },
+        {
+          "name": "Learner",
+          "pattern": "Detail",
+          "purpose": "Modules, scores, notes"
+        },
+        {
+          "name": "Courses",
+          "pattern": "List",
+          "purpose": "Modules and completion"
+        },
+        {
+          "name": "Schedule",
+          "pattern": "Calendar",
+          "purpose": "Lessons and deadlines"
+        },
+        {
+          "name": "Community",
+          "pattern": "List",
+          "purpose": "Posts and replies"
+        }
+      ],
+      "entities": [
+        "learner",
+        "course",
+        "module",
+        "submission",
+        "event"
+      ],
+      "kpis": [
+        "Active learners",
+        "Completion rate",
+        "Lessons this week",
+        "At-risk learners",
+        "Average score"
+      ],
+      "stages": [],
+      "integrations": [
+        "Google Calendar",
+        "video calls",
+        "payments"
+      ],
+      "gallery": [
+        "folio-club",
+        "saffron-dusk",
+        "mallow-music"
+      ],
+      "themes": [
+        "noir",
+        "coastal",
+        "blush"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "media-content",
+      "name": "Media, content and creators",
+      "matches": [
+        "music",
+        "podcast",
+        "video",
+        "content",
+        "creator",
+        "streaming",
+        "social",
+        "audience",
+        "newsletter",
+        "game"
+      ],
+      "who": "Creator or content lead tracking audience and releases",
+      "job": "See what performs and plan what ships next",
+      "pages": [
+        {
+          "name": "Overview",
+          "pattern": "Dashboard",
+          "purpose": "Audience, plays, top content"
+        },
+        {
+          "name": "Library",
+          "pattern": "List",
+          "purpose": "Items with performance"
+        },
+        {
+          "name": "Item",
+          "pattern": "Detail",
+          "purpose": "Stats over time, comments"
+        },
+        {
+          "name": "Schedule",
+          "pattern": "Calendar",
+          "purpose": "Release plan"
+        },
+        {
+          "name": "Audience",
+          "pattern": "Report",
+          "purpose": "Growth, sources, segments"
+        },
+        {
+          "name": "Settings",
+          "pattern": "Settings",
+          "purpose": "Channels, team"
+        }
+      ],
+      "entities": [
+        "content item",
+        "channel",
+        "audience segment",
+        "release",
+        "comment"
+      ],
+      "kpis": [
+        "Plays or views",
+        "Followers",
+        "Engagement rate",
+        "Top item",
+        "Revenue"
+      ],
+      "stages": [
+        "Idea",
+        "In production",
+        "Scheduled",
+        "Published"
+      ],
+      "integrations": [
+        "platform analytics",
+        "scheduling",
+        "payments"
+      ],
+      "gallery": [
+        "mallow-music",
+        "hollow-vault",
+        "orbit-clay",
+        "folio-club"
+      ],
+      "themes": [
+        "blush",
+        "midnight",
+        "linen"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "travel-weather",
+      "name": "Travel, outdoors and weather",
+      "matches": [
+        "travel",
+        "tours",
+        "trips",
+        "weather",
+        "outdoor",
+        "trails",
+        "events",
+        "venue",
+        "itinerary"
+      ],
+      "who": "Operator or traveller planning around conditions",
+      "job": "See conditions and plans in one calm view",
+      "pages": [
+        {
+          "name": "Overview",
+          "pattern": "Dashboard",
+          "purpose": "Conditions, today's plan, alerts"
+        },
+        {
+          "name": "Trips",
+          "pattern": "List",
+          "purpose": "Dates, guests, status"
+        },
+        {
+          "name": "Trip",
+          "pattern": "Detail",
+          "purpose": "Itinerary, people, documents"
+        },
+        {
+          "name": "Map",
+          "pattern": "Map",
+          "purpose": "Places and routes"
+        },
+        {
+          "name": "Calendar",
+          "pattern": "Calendar",
+          "purpose": "Departures"
+        },
+        {
+          "name": "Settings",
+          "pattern": "Settings",
+          "purpose": "Locations, units"
+        }
+      ],
+      "entities": [
+        "trip",
+        "guest",
+        "location",
+        "booking",
+        "forecast"
+      ],
+      "kpis": [
+        "Departures this week",
+        "Seats filled",
+        "Weather alerts",
+        "Revenue",
+        "Review score"
+      ],
+      "stages": [
+        "Enquiry",
+        "Booked",
+        "Paid",
+        "Travelling",
+        "Completed"
+      ],
+      "integrations": [
+        "weather API",
+        "maps",
+        "payments"
+      ],
+      "gallery": [
+        "horizon-weather",
+        "ridgeline-trails",
+        "larchwood-lodge"
+      ],
+      "themes": [
+        "ember",
+        "linen",
+        "tide"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "custom",
+      "name": "Anything else",
+      "matches": [],
+      "who": "Whoever opens it most",
+      "job": "Decided in the interview: one sentence the human agrees with",
+      "pages": [
+        {
+          "name": "Overview",
+          "pattern": "Dashboard",
+          "purpose": "The 3 to 5 numbers and the list that drive action"
+        },
+        {
+          "name": "Main records",
+          "pattern": "List",
+          "purpose": "The thing they track most"
+        },
+        {
+          "name": "Record",
+          "pattern": "Detail",
+          "purpose": "Everything about one of them"
+        },
+        {
+          "name": "Flow",
+          "pattern": "Board or Calendar",
+          "purpose": "How records move or when things happen"
+        },
+        {
+          "name": "Settings",
+          "pattern": "Settings",
+          "purpose": "Preferences and data"
+        }
+      ],
+      "entities": [
+        "main record",
+        "person",
+        "event",
+        "note"
+      ],
+      "kpis": [
+        "Chosen in the interview, at most 5"
+      ],
+      "stages": [],
+      "integrations": [],
+      "gallery": [],
+      "themes": [
+        "atelier",
+        "linen",
+        "midnight"
+      ],
+      "notes": "Pick the two nearest recipes, merge them, and confirm the page list with the human."
+    }
+  ]
+}

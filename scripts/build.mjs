@@ -238,9 +238,40 @@ for (const c of catalog.categories) {
   writeFileSync(join(root, 'docs/dashboards/catalog.md'), md);
 }
 
+// ---------------------------------------------------------------- onboarding recipes
+{
+  const rec = JSON.parse(rd('catalog/recipes.json'));
+  const dashIds = new Set(JSON.parse(rd('catalog/dashboards.json')).dashboards.map((d) => d.id));
+  const themeList = JSON.parse(rd('design-system/themes.json'));
+  const themeIds = new Set((themeList.themes || themeList).map((t) => t.id));
+  const recErrors = [];
+  for (const r of rec.recipes) {
+    for (const g of r.gallery) if (!dashIds.has(g)) recErrors.push(`recipe "${r.id}": unknown gallery dashboard ${g}`);
+    for (const t of r.themes) if (!themeIds.has(t)) recErrors.push(`recipe "${r.id}": unknown theme ${t}`);
+    if (!r.pages?.length || r.kpis.length > 5) recErrors.push(`recipe "${r.id}": needs pages and at most 5 kpis`);
+  }
+  if (recErrors.length) { console.error(recErrors.join('\n')); process.exit(1); }
+  let md = '# Recipes by business type\n\n> Generated from [catalog/recipes.json](../../catalog/recipes.json) by `scripts/build.mjs`. Edit the JSON, not this file.\n\nA recipe is a starting point the AI proposes during [intake](01-intake.md) and the person edits. Looks link to the live gallery.\n';
+  for (const r of rec.recipes) {
+    md += `\n## ${r.name} (\`${r.id}\`)\n\n`;
+    if (r.matches.length) md += `**Fits:** ${r.matches.join(', ')}\n\n`;
+    md += `**Who uses it:** ${r.who}\n\n**The job:** ${r.job}\n\n| Page | Pattern | Purpose |\n|---|---|---|\n`;
+    for (const p of r.pages) md += `| ${p.name} | ${p.pattern} | ${p.purpose} |\n`;
+    md += `\n**Records:** ${r.entities.join(', ')}\n\n**Numbers:** ${r.kpis.join(' · ')}\n`;
+    if (r.stages.length) md += `\n**Steps:** ${r.stages.join(' → ')}\n`;
+    if (r.integrations.length) md += `\n**Often connects to:** ${r.integrations.join(', ')}\n`;
+    if (r.gallery.length) md += `\n**Looks:** ${r.gallery.map((g) => `[${g}](https://dashboard-tools-three.vercel.app/#/dashboards/${g})`).join(' · ')}\n`;
+    md += `\n**Themes:** ${r.themes.join(', ')}\n`;
+    if (r.notes) md += `\n**Note:** ${r.notes}\n`;
+  }
+  writeFileSync(join(root, 'docs/onboarding/recipes.md'), md);
+  if (existsSync(join(root, 'llms.txt'))) copyFileSync(join(root, 'llms.txt'), join(root, 'site/llms.txt'));
+}
+
 // ---------------------------------------------------------------- docs bundle for the site
 const docGroups = [
-  ['Start', ['README.md', 'AGENTS.md', 'prompts/README.md']],
+  ['Start', ['START.md', 'README.md', 'AGENTS.md', 'prompts/README.md']],
+  ['Onboarding', listDir('docs/onboarding')],
   ['Framework', listDir('docs/framework')],
   ['Design', [...listDir('docs/design'), 'design-system/README.md']],
   ['CRM', listDir('docs/crm')],

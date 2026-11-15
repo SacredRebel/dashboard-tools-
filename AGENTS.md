@@ -2,6 +2,8 @@
 
 You are an AI agent asked to **design and build a dashboard** (for example a CRM). This repository is your toolkit and your playbook. Read this file completely before doing anything else. It tells you what to read next, in what order, and which tools to use at each step.
 
+> **A person pasted this repo's link and asked for a dashboard?** Go to [START.md](START.md) now. It runs a short onboarding interview and then builds, using everything below.
+>
 > Humans: start at [README.md](README.md). This file is written for agents, but it is plain English and works as a checklist for people too.
 
 ---
@@ -79,6 +81,7 @@ Human-readable versions grouped by category: [docs/tools/](docs/tools/README.md)
 
 | Situation | Enter at | First action |
 |---|---|---|
+| "Build me a dashboard for my business" + this repo's link | **[START.md](START.md)** (fast path, two approvals) | Run the intake in [docs/onboarding/01-intake.md](docs/onboarding/01-intake.md) |
 | Brand-new dashboard, only an idea or a voice note | **Discover** | `superpowers:brainstorming`, then [01-discover.md](docs/framework/01-discover.md) |
 | Client notes / playbook / transcript exist | **Discover** (synthesis step) | `design:research-synthesis` on the material |
 | Spec approved, no visual direction | **Direction** | [03-direction.md](docs/framework/03-direction.md) |
@@ -131,15 +134,19 @@ Details and the reasoning: [docs/design/05-anti-patterns.md](docs/design/05-anti
 ## 7. Repository map
 
 ```
+START.md                 ← one-prompt entry: onboarding interview → brief → build → polish → deliver
+llms.txt                 ← index of raw file links for models that can only fetch URLs
 AGENTS.md                ← you are here (agent playbook)
 CLAUDE.md                ← Claude Code entry; imports this file
 README.md                ← human overview
 catalog/
   tools.json             ← curated tools (source of truth)
+  recipes.json           ← business-type recipes for onboarding: pages, records, numbers, steps, looks
   dashboards.json        ← gallery dashboards: style family, use cases, palette, layout, variants
   calendars.json         ← calendar repos, styles, approaches, licenses (source of truth for docs/calendars/catalog.md)
   inventory.json         ← every installed skill, with relevance rating
 docs/
+  onboarding/            ← intake interview, generated recipes, build playbook (the fast path)
   framework/             ← 8 phases, step by step
   design/                ← principles, rulebook, page patterns, data viz, anti-patterns, themes, showcase patterns
   dashboards/            ← gallery guide, add-a-dashboard workflow, generated catalog
@@ -151,7 +158,7 @@ design-system/
   tokens.css             ← all tokens + 10 themes (6 classic, 4 cinematic glass)
   themes.json            ← theme metadata (fonts, mood, best for)
   tailwind.preset.js     ← maps tokens to Tailwind / shadcn
-templates/               ← spec, discovery, design direction, art direction, QA, validation evidence, handover…
+templates/               ← brief, starter/ (prototype skeleton), spec, discovery, design direction, art direction, QA, validation evidence, handover…
 prompts/                 ← copy-paste prompts for each phase
 site/                    ← showcase site (static; deployed on Vercel); site/dashboards/<id>/ = gallery dashboards
 scripts/build.mjs        ← validates catalog, regenerates site data + docs/tools
@@ -162,5 +169,6 @@ scripts/build.mjs        ← validates catalog, regenerates site data + docs/too
 - Add or change a tool: edit `catalog/tools.json`, then run `node scripts/build.mjs`. It validates ids, `pairs_with` links and `fallback` paths, and regenerates `docs/tools/` and `site/data/`.
 - Add a gallery dashboard: follow docs/dashboards/01-add-a-dashboard.md exactly (folder + catalog entry + `node scripts/build.mjs` + `node scripts/dashboards-check.mjs <id>`).
 - Add a calendar repo: add an entry to `catalog/calendars.json` (license_class, status, use_when, avoid_when, integrate are required), then rebuild.
+- Add a business-type recipe: add an entry to `catalog/recipes.json` (gallery ids and themes are validated), then rebuild; `docs/onboarding/recipes.md` is generated.
 - Add a theme: add a `[data-theme="…"]` block in `design-system/tokens.css` and an entry in `design-system/themes.json`, then rebuild.
 - Never paste third-party skill text into this repo. Summarize in your own words and link the source.
