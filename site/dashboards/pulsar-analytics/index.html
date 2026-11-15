@@ -17,6 +17,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -76,7 +77,7 @@
                 </ul>
               </div>
               <div class="pa-terrain">
-                <img class="pa-terrain-art pa-ambient" src="media/terrain@2x.webp" srcset="media/terrain.webp 1x, media/terrain@2x.webp 2x" width="1600" height="900" alt="" decoding="async">
+                <img class="pa-terrain-art pa-ambient" data-gsap="drift" data-gsap-dur="14" src="media/terrain@2x.webp" srcset="media/terrain.webp 1x, media/terrain@2x.webp 2x" width="1600" height="900" alt="" decoding="async">
                 <div data-hero></div>
               </div>
             </section>
