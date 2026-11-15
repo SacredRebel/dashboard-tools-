@@ -216,12 +216,82 @@
     });
   }
 
+  /**
+   * Prefer the dashboard content shell `[data-main]` over a nested `<main>` inside
+   * `[data-page-panel]`. Nested mounts hide chrome (top search/header) with overview.
+   */
+  function resolveHost(opts) {
+    const dataMain = document.querySelector('[data-main]');
+    const explicit = opts.main;
+    if (dataMain) {
+      if (!explicit) return dataMain;
+      // Promote if caller passed a nested main/panel that lives under the overview.
+      if (explicit.closest && explicit.closest('[data-page-panel]') && dataMain.contains(explicit) && explicit !== dataMain) {
+        return dataMain;
+      }
+      return explicit;
+    }
+    return explicit || document.querySelector('main') || document.body;
+  }
+
+  function resolveOverview(host, opts) {
+    if (opts.overview && host.contains(opts.overview)) return opts.overview;
+    const direct = host.querySelector(':scope > [data-page-panel="overview"]');
+    if (direct) return direct;
+    const nested = host.querySelector('[data-page-panel="overview"]');
+    if (nested) return nested;
+    return null;
+  }
+
+  /** Map common nav labels → page ids so href="#" boards join the hash router. */
+  function wireNavHashes(list) {
+    const aliases = {
+      home: 'overview', dashboard: 'overview', live: 'overview',
+      'pay runs': 'payroll', deductions: 'payroll', reports: 'payroll',
+      'time off': 'people', arrays: 'rooms', storage: 'devices',
+      'my music': 'rooms', favourites: 'devices', favorites: 'devices',
+      playlists: 'energy', podcasts: 'energy', nutrition: 'rooms',
+      messages: 'devices', analytics: 'rooms', search: 'overview',
+      support: 'settings', people: 'people', reports: 'energy',
+    };
+    document.querySelectorAll('a[href]').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      if (/^#\//.test(href) || /^https?:/i.test(href) || href.startsWith('mailto:')) return;
+      const raw = ((a.getAttribute('aria-label') || '') + ' ' + (a.textContent || ''))
+        .replace(/\s+/g, ' ').trim().toLowerCase();
+      if (!raw) return;
+      // Prefer exact page name/id tokens; strip trailing badge digits.
+      const label = raw.replace(/\b\d+\b/g, '').replace(/\s+/g, ' ').trim();
+      const hit = list.find((p) => label === p.name.toLowerCase() || label === p.id
+        || label.endsWith(' ' + p.name.toLowerCase()) || label.includes(p.name.toLowerCase()))
+        || list.find((p) => aliases[label] === p.id)
+        || list.find((p) => Object.keys(aliases).some((k) => label.includes(k) && aliases[k] === p.id));
+      if (hit) a.setAttribute('href', `#/${hit.id}`);
+      else if (/home|brand|logo/i.test(label) && list[0]) a.setAttribute('href', `#/${list[0].id}`);
+    });
+  }
+
   function mount(opts) {
-    const main = opts.main;
-    const overview = opts.overview;
+    const main = resolveHost(opts);
+    let overview = resolveOverview(main, opts);
     const list = opts.pages;
     const brand = opts.brand || 'Dashboard';
-    let host = main.querySelector('[data-db-page-host]');
+
+    if (!overview) {
+      overview = document.createElement('div');
+      overview.setAttribute('data-page-panel', 'overview');
+      [...main.children].forEach((ch) => {
+        if (ch.hasAttribute && (ch.hasAttribute('data-db-stub') || ch.getAttribute('data-db-page-host') != null)) return;
+        overview.appendChild(ch);
+      });
+      main.insertBefore(overview, main.firstChild);
+    }
+
+    // Page host must be a direct child of the shell (sibling of overview), never nested inside overview.
+    let host = [...main.children].find((ch) => ch.getAttribute && ch.getAttribute('data-db-page-host') != null);
+    main.querySelectorAll('[data-db-page-host]').forEach((el) => {
+      if (el !== host) el.remove();
+    });
     if (!host) {
       host = document.createElement('div');
       host.setAttribute('data-db-page-host', '');
@@ -230,12 +300,15 @@
     }
     // Remove any leftover stubs
     main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
+    wireNavHashes(list);
 
     if (!window.DB?.route) throw new Error('DB.route required');
     window.DB.route(list, (id, page) => {
       const isOverview = id === 'overview' || id === list[0].id;
       if (overview) overview.hidden = !isOverview;
       host.hidden = isOverview;
+      // Keep chrome (side/top nav outside overview) visible; only swap content host.
+      document.documentElement.dataset.dbShell = isOverview ? 'overview' : 'page';
       if (!isOverview) {
         const custom = opts.renderPage?.(page);
         host.innerHTML = pageShell(page, brand, custom || defaultBody(page));
@@ -246,9 +319,11 @@
         window.DB.fx.remount(overview || main);
       }
     });
-    return { host };
+    return { host, main, overview };
   }
 
   window.DB = window.DB || {};
-  window.DB.dense = { mount, defaultBody, pageShell, kpiRow, listCard, tableCard, chartCard, heroCard };
+  window.DB.dense = {
+    mount, resolveHost, defaultBody, pageShell, kpiRow, listCard, tableCard, chartCard, heroCard, wireNavHashes,
+  };
 })();

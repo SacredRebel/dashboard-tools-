@@ -1,7 +1,9 @@
 /* Dense secondary pages — shared kit (pair with dense-pages.js) */
-[data-db-page-host][hidden] { display: none !important; }
+[data-db-page-host][hidden],
+[data-page-panel][hidden] { display: none !important; }
 /* Keep parent grid/flex layouts: overview wrapper must not collapse columns. */
-main > [data-page-panel="overview"]:not([hidden]) { display: contents; }
+main > [data-page-panel="overview"]:not([hidden]),
+[data-main] > [data-page-panel="overview"]:not([hidden]) { display: contents; }
 [data-db-page-host]:not([hidden]) {
   display: block;
   width: 100%;
@@ -9,6 +11,14 @@ main > [data-page-panel="overview"]:not([hidden]) { display: contents; }
   grid-column: 1 / -1;
   flex: 1 1 100%;
   max-width: none;
+  min-height: 72vh;
+}
+/* Secondary pages stay inside the same chrome; fill the content well. */
+[data-main]:has(> [data-db-page-host]:not([hidden])),
+main:has(> [data-db-page-host]:not([hidden])) {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 [data-db-page-host] > .db-dense-page { width: 100%; min-width: 0; max-width: none; }
 .db-dense-page {
