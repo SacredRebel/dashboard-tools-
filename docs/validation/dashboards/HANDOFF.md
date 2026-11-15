@@ -1,51 +1,46 @@
-# Deep polish handoff (round 3)
+# Fidelity Round 4 — Batch 1 handoff
 
-Branch: `cursor/deep-polish-r3-0545`  
-Brief: `prompts/cursor-deep-polish.md` + round-3 “polish all” intent  
-Base: `main` @ `cb13353` (PR #7 deep polish r2 merged)  
-PR: draft — **do not merge** (see compare URL below if ManagePullRequest unavailable)
+Branch: `cursor/fidelity-r4-batch1-0545`  
+Base: `main`  
+PR: draft — **do not merge** (architect review of Batch 1 only)  
+Next: **Batch 2** (after architect sign-off)
 
-## Done this stretch (r3)
+## Framework (first commits)
 
-### Shared framework
-- **Zero runtime Google Fonts CDN** — 26 OFL families self-hosted as WOFF2 under `site/dashboards/_vendor/fonts/<slug>/` with `family.css` + LICENSE; all 38 `index.html` files rewired
-- **FX materials**: `mat-holo` / `mat-holo-frame` recipes for dark HUD boards
-- **Ambient GSAP**: `spin` / `glow` / `sway` kinds; ambient-gsap wired on all 38 boards with hero `data-gsap` hooks
+1. **Vendor three.js 0.170.0** — `site/dashboards/_vendor/three@0.170.0/` (MIT: `three.module.min.js` + GLTFLoader, DRACOLoader, MeshoptDecoder, RoomEnvironment, OrbitControls). No CDN.
+2. **`_shared/three/stage.js`** — `createStage(canvas, opts)`: alpha clear, ResizeObserver, DPR≤2, `DB.onVisible` + tab-active loop, reduced-motion single frame, poster fallback, pointer parallax ≤8°, ACES + RoomEnvironment.
+3. **Shape kit** — `_shared/shape/` + `docs/design/14-shape-language.md`: `notchFrame`, `scoop`, `tabCard`, `chamfer`, `wave`, `blob`, `arcSlot` (SVG paths / clip-path, ResizeObserver, drop-shadow wrappers).
+4. **Liquid glass** — `_shared/fx/materials.css` + `docs/design/10-materials.md`: 5-layer `mat-glass-frost|liquid|dark|holo`.
+5. **Deleted** `_shared/dense-pages.js` / `.css` and every call site → `_shared/ui/` primitives only (table, drawer, field, segmented, calendar, skeleton, toast).
 
-### Priority ≤3 / gap boards (deepened)
-| Board | Pass |
-|---|---|
-| **Citadel** | Holo glass panels + gold-corner frames; GSAP spin rings + float cube; denser glow/bars |
-| **Glacier** | Holo glass plates; topo pulse; orb/gauge hover depth |
-| **Forge** | Dense glass cards; athlete upscale 2400px; sleep `noAxis` Y-label AA; gauge chip |
-| **Clima** | Glass cards; orb pulse/parallax; opaque brand + Outside plates (AA) |
-| **Hollow** | Dense glass wheel/cards; witch/chest glow; open CTA lift |
-| **Pearlwell / Vitalis / Orbit / Taffy / Pebble / Dune / Ridgeline / Aura / Haven** | Clay/glass materials + hero drop-shadows + hover craft |
+## Batch 1 boards
 
-### Gallery-wide
-- Hover lift craft on cards/panels/tiles (motion-safe)
-- Tidebath orphan `href="#"` → buttons
-- Ambient GSAP script on every board (was 6; now 38)
+| Board | Tech | 3D source | Screenshot-to-code | Check | Remaining visible diffs |
+|---|---|---|---|---|---|
+| **haven-listings** | shape, glass | none (alpine CSS/SVG backdrop) | unreachable — Pillow blueprint | ✔ | Notch geometry / listing scoop vs crop still ~few px; agent strip removed from overview as specified |
+| **glacier-ops** | webgl, shape | procedural three.js mountain-in-hemisphere lens | unreachable — Pillow blueprint | ✔ | Dial arc + topo grain softer than ref; cyan chart density lighter on secondary |
+| **citadel-wall** | webgl, shape | procedural hologram cube (nested BoxGeometry + edges + torus pedestal + light cone); Network glass globe | unreachable — Pillow blueprint | ✔ | HUD chamfer corners vs ref; globe land masses abstract |
+| **mauve-ledger** | glass | none | unreachable — Pillow blueprint | ✔ | Hatched bars / arc gauge proportions; greeting weight vs ref |
+| **saffron-dusk** | glass, shape | none (CSS liquid-glass twin phones — not photos-in-boxes) | unreachable — Pillow blueprint | ✔ | Phone chrome bevels; sun-arc illustration simpler than ref; day chips 8–13 |
+
+## Hard notes for architect
+
+- **Image-to-3D / screenshot-to-code unreachable** in this environment — noted once here and in per-board `media/CREDITS.md` + `docs/validation/dashboards/fidelity/<id>.md`. Heroes are procedural three.js or CSS/SVG shapes — never photo-in-rectangle.
+- Gates passed via real surfaces (WebGL ≥220px where required; shape clip/mask/path ≥300px; glass ≥3×≥160px backdrop-filter) — not token canvases.
+- One commit per dashboard after framework commits. **Stop after Batch 1.**
 
 ## Check results
 
-Priority ✔: `citadel-wall` · `glacier-ops` · `forge-fitness` · `clima-pane` · `hollow-vault`  
-**Full-38 confirmation: 38/38 ✔** (`node scripts/dashboards-check.mjs`, exit 0).
+```
+✔ haven-listings
+✔ glacier-ops
+✔ citadel-wall
+✔ mauve-ledger
+✔ saffron-dusk
+```
 
-## Honest gaps (still not template-grade twins)
-
-1. **Solstice / Pulsar / Horizon / Ember / Tidebath / Kumo** — r2 cinematic gains held; still shy of pixel-perfect reference twins (sakura particles, true 3D cylinder mesh, Skyview card-for-card).
-2. **Citadel / Glacier** — holo density up; not yet full smart-city / topo-dial reference twins.
-3. **Forge** — glass + athlete stronger; right-rail speedometer/icon row still lighter than reference.
-4. **Clima** — dial/orbs denser; multi-screen climate set still lighter than reference.
-5. **Clay family** (Pearlwell, Vitalis, Orbit, Taffy, Pebble, Dune) — materials/hover up; signature props not re-rendered this round.
-6. **Lottie** — still unused; Motion/GSAP ambient now gallery-wide but Lottie idle.
-7. **Side-by-side fidelity sheets** for scores ≥4.5 still thin outside priority boards.
-8. **Secondary pages** — dense-kit remains the shell for many gate-green boards (not bespoke art direction per route).
-
-## Next
-- Architect review of draft r3 PR (do not merge)
-- Optional: Lottie where references earn it; bespoke secondary pages; GenerateImage prop refresh for clay/holo heroes; fidelity sheets for ≥4.5 claims
+(`node scripts/dashboards-check.mjs <id>` each ✔)
 
 ## Compare
-https://github.com/SacredRebel/dashboard-tools-/compare/main...cursor/deep-polish-r3-0545?expand=1
+
+https://github.com/SacredRebel/dashboard-tools-/compare/main...cursor/fidelity-r4-batch1-0545?expand=1
