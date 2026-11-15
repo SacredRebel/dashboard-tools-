@@ -21,7 +21,7 @@
 }
 .db-ui-lede {
   margin: 0;
-  color: var(--muted, #6b7280);
+  color: color-mix(in srgb, var(--text, #111) 70%, transparent);
   font-size: var(--text-sm, 0.925rem);
   max-width: 62ch;
   line-height: 1.45;
@@ -263,4 +263,16 @@
 .db-ui-kpi span {
   color: var(--muted, #6b7280);
   font-size: 0.85rem;
+}
+
+/* Dark board ui contrast — inherit dashboard tokens with AA floor */
+.db-ui-lede,
+.db-ui-kpi span,
+.db-ui-field label,
+.db-ui-table th {
+  color: color-mix(in srgb, var(--text, #eee) 72%, var(--muted, #9aa) 28%);
+}
+.db-ui-cal-day[aria-pressed="true"] {
+  color: var(--on-accent, #041018);
+  background: var(--accent, #3de0ff);
 }

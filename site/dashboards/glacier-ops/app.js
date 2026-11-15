@@ -120,10 +120,10 @@
   paintIcons();
 
   const SECTORS = {
-    alpha: { name: 'Sector Alpha', elev: 1842, orbs: [25, 6, 140, -2], mix: [32, 24, 18, 16, 10], load: [42, 58, 36, 70, 48, 62, 55, 44], meters: [['North ridge', 78], ['Ice shelf', 64], ['Relay bay', 51], ['Supply cut', 39]], pulse: [20, 28, 22, 40, 35, 48, 30, 44, 38, 52, 41, 36], tiny: [12, 18, 9, 22, 15, 28, 20, 16, 24, 14], osc: [30, 42, 28, 50, 34, 46, 32, 48, 36, 44], series: [[40, 48, 42, 55, 50, 60, 52], [28, 32, 30, 38, 34, 42, 36], [18, 22, 20, 26, 24, 30, 28], [12, 14, 13, 16, 15, 18, 17]], ridge: [20, 34, 28, 46, 40, 58, 48, 62, 50], gauges: [67, 67], locks: [true, true, false, true, false, true, true, false, true, false, true, true] },
-    bravo: { name: 'Sector Bravo', elev: 1620, orbs: [18, 9, 112, 1], mix: [28, 26, 20, 14, 12], load: [30, 48, 52, 40, 66, 58, 36, 50], meters: [['North ridge', 61], ['Ice shelf', 72], ['Relay bay', 48], ['Supply cut', 55]], pulse: [18, 24, 32, 28, 44, 36, 40, 30, 48, 34, 42, 38], tiny: [10, 14, 20, 12, 26, 18, 22, 16, 28, 19], osc: [24, 36, 40, 32, 48, 28, 44, 34, 50, 30], series: [[36, 40, 44, 42, 50, 48, 54], [22, 28, 26, 34, 30, 38, 32], [16, 18, 22, 20, 24, 26, 22], [10, 12, 14, 13, 16, 15, 18]], ridge: [16, 28, 36, 30, 48, 42, 56, 44, 58], gauges: [54, 71], locks: [true, false, true, true, true, false, true, true, false, true, false, true] },
-    charlie: { name: 'Sector Charlie', elev: 2014, orbs: [31, 4, 168, -5], mix: [36, 20, 22, 12, 10], load: [55, 40, 62, 48, 70, 36, 58, 64], meters: [['North ridge', 88], ['Ice shelf', 45], ['Relay bay', 70], ['Supply cut', 33]], pulse: [26, 34, 30, 46, 38, 52, 44, 36, 50, 42, 48, 40], tiny: [16, 22, 14, 28, 20, 30, 18, 24, 12, 26], osc: [34, 28, 46, 38, 52, 40, 48, 36, 54, 42], series: [[48, 52, 46, 58, 54, 62, 56], [30, 34, 38, 32, 40, 36, 44], [20, 24, 22, 28, 26, 30, 25], [14, 16, 15, 18, 17, 20, 19]], ridge: [24, 38, 32, 50, 44, 60, 52, 66, 54], gauges: [72, 58], locks: [false, true, true, false, true, true, false, true, true, true, false, true] },
-    delta: { name: 'Sector Delta', elev: 1490, orbs: [12, 11, 96, 0], mix: [22, 30, 18, 18, 12], load: [28, 36, 44, 52, 40, 60, 48, 34], meters: [['North ridge', 50], ['Ice shelf', 80], ['Relay bay', 42], ['Supply cut', 67]], pulse: [14, 22, 18, 30, 26, 36, 28, 40, 32, 38, 34, 24], tiny: [8, 16, 12, 20, 14, 24, 18, 10, 22, 15], osc: [20, 32, 26, 38, 30, 42, 28, 36, 24, 40], series: [[32, 36, 34, 40, 38, 44, 42], [20, 24, 22, 28, 26, 30, 27], [14, 16, 18, 15, 20, 17, 19], [8, 10, 9, 12, 11, 13, 12]], ridge: [12, 22, 30, 26, 40, 34, 48, 38, 52], gauges: [61, 63], locks: [true, true, true, false, false, true, true, true, false, false, true, true] },
+    apex: { name: 'Sector Apex', elev: 1842, orbs: [25, 6, 140, -2], mix: [32, 24, 18, 16, 10], load: [42, 58, 36, 70, 48, 62, 55, 44], meters: [['North ridge', 78], ['Ice shelf', 64], ['Relay bay', 51], ['Supply cut', 39]], pulse: [20, 28, 22, 40, 35, 48, 30, 44, 38, 52, 41, 36], tiny: [12, 18, 9, 22, 15, 28, 20, 16, 24, 14], osc: [30, 42, 28, 50, 34, 46, 32, 48, 36, 44], series: [[40, 48, 42, 55, 50, 60, 52], [28, 32, 30, 38, 34, 42, 36], [18, 22, 20, 26, 24, 30, 28], [12, 14, 13, 16, 15, 18, 17]], ridge: [20, 34, 28, 46, 40, 58, 48, 62, 50], gauges: [67, 67], locks: [true, true, false, true, false, true, true, false, true, false, true, true] },
+    basin: { name: 'Sector Basin', elev: 1620, orbs: [18, 9, 112, 1], mix: [28, 26, 20, 14, 12], load: [30, 48, 52, 40, 66, 58, 36, 50], meters: [['North ridge', 61], ['Ice shelf', 72], ['Relay bay', 48], ['Supply cut', 55]], pulse: [18, 24, 32, 28, 44, 36, 40, 30, 48, 34, 42, 38], tiny: [10, 14, 20, 12, 26, 18, 22, 16, 28, 19], osc: [24, 36, 40, 32, 48, 28, 44, 34, 50, 30], series: [[36, 40, 44, 42, 50, 48, 54], [22, 28, 26, 34, 30, 38, 32], [16, 18, 22, 20, 24, 26, 22], [10, 12, 14, 13, 16, 15, 18]], ridge: [16, 28, 36, 30, 48, 42, 56, 44, 58], gauges: [54, 71], locks: [true, false, true, true, true, false, true, true, false, true, false, true] },
+    crest: { name: 'Sector Crest', elev: 2014, orbs: [31, 4, 168, -5], mix: [36, 20, 22, 12, 10], load: [55, 40, 62, 48, 70, 36, 58, 64], meters: [['North ridge', 88], ['Ice shelf', 45], ['Relay bay', 70], ['Supply cut', 33]], pulse: [26, 34, 30, 46, 38, 52, 44, 36, 50, 42, 48, 40], tiny: [16, 22, 14, 28, 20, 30, 18, 24, 12, 26], osc: [34, 28, 46, 38, 52, 40, 48, 36, 54, 42], series: [[48, 52, 46, 58, 54, 62, 56], [30, 34, 38, 32, 40, 36, 44], [20, 24, 22, 28, 26, 30, 25], [14, 16, 15, 18, 17, 20, 19]], ridge: [24, 38, 32, 50, 44, 60, 52, 66, 54], gauges: [72, 58], locks: [false, true, true, false, true, true, false, true, true, true, false, true] },
+    drift: { name: 'Sector Drift', elev: 1490, orbs: [12, 11, 96, 0], mix: [22, 30, 18, 18, 12], load: [28, 36, 44, 52, 40, 60, 48, 34], meters: [['North ridge', 50], ['Ice shelf', 80], ['Relay bay', 42], ['Supply cut', 67]], pulse: [14, 22, 18, 30, 26, 36, 28, 40, 32, 38, 34, 24], tiny: [8, 16, 12, 20, 14, 24, 18, 10, 22, 15], osc: [20, 32, 26, 38, 30, 42, 28, 36, 24, 40], series: [[32, 36, 34, 40, 38, 44, 42], [20, 24, 22, 28, 26, 30, 27], [14, 16, 18, 15, 20, 17, 19], [8, 10, 9, 12, 11, 13, 12]], ridge: [12, 22, 30, 26, 40, 34, 48, 38, 52], gauges: [61, 63], locks: [true, true, true, false, false, true, true, true, false, false, true, true] },
   };
   const WINDOWS = {
     '6h': { n: 12, label: (i) => `${String(i).padStart(2, '0')}h`, k: 0.45 },
@@ -134,7 +134,7 @@
   const MIX_COLORS = ['--chart-1', '--chart-2', '--chart-3', '--chart-4', '--panel'];
   const ORB_LABELS = ['Crew', 'Alerts', 'Nodes', 'Delta'];
 
-  let sector = 'alpha';
+  let sector = 'apex';
   let windowKey = '24h';
   let rimFocus = 0;
 
@@ -172,7 +172,7 @@
   function renderMeters() {
     const s = SECTORS[sector];
     $('[data-meters]').innerHTML = s.meters.map(([n, v]) =>
-      `<li><span>${n}<b class="num">${v}%</b></span><div class="go-metertrack"><i class="go-meterfill" style="width:${v}%"></i></div></li>`
+      `<li class="go-meter-row"><span class="go-meter-label">${n}</span><b class="num go-meter-val">${v}%</b><div class="go-metertrack" aria-hidden="true"><i class="go-meterfill" style="width:${v}%"></i></div></li>`
     ).join('');
   }
 
@@ -391,10 +391,66 @@
       console.error('DB.ui missing — load ../_shared/ui/index.js');
       return;
     }
-    window.DB.ui.mount({ main, overview, pages: PAGES, brand: "Glacier Ops" });
+    window.DB.ui.mount({
+    renderPage(page) {
+      const rows = ['North ridge','Ice shelf','Relay bay','Supply cut','Drift gate','Blue channel','Summit feed','Harbor sync'].map((n,i)=>({id:'r'+i,cells:[n, i%2?'Active':'Hold', '<span class="num">'+(120-i*7)+'</span>']}));
+      const body = `
+        <div class="db-ui-grid">
+          <div class="db-ui-panel db-ui-kpi" style="background:var(--surface);color:var(--text)"><b class="num" style="color:var(--accent)">128</b><span style="color:#b7d7ea">Primary metric</span></div>
+          <div class="db-ui-panel db-ui-kpi" style="background:var(--surface);color:var(--text)"><b class="num" style="color:var(--accent)">86</b><span style="color:#b7d7ea">Health score</span></div>
+          <div class="db-ui-panel db-ui-kpi" style="background:var(--surface);color:var(--text)"><b class="num" style="color:var(--accent)">14</b><span style="color:#b7d7ea">Open items</span></div>
+          <div class="db-ui-panel db-ui-kpi" style="background:var(--surface);color:var(--text)"><b class="num" style="color:var(--accent)">4.2</b><span style="color:#b7d7ea">Hours saved</span></div>
+        </div>
+        <section class="db-ui-panel" style="margin-top:1rem;background:var(--surface);color:var(--text)">
+          <h2 style="color:var(--text)">${page.name} register</h2>
+          <div class="db-ui-field" data-ui-search-wrap><label for="ui-q" style="color:#b7d7ea">Search</label><input id="ui-q" type="search" style="background:var(--surface-2);color:var(--text);border-color:var(--border)"></div>
+          ${window.DB.ui.table({cols:['Name','Status','Score'], rows})}
+        </section>
+        <section class="db-ui-panel" style="margin-top:1rem;background:var(--surface);color:var(--text)">
+          <h2 style="color:var(--text)">Schedule</h2>
+          ${window.DB.ui.calendar({days:28, active:12})}
+        </section>
+        <section class="db-ui-panel" style="margin-top:1rem;background:var(--surface);color:var(--text)">
+          <h2 style="color:var(--text)">Notes</h2>
+          <p style="color:#b7d7ea">Glacier Ops · ${page.pattern||'Page'} · fictional sample data.</p>
+          <div class="db-ui-grid">
+            <div><span style="color:#b7d7ea">Last sync</span><strong class="num">2m ago</strong></div>
+            <div><span style="color:#b7d7ea">Workspace</span><strong>Gallery</strong></div>
+            <div><span style="color:#b7d7ea">Region</span><strong>Polar-West</strong></div>
+            <div><span style="color:#b7d7ea">Retention</span><strong>14 days</strong></div>
+          </div>
+        </section>`;
+      return body;
+    },
+ main, overview, pages: PAGES, brand: "Glacier Ops" });
     if (window.DB?.fx) window.DB.fx.remount(overview);
     void reduce;
   })();
 /* === /DB multipage polish === */
-  document.documentElement.dataset.ready = 'true';
+  
+  function paintArcRing() {
+    const svg = document.querySelector('[data-arc-ring]');
+    if (!svg) return;
+    const cx=200, cy=200, r0=168, r1=192;
+    let d='';
+    const n=12;
+    for (let i=0;i<n;i++){
+      const a0=-Math.PI/2 + (i/n)*Math.PI*2;
+      const a1=a0 + (Math.PI*2/n)*0.72;
+      const x=(r,a)=>cx+Math.cos(a)*r, y=(r,a)=>cy+Math.sin(a)*r;
+      const large=0;
+      d += `<path data-shape fill="currentColor" opacity="${i%2?0.35:0.7}" d="M${x(r1,a0)},${y(r1,a0)} A${r1},${r1} 0 ${large} 1 ${x(r1,a1)},${y(r1,a1)} A${(r1-r0)/2},${(r1-r0)/2} 0 0 1 ${x(r0,a1)},${y(r0,a1)} A${r0},${r0} 0 ${large} 0 ${x(r0,a0)},${y(r0,a0)} A${(r1-r0)/2},${(r1-r0)/2} 0 0 1 ${x(r1,a0)},${y(r1,a0)} Z"/>`;
+    }
+    svg.innerHTML=d;
+  }
+  function paintTopGauges() {
+    const el=document.querySelector('[data-top-gauges]');
+    if(!el) return;
+    const items=[{v:'25',c:''},{v:'6',c:''},{v:'140',c:''},{v:'−2',c:'is-alert'}];
+    el.innerHTML=items.map((it,i)=>`<li class="${it.c}"><b class="num">${it.v}</b><span>${['Crew','Alerts','Nodes','Delta'][i]}</span></li>`).join('');
+  }
+  paintArcRing();
+  paintTopGauges();
+
+document.documentElement.dataset.ready = 'true';
 })();
