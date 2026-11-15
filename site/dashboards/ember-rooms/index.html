@@ -17,6 +17,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -108,12 +109,12 @@
                 <div class="er-radial" data-radial aria-hidden="true"></div>
                 <div class="er-rooms" role="group" aria-label="Rooms" data-rooms></div>
                 <div class="er-lamp" data-lamp>
-                  <img class="er-lampphoto er-ambient" src="media/pendant@2x.webp" srcset="media/pendant.webp 1x, media/pendant@2x.webp 2x" width="1024" height="1024" alt="" decoding="async">
-                  <span class="er-lampglow" aria-hidden="true"></span>
+                  <img class="er-lampphoto er-ambient" data-gsap="pulse" data-gsap-dur="3.6" src="media/pendant@2x.webp" srcset="media/pendant.webp 1x, media/pendant@2x.webp 2x" width="1024" height="1024" alt="" decoding="async">
+                  <span class="er-lampglow" data-gsap="pulse" data-gsap-dur="2.8" aria-hidden="true"></span>
                 </div>
-                <div class="er-readout">
-                  <p class="er-frac num"><span data-on>7</span><span class="er-slash">/</span><span data-total>12</span></p>
-                  <p class="er-lightlabel">LIGHT</p>
+                <div class="er-readout mat-neo" data-fx="spotlight">
+                  <p class="er-frac num" aria-label="7 of 12 lights on"><span data-total>12</span><span class="er-slash">/</span><span data-on>7</span></p>
+                  <p class="er-lightlabel">Light</p>
                   <button type="button" class="er-pwr" aria-pressed="true" data-pwr aria-label="Room lights power">
                     <span data-icon="power"></span>
                   </button>

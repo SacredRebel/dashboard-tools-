@@ -274,14 +274,21 @@ body {
 }
 .er-orbits {
   position: relative;
-  width: min(100%, 620px);
+  width: min(100%, 640px);
   aspect-ratio: 1;
   display: grid; place-items: center;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 50% 40%, rgb(255 255 255 / 0.72), transparent 44%),
-    radial-gradient(circle at 50% 55%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 58%);
-  box-shadow: var(--neo-inset), 0 0 0 1px rgb(255 255 255 / 0.35);
+    radial-gradient(circle at 50% 32%, rgb(255 255 255 / 0.88), transparent 42%),
+    radial-gradient(circle at 50% 48%, rgb(255 255 255 / 0.55), transparent 58%),
+    radial-gradient(circle at 50% 58%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 62%);
+  box-shadow:
+    var(--neo-inset),
+    0 0 0 1px rgb(255 255 255 / 0.55),
+    0 28px 56px rgb(60 50 40 / 0.12),
+    inset 0 -24px 48px rgb(255 255 255 / 0.35);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 .er-radial {
   position: absolute; inset: 8%; z-index: 1; pointer-events: none;
@@ -350,18 +357,25 @@ body {
 .er-lamp.is-off { opacity: 0.55; }
 .er-lamp.is-off .er-lampglow { opacity: 0.05; }
 .er-readout {
-  position: absolute; bottom: 18%; left: 50%; transform: translateX(-50%);
+  /* Soft neumorphic “12 / 7 Light” glass overlay — sits on the lamp sphere. */
+  position: absolute; bottom: 14%; left: 50%; transform: translateX(-50%);
   z-index: 4; text-align: center;
-  padding: 14px 18px; border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
-  box-shadow: var(--neo-sm), inset 0 1px 0 rgb(255 255 255 / 0.65);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  min-width: 148px;
+  padding: 18px 22px 16px; border-radius: 28px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  box-shadow:
+    10px 14px 28px rgb(60 50 40 / 0.12),
+    -6px -8px 18px rgb(255 255 255 / 0.9),
+    inset 0 1px 0 rgb(255 255 255 / 0.85),
+    inset 0 -1px 0 rgb(60 50 40 / 0.04);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
 }
-.er-frac { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin: 0; }
-.er-slash { opacity: 0.35; margin: 0 2px; font-weight: 500; }
+.er-frac { font-size: 52px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin: 0; color: var(--text); }
+.er-slash { opacity: 0.28; margin: 0 4px; font-weight: 400; }
 .er-lightlabel {
-  font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
-  color: var(--text-muted); margin: 4px 0 10px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: none;
+  color: var(--text-muted); margin: 6px 0 12px;
 }
 .er-pwr {
   width: 52px; height: 52px; margin: 0 auto; border: 0; border-radius: 50%;
