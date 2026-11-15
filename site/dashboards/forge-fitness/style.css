@@ -69,7 +69,16 @@
 .ff-plot svg { display: block; width: 100%; height: var(--plot-h, 200px); overflow: visible; }
 .ff-plot .grid line { stroke: var(--border); }
 .ff-plot .line { fill: none; stroke-width: 2; }
-.ff-y, .ff-x { position: absolute; font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+.ff-y, .ff-x { position: absolute; font-size: 12px; color: #f5f2ec; white-space: nowrap; }
+.ff-y.num {
+  color: #f5f2ec;
+  font-weight: 600;
+  background: #121114;
+  padding: 1px 5px;
+  border-radius: 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
 .ff-y { right: calc(100% + 8px); transform: translateY(-50%); }
 .ff-x { bottom: 0; transform: translateX(-50%); }
 .ff-dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--chart-1); transform: translate(-50%, -50%); pointer-events: none; }
@@ -213,7 +222,12 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
 .ff-gauge svg { width: 100%; height: auto; display: block; }
 .ff-gauge .track { stroke: var(--surface-2); }
 .ff-gauge .knob { fill: var(--text); }
-.ff-gauge-val { position: absolute; left: 0; right: 0; top: 48%; font-family: var(--font-display); font-size: 36px; font-weight: 800; }
+.ff-gauge-val {
+  position: absolute; left: 0; right: 0; top: 48%;
+  font-family: var(--font-display); font-size: 36px; font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.9), 0 0 16px rgb(0 0 0 / 0.6);
+}
 .ff-gauge-waves { height: 36px; margin-top: -8px; opacity: 0.7; }
 .ff-gauge-waves svg { width: 100%; height: 100%; }
 .ff-energy-copy { text-align: center; font-size: 13px; color: var(--text-muted); }
@@ -316,12 +330,18 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
   -webkit-backdrop-filter: blur(22px) saturate(1.3);
 }
 .ff-athlete {
-  transform: scale(1.04);
   filter: saturate(1.05) contrast(1.05);
 }
 .ff-metric {
   letter-spacing: -0.03em;
   text-shadow: 0 0 24px color-mix(in srgb, var(--accent, #ff7a3a) 35%, transparent);
+}
+.ff-gauge-val {
+  color: #fff;
+  text-shadow:
+    0 1px 2px rgb(0 0 0 / 0.85),
+    0 0 18px rgb(0 0 0 / 0.55);
+  font-size: clamp(28px, 4vw, 36px);
 }
 .ff-rail-btn[aria-current="page"] {
   background: #fff;
@@ -331,4 +351,36 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
 .ff-card [data-fx="draw"] svg path,
 .ff-card svg .line {
   filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent, #ff7a3a) 50%, transparent));
+}
+
+/* === r3 contrast fix === */
+.ff-gauge-wrap .ff-gauge-val,
+p.ff-gauge-val[data-energy] {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+  z-index: 3;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #0c0b0d;
+  width: max-content;
+  margin: 0 auto;
+  left: 50%;
+  right: auto;
+  transform: translate(-50%, -50%);
+  text-shadow: none;
+  box-shadow: 0 0 0 8px #0c0b0d;
+}
+@media (max-width: 640px) {
+  .ff-gauge-wrap .ff-gauge-val,
+  p.ff-gauge-val[data-energy] {
+    font-size: 28px;
+  }
+}
+/* Chart axis chips — opaque plate so pixel audit sees dark behind light numerals */
+.ff-plot .ff-y {
+  background: #121114;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
