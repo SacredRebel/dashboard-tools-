@@ -2,7 +2,9 @@
 
 Branch: `cursor/fidelity-r4-batch1-0545`  
 Base: `main`  
-PR: draft — **do not merge** (architect review of Batch 1 only)  
+PR: draft — **do not merge** (architect review of Batch 1 only)
+Open via compare (gh `createPullRequest` 403 in this agent; same as prior rounds):
+https://github.com/SacredRebel/dashboard-tools-/compare/main...cursor/fidelity-r4-batch1-0545?expand=1  
 Next: **Batch 2** (after architect sign-off)
 
 ## Framework (first commits)
