@@ -262,6 +262,9 @@
       "materials": [
         "glass-dark",
         "paper"
+      ],
+      "signature_tech": [
+        "glass"
       ]
     },
     {
@@ -400,6 +403,10 @@
       "materials": [
         "glass-dark",
         "holo"
+      ],
+      "signature_tech": [
+        "webgl",
+        "glass"
       ]
     },
     {
@@ -540,6 +547,10 @@
       "materials": [
         "glass-dark",
         "paper"
+      ],
+      "signature_tech": [
+        "webgl",
+        "shape"
       ]
     },
     {
@@ -690,6 +701,9 @@
       "materials": [
         "glass-dark",
         "paper"
+      ],
+      "signature_tech": [
+        "glass"
       ]
     },
     {
@@ -840,6 +854,9 @@
       "materials": [
         "clay",
         "neu"
+      ],
+      "signature_tech": [
+        "shape"
       ]
     },
     {
@@ -975,6 +992,10 @@
       "materials": [
         "paper",
         "acrylic"
+      ],
+      "signature_tech": [
+        "webgl",
+        "shape"
       ]
     },
     {
@@ -1109,6 +1130,10 @@
       "materials": [
         "glass",
         "acrylic"
+      ],
+      "signature_tech": [
+        "shape",
+        "glass"
       ]
     },
     {
@@ -1250,6 +1275,10 @@
       "materials": [
         "glass",
         "acrylic"
+      ],
+      "signature_tech": [
+        "webgl",
+        "glass"
       ]
     },
     {
@@ -1406,6 +1435,10 @@
       "materials": [
         "clay",
         "neu"
+      ],
+      "signature_tech": [
+        "webgl",
+        "glass"
       ]
     },
     {
@@ -1548,6 +1581,9 @@
       "materials": [
         "clay",
         "neu"
+      ],
+      "signature_tech": [
+        "webgl"
       ]
     },
     {
@@ -1693,6 +1729,9 @@
       "materials": [
         "clay",
         "paper"
+      ],
+      "signature_tech": [
+        "webgl"
       ]
     },
     {
@@ -1830,7 +1869,8 @@
       "materials": [
         "clay",
         "neu"
-      ]
+      ],
+      "signature_tech": []
     },
     {
       "id": "taffy-analytics",
@@ -1964,6 +2004,9 @@
       "materials": [
         "paper",
         "glass"
+      ],
+      "signature_tech": [
+        "webgl"
       ]
     },
     {
@@ -2101,6 +2144,9 @@
       "materials": [
         "glass",
         "acrylic"
+      ],
+      "signature_tech": [
+        "glass"
       ]
     },
     {
@@ -2235,7 +2281,8 @@
       "materials": [
         "glass-dark",
         "paper"
-      ]
+      ],
+      "signature_tech": []
     },
     {
       "id": "hollow-vault",
@@ -2371,6 +2418,9 @@
       "materials": [
         "glass-dark",
         "holo"
+      ],
+      "signature_tech": [
+        "shape"
       ]
     },
     {
@@ -2507,6 +2557,9 @@
       "materials": [
         "clay",
         "paper"
+      ],
+      "signature_tech": [
+        "shape"
       ]
     },
     {
@@ -2648,6 +2701,9 @@
       "materials": [
         "glass-dark",
         "paper"
+      ],
+      "signature_tech": [
+        "glass"
       ]
     },
     {
@@ -2790,6 +2846,9 @@
       "materials": [
         "glass",
         "acrylic"
+      ],
+      "signature_tech": [
+        "glass"
       ]
     },
     {
@@ -2933,6 +2992,9 @@
       "materials": [
         "glass",
         "acrylic"
+      ],
+      "signature_tech": [
+        "glass"
       ]
     },
     {
@@ -3070,6 +3132,10 @@
       "materials": [
         "glass-dark",
         "holo"
+      ],
+      "signature_tech": [
+        "webgl",
+        "shape"
       ]
     },
     {
@@ -3205,6 +3271,9 @@
       "materials": [
         "clay",
         "neu"
+      ],
+      "signature_tech": [
+        "glass"
       ]
     },
     {
@@ -3347,6 +3416,10 @@
       "materials": [
         "glass-dark",
         "holo"
+      ],
+      "signature_tech": [
+        "webgl",
+        "shape"
       ]
     },
     {
@@ -3482,6 +3555,10 @@
       "materials": [
         "glass",
         "acrylic"
+      ],
+      "signature_tech": [
+        "glass",
+        "tilt3d"
       ]
     },
     {
@@ -3622,6 +3699,9 @@
       "materials": [
         "glass-dark",
         "paper"
+      ],
+      "signature_tech": [
+        "glass"
       ]
     },
     {
@@ -3760,7 +3840,8 @@
       "materials": [
         "clay",
         "metal"
-      ]
+      ],
+      "signature_tech": []
     },
     {
       "id": "orchard-sales",
@@ -3896,6 +3977,10 @@
       "materials": [
         "clay",
         "paper"
+      ],
+      "signature_tech": [
+        "webgl",
+        "glass"
       ]
     },
     {
@@ -4029,6 +4114,9 @@
       "materials": [
         "glass",
         "acrylic"
+      ],
+      "signature_tech": [
+        "glass"
       ]
     },
     {
@@ -4166,6 +4254,9 @@
       "materials": [
         "clay",
         "neu"
+      ],
+      "signature_tech": [
+        "tilt3d"
       ]
     },
     {
@@ -4307,6 +4398,9 @@
         "neu",
         "clay",
         "tile3d"
+      ],
+      "signature_tech": [
+        "shape"
       ]
     },
     {
@@ -4440,6 +4534,9 @@
         "neu",
         "clay",
         "tile3d"
+      ],
+      "signature_tech": [
+        "webgl"
       ]
     },
     {
@@ -4574,7 +4671,8 @@
       "materials": [
         "clay",
         "neu"
-      ]
+      ],
+      "signature_tech": []
     },
     {
       "id": "orbit-clay",
@@ -4712,6 +4810,9 @@
         "neu",
         "clay",
         "tile3d"
+      ],
+      "signature_tech": [
+        "webgl"
       ]
     },
     {
@@ -4853,6 +4954,10 @@
       "materials": [
         "glass",
         "acrylic"
+      ],
+      "signature_tech": [
+        "glass",
+        "shape"
       ]
     },
     {
@@ -4992,6 +5097,10 @@
       "materials": [
         "glass",
         "acrylic"
+      ],
+      "signature_tech": [
+        "webgl",
+        "glass"
       ]
     },
     {
@@ -5131,6 +5240,9 @@
       "materials": [
         "clay",
         "neu"
+      ],
+      "signature_tech": [
+        "webgl"
       ]
     },
     {
@@ -5269,6 +5381,10 @@
       "materials": [
         "glass",
         "acrylic"
+      ],
+      "signature_tech": [
+        "webgl",
+        "glass"
       ]
     },
     {
@@ -5414,6 +5530,9 @@
         "neu",
         "clay",
         "tile3d"
+      ],
+      "signature_tech": [
+        "webgl"
       ]
     }
   ],

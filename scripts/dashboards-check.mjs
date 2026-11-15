@@ -296,6 +296,33 @@ for (const d of list) {
           }
           return out;
         }, w >= 1280);
+        // Architect review 4: the overview must really use the techniques its reference calls for (catalog signature_tech).
+        if (pg.id === d.pages[0].id && variant.id === 'default' && w === 1440 && d.signature_tech?.length) {
+          const tech = await page.evaluate((need) => {
+            const out = [];
+            const big = (el, min) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width >= min && r.height >= min * 0.5 && cs.visibility !== 'hidden' && cs.display !== 'none'; };
+            const all = [...document.querySelectorAll('body *')];
+            if (need.includes('webgl')) {
+              const ok = [...document.querySelectorAll('canvas')].some((c) => big(c, 220) && (c.getContext('webgl2') || c.getContext('webgl')));
+              if (!ok) out.push('signature_tech webgl: no visible WebGL canvas ≥ 220px (the reference has a real 3D object; a photo of one does not count)');
+            }
+            if (need.includes('shape')) {
+              const ok = all.some((el) => { if (!big(el, 300)) return false; const cs = getComputedStyle(el); return (cs.clipPath && cs.clipPath !== 'none') || ((cs.maskImage || cs.webkitMaskImage || 'none') !== 'none'); })
+                || [...document.querySelectorAll('svg path[data-shape], svg clipPath path')].length > 0;
+              if (!ok) out.push('signature_tech shape: no element ≥ 300px with a clip-path or mask (the reference has cut, notched or organic outlines; rounded rectangles do not count)');
+            }
+            if (need.includes('glass')) {
+              const n = all.filter((el) => { if (!big(el, 160)) return false; const cs = getComputedStyle(el); const bf = cs.backdropFilter || cs.webkitBackdropFilter || 'none'; return bf !== 'none'; }).length;
+              if (n < 3) out.push(`signature_tech glass: ${n} surfaces with backdrop-filter (need ≥ 3 real glass panes over a backdrop)`);
+            }
+            if (need.includes('tilt3d')) {
+              const ok = all.some((el) => { if (!big(el, 300)) return false; const cs = getComputedStyle(el); return cs.perspective !== 'none' || /matrix3d/.test(cs.transform); });
+              if (!ok) out.push('signature_tech tilt3d: no element ≥ 300px with CSS 3D perspective or a 3D transform');
+            }
+            return out;
+          }, d.signature_tech);
+          errs.push(...tech);
+        }
         errs.push(...gate);
         errs.push(...(await textAudit(page)));
         if (!errs.length && variant.id === 'default' && w === 1440) {
