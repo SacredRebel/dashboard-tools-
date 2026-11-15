@@ -3288,7 +3288,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central holographic cube core, arc gauges, dense charts and a four-block spark footer for fictional orbital logistics \u2014 with Fleet, Shipments and Settings pages.",
+      "summary": "A navy ops wall with a procedural WebGL hologram cube, chamfer HUD panels, cyan charts, and a Network globe page.",
       "mood": [
         "tactical",
         "glowing",
@@ -3386,9 +3386,9 @@
           "pattern": "List"
         },
         {
-          "id": "shipments",
-          "name": "Shipments",
-          "pattern": "Board"
+          "id": "network",
+          "name": "Network",
+          "pattern": "Dashboard"
         },
         {
           "id": "settings",

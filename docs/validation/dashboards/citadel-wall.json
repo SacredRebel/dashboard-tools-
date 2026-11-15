@@ -137,45 +137,45 @@
       "errors": []
     },
     {
-      "url": "/dashboards/citadel-wall/#/shipments",
+      "url": "/dashboards/citadel-wall/#/network",
       "width": 1440,
       "variant": "default",
-      "page": "shipments",
+      "page": "network",
       "errors": []
     },
     {
-      "url": "/dashboards/citadel-wall/#/shipments",
+      "url": "/dashboards/citadel-wall/#/network",
       "width": 375,
       "variant": "default",
-      "page": "shipments",
+      "page": "network",
       "errors": []
     },
     {
-      "url": "/dashboards/citadel-wall/?variant=ocean#/shipments",
+      "url": "/dashboards/citadel-wall/?variant=ocean#/network",
       "width": 1440,
       "variant": "ocean",
-      "page": "shipments",
+      "page": "network",
       "errors": []
     },
     {
-      "url": "/dashboards/citadel-wall/?variant=ocean#/shipments",
+      "url": "/dashboards/citadel-wall/?variant=ocean#/network",
       "width": 375,
       "variant": "ocean",
-      "page": "shipments",
+      "page": "network",
       "errors": []
     },
     {
-      "url": "/dashboards/citadel-wall/?variant=amber#/shipments",
+      "url": "/dashboards/citadel-wall/?variant=amber#/network",
       "width": 1440,
       "variant": "amber",
-      "page": "shipments",
+      "page": "network",
       "errors": []
     },
     {
-      "url": "/dashboards/citadel-wall/?variant=amber#/shipments",
+      "url": "/dashboards/citadel-wall/?variant=amber#/network",
       "width": 375,
       "variant": "amber",
-      "page": "shipments",
+      "page": "network",
       "errors": []
     },
     {

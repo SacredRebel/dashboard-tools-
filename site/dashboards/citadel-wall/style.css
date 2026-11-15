@@ -390,3 +390,33 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .cw-kpi:hover, .cw-foot-card:hover { transform: none; }
 }
+
+.cw-holo {
+  position: relative;
+  width: min(38vw, 420px);
+  min-width: 280px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+.cw-holo canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: transparent;
+}
+.cw-holo img { display: none !important; }
+.cw-center {
+  min-width: 300px;
+}
+.cw-panel[data-shape],
+.cw-center[data-shape] {
+  /* chamfer via bind */
+}
+
+.cw-globe-wrap { width: min(100%, 640px); height: 360px; margin: 0 auto; }
+.cw-globe-wrap canvas { width: 100%; height: 100%; display: block; }
+[data-db-page-host] .db-ui-seg button { color: #9ec8e0 !important; }
+[data-db-page-host] .db-ui-seg button[aria-pressed="true"] { color: #041018 !important; background: var(--accent) !important; }
+[data-db-page-host] { width: 100%; }
+html[data-page]:not([data-page="overview"]) .cw-main,
+html[data-page]:not([data-page="overview"]) main { display: block; }

@@ -748,10 +748,10 @@ A data-dense dark-blue radial HUD for cold-ops monitoring: a multi-ring dial wit
 
 _Citadel Wall · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A navy big-screen ops wall with cyan glow: bracketed KPI panels, a central holographic cube core, arc gauges, dense charts and a four-block spark footer for fictional orbital logistics — with Fleet, Shipments and Settings pages.
+A navy ops wall with a procedural WebGL hologram cube, chamfer HUD panels, cyan charts, and a Network globe page.
 
 - **Use cases:** Analytics & BI, Logistics & fleet · **Mode:** dark · **Mood:** tactical, glowing, dense, command-center, futuristic
-- **Pages:** Overview (`overview`, Dashboard) · Fleet (`fleet`, List) · Shipments (`shipments`, Board) · Settings (`settings`, Settings)
+- **Pages:** Overview (`overview`, Dashboard) · Fleet (`fleet`, List) · Network (`network`, Dashboard) · Settings (`settings`, Settings)
 - **Motion:** count-up, stagger, chart-draw, hover-lift, press, page-transition, ambient, skeleton, toast
 - **Signature:** A cyan-glow cube locked inside a translucent sphere on a scan-line pedestal, framed by HUD brackets on a deep navy wall.
 - **Layout:** Tech title bar · three columns (left identity/charts/status · center hologram · right KPI grid/gauges/bars) · bottom four-metric spark strip

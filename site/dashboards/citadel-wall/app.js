@@ -171,11 +171,17 @@
   }
 
   function renderHolo() {
-    $('[data-holo]').innerHTML = `
-      <i class="cw-holo-ring a" data-gsap="spin" data-gsap-dur="28" aria-hidden="true"></i>
-      <i class="cw-holo-ring b" data-gsap="spin" data-gsap-dur="18" aria-hidden="true"></i>
-      <i class="cw-holo-ring c" aria-hidden="true"></i>
-      <img class="cw-holo-img" data-gsap="float" data-gsap-dur="4.5" src="media/holo@2x.webp" srcset="media/holo.webp 1x, media/holo@2x.webp 2x" width="800" height="800" alt="Cyan holographic cube core (sample art)" decoding="async">`;
+    const holoEl = $('[data-holo]');
+    if (holoEl && !holoEl.querySelector('[data-holo-cube]')) {
+      holoEl.innerHTML = `<canvas data-holo-cube width="640" height="640" aria-label="Hologram cube"></canvas>`;
+    }
+    // Keep WebGL canvas; decorative rings optional as CSS only
+    if (holoEl && !holoEl.querySelector('.cw-holo-ring')) {
+      holoEl.insertAdjacentHTML('afterbegin', `
+        <i class="cw-holo-ring a" data-gsap="spin" data-gsap-dur="28" aria-hidden="true"></i>
+        <i class="cw-holo-ring b" data-gsap="spin" data-gsap-dur="18" aria-hidden="true"></i>
+        <i class="cw-holo-ring c" aria-hidden="true"></i>`);
+    }
     $('[data-rays]').innerHTML = [
       ['Drone latency', '42 ms'],
       ['Orbital cargo', '1.2k t'],
@@ -273,7 +279,7 @@
   const PAGES = [
     { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
     { id: 'fleet', name: 'Fleet', pattern: 'List' },
-    { id: 'shipments', name: 'Shipments', pattern: 'Board' },
+    { id: 'network', name: 'Network', pattern: 'Board' },
     { id: 'settings', name: 'Settings', pattern: 'Settings' },
   ];
   const FLEET = [
@@ -309,9 +315,9 @@
         <div class="cw-page-grid" data-fleet-list></div>
       </section>`;
     }
-    if (page.id === 'shipments') {
+    if (page.id === 'network') {
       return `<section class="cw-page" aria-labelledby="p-h">
-        <h1 id="p-h">Shipments</h1>
+        <h1 id="p-h">Network</h1>
         <p class="cw-page-lead">Bay board for the current shift.</p>
         <div class="cw-seg" role="group" aria-label="Shipment filter" data-ship-tabs>
           <button type="button" data-v="all" aria-pressed="true">All</button>
@@ -350,7 +356,7 @@
       paint();
       host.querySelector('[data-fleet-q]')?.addEventListener('input', (e) => paint(e.target.value.trim().toLowerCase()));
     }
-    if (page.id === 'shipments') {
+    if (page.id === 'network') {
       const board = host.querySelector('[data-ship-board]');
       const paint = (filter = 'all') => {
         const rows = SHIPS.filter((s) => filter === 'all' || s.state === filter);
@@ -405,7 +411,7 @@
   
 /* === DB multipage polish (dense kit) === */
 (function wirePages() {
-  const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"fleet","name":"Fleet","pattern":"List"},{"id":"shipments","name":"Shipments","pattern":"Board"},{"id":"settings","name":"Settings","pattern":"Settings"}];
+  const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"fleet","name":"Fleet","pattern":"List"},{"id":"network","name":"Network","pattern":"Board"},{"id":"settings","name":"Settings","pattern":"Settings"}];
   const root = document.querySelector('[data-db-app]') || document.body;
   const main = document.querySelector('main') || document.body;
   let overview = main.querySelector('[data-page-panel="overview"]');
@@ -420,7 +426,38 @@
   }
   main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
   if (window.DB?.onVisible) window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
-  if (window.DB?.ui) window.DB.ui.mount({ main, overview, pages: PAGES, brand: "Citadel Wall" });
+  if (window.DB?.ui) window.DB.ui.mount({
+    renderPage(page) {
+      if (page.id === 'network' || /network/i.test(page.name||'')) {
+        const nodes=['Relay North','Harbor East','Summit West','Basin South','Core Hub','Drift pier','Meridian gate','Orbital loft','Ice vault','Sun dock'];
+        const dbs=['Shard A','Shard B','Shard C','Shard D','Mirror E','Mirror F'];
+        return `<div class="cw-network">
+          <div class="cw-globe-wrap"><canvas data-network-globe width="720" height="520" aria-label="Network globe"></canvas></div>
+          <div class="db-ui-grid" style="margin-top:16px">
+            ${nodes.map((n,i)=>`<article class="db-ui-panel" style="background:var(--surface);color:var(--text)"><h3 style="margin:0 0 6px;color:var(--accent)">${n}</h3><p style="margin:0;color:#9ec8e0">Latency ${(12+i*3)}ms · hops ${2+(i%4)}</p><button type="button" class="db-ui-btn" style="margin-top:8px;color:var(--text)">Trace route</button></article>`).join('')}
+          </div>
+          <h2 style="color:var(--text);margin:18px 0 10px">Database cylinders</h2>
+          <div class="db-ui-grid">${dbs.map((n,i)=>`<article class="db-ui-panel" style="background:var(--surface);color:var(--text)"><strong style="color:var(--accent)">${n}</strong><p style="color:#9ec8e0;margin:6px 0">Load ${40+i*7}% · replica ${i%2?'hot':'warm'}</p></article>`).join('')}</div>
+          <div class="db-ui-grid" style="margin-top:12px">
+            <div class="db-ui-panel db-ui-kpi" style="background:var(--surface)"><b class="num" style="color:var(--accent)">98.4</b><span style="color:#9ec8e0">Uptime %</span></div>
+            <div class="db-ui-panel db-ui-kpi" style="background:var(--surface)"><b class="num" style="color:var(--accent)">1.2k</b><span style="color:#9ec8e0">Packets/s</span></div>
+            <div class="db-ui-panel db-ui-kpi" style="background:var(--surface)"><b class="num" style="color:var(--accent)">14</b><span style="color:#9ec8e0">Peers</span></div>
+            <div class="db-ui-panel db-ui-kpi" style="background:var(--surface)"><b class="num" style="color:var(--accent)">3</b><span style="color:#9ec8e0">Alerts</span></div>
+          </div>
+          ${window.DB.ui.calendar({days:28,active:15})}
+        </div>`;
+      }
+      const rows=['Meridian gate','Harbor relay','Summit vault','Basin archive','Drift sensor','Core lattice','North pier','South pier'].map((n,i)=>({id:'r'+i,cells:[n,i%2?'Online':'Standby',`<span class="num">${90-i}</span>`]}));
+      return `<div class="db-ui-grid">
+        ${[128,86,14,4.2].map((v,i)=>`<div class="db-ui-panel db-ui-kpi" style="background:var(--surface)"><b class="num" style="color:var(--accent)">${v}</b><span style="color:#9ec8e0">${['Signal','Health','Open','Hours'][i]}</span></div>`).join('')}
+      </div>
+      <section class="db-ui-panel" style="margin-top:1rem;background:var(--surface);color:var(--text)">
+        <h2>${page.name}</h2>
+        ${window.DB.ui.table({cols:['Node','Status','Score'],rows})}
+        ${window.DB.ui.calendar({days:28,active:8})}
+      </section>`;
+    },
+ main, overview, pages: PAGES, brand: "Citadel Wall" });
 })();
 /* === /DB multipage polish === */
 document.documentElement.dataset.ready = 'true';
