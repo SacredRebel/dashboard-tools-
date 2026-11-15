@@ -3,99 +3,104 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Haven Listings · Dashboard Tools gallery</title>
-  <meta name="description" content="Glass real-estate browser: dusk villa photo hero, notched white filter tabs and frosted listing cards. Sample data.">
+  <meta name="description" content="Glass real-estate browser: notch-frame dusk villa, Buy/Rent pills, scooped frost listing card. Sample data.">
   <link rel="stylesheet" href="../_vendor/fonts/urbanist/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/ui/ui.css">
   <link rel="stylesheet" href="../_shared/fx/materials.css">
   <link rel="stylesheet" href="../_shared/shape/shape.css">
-  <link rel="stylesheet" href="../_shared/fx/fx.css">
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/ui/index.js"></script>
   <script src="../_shared/fx/liquid-defs.js"></script>
-    <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/index.js"></script>
   <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
   <div class="hl" data-db-app>
+    <p class="hl-caps hl-caps-l">Haven residences</p>
+    <p class="hl-caps hl-caps-r">Sample · fictional</p>
+
     <main data-main>
       <div class="hl-overview" data-page-panel="overview">
-        <section class="hl-stage hl-reveal" aria-label="Featured home">
-          <div class="hl-scene" data-scene aria-hidden="true">
-            <img data-gsap="float" data-gsap-dur="14" class="hl-photo hl-ambient" src="media/villa@2x.webp" srcset="media/villa.webp 1x, media/villa@2x.webp 2x" width="1440" height="810" alt="" decoding="async">
-          </div>
+        <div class="hl-page-bg" aria-hidden="true">
+          <img src="media/alpine.webp" srcset="media/alpine.webp 1x, media/alpine@2x.webp 2x" width="1800" height="1012" alt="" decoding="async">
+        </div>
 
-          <header class="hl-top">
-            <div class="hl-mode" role="group" aria-label="Buy or rent" data-mode>
-              <button type="button" data-v="buy" aria-pressed="true"><span data-icon="arrowUpRight"></span>Buy</button>
-              <button type="button" data-v="rent" aria-pressed="false">Rent<span data-icon="arrowUpRight"></span></button>
+        <div class="shape-shadow hl-device-wrap">
+          <section class="hl-device" data-shape="notchFrame" data-shape-opts='{"r":48,"notches":[{"edge":"top","from":0.27,"to":0.73,"depth":72,"r":36}]}' aria-label="Featured home">
+            <div class="hl-scene" data-scene>
+              <img data-gsap="float" data-gsap-dur="16" class="hl-photo" src="media/villa.webp" srcset="media/villa.webp 1x, media/villa@2x.webp 2x" width="1440" height="810" alt="" decoding="async" data-parallax>
             </div>
-            <form class="hl-filters" aria-label="Filters" data-filters>
-              <label><span><span data-icon="pin"></span>Location</span><select name="place"></select></label>
-              <label><span><span data-icon="building"></span>Home type</span><select name="type"></select></label>
-              <label><span><span data-icon="wallet"></span>Max price</span><select name="max"></select></label>
-            </form>
-          </header>
 
-          <nav class="hl-rail" aria-label="Main">
-            <a href="#/overview" aria-current="page" aria-label="Home"><span data-icon="home"></span></a>
-            <a href="#/listings" aria-label="Listings"><span data-icon="search"></span></a>
-            <a href="#/listings" aria-label="Collections"><span data-icon="grid"></span></a>
-            <a href="#/showings" aria-label="Showings"><span data-icon="mail"></span></a>
-            <a href="#/showings" aria-label="Alerts"><span data-icon="bell"></span></a>
-            <a href="#/settings" aria-label="Settings"><span data-icon="settings"></span></a>
-          </nav>
+            <header class="hl-header" data-header>
+              <button type="button" class="hl-pill hl-pill-buy" data-mode="buy" aria-pressed="true">Buy<span data-icon="arrowUpRight"></span></button>
+              <form class="hl-filters mat-glass-frost" aria-label="Filters" data-filters>
+                <label><span>Location</span><select name="place"></select></label>
+                <label><span>Property type</span><select name="type"></select></label>
+                <label><span>Max price</span><select name="max"></select></label>
+              </form>
+              <button type="button" class="hl-pill hl-pill-rent" data-mode="rent" aria-pressed="false">Rent<span data-icon="arrowUpRight"></span></button>
+            </header>
 
-          <div class="hl-copy">
-            <h1>A calmer way<br>to find home</h1>
-            <p>Browse homes for sale or rent, compare them side by side and book a viewing without a single phone call.</p>
-          </div>
+            <nav class="hl-rail" aria-label="Main">
+              <div class="hl-rail-pill mat-glass-frost">
+                <a href="#/overview" aria-current="page" aria-label="Home" class="is-active"><span data-icon="home"></span></a>
+                <a href="#/listings" aria-label="Search listings"><span data-icon="search"></span></a>
+                <a href="#/listings" aria-label="Collections"><span data-icon="grid"></span></a>
+                <a href="#/showings" aria-label="Messages"><span data-icon="mail"></span></a>
+              </div>
+              <button type="button" class="hl-avatar" aria-label="Agent profile" data-agent></button>
+              <a href="#/showings" class="hl-bell" aria-label="Alerts"><span data-icon="bell"></span></a>
+              <div class="hl-rail-pill hl-rail-tools mat-glass-frost">
+                <a href="#/settings" aria-label="Settings"><span data-icon="settings"></span></a>
+                <button type="button" aria-label="Night theme" data-theme="midnight"><span data-icon="moon"></span></button>
+                <button type="button" aria-label="Day theme" data-theme="default"><span data-icon="sun"></span></button>
+              </div>
+            </nav>
 
-          <article class="hl-find">
-            <h2>Homes that match</h2>
-            <p data-find-note></p>
-            <div class="hl-find-row"><b class="num" data-count></b><button type="button" class="hl-round" data-next aria-label="Show next matching home"><span data-icon="arrowRight"></span></button></div>
-          </article>
+            <div class="hl-glass-haze mat-glass-frost" aria-hidden="true"></div>
+            <div class="hl-copy">
+              <h1>A calmer way<br>to find home</h1>
+              <p>Browse homes for sale or rent, compare them side by side and book a viewing without a single phone call.</p>
+            </div>
 
-          <article class="hl-detail" data-detail aria-live="polite"></article>
-        </section>
+            <article class="hl-find shape-shadow-soft">
+              <div class="hl-find-body mat-glass-frost" data-shape="scoop" data-shape-opts='{"r":28,"corner":"tr","scoopR":36}'>
+                <h2>Find the perfect place</h2>
+                <p data-find-note>Homes that match your filters in this sample market.</p>
+                <div class="hl-find-row">
+                  <b class="num" data-count data-fx="count" data-to="10000" data-suffix="+">10K+</b>
+                  <div class="hl-thumbs" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="hl-round hl-find-next" data-next aria-label="Show next matching home"><span data-icon="arrowRight"></span></button>
+            </article>
 
-        <section class="hl-below">
-          <section class="hl-card hl-list hl-reveal" aria-labelledby="hl-list-h">
-            <div class="hl-card-head"><h2 id="hl-list-h">Matching homes</h2><button type="button" class="hl-link" data-clear>Clear filters</button></div>
-            <ul class="hl-homes" data-homes></ul>
+            <article class="hl-detail-wrap shape-shadow-soft">
+              <div class="hl-detail mat-glass-frost" data-shape="scoop" data-shape-opts='{"r":28,"corner":"tr","scoopR":40}' data-detail aria-live="polite"></div>
+              <button type="button" class="hl-round hl-detail-next" data-detail-next aria-label="Open listing"><span data-icon="arrowRight"></span></button>
+              <button type="button" class="hl-fab" data-book aria-label="Contact agent"><span data-icon="home"></span></button>
+            </article>
           </section>
-          <section class="hl-card hl-reveal" aria-labelledby="hl-price-h">
-            <div class="hl-card-head"><h2 id="hl-price-h">Price history</h2><span class="hl-meta" data-price-meta></span></div>
-            <div data-price></div>
-          </section>
-          <section class="hl-card hl-reveal" aria-labelledby="hl-view-h">
-            <div class="hl-card-head"><h2 id="hl-view-h">Your viewings</h2></div>
-            <ul class="hl-views" data-views></ul>
-            <button type="button" class="hl-book" data-book>Book a viewing</button>
-          </section>
-          <section class="hl-card hl-reveal" aria-labelledby="hl-agent-h">
-            <div class="hl-card-head"><h2 id="hl-agent-h">Agent notes</h2><span class="hl-meta">Sample</span></div>
-            <ul class="hl-views" data-agent-notes>
-              <li><span>Open house prep</span><b>Sat 11:00</b></li>
-              <li><span>Inspection window</span><b>Tue–Thu</b></li>
-              <li><span>Offer readiness</span><b>Docs ready</b></li>
-              <li><span>Neighborhood brief</span><b>Schools · parks</b></li>
-              <li><span>Comps refresh</span><b>3 new</b></li>
-              <li><span>Buyer shortlist</span><b>8 homes</b></li>
-            </ul>
-          </section>
-        </section>
-        <p class="db-sample hl-foot">Sample data · fictional</p>
+        </div>
+
+        <p class="hl-foot"><button type="button" class="hl-caps-pill" data-tour>Tour the villa</button></p>
       </div>
     </main>
+
+    <div class="db-ui-toast" data-toast hidden role="status"></div>
   </div>
-  <div class="hl-toast" data-toast hidden role="status"></div>
-  <script src="app.js"></script>
+  <script type="module">
+    import { bindShape } from '../_shared/shape/bind.js';
+    bindShape(document);
+    requestAnimationFrame(() => bindShape(document));
+  </script>
+  <script src="app.js" defer></script>
 </body>
 </html>

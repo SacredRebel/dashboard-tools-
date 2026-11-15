@@ -1,4 +1,4 @@
-/* Haven Listings: dusk villa photo hero, multipage + motion. Sample data only. */
+/* Haven Listings r4: notchFrame overview + product secondary pages. Sample data only. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -12,8 +12,6 @@
     bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>',
     settings: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9 7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/>',
     pin: '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
-    building: '<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/>',
-    wallet: '<path d="M3 7a2 2 0 0 1 2-2h13v4"/><path d="M3 7v11a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H5a2 2 0 0 1-2-2z"/><circle cx="16.5" cy="14.5" r="1"/>',
     arrowUpRight: '<path d="M7 17 17 7M8 7h9v9"/>',
     arrowRight: '<path d="M5 12h14M13 6l6 6-6 6"/>',
     heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>',
@@ -22,10 +20,12 @@
     bed: '<path d="M3 18V6M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="10.5" r="1.8"/>',
     drop: '<path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"/>',
     ruler: '<path d="m3 16 13-13 5 5L8 21z"/><path d="m7 12 2 2M10 9l2 2M13 6l2 2"/>',
-    calendar: '<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/>',
+    moon: '<path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
   };
   const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
   const paintIcons = (host = document) => $$('[data-icon]', host).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
+
   function toast(msg) {
     const t = $('[data-toast]');
     if (!t) return;
@@ -33,149 +33,146 @@
     clearTimeout(toast._id);
     toast._id = setTimeout(() => { t.hidden = true; }, 2200);
   }
-  function countUp(el, to, { duration = 600, format = (n) => String(Math.round(n)) } = {}) {
-    if (!el) return;
-    if (reduce) { el.textContent = format(to); return; }
-    const start = performance.now();
-    function frame(now) {
-      const t = Math.min(1, (now - start) / duration);
-      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
-      if (t < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-  const fmtNum = (v) => v.toLocaleString('en-US');
+
+  const HOMES = [
+    { id: 'h1', name: 'Dusk Curve Villa', place: 'Cedar Ridge', type: 'Villa', price: 2480000, rent: 9200, beds: 4, baths: 3, area: 3120, yard: '0.4 ac', blurb: 'Warm glass walls face the snow line; open kitchen under a soft shell roof.' },
+    { id: 'h2', name: 'Mist Hollow Loft', place: 'Harbor Mill', type: 'Loft', price: 1180000, rent: 4800, beds: 2, baths: 2, area: 1480, yard: 'Roof deck', blurb: 'North light and a deep balcony over the mill race.' },
+    { id: 'h3', name: 'Pine Court Residence', place: 'Alpine Reach', type: 'House', price: 1750000, rent: 6400, beds: 3, baths: 2, area: 2240, yard: '0.2 ac', blurb: 'Quiet court living with a courtyard fireplace and study.' },
+    { id: 'h4', name: 'River Glass Flat', place: 'South Quay', type: 'Apartment', price: 890000, rent: 3600, beds: 2, baths: 1, area: 1120, yard: 'Balcony', blurb: 'Floor-to-ceiling river views with a soft clay kitchen island.' },
+    { id: 'h5', name: 'Summit Pavilion', place: 'Cedar Ridge', type: 'Villa', price: 3120000, rent: 11000, beds: 5, baths: 4, area: 4280, yard: '1.1 ac', blurb: 'Pavilion wings around a heated courtyard pool.' },
+  ];
+  const PLACES = [...new Set(HOMES.map((h) => h.place))];
+  const TYPES = [...new Set(HOMES.map((h) => h.type))];
+  const viewings = [
+    { home: 'h1', day: 2, time: '10:30' },
+    { home: 'h3', day: 4, time: '15:00' },
+    { home: 'h2', day: 6, time: '11:15' },
+    { home: 'h5', day: 9, time: '16:45' },
+  ];
+
+  let mode = 'buy';
+  let idx = 0;
+  const fmt = (n) => n.toLocaleString('en-US');
+  const money = (n) => mode === 'rent' ? `$${fmt(n)}/mo` : `$${fmt(n)}`;
   const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
   const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
-  const niceStep = (raw) => { const p = 10 ** Math.floor(Math.log10(raw || 1)); const f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; };
-  function scale(vals, o) {
-    let min = o.min ?? Math.min(...vals), max = o.max ?? Math.max(...vals);
-    const step = o.step || niceStep((max - min || 1) / (o.ticks || 4));
-    min = Math.floor(min / step) * step; max = Math.ceil(max / step) * step; if (max === min) max = min + step;
-    const ticks = []; for (let v = min; v <= max + step / 1e6; v += step) ticks.push(+v.toFixed(6));
-    return { min, max, ticks };
-  }
-  // segmented control / tabs: buttons carry data-v, the pressed one gets aria-pressed="true"
-  function seg(group, onChange) {
-    group.addEventListener('click', (e) => {
-      const b = e.target.closest('button[data-v]'); if (!b) return;
-      $$('button[data-v]', group).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      onChange(b.dataset.v, b);
+
+  function filtered() {
+    const form = $('[data-filters]');
+    const place = form?.place?.value || '';
+    const type = form?.type?.value || '';
+    const max = Number(form?.max?.value || 0) || Infinity;
+    return HOMES.filter((h) => {
+      if (place && h.place !== place) return false;
+      if (type && h.type !== type) return false;
+      const p = mode === 'rent' ? h.rent : h.price;
+      return p <= max;
     });
   }
-  function smooth(pts) { // Catmull-Rom to cubic Bezier
-    let p = `M${pts[0][0]},${pts[0][1]}`;
-    for (let i = 0; i < pts.length - 1; i++) {
-      const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
-      p += ` C${p1[0] + (p2[0] - p0[0]) / 6},${p1[1] + (p2[1] - p0[1]) / 6} ${p2[0] - (p3[0] - p1[0]) / 6},${p2[1] - (p3[1] - p1[1]) / 6} ${p2[0]},${p2[1]}`;
+
+  function renderDetail(home) {
+    const el = $('[data-detail]');
+    if (!el || !home) return;
+    const price = mode === 'rent' ? home.rent : home.price;
+    el.innerHTML = `
+      <h2>${home.name}</h2>
+      <p class="hl-addr"><span data-icon="pin"></span>${home.place} · ${home.type}</p>
+      <p class="hl-desc">${home.blurb}</p>
+      <div class="hl-specs">
+        <div><span data-icon="ruler"></span><strong class="num">${fmt(home.area)} ft²</strong><span>Area</span></div>
+        <div><span data-icon="drop"></span><strong>${home.yard}</strong><span>Yard</span></div>
+        <div><span data-icon="bed"></span><strong class="num">${home.beds}</strong><span>Beds</span></div>
+        <div><span data-icon="drop"></span><strong class="num">${home.baths}</strong><span>Baths</span></div>
+      </div>
+      <p class="num" style="margin:0 0 12px;font-size:1.25rem;font-weight:600">${money(price)}</p>
+      <div class="hl-actions">
+        <button type="button" data-act="like" aria-label="Like">${svg('heart')}</button>
+        <button type="button" data-act="save" aria-label="Save">${svg('bookmark')}</button>
+        <button type="button" data-act="share" aria-label="Share">${svg('send')}</button>
+      </div>`;
+    paintIcons(el);
+    el.querySelectorAll('[data-act]').forEach((b) => b.addEventListener('click', () => toast(`${b.dataset.act} · sample`)));
+  }
+
+  function refresh() {
+    const list = filtered();
+    if (!list.length) idx = 0;
+    else idx = idx % list.length;
+    const home = list[idx] || HOMES[0];
+    renderDetail(home);
+    const note = $('[data-find-note]');
+    if (note) note.textContent = list.length
+      ? `${list.length} homes match your filters in this sample market.`
+      : 'No homes match — clear a filter to see sample listings.';
+    const count = $('[data-count]');
+    if (count) {
+      const n = Math.max(list.length * 2000, 1200);
+      count.dataset.to = String(n);
+      count.textContent = `${fmt(Math.round(n / 1000))}K+`;
     }
-    return p;
-  }
-  let chartId = 0;
-  // Line / area chart: SVG draws the shape, HTML labels sit over it (so text never scales), hover and focus show values.
-  // o: { labels, series: [{ name, color: '--chart-1', values, fill, dash }], fmt, h, label, curve, dots, min, max, ticks, step }
-  function lineChart(el, o) {
-    const fmt = o.fmt || fmtNum, n = o.labels.length, W = 600, H = 200;
-    const { min, max, ticks } = scale(o.series.flatMap((s) => s.values), o);
-    const x = (i) => (n > 1 ? (i / (n - 1)) * W : W / 2), y = (v) => H - ((v - min) / (max - min)) * H;
-    const top = (py) => `calc(var(--plot-h) * ${(py / H).toFixed(4)})`, uid = `hl-g${++chartId}`;
-    const sets = o.series.map((s) => { const pts = s.values.map((v, i) => [x(i), y(v)]); return { ...s, pts, d: o.curve === false ? 'M' + pts.map((p) => p.join(',')).join(' L') : smooth(pts) }; });
-    const every = o.xEvery || (n > 8 ? 2 : 1);
-    el.innerHTML = `<div class="hl-plot" style="--plot-h:${o.h || 200}px">
-      ${ticks.map((v) => `<span class="hl-y num" style="top:${top(y(v))}">${fmt(v)}</span>`).join('')}
-      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${o.label}">
-        <defs>${sets.map((s, k) => `<linearGradient id="${uid}-${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(${s.color});stop-opacity:${s.fill ?? 0.35}"/><stop offset="1" style="stop-color:var(${s.color});stop-opacity:0"/></linearGradient>`).join('')}</defs>
-        <g class="grid">${ticks.map((v) => `<line x1="0" x2="${W}" y1="${y(v)}" y2="${y(v)}" vector-effect="non-scaling-stroke"/>`).join('')}</g>
-        ${sets.map((s, k) => `${s.fill === 0 ? '' : `<path d="${s.d} L${W},${H} L0,${H} Z" fill="url(#${uid}-${k})"/>`}<path class="line" d="${s.d}" style="stroke:var(${s.color})"${s.dash ? ` stroke-dasharray="${s.dash}"` : ''} vector-effect="non-scaling-stroke"/>`).join('')}
-      </svg>
-      ${o.dots ? sets[0].pts.map(([px, py]) => `<span class="hl-dot" style="left:${(px / W) * 100}%;top:${top(py)}"></span>`).join('') : ''}
-      ${o.labels.map((l, i) => (i % every === 0 ? `<span class="hl-x${(i / every) % 2 ? ' alt' : ''}" style="left:${(x(i) / W) * 100}%">${l}</span>` : '')).join('')}
-      <div class="hl-hit">${o.labels.map((l, i) => `<button aria-label="${l}: ${sets.map((s) => `${s.name ? s.name + ' ' : ''}${fmt(s.values[i])}`).join(', ')}"></button>`).join('')}</div>
-      <span class="hl-cursor" hidden></span><span class="hl-tip num" hidden></span>
-    </div>`;
-    const tip = $('.hl-tip', el), cur = $('.hl-cursor', el), dots = $$('.hl-dot', el);
-    const show = (i) => {
-      dots.forEach((d, k) => d.classList.toggle('on', k === i));
-      tip.hidden = cur.hidden = i < 0; if (i < 0) return;
-      tip.innerHTML = `<b>${o.labels[i]}</b> ${sets.map((s) => fmt(s.values[i])).join(' · ')}`;
-      tip.className = `hl-tip num${i === 0 ? ' l' : i === n - 1 ? ' r' : ''}`;
-      tip.style.left = cur.style.left = (x(i) / W) * 100 + '%'; tip.style.top = top(Math.min(...sets.map((s) => s.pts[i][1])));
-    };
-    $$('.hl-hit button', el).forEach((b, i) => { b.addEventListener('mouseenter', () => show(i)); b.addEventListener('focus', () => show(i)); b.addEventListener('blur', () => show(-1)); if (o.onPick) b.addEventListener('click', () => o.onPick(i)); });
-    $('.hl-hit', el).addEventListener('mouseleave', () => show(-1));
-  }
-  paintIcons();
-
-  // ---------------------------------------------------------------- sample data
-  const HOMES = [
-    { id: 'h1', mode: 'buy', name: 'Lunette House', place: 'Marrow Bay', type: 'Villa', price: 1240000, beds: 4, baths: 3, area: 312, addr: '18 Tidewater Lane', blurb: 'A long curved shell of glass and plaster that follows the dune line, with a heated deck facing the evening light.' },
-    { id: 'h2', mode: 'buy', name: 'Cedar Step', place: 'Pinecrest', type: 'Cabin', price: 468000, beds: 2, baths: 1, area: 96, addr: '4 Quillback Road', blurb: 'A stepped timber cabin on a wooded slope. Wood stove, sleeping loft and a creek at the end of the garden.' },
-    { id: 'h3', mode: 'buy', name: 'Foundry Loft 6', place: 'Old Harbour', type: 'Loft', price: 615000, beds: 2, baths: 2, area: 128, addr: '22 Anchor Street', blurb: 'A top-floor loft in a converted foundry: steel windows, a mezzanine study and a shared roof terrace.' },
-    { id: 'h4', mode: 'buy', name: 'Saltgrass Villa', place: 'Marrow Bay', type: 'Villa', price: 892000, beds: 3, baths: 2, area: 204, addr: '7 Heron Walk', blurb: 'Single-storey courtyard villa a short walk from the beach, rebuilt two years ago with solar and a cistern.' },
-    { id: 'h5', mode: 'rent', name: 'Kiln Yard Loft', place: 'Old Harbour', type: 'Loft', price: 2450, beds: 1, baths: 1, area: 74, addr: '3 Kiln Yard', blurb: 'Bright one-bedroom loft above a ceramics studio. Bills included, bikes welcome, six-month minimum.' },
-    { id: 'h6', mode: 'rent', name: 'Larch Hollow', place: 'Pinecrest', type: 'Cabin', price: 1980, beds: 2, baths: 1, area: 88, addr: '31 Larch Hollow', blurb: 'A quiet two-bedroom cabin at the edge of the forest with a covered porch and room for a garden.' },
-    { id: 'h7', mode: 'rent', name: 'Tern Court Villa', place: 'Marrow Bay', type: 'Villa', price: 4600, beds: 4, baths: 3, area: 240, addr: '2 Tern Court', blurb: 'Furnished family villa with a pool and a guest wing, available for a year from next month.' },
-  ];
-  const MAX = { buy: [[0, 'Any price'], [500000, '$500,000'], [750000, '$750,000'], [1000000, '$1,000,000']], rent: [[0, 'Any price'], [2000, '$2,000'], [2500, '$2,500'], [5000, '$5,000']] };
-  const money = (v) => '$' + fmtNum(v), shortM = (v) => (v >= 1e6 ? '$' + (v / 1e6).toFixed(2) + 'M' : v >= 1e4 ? '$' + Math.round(v / 1000) + 'k' : '$' + fmtNum(v));
-  const state = { mode: 'buy', place: '', type: '', max: 0, sel: 'h1' }, saved = new Set(['h4']), kept = new Set(), viewings = [{ home: 'h4', day: 2, time: '10:30 am' }, { home: 'h3', day: 5, time: '4:00 pm' }];
-  const form = $('[data-filters]');
-  const matches = () => HOMES.filter((h) => h.mode === state.mode && (!state.place || h.place === state.place) && (!state.type || h.type === state.type) && (!state.max || h.price <= state.max));
-  const current = () => matches().find((h) => h.id === state.sel) || matches()[0] || null;
-  const history = (h) => Array.from({ length: 8 }, (_, i) => Math.round(h.price * (0.84 + i * 0.022 + 0.015 * Math.sin(i * 1.7 + h.beds))));
-
-  // ---------------------------------------------------------------- renderers
-  function fillSelects() {
-    const opts = (list, cur) => list.map(([v, l]) => `<option value="${v}"${String(v) === String(cur) ? ' selected' : ''}>${l}</option>`).join('');
-    form.place.innerHTML = opts([['', 'Anywhere'], ...[...new Set(HOMES.map((h) => h.place))].map((p) => [p, p])], state.place);
-    form.type.innerHTML = opts([['', 'Any type'], ...[...new Set(HOMES.map((h) => h.type))].map((p) => [p, p])], state.type);
-    form.max.innerHTML = opts(MAX[state.mode], state.max);
-  }
-  function render() {
-    const list = matches(), h = current(), per = state.mode === 'rent' ? ' / month' : '';
-    countUp($('[data-count]'), list.length);
-    $('[data-find-note]').textContent = list.length ? `${list.length === 1 ? 'One home' : list.length + ' homes'} to ${state.mode} ${state.place ? 'in ' + state.place : 'across three areas'}. Use the arrow to step through them.` : 'Nothing fits these filters yet.';
-    $('[data-next]').disabled = list.length < 2; $('[data-clear]').hidden = !(state.place || state.type || state.max);
-    $('[data-detail]').innerHTML = h ? `<div class="hl-detail-head"><div><h2>${h.name}</h2><address>${svg('pin')}${h.addr}, ${h.place}</address></div></div>
-        <p>${h.blurb}</p><p class="hl-price num">${money(h.price)}<small>${per}</small></p>
-        <ul class="hl-specs"><li>${svg('ruler')}${h.area} m²</li><li>${svg('bed')}${h.beds} bedroom${h.beds > 1 ? 's' : ''}</li><li>${svg('drop')}${h.baths} bath${h.baths > 1 ? 's' : ''}</li><li>${svg('building')}${h.type}</li></ul>
-        <div class="hl-acts"><button type="button" data-act="save" aria-pressed="${saved.has(h.id)}">${svg('heart')}${saved.has(h.id) ? 'Saved' : 'Save'}</button><button type="button" data-act="keep" aria-pressed="${kept.has(h.id)}">${svg('bookmark')}${kept.has(h.id) ? 'Comparing' : 'Compare'}</button><button type="button" data-act="share">${svg('send')}Share</button></div>`
-      : `<h2>No homes match</h2><p class="hl-none">Try a higher max price or a different area, or clear the filters to see everything to ${state.mode}.</p>`;
-    $('[data-homes]').innerHTML = list.length ? list.map((x) => `<li><button type="button" class="hl-home" data-home="${x.id}" aria-pressed="${h && x.id === h.id}"><span class="hl-thumb${x.type === 'Villa' ? ' photo' : ''}" style="--tr:${x.type === 'Villa' ? '18px 18px 3px 3px' : x.type === 'Cabin' ? '50% 50% 0 0' : '2px'}"></span><span><b>${x.name}</b><small>${x.place} · ${x.type} · ${x.beds} bed</small></span><span class="num">${shortM(x.price)}</span></button></li>`).join('') : '<li class="hl-none">No homes match these filters.</li>';
-    if (h) { const v = history(h); $('[data-price-meta]').textContent = h.name;
-      lineChart($('[data-price]'), { labels: Array.from({ length: 8 }, (_, i) => fmtDate(new Date(new Date().getFullYear(), new Date().getMonth() - 21 + i * 3, 1), { month: 'short', year: '2-digit' })), series: [{ name: per ? 'Rent' : 'Price', color: '--chart-1', values: v }], fmt: shortM, h: 170, ticks: 3, xEvery: 2, label: `Price history for ${h.name} over two years` });
-    } else { $('[data-price-meta]').textContent = ''; $('[data-price]').innerHTML = '<p class="hl-none">Pick a home to see its price history.</p>'; }
-    const hasView = h && viewings.some((v) => v.home === h.id);
-    $('[data-book]').disabled = !h || hasView; $('[data-book]').textContent = !h ? 'Book a viewing' : hasView ? 'Viewing booked' : `Book a viewing of ${h.name}`;
-    $('[data-views]').innerHTML = viewings.map((v) => { const d = dayOffset(v.day), x = HOMES.find((q) => q.id === v.home); return `<li><time><span><b class="num">${d.getDate()}</b><br>${fmtDate(d, { month: 'short' })}</span></time><span>${x.name}<small>${fmtDate(d, { weekday: 'long' })}, ${v.time}</small></span></li>`; }).join('');
   }
 
-  // ---------------------------------------------------------------- events
-  seg($('[data-mode]'), (v) => { Object.assign(state, { mode: v, max: 0 }); fillSelects(); render(); toast(`${v === 'buy' ? 'Buy' : 'Rent'} · sample`); });
-  form.addEventListener('change', () => { Object.assign(state, { place: form.place.value, type: form.type.value, max: +form.max.value }); render(); });
-  form.addEventListener('submit', (e) => e.preventDefault());
-  $('[data-clear]').addEventListener('click', () => { Object.assign(state, { place: '', type: '', max: 0 }); fillSelects(); render(); form.place.focus(); toast('Filters cleared · sample'); });
-  $('[data-next]').addEventListener('click', () => { const l = matches(), i = l.indexOf(current()); state.sel = l[(i + 1) % l.length].id; render(); toast('Next match · sample'); });
-  $('[data-homes]').addEventListener('click', (e) => { const b = e.target.closest('[data-home]'); if (!b) return; state.sel = b.dataset.home; render(); $(`[data-home="${state.sel}"]`).focus(); });
-  $('[data-detail]').addEventListener('click', (e) => {
-    const b = e.target.closest('[data-act]'), h = current(); if (!b || !h) return;
-    if (b.dataset.act === 'share') { toast('Share link · sample'); return; }
-    const set = b.dataset.act === 'save' ? saved : b.dataset.act === 'keep' ? kept : null;
-    if (!set) return;
-    set.has(h.id) ? set.delete(h.id) : set.add(h.id);
-    render();
-    $(`[data-act="${b.dataset.act}"]`)?.focus();
-    toast(`${b.dataset.act === 'save' ? 'Saved' : 'Compare'} · sample`);
-  });
-  $('[data-book]').addEventListener('click', () => { const h = current(); if (!h) return; viewings.push({ home: h.id, day: 7 + viewings.length, time: '11:00 am' }); render(); toast('Viewing booked · sample'); });
-  fillSelects(); render();
+  function fillFilters() {
+    const form = $('[data-filters]');
+    if (!form) return;
+    form.place.innerHTML = `<option value="">Any</option>` + PLACES.map((p) => `<option value="${p}">${p}</option>`).join('');
+    form.type.innerHTML = `<option value="">Any</option>` + TYPES.map((t) => `<option value="${t}">${t}</option>`).join('');
+    const caps = mode === 'rent'
+      ? [3000, 5000, 8000, 12000]
+      : [1000000, 2000000, 3000000, 5000000];
+    form.max.innerHTML = `<option value="">Any</option>` + caps.map((c) => `<option value="${c}">${money(c)}</option>`).join('');
+  }
 
-  function staggerReveal() {
-    $$('.hl-reveal').forEach((el, i) => {
-      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 40 * i}ms`);
-      el.classList.add('hl-reveal-in');
+  // Interactions
+  $$('[data-mode]').forEach((b) => b.addEventListener('click', () => {
+    mode = b.dataset.mode;
+    $$('[data-mode]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    fillFilters();
+    refresh();
+    const photo = $('.hl-photo');
+    if (photo && !reduce) {
+      photo.style.opacity = '0.7';
+      setTimeout(() => { photo.style.opacity = '1'; }, 180);
+    }
+  }));
+  $('[data-filters]')?.addEventListener('change', () => { idx = 0; refresh(); });
+  $('[data-next]')?.addEventListener('click', () => { idx += 1; refresh(); toast('Next match · sample'); });
+  $('[data-detail-next]')?.addEventListener('click', () => { location.hash = '#/listings'; });
+  $('[data-book]')?.addEventListener('click', () => toast('Agent notified · sample'));
+  $('[data-tour]')?.addEventListener('click', () => toast('Tour booked · sample'));
+  $('[data-agent]')?.addEventListener('click', () => toast('Agent Mira Chen · sample'));
+  $$('[data-theme]').forEach((b) => b.addEventListener('click', () => {
+    const v = b.dataset.theme;
+    const url = new URL(location.href);
+    if (v === 'default') url.searchParams.delete('variant');
+    else url.searchParams.set('variant', v);
+    location.href = url.pathname + url.search + (location.hash || '#/overview');
+  }));
+
+  // Parallax ≤ 10px on photo
+  const scene = $('[data-scene]');
+  const photo = $('[data-parallax]');
+  if (scene && photo && !reduce) {
+    scene.addEventListener('pointermove', (e) => {
+      const r = scene.getBoundingClientRect();
+      const nx = ((e.clientX - r.left) / r.width) * 2 - 1;
+      const ny = ((e.clientY - r.top) / r.height) * 2 - 1;
+      photo.style.transform = `scale(1.04) translate(${nx * -8}px, ${ny * -6}px)`;
     });
+    scene.addEventListener('pointerleave', () => { photo.style.transform = 'scale(1.02)'; });
   }
+
+  // Entrance
+  if (!reduce && window.Motion) {
+    const { animate, stagger } = window.Motion;
+    const device = $('.hl-device');
+    if (device) animate(device, { opacity: [0, 1], scale: [0.98, 1] }, { duration: 0.45, easing: [0.22, 1, 0.36, 1] });
+    animate($$('.hl-copy, .hl-find, .hl-detail-wrap'), { opacity: [0, 1], y: [16, 0] }, { delay: stagger(0.04), duration: 0.4 });
+  }
+
+  paintIcons();
+  fillFilters();
+  refresh();
 
   const PAGES = [
     { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
@@ -183,146 +180,219 @@
     { id: 'showings', name: 'Showings', pattern: 'Calendar' },
     { id: 'settings', name: 'Settings', pattern: 'Settings' },
   ];
-  const main = $('[data-main]');
-  const overview = $('[data-page-panel="overview"]');
-  let stub = null;
-  const seenPages = new Set();
-  function ensureStub() {
-    if (stub) return stub;
-    stub = document.createElement('div');
-    stub.setAttribute('data-db-stub-host-legacy', '');
-    stub.hidden = true;
-    main.appendChild(stub);
-    return stub;
-  }
-  function setNav(id) {
-    $$('.hl-rail a').forEach((a) => {
-      const href = a.getAttribute('href') || '';
-      if (href === `#/${id}`) a.setAttribute('aria-current', 'page');
-      else a.removeAttribute('aria-current');
+
+  function priceHistorySvg(home) {
+    const vals = [0.82, 0.88, 0.86, 0.92, 0.95, 1].map((f) => Math.round(home.price * f / 1000));
+    const max = Math.max(...vals), min = Math.min(...vals);
+    const pts = vals.map((v, i) => {
+      const x = 20 + (i / (vals.length - 1)) * 260;
+      const y = 120 - ((v - min) / (max - min || 1)) * 90;
+      return [x, y];
     });
+    let d = `M${pts[0][0]},${pts[0][1]}`;
+    for (let i = 1; i < pts.length; i++) d += ` L${pts[i][0]},${pts[i][1]}`;
+    const area = `${d} L${pts.at(-1)[0]},130 L${pts[0][0]},130 Z`;
+    return `<svg viewBox="0 0 300 140" role="img" aria-label="Price history for ${home.name}">
+      <path d="${area}" fill="color-mix(in srgb, var(--accent) 18%, transparent)"/>
+      <path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>`;
   }
-  function pageHtml(page) {
+
+  function renderPage(page) {
     if (page.id === 'listings') {
-      return `<section class="hl-page" data-db-page="listings" aria-labelledby="p-h">
-        <h1 id="p-h">Listings</h1>
-        <p class="hl-page-lead">All curated homes. Sample data · fictional.</p>
-        <div class="hl-seg" role="group" aria-label="Listings state" data-list-tabs>
-          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
-          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
-          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
-          <button type="button" data-v="error" aria-pressed="false">Error</button>
+      const rows = HOMES.map((h) => `
+        <article class="hl-page-card mat-glass-frost" tabindex="0" data-home="${h.id}">
+          <div class="hl-row"><h3>${h.name}</h3><strong class="num">${money(mode === 'rent' ? h.rent : h.price)}</strong></div>
+          <p class="hl-meta">${h.place} · ${h.type} · ${h.beds} bed · ${fmt(h.area)} ft² · ${h.yard}</p>
+          <p class="hl-meta">${h.blurb}</p>
+          <div class="hl-chart">${priceHistorySvg(h)}</div>
+          <div class="hl-actions" style="margin-top:8px">
+            <button type="button" data-act="like" aria-label="Like ${h.name}">${svg('heart')}</button>
+            <button type="button" data-act="save" aria-label="Save ${h.name}">${svg('bookmark')}</button>
+            <button type="button" data-act="share" aria-label="Share ${h.name}">${svg('send')}</button>
+          </div>
+        </article>`).join('');
+      const notes = [
+        'Mira prefers morning light shots for Cedar Ridge.',
+        'Summit Pavilion needs a resurvey of the courtyard pool heater.',
+        'River Glass Flat HOA packet is ready for buyers.',
+        'Mist Hollow loft staging softens the north wall.',
+        'Pine Court study can double as a nursery.',
+      ].map((n,i)=>`<article class="hl-page-card"><p class="hl-meta">Note ${i+1}</p><p>${n}</p></article>`).join('');
+      return `<div class="hl-page">
+        <div class="hl-page-head">
+          <div><h1>Listings</h1><p class="hl-meta">Matching homes, price history and agent notes · fictional sample</p></div>
+          <div class="db-ui-seg" role="group" aria-label="Mode" data-list-mode>
+            <button type="button" data-v="buy" aria-pressed="${mode === 'buy'}">Buy</button>
+            <button type="button" data-v="rent" aria-pressed="${mode === 'rent'}">Rent</button>
+          </div>
         </div>
-        <div data-list-body></div>
-      </section>`;
+        <div class="db-ui-grid" style="margin-bottom:14px">
+          <div class="hl-page-card db-ui-kpi"><b class="num">${HOMES.length}</b><span>Homes in market</span></div>
+          <div class="hl-page-card db-ui-kpi"><b class="num">3</b><span>Open houses</span></div>
+          <div class="hl-page-card db-ui-kpi"><b class="num">12</b><span>Saved searches</span></div>
+          <div class="hl-page-card db-ui-kpi"><b class="num">4</b><span>Agent notes</span></div>
+        </div>
+        <div class="hl-page-grid" data-list-grid>${rows}</div>
+        <h2 style="margin:20px 0 10px;font-size:1.1rem">Agent notes</h2>
+        <div class="hl-page-grid">${notes}</div>
+        <p style="margin-top:12px"><button type="button" class="hl-btn" data-note-toast>Ping Mira</button></p>
+      </div>`;
     }
     if (page.id === 'showings') {
-      return `<section class="hl-page" data-db-page="showings" aria-labelledby="p-h">
-        <h1 id="p-h">Showings</h1>
-        <p class="hl-page-lead">Upcoming viewings on the calendar.</p>
-        <div class="hl-page-grid" data-show-list></div>
-        <button type="button" class="hl-btn" data-book-page>Request a slot</button>
-      </section>`;
-    }
-    if (page.id === 'settings') {
-      return `<section class="hl-page" data-db-page="settings" aria-labelledby="p-h">
-        <h1 id="p-h">Settings</h1>
-        <p class="hl-page-lead">Alerts and preference stubs.</p>
-        <div class="hl-page-grid">
-          <article class="hl-page-card"><div class="hl-row"><strong>Price alerts</strong><span>On</span></div></article>
-          <article class="hl-page-card"><div class="hl-row"><strong>New listings</strong><span>Daily</span></div></article>
-          <article class="hl-page-card"><div class="hl-row"><strong>Saved searches</strong><span>2</span></div></article>
-        </div>
-        <button type="button" class="hl-btn ghost" data-save-settings>Save preferences</button>
-      </section>`;
-    }
-    return `<section class="hl-page"><h1>${page.name}</h1></section>`;
-  }
-  function wirePage(host, page) {
-    if (page.id === 'listings') {
-      const body = host.querySelector('[data-list-body]');
-      const paint = (stateName = 'ready') => {
-        if (stateName === 'loading') {
-          body.innerHTML = `<div class="hl-loading" role="status"><p>Syncing listings…</p><div class="hl-skel"></div><div class="hl-skel"></div></div>`;
-          return;
-        }
-        if (stateName === 'empty') {
-          body.innerHTML = `<div class="hl-empty"><p>No listings in this market yet.</p></div>`;
-          return;
-        }
-        if (stateName === 'error') {
-          body.innerHTML = `<div class="hl-error"><p>Could not load listings.</p><button type="button" class="hl-btn ghost" data-retry>Retry</button></div>`;
-          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
-          return;
-        }
-        body.innerHTML = `<div class="hl-page-grid">${HOMES.map((h) =>
-          `<article class="hl-page-card"><div class="hl-row"><strong>${h.name}</strong><span class="num">${shortM(h.price)}</span></div><p class="hl-meta">${h.place} · ${h.type} · ${h.beds} bed</p></article>`
-        ).join('')}</div>`;
-      };
-      paint('ready');
-      seg(host.querySelector('[data-list-tabs]'), (v) => paint(v));
-    }
-    if (page.id === 'showings') {
-      host.querySelector('[data-show-list]').innerHTML = viewings.map((v) => {
-        const d = dayOffset(v.day), x = HOMES.find((q) => q.id === v.home);
-        return `<article class="hl-page-card"><div class="hl-row"><strong>${x.name}</strong><span class="num">${d.getDate()} ${fmtDate(d, { month: 'short' })}</span></div><p class="hl-meta">${fmtDate(d, { weekday: 'long' })}, ${v.time}</p></article>`;
+      const cards = viewings.map((v) => {
+        const d = dayOffset(v.day);
+        const h = HOMES.find((x) => x.id === v.home);
+        return `<article class="hl-page-card mat-glass-frost">
+          <div class="hl-row"><h3>${h.name}</h3><span class="num">${fmtDate(d)}</span></div>
+          <p class="hl-meta">${fmtDate(d, { weekday: 'long' })} · ${v.time} · ${h.place}</p>
+          <p class="hl-meta">${h.blurb}</p>
+          <button type="button" class="hl-btn" data-reschedule="${v.home}">Reschedule</button>
+        </article>`;
       }).join('');
-      host.querySelector('[data-book-page]')?.addEventListener('click', () => toast('Slot requested · sample'));
+      const extras = HOMES.slice(0,4).map((h,i)=>`<article class="hl-page-card"><div class="hl-row"><strong>${h.name}</strong><span class="hl-meta">Waitlist ${i+1}</span></div><p class="hl-meta">${h.place}</p><button type="button" class="hl-btn" data-wait="${h.id}">Join waitlist</button></article>`).join('');
+      return `<div class="hl-page">
+        <div class="hl-page-head">
+          <div><h1>Showings</h1><p class="hl-meta">Your viewings · fictional calendar</p></div>
+          <button type="button" class="hl-btn primary" data-book-page>Book a viewing</button>
+        </div>
+        <div class="db-ui-grid" style="margin-bottom:14px">
+          <div class="hl-page-card db-ui-kpi"><b class="num">${viewings.length}</b><span>Upcoming</span></div>
+          <div class="hl-page-card db-ui-kpi"><b class="num">2</b><span>This week</span></div>
+          <div class="hl-page-card db-ui-kpi"><b class="num">1</b><span>Needs confirm</span></div>
+        </div>
+        ${window.DB?.ui ? window.DB.ui.calendar({ days: 28, active: 12 }) : ''}
+        <div class="hl-page-grid" style="margin-top:16px">${cards}</div>
+        <h2 style="margin:20px 0 10px;font-size:1.1rem">Waitlist</h2>
+        <div class="hl-page-grid">${extras}</div>
+      </div>`;
     }
     if (page.id === 'settings') {
-      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+      const toggles = ['Email alerts','SMS reminders','Open-house digests','Price drops','New matches in Cedar Ridge','Share activity with team','Weekly digest','Quiet hours','Calendar sync','Export CSV','Partner MLS feed','Staging checklist']
+        .map((l,i)=>`<label class="hl-page-card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px"><span>${l}</span><input type="checkbox" ${i<3?'checked':''} style="width:20px;height:20px"></label>`).join('');
+      return `<div class="hl-page">
+        <div class="hl-page-head">
+          <div><h1>Settings</h1><p class="hl-meta">Preferences · fictional</p></div>
+          <div class="db-ui-seg" role="group" aria-label="View state" data-ui-state>
+            <button type="button" data-v="ready" aria-pressed="true">Ready</button>
+            <button type="button" data-v="loading" aria-pressed="false">Loading</button>
+            <button type="button" data-v="empty" aria-pressed="false">Empty</button>
+            <button type="button" data-v="error" aria-pressed="false">Error</button>
+          </div>
+        </div>
+        <div data-settings-body>
+          <div class="db-ui-grid" style="margin-bottom:14px">
+            <div class="hl-page-card db-ui-kpi"><b class="num">6</b><span>Alert rules</span></div>
+            <div class="hl-page-card db-ui-kpi"><b class="num">2</b><span>Markets</span></div>
+            <div class="hl-page-card db-ui-kpi"><b class="num">1</b><span>Agent seat</span></div>
+          </div>
+          <div class="hl-page-grid">
+            <div class="hl-page-card mat-glass-frost">${window.DB?.ui?.field({ label: 'Display name', value: 'Mira Chen', id: 'dn' }) || ''}</div>
+            <div class="hl-page-card mat-glass-frost">${window.DB?.ui?.field({ label: 'Alert email', value: 'mira@haven.example', id: 'em', type: 'email' }) || ''}</div>
+            <div class="hl-page-card mat-glass-frost">${window.DB?.ui?.field({ label: 'Default market', id: 'mkt', options: PLACES.map((p) => ({ value: p, label: p })) }) || ''}</div>
+            <div class="hl-page-card mat-glass-frost">${window.DB?.ui?.field({ label: 'Phone', value: '+1 (555) 014-2200', id: 'ph' }) || ''}</div>
+          </div>
+          <h2 style="margin:20px 0 10px;font-size:1.1rem">Notifications</h2>
+          <div class="hl-page-grid">${toggles}</div>
+          <h2 style="margin:20px 0 10px;font-size:1.1rem">Team seats</h2>
+          <div class="db-ui-table-wrap"><table class="db-ui-table"><thead><tr><th>Name</th><th>Role</th><th>Markets</th></tr></thead>
+          <tbody>
+            <tr tabindex="0"><td>Mira Chen</td><td>Lead agent</td><td>Cedar Ridge</td></tr>
+            <tr tabindex="0"><td>Jonah Hale</td><td>Buyer specialist</td><td>Harbor Mill</td></tr>
+            <tr tabindex="0"><td>Rae Okonkwo</td><td>Staging</td><td>All</td></tr>
+            <tr tabindex="0"><td>Samir Patel</td><td>Transactions</td><td>South Quay</td></tr>
+            <tr tabindex="0"><td>Elena Vogt</td><td>Photography</td><td>Alpine Reach</td></tr>
+          </tbody></table></div>
+          <p style="margin-top:16px"><button type="button" class="hl-btn primary" data-save-settings>Save preferences</button>
+          <button type="button" class="hl-btn" data-export>Export sample data</button></p>
+        </div>
+      </div>`;
     }
+    return '';
   }
+
+  function wirePage(host, page) {
+    paintIcons(host);
+    host.querySelector('[data-list-mode]')?.addEventListener('click', (e) => {
+      const b = e.target.closest('button[data-v]'); if (!b) return;
+      mode = b.dataset.v;
+      host.querySelectorAll('[data-list-mode] button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      const grid = host.querySelector('[data-list-grid]');
+      if (grid) {
+        grid.innerHTML = HOMES.map((h) => `
+          <article class="hl-page-card mat-glass-frost" tabindex="0">
+            <div class="hl-row"><h3>${h.name}</h3><strong class="num">${money(mode === 'rent' ? h.rent : h.price)}</strong></div>
+            <p class="hl-meta">${h.place} · ${h.type} · ${h.beds} bed</p>
+            <div class="hl-chart">${priceHistorySvg(h)}</div>
+          </article>`).join('');
+      }
+    });
+    host.querySelector('[data-note-toast]')?.addEventListener('click', () => toast('Note sent · sample'));
+    host.querySelector('[data-book-page]')?.addEventListener('click', () => toast('Slot requested · sample'));
+    host.querySelectorAll('[data-reschedule]').forEach((b) => b.addEventListener('click', () => toast('Reschedule · sample')));
+    host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
+    host.querySelector('[data-export]')?.addEventListener('click', () => toast('Export ready · sample'));
+    host.querySelectorAll('[data-wait]').forEach((b) => b.addEventListener('click', () => toast('Waitlist · sample')));
+    host.querySelectorAll('[data-act]').forEach((b) => b.addEventListener('click', () => toast(`${b.dataset.act} · sample`)));
+    const body = host.querySelector('[data-settings-body]');
+    const ready = body?.innerHTML;
+    host.querySelector('[data-ui-state]')?.addEventListener('click', (e) => {
+      const b = e.target.closest('button[data-v]'); if (!b || !body) return;
+      host.querySelectorAll('[data-ui-state] button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      const v = b.dataset.v;
+      if (v === 'loading') body.innerHTML = `<div class="hl-page-card" role="status"><p>Loading…</p>${window.DB?.ui?.skeleton(3) || ''}</div>`;
+      else if (v === 'empty') body.innerHTML = `<div class="hl-page-card"><p>No preferences yet.</p><button type="button" class="hl-btn" data-fill>Load defaults</button></div>`;
+      else if (v === 'error') body.innerHTML = `<div class="hl-page-card"><p>Could not load settings.</p><button type="button" class="hl-btn" data-retry>Retry</button></div>`;
+      else body.innerHTML = ready;
+      body.querySelector('[data-fill],[data-retry]')?.addEventListener('click', () => { body.innerHTML = ready; paintIcons(host); });
+    });
+    host.querySelectorAll('.db-ui-cal-day').forEach((b) => b.addEventListener('click', () => {
+      host.querySelectorAll('.db-ui-cal-day').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      toast(`Day ${b.dataset.day} · sample`);
+    }));
+  }
+
+  const main = $('main[data-main]') || $('main');
+  const overview = $('[data-page-panel="overview"]');
 
   if (window.DB?.onVisible) {
-    window.DB.onVisible(root, (visible) => {
-      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+    window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
+  }
+
+  if (window.DB?.ui) {
+    window.DB.ui.mount({
+      main,
+      overview,
+      pages: PAGES,
+      brand: 'Haven Listings',
+      renderPage: (page) => {
+        const html = renderPage(page);
+        queueMicrotask(() => {
+          const host = main.querySelector('[data-db-page-host]');
+          if (host) wirePage(host, page);
+        });
+        return html;
+      },
+    });
+  } else if (window.DB?.route) {
+    window.DB.route(PAGES, (id, page) => {
+      overview.hidden = id !== 'overview';
     });
   }
 
-  if (!window.DB || typeof window.DB.route !== 'function') {
-    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
-  } else {
-    window.DB._legacyRouteDisabled && window.DB.route(PAGES, (id, page) => {
-      const isOverview = id === 'overview';
-      overview.hidden = !isOverview;
-      const host = ensureStub();
-      host.hidden = isOverview;
-      setNav(id);
-      if (!isOverview) {
-        host.innerHTML = pageHtml(page);
-        paintIcons(host);
-        wirePage(host, page);
-      } else if (!seenPages.has('overview')) {
-        seenPages.add('overview');
-        staggerReveal();
-      }
-      seenPages.add(id);
+  // Keep notch depth responsive
+  const device = $('.hl-device');
+  if (device && window.ResizeObserver) {
+    const ro = new ResizeObserver(() => {
+      const h = device.getBoundingClientRect().height;
+      const depth = Math.round(Math.max(56, Math.min(88, h * 0.09)));
+      const opts = JSON.parse(device.dataset.shapeOpts || '{}');
+      if (opts.notches?.[0]) opts.notches[0].depth = depth;
+      device.dataset.shapeOpts = JSON.stringify(opts);
+      import('../_shared/shape/bind.js').then((m) => m.bindShape(device)).catch(() => {});
     });
+    ro.observe(device);
   }
 
-  
-/* reveal-boot */
-if (typeof staggerReveal === "function") staggerReveal();
-/* === DB multipage polish (dense kit) === */
-(function wirePages() {
-  const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"listings","name":"Listings","pattern":"List"},{"id":"showings","name":"Showings","pattern":"Calendar"},{"id":"settings","name":"Settings","pattern":"Settings"}];
-  const root = document.querySelector('[data-db-app]') || document.body;
-  const main = document.querySelector('main[data-main]') || document.querySelector('main') || document.body;
-  let overview = main.querySelector('[data-page-panel="overview"]');
-  if (!overview) {
-    overview = document.createElement('div');
-    overview.setAttribute('data-page-panel', 'overview');
-    [...main.children].forEach((ch) => {
-      if (ch.hasAttribute && (ch.hasAttribute('data-db-stub') || ch.getAttribute('data-db-page-host') != null)) return;
-      overview.appendChild(ch);
-    });
-    main.insertBefore(overview, main.firstChild);
-  }
-  main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
-  if (window.DB?.onVisible) window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
-  if (window.DB?.ui) window.DB.ui.mount({ main, overview, pages: PAGES, brand: "Haven Listings" });
-})();
-/* === /DB multipage polish === */
-document.documentElement.dataset.ready = 'true';
+  document.documentElement.dataset.ready = 'true';
 })();
