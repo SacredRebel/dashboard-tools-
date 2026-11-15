@@ -17,10 +17,11 @@ import { mountAmbient } from './ambient.js';
 import { mountSparks } from './sparks.js';
 import { mountList } from './list.js';
 import { mountOdo } from './odo.js';
+import { mountDepth3d } from './depth3d.js';
 
 export const FX_IDS = [
   'reveal', 'count', 'draw', 'spotlight', 'tilt', 'magnet',
-  'split', 'shine', 'parallax', 'ambient', 'sparks', 'list', 'odo', 'route',
+  'split', 'shine', 'parallax', 'ambient', 'sparks', 'list', 'odo', 'depth3d', 'route',
 ];
 
 const mounts = {
@@ -37,6 +38,7 @@ const mounts = {
   sparks: mountSparks,
   list: mountList,
   odo: mountOdo,
+  depth3d: mountDepth3d,
 };
 
 export function bootFx(root = document) {

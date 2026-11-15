@@ -1,0 +1,85 @@
+/* Shared material recipes — liquid glass, clay, neumorph, gold-edge.
+   Apply with .mat-glass / .mat-clay / .mat-neo / .mat-gold-edge.
+   Tokens only; no raw hex. Use where the reference implies the material. */
+
+.mat-glass {
+  background: color-mix(in srgb, var(--surface, #fff) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border, #fff) 70%, transparent);
+  box-shadow:
+    var(--shadow-md, 0 12px 32px rgb(0 0 0 / 0.18)),
+    inset 0 1px 0 rgb(255 255 255 / 0.28),
+    inset 0 -1px 0 rgb(0 0 0 / 0.08);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.mat-glass-dense {
+  background: color-mix(in srgb, var(--surface, #111) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent, #c9a227) 35%, var(--border, #444));
+  box-shadow:
+    var(--shadow-lg, 0 24px 48px rgb(0 0 0 / 0.35)),
+    inset 0 1px 0 rgb(255 255 255 / 0.14),
+    0 0 0 1px color-mix(in srgb, var(--accent, #c9a227) 18%, transparent);
+  backdrop-filter: blur(22px) saturate(1.25);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+}
+
+.mat-gold-edge {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(color-mix(in srgb, var(--surface, #1a1510) 78%, transparent), color-mix(in srgb, var(--surface, #1a1510) 78%, transparent)) padding-box,
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--accent, #d4af37) 85%, #fff),
+      color-mix(in srgb, var(--accent, #d4af37) 30%, transparent) 40%,
+      color-mix(in srgb, var(--accent, #d4af37) 55%, transparent) 70%,
+      color-mix(in srgb, var(--accent, #d4af37) 80%, #fff)) border-box;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.12),
+    0 0 0 1px color-mix(in srgb, var(--accent, #d4af37) 22%, transparent),
+    var(--shadow-md, 0 16px 40px rgb(0 0 0 / 0.3));
+  backdrop-filter: blur(16px) saturate(1.15);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+}
+
+.mat-clay {
+  background: var(--mat-clay-fill, var(--surface, #f5f0e8));
+  border: 1px solid var(--mat-clay-edge, var(--border, #e0d6c8));
+  box-shadow:
+    var(--mat-clay-shadow, var(--shadow-sm, 0 2px 8px rgb(0 0 0 / 0.08))),
+    var(--mat-clay-inset, inset 0 1px 0 rgb(255 255 255 / 0.55), inset 0 -1px 0 rgb(0 0 0 / 0.04));
+}
+
+.mat-neo {
+  background: var(--surface, #f4f1ec);
+  border: 0;
+  box-shadow:
+    10px 12px 24px rgb(60 50 40 / 0.08),
+    -6px -6px 16px rgb(255 255 255 / 0.85),
+    inset 0 1px 0 rgb(255 255 255 / 0.7);
+}
+
+.mat-neo-inset {
+  background: var(--surface-2, var(--surface, #eee));
+  box-shadow:
+    inset 4px 5px 12px rgb(60 50 40 / 0.08),
+    inset -3px -3px 8px rgb(255 255 255 / 0.75);
+}
+
+/* Soft hover lift — transform only */
+.mat-hover-lift {
+  transition: transform var(--dur-2, 150ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.mat-hover-lift:hover,
+.mat-hover-lift:focus-visible {
+  transform: translateY(-2px);
+}
+.mat-hover-lift:active {
+  transform: translateY(0) scale(0.985);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mat-hover-lift { transition: none; }
+  .mat-hover-lift:hover,
+  .mat-hover-lift:focus-visible,
+  .mat-hover-lift:active { transform: none; }
+}

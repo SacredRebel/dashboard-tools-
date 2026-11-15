@@ -17,6 +17,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -45,7 +46,7 @@
       <div class="hw-overview" data-page-panel="overview">
         <main class="hw-main">
           <div class="hw-scene" aria-hidden="true" data-scene>
-            <img class="hw-coast hw-ambient" src="media/coast@2x.webp" srcset="media/coast.webp 1x, media/coast@2x.webp 2x" width="1280" height="720" alt="" decoding="async">
+            <img class="hw-coast hw-ambient" data-gsap="drift" data-gsap-dur="20" src="media/coast@2x.webp" srcset="media/coast.webp 1x, media/coast@2x.webp 2x" width="1280" height="720" alt="" decoding="async">
             <div class="hw-vignette"></div>
           </div>
 

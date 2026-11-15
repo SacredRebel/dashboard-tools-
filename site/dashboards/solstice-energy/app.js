@@ -150,11 +150,11 @@
         <radialGradient id="se-sun"><stop offset="0" style="stop-color:var(--arc-1)"/><stop offset="0.45" style="stop-color:var(--arc-1);stop-opacity:0.55"/><stop offset="1" style="stop-color:var(--arc-1);stop-opacity:0"/></radialGradient>
         <filter id="se-bloom" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
-      <path d="M${cx - R - 20},${cy} A${R + 20},${R + 20} 0 0 1 ${cx + R + 20},${cy}" fill="none" stroke="url(#se-arc-glow)" stroke-width="54" opacity="0.55"/>
-      <path d="M${cx - R},${cy} A${R},${R} 0 0 1 ${cx + R},${cy}" fill="none" stroke="url(#se-arc)" stroke-width="38" stroke-linecap="round" filter="url(#se-bloom)"/>
-      <path d="M${cx - R + 48},${cy} A${R - 48},${R - 48} 0 0 1 ${cx + R - 48},${cy}" fill="none" stroke="url(#se-arc)" stroke-width="1.5" opacity="0.45"/>
-      <circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="48" fill="url(#se-sun)"/>
-      <circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="11" fill="var(--arc-1)" stroke="var(--surface)" stroke-width="3"/>
+      <path d="M${cx - R - 28},${cy} A${R + 28},${R + 28} 0 0 1 ${cx + R + 28},${cy}" fill="none" stroke="url(#se-arc-glow)" stroke-width="72" opacity="0.62"/>
+      <path d="M${cx - R},${cy} A${R},${R} 0 0 1 ${cx + R},${cy}" fill="none" stroke="url(#se-arc)" stroke-width="46" stroke-linecap="round" filter="url(#se-bloom)"/>
+      <path d="M${cx - R + 40},${cy} A${R - 40},${R - 40} 0 0 1 ${cx + R - 40},${cy}" fill="none" stroke="url(#se-arc)" stroke-width="2" opacity="0.5"/>
+      <circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="64" fill="url(#se-sun)" opacity="0.9"/>
+      <circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="16" fill="var(--arc-1)" stroke="var(--surface)" stroke-width="3" filter="url(#se-bloom)"/>
     </svg>`;
   }
 

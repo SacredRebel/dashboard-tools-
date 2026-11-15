@@ -10,11 +10,11 @@
   --text: #2c333d;
   --text-muted: #4a5560;
   --text-subtle: #5c6670;
-  --accent: #2f6fed;
+  --accent: #1d4ed8;
   --accent-fg: #ffffff;
   --accent-soft: #dbe8ff;
-  --focus: #2f6fed;
-  --chart-1: #2f6fed;
+  --focus: #1d4ed8;
+  --chart-1: #1d4ed8;
   --orange: #e8793a;
   --orange-d: #c45c26;
   --stage: #e8eaee;
@@ -47,10 +47,11 @@
   --text: #1f3330;
   --text-muted: #2f4541;
   --text-subtle: #314843;
-  --accent: #0a736a;
+  --accent: #0b5c55;
+  --accent-fg: #ffffff;
   --accent-soft: #d0f0eb;
-  --focus: #0a736a;
-  --chart-1: #0a736a;
+  --focus: #0b5c55;
+  --chart-1: #0b5c55;
   --hotspot: #14b8a6;
   --orange: #f59e0b;
   --orange-d: #d97706;
@@ -65,10 +66,11 @@
   --text: #32281f;
   --text-muted: #3f342a;
   --text-subtle: #45372c;
-  --accent: #a84818;
+  --accent: #8a3410;
+  --accent-fg: #ffffff;
   --accent-soft: #f5dfd0;
-  --focus: #a84818;
-  --chart-1: #a84818;
+  --focus: #8a3410;
+  --chart-1: #8a3410;
   --hotspot: #e8793a;
   --orange: #e8793a;
   --orange-d: #a84818;
@@ -147,7 +149,11 @@ body {
   display: inline-flex; align-items: center;
   transition: transform var(--dur-1) var(--ease-out), background-color var(--dur-2) var(--ease-out);
 }
-.tb-pages a[aria-current="page"] { background: var(--accent); color: var(--accent-fg); }
+.tb-pages a[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--text);
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
 .tb-pages a:hover { transform: translateY(-1px); }
 .tb-nav {
   display: flex;
@@ -201,74 +207,89 @@ body {
   min-height: 520px;
   padding: 28px 64px 72px;
   margin: 8px 0 28px;
+  overflow: hidden; /* cylindrical floor extends past the well — clip, no page scroll */
 }
 .tb-overview[hidden], [data-db-stub-host][hidden] { display: none !important; }
 .tb-carousel {
   position: relative;
-  width: min(1040px, 100%);
-  aspect-ratio: 1040 / 520;
-  perspective: 1680px;
-  perspective-origin: 50% 58%;
-  filter: drop-shadow(0 32px 56px rgb(40 50 70 / 0.22));
+  width: min(1080px, 100%);
+  aspect-ratio: 1080 / 540;
+  perspective: 1800px;
+  perspective-origin: 50% 62%;
+  filter: drop-shadow(0 36px 64px rgb(40 50 70 / 0.26));
+  transform-style: preserve-3d;
 }
+/* Continuous cylindrical showroom floor — one unbroken ellipse under the bays. */
 .tb-platform {
-  position: absolute; left: -2%; right: -2%; bottom: -4%; height: 42%;
-  border-radius: 50%;
+  position: absolute; left: -16%; right: -16%; bottom: -14%; height: 58%;
+  border-radius: 50% / 46%;
   background:
-    radial-gradient(ellipse at 50% 28%, rgb(255 255 255 / 0.62), transparent 52%),
-    radial-gradient(ellipse at 50% 70%, rgb(20 28 40 / 0.22), transparent 62%),
+    radial-gradient(ellipse at 50% 22%, rgb(255 255 255 / 0.72), transparent 48%),
+    radial-gradient(ellipse at 50% 48%, rgb(255 255 255 / 0.28), transparent 58%),
+    radial-gradient(ellipse at 50% 78%, rgb(20 28 40 / 0.28), transparent 68%),
     linear-gradient(180deg, var(--stage), var(--stage-deep));
   box-shadow:
-    0 28px 56px rgb(40 50 70 / 0.2),
-    inset 0 1px 0 rgb(255 255 255 / 0.5);
+    0 36px 68px rgb(40 50 70 / 0.28),
+    inset 0 2px 0 rgb(255 255 255 / 0.62),
+    inset 0 -18px 36px rgb(20 28 40 / 0.18);
   z-index: 0;
-  transform: rotateX(18deg);
+  transform: rotateX(32deg) scaleY(1.08);
   transform-origin: 50% 100%;
+}
+.tb-platform::before {
+  content: "";
+  position: absolute; inset: 8% 6% 18%;
+  border-radius: 50% / 44%;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  box-shadow: inset 0 0 40px rgb(255 255 255 / 0.12);
+  pointer-events: none;
 }
 .tb-platform::after {
   content: "";
-  position: absolute; left: 34%; right: 34%; top: 40%; bottom: 18%;
+  position: absolute; left: 28%; right: 28%; top: 36%; bottom: 22%;
   border-radius: 50%;
-  background: rgb(20 28 40 / 0.26);
-  box-shadow: inset 0 8px 18px rgb(0 0 0 / 0.28);
+  background: rgb(20 28 40 / 0.3);
+  box-shadow: inset 0 10px 22px rgb(0 0 0 / 0.32);
 }
 .tb-bays {
   position: relative; z-index: 1; height: 100%;
-  display: grid; grid-template-columns: 0.95fr 1.25fr 0.95fr; gap: 4px;
-  align-items: end; padding: 0 2% 18%;
+  display: grid; grid-template-columns: 0.9fr 1.3fr 0.9fr; gap: 0;
+  align-items: end; padding: 0 1% 20%;
   transform-style: preserve-3d;
 }
 .tb-bay {
-  position: relative; overflow: hidden; border-radius: 16px 16px 8px 8px;
+  position: relative; overflow: hidden; border-radius: 18px 18px 10px 10px;
   background: var(--surface);
   box-shadow:
-    0 22px 40px rgb(40 50 70 / 0.24),
+    0 26px 48px rgb(40 50 70 / 0.28),
     0 2px 0 rgb(255 255 255 / 0.55) inset;
   aspect-ratio: 4 / 5; max-height: 100%;
   transform-style: preserve-3d;
   will-change: transform;
-  transition: transform 340ms var(--ease-out), opacity 280ms ease, filter 280ms ease;
+  transition: transform 360ms var(--ease-out), opacity 280ms ease, filter 280ms ease;
 }
 .tb-bay img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 .tb-bay-left {
-  transform: translate3d(-10%, 12%, -120px) rotateY(48deg) rotateX(6deg) scale(0.82);
-  transform-origin: 100% 72%;
-  opacity: 0.68; filter: brightness(0.9) saturate(0.88);
+  transform: translate3d(-14%, 16%, -160px) rotateY(56deg) rotateX(8deg) scale(0.78);
+  transform-origin: 100% 78%;
+  opacity: 0.62; filter: brightness(0.88) saturate(0.85);
   z-index: 1;
+  border-radius: 12px 22px 8px 28px;
 }
 .tb-bay-right {
-  transform: translate3d(10%, 12%, -120px) rotateY(-48deg) rotateX(6deg) scale(0.82);
-  transform-origin: 0% 72%;
-  opacity: 0.68; filter: brightness(0.9) saturate(0.88);
+  transform: translate3d(14%, 16%, -160px) rotateY(-56deg) rotateX(8deg) scale(0.78);
+  transform-origin: 0% 78%;
+  opacity: 0.62; filter: brightness(0.88) saturate(0.85);
   z-index: 1;
+  border-radius: 22px 12px 28px 8px;
 }
 .tb-bay-mid {
   z-index: 3;
-  transform: translate3d(0, -8%, 56px) rotateY(0deg) scale(1.04);
-  transform-origin: 50% 82%;
+  transform: translate3d(0, -10%, 72px) rotateY(0deg) scale(1.06);
+  transform-origin: 50% 86%;
   box-shadow:
-    0 34px 58px rgb(40 50 70 / 0.32),
-    0 0 0 1px rgb(255 255 255 / 0.4) inset;
+    0 38px 64px rgb(40 50 70 / 0.36),
+    0 0 0 1px rgb(255 255 255 / 0.45) inset;
 }
 .tb-ambient { animation: tbGlow 4.8s var(--ease-out) infinite alternate; }
 @keyframes tbGlow {
@@ -326,8 +347,13 @@ body {
   right: 88px;
   margin: 0;
   font-size: 13px;
-  font-weight: 600;
-  color: var(--text-muted);
+  font-weight: 700;
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  border: 1px solid var(--border);
+  box-shadow: var(--soft);
 }
 
 /* hotspot overlay buttons sit over the SVG */
@@ -479,12 +505,14 @@ body {
   min-height: 44px;
   padding: 0 14px;
   border-radius: var(--radius-pill);
-  background: var(--accent);
+  background-color: var(--accent);
+  background-image: none;
   color: var(--accent-fg);
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
   box-shadow: var(--soft);
+  isolation: isolate;
 }
 .tb-dl svg { width: 16px; height: 16px; }
 .tb-dl:hover { filter: brightness(1.05); }
@@ -519,13 +547,15 @@ body {
   padding: 0 14px;
   border: 0;
   border-radius: var(--radius-sm);
-  background: var(--accent);
+  background-color: var(--accent);
+  background-image: none;
   color: var(--accent-fg);
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: lowercase;
   box-shadow: var(--soft);
+  isolation: isolate;
 }
 .tb-maplink {
   display: inline-flex;
@@ -608,10 +638,13 @@ body {
   .tb-brand { order: 0; }
   .tb-pages { order: 3; flex: 0 0 100%; margin-right: 0; }
   .tb-nav { order: 4; flex: 0 0 100%; margin-left: 0; justify-content: center; gap: 8px 16px; }
-  .tb-stage { padding: 8px 0 64px; min-height: 320px; }
+  .tb-stage { padding: 8px 0 64px; min-height: 320px; overflow: hidden; }
+  .tb-carousel { width: 100%; }
+  .tb-platform { left: -4%; right: -4%; bottom: -6%; height: 48%; }
   .tb-bays { gap: 6px; padding: 6% 2% 18%; }
   .tb-bay-left, .tb-bay-right { display: none; }
   .tb-bay-mid { transform: none; }
+  .tb-board { position: relative; z-index: 2; background: var(--bg); }
   .tb-arrow {
     width: 48px;
     height: 48px;

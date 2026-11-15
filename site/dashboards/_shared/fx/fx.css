@@ -1,4 +1,51 @@
 /* Gallery FX: data-fx effects. Tokens only; reduced-motion + offscreen pause. */
+@import url("./materials.css");
+
+/* CSS 3D depth stage (data-fx="depth3d") */
+.fx-depth3d {
+  --fx-depth-rx: 0deg;
+  --fx-depth-ry: 0deg;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+.fx-depth3d > .fx-depth-floor {
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: -6%;
+  height: 48%;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgb(255 255 255 / 0.55), transparent 55%),
+    linear-gradient(180deg, var(--stage, var(--surface-2, #e8e4dc)), var(--stage-deep, var(--surface-sunken, #d4cfc4)));
+  box-shadow:
+    0 28px 56px rgb(40 50 70 / 0.2),
+    inset 0 1px 0 rgb(255 255 255 / 0.45);
+  transform: rotateX(calc(22deg + var(--fx-depth-rx))) rotateY(var(--fx-depth-ry));
+  transform-origin: 50% 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.fx-depth3d[data-fx-depth-kind="cylinder"] > .fx-depth-floor {
+  height: 56%;
+  left: -14%;
+  right: -14%;
+  bottom: -10%;
+  border-radius: 50% / 42%;
+  transform: rotateX(calc(28deg + var(--fx-depth-rx))) rotateY(var(--fx-depth-ry)) scaleY(1.05);
+}
+/* Only the floor tracks pointer tilt — children keep their own 3D transforms (e.g. Tidebath bays). */
+.fx-depth3d > *:not(.fx-depth-floor) {
+  position: relative;
+  z-index: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-depth3d > .fx-depth-floor {
+    transform: rotateX(22deg) !important;
+    transition: none !important;
+  }
+}
+
 [data-fx~="reveal"] {
   opacity: 0;
   transform: translateY(12px);

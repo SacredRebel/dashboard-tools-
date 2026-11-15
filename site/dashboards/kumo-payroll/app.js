@@ -114,37 +114,23 @@
   // ---------------------------------------------------------------- events
   $('.kp-period').addEventListener('click', (e) => { const b = e.target.closest('[data-step]'); if (!b || b.disabled) return; p = Math.max(0, Math.min(PERIODS.length - 1, p + +b.dataset.step)); renderAll(); });
   $('[data-ded]').addEventListener('click', (e) => { const b = e.target.closest('[data-ded-i]'); if (!b) return; ded = ded === +b.dataset.dedI ? -1 : +b.dataset.dedI; renderDed(); $(`[data-ded-i="${b.dataset.dedI}"]`).focus(); });
-  $('[data-nav]').addEventListener('click', (e) => { const a = e.target.closest('a'); if (!a) return; e.preventDefault(); $$('a', $('[data-nav]')).forEach((x) => x.removeAttribute('aria-current')); a.setAttribute('aria-current', 'page'); });
+  /* Hash router owns aria-current via DB.route — do not preventDefault on #/ links. */
   $('[data-steps]').innerHTML = STEPS.map(([n, t, m]) => `<li><time>${fmtDate(dayOffset(n))}</time>${t}<span>${m}</span></li>`).join('');
   renderScene(); renderAll();
 /* === DB multipage polish (dense kit) === */
   (function wirePages() {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"people","name":"People","pattern":"List"},{"id":"payroll","name":"Payroll","pattern":"Report"},{"id":"settings","name":"Settings","pattern":"Settings"}];
+    const PAGES = [
+      {"id":"overview","name":"Overview","pattern":"Dashboard"},
+      {"id":"payroll","name":"Pay runs","pattern":"List"},
+      {"id":"deductions","name":"Deductions","pattern":"Report"},
+      {"id":"time-off","name":"Time off","pattern":"List"},
+      {"id":"people","name":"People","pattern":"List"},
+      {"id":"reports","name":"Reports","pattern":"Report"},
+      {"id":"settings","name":"Settings","pattern":"Settings"},
+    ];
     const root = document.querySelector('[data-db-app]') || document.body;
-    const main = document.querySelector('main') || document.body;
-    let overview = main.querySelector('[data-page-panel="overview"]');
-    if (!overview) {
-      overview = document.createElement('div');
-      overview.setAttribute('data-page-panel', 'overview');
-      const keep = [];
-      [...main.children].forEach((ch) => {
-        if (ch.hasAttribute && ch.hasAttribute('data-db-stub')) return;
-        if (ch.getAttribute && ch.getAttribute('data-db-page-host') != null) return;
-        keep.push(ch);
-      });
-      keep.forEach((ch) => overview.appendChild(ch));
-      main.insertBefore(overview, main.firstChild);
-    }
-    main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
-    document.querySelectorAll('a[href]').forEach((a) => {
-      const label = (a.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-      if (!label) return;
-      const hit = PAGES.find((p) => p.name.toLowerCase() === label || p.id === label
-        || (label === 'home' && p.id === 'overview')
-        || (label === 'dashboard' && p.id === 'overview'));
-      if (hit) a.setAttribute('href', '#/' + hit.id);
-    });
+    const main = document.querySelector('[data-main]') || document.querySelector('main') || document.body;
     if (window.DB?.onVisible) {
       window.DB.onVisible(root, (visible) => {
         document.documentElement.dataset.motionPaused = visible ? '' : '1';
@@ -154,8 +140,8 @@
       console.error('DB.dense missing — load ../_shared/dense-pages.js');
       return;
     }
-    window.DB.dense.mount({ main, overview, pages: PAGES, brand: "Kumo Payroll" });
-    if (window.DB?.fx) window.DB.fx.remount(overview);
+    window.DB.dense.mount({ main, pages: PAGES, brand: "Kumo Payroll" });
+    if (window.DB?.fx) window.DB.fx.remount(main);
     void reduce;
   })();
 /* === /DB multipage polish === */

@@ -17,26 +17,27 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="kp-scene" data-scene aria-hidden="true"><img class="kp-land kp-ambient" src="media/scene.webp" srcset="media/scene.webp 1x, media/scene@2x.webp 2x" width="2400" height="3200" alt="" decoding="async"></div>
+  <div class="kp-scene" data-scene aria-hidden="true"><img class="kp-land kp-ambient" data-gsap="float" data-gsap-dur="18" src="media/scene.webp" srcset="media/scene.webp 1x, media/scene@2x.webp 2x" width="2400" height="3200" alt="" decoding="async"></div>
   <div class="kp" data-db-app>
     <div class="kp-panel">
       <aside class="kp-side">
-        <a class="kp-brand" href="#" aria-label="Kumo Payroll home"><span data-icon="lotus"></span><b>Kumo Payroll</b><small>People · Pay · Time off</small></a>
+        <a class="kp-brand" href="#/overview" aria-label="Kumo Payroll home"><span data-icon="lotus"></span><b>Kumo Payroll</b><small>People · Pay · Time off</small></a>
         <nav class="kp-nav" aria-label="Main" data-nav>
-          <a href="#" aria-current="page"><span data-icon="home"></span><span>Overview</span></a>
-          <a href="#"><span data-icon="calendar"></span><span>Pay runs</span></a>
-          <a href="#"><span data-icon="shield"></span><span>Deductions</span></a>
-          <a href="#"><span data-icon="umbrella"></span><span>Time off</span></a>
-          <a href="#"><span data-icon="users"></span><span>People</span></a>
-          <a href="#"><span data-icon="chart"></span><span>Reports</span></a>
-          <a href="#"><span data-icon="settings"></span><span>Settings</span></a>
+          <a href="#/overview" aria-current="page"><span data-icon="home"></span><span>Overview</span></a>
+          <a href="#/payroll"><span data-icon="calendar"></span><span>Pay runs</span></a>
+          <a href="#/deductions"><span data-icon="shield"></span><span>Deductions</span></a>
+          <a href="#/time-off"><span data-icon="umbrella"></span><span>Time off</span></a>
+          <a href="#/people"><span data-icon="users"></span><span>People</span></a>
+          <a href="#/reports"><span data-icon="chart"></span><span>Reports</span></a>
+          <a href="#/settings"><span data-icon="settings"></span><span>Settings</span></a>
         </nav>
       </aside>
 
-      <main class="kp-main">
+      <main class="kp-main" data-main>
         <header class="kp-head">
           <div><h1>Overview</h1><p class="kp-sub" data-sub></p></div>
           <div class="kp-period" role="group" aria-label="Pay period">

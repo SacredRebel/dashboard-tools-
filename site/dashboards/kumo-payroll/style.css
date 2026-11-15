@@ -62,16 +62,29 @@ body { background: var(--bg); }
 .kp-panel {
   display: grid; grid-template-columns: 216px minmax(0, 1fr);
   border-radius: var(--radius-lg);
-  /* Kumo glass: frosted shell so the moonlit scene peeks through the edges. */
-  background: color-mix(in srgb, var(--surface) 78%, transparent);
-  border: 1px solid var(--border-strong);
-  box-shadow: var(--shadow), inset 0 1px 0 rgb(255 255 255 / 0.1), 0 0 0 1px rgb(0 0 0 / 0.25);
+  /* Kumo gold-edge liquid glass — denser frost so the scene peeks at the rim. */
+  background:
+    linear-gradient(color-mix(in srgb, var(--surface) 84%, transparent), color-mix(in srgb, var(--surface) 84%, transparent)) padding-box,
+    linear-gradient(145deg,
+      color-mix(in srgb, var(--accent) 88%, #fff),
+      color-mix(in srgb, var(--accent) 28%, transparent) 38%,
+      color-mix(in srgb, var(--accent) 42%, transparent) 62%,
+      color-mix(in srgb, var(--accent) 80%, #fff)) border-box;
+  border: 1px solid transparent;
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 rgb(255 255 255 / 0.16),
+    inset 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent),
+    0 28px 64px rgb(0 0 0 / 0.45);
   overflow: hidden;
-  backdrop-filter: blur(18px) saturate(1.15);
-  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  backdrop-filter: blur(24px) saturate(1.28);
+  -webkit-backdrop-filter: blur(24px) saturate(1.28);
 }
 [data-variant="sakura"] .kp-panel {
-  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  background:
+    linear-gradient(color-mix(in srgb, var(--surface) 88%, transparent), color-mix(in srgb, var(--surface) 88%, transparent)) padding-box,
+    linear-gradient(145deg, color-mix(in srgb, var(--accent) 70%, #fff), transparent 45%, color-mix(in srgb, var(--accent) 55%, #fff)) border-box;
 }
 
 /* ---------------------------------------------------------------- sidebar */
@@ -91,7 +104,14 @@ body { background: var(--bg); }
 .kp-nav a { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 14px; border-radius: var(--radius-md); color: var(--text-muted); text-decoration: none; font-size: 14px; transition: background-color 160ms ease, color 160ms ease; }
 .kp-nav a svg { width: 18px; height: 18px; flex: none; }
 .kp-nav a:hover { color: var(--text); background: var(--accent-soft); }
-.kp-nav a[aria-current="page"] { background: var(--nav-active); color: var(--accent-fg); font-weight: 600; }
+.kp-nav a[aria-current="page"] {
+  background-color: var(--chart-1);
+  background-image: var(--nav-active);
+  color: var(--accent-fg);
+  font-weight: 700;
+  /* Opaque fill under the gold gradient so AA contrast holds on every sample. */
+  text-shadow: none;
+}
 
 /* ---------------------------------------------------------------- main */
 .kp-main { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; padding: 22px; min-width: 0; }
@@ -123,10 +143,25 @@ body { background: var(--bg); }
 
 .kp-card {
   min-width: 0; padding: 18px; border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--surface-sunken) 90%, transparent);
-  border: 1px solid var(--border);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--surface-sunken) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.1),
+    0 0 0 1px color-mix(in srgb, var(--accent) 10%, transparent),
+    0 14px 32px rgb(0 0 0 / 0.22);
+  backdrop-filter: blur(14px) saturate(1.18); -webkit-backdrop-filter: blur(14px) saturate(1.18);
+  transition: transform var(--dur-2, 150ms) var(--ease-out), box-shadow var(--dur-2, 150ms) ease;
+}
+.kp-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.14),
+    0 0 0 1px color-mix(in srgb, var(--accent) 28%, transparent),
+    0 20px 40px rgb(0 0 0 / 0.28);
+}
+@media (prefers-reduced-motion: reduce) {
+  .kp-card { transition: none; }
+  .kp-card:hover { transform: none; }
 }
 .kp-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
 .kp-card-head h2 { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 18px; font-weight: 400; }
@@ -157,15 +192,17 @@ body { background: var(--bg); }
 .kp-steps time { font-size: 13px; color: var(--accent); }
 .kp-steps span { color: var(--text-muted); font-size: 13px; }
 .kp-quote {
-  margin-top: 16px; padding: 16px 14px; border-radius: var(--radius-md);
-  border: 1px solid var(--border-strong);
-  font-family: var(--font-display); font-size: 20px; font-style: italic;
+  margin-top: 16px; padding: 18px 16px; border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-family: var(--font-display); font-size: 22px; font-style: italic;
   color: var(--accent); text-align: center; line-height: 1.35;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--surface-sunken) 72%, transparent), color-mix(in srgb, var(--surface) 78%, transparent)),
-    radial-gradient(80% 60% at 70% 40%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 12px 28px rgb(0 0 0 / 0.25);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    linear-gradient(180deg, color-mix(in srgb, var(--surface-sunken) 68%, transparent), color-mix(in srgb, var(--surface) 74%, transparent)) padding-box,
+    linear-gradient(120deg, color-mix(in srgb, var(--accent) 75%, #fff), transparent 40%, color-mix(in srgb, var(--accent) 55%, transparent)) border-box,
+    radial-gradient(80% 60% at 70% 40%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 14px 32px rgb(0 0 0 / 0.28);
+  backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  text-shadow: 0 0 24px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
 /* ---------------------------------------------------------------- charts (plumbing: SVG shape + HTML labels) */

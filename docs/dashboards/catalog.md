@@ -123,7 +123,7 @@ _Kumo Payroll · original owner reference (`reference.jpg`; recreation `shot.jpg
 A moonlit payroll overview: a code-drawn ink landscape with a gold moon, layered hills and a blossom branch sits behind one dark, gold-edged panel holding KPI tiles, a gross/net bar chart, a deductions donut and time-off ring.
 
 - **Use cases:** HR & people, Finance & banking · **Mode:** dark · **Mood:** cinematic, serene, luxurious, eastern, warm
-- **Pages:** Overview (`overview`, Dashboard) · People (`people`, List) · Payroll (`payroll`, Report) · Settings (`settings`, Settings)
+- **Pages:** Overview (`overview`, Dashboard) · Pay runs (`payroll`, List) · Deductions (`deductions`, Report) · Time off (`time-off`, List) · People (`people`, List) · Reports (`reports`, Report) · Settings (`settings`, Settings)
 - **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** A glowing gold moon, ink-line hills and a cherry-blossom branch drawn in SVG behind a dark panel with a thin gold edge.
 - **Layout:** Fixed illustrated scene behind the page · one centred panel, max 1240px, offset 210px from the top so the moon shows · inside: 216px sidebar (brand, 7-item nav, wave pattern) + 12-column main grid, 16px gaps: header with pay-period stepper · 4 KPI tiles · trend chart (7 cols) + deductions (5 cols) · time off (6) + next steps (6)
