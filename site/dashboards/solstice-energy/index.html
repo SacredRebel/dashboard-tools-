@@ -17,6 +17,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -52,8 +53,8 @@
 
           <section class="se-panel se-hero se-reveal" aria-labelledby="se-hero-h">
             <div class="se-hero-art" data-art>
-              <img class="se-mountains se-ambient" src="media/mountains@2x.webp" srcset="media/mountains.webp 1x, media/mountains@2x.webp 2x" width="1280" height="720" alt="" decoding="async">
-              <div class="se-arc" data-arc></div>
+              <img class="se-mountains se-ambient" data-gsap="drift" data-gsap-dur="16" src="media/mountains@2x.webp" srcset="media/mountains.webp 1x, media/mountains@2x.webp 2x" width="1280" height="720" alt="" decoding="async">
+              <div class="se-arc" data-arc data-gsap="pulse" data-gsap-dur="4"></div>
             </div>
             <div class="se-hero-head">
               <div>

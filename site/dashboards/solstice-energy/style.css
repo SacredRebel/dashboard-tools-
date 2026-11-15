@@ -101,21 +101,23 @@ body { background: var(--bg); }
 .se-self p { font-size: 14px; color: var(--text-muted); } .se-self p b { display: block; color: var(--text); font-weight: 500; }
 
 /* ---------------------------------------------------------------- hero: sun-path arc over mountain photo (signature) */
-.se-hero { position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: 560px; padding-bottom: 0; }
+.se-hero { position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: 600px; padding-bottom: 0; }
 .se-hero-art {
-  position: absolute; inset: 0 0 108px 0; pointer-events: none;
+  position: absolute; inset: 0 0 96px 0; pointer-events: none;
   background:
-    radial-gradient(60% 48% at 50% 8%, color-mix(in srgb, var(--arc-1) 28%, transparent), transparent 70%),
-    linear-gradient(180deg, color-mix(in srgb, var(--sky-1, var(--bg)) 40%, transparent), transparent 55%);
+    radial-gradient(70% 52% at 50% 4%, color-mix(in srgb, var(--arc-1) 42%, transparent), transparent 68%),
+    radial-gradient(40% 36% at 18% 30%, color-mix(in srgb, var(--arc-3) 22%, transparent), transparent 70%),
+    radial-gradient(40% 36% at 82% 30%, color-mix(in srgb, var(--arc-2) 18%, transparent), transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--sky-1, var(--bg)) 35%, transparent), transparent 58%);
 }
 .se-mountains {
-  position: absolute; inset: auto 0 0 0; width: 100%; height: 72%;
-  object-fit: cover; object-position: center 68%;
-  opacity: 0.96; mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
-  filter: saturate(1.12) contrast(1.06);
+  position: absolute; inset: auto 0 0 0; width: 100%; height: 78%;
+  object-fit: cover; object-position: center 72%;
+  opacity: 1; mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 100%);
+  filter: saturate(1.18) contrast(1.1) brightness(1.04);
 }
-.se-arc { position: absolute; inset: -4% 0 8% 0; }
+.se-arc { position: absolute; inset: -8% 0 4% 0; filter: drop-shadow(0 0 18px color-mix(in srgb, var(--arc-1) 45%, transparent)); }
 .se-arc svg { width: 100%; height: 100%; }
 .se-hero > :not(.se-hero-art) { position: relative; z-index: 1; }
 .se-hero-head {
