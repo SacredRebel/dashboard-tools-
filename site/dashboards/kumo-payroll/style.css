@@ -104,7 +104,14 @@ body { background: var(--bg); }
 .kp-nav a { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 14px; border-radius: var(--radius-md); color: var(--text-muted); text-decoration: none; font-size: 14px; transition: background-color 160ms ease, color 160ms ease; }
 .kp-nav a svg { width: 18px; height: 18px; flex: none; }
 .kp-nav a:hover { color: var(--text); background: var(--accent-soft); }
-.kp-nav a[aria-current="page"] { background: var(--nav-active); color: var(--accent-fg); font-weight: 600; }
+.kp-nav a[aria-current="page"] {
+  background-color: var(--chart-1);
+  background-image: var(--nav-active);
+  color: var(--accent-fg);
+  font-weight: 700;
+  /* Opaque fill under the gold gradient so AA contrast holds on every sample. */
+  text-shadow: none;
+}
 
 /* ---------------------------------------------------------------- main */
 .kp-main { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; padding: 22px; min-width: 0; }

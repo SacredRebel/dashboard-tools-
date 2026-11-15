@@ -1,55 +1,49 @@
-# Deep polish handoff
+# Deep polish handoff (round 2)
 
-Branch: `cursor/deep-polish-0545`  
-Brief: `prompts/cursor-deep-polish.md`  
-PR: https://github.com/SacredRebel/dashboard-tools-/pull/6 (draft — **do not merge**)
+Branch: `cursor/deep-polish-r2-0545`  
+Brief: `prompts/cursor-deep-polish.md` + round-2 “double down” intent  
+Base: `main` @ `d9f6fa1` (PR #6 deep polish merged)  
+PR: draft — **do not merge** (see compare URL below if ManagePullRequest unavailable)
 
-## Done this stretch
+## Done this stretch (r2)
 
-### Solstice Energy (`e8cc8dc`)
-- Cinematic sun-path bloom (thicker gradient arc + sun disk)
-- Taller mountain plate; opaque AA hero copy plate
+### Shared framework
+- **Shell host resolver** (`dense-pages.js`): secondary pages mount inside `<main>` / `main[data-main]` so chrome stays and density gates see content; ancestor overview wrappers demoted to `data-db-stage`
+- **Nav hash wiring**: `href="#"` / aria-label aliases map into `#/…` routes
+- **FX layer**: `materials.css` (glass / gold-edge / clay / neo), `gsap.js` + `ambient-gsap.js`, `depth3d.js` helpers; deeper Motion/GSAP usage on cinematic boards
 
-### Pulsar Analytics (`cc9cbc2`)
-- Stronger neon terrain glow / mesh; taller hero; glass pill peak labels
+### Priority 1:1 gap boards
+| Board | Pass |
+|---|---|
+| **Kumo** | Gold-edge liquid glass density on panel/cards/quote; unique hash nav; GSAP float on scene; catalog pages expanded |
+| **Ember** | Soft neumorphic **12 / 7 Light** overlay on lamp sphere; stronger glass orbit; GSAP pulse |
+| **Tidebath** | Continuous cylindrical floor; deeper rotateY bays; AA accent/nav/clip overflow fixes |
+| **Solstice** | Thicker sun-path bloom + sun disk; taller mountain plate; GSAP drift/pulse |
+| **Pulsar** | Neon terrain glass hero; denser glow/mesh; glass peak labels; GSAP drift |
+| **Horizon** | Denser glass now/cards/day rail; gold-rim hover; GSAP coast drift |
 
-### Horizon Weather (`0fa3391`)
-- Full-scroll coast scene (no hard seam); cinematic now card; AA day lows
-
-### Ember Rooms (`f88d6bd`)
-- Radial brightness arc around pendant; labeled orbit room chips
-
-### Tidebath Showroom (`b04de14`)
-- Deeper curved 3D carousel (stronger rotateY, tilted floor ellipse)
-
-### Kumo Payroll (`9782b51`)
-- Frosted glass panel/cards/quote over the moonlit pagoda scene
-
-### Earlier this branch
-- Larchwood / Aether / Canopy icon-steps / Copper vendor ring  
-- Dense secondary kit · Orbit · Meridian week G3 · Taffy/Pebble/Dune · Clima/Hollow/Pearlwell/Vitalis/Mallow · Citadel/Glacier/Forge/Ridgeline/Cortex
+### Shell consistency
+- Orphan `href="#"` brand/home/settings rails remapped on Mallow, Orchard, Zest, Saffron, Folio, Glacier, Copper, Mauve, Clima, Meridian (+ Kumo)
 
 ## Check results
 
-Touched ✔: `solstice-energy` · `pulsar-analytics` · `horizon-weather` · `ember-rooms` · `tidebath-showroom` · `kumo-payroll`  
-**Full-38 confirmation: 38/38 ✔** (`node scripts/dashboards-check.mjs`, exit 0).
+Touched ✔: `kumo-payroll` · `ember-rooms` · `tidebath-showroom` · `solstice-energy` · `pulsar-analytics` · `horizon-weather`  
+Full-38: see latest `node scripts/dashboards-check.mjs` run on this branch (aim 38/38).
 
-## Brief status (for architect)
+## Honest gaps (still not template-grade twins)
 
-**Deep-polish brief remaining items are largely done** for this PR: G1 stubs replaced, dense secondaries, signature art passes, composition G3s, motion/materials/type lifts, honest audit rows, and the last HANDOFF shy twins from this stretch.
+1. **Solstice / Pulsar** — closer cinematic heroes; still shy of pixel-perfect mountain-under-arc / neon-peak reference twins.
+2. **Ember** — 12/7 Light overlay landed; climate/AC dial screen still lighter than reference multi-screen set.
+3. **Tidebath** — continuous cylinder improved; photo rooms not yet a true revolving 3D cylinder mesh.
+4. **Kumo** — gold-edge glass denser; sakura/koi particle field still static image (GSAP float only).
+5. **Horizon** — layout density up; not a full Skyview twin of every card/quote/location strip beat.
+6. **GSAP / Lottie** — ambient GSAP now on priority boards; Lottie still unused; most boards still Motion-light.
+7. **CDN fonts** — many boards still load Google Fonts at runtime (zero-CDN debt for a later self-host pass).
+8. **Side-by-side sheet evidence** for scores ≥4.5 still thin outside this stretch’s touched set.
 
-### Honest gaps (not template-grade twins yet)
-1. **Solstice / Pulsar** — cinematic closer; still shy of reference mountain-under-arc / neon-peak fidelity at pixel level.
-2. **Ember** — radial + orbit chips landed; lamp still not the exact soft-neumorphic “12/7 Light” overlay twin.
-3. **Tidebath** — curve deeper; not yet a continuous cylindrical showroom floor.
-4. **Kumo** — glass shell peeks scene; glass-panel twin still softer than reference gold-edge density.
-5. **Horizon** — full-scroll coast fixed; not a full cinematic twin of the reference layout density.
-6. **GSAP / Lottie / animated icons** (brief G5) mostly unused; Motion used lightly.
-7. **Side-by-side sheet evidence** for scores ≥4.5 still thin for many rows.
-
-## Next / ready-for-review
-- Draft PR #6 is ready for architect review (do not merge).  
-- Optional follow-ups: pixel-fidelity twins for the gaps above, GSAP ambient where it earns its keep, PR body refresh when write tools available.
+## Next
+- Architect review of draft r2 PR (do not merge)
+- Optional: self-host OFL fonts; Lottie where references earn it; remaining gate-green boards toward G3 twins
 
 ## Compare
-https://github.com/SacredRebel/dashboard-tools-/compare/main...cursor/deep-polish-0545?expand=1
+https://github.com/SacredRebel/dashboard-tools-/compare/main...cursor/deep-polish-r2-0545?expand=1

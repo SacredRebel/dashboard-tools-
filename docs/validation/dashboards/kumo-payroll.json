@@ -1,6 +1,6 @@
 {
   "id": "kumo-payroll",
-  "checked": "2026-11-14",
+  "checked": "2026-11-15",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
@@ -95,6 +95,132 @@
       "errors": []
     },
     {
+      "url": "/dashboards/kumo-payroll/#/payroll",
+      "width": 1440,
+      "variant": "default",
+      "page": "payroll",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/#/payroll",
+      "width": 375,
+      "variant": "default",
+      "page": "payroll",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=jade#/payroll",
+      "width": 1440,
+      "variant": "jade",
+      "page": "payroll",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=jade#/payroll",
+      "width": 375,
+      "variant": "jade",
+      "page": "payroll",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=sakura#/payroll",
+      "width": 1440,
+      "variant": "sakura",
+      "page": "payroll",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=sakura#/payroll",
+      "width": 375,
+      "variant": "sakura",
+      "page": "payroll",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/#/deductions",
+      "width": 1440,
+      "variant": "default",
+      "page": "deductions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/#/deductions",
+      "width": 375,
+      "variant": "default",
+      "page": "deductions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=jade#/deductions",
+      "width": 1440,
+      "variant": "jade",
+      "page": "deductions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=jade#/deductions",
+      "width": 375,
+      "variant": "jade",
+      "page": "deductions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=sakura#/deductions",
+      "width": 1440,
+      "variant": "sakura",
+      "page": "deductions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=sakura#/deductions",
+      "width": 375,
+      "variant": "sakura",
+      "page": "deductions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/#/time-off",
+      "width": 1440,
+      "variant": "default",
+      "page": "time-off",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/#/time-off",
+      "width": 375,
+      "variant": "default",
+      "page": "time-off",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=jade#/time-off",
+      "width": 1440,
+      "variant": "jade",
+      "page": "time-off",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=jade#/time-off",
+      "width": 375,
+      "variant": "jade",
+      "page": "time-off",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=sakura#/time-off",
+      "width": 1440,
+      "variant": "sakura",
+      "page": "time-off",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/kumo-payroll/?variant=sakura#/time-off",
+      "width": 375,
+      "variant": "sakura",
+      "page": "time-off",
+      "errors": []
+    },
+    {
       "url": "/dashboards/kumo-payroll/#/people",
       "width": 1440,
       "variant": "default",
@@ -137,45 +263,45 @@
       "errors": []
     },
     {
-      "url": "/dashboards/kumo-payroll/#/payroll",
+      "url": "/dashboards/kumo-payroll/#/reports",
       "width": 1440,
       "variant": "default",
-      "page": "payroll",
+      "page": "reports",
       "errors": []
     },
     {
-      "url": "/dashboards/kumo-payroll/#/payroll",
+      "url": "/dashboards/kumo-payroll/#/reports",
       "width": 375,
       "variant": "default",
-      "page": "payroll",
+      "page": "reports",
       "errors": []
     },
     {
-      "url": "/dashboards/kumo-payroll/?variant=jade#/payroll",
+      "url": "/dashboards/kumo-payroll/?variant=jade#/reports",
       "width": 1440,
       "variant": "jade",
-      "page": "payroll",
+      "page": "reports",
       "errors": []
     },
     {
-      "url": "/dashboards/kumo-payroll/?variant=jade#/payroll",
+      "url": "/dashboards/kumo-payroll/?variant=jade#/reports",
       "width": 375,
       "variant": "jade",
-      "page": "payroll",
+      "page": "reports",
       "errors": []
     },
     {
-      "url": "/dashboards/kumo-payroll/?variant=sakura#/payroll",
+      "url": "/dashboards/kumo-payroll/?variant=sakura#/reports",
       "width": 1440,
       "variant": "sakura",
-      "page": "payroll",
+      "page": "reports",
       "errors": []
     },
     {
-      "url": "/dashboards/kumo-payroll/?variant=sakura#/payroll",
+      "url": "/dashboards/kumo-payroll/?variant=sakura#/reports",
       "width": 375,
       "variant": "sakura",
-      "page": "payroll",
+      "page": "reports",
       "errors": []
     },
     {

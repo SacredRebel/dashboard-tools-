@@ -217,42 +217,64 @@
   }
 
   /**
-   * Prefer the dashboard content shell `[data-main]` over a nested `<main>` inside
-   * `[data-page-panel]`. Nested mounts hide chrome (top search/header) with overview.
+   * Content host must be a `<main>` (or main[data-main]) so secondary pages stay
+   * inside the same chrome AND satisfy density gates that measure `<main>`.
+   * Prefer main[data-main]; else the app's primary <main>; never a wrapper that
+   * only contains <main> (that left dense pages outside <main> → empty checks).
    */
   function resolveHost(opts) {
+    const mainData = document.querySelector('main[data-main]');
+    if (mainData) return mainData;
+
+    const app = document.querySelector('[data-db-app]') || document.body;
+    const primaryMain = app.querySelector('main') || document.querySelector('main');
+    if (primaryMain) return primaryMain;
+
     const dataMain = document.querySelector('[data-main]');
-    const explicit = opts.main;
-    if (dataMain) {
-      if (!explicit) return dataMain;
-      // Promote if caller passed a nested main/panel that lives under the overview.
-      if (explicit.closest && explicit.closest('[data-page-panel]') && dataMain.contains(explicit) && explicit !== dataMain) {
-        return dataMain;
-      }
-      return explicit;
-    }
-    return explicit || document.querySelector('main') || document.body;
+    if (dataMain && !dataMain.querySelector('main')) return dataMain;
+
+    return opts.main || dataMain || document.body;
   }
 
+  /**
+   * Overview panel must be a *child* of the host. If markup wraps <main> in
+   * [data-page-panel=overview], demote that attribute so hiding overview does
+   * not hide <main> itself (shell chrome + dense host stay mounted).
+   */
   function resolveOverview(host, opts) {
-    if (opts.overview && host.contains(opts.overview)) return opts.overview;
+    if (opts.overview && host.contains(opts.overview) && opts.overview !== host) {
+      return opts.overview;
+    }
     const direct = host.querySelector(':scope > [data-page-panel="overview"]');
     if (direct) return direct;
+
+    // Ancestor overview wrapping this main → strip so we can create an inner panel.
+    let ancestor = host.parentElement;
+    while (ancestor) {
+      if (ancestor.getAttribute && ancestor.getAttribute('data-page-panel') === 'overview') {
+        ancestor.removeAttribute('data-page-panel');
+        ancestor.setAttribute('data-db-stage', '');
+        break;
+      }
+      ancestor = ancestor.parentElement;
+    }
+
     const nested = host.querySelector('[data-page-panel="overview"]');
-    if (nested) return nested;
+    if (nested && nested !== host) return nested;
     return null;
   }
 
   /** Map common nav labels → page ids so href="#" boards join the hash router. */
   function wireNavHashes(list) {
     const aliases = {
-      home: 'overview', dashboard: 'overview', live: 'overview',
-      'pay runs': 'payroll', deductions: 'payroll', reports: 'payroll',
-      'time off': 'people', arrays: 'rooms', storage: 'devices',
-      'my music': 'rooms', favourites: 'devices', favorites: 'devices',
-      playlists: 'energy', podcasts: 'energy', nutrition: 'rooms',
-      messages: 'devices', analytics: 'rooms', search: 'overview',
-      support: 'settings', people: 'people', reports: 'energy',
+      home: 'overview', dashboard: 'overview', live: 'overview', search: 'overview',
+      support: 'settings', settings: 'settings',
+      // Only used when the page id exists on that board:
+      'pay runs': 'payroll', deductions: 'deductions', reports: 'reports',
+      'time off': 'time-off', arrays: 'rooms', storage: 'devices',
+      'my music': 'library', favourites: 'favourites', favorites: 'favourites',
+      playlists: 'playlists', podcasts: 'podcasts', nutrition: 'vitals',
+      messages: 'accounts', analytics: 'pipeline', people: 'people',
     };
     document.querySelectorAll('a[href]').forEach((a) => {
       const href = a.getAttribute('href') || '';

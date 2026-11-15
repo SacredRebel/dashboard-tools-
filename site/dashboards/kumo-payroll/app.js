@@ -120,7 +120,15 @@
 /* === DB multipage polish (dense kit) === */
   (function wirePages() {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"people","name":"People","pattern":"List"},{"id":"payroll","name":"Payroll","pattern":"Report"},{"id":"settings","name":"Settings","pattern":"Settings"}];
+    const PAGES = [
+      {"id":"overview","name":"Overview","pattern":"Dashboard"},
+      {"id":"payroll","name":"Pay runs","pattern":"List"},
+      {"id":"deductions","name":"Deductions","pattern":"Report"},
+      {"id":"time-off","name":"Time off","pattern":"List"},
+      {"id":"people","name":"People","pattern":"List"},
+      {"id":"reports","name":"Reports","pattern":"Report"},
+      {"id":"settings","name":"Settings","pattern":"Settings"},
+    ];
     const root = document.querySelector('[data-db-app]') || document.body;
     const main = document.querySelector('[data-main]') || document.querySelector('main') || document.body;
     if (window.DB?.onVisible) {

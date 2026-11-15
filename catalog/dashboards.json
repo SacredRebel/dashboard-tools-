@@ -640,13 +640,28 @@
           "pattern": "Dashboard"
         },
         {
+          "id": "payroll",
+          "name": "Pay runs",
+          "pattern": "List"
+        },
+        {
+          "id": "deductions",
+          "name": "Deductions",
+          "pattern": "Report"
+        },
+        {
+          "id": "time-off",
+          "name": "Time off",
+          "pattern": "List"
+        },
+        {
           "id": "people",
           "name": "People",
           "pattern": "List"
         },
         {
-          "id": "payroll",
-          "name": "Payroll",
+          "id": "reports",
+          "name": "Reports",
           "pattern": "Report"
         },
         {

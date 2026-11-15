@@ -1,6 +1,6 @@
 {
   "id": "saffron-dusk",
-  "checked": "2026-11-14",
+  "checked": "2026-11-15",
   "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
