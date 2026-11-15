@@ -28,7 +28,7 @@ PR: draft — **do not merge** (see compare URL below if ManagePullRequest unava
 ## Check results
 
 Touched ✔: `kumo-payroll` · `ember-rooms` · `tidebath-showroom` · `solstice-energy` · `pulsar-analytics` · `horizon-weather`  
-Full-38: see latest `node scripts/dashboards-check.mjs` run on this branch (aim 38/38).
+**Full-38 confirmation: 38/38 ✔** (`node scripts/dashboards-check.mjs`, exit 0).
 
 ## Honest gaps (still not template-grade twins)
 
