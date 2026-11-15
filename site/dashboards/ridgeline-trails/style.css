@@ -303,3 +303,18 @@ body { background: var(--bg); }
   color: #eaf1ec !important;
 }
 
+
+
+
+/* === r3 deep polish === */
+.rt-panel.mat-clay {
+  box-shadow:
+    0 10px 26px rgb(40 60 50 / 0.12),
+    inset 0 1px 0 rgb(255 255 255 / 0.55);
+}
+.rt-mountains {
+  filter: drop-shadow(0 12px 24px rgb(40 60 50 / 0.2));
+}
+.rt-rings, .rt-dialp {
+  filter: drop-shadow(0 8px 16px rgb(40 60 50 / 0.18));
+}

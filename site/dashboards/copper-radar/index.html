@@ -7,9 +7,8 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Copper Radar · Dashboard Tools gallery</title>
   <meta name="description" content="Soft-light SOC ops dashboard with copper accents, concentric radar arcs, live feed, severity bars and timeline. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/dm-sans/family.css">
+  <link rel="stylesheet" href="../_vendor/fonts/sora/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/dense-pages.css">
@@ -17,6 +16,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -60,8 +60,8 @@
       </div>
 
       <div class="cp-radarwrap" aria-labelledby="cp-dyn-h">
-        <img class="cp-mesh" src="media/mesh@2x.webp" srcset="media/mesh.webp 1x, media/mesh@2x.webp 2x" width="1280" height="720" alt="" decoding="async" aria-hidden="true">
-        <img class="cp-radar-hero" src="media/radar-hero@2x.webp" srcset="media/radar-hero.webp 1x, media/radar-hero@2x.webp 2x" width="1920" height="1080" alt="" decoding="async" aria-hidden="true">
+        <img data-gsap="float" data-gsap-dur="14" class="cp-mesh" src="media/mesh@2x.webp" srcset="media/mesh.webp 1x, media/mesh@2x.webp 2x" width="1280" height="720" alt="" decoding="async" aria-hidden="true">
+        <img data-gsap="float" data-gsap-dur="14" class="cp-radar-hero" src="media/radar-hero@2x.webp" srcset="media/radar-hero.webp 1x, media/radar-hero@2x.webp 2x" width="1920" height="1080" alt="" decoding="async" aria-hidden="true">
         <div class="cp-radarhead">
           <h2 id="cp-dyn-h">Dynamic View</h2>
           <b class="cp-endpoints num" data-endpoints>8.6K End Points</b>

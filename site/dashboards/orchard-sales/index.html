@@ -7,9 +7,8 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Orchard Sales · Dashboard Tools gallery</title>
   <meta name="description" content="Bento light lime sales performance dashboard with product hero, activity, revenue, spend and virtual cards. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/sora/family.css">
+  <link rel="stylesheet" href="../_vendor/fonts/ibm-plex-sans/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/dense-pages.css">
@@ -17,6 +16,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -64,7 +64,7 @@
       <main class="os-grid">
         <section class="os-card os-product" aria-labelledby="os-pro-h">
           <div class="os-spheres" data-spheres aria-hidden="true"></div>
-          <img class="os-produce" src="media/apples.webp" width="640" height="480" alt="" decoding="async" aria-hidden="true">
+          <img data-gsap="float" data-gsap-dur="14" class="os-produce" src="media/apples.webp" width="640" height="480" alt="" decoding="async" aria-hidden="true">
           <div class="os-glass">
             <p class="os-k">Advantages</p>
             <dl class="os-adv"><div><dt>30–45 age</dt><dd class="num" data-a1>42%</dd></div><div><dt>12–21 age</dt><dd class="num" data-a2>27%</dd></div></dl>

@@ -7,9 +7,7 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Haven Listings · Dashboard Tools gallery</title>
   <meta name="description" content="Glass real-estate browser: dusk villa photo hero, notched white filter tabs and frosted listing cards. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/urbanist/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/dense-pages.css">
@@ -17,6 +15,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -25,7 +24,7 @@
       <div class="hl-overview" data-page-panel="overview">
         <section class="hl-stage hl-reveal" aria-label="Featured home">
           <div class="hl-scene" data-scene aria-hidden="true">
-            <img class="hl-photo hl-ambient" src="media/villa@2x.webp" srcset="media/villa.webp 1x, media/villa@2x.webp 2x" width="1440" height="810" alt="" decoding="async">
+            <img data-gsap="float" data-gsap-dur="14" class="hl-photo hl-ambient" src="media/villa@2x.webp" srcset="media/villa.webp 1x, media/villa@2x.webp 2x" width="1440" height="810" alt="" decoding="async">
           </div>
 
           <header class="hl-top">

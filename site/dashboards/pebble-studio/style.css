@@ -334,3 +334,14 @@ body { background-color: var(--bg); color: var(--text); font-family: var(--font-
   .pb-page, .pb-skel, .pb-skelrow, .pb-ambient, .pb-reveal-in { animation: none !important; }
   .pb-pages a, .pb-nav button, .pb-kpi, .pb-pillbtn, .pb-knob, .pb-dialbtns button, .pb-btn { transition: none; }
 }
+
+
+/* === r3 deep polish === */
+.ps-card.mat-clay, .pb-card.mat-clay {
+  box-shadow:
+    0 10px 26px rgb(50 60 40 / 0.1),
+    inset 0 1px 0 rgb(255 255 255 / 0.65);
+}
+img[src*="pebble"], img[src*="torus"] {
+  filter: drop-shadow(0 14px 24px rgb(60 70 40 / 0.18));
+}

@@ -7,9 +7,8 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Zest Health · Dashboard Tools gallery</title>
   <meta name="description" content="Bold lime health overview with dark sidebar, energy bubbles, wellness dots and sleep analysis. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/space-grotesk/family.css">
+  <link rel="stylesheet" href="../_vendor/fonts/manrope/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/dense-pages.css">
@@ -17,6 +16,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -32,7 +32,7 @@
         <a href="#/settings"><span data-icon="mail"></span>Messages</a>
       </nav>
       <div class="zh-upgrade">
-        <div class="zh-cta-art" aria-hidden="true"><img class="zh-cta-photo" src="media/citrus.webp" width="320" height="320" alt="" decoding="async"><span class="zh-cta-badge">Go</span></div>
+        <div class="zh-cta-art" aria-hidden="true"><img data-gsap="float" data-gsap-dur="14" class="zh-cta-photo" src="media/citrus.webp" width="320" height="320" alt="" decoding="async"><span class="zh-cta-badge">Go</span></div>
         <p><b>Upgrade to Pro</b>Unlock coaching plans and weekly labs.</p>
         <button type="button" data-upgrade>Upgrade now</button>
       </div>

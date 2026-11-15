@@ -172,10 +172,10 @@
 
   function renderHolo() {
     $('[data-holo]').innerHTML = `
-      <i class="cw-holo-ring a" aria-hidden="true"></i>
-      <i class="cw-holo-ring b" aria-hidden="true"></i>
+      <i class="cw-holo-ring a" data-gsap="spin" data-gsap-dur="28" aria-hidden="true"></i>
+      <i class="cw-holo-ring b" data-gsap="spin" data-gsap-dur="18" aria-hidden="true"></i>
       <i class="cw-holo-ring c" aria-hidden="true"></i>
-      <img class="cw-holo-img" src="media/holo@2x.webp" srcset="media/holo.webp 1x, media/holo@2x.webp 2x" width="800" height="800" alt="Cyan holographic cube core (sample art)" decoding="async">`;
+      <img class="cw-holo-img" data-gsap="float" data-gsap-dur="4.5" src="media/holo@2x.webp" srcset="media/holo.webp 1x, media/holo@2x.webp 2x" width="800" height="800" alt="Cyan holographic cube core (sample art)" decoding="async">`;
     $('[data-rays]').innerHTML = [
       ['Drone latency', '42 ms'],
       ['Orbital cargo', '1.2k t'],

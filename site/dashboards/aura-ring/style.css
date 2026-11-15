@@ -281,3 +281,14 @@ body { background: var(--bg); }
   .ar-page, .ar-skel, .ar-ambient, .ar-reveal-in { animation: none !important; }
   .ar-pill, .ar-iconbtn, .ar-tabs button, .ar-btn, .ar-pages a { transition: none; }
 }
+
+
+/* === r3 deep polish === */
+.ar-card.mat-glass, .au-card.mat-glass {
+  backdrop-filter: blur(20px) saturate(1.25);
+  -webkit-backdrop-filter: blur(20px) saturate(1.25);
+  box-shadow: 0 14px 36px rgb(0 0 0 / 0.2), inset 0 1px 0 rgb(255 255 255 / 0.35);
+}
+img[src*="ring"], img[src*="brain"] {
+  filter: drop-shadow(0 12px 28px rgb(120 80 200 / 0.25));
+}

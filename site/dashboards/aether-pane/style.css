@@ -343,3 +343,16 @@ body { background: var(--bg); overflow-x: hidden; }
   .ae-page, .ae-skel, .ae-ambient, .ae-reveal-in { animation: none !important; }
   .ae-shell { transform: none; }
 }
+
+
+/* === r3 deep polish === */
+[class$="-card"], [class*="-panel"], [class*="-glass"], [class*="-tile"] {
+  transition: transform var(--dur-2, 150ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow var(--dur-2, 150ms) ease;
+}
+[class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover {
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  [class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover { transform: none; }
+}

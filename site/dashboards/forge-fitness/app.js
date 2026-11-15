@@ -85,7 +85,7 @@
     const sets = o.series.map((s) => { const pts = s.values.map((v, i) => [x(i), y(v)]); return { ...s, pts, d: o.curve === false ? 'M' + pts.map((p) => p.join(',')).join(' L') : smooth(pts) }; });
     const every = o.xEvery || (n > 8 ? 2 : 1);
     el.innerHTML = `<div class="ff-plot" style="--plot-h:${o.h || 200}px">
-      ${ticks.map((v) => `<span class="ff-y num" style="top:${top(y(v))}">${fmt(v)}</span>`).join('')}
+      ${o.noAxis ? '' : ticks.map((v) => `<span class="ff-y num" style="top:${top(y(v))}">${fmt(v)}</span>`).join('')}
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${o.label}">
         <defs>${sets.map((s, k) => `<linearGradient id="${uid}-${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(${s.color});stop-opacity:${s.fill ?? 0.35}"/><stop offset="1" style="stop-color:var(${s.color});stop-opacity:0"/></linearGradient>`).join('')}</defs>
         <g class="grid">${ticks.map((v) => `<line x1="0" x2="${W}" y1="${y(v)}" y2="${y(v)}" vector-effect="non-scaling-stroke"/>`).join('')}</g>

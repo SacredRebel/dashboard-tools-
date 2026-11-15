@@ -1,0 +1,4 @@
+Space Grotesk
+SIL Open Font License 1.1
+Source: Google Fonts (fonts.google.com)
+Self-hosted for zero runtime CDN in Dashboard Tools gallery.

@@ -1,0 +1,469 @@
+{
+  "Chakra Petch": {
+    "slug": "chakra-petch",
+    "files": [
+      "chakra-petch-0.woff2",
+      "chakra-petch-1.woff2",
+      "chakra-petch-2.woff2",
+      "chakra-petch-3.woff2",
+      "chakra-petch-4.woff2",
+      "chakra-petch-5.woff2",
+      "chakra-petch-6.woff2",
+      "chakra-petch-7.woff2",
+      "chakra-petch-8.woff2",
+      "chakra-petch-9.woff2",
+      "chakra-petch-10.woff2",
+      "chakra-petch-11.woff2"
+    ],
+    "css": "chakra-petch/family.css"
+  },
+  "Cormorant Garamond": {
+    "slug": "cormorant-garamond",
+    "files": [
+      "cormorant-garamond-0.woff2",
+      "cormorant-garamond-1.woff2",
+      "cormorant-garamond-2.woff2",
+      "cormorant-garamond-3.woff2",
+      "cormorant-garamond-4.woff2",
+      "cormorant-garamond-5.woff2",
+      "cormorant-garamond-6.woff2",
+      "cormorant-garamond-7.woff2",
+      "cormorant-garamond-8.woff2",
+      "cormorant-garamond-9.woff2",
+      "cormorant-garamond-10.woff2",
+      "cormorant-garamond-11.woff2",
+      "cormorant-garamond-12.woff2",
+      "cormorant-garamond-13.woff2",
+      "cormorant-garamond-14.woff2"
+    ],
+    "css": "cormorant-garamond/family.css"
+  },
+  "DM Sans": {
+    "slug": "dm-sans",
+    "files": [
+      "dm-sans-0.woff2",
+      "dm-sans-1.woff2",
+      "dm-sans-2.woff2",
+      "dm-sans-3.woff2",
+      "dm-sans-4.woff2",
+      "dm-sans-5.woff2",
+      "dm-sans-6.woff2",
+      "dm-sans-7.woff2"
+    ],
+    "css": "dm-sans/family.css"
+  },
+  "DM Serif Display": {
+    "slug": "dm-serif-display",
+    "files": [
+      "dm-serif-display-0.woff2",
+      "dm-serif-display-1.woff2"
+    ],
+    "css": "dm-serif-display/family.css"
+  },
+  "Exo 2": {
+    "slug": "exo-2",
+    "files": [
+      "exo-2-0.woff2",
+      "exo-2-1.woff2",
+      "exo-2-2.woff2",
+      "exo-2-3.woff2",
+      "exo-2-4.woff2",
+      "exo-2-5.woff2",
+      "exo-2-6.woff2",
+      "exo-2-7.woff2",
+      "exo-2-8.woff2",
+      "exo-2-9.woff2",
+      "exo-2-10.woff2",
+      "exo-2-11.woff2",
+      "exo-2-12.woff2",
+      "exo-2-13.woff2",
+      "exo-2-14.woff2",
+      "exo-2-15.woff2",
+      "exo-2-16.woff2",
+      "exo-2-17.woff2",
+      "exo-2-18.woff2",
+      "exo-2-19.woff2"
+    ],
+    "css": "exo-2/family.css"
+  },
+  "Figtree": {
+    "slug": "figtree",
+    "files": [
+      "figtree-0.woff2",
+      "figtree-1.woff2",
+      "figtree-2.woff2",
+      "figtree-3.woff2",
+      "figtree-4.woff2",
+      "figtree-5.woff2"
+    ],
+    "css": "figtree/family.css"
+  },
+  "Fraunces": {
+    "slug": "fraunces",
+    "files": [
+      "fraunces-0.woff2",
+      "fraunces-1.woff2",
+      "fraunces-2.woff2",
+      "fraunces-3.woff2",
+      "fraunces-4.woff2",
+      "fraunces-5.woff2",
+      "fraunces-6.woff2",
+      "fraunces-7.woff2",
+      "fraunces-8.woff2",
+      "fraunces-9.woff2",
+      "fraunces-10.woff2",
+      "fraunces-11.woff2"
+    ],
+    "css": "fraunces/family.css"
+  },
+  "Fredoka": {
+    "slug": "fredoka",
+    "files": [
+      "fredoka-0.woff2",
+      "fredoka-1.woff2",
+      "fredoka-2.woff2",
+      "fredoka-3.woff2",
+      "fredoka-4.woff2",
+      "fredoka-5.woff2",
+      "fredoka-6.woff2",
+      "fredoka-7.woff2",
+      "fredoka-8.woff2"
+    ],
+    "css": "fredoka/family.css"
+  },
+  "IBM Plex Sans": {
+    "slug": "ibm-plex-sans",
+    "files": [
+      "ibm-plex-sans-0.woff2",
+      "ibm-plex-sans-1.woff2",
+      "ibm-plex-sans-2.woff2",
+      "ibm-plex-sans-3.woff2",
+      "ibm-plex-sans-4.woff2",
+      "ibm-plex-sans-5.woff2",
+      "ibm-plex-sans-6.woff2",
+      "ibm-plex-sans-7.woff2",
+      "ibm-plex-sans-8.woff2",
+      "ibm-plex-sans-9.woff2",
+      "ibm-plex-sans-10.woff2",
+      "ibm-plex-sans-11.woff2",
+      "ibm-plex-sans-12.woff2",
+      "ibm-plex-sans-13.woff2",
+      "ibm-plex-sans-14.woff2",
+      "ibm-plex-sans-15.woff2",
+      "ibm-plex-sans-16.woff2",
+      "ibm-plex-sans-17.woff2"
+    ],
+    "css": "ibm-plex-sans/family.css"
+  },
+  "Inter": {
+    "slug": "inter",
+    "files": [
+      "inter-0.woff2",
+      "inter-1.woff2",
+      "inter-2.woff2",
+      "inter-3.woff2",
+      "inter-4.woff2",
+      "inter-5.woff2",
+      "inter-6.woff2",
+      "inter-7.woff2",
+      "inter-8.woff2",
+      "inter-9.woff2",
+      "inter-10.woff2",
+      "inter-11.woff2",
+      "inter-12.woff2",
+      "inter-13.woff2",
+      "inter-14.woff2",
+      "inter-15.woff2",
+      "inter-16.woff2",
+      "inter-17.woff2",
+      "inter-18.woff2",
+      "inter-19.woff2",
+      "inter-20.woff2"
+    ],
+    "css": "inter/family.css"
+  },
+  "Inter Tight": {
+    "slug": "inter-tight",
+    "files": [
+      "inter-tight-0.woff2",
+      "inter-tight-1.woff2",
+      "inter-tight-2.woff2",
+      "inter-tight-3.woff2",
+      "inter-tight-4.woff2",
+      "inter-tight-5.woff2",
+      "inter-tight-6.woff2",
+      "inter-tight-7.woff2",
+      "inter-tight-8.woff2",
+      "inter-tight-9.woff2",
+      "inter-tight-10.woff2",
+      "inter-tight-11.woff2",
+      "inter-tight-12.woff2",
+      "inter-tight-13.woff2",
+      "inter-tight-14.woff2",
+      "inter-tight-15.woff2",
+      "inter-tight-16.woff2",
+      "inter-tight-17.woff2",
+      "inter-tight-18.woff2",
+      "inter-tight-19.woff2",
+      "inter-tight-20.woff2"
+    ],
+    "css": "inter-tight/family.css"
+  },
+  "Libre Baskerville": {
+    "slug": "libre-baskerville",
+    "files": [
+      "libre-baskerville-0.woff2",
+      "libre-baskerville-1.woff2",
+      "libre-baskerville-2.woff2",
+      "libre-baskerville-3.woff2"
+    ],
+    "css": "libre-baskerville/family.css"
+  },
+  "Manrope": {
+    "slug": "manrope",
+    "files": [
+      "manrope-0.woff2",
+      "manrope-1.woff2",
+      "manrope-2.woff2",
+      "manrope-3.woff2",
+      "manrope-4.woff2",
+      "manrope-5.woff2",
+      "manrope-6.woff2",
+      "manrope-7.woff2",
+      "manrope-8.woff2",
+      "manrope-9.woff2",
+      "manrope-10.woff2",
+      "manrope-11.woff2",
+      "manrope-12.woff2",
+      "manrope-13.woff2",
+      "manrope-14.woff2",
+      "manrope-15.woff2",
+      "manrope-16.woff2",
+      "manrope-17.woff2",
+      "manrope-18.woff2",
+      "manrope-19.woff2",
+      "manrope-20.woff2",
+      "manrope-21.woff2",
+      "manrope-22.woff2",
+      "manrope-23.woff2",
+      "manrope-24.woff2",
+      "manrope-25.woff2",
+      "manrope-26.woff2",
+      "manrope-27.woff2",
+      "manrope-28.woff2",
+      "manrope-29.woff2"
+    ],
+    "css": "manrope/family.css"
+  },
+  "Marcellus": {
+    "slug": "marcellus",
+    "files": [
+      "marcellus-0.woff2",
+      "marcellus-1.woff2"
+    ],
+    "css": "marcellus/family.css"
+  },
+  "Mulish": {
+    "slug": "mulish",
+    "files": [
+      "mulish-0.woff2",
+      "mulish-1.woff2",
+      "mulish-2.woff2",
+      "mulish-3.woff2",
+      "mulish-4.woff2",
+      "mulish-5.woff2",
+      "mulish-6.woff2",
+      "mulish-7.woff2",
+      "mulish-8.woff2",
+      "mulish-9.woff2",
+      "mulish-10.woff2",
+      "mulish-11.woff2",
+      "mulish-12.woff2",
+      "mulish-13.woff2",
+      "mulish-14.woff2"
+    ],
+    "css": "mulish/family.css"
+  },
+  "Nunito": {
+    "slug": "nunito",
+    "files": [
+      "nunito-0.woff2",
+      "nunito-1.woff2",
+      "nunito-2.woff2",
+      "nunito-3.woff2",
+      "nunito-4.woff2",
+      "nunito-5.woff2",
+      "nunito-6.woff2",
+      "nunito-7.woff2",
+      "nunito-8.woff2",
+      "nunito-9.woff2",
+      "nunito-10.woff2",
+      "nunito-11.woff2",
+      "nunito-12.woff2",
+      "nunito-13.woff2",
+      "nunito-14.woff2",
+      "nunito-15.woff2",
+      "nunito-16.woff2",
+      "nunito-17.woff2",
+      "nunito-18.woff2",
+      "nunito-19.woff2"
+    ],
+    "css": "nunito/family.css"
+  },
+  "Nunito Sans": {
+    "slug": "nunito-sans",
+    "files": [
+      "nunito-sans-0.woff2",
+      "nunito-sans-1.woff2",
+      "nunito-sans-2.woff2",
+      "nunito-sans-3.woff2",
+      "nunito-sans-4.woff2",
+      "nunito-sans-5.woff2",
+      "nunito-sans-6.woff2",
+      "nunito-sans-7.woff2",
+      "nunito-sans-8.woff2",
+      "nunito-sans-9.woff2",
+      "nunito-sans-10.woff2",
+      "nunito-sans-11.woff2",
+      "nunito-sans-12.woff2",
+      "nunito-sans-13.woff2",
+      "nunito-sans-14.woff2"
+    ],
+    "css": "nunito-sans/family.css"
+  },
+  "Outfit": {
+    "slug": "outfit",
+    "files": [
+      "outfit-0.woff2",
+      "outfit-1.woff2",
+      "outfit-2.woff2",
+      "outfit-3.woff2",
+      "outfit-4.woff2",
+      "outfit-5.woff2",
+      "outfit-6.woff2",
+      "outfit-7.woff2",
+      "outfit-8.woff2",
+      "outfit-9.woff2"
+    ],
+    "css": "outfit/family.css"
+  },
+  "Plus Jakarta Sans": {
+    "slug": "plus-jakarta-sans",
+    "files": [
+      "plus-jakarta-sans-0.woff2",
+      "plus-jakarta-sans-1.woff2",
+      "plus-jakarta-sans-2.woff2",
+      "plus-jakarta-sans-3.woff2",
+      "plus-jakarta-sans-4.woff2",
+      "plus-jakarta-sans-5.woff2",
+      "plus-jakarta-sans-6.woff2",
+      "plus-jakarta-sans-7.woff2",
+      "plus-jakarta-sans-8.woff2",
+      "plus-jakarta-sans-9.woff2",
+      "plus-jakarta-sans-10.woff2",
+      "plus-jakarta-sans-11.woff2",
+      "plus-jakarta-sans-12.woff2",
+      "plus-jakarta-sans-13.woff2",
+      "plus-jakarta-sans-14.woff2",
+      "plus-jakarta-sans-15.woff2",
+      "plus-jakarta-sans-16.woff2",
+      "plus-jakarta-sans-17.woff2",
+      "plus-jakarta-sans-18.woff2",
+      "plus-jakarta-sans-19.woff2"
+    ],
+    "css": "plus-jakarta-sans/family.css"
+  },
+  "Rajdhani": {
+    "slug": "rajdhani",
+    "files": [
+      "rajdhani-0.woff2",
+      "rajdhani-1.woff2",
+      "rajdhani-2.woff2",
+      "rajdhani-3.woff2",
+      "rajdhani-4.woff2",
+      "rajdhani-5.woff2",
+      "rajdhani-6.woff2",
+      "rajdhani-7.woff2",
+      "rajdhani-8.woff2"
+    ],
+    "css": "rajdhani/family.css"
+  },
+  "Red Hat Display": {
+    "slug": "red-hat-display",
+    "files": [
+      "red-hat-display-0.woff2",
+      "red-hat-display-1.woff2",
+      "red-hat-display-2.woff2",
+      "red-hat-display-3.woff2",
+      "red-hat-display-4.woff2",
+      "red-hat-display-5.woff2"
+    ],
+    "css": "red-hat-display/family.css"
+  },
+  "Share Tech Mono": {
+    "slug": "share-tech-mono",
+    "files": [
+      "share-tech-mono-0.woff2"
+    ],
+    "css": "share-tech-mono/family.css"
+  },
+  "Sora": {
+    "slug": "sora",
+    "files": [
+      "sora-0.woff2",
+      "sora-1.woff2",
+      "sora-2.woff2",
+      "sora-3.woff2",
+      "sora-4.woff2",
+      "sora-5.woff2",
+      "sora-6.woff2",
+      "sora-7.woff2"
+    ],
+    "css": "sora/family.css"
+  },
+  "Space Grotesk": {
+    "slug": "space-grotesk",
+    "files": [
+      "space-grotesk-0.woff2",
+      "space-grotesk-1.woff2",
+      "space-grotesk-2.woff2",
+      "space-grotesk-3.woff2",
+      "space-grotesk-4.woff2",
+      "space-grotesk-5.woff2",
+      "space-grotesk-6.woff2",
+      "space-grotesk-7.woff2",
+      "space-grotesk-8.woff2",
+      "space-grotesk-9.woff2",
+      "space-grotesk-10.woff2",
+      "space-grotesk-11.woff2"
+    ],
+    "css": "space-grotesk/family.css"
+  },
+  "Syne": {
+    "slug": "syne",
+    "files": [
+      "syne-0.woff2",
+      "syne-1.woff2",
+      "syne-2.woff2",
+      "syne-3.woff2",
+      "syne-4.woff2",
+      "syne-5.woff2",
+      "syne-6.woff2",
+      "syne-7.woff2",
+      "syne-8.woff2"
+    ],
+    "css": "syne/family.css"
+  },
+  "Urbanist": {
+    "slug": "urbanist",
+    "files": [
+      "urbanist-0.woff2",
+      "urbanist-1.woff2",
+      "urbanist-2.woff2",
+      "urbanist-3.woff2",
+      "urbanist-4.woff2",
+      "urbanist-5.woff2"
+    ],
+    "css": "urbanist/family.css"
+  }
+}

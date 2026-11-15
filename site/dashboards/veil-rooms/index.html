@@ -7,9 +7,7 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Veil Rooms · Dashboard Tools gallery</title>
   <meta name="description" content="Grey smart-home board with room pills, device cards, album art and a Light fixtures panel. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/plus-jakarta-sans/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/dense-pages.css">
@@ -17,6 +15,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -89,7 +88,7 @@
             <section class="vr-card vr-media" aria-labelledby="vr-med-h">
               <h2 id="vr-med-h" class="vh">Media player</h2>
               <div class="vr-album" data-album>
-                <img class="vr-albumphoto vr-ambient" src="media/album.webp" width="1024" height="1024" alt="River Lights album art (sample)" decoding="async">
+                <img data-gsap="float" data-gsap-dur="14" class="vr-albumphoto vr-ambient" src="media/album.webp" width="1024" height="1024" alt="River Lights album art (sample)" decoding="async">
               </div>
               <div class="vr-track">
                 <b>River Lights</b>

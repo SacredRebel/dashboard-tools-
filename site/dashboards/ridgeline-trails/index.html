@@ -7,9 +7,8 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Ridgeline Trails · Dashboard Tools gallery</title>
   <meta name="description" content="Editorial trail-network dashboard: a pale upper half with misty photo mountains flowing into a charcoal lower half of dials and gauges. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/sora/family.css">
+  <link rel="stylesheet" href="../_vendor/fonts/inter/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/dense-pages.css">
@@ -17,13 +16,14 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
   <div class="rt" data-db-app>
     <main class="rt-board">
       <section class="rt-upper">
-        <div class="rt-art" data-art aria-hidden="true"><img class="rt-mountains rt-ambient" src="media/mountains.webp" width="1280" height="720" alt="" decoding="async"></div>
+        <div class="rt-art" data-art aria-hidden="true"><img data-gsap="drift" data-gsap-dur="14" class="rt-mountains rt-ambient" src="media/mountains.webp" width="1280" height="720" alt="" decoding="async"></div>
         <header class="rt-head">
           <h1>Ridgeline</h1>
           <p>Trail network · visitor report</p>
@@ -45,19 +45,19 @@
       <section class="rt-lower">
         <svg class="rt-wave" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C120,70 240,88 380,84 S640,90 760,40 S900,-6 1010,34 S1150,70 1200,60 L1200,90 L0,90 Z"/></svg>
         <div class="rt-grid">
-          <section class="rt-panel" aria-labelledby="rt-heads-h">
+          <section class="rt-panel mat-clay mat-hover-lift mat-clay mat-hover-lift" data-fx="reveal" aria-labelledby="rt-heads-h">
             <h2 id="rt-heads-h">Trailhead counts</h2>
             <ul class="rt-heads" data-heads></ul>
           </section>
-          <section class="rt-panel rt-dialp" aria-labelledby="rt-d1-h">
+          <section class="rt-panel mat-clay mat-hover-lift rt-dialp" aria-labelledby="rt-d1-h">
             <h2 id="rt-d1-h">Visitors by trail</h2>
             <div data-dial="trail"></div>
           </section>
-          <section class="rt-panel rt-dialp" aria-labelledby="rt-d2-h">
+          <section class="rt-panel mat-clay mat-hover-lift rt-dialp" aria-labelledby="rt-d2-h">
             <h2 id="rt-d2-h">Visitors by activity</h2>
             <div data-dial="act"></div>
           </section>
-          <section class="rt-panel" aria-labelledby="rt-cap-h">
+          <section class="rt-panel mat-clay mat-hover-lift mat-clay mat-hover-lift" data-fx="reveal" aria-labelledby="rt-cap-h">
             <h2 id="rt-cap-h">Parking in use</h2>
             <div class="rt-cap" data-cap></div>
             <table class="rt-table"><caption class="vh">Parking by lot</caption><thead><tr><th scope="col">Lot</th><th scope="col">Cars</th><th scope="col">Full</th></tr></thead><tbody data-lots></tbody></table>

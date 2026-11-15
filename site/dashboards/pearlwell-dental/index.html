@@ -7,9 +7,7 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Pearlwell Dental · Dashboard Tools gallery</title>
   <meta name="description" content="Soft mint patient portal for a dental clinic: clay tooth hero, booking calendar, treatments and tooth chart. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/nunito/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/dense-pages.css">
@@ -17,6 +15,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -48,19 +47,19 @@
         <div class="pd-quick pd-reveal" data-quick aria-label="Quick actions"></div>
 
         <div class="pd-grid">
-          <section class="pd-card pd-next pd-reveal" aria-labelledby="pd-next-h">
+          <section class="pd-card mat-clay mat-hover-lift pd-next pd-reveal" aria-labelledby="pd-next-h">
             <div><p class="pd-k" id="pd-next-h">Your next visit</p><div data-next></div></div>
             <figure class="pd-toothart">
-              <img src="media/tooth.webp" srcset="media/tooth.webp 1x, media/tooth@2x.webp 2x" width="1600" height="1600" alt="Clay tooth with teal shield (sample art)" decoding="async">
+              <img data-gsap="float" data-gsap-dur="14" src="media/tooth.webp" srcset="media/tooth.webp 1x, media/tooth@2x.webp 2x" width="1600" height="1600" alt="Clay tooth with teal shield (sample art)" decoding="async">
             </figure>
           </section>
 
-          <section class="pd-card pd-score pd-reveal" aria-labelledby="pd-score-h">
+          <section class="pd-card mat-clay mat-hover-lift pd-score pd-reveal" aria-labelledby="pd-score-h">
             <h2 id="pd-score-h">Dental health score</h2>
             <div class="pd-scorebody"><div class="pd-ring" data-ring></div><p data-score-note></p></div>
           </section>
 
-          <section class="pd-card pd-book pd-reveal" aria-labelledby="pd-book-h">
+          <section class="pd-card mat-clay mat-hover-lift pd-book pd-reveal" aria-labelledby="pd-book-h">
             <div class="pd-head"><h2 id="pd-book-h">Book a visit</h2>
               <div class="pd-month"><button type="button" data-mon="-1" aria-label="Previous month"><span data-icon="chevLeft"></span></button><b data-month></b><button type="button" data-mon="1" aria-label="Next month"><span data-icon="chevRight"></span></button></div></div>
             <div class="pd-bookbody">
@@ -76,16 +75,16 @@
             </div>
           </section>
 
-          <section class="pd-card pd-treat pd-reveal" aria-labelledby="pd-treat-h">
+          <section class="pd-card mat-clay mat-hover-lift pd-treat pd-reveal" aria-labelledby="pd-treat-h">
             <div class="pd-head"><h2 id="pd-treat-h">Treatments</h2></div>
             <div class="pd-chips" role="group" aria-label="Filter treatments" data-cats></div>
             <ul class="pd-list" data-treat></ul>
           </section>
 
-          <section class="pd-card pd-health pd-reveal" aria-labelledby="pd-h-h">
+          <section class="pd-card mat-clay mat-hover-lift pd-health pd-reveal" aria-labelledby="pd-h-h">
             <div class="pd-head"><h2 id="pd-h-h">Tooth chart</h2><span class="pd-meta">Tap a tooth</span></div>
             <div class="pd-arch-wrap">
-              <img class="pd-arch-photo" src="media/arch.webp" srcset="media/arch.webp 1x, media/arch@2x.webp 2x" width="1600" height="1600" alt="" decoding="async">
+              <img data-gsap="float" data-gsap-dur="14" class="pd-arch-photo" src="media/arch.webp" srcset="media/arch.webp 1x, media/arch@2x.webp 2x" width="1600" height="1600" alt="" decoding="async">
               <div class="pd-arch" data-arch></div>
             </div>
             <p class="pd-toothnote" data-tooth-note aria-live="polite"></p>

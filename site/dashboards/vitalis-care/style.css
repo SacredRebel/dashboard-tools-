@@ -445,3 +445,22 @@ body {
 
 .vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
+
+
+
+/* === r3 deep polish === */
+.vc-hello.mat-clay, .vc-msg, .vc-heartbody, .vc-doclist, .vc-prop {
+  box-shadow:
+    0 12px 32px rgb(100 40 55 / 0.1),
+    inset 0 1px 0 rgb(255 255 255 / 0.6);
+}
+.vc-heartart, img[src*="heart"], .vc-doctor img {
+  filter: drop-shadow(0 14px 28px rgb(180 50 70 / 0.22));
+}
+.vc-hello, .vc-msg, .vc-prop {
+  transition: transform var(--dur-2, 150ms) ease;
+}
+.vc-hello:hover, .vc-msg:hover, .vc-prop:hover { transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) {
+  .vc-hello:hover, .vc-msg:hover, .vc-prop:hover { transform: none; }
+}

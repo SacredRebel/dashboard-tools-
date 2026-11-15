@@ -7,9 +7,8 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Forge Fitness · Dashboard Tools gallery</title>
   <meta name="description" content="Cinematic dark fitness dashboard with glass cards for steps, sleep, heart, wellness and energy over an athlete gym photo. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/syne/family.css">
+  <link rel="stylesheet" href="../_vendor/fonts/manrope/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/dense-pages.css">
@@ -17,12 +16,13 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
   <div class="ff" data-db-app>
     <div class="ff-scene" data-scene aria-hidden="true">
-      <img class="ff-athlete ff-ambient" src="media/athlete@2x.webp" srcset="media/athlete.webp 1x, media/athlete@2x.webp 2x" width="2200" height="2933" alt="" decoding="async">
+      <img data-gsap="drift" data-gsap-dur="14" class="ff-athlete ff-ambient" src="media/athlete@2x.webp" srcset="media/athlete.webp 1x, media/athlete@2x.webp 2x" width="2400" height="3199" alt="" decoding="async">
       <div class="ff-vignette"></div>
     </div>
 
@@ -58,7 +58,7 @@
       </div>
 
       <div class="ff-grid">
-        <section class="ff-card ff-activity ff-reveal" aria-labelledby="ff-act-h" data-view="activity">
+        <section class="ff-card mat-glass-dense mat-hover-lift ff-activity ff-reveal" aria-labelledby="ff-act-h" data-view="activity">
           <div class="ff-card-head">
             <div><p class="ff-k">Activity</p><h2 id="ff-act-h" class="ff-metric num" data-steps>19,840</h2><p class="ff-sub">Steps today</p></div>
             <span class="ff-pill" data-icon="footprints" aria-hidden="true"></span>
@@ -68,7 +68,7 @@
           <p class="ff-state" data-act-state hidden></p>
         </section>
 
-        <section class="ff-card ff-sleep ff-reveal" aria-labelledby="ff-sl-h">
+        <section class="ff-card mat-glass-dense mat-hover-lift ff-sleep ff-reveal" aria-labelledby="ff-sl-h">
           <div class="ff-card-head">
             <div><p class="ff-k">Sleep</p><h2 id="ff-sl-h" class="ff-metric num">7h 45m</h2><p class="ff-sub ff-up">+18m from last week</p></div>
             <span class="ff-pill" data-icon="moon" aria-hidden="true"></span>
@@ -76,7 +76,7 @@
           <div data-sleep-chart></div>
         </section>
 
-        <section class="ff-card ff-heart ff-reveal" aria-labelledby="ff-hr-h">
+        <section class="ff-card mat-glass-dense mat-hover-lift ff-heart ff-reveal" aria-labelledby="ff-hr-h">
           <div class="ff-card-head">
             <div><p class="ff-k">Heart</p><h2 id="ff-hr-h" class="ff-metric num">63 <small>BPM</small></h2><p class="ff-sub">Avg resting heart rate</p></div>
             <span class="ff-pill" data-icon="heartPulse" aria-hidden="true"></span>
@@ -84,7 +84,7 @@
           <div class="ff-barbells" data-heart role="img" aria-label="Resting heart rate by weekday"></div>
         </section>
 
-        <section class="ff-card ff-well ff-reveal" aria-labelledby="ff-well-h">
+        <section class="ff-card mat-glass-dense mat-hover-lift ff-well ff-reveal" aria-labelledby="ff-well-h">
           <div class="ff-card-head">
             <div><p class="ff-k">Wellness score</p><h2 id="ff-well-h" class="ff-metric ff-huge num" data-well>87</h2><p class="ff-sub">Good condition · <span class="ff-up">+5 vs weekly avg</span></p></div>
           </div>
@@ -92,7 +92,7 @@
           <dl class="ff-footstats"><div><dt>Sleep avg</dt><dd class="num">7.2h</dd></div><div><dt>Recovery</dt><dd class="num">82%</dd></div></dl>
         </section>
 
-        <section class="ff-card ff-focus ff-reveal" aria-labelledby="ff-fo-h">
+        <section class="ff-card mat-glass-dense mat-hover-lift ff-focus ff-reveal" aria-labelledby="ff-fo-h">
           <div class="ff-card-head">
             <div><p class="ff-k">Focus activity</p><h2 id="ff-fo-h" class="ff-metric ff-huge num" data-focus>73</h2><p class="ff-sub">Focus score · Deep work 14.5h</p></div>
           </div>
@@ -100,7 +100,7 @@
           <dl class="ff-footstats"><div><dt>Avg focus session</dt><dd class="num">42 min</dd></div><div><dt>Deep work</dt><dd class="num">14.5h</dd></div></dl>
         </section>
 
-        <section class="ff-card ff-energy ff-reveal" aria-labelledby="ff-en-h">
+        <section class="ff-card mat-glass-dense mat-hover-lift ff-energy ff-reveal" aria-labelledby="ff-en-h">
           <h2 id="ff-en-h" class="vh">Energy and recovery</h2>
           <div class="ff-metric-pills" role="tablist" aria-label="Health metrics" data-pills></div>
           <div class="ff-gauge-wrap">

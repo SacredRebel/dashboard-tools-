@@ -7,9 +7,7 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Pebble Studio · Dashboard Tools gallery</title>
   <meta name="description" content="Cream soft-UI studio admin with clay pebble photo props, circular knobs, wave dunes and a torus dial. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/nunito/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/dense-pages.css">
@@ -17,6 +15,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -50,7 +49,7 @@
     <div data-main>
       <div class="pb-overview" data-page-panel="overview">
         <main class="pb-main">
-          <section class="pb-card pb-stage pb-reveal" aria-labelledby="pb-stage-h">
+          <section class="pb-card mat-clay mat-hover-lift pb-stage pb-reveal" aria-labelledby="pb-stage-h">
             <div class="pb-stagehead">
               <div>
                 <p class="pb-k" id="pb-stage-h">Studio pebbles</p>
@@ -64,19 +63,19 @@
               </div>
             </div>
             <div class="pb-blobs" data-blobs aria-hidden="true">
-              <img class="pb-pebblephoto pb-ambient" src="media/pebbles@2x.webp" srcset="media/pebbles.webp 1x, media/pebbles@2x.webp 2x" width="768" height="768" alt="" decoding="async" data-pebble-img>
+              <img data-gsap="float" data-gsap-dur="14" class="pb-pebblephoto pb-ambient" src="media/pebbles@2x.webp" srcset="media/pebbles.webp 1x, media/pebbles@2x.webp 2x" width="768" height="768" alt="" decoding="async" data-pebble-img>
             </div>
             <div class="pb-floatknob" data-float-knob></div>
           </section>
 
-          <section class="pb-card pb-analytics pb-reveal" aria-labelledby="pb-an-h">
+          <section class="pb-card mat-clay mat-hover-lift pb-analytics pb-reveal" aria-labelledby="pb-an-h">
             <div class="pb-head">
               <h2 id="pb-an-h">Mix health</h2>
               <span class="pb-meta num" data-mix-meta>84 · stable</span>
             </div>
             <div class="pb-anbody">
               <div class="pb-torus" data-torus role="img" aria-label="Gradient mix torus">
-                <img class="pb-torusphoto pb-ambient" src="media/torus@2x.webp" srcset="media/torus.webp 1x, media/torus@2x.webp 2x" width="768" height="768" alt="" decoding="async">
+                <img data-gsap="float" data-gsap-dur="14" class="pb-torusphoto pb-ambient" src="media/torus@2x.webp" srcset="media/torus.webp 1x, media/torus@2x.webp 2x" width="768" height="768" alt="" decoding="async">
               </div>
               <div class="pb-dialwrap">
                 <div class="pb-tickdial">
@@ -95,7 +94,7 @@
             <ul class="pb-mixpills" data-mixpills></ul>
           </section>
 
-          <section class="pb-card pb-dunes pb-reveal" aria-labelledby="pb-dune-h">
+          <section class="pb-card mat-clay mat-hover-lift pb-dunes pb-reveal" aria-labelledby="pb-dune-h">
             <div class="pb-head">
               <h2 id="pb-dune-h">Wave dunes</h2>
               <div class="pb-seg" role="group" aria-label="Range" data-range>
@@ -111,13 +110,13 @@
             </div>
           </section>
 
-          <section class="pb-card pb-knobs pb-reveal" aria-labelledby="pb-knob-h">
+          <section class="pb-card mat-clay mat-hover-lift pb-knobs pb-reveal" aria-labelledby="pb-knob-h">
             <h2 id="pb-knob-h">Studio knobs</h2>
             <div class="pb-knobrow" data-knobs></div>
             <p class="pb-knobnote" data-knobnote aria-live="polite"></p>
           </section>
 
-          <section class="pb-card pb-lite pb-reveal" aria-labelledby="pb-lite-h">
+          <section class="pb-card mat-clay mat-hover-lift pb-lite pb-reveal" aria-labelledby="pb-lite-h">
             <h2 id="pb-lite-h">Lite</h2>
             <p class="pb-lede">Surface lift for export frames.</p>
             <label class="pb-slider">
@@ -128,7 +127,7 @@
             <button class="pb-pillbtn" type="button" data-export>Export soft frame</button>
           </section>
 
-          <section class="pb-card pb-feed pb-reveal" aria-labelledby="pb-feed-h">
+          <section class="pb-card mat-clay mat-hover-lift pb-feed pb-reveal" aria-labelledby="pb-feed-h">
             <div class="pb-head">
               <h2 id="pb-feed-h">Pastel activity</h2>
               <div class="pb-seg" role="group" aria-label="Feed filter" data-feedfilter>

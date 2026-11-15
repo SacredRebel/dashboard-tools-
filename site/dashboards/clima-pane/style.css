@@ -135,7 +135,11 @@ body {
   opacity: 0.9;
   animation: cl-drift 18s ease-in-out infinite alternate;
 }
-.cl-orbs img:nth-child(1) { top: -8vw; left: -6vw; }
+.cl-orbs img:nth-child(1) { top: -8vw; left: -6vw; opacity: 0.55; }
+.cl-orbs img:nth-child(1) {
+  mask-image: radial-gradient(circle at 60% 60%, #000 40%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at 60% 60%, #000 40%, transparent 78%);
+}
 .cl-orbs img:nth-child(2) { bottom: -10vw; right: 4vw; width: min(42vw, 500px); height: min(42vw, 500px); animation-duration: 22s; }
 @media (max-width: 640px) {
   .cl-orbs img:nth-child(1) { width: min(70vw, 280px); height: min(70vw, 280px); top: -6vw; left: -12vw; opacity: 0.55; }
@@ -241,6 +245,21 @@ body {
   gap: 12px;
   color: var(--text);
   text-decoration: none;
+  padding: 8px 14px 8px 8px;
+  border-radius: var(--radius-lg, 16px);
+  background: color-mix(in srgb, var(--surface, #fff) 96%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border, #ddd) 70%, transparent);
+  box-shadow: 0 8px 24px rgb(30 40 60 / 0.1);
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+}
+.cl-brand b,
+.cl-brand small {
+  color: var(--text);
+}
+.cl-brand small {
+  color: var(--text-muted);
+  opacity: 1;
 }
 .cl-mark {
   width: 48px;
@@ -712,3 +731,45 @@ body {
 .dbp-btn { background: #1a1f2e !important; color: #ffffff !important; }
 .dbp-card strong, .dbp-row, .dbp-page p { color: #141414 !important; }
 
+
+
+/* === r3 deep polish === */
+.cl-glass.mat-glass {
+  background: color-mix(in srgb, var(--surface, #fff) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border, #ddd) 80%, transparent);
+  box-shadow:
+    0 16px 40px rgb(30 40 60 / 0.12),
+    inset 0 1px 0 rgb(255 255 255 / 0.55);
+  backdrop-filter: blur(20px) saturate(1.25);
+  -webkit-backdrop-filter: blur(20px) saturate(1.25);
+}
+.cl-dial {
+  filter: drop-shadow(0 12px 28px color-mix(in srgb, var(--accent, #f97316) 25%, transparent));
+}
+.cl-dialface b {
+  text-shadow: 0 2px 12px rgb(0 0 0 / 0.08);
+}
+.cl-orbs img {
+  filter: blur(0.2px) saturate(1.1);
+}
+.cl-modechip[aria-pressed="true"],
+.cl-roomchip[aria-pressed="true"] {
+  box-shadow: 0 0 0 1px var(--accent, #f97316), 0 8px 20px color-mix(in srgb, var(--accent, #f97316) 25%, transparent);
+}
+
+/* === r3 contrast fix === */
+.cl-outside {
+  background: color-mix(in srgb, var(--surface, #fff) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border, #ddd) 70%, transparent);
+  padding: 8px 12px;
+  border-radius: var(--radius-md, 12px);
+}
+.cl-outside small {
+  color: var(--text) !important;
+  font-weight: 600;
+  opacity: 0.85;
+}
+[data-variant="sky"] .cl-outside small,
+[data-variant="sky"] .cl-outside b {
+  color: #142028 !important;
+}

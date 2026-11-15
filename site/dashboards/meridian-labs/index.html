@@ -7,9 +7,7 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Meridian Labs · Dashboard Tools gallery</title>
   <meta name="description" content="Soft health diagnostics with test cards, SVG DNA helix, vitamin grid and week schedule. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/plus-jakarta-sans/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/dense-pages.css">
@@ -17,6 +15,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
@@ -58,7 +57,7 @@
             <p><b>B</b> Structure</p>
             <p class="num"><b data-angstrom>23.3</b> Angstrom</p>
           </div>
-          <div class="me-helix" data-helix aria-hidden="true"><img class="me-dna" src="media/dna@2x.webp" srcset="media/dna.webp 1x, media/dna@2x.webp 2x" width="825" height="1100" alt="" decoding="async"></div>
+          <div class="me-helix" data-helix aria-hidden="true"><img data-gsap="float" data-gsap-dur="14" class="me-dna" src="media/dna@2x.webp" srcset="media/dna.webp 1x, media/dna@2x.webp 2x" width="825" height="1100" alt="" decoding="async"></div>
           <div class="me-dnaorb" role="toolbar" aria-label="DNA tools" data-dnatools>
             <button type="button" aria-label="Heart markers" data-tool="heart" aria-pressed="true"><span data-icon="heart"></span></button>
             <button type="button" aria-label="Activity leads" data-tool="pulse" aria-pressed="false"><span data-icon="activity"></span></button>

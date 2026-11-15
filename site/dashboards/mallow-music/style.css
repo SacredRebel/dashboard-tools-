@@ -242,3 +242,16 @@ body { background: var(--bg); }
 .dbp-btn { background: #1a1f2e !important; color: #ffffff !important; }
 .dbp-card strong, .dbp-row, .dbp-page p { color: #141414 !important; }
 
+
+
+/* === r3 deep polish === */
+[class$="-card"], [class*="-panel"], [class*="-glass"], [class*="-tile"] {
+  transition: transform var(--dur-2, 150ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow var(--dur-2, 150ms) ease;
+}
+[class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover {
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  [class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover { transform: none; }
+}

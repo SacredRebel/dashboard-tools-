@@ -265,3 +265,16 @@ body { background: var(--bg); }
   .hl-page, .hl-skel, .hl-ambient, .hl-reveal-in { animation: none !important; }
   .hl-rail a, .hl-mode button, .hl-round, .hl-acts button, .hl-book, .hl-btn, .hl-home { transition: none; }
 }
+
+
+/* === r3 deep polish === */
+.hl-card, .hv-listing, [class*="listing"], .ha-card {
+  transition: transform var(--dur-2, 150ms) ease, box-shadow var(--dur-2, 150ms) ease;
+}
+.hl-card:hover, .ha-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 0.14);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hl-card:hover, .ha-card:hover { transform: none; }
+}

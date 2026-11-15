@@ -7,9 +7,7 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Vitalis Care · Dashboard Tools gallery</title>
   <meta name="description" content="Bento-grid patient dashboard with clay heart and doctor figure, vitals, booking, activity and records. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/plus-jakarta-sans/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/dense-pages.css">
@@ -17,15 +15,16 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
   <div class="vc" data-db-app>
     <div class="vc-stage" aria-hidden="true">
-      <span class="vc-prop vc-prop-steth" data-prop="steth"></span>
-      <span class="vc-prop vc-prop-pills" data-prop="pills"></span>
-      <span class="vc-prop vc-prop-thermo" data-prop="thermo"></span>
-      <span class="vc-prop vc-prop-kit" data-prop="kit"></span>
+      <span class="vc-prop mat-clay mat-hover-lift vc-prop-steth" data-prop="steth"></span>
+      <span class="vc-prop mat-clay mat-hover-lift vc-prop-pills" data-prop="pills"></span>
+      <span class="vc-prop mat-clay mat-hover-lift vc-prop-thermo" data-prop="thermo"></span>
+      <span class="vc-prop mat-clay mat-hover-lift vc-prop-kit" data-prop="kit"></span>
     </div>
     <header class="vc-top">
       <a class="vc-brand" href="#/overview" aria-label="Vitalis home"><span data-icon="heartPulse"></span>Vitalis</a>
@@ -42,7 +41,7 @@
 
     <main class="vc-shell" data-main>
       <div data-page-panel="overview" class="vc-overview">
-        <div class="vc-hello vc-reveal">
+        <div class="vc-hello mat-clay mat-hover-lift vc-reveal">
           <div class="vc-hello-copy">
             <p data-greet></p>
             <h1>How you are doing</h1>
@@ -50,42 +49,42 @@
             <label class="vc-hero-search"><span data-icon="search"></span><span class="vh">Search doctors or services</span><input type="search" placeholder="Search doctors or services…" data-hero-q></label>
           </div>
           <figure class="vc-doctor">
-            <img src="media/doctor.webp" srcset="media/doctor.webp 1x, media/doctor@2x.webp 2x" width="1600" height="1600" alt="Clay doctor figure in teal coat (sample art)" decoding="async">
+            <img data-gsap="float" data-gsap-dur="14" src="media/doctor.webp" srcset="media/doctor.webp 1x, media/doctor@2x.webp 2x" width="1600" height="1600" alt="Clay doctor figure in teal coat (sample art)" decoding="async">
           </figure>
         </div>
 
-        <div class="vc-bento">
-          <section class="vc-tile vc-heart vc-reveal" aria-labelledby="vc-hr-h">
+        <div class="vc-bento" data-fx="reveal">
+          <section class="vc-tile mat-clay mat-hover-lift vc-heart vc-reveal" aria-labelledby="vc-hr-h">
             <div class="vc-th"><h2 id="vc-hr-h"><span data-icon="heart"></span>Heart rate</h2><span class="vc-ok">Normal</span></div>
             <div class="vc-heartbody">
               <div class="vc-heartart vc-ambient" aria-hidden="true">
-                <img src="media/heart.webp" srcset="media/heart.webp 1x, media/heart@2x.webp 2x" width="1600" height="1600" alt="" decoding="async">
+                <img data-gsap="float" data-gsap-dur="14" src="media/heart.webp" srcset="media/heart.webp 1x, media/heart@2x.webp 2x" width="1600" height="1600" alt="" decoding="async">
               </div>
               <p class="vc-big num"><b data-bpm>72</b> bpm</p>
             </div>
             <div data-ecg aria-hidden="true"></div>
           </section>
-          <section class="vc-tile vc-vital vc-reveal" aria-labelledby="vc-bp-h">
+          <section class="vc-tile mat-clay mat-hover-lift vc-vital vc-reveal" aria-labelledby="vc-bp-h">
             <h2 id="vc-bp-h"><span data-icon="drop"></span>Blood pressure</h2>
             <p class="vc-big num"><b>118/78</b></p>
             <p class="vc-sub">mmHg · in range</p>
           </section>
-          <section class="vc-tile vc-vital vc-reveal" aria-labelledby="vc-bs-h">
+          <section class="vc-tile mat-clay mat-hover-lift vc-vital vc-reveal" aria-labelledby="vc-bs-h">
             <h2 id="vc-bs-h"><span data-icon="activity"></span>Blood sugar</h2>
             <p class="vc-big num"><b data-sugar>96</b></p>
             <p class="vc-sub">mg/dL · fasting</p>
           </section>
 
-          <section class="vc-tile vc-next vc-reveal" aria-labelledby="vc-next-h">
+          <section class="vc-tile mat-clay mat-hover-lift vc-next vc-reveal" aria-labelledby="vc-next-h">
             <h2 id="vc-next-h">Next appointment</h2>
             <div data-next></div>
           </section>
 
-          <section class="vc-tile vc-quick vc-reveal" aria-label="Quick actions">
+          <section class="vc-tile mat-clay mat-hover-lift vc-quick vc-reveal" aria-label="Quick actions">
             <div class="vc-quickgrid" data-quick></div>
           </section>
 
-          <section class="vc-tile vc-docs vc-reveal" aria-labelledby="vc-docs-h">
+          <section class="vc-tile mat-clay mat-hover-lift vc-docs vc-reveal" aria-labelledby="vc-docs-h">
             <div class="vc-th">
               <h2 id="vc-docs-h">Find a doctor</h2>
               <label class="vc-search"><span data-icon="search"></span><span class="vh">Search doctors</span><input type="search" placeholder="Name or speciality" data-q></label>
@@ -94,7 +93,7 @@
             <ul class="vc-doclist" data-docs></ul>
           </section>
 
-          <section class="vc-tile vc-book vc-reveal" aria-labelledby="vc-book-h">
+          <section class="vc-tile mat-clay mat-hover-lift vc-book vc-reveal" aria-labelledby="vc-book-h">
             <h2 id="vc-book-h">Book with <span data-book-doc></span></h2>
             <div class="vc-week" role="group" aria-label="Pick a day" data-days></div>
             <div class="vc-times" role="group" aria-label="Pick a time" data-times></div>
@@ -103,7 +102,7 @@
             <p class="vc-msg" data-msg aria-live="polite"></p>
           </section>
 
-          <section class="vc-tile vc-act vc-reveal" aria-labelledby="vc-act-h">
+          <section class="vc-tile mat-clay mat-hover-lift vc-act vc-reveal" aria-labelledby="vc-act-h">
             <div class="vc-th">
               <h2 id="vc-act-h">This week</h2>
               <div class="vc-seg" role="group" aria-label="Measure" data-measure>
@@ -114,7 +113,7 @@
             <div data-act></div>
           </section>
 
-          <section class="vc-tile vc-rec vc-reveal" aria-labelledby="vc-rec-h">
+          <section class="vc-tile mat-clay mat-hover-lift vc-rec vc-reveal" aria-labelledby="vc-rec-h">
             <div class="vc-th"><h2 id="vc-rec-h">Medical records</h2></div>
             <ul class="vc-recs" data-recs></ul>
             <button type="button" class="vc-add" data-add><span data-icon="plus"></span>Add a record</button>

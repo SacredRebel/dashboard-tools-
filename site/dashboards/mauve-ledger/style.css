@@ -259,3 +259,16 @@ body {
 
 .ml-suc-stats dt, .ml-urg.pending, .ml-mails .pending { color:#2a2640 !important; font-weight:700 !important; font-size:13px !important; }
 .ml-urg.pending { background:#efeaf8 !important; padding:3px 8px; border-radius:999px; }
+
+
+/* === r3 deep polish === */
+[class$="-card"], [class*="-panel"], [class*="-glass"], [class*="-tile"] {
+  transition: transform var(--dur-2, 150ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow var(--dur-2, 150ms) ease;
+}
+[class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover {
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  [class$="-card"]:hover, [class*="-panel"]:hover, [class*="-glass"]:hover, [class*="-tile"]:hover { transform: none; }
+}

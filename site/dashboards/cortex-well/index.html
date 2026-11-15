@@ -7,9 +7,7 @@
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Cortex Well · Dashboard Tools gallery</title>
   <meta name="description" content="Lilac glass wellness dashboard with a painted brain in a frosted bowl, activity pills, sleep bars and heart bpm. Sample data.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../_vendor/fonts/plus-jakarta-sans/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
   <link rel="stylesheet" href="../_shared/icons/icons.css">
@@ -17,6 +15,7 @@
   <script src="../_shared/frame.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
+  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script type="module" src="../_shared/icons/index.js"></script>
 </head>
 <body>
@@ -102,8 +101,8 @@
           </div>
           <div class="cx-stage">
             <figure class="cx-brainwrap" data-fx="parallax">
-              <img data-fx-layer="1" class="cx-brain-bg" src="media/brain-bg.webp" width="1440" height="1440" alt="" decoding="async" aria-hidden="true">
-              <img data-fx-layer="2" data-fx="ambient" data-fx-dur="12" src="media/brain@2x.webp" srcset="media/brain.webp 1x, media/brain@2x.webp 2x" width="720" height="720" alt="Brain in frosted glass bowl (sample art)" decoding="async">
+              <img data-gsap="float" data-gsap-dur="14" data-fx-layer="1" class="cx-brain-bg" src="media/brain-bg.webp" width="1440" height="1440" alt="" decoding="async" aria-hidden="true">
+              <img data-gsap="float" data-gsap-dur="14" data-fx-layer="2" data-fx="ambient" data-fx-dur="12" src="media/brain@2x.webp" srcset="media/brain.webp 1x, media/brain@2x.webp 2x" width="720" height="720" alt="Brain in frosted glass bowl (sample art)" decoding="async">
             </figure>
             <svg class="cx-leads" viewBox="0 0 520 420" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
               <g class="cx-lead-lines" fill="none" stroke="var(--lead)" stroke-width="1.5" stroke-linecap="round">
