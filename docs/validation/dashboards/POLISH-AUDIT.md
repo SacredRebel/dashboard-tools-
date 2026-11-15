@@ -1,7 +1,7 @@
-# Polish audit — gallery dashboards (deep polish, honest)
+# Polish audit — gallery dashboards (deep polish r2, honest)
 
-Branch: `cursor/deep-polish-0545` · Brief: `prompts/cursor-deep-polish.md`  
-Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are voided.  
+Branch: `cursor/deep-polish-r2-0545` · Brief: `prompts/cursor-deep-polish.md` + round-2 double-down  
+Scores are **honest** (0–5). Uniform 4.5 rows from earlier passes remain voided.  
 **Total** = sum of eight axes (layout, density, type, color, depth, imagery, detail, overall).
 
 ## How to read
@@ -27,14 +27,14 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | canopy-reforest | 4 | 4 | 4 | 4 | 4 | 4.5 | 4 | 4 | 32.5 | Layered leaves + clay tiles; Survey→Plant→Water→Measure icon-steps | deep G3 started |
 | larchwood-lodge | 4 | 4 | 4 | 4 | 4 | 4.5 | 4 | 4 | 32.5 | Arched lake hero + glass bento; branded Rooms/Guests/Settings | deep G3 started |
 | aether-pane | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 32 | Floating glass shell + office art; AA daylight nav; branded secondaries | deep G3 started |
-| horizon-weather | 4 | 4 | 4.5 | 4 | 4 | 4.5 | 4 | 4 | 33 | Full-scroll coast + cinematic glass now; still shy of full twin density | deep G3 started |
-| kumo-payroll | 4 | 4 | 4 | 4 | 4 | 4.5 | 4 | 4 | 32.5 | Moon/pagoda scene + frosted glass panel/quote; shy of gold-edge twin density | deep G3 started |
+| horizon-weather | 4 | 4.5 | 4.5 | 4 | 4.5 | 4.5 | 4 | 4.5 | 34.5 | r2 denser glass now/cards/day rail + GSAP coast; still shy of full Skyview twin | deep G3 r2 |
+| kumo-payroll | 4 | 4 | 4 | 4.5 | 4.5 | 4.5 | 4.5 | 4.5 | 35 | r2 gold-edge liquid glass + hash shell; sakura/koi still static art | deep G3 r2 |
 | haven-listings | 4 | 4 | 4 | 4 | 3.5 | 4 | 3.5 | 4 | 31 | Outer main + density; villa art OK | gate-green |
 | aura-ring | 4 | 4 | 4 | 4 | 3.5 | 3.5 | 3.5 | 3.5 | 30 | Dense contrast fixed; ring/brain upscaled | gate-green |
 | lull-sleep | 4 | 4 | 4 | 4.5 | 4 | 4 | 4 | 4 | 32.5 | Media DPI fixed; glass board strong | gate-green |
 | copper-radar | 4 | 4 | 4 | 4 | 3.5 | 4 | 4 | 4 | 31.5 | Radar-hero + glowing half-arc + HTML vendor mark chips on ring | deep G3 started |
-| ember-rooms | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 32 | Radial brightness arc + labeled orbit chips; lamp overlay still shy of exact twin | deep G3 started |
-| tidebath-showroom | 4 | 3.5 | 3.5 | 3.5 | 4.5 | 4 | 4 | 4 | 31 | Deeper curved 3D carousel + tilted floor; not continuous cylinder yet | deep G3 started |
+| ember-rooms | 4 | 4 | 4 | 4 | 4.5 | 4 | 4.5 | 4.5 | 33.5 | r2 neumorphic 12/7 Light overlay + GSAP pulse; climate dial screen still lighter | deep G3 r2 |
+| tidebath-showroom | 4 | 4 | 4 | 4 | 4.5 | 4 | 4 | 4.5 | 33 | r2 continuous cylindrical floor + deeper rotateY; not a true 3D mesh yet | deep G3 r2 |
 | meridian-labs | 4 | 4 | 3.5 | 4 | 3.5 | 4 | 3.5 | 4 | 30.5 | Three-column board + week-calendar G3 (orange Fri, dose chips); DNA contained | deep G3 started |
 | citadel-wall | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 4 | 3.5 | 3.5 | 29 | New holo cube + pedestal/circuit aura | deep G2 started |
 | glacier-ops | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Topo dial center + AA plates | deep G2 started |
@@ -44,8 +44,8 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 | hollow-vault | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Witch hero + phone bottom nav; relic ring OK | deep G2 started |
 | pearlwell-dental | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay tooth/arch + phone nav | deep G2 started |
 | vitalis-care | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay heart/doctor + phone nav | deep G2 started |
-| solstice-energy | 4 | 4 | 4 | 4 | 4 | 4.5 | 4 | 4 | 32.5 | Sun-path bloom + mountain plate + branded secondaries; pixel twin still shy | deep G3 started |
-| pulsar-analytics | 4 | 4 | 4 | 4 | 4.5 | 4.5 | 4 | 4 | 33 | Stronger neon terrain/mesh + glass labels; pixel twin still shy | deep G3 started |
+| solstice-energy | 4 | 4 | 4 | 4 | 4.5 | 4.5 | 4 | 4.5 | 33.5 | r2 thicker sun-path/sun disk + GSAP; pixel twin still shy | deep G3 r2 |
+| pulsar-analytics | 4 | 4 | 4 | 4 | 4.5 | 4.5 | 4.5 | 4.5 | 34 | r2 neon glass hero + denser terrain/labels + GSAP; pixel twin still shy | deep G3 r2 |
 | orbit-clay | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay helmet + dune peaks refresh | deep G2 started |
 | taffy-analytics | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay sphere-in-torus prop | deep G2 started |
 | pebble-studio | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4 | 3.5 | 3.5 | 28.5 | Clay pebbles + torus dial | deep G2 started |
@@ -54,14 +54,13 @@ Scores are **honest** (0–5). Uniform 4.5 rows from the prior polish pass are v
 
 ## Work order (remaining deep polish)
 
-1. ~~copper / ember / tidebath / kumo / citadel / glacier / forge / clima / hollow / pearlwell / vitalis / mallow phone~~  
-2. ~~meridian-labs week-calendar G3 · solstice / pulsar / taffy / pebble / dune~~  
-3. ~~dense secondary hero kit · solstice/pulsar branded pages · orbit helmet/dunes~~  
-4. ~~Larchwood / Aether / Canopy icon-steps / Copper vendor ring~~  
-5. ~~Solstice/Pulsar cinematic deepen · Horizon / Ember radial / Tidebath curve / Kumo glass~~  
-6. Architect review of draft PR #6 · optional pixel-fidelity follow-ups (see HANDOFF gaps)
+1. ~~r2 shared shell/FX + priority gap boards (Solstice/Pulsar/Horizon/Ember/Tidebath/Kumo)~~  
+2. Self-host OFL fonts (kill Google Fonts CDN) across gallery  
+3. Lottie / deeper GSAP on remaining cinematic boards  
+4. Gate-green boards still ~3 overall → G3 twins (citadel, glacier, forge, clima, hollow, …)  
+5. Architect review of draft r2 PR · do not merge
 
 ## Verification log
 
-- Touched ✔: solstice, pulsar, horizon, ember, tidebath, kumo  
-- Prior: larchwood, aether, canopy, copper, dense-kit, orbit, meridian, taffy, pebble, dune, clima, hollow, pearlwell, vitalis, mallow, citadel, glacier, forge, ridgeline — see HANDOFF
+- r2 touched ✔: solstice, pulsar, horizon, ember, tidebath, kumo (+ shell nav on mallow/orchard/zest/glacier/…)  
+- Prior r1: see git history on `main` @ `d9f6fa1`
