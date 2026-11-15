@@ -247,12 +247,30 @@ for (const d of list) {
         });
         if (emptyMain) errs.push(emptyMain);
         if (await page.evaluate((id) => document.documentElement.dataset.page !== id, pg.id)) errs.push(`dataset.page != ${pg.id}`);
+        // Scroll through the page once so on-view effects (reveal, count-up) run before gates and the full capture.
+        await page.evaluate(async () => {
+          const h = document.documentElement.scrollHeight;
+          for (let y = 0; y < h; y += Math.max(300, innerHeight * 0.8)) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 120)); }
+          scrollTo(0, 0); await new Promise((r) => setTimeout(r, 900));
+        });
         // Polish gates (architect review 2): no placeholder pages, no focus ring on load, real density.
         const gate = await page.evaluate((wide) => {
           const out = [];
           const vis = (el) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none'; };
           const stub = document.querySelector('[data-db-stub]');
           if (stub && !stub.hidden && vis(stub)) out.push('placeholder page: [data-db-stub] is visible (build the real page UI)');
+          // Architect review 3: the shared "dense kit" (same KPI row + pulse card + alpha/bravo table on every
+          // dashboard) is a placeholder too. Secondary pages must be designed for the product.
+          const kit = [...document.querySelectorAll('[class*="db-dense"]')].filter(vis);
+          if (kit.length) out.push(`generic page kit: ${kit.length} visible .db-dense-* elements (design this page for this product; no shared page template)`);
+          const mainText = (document.querySelector('main') || document.body).innerText || '';
+          const filler = mainText.match(/\b\w+ (alpha|bravo|cedar|delta|echo|folio|grove|haven)\b/gi) || [];
+          if (filler.length >= 3) out.push(`filler rows: "${filler.slice(0, 3).join('", "')}" (use believable domain data)`);
+          for (const el of document.querySelectorAll('[data-fx~="count"], [data-count], [data-fx~="odo"]')) {
+            if (!vis(el)) continue;
+            const target = parseFloat(el.dataset.to ?? el.dataset.count ?? '');
+            if (target && /^\D*0(\.0+)?\D*$/.test(el.textContent.trim())) { out.push(`count-up stuck at 0 (target ${target}): "${el.textContent.trim()}"`); break; }
+          }
           const a = document.activeElement;
           if (a && a !== document.body) {
             const cs = getComputedStyle(a);
