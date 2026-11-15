@@ -253,14 +253,14 @@ Frosted translucent panels over gradients or blurred color fields, soft glows. M
 
 _Haven Listings · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A property browser built around one large dusk villa photo: curved white architecture glows under a blue sky, white filter tabs notch into the top edge, and a frosted card shows the selected home.
+A property browser in one poured frame: a dusk villa photo fills a large rounded frame, a white header flows out of the top edge with concave shoulders, Buy and Rent pills sit in the notches, a white slab pours from the bottom-left corner and a frosted glass card with a scooped corner shows the selected home.
 
 - **Use cases:** Real estate · **Mode:** light · **Mood:** airy, premium, calm, architectural, soft
 - **Pages:** Overview (`overview`, Dashboard) · Listings (`listings`, List) · Showings (`showings`, Calendar) · Settings (`settings`, Settings)
 - **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
-- **Signature:** White tabs that notch into the rounded edge of a full-bleed dusk villa photo, where warm interior light spills from curved glass walls.
-- **Layout:** 600px rounded stage with a full-bleed scene: top row (Buy pill, notched filter tab with 3 selects, Rent pill) · left 60px pill rail of 6 icons · headline and lede · white match-count card bottom-left · frosted detail card bottom-right (340px) · below: 3 cards (matching homes list, price-history line chart, viewings with a book button)
-- **Responsive:** ≤1100px: detail card moves under the match card, lower cards 2 columns · ≤700px: single column, filters become a stacked white card, rail turns into a horizontal pill, scene stays behind the top 470px
+- **Signature:** Poured white shapes with concave fillets hanging off the frame edge, and a glass card scooped around a round brand button.
+- **Layout:** One frame sized in container units (aspect 708:500) over a rock backdrop · top: Buy pill, poured filter band (Location, Home type, Max price), Rent pill · left: floating page rail, agent, alerts · hero title and one paragraph over the photo · bottom-left poured slab with light toggle and Find the perfect place card · bottom-right glass listing card with like, save, share and a round Book button in its scoop · inner pages open as one frosted sheet inside the same frame
+- **Responsive:** ≤720px: tall frame; the band holds Buy/Rent and the three filters; the page rail pours out of the bottom edge as a tab bar; the slab is hidden; the glass card spans the width above the tab bar; sheets fill the frame
 - **Fonts:** Urbanist / Urbanist · **Palette:** bg `#ebe7e1`, surface `#f7f5f8`, text `#1d1b33`, muted `#55526b`, accent `#2a2470`, sky `#3f5a96`, glow `#e8743a`, rust `#c2562f`
 - **Variants:** Dusk, Sunrise, Midnight · **Closest toolkit theme:** `tide`
 

@@ -90,7 +90,9 @@
         if (!first && !reduce && typeof document.startViewTransition === 'function') {
           html.classList.add('fx-vt-pending');
           const vt = document.startViewTransition(run);
-          vt.finished.finally(() => html.classList.remove('fx-vt-pending'));
+          // A second navigation can interrupt this one; the browser then rejects these promises. That is expected.
+          vt.ready.catch(() => {}); vt.updateCallbackDone.catch(() => {});
+          vt.finished.catch(() => {}).finally(() => html.classList.remove('fx-vt-pending'));
         } else if (!first && !reduce) {
           const main = document.querySelector('main') || document.body;
           main.style.transition = 'opacity 180ms cubic-bezier(0.16,1,0.3,1)';

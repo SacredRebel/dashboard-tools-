@@ -6,93 +6,122 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Haven Listings · Dashboard Tools gallery</title>
-  <meta name="description" content="Glass real-estate browser: dusk villa photo hero, notched white filter tabs and frosted listing cards. Sample data.">
+  <meta name="description" content="Real-estate browser in one poured frame: a dusk villa photo, a white header that flows out of the top edge, and a frosted listing card. Sample data.">
   <link rel="stylesheet" href="../_vendor/fonts/urbanist/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
-  <link rel="stylesheet" href="../_shared/fx/fx.css">
-  <link rel="stylesheet" href="../_shared/dense-pages.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
-  <script src="../_shared/dense-pages.js"></script>
-  <script type="module" src="../_shared/fx/index.js"></script>
-  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
-  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
+  <svg width="0" height="0" class="vh" aria-hidden="true">
+    <defs>
+      <!-- backdrop rock texture -->
+      <filter id="hl-rock" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.0035 0.006" numOctaves="7" seed="11" result="n"/>
+        <feDiffuseLighting in="n" surfaceScale="26" diffuseConstant="1.15" lighting-color="#f1ede6"><feDistantLight azimuth="225" elevation="52"/></feDiffuseLighting>
+      </filter>
+      <filter id="hl-rock2" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02 0.035" numOctaves="4" seed="3" result="n"/>
+        <feDiffuseLighting in="n" surfaceScale="5" diffuseConstant="1.1" lighting-color="#ffffff"><feDistantLight azimuth="225" elevation="60"/></feDiffuseLighting>
+      </filter>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11.2 12 4l8 7.2V20h-5.2v-5.4H9.2V20H4z" fill="currentColor"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3.5v2.4M12 18.1v2.4M3.5 12h2.4M18.1 12h2.4M6 6l1.7 1.7M16.3 16.3 18 18M18 6l-1.7 1.7M7.7 16.3 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 1.5h-14zM10 20.5h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.6" fill="currentColor"/><path d="M12 3v2.5M12 18.500v2.5M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.600l1.8 1.800M18.4 5.6l-1.8 1.800M7.4 16.600l-1.8 1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7.5 16.5 16.5 7.500M9 7.500h7.500V15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6.5 9.5 5.5 5.5 5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.5-6 6.5-11a6.5 6.5 0 0 0-13 0c0 5 6.5 11 6.5 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.2" fill="currentColor"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.200A4.3 4.3 0 0 1 12 7.300a4.3 4.3 0 0 1 7.5 2.500C19.5 15.4 12 20 12 20z" fill="var(--fill, none)" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+      <symbol id="i-save" viewBox="0 0 24 24"><path d="M7 4h10v16l-5-3.800L7 20z" fill="var(--fill, none)" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+      <symbol id="i-share" viewBox="0 0 24 24"><path d="M13.5 5.5 20 12l-6.5 6.500V14.500C8.5 14.5 5.5 16 4 19c0-6 3.5-9.5 9.5-10z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+      <symbol id="i-mark" viewBox="0 0 24 24"><path d="M6 5h4.200v7.200a1.8 1.8 0 0 0 3.6 0V5H18v7.200a6 6 0 0 1-12 0z" fill="currentColor"/><path d="M13.8 5H18l-4.2 5z" fill="currentColor" opacity=".55"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M17.5 6.500l-11 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
+
   <div class="hl" data-db-app>
-    <main data-main>
-      <div class="hl-overview" data-page-panel="overview">
-        <section class="hl-stage hl-reveal" aria-label="Featured home">
-          <div class="hl-scene" data-scene aria-hidden="true">
-            <img data-gsap="float" data-gsap-dur="14" class="hl-photo hl-ambient" src="media/villa@2x.webp" srcset="media/villa.webp 1x, media/villa@2x.webp 2x" width="1440" height="810" alt="" decoding="async">
-          </div>
+    <div class="hl-back" aria-hidden="true"><i></i><i></i><i></i></div>
+    <p class="hl-corner hl-corner--l">Haven Residences</p>
+    <p class="hl-corner hl-corner--r db-sample">Sample data · fictional</p>
 
-          <header class="hl-top">
-            <div class="hl-mode" role="group" aria-label="Buy or rent" data-mode>
-              <button type="button" data-v="buy" aria-pressed="true"><span data-icon="arrowUpRight"></span>Buy</button>
-              <button type="button" data-v="rent" aria-pressed="false">Rent<span data-icon="arrowUpRight"></span></button>
+    <div class="hl-frame" data-frame>
+      <div class="hl-photo" aria-hidden="true"><img src="media/villa.webp" srcset="media/villa.webp 2400w, media/villa@2x.webp 3200w" sizes="(max-width: 720px) 220vw, 1104px" alt="" data-photo></div>
+      <div class="hl-sky" aria-hidden="true"></div>
+
+      <!-- poured header: flows out of the top edge -->
+      <div class="hl-mode hl-mode--buy"><button type="button" data-mode="buy" aria-pressed="true"><svg><use href="#i-arrow"/></svg><span>Buy</span></button></div>
+      <header class="hl-band">
+        <form class="hl-filters" data-filters aria-label="Filter homes">
+          <label><span><svg><use href="#i-pin"/></svg>Location</span><select name="place" aria-label="Location"></select></label>
+          <label><span><svg><use href="#i-home"/></svg>Home type</span><select name="type" aria-label="Home type"></select></label>
+          <label><span><svg><use href="#i-cal"/></svg>Max price</span><select name="max" aria-label="Max price"></select></label>
+        </form>
+      </header>
+      <div class="hl-mode hl-mode--rent"><button type="button" data-mode="rent" aria-pressed="false"><span>Rent</span><svg><use href="#i-arrow"/></svg></button></div>
+
+      <nav class="hl-rail" aria-label="Pages">
+        <a href="#/overview" aria-label="Overview"><svg><use href="#i-home"/></svg></a>
+        <a href="#/listings" aria-label="Listings"><svg><use href="#i-search"/></svg></a>
+        <a href="#/showings" aria-label="Showings"><svg><use href="#i-cal"/></svg></a>
+        <a href="#/settings" aria-label="Settings"><svg><use href="#i-gear"/></svg></a>
+      </nav>
+      <div class="hl-agent" aria-hidden="true">MC</div>
+      <button type="button" class="hl-bell" data-act="alerts" aria-label="Alerts, 2 new"><svg><use href="#i-bell"/></svg><i></i></button>
+
+      <main class="hl-main" id="main">
+        <!-- OVERVIEW -->
+        <section data-db-page="overview" class="hl-over">
+          <h1 class="hl-hero">A calmer way<br>to find home</h1>
+          <p class="hl-lede">Browse homes to buy or rent, compare them side by side and book a viewing without a single phone call.</p>
+
+          <div class="hl-slab">
+            <div class="hl-tone" role="group" aria-label="Photo light">
+              <button type="button" data-tone="dusk" aria-pressed="true" aria-label="Dusk light"><svg><use href="#i-gear"/></svg></button>
+              <button type="button" data-tone="night" aria-pressed="false" aria-label="Night light"><svg><use href="#i-moon"/></svg></button>
+              <button type="button" data-tone="day" aria-pressed="false" aria-label="Day light"><svg><use href="#i-sun"/></svg></button>
             </div>
-            <form class="hl-filters" aria-label="Filters" data-filters>
-              <label><span><span data-icon="pin"></span>Location</span><select name="place"></select></label>
-              <label><span><span data-icon="building"></span>Home type</span><select name="type"></select></label>
-              <label><span><span data-icon="wallet"></span>Max price</span><select name="max"></select></label>
-            </form>
-          </header>
-
-          <nav class="hl-rail" aria-label="Main">
-            <a href="#/overview" aria-current="page" aria-label="Home"><span data-icon="home"></span></a>
-            <a href="#/listings" aria-label="Listings"><span data-icon="search"></span></a>
-            <a href="#/listings" aria-label="Collections"><span data-icon="grid"></span></a>
-            <a href="#/showings" aria-label="Showings"><span data-icon="mail"></span></a>
-            <a href="#/showings" aria-label="Alerts"><span data-icon="bell"></span></a>
-            <a href="#/settings" aria-label="Settings"><span data-icon="settings"></span></a>
-          </nav>
-
-          <div class="hl-copy">
-            <h1>A calmer way<br>to find home</h1>
-            <p>Browse homes for sale or rent, compare them side by side and book a viewing without a single phone call.</p>
+            <div class="hl-find">
+              <h2>Find the perfect place</h2>
+              <p data-find-copy></p>
+              <div class="hl-find-row">
+                <b class="num" data-find-n>0</b><small>homes match</small>
+                <span class="hl-thumbs" aria-hidden="true"><i></i><i></i><i></i></span>
+                <a class="hl-chip" href="#/listings" aria-label="See all matching homes"><svg><use href="#i-arrow"/></svg></a>
+              </div>
+            </div>
           </div>
 
-          <article class="hl-find">
-            <h2>Homes that match</h2>
-            <p data-find-note></p>
-            <div class="hl-find-row"><b class="num" data-count></b><button type="button" class="hl-round" data-next aria-label="Show next matching home"><span data-icon="arrowRight"></span></button></div>
+          <article class="hl-card" data-card aria-live="polite">
+            <button type="button" class="hl-chip hl-card-next" data-act="next" aria-label="Show the next matching home"><svg><use href="#i-arrow"/></svg></button>
+            <h2 data-c="name"></h2>
+            <p class="hl-card-addr"><svg><use href="#i-pin"/></svg><span data-c="addr"></span></p>
+            <p class="hl-card-desc" data-c="desc"></p>
+            <ul class="hl-card-spec" data-c="spec"></ul>
+            <p class="hl-card-price num" data-c="price"></p>
+            <div class="hl-card-acts">
+              <button type="button" data-act="like" aria-pressed="false"><svg><use href="#i-heart"/></svg><small class="num" data-c="likes"></small><span class="vh">Like</span></button>
+              <button type="button" data-act="save" aria-pressed="false"><svg><use href="#i-save"/></svg><small class="num" data-c="saves"></small><span class="vh">Save</span></button>
+              <button type="button" data-act="share"><svg><use href="#i-share"/></svg><small>Share</small></button>
+            </div>
           </article>
-
-          <article class="hl-detail" data-detail aria-live="polite"></article>
+          <button type="button" class="hl-brand" data-act="book" aria-label="Book a viewing of this home"><svg><use href="#i-mark"/></svg></button>
         </section>
 
-        <section class="hl-below">
-          <section class="hl-card hl-list hl-reveal" aria-labelledby="hl-list-h">
-            <div class="hl-card-head"><h2 id="hl-list-h">Matching homes</h2><button type="button" class="hl-link" data-clear>Clear filters</button></div>
-            <ul class="hl-homes" data-homes></ul>
-          </section>
-          <section class="hl-card hl-reveal" aria-labelledby="hl-price-h">
-            <div class="hl-card-head"><h2 id="hl-price-h">Price history</h2><span class="hl-meta" data-price-meta></span></div>
-            <div data-price></div>
-          </section>
-          <section class="hl-card hl-reveal" aria-labelledby="hl-view-h">
-            <div class="hl-card-head"><h2 id="hl-view-h">Your viewings</h2></div>
-            <ul class="hl-views" data-views></ul>
-            <button type="button" class="hl-book" data-book>Book a viewing</button>
-          </section>
-          <section class="hl-card hl-reveal" aria-labelledby="hl-agent-h">
-            <div class="hl-card-head"><h2 id="hl-agent-h">Agent notes</h2><span class="hl-meta">Sample</span></div>
-            <ul class="hl-views" data-agent-notes>
-              <li><span>Open house prep</span><b>Sat 11:00</b></li>
-              <li><span>Inspection window</span><b>Tue–Thu</b></li>
-              <li><span>Offer readiness</span><b>Docs ready</b></li>
-              <li><span>Neighborhood brief</span><b>Schools · parks</b></li>
-              <li><span>Comps refresh</span><b>3 new</b></li>
-              <li><span>Buyer shortlist</span><b>8 homes</b></li>
-            </ul>
-          </section>
-        </section>
-        <p class="db-sample hl-foot">Sample data · fictional</p>
-      </div>
-    </main>
+        <!-- INNER PAGES: one frosted sheet inside the same frame -->
+        <section data-db-page="listings" class="hl-sheet" hidden></section>
+        <section data-db-page="showings" class="hl-sheet" hidden></section>
+        <section data-db-page="settings" class="hl-sheet" hidden></section>
+      </main>
+    </div>
+
+    <a class="hl-corner hl-corner--cta" href="#/showings">Book a viewing</a>
   </div>
-  <div class="hl-toast" data-toast hidden role="status"></div>
+
+  <div class="hl-drawer" data-drawer hidden role="dialog" aria-modal="true" aria-labelledby="hl-drawer-title"><div class="hl-drawer-panel" data-drawer-panel></div></div>
+  <div class="hl-toast" data-toast role="status" aria-live="polite" hidden></div>
   <script src="app.js"></script>
 </body>
 </html>

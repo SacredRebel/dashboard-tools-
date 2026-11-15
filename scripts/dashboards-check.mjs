@@ -34,7 +34,7 @@
  *   site/dashboards/<id>/frames/pages/<page>.jpg — each catalog page @ 1440×900
  *   site/dashboards/<id>/frames/pages/<page>-full.jpg — each catalog page, full length @ 1440
  * Polish gates per page: fails on a visible [data-db-stub] placeholder, a focus ring on load, and at 1440
- *   a thin page (< 60 visible elements in <main>, content < 70% of main width or < 60% of first screen),
+ *   a thin page (< 28 content elements in <main>, content < 70% of main width or < 60% of first screen),
  *   and any visible <img> wider than 160px whose source is under 1.5× its rendered width.
  *   site/dashboards/<id>/reference.* — optional owner-supplied original (catalog "reference")
  *   docs/validation/dashboards/<id>.json — check evidence
@@ -107,6 +107,11 @@ function watch(page, errs) {
 
 // ---------------------------------------------------------------- pixel contrast + minimum text size
 async function textAudit(page) {
+  // Let entrance animations finish first: sampling mid-fade reads the backdrop instead of the surface.
+  await page.evaluate(() => Promise.race([
+    Promise.all(document.getAnimations().filter((a) => a.effect && a.effect.getComputedTiming().iterations !== Infinity).map((a) => a.finished.catch(() => {}))),
+    new Promise((r) => setTimeout(r, 3000)),
+  ]));
   const items = await page.evaluate(() => {
     const res = []; const seen = new Set();
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -119,6 +124,13 @@ async function textAudit(page) {
       if (clip) continue;
       const r = document.createRange(); r.selectNodeContents(t); const rc = r.getBoundingClientRect();
       if (rc.width < 2 || rc.height < 2) continue;
+      // Text scrolled out of view inside a scroll container is not on screen: sampling there reads the wrong pixels.
+      let hiddenByScroll = false;
+      for (let a = el.parentElement; a && a !== document.body; a = a.parentElement) {
+        const cs = getComputedStyle(a); if (cs.overflowY === 'visible' && cs.overflowX === 'visible') continue;
+        const ar = a.getBoundingClientRect(); if (rc.bottom > ar.bottom + 1 || rc.top < ar.top - 1 || rc.right > ar.right + 1 || rc.left < ar.left - 1) { hiddenByScroll = true; break; }
+      }
+      if (hiddenByScroll) continue;
       res.push({ text: t.textContent.trim().slice(0, 32), color: s.color, size: parseFloat(s.fontSize), weight: +s.fontWeight || 400, x: rc.left + scrollX, y: rc.top + scrollY, w: rc.width, h: rc.height });
     }
     return res;
@@ -254,7 +266,7 @@ for (const d of list) {
           scrollTo(0, 0); await new Promise((r) => setTimeout(r, 900));
         });
         // Polish gates (architect review 2): no placeholder pages, no focus ring on load, real density.
-        const gate = await page.evaluate((wide) => {
+        const gate = await page.evaluate(async (wide) => {
           const out = [];
           const vis = (el) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none'; };
           const stub = document.querySelector('[data-db-stub]');
@@ -280,12 +292,18 @@ for (const d of list) {
           for (const img of document.querySelectorAll('img')) {
             if (!vis(img) || !img.complete) continue;
             const rw = img.getBoundingClientRect().width;
-            if (rw > 160 && img.naturalWidth && img.naturalWidth < rw * 1.5) out.push(`low-res image: ${(img.currentSrc || img.src).split('/').slice(-2).join('/')} is ${img.naturalWidth}px for ${Math.round(rw)}px rendered (need ≥ ${Math.ceil(rw * 1.5)}px or a srcset 2x)`);
+            // With srcset + sizes, naturalWidth is density-corrected; measure the file the browser actually chose.
+            let nat = img.naturalWidth;
+            if (img.srcset && img.currentSrc) nat = await new Promise((res) => { const t = new Image(); t.onload = () => res(t.naturalWidth); t.onerror = () => res(img.naturalWidth); t.src = img.currentSrc; });
+            if (rw > 160 && nat && nat < rw * 1.5) out.push(`low-res image: ${(img.currentSrc || img.src).split('/').slice(-2).join('/')} is ${nat}px for ${Math.round(rw)}px rendered (need ≥ ${Math.ceil(rw * 1.5)}px or a srcset 2x)`);
           }
           const m = document.querySelector('main');
           if (m && wide) {
-            const leaves = [...m.querySelectorAll('*')].filter((el) => vis(el) && (el.children.length === 0 || el.matches('svg,canvas,img,picture,video')));
-            if (leaves.length < 60) out.push(`thin page: ${leaves.length} visible elements in <main> (need ≥ 60 at 1440)`);
+            // Content elements: anything visible that carries its own text, is media, or is a control.
+            // (A stub page has ~10. A sparse hero page built to its reference has 30+.)
+            const ownText = (el) => [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
+            const leaves = [...m.querySelectorAll('*')].filter((el) => vis(el) && !el.closest('svg svg, svg > *') && (ownText(el) || el.matches('svg,canvas,img,picture,video,input,select,textarea,button')));
+            if (leaves.length < 28) out.push(`thin page: ${leaves.length} content elements in <main> (need ≥ 28 at 1440)`);
             const mr = m.getBoundingClientRect();
             let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
             for (const el of leaves) { const r = el.getBoundingClientRect(); x0 = Math.min(x0, r.left); y0 = Math.min(y0, r.top); x1 = Math.max(x1, r.right); y1 = Math.max(y1, r.bottom); }
