@@ -1,8 +1,21 @@
 /* Shared material recipes — liquid glass, clay, neumorph, gold-edge.
-   Apply with .mat-glass / .mat-clay / .mat-neo / .mat-gold-edge.
-   Tokens only; no raw hex. Use where the reference implies the material. */
+   Apply with .mat-glass / .mat-glass-frost|liquid|dark|holo / .mat-clay / .mat-neo / .mat-gold-edge.
+   Tokens only; no raw hex. Use where the reference implies the material.
+
+   Liquid glass = 5 layers: backdrop blur → (optional refraction) → tint → edge light → specular. */
+
+/* Hidden SVG filter for liquid refraction (referenced by mat-glass-liquid) */
+.mat-glass-svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
 
 .mat-glass {
+  position: relative;
+  isolation: isolate;
   background: color-mix(in srgb, var(--surface, #fff) 72%, transparent);
   border: 1px solid color-mix(in srgb, var(--border, #fff) 70%, transparent);
   box-shadow:
@@ -11,6 +24,165 @@
     inset 0 -1px 0 rgb(0 0 0 / 0.08);
   backdrop-filter: blur(18px) saturate(1.2);
   -webkit-backdrop-filter: blur(18px) saturate(1.2);
+}
+
+/* ——— 5-layer glass variants ——— */
+
+.mat-glass-frost,
+.mat-glass-liquid,
+.mat-glass-dark,
+.mat-glass-holo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.mat-glass-frost::before,
+.mat-glass-liquid::before,
+.mat-glass-dark::before,
+.mat-glass-holo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    125deg,
+    rgb(255 255 255 / 0.35) 0%,
+    rgb(255 255 255 / 0) 42%,
+    rgb(255 255 255 / 0.08) 100%
+  );
+  mix-blend-mode: soft-light;
+  opacity: 0.85;
+  transition: transform var(--dur-2, 150ms) var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.mat-glass-frost > *,
+.mat-glass-liquid > *,
+.mat-glass-dark > *,
+.mat-glass-holo > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Frost — airy nearly-white panes (Mauve, Veil, Haven) */
+.mat-glass-frost {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--surface, #fff) 18%, transparent),
+      color-mix(in srgb, var(--surface, #fff) 10%, transparent)
+    );
+  border: 1px solid color-mix(in srgb, var(--surface, #fff) 55%, transparent);
+  box-shadow:
+    0 24px 48px rgb(40 30 50 / 0.1),
+    0 2px 8px rgb(40 30 50 / 0.06),
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    inset 1px 0 0 rgb(255 255 255 / 0.35),
+    inset 0 -1px 0 rgb(30 20 40 / 0.06),
+    inset -1px 0 0 rgb(30 20 40 / 0.04);
+  backdrop-filter: blur(22px) saturate(1.5) brightness(1.05);
+  -webkit-backdrop-filter: blur(22px) saturate(1.5) brightness(1.05);
+}
+
+/* Liquid — bright rim, soft inner glow (Prism, Saffron, Clima) */
+.mat-glass-liquid {
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--surface, #fff) 16%, transparent),
+      color-mix(in srgb, var(--accent, #c4a574) 8%, transparent) 55%,
+      color-mix(in srgb, var(--surface, #fff) 10%, transparent)
+    );
+  border: 1px solid color-mix(in srgb, var(--surface, #fff) 65%, transparent);
+  box-shadow:
+    0 28px 56px rgb(20 30 28 / 0.22),
+    0 4px 12px rgb(20 30 28 / 0.1),
+    inset 0 1px 0 rgb(255 255 255 / 0.6),
+    inset 1px 0 0 rgb(255 255 255 / 0.4),
+    inset 0 -1px 0 rgb(0 0 0 / 0.1),
+    inset -1px 0 0 rgb(0 0 0 / 0.06),
+    inset 0 0 40px color-mix(in srgb, var(--accent, #c4a574) 12%, transparent);
+  backdrop-filter: blur(26px) saturate(1.65) brightness(1.06);
+  -webkit-backdrop-filter: blur(26px) saturate(1.65) brightness(1.06);
+}
+
+@supports (backdrop-filter: url(#mat-liquid-refract)) {
+  .mat-glass-liquid {
+    backdrop-filter: url(#mat-liquid-refract) blur(22px) saturate(1.65) brightness(1.06);
+    -webkit-backdrop-filter: url(#mat-liquid-refract) blur(22px) saturate(1.65) brightness(1.06);
+  }
+}
+
+/* Dark glass — cinematic rooms (Atrium, Hearth, Forge, Kumo) */
+.mat-glass-dark {
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--surface, #1a1510) 55%, transparent),
+      color-mix(in srgb, var(--surface-2, #0e0c0a) 72%, transparent)
+    );
+  border: 1px solid color-mix(in srgb, var(--border, #fff) 18%, transparent);
+  box-shadow:
+    0 24px 48px rgb(0 0 0 / 0.4),
+    0 2px 8px rgb(0 0 0 / 0.25),
+    inset 0 1px 0 rgb(255 255 255 / 0.14),
+    inset 1px 0 0 rgb(255 255 255 / 0.08),
+    inset 0 -1px 0 rgb(0 0 0 / 0.35),
+    inset -1px 0 0 rgb(0 0 0 / 0.2);
+  backdrop-filter: blur(20px) saturate(1.35) brightness(1.02);
+  -webkit-backdrop-filter: blur(20px) saturate(1.35) brightness(1.02);
+}
+
+/* Holo — cyan edge glow + scanline (Aether, Citadel) */
+.mat-glass-holo {
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--accent, #00e5ff) 12%, transparent),
+      color-mix(in srgb, var(--surface, #0a1528) 78%, transparent) 42%,
+      color-mix(in srgb, var(--surface-2, #0f1e36) 85%, transparent)
+    );
+  border: 1px solid color-mix(in srgb, var(--accent, #00e5ff) 42%, transparent);
+  box-shadow:
+    0 0 28px color-mix(in srgb, var(--accent, #00e5ff) 22%, transparent),
+    0 16px 40px rgb(0 0 0 / 0.4),
+    inset 0 0 32px color-mix(in srgb, var(--accent, #00e5ff) 10%, transparent),
+    inset 0 1px 0 rgb(255 255 255 / 0.16),
+    inset 1px 0 0 rgb(255 255 255 / 0.08);
+  backdrop-filter: blur(16px) saturate(1.4) brightness(1.04);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4) brightness(1.04);
+}
+.mat-glass-holo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.03;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgb(255 255 255 / 0.9) 2px,
+    rgb(255 255 255 / 0.9) 3px
+  );
+}
+
+/* Specular tracks pointer when data-specular is set via FX */
+[data-mat-specular]::before {
+  transform: translate(var(--spec-x, 0), var(--spec-y, 0));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mat-glass-frost::before,
+  .mat-glass-liquid::before,
+  .mat-glass-dark::before,
+  .mat-glass-holo::before {
+    transition: none;
+  }
 }
 
 .mat-glass-dense {

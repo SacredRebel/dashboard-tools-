@@ -223,7 +223,7 @@ body {
   width: 100%;
 }
 /* Three-column board (tests | DNA | vitamins). Lives inside overview even when
-   dense-pages sets overview to display:contents. */
+   ui mount may set overview to display:contents. */
 .me-board {
   display: grid;
   grid-template-columns: minmax(280px, 1.05fr) minmax(240px, 0.85fr) minmax(260px, 0.95fr);
@@ -235,7 +235,7 @@ body {
 .me-main > [data-db-page-host] {
   width: 100%;
 }
-.me-main > [data-db-page-host] > .db-dense-page {
+.me-main > [data-db-page-host] > .db-ui-page {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 22px;
@@ -746,13 +746,13 @@ body {
 .dbp-card strong, .dbp-row, .dbp-page p { color: #141414 !important; }
 
 /* dense-kit range/state chips — accent #5b7cfa fails white text AA */
-[data-db-page-host] .db-dense-seg {
+[data-db-page-host] .db-ui-seg {
   background: #eef0f4 !important;
 }
-[data-db-page-host] .db-dense-seg button {
+[data-db-page-host] .db-ui-seg button {
   color: #3a3f4d !important;
 }
-[data-db-page-host] .db-dense-seg button[aria-pressed="true"] {
+[data-db-page-host] .db-ui-seg button[aria-pressed="true"] {
   background: #1a1f2e !important;
   color: #ffffff !important;
 }

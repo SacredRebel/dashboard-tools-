@@ -567,7 +567,7 @@ if (typeof staggerReveal === "function") staggerReveal();
   }
   main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
   if (window.DB?.onVisible) window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
-  if (window.DB?.dense) window.DB.dense.mount({ main, overview, pages: PAGES, brand: "Ember Rooms" });
+  if (window.DB?.ui) window.DB.ui.mount({ main, overview, pages: PAGES, brand: "Ember Rooms" });
 })();
 /* === /DB multipage polish === */
 document.documentElement.dataset.ready = 'true';

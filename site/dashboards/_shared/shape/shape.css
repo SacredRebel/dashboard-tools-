@@ -1,0 +1,42 @@
+/* Shape kit — clip-path outlines; shadows via drop-shadow wrappers */
+
+.shape-shadow {
+  filter:
+    drop-shadow(0 18px 40px rgb(0 0 0 / 0.22))
+    drop-shadow(0 2px 6px rgb(0 0 0 / 0.12));
+}
+
+.shape-shadow-soft {
+  filter:
+    drop-shadow(0 12px 28px rgb(0 0 0 / 0.14))
+    drop-shadow(0 1px 3px rgb(0 0 0 / 0.08));
+}
+
+.shape-shadow-glow {
+  filter:
+    drop-shadow(0 0 18px color-mix(in srgb, var(--accent, #00e5ff) 45%, transparent))
+    drop-shadow(0 12px 32px rgb(0 0 0 / 0.35));
+}
+
+[data-shape] {
+  /* clip-path applied by bind.js; keep overflow hidden as fallback */
+  will-change: clip-path;
+}
+
+[data-shape-stroke] {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: var(--shape-stroke, var(--accent, #00e5ff));
+  z-index: 2;
+}
+[data-shape-stroke] svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Focus follows shape: draw ring as SVG stroke on focus-within */
+.shape-focus:focus-within > [data-shape-stroke] {
+  color: var(--ring, var(--accent, #3b82f6));
+}

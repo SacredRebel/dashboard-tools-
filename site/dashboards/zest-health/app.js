@@ -198,11 +198,11 @@
         document.documentElement.dataset.motionPaused = visible ? '' : '1';
       });
     }
-    if (!window.DB?.dense) {
-      console.error('DB.dense missing — load ../_shared/dense-pages.js');
+    if (!window.DB?.ui) {
+      console.error('DB.ui missing — load ../_shared/ui/index.js');
       return;
     }
-    window.DB.dense.mount({ main, overview, pages: PAGES, brand: "Zest Health" });
+    window.DB.ui.mount({ main, overview, pages: PAGES, brand: "Zest Health" });
     if (window.DB?.fx) window.DB.fx.remount(overview);
     void reduce;
   })();

@@ -20,10 +20,33 @@ Contrast: text and icons sit on layer 1 at AA. Charts and KPIs stay on opaque fi
 
 ---
 
+## Liquid glass (5 layers)
+
+A glass pane is five layers, not one tint. Live classes: `mat-glass-frost` · `mat-glass-liquid` · `mat-glass-dark` · `mat-glass-holo` in [`site/dashboards/_shared/fx/materials.css`](../../site/dashboards/_shared/fx/materials.css).
+
+1. **Backdrop** — `backdrop-filter: blur(18–28px) saturate(140–180%) brightness(1.05)` over a real photo, haze or 3D.
+2. **Refraction** (liquid only) — SVG `feTurbulence` + `feDisplacementMap` via `backdrop-filter: url(#mat-liquid-refract)` when supported; plain blur is the fallback.
+3. **Tint** — 6–18% fill with a top-to-bottom (or diagonal) gradient.
+4. **Edge light** — inset white highlight on top/left, darker inset on bottom/right, 1px outer stroke at 10–20%.
+5. **Specular** — soft diagonal highlight (`::before`, `mix-blend-mode: soft-light`); shifts a few px with pointer when `data-mat-specular` is set.
+
+Plus a wide soft shadow and a small contact shadow. Text on glass needs a scrim or denser tint until it passes AA. Glass needs something behind it — a photo, gradient haze or WebGL.
+
+| Variant | Best for |
+|---|---|
+| `mat-glass-frost` | Mauve, Veil, Haven — airy nearly-white panes |
+| `mat-glass-liquid` | Prism, Saffron, Clima — bright rim, soft inner glow |
+| `mat-glass-dark` | Atrium, Hearth, Forge, Kumo — cinematic rooms |
+| `mat-glass-holo` | Aether, Citadel — cyan edge glow + 3% scanlines |
+
+Gates require ≥ 3 surfaces ≥ 160px with `backdrop-filter` on the overview.
+
+---
+
 ## Recipes (live CSS)
 
 ```css
-/* Glass — light */
+/* Glass — light (legacy single-tint; prefer mat-glass-frost / liquid) */
 .mat-glass {
   background: var(--mat-glass-fill);
   border: 1px solid var(--mat-glass-edge);
@@ -85,8 +108,11 @@ Contrast: text and icons sit on layer 1 at AA. Charts and KPIs stay on opaque fi
 
 | Recipe id | Best for | Dashboards (examples) |
 |---|---|---|
-| `glass` | Light wellness, soft product boards | cortex-well, mauve-ledger, lull-sleep |
-| `glass-dark` | Cinematic / neon | pulsar-analytics, citadel-wall, clima-pane |
+| `glass` / `glass-frost` | Light wellness, soft product boards | cortex-well, mauve-ledger, lull-sleep, haven-listings |
+| `glass-liquid` | Phone shells, chunky controls | saffron-dusk, prism-workspace, clima-pane |
+| `glass-dark` | Cinematic / neon rooms | atrium-living, forge-fitness, kumo-payroll |
+| `glass-holo` | Fleet / HUD | citadel-wall, aether-pane, copper-radar |
+| `glass-dark` (legacy) | Cinematic / neon | pulsar-analytics, citadel-wall, clima-pane |
 | `clay` | Soft product, music, studio | mallow-music, pebble-studio, taffy-analytics, orbit-clay |
 | `neu` | Soft ops / device | glacier-ops, ember-rooms |
 | `holo` | Fleet, security, sci-fi | citadel-wall, copper-radar |

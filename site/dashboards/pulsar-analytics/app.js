@@ -588,9 +588,9 @@ if (typeof staggerReveal === "function") staggerReveal();
   }
   main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
   if (window.DB?.onVisible) window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
-  if (window.DB?.dense) {
-    const D = window.DB.dense;
-    window.DB.dense.mount({
+  if (window.DB?.ui) {
+    const D = window.DB.ui;
+    window.DB.ui.mount({
       main, overview, pages: PAGES, brand: "Pulsar Analytics",
       renderPage(page) {
         if (page.id === 'traffic') {
