@@ -1,21 +1,142 @@
 {
   "reference": "reference.jpg (the lamp screen: third panel, and the cropped first panel)",
   "unit": "percent of the frame's width, measured from the frame's top-left corner; viewport 1440 wide, overview page, default variant",
-  "frame": { "min_w_vw": 90, "aspect": [0.5, 0.62] },
+  "frame": {
+    "min_w_vw": 90,
+    "aspect": [
+      0.5,
+      0.62
+    ]
+  },
   "boxes": {
-    "title":    { "x": 35.7, "y": 0.5, "w": 28.5, "max_h": 6, "note": "title sits in the poured tab at the top centre of the frame" },
-    "search":   { "x": 6.9, "y": 2.1, "w": 22.2, "h": 3.5 },
-    "actions":  { "x": 84.6, "y": 2.1, "w": 13.2, "note": "three round buttons, top right" },
-    "sidebar":  { "x": 2.4, "y": 8.3, "w": 3.2, "h": 41.7, "note": "slim icon rail, full height of the content" },
-    "ring":     { "x": 29.9, "y": 8.5, "w": 41.7, "h": 41.7, "note": "the large outer circle, centred in the frame" },
-    "lamp":     { "x": 41.9, "y": 14.2, "w": 17.8, "h": 13.9, "note": "the lamp shade (dome only, not the cord): large, pale grey, centred in the ring" },
-    "readout":  { "x": 45.5, "y": 34.0, "w": 9.7, "h": 3.8, "note": "small light '12/7' under the lamp, not a headline" },
-    "power":    { "x": 47.9, "y": 43.6, "w": 5.5, "h": 5.5 },
-    "controls": { "x": 8.3, "y": 16.5, "w": 13.9, "h": 35.3, "note": "light label, intensity slider, schedule, donut: one column left of the ring, not overlapping it" },
-    "donut":    { "x": 10.1, "y": 39.1, "w": 12.4, "h": 12.4, "note": "orange ring donut with an inset centre" },
-    "room":     { "count": 5, "min_w": 2.6, "max_w": 5.5, "within": { "x": [22, 38], "y": [11, 54] }, "note": "room buttons sit on the ring's left arc" },
-    "card-a":   { "x": 72.1, "y": 8.8, "w": 25.0, "h": 9.3 },
-    "card-b":   { "x": 72.1, "y": 20.4, "w": 25.0, "h": 14.1 },
-    "video":    { "x": 72.1, "y": 36.6, "w": 25.0, "h": 14.1 }
+    "title": {
+      "x": 35.7,
+      "y": 0.5,
+      "w": 28.5,
+      "max_h": 6,
+      "note": "title sits in the poured tab at the top centre of the frame"
+    },
+    "search": {
+      "x": 6.9,
+      "y": 2.1,
+      "w": 22.2,
+      "h": 3.5
+    },
+    "actions": {
+      "x": 84.6,
+      "y": 2.1,
+      "w": 13.2,
+      "note": "three round buttons, top right"
+    },
+    "sidebar": {
+      "x": 2.4,
+      "y": 8.3,
+      "w": 3.2,
+      "h": 41.7,
+      "note": "slim icon rail, full height of the content"
+    },
+    "ring": {
+      "x": 29.9,
+      "y": 8.5,
+      "w": 41.7,
+      "h": 41.7,
+      "note": "the large outer circle, centred in the frame"
+    },
+    "lamp": {
+      "x": 41.9,
+      "y": 14.2,
+      "w": 17.8,
+      "h": 13.9,
+      "note": "the lamp shade (dome only, not the cord): large, pale grey, centred in the ring",
+      "object": {
+        "min_fill": [0.72, 0.75],
+        "aspect": 1.28,
+        "aspect_tol": 0.2,
+        "profile": {
+          "at": [
+            0.1,
+            0.5,
+            0.9
+          ],
+          "width": [
+            0.16,
+            0.7,
+            0.98
+          ],
+          "tol": 0.15
+        },
+        "min_shade": 0.05,
+        "no_clip": true,
+        "note": "bell-shaped shade: thin neck at the top, flaring to a wide rim; satin silver-grey with a visible light-to-dark gradient"
+      }
+    },
+    "readout": {
+      "x": 45.5,
+      "y": 34.0,
+      "w": 9.7,
+      "h": 3.8,
+      "note": "small light '12/7' under the lamp, not a headline"
+    },
+    "power": {
+      "x": 47.9,
+      "y": 43.6,
+      "w": 5.5,
+      "h": 5.5
+    },
+    "controls": {
+      "x": 8.3,
+      "y": 16.5,
+      "w": 13.9,
+      "h": 35.3,
+      "note": "light label, intensity slider, schedule, donut: one column left of the ring, not overlapping it"
+    },
+    "donut": {
+      "x": 10.1,
+      "y": 39.1,
+      "w": 12.4,
+      "h": 12.4,
+      "note": "orange ring donut with an inset centre"
+    },
+    "room": {
+      "count": 5,
+      "min_w": 2.6,
+      "max_w": 5.5,
+      "within": {
+        "x": [
+          22,
+          38
+        ],
+        "y": [
+          11,
+          54
+        ]
+      },
+      "note": "room buttons sit on the ring's left arc"
+    },
+    "card-a": {
+      "x": 72.1,
+      "y": 8.8,
+      "w": 25.0,
+      "h": 9.3
+    },
+    "card-b": {
+      "x": 72.1,
+      "y": 20.4,
+      "w": 25.0,
+      "h": 14.1
+    },
+    "video": {
+      "x": 72.1,
+      "y": 36.6,
+      "w": 25.0,
+      "h": 14.1
+    },
+    "view-ellipse": {
+      "x": 38.0,
+      "y": 27.5,
+      "w": 23.7,
+      "tol": 4,
+      "note": "dashed '360° view' ellipse directly under the lamp"
+    }
   }
 }

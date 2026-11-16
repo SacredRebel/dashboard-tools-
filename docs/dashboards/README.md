@@ -57,3 +57,5 @@ New families can be added to `style_families` in the catalog when a dashboard do
 - **Works at 375px and 1440px**, keyboard reachable, AA contrast, `prefers-reduced-motion` respected, no polling, no console errors. `scripts/dashboards-check.mjs` enforces the mechanical parts.
 
 **Layout spec.** When a dashboard has a `layout.json`, its reference layout is checked by numbers: [07-layout-spec.md](07-layout-spec.md). Read it before building.
+
+**Elements and objects.** The full guardrail framework, including how a 3D hero object is specified and built: [08-object-spec.md](08-object-spec.md).
