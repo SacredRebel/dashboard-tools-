@@ -27,7 +27,7 @@
         342,
         82
       ],
-      "note": "the reference's tab bar turned vertical: Today, Progress, Sessions, Profile, icon over label, the active one with a soft glowing ring"
+      "note": "the reference's tab bar turned vertical: four items, each a line icon over a small label on the glass itself (no dark boxes behind items); only the active item has a soft glowing ring"
     },
     "title": {
       "x": 10,
@@ -125,7 +125,7 @@
         305,
         190
       ],
-      "note": "profile card with the avatar tile overlapping its top-left corner, sessions and journeys counts, Share in a poured tab at the bottom left"
+      "note": "profile card with the avatar tile overlapping its top-left corner, sessions and journeys counts, Share in a poured tab at the bottom left; content fills the card: no empty lower half"
     },
     "progress": {
       "x": 75.5,
@@ -159,6 +159,39 @@
         85
       ],
       "note": "dark frosted upgrade strip with a flame mark"
+    },
+    "rail-item": {
+      "count": 4,
+      "min_w": 4,
+      "note": "icon over label, transparent background; the reference's items are light on glass, not black tiles"
+    },
+    "arc-times": {
+      "x": 10,
+      "y": 29,
+      "w": 38,
+      "tol": 3.5,
+      "ref": [
+        228,
+        305,
+        288,
+        55
+      ],
+      "note": "both times sit in the darker lower band of the arc card, under the sun arc; IMSAK and IFTAR labels sit above the arc"
+    },
+    "bell": {
+      "count": 1,
+      "min_w": 13,
+      "ref": [
+        330,
+        350,
+        185,
+        35
+      ],
+      "note": "bell and 'Iftar in 1hr 34min' fully readable in a cut-out tab at the card's bottom right; nothing overlaps the text"
+    },
+    "dune-line": {
+      "count": 3,
+      "note": "at least three layered dune ridge lines inside the dune panel, as in the reference's right screen"
     }
   },
   "requirements": [
@@ -185,6 +218,14 @@
     {
       "id": "R6",
       "text": "Every date bead, water step, day bar and button changes something when clicked"
+    },
+    {
+      "id": "R7",
+      "text": "Three distinct layouts: desktop is a wide board, tablet is its own two-column reflow, phone is the reference's screens. Never swap one for another"
+    },
+    {
+      "id": "R8",
+      "text": "Type matches the reference: thin high-contrast display serif with flourishes for RAMADAN and Good evening; small tracked caps for labels"
     }
   ]
 }
