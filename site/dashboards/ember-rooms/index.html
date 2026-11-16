@@ -39,8 +39,13 @@
   </defs></svg>
 
   <div class="er" data-db-app>
-    <div class="er-board" data-board>
-      <aside class="er-rail" aria-label="Home systems">
+    <div class="er-board" data-board data-ref="frame">
+      <div class="er-title-tab" data-ref="title">
+        <b>Ember Rooms</b>
+        <small>Indoor control centre</small>
+      </div>
+
+      <aside class="er-rail" data-ref="sidebar" aria-label="Home systems">
         <nav class="er-rail-pill" aria-label="Primary">
           <a href="#/overview" class="er-rail-btn" aria-current="page" aria-label="Overview"><svg><use href="#er-home"/></svg></a>
           <a href="#/rooms" class="er-rail-btn" aria-label="Rooms"><svg><use href="#er-bulb"/></svg></a>
@@ -51,39 +56,70 @@
           <a href="#/rooms" class="er-rail-btn" aria-label="Scenes"><svg><use href="#er-music"/></svg></a>
         </nav>
       </aside>
-      <header class="er-top">
-        <label class="er-search"><span class="vh">Search rooms and scenes</span><svg aria-hidden="true"><use href="#er-search"/></svg><input type="search" placeholder="Search rooms, scenes…" autocomplete="off" data-q></label>
-        <div class="er-brand"><b>Ember Rooms</b><small>Indoor control centre</small></div>
-        <div class="er-tools">
-          <button type="button" class="er-orb" aria-label="Undo" data-undo><svg><use href="#er-undo"/></svg></button>
-          <button type="button" class="er-orb" aria-label="Redo" data-redo><svg><use href="#er-redo"/></svg></button>
-          <a class="er-orb" href="#/settings" aria-label="Settings"><svg><use href="#er-gear"/></svg></a>
-        </div>
-      </header>
-      <div class="er-hero" data-hero>
-        <img class="er-hero-poster" src="media/hero-poster.png" alt="" width="512" height="640">
-        <canvas data-hero-canvas aria-label="A 3D brushed-aluminium pendant lamp. Drag to turn it." role="img"></canvas>
+
+      <label class="er-search" data-ref="search">
+        <span class="vh">Search rooms and scenes</span>
+        <svg aria-hidden="true"><use href="#er-search"/></svg>
+        <input type="search" placeholder="Search rooms, scenes…" autocomplete="off" data-q>
+      </label>
+
+      <div class="er-tools" data-ref="actions">
+        <button type="button" class="er-orb" aria-label="Undo" data-undo><svg><use href="#er-undo"/></svg></button>
+        <button type="button" class="er-orb" aria-label="Redo" data-redo><svg><use href="#er-redo"/></svg></button>
+        <a class="er-orb" href="#/settings" aria-label="Settings"><svg><use href="#er-gear"/></svg></a>
       </div>
+
+      <span class="er-cord" aria-hidden="true"></span>
+
+      <div class="er-hero" data-hero data-ref="lamp">
+        <img class="er-hero-poster" src="media/hero-poster.png" alt="" width="512" height="640">
+        <canvas data-hero-canvas aria-label="A 3D pale dome pendant lamp. Drag to turn it." role="img"></canvas>
+      </div>
+
       <main class="er-main" id="main">
         <section data-db-page="overview" class="er-over">
-          <div class="er-rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="er-rings" data-ref="ring" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
           <div class="er-orbit" data-orbit></div>
-          <div class="er-centre">
-            <p class="er-arc-hint" aria-hidden="true">360° view</p>
-            <p class="er-frac num" data-frac>12/7</p>
+
+          <p class="er-frac num" data-frac data-ref="readout">12/7</p>
+          <button type="button" class="er-power" data-power data-ref="power" aria-pressed="true" aria-label="Toggle bedroom light"><svg><use href="#er-power"/></svg></button>
+
+          <div class="er-left" data-ref="controls">
             <p class="er-light-label">Bedroom ceiling</p>
-            <button type="button" class="er-power" data-power aria-pressed="true" aria-label="Toggle bedroom light"><svg><use href="#er-power"/></svg></button>
+            <label class="er-intensity">
+              <span>Intensity</span>
+              <output class="num" data-bright-out>68%</output>
+              <input type="range" min="0" max="100" value="68" data-bright aria-valuetext="68 percent">
+            </label>
+            <div class="er-sched">
+              <span class="er-k">Schedule</span>
+              <button type="button" class="er-time" data-start>8:30 AM</button>
+              <button type="button" class="er-time" data-end>4:30 PM</button>
+            </div>
+            <div class="er-donut" data-ref="donut" data-gauge aria-hidden="true">
+              <svg viewBox="0 0 100 100">
+                <circle class="er-donut-track" cx="50" cy="50" r="36"/>
+                <circle class="er-donut-arc" data-gauge-arc cx="50" cy="50" r="36"/>
+              </svg>
+              <span class="er-donut-well"><svg><use href="#er-bulb"/></svg></span>
+            </div>
           </div>
-          <div class="er-left">
-            <label class="er-intensity"><span>Intensity</span><output class="num" data-bright-out>68%</output><input type="range" min="0" max="100" value="68" data-bright aria-valuetext="68 percent"></label>
-            <div class="er-sched"><span class="er-k">Schedule</span><button type="button" class="er-time" data-start>8:30 AM</button><button type="button" class="er-time" data-end>4:30 PM</button></div>
-            <div class="er-gauge" data-gauge aria-hidden="true"><svg viewBox="0 0 100 100"><circle class="er-gauge-track" cx="50" cy="50" r="40"/><circle class="er-gauge-arc" data-gauge-arc cx="50" cy="50" r="40"/></svg><span class="er-gauge-ico"><svg><use href="#er-sun"/></svg></span></div>
-          </div>
-          <div class="er-right">
-            <article class="er-tile er-chart" aria-labelledby="er-ch1"><h2 id="er-ch1">Usage</h2><p class="er-tile-meta"><span class="num" data-usage>42</span> kWh · 7 days</p><div class="er-spark" data-chart="usage"></div></article>
-            <article class="er-tile er-chart er-chart-2" aria-labelledby="er-ch2"><h2 id="er-ch2">Peak</h2><p class="er-tile-meta"><span class="num" data-peak>9.4</span> kW · today</p><div class="er-spark" data-chart="peak"></div></article>
-            <article class="er-tile er-video"><img src="media/room.webp" alt="Dim living room preview" width="1280" height="720"><button type="button" class="er-play" data-play aria-pressed="false" aria-label="Play room preview"><svg><use href="#er-play"/></svg></button><p>Simulated room view</p></article>
-          </div>
+
+          <article class="er-tile er-chart" data-ref="card-a" aria-labelledby="er-ch1">
+            <h2 id="er-ch1">Usage</h2>
+            <p class="er-tile-meta"><span class="num" data-usage>42</span> kWh · 7 days</p>
+            <div class="er-spark" data-chart="usage"></div>
+          </article>
+          <article class="er-tile er-chart er-chart-2" data-ref="card-b" aria-labelledby="er-ch2">
+            <h2 id="er-ch2">Peak</h2>
+            <p class="er-tile-meta"><span class="num" data-peak>9.4</span> kW · today</p>
+            <div class="er-spark" data-chart="peak"></div>
+          </article>
+          <article class="er-tile er-video" data-ref="video">
+            <img src="media/room.webp" alt="Dim living room preview" width="1280" height="720">
+            <button type="button" class="er-play" data-play aria-pressed="false" aria-label="Play room preview"><svg><use href="#er-play"/></svg></button>
+            <p>Simulated room view</p>
+          </article>
         </section>
         <section data-db-page="rooms" class="er-page" hidden></section>
         <section data-db-page="devices" class="er-page er-climate" hidden></section>

@@ -11,12 +11,13 @@
     toast._id = setTimeout(() => { t.hidden = true; }, 2200);
   }
 
+  /* Left-arc angles (deg): 0 = right, y-down. Sit on the ring circumference. */
   const ROOMS = [
-    { id: 'living', name: 'Living room', icon: 'er-sofa', label: 'LV', on: true, lights: 4, angle: -140, radius: 42 },
-    { id: 'kitchen', name: 'Kitchen', icon: 'er-pot', label: 'KT', on: false, lights: 3, angle: -70, radius: 46 },
-    { id: 'bedroom', name: 'Bedroom', icon: 'er-bed', label: 'BR', on: true, lights: 2, angle: 20, radius: 40 },
-    { id: 'bath', name: 'Bath', icon: 'er-bath', label: 'BA', on: false, lights: 2, angle: 95, radius: 44 },
-    { id: 'study', name: 'Study', icon: 'er-desk', label: 'ST', on: true, lights: 1, angle: 160, radius: 48 },
+    { id: 'living', name: 'Living room', icon: 'er-sofa', label: 'LV', on: true, lights: 4, angle: 228, radius: 49 },
+    { id: 'kitchen', name: 'Kitchen', icon: 'er-pot', label: 'KT', on: false, lights: 3, angle: 204, radius: 49 },
+    { id: 'bedroom', name: 'Bedroom', icon: 'er-bed', label: 'BR', on: true, lights: 2, angle: 180, radius: 49 },
+    { id: 'bath', name: 'Bath', icon: 'er-bath', label: 'BA', on: false, lights: 2, angle: 156, radius: 49 },
+    { id: 'study', name: 'Study', icon: 'er-desk', label: 'ST', on: true, lights: 1, angle: 132, radius: 49 },
   ];
   const EXTRA_ROOMS = [
     { id: 'nursery', name: 'Nursery', icon: 'er-bed', label: 'NU', on: false, lights: 2 },
@@ -72,7 +73,7 @@
       const rad = (r.angle * Math.PI) / 180;
       const x = 50 + Math.cos(rad) * r.radius;
       const y = 50 + Math.sin(rad) * r.radius;
-      return `<button type="button" class="er-room" style="left:${x}%;top:${y}%;--i:${i}" data-room="${r.id}" aria-pressed="${i === S.room}" aria-label="${r.name}">
+      return `<button type="button" class="er-room" data-ref="room" style="left:${x}%;top:${y}%;--i:${i}" data-room="${r.id}" aria-pressed="${i === S.room}" aria-label="${r.name}">
         <svg><use href="#${r.icon}"/></svg><span class="er-room-code">${r.label}</span></button>`;
     }).join('');
   }
@@ -97,7 +98,7 @@
     if (end) end.textContent = TIMES[S.end];
     const arc = $('[data-gauge-arc]');
     if (arc) {
-      const c = 2 * Math.PI * 40;
+      const c = 2 * Math.PI * 36;
       const pct = S.power ? S.bright / 100 : 0;
       arc.style.strokeDasharray = String(c);
       arc.style.strokeDashoffset = String(c * (1 - pct));
@@ -307,7 +308,7 @@
       S.bright = Number(e.target.value);
       const bout = $('[data-bright-out]'); if (bout) bout.textContent = `${S.bright}%`;
       const arc = $('[data-gauge-arc]');
-      if (arc) { const c = 2 * Math.PI * 40; arc.style.strokeDashoffset = String(c * (1 - (S.power ? S.bright / 100 : 0))); }
+      if (arc) { const c = 2 * Math.PI * 36; arc.style.strokeDashoffset = String(c * (1 - (S.power ? S.bright / 100 : 0))); }
       syncHero(); return;
     }
     if (e.target.matches('[data-wind]')) { S.wind = Number(e.target.value); return; }

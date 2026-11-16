@@ -1,5 +1,5 @@
-/* Ember Rooms hero: brushed-aluminium pendant lamp (lathe shade + cord + emissive disc).
-   Pattern mirrors meridian-labs/helix.js: separate module, window.DBHero API, poster fallback. */
+/* Ember Rooms hero: pale dome pendant lamp (real three.js mesh — F8).
+   data-ref="lamp" is on the shade-sized canvas; cord is a separate CSS line. */
 import * as THREE from 'three';
 import { createStage } from '../_shared/three/stage.js';
 
@@ -8,107 +8,91 @@ const hero = document.querySelector('[data-hero]');
 const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
 try {
-  const stage = createStage(canvas, { fov: 28, parallaxDeg: 6, idleSpin: false, toneMappingExposure: 1.08 });
+  const stage = createStage(canvas, { fov: 32, parallaxDeg: 5, idleSpin: false, toneMappingExposure: 1.12 });
   stage.envRoom();
   stage.contactShadow.visible = false;
-  // Frame so cord meets the top edge with clear margin around the shade
-  stage.camera.position.set(0, 0.55, 4.6);
-  stage.key.position.set(-1.4, 3.8, 4.2); stage.key.intensity = 1.45;
+  // Frame the dome shade to fill the lamp box (cord lives in CSS above)
+  stage.camera.position.set(0, 0.05, 3.15);
+  stage.key.position.set(-1.2, 2.4, 3.6); stage.key.intensity = 1.55;
 
   const lamp = new THREE.Group();
 
-  // Long cord from above the frame (reads as hanging from the top edge)
-  const cordMat = new THREE.MeshStandardMaterial({ color: '#2e3036', roughness: 0.65, metalness: 0.2 });
-  const cord = new THREE.Mesh(new THREE.CylinderGeometry(0.014, 0.014, 2.35, 12), cordMat);
-  cord.position.y = 2.05;
+  // Short stub of cord at the top of the shade canvas
+  const cordMat = new THREE.MeshStandardMaterial({ color: '#2e2c2a', roughness: 0.7, metalness: 0.15 });
+  const cord = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.55, 12), cordMat);
+  cord.position.y = 0.95;
   lamp.add(cord);
 
-  // Small ceiling canopy (kept inside canvas)
   const canopyMat = new THREE.MeshStandardMaterial({
-    color: css('--lamp') || '#b5b9c5', roughness: 0.32, metalness: 0.9, envMapIntensity: 1.15,
+    color: css('--lamp') || '#c4c6cc', roughness: 0.38, metalness: 0.55, envMapIntensity: 0.9,
   });
-  const canopy = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.13, 0.06, 28), canopyMat);
-  canopy.position.y = 3.2;
+  const canopy = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.1, 0.05, 24), canopyMat);
+  canopy.position.y = 1.2;
   lamp.add(canopy);
 
-  // Classic pendant bell: narrow neck → flared rim (LatheGeometry)
-  const profile = [
-    new THREE.Vector2(0.015, 0.72),
-    new THREE.Vector2(0.09, 0.7),
-    new THREE.Vector2(0.14, 0.62),
-    new THREE.Vector2(0.22, 0.48),
-    new THREE.Vector2(0.38, 0.28),
-    new THREE.Vector2(0.55, 0.06),
-    new THREE.Vector2(0.64, -0.12),
-    new THREE.Vector2(0.66, -0.22),
-    new THREE.Vector2(0.58, -0.34),
-    new THREE.Vector2(0.4, -0.4),
-    new THREE.Vector2(0.22, -0.38),
-    new THREE.Vector2(0.12, -0.28),
-  ];
+  // Large pale dome shade (hemisphere) — centre of the screen
+  // Large pale matte dome (not a dark metal cone)
   const shadeMat = new THREE.MeshStandardMaterial({
-    color: css('--lamp') || '#b5b9c5',
-    roughness: 0.22,
-    metalness: 0.95,
-    envMapIntensity: 1.35,
+    color: css('--lamp') || '#d2d4da',
+    roughness: 0.62,
+    metalness: 0.12,
+    envMapIntensity: 0.45,
+    side: THREE.DoubleSide,
   });
-  const shade = new THREE.Mesh(new THREE.LatheGeometry(profile, 64), shadeMat);
-  shade.position.y = 0.35;
-  shade.castShadow = false;
+  const shade = new THREE.Mesh(
+    new THREE.SphereGeometry(1.05, 64, 48, 0, Math.PI * 2, 0, Math.PI * 0.62),
+    shadeMat
+  );
+  shade.position.y = 0.18;
   lamp.add(shade);
 
-  // Dark inner liner
+  // Soft inner bowl
   const liner = new THREE.Mesh(
-    new THREE.LatheGeometry([
-      new THREE.Vector2(0.1, -0.26),
-      new THREE.Vector2(0.36, -0.34),
-      new THREE.Vector2(0.52, -0.2),
-      new THREE.Vector2(0.4, 0.08),
-      new THREE.Vector2(0.16, 0.2),
-    ], 40),
-    new THREE.MeshStandardMaterial({ color: '#1c1e24', roughness: 0.9, metalness: 0.15, side: THREE.DoubleSide })
+    new THREE.SphereGeometry(0.98, 48, 32, 0, Math.PI * 2, 0, Math.PI * 0.58),
+    new THREE.MeshStandardMaterial({
+      color: '#f6f4ef', roughness: 0.92, metalness: 0.02, side: THREE.BackSide,
+    })
   );
-  liner.position.y = 0.35;
+  liner.position.y = 0.18;
   lamp.add(liner);
 
-  // Emissive disc — glow follows intensity slider
   const glowMat = new THREE.MeshStandardMaterial({
-    color: '#ffc090',
+    color: '#ffd4a8',
     emissive: new THREE.Color('#ff8a3d'),
-    emissiveIntensity: 1.6,
+    emissiveIntensity: 1.4,
     roughness: 0.55,
     metalness: 0,
     toneMapped: false,
   });
-  const glow = new THREE.Mesh(new THREE.CircleGeometry(0.32, 40), glowMat);
+  const glow = new THREE.Mesh(new THREE.CircleGeometry(0.42, 40), glowMat);
   glow.rotation.x = -Math.PI / 2;
-  glow.position.y = -0.02;
+  glow.position.y = -0.28;
   lamp.add(glow);
 
-  const bulb = new THREE.PointLight('#ffb070', 1.4, 7, 1.5);
-  bulb.position.set(0, -0.05, 0);
+  const bulb = new THREE.PointLight('#ffb070', 1.5, 6, 1.4);
+  bulb.position.set(0, -0.15, 0);
   lamp.add(bulb);
 
-  lamp.position.y = -0.85;
-  lamp.scale.setScalar(0.78); // clear space from canvas edges (F8 rule 4)
+  lamp.position.y = -0.05;
+  lamp.scale.setScalar(1.05);
   stage.root.add(lamp);
 
-  let spin = 0.12, drag = null, intensity = 0.68, power = true;
+  let spin = 0.08, drag = null, intensity = 0.68, power = true;
 
   function applyGlow() {
     const on = power && intensity > 0.02;
-    const e = on ? 0.25 + intensity * 2.8 : 0;
+    const e = on ? 0.3 + intensity * 2.4 : 0;
     glowMat.emissiveIntensity = e;
     glow.visible = on;
-    bulb.intensity = on ? intensity * 2.6 : 0;
-    const warm = new THREE.Color().setHSL(0.075, 0.9, 0.52 + intensity * 0.18);
+    bulb.intensity = on ? intensity * 2.4 : 0;
+    const warm = new THREE.Color().setHSL(0.075, 0.85, 0.55 + intensity * 0.16);
     glowMat.emissive.copy(warm);
     bulb.color.copy(warm);
   }
   applyGlow();
 
   stage.onFrame(() => {
-    if (!drag) spin += 0.001;
+    if (!drag) spin += 0.0008;
     lamp.rotation.y = spin;
   });
 
@@ -134,7 +118,7 @@ try {
     setIntensity(v) { intensity = Math.max(0, Math.min(1, Number(v) || 0)); applyGlow(); },
     setPower(on) { power = !!on; applyGlow(); },
     recolor() {
-      const c = css('--lamp') || '#b5b9c5';
+      const c = css('--lamp') || '#c4c6cc';
       shadeMat.color.set(c); canopyMat.color.set(c); applyGlow();
     },
     poster() {
