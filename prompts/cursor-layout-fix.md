@@ -9,7 +9,7 @@ BRANCH: <cursor/twin-mauve-ledger | cursor/twin-ember-rooms> (your existing pull
 Your last build was reviewed and rejected: it passed the old checks but its layout does not match the reference image. The layout is now a failing check.
 
 1. Merge main into your branch. Main has a new file site/dashboards/<DASHBOARD>/layout.json and a new gate in scripts/dashboards-check.mjs.
-2. Read docs/dashboards/07-layout-spec.md, then site/dashboards/<DASHBOARD>/layout.json, then open site/dashboards/<DASHBOARD>/reference.* and look at it next to the numbers.
+2. Read docs/dashboards/08-object-spec.md (the whole framework and how to build a 3D object) and docs/dashboards/07-layout-spec.md, then site/dashboards/<DASHBOARD>/layout.json, then open site/dashboards/<DASHBOARD>/reference.* and look at it next to the numbers.
 3. Rebuild the overview so every box in layout.json passes:
    - data-ref="frame" on the app frame; data-ref="<name>" on the real visible element for every box.
    - Make the frame a CSS container and position and size in cqw so the numbers in the spec are your CSS values.

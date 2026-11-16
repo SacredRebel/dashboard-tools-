@@ -28,6 +28,7 @@ Written rules did not stop builders from getting the layout wrong while every ot
 | `count` | at least this many visible elements carry the name; every one must pass the size and `within` limits |
 | `min_w`, `max_w`, `min_h`, `max_h` | size limits |
 | `within` | the element's centre must fall inside this x and y range |
+| `object` | measures a 3D hero's silhouette and shading: see [08-object-spec.md](08-object-spec.md) |
 | `note` | what the element is, printed with the failure |
 
 ## How a builder uses it
