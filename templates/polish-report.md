@@ -63,3 +63,19 @@ One row per element. Ids come from `catalog/tools.json`; the routing table is in
 | Images | | | |
 | Motion | | | |
 
+## Owner requirements (required)
+
+One row per requirement id in `layout.json`. Check every row again before every push, at both widths.
+
+| Id | What was done | Evidence (screenshot or compare-sheet box) | Holds at 1440 | Holds at 375 |
+|---|---|---|---|---|
+| R1 | | | | |
+
+## Compare-sheet rounds (required)
+
+| Round | Differences I named | Fixed |
+|---|---|---|
+| 1 | | |
+| 2 | | |
+| 3 | | |
+

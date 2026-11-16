@@ -29,7 +29,21 @@ Written rules did not stop builders from getting the layout wrong while every ot
 | `min_w`, `max_w`, `min_h`, `max_h` | size limits |
 | `within` | the element's centre must fall inside this x and y range |
 | `object` | measures a 3D hero's silhouette and shading: see [08-object-spec.md](08-object-spec.md) |
+| `material` | `"glass"`: the element must have a backdrop blur of at least 8px, a fill no more opaque than 0.62 and a light edge |
+| `ref` | `[x, y, w, h]` in reference-image pixels: the part of the reference this box must look like, used for the compare sheet when the box is not at the reference's own position |
 | `note` | what the element is, printed with the failure |
+
+Top-level keys beside `frame` and `boxes`:
+
+| Key | Meaning |
+|---|---|
+| `ref_frame` | `[x, y, width]` of the frame inside the reference image, in pixels. Lets the check cut the matching piece of the reference for every box |
+| `frame.backdrop` | a description; requires a `data-ref="backdrop"` element with a gradient, image, canvas or SVG covering the frame |
+| `nav` | `{ "ref": "<box name>", "min_routes": n }`: every control in that box opens its own page |
+| `requirements` | owner requests, `{ "id": "R1", "text": "…" }`; each must be answered in the polish report |
+| `adaptation` | set when the reference lacks this screen size and the maintainer designed it |
+
+The whole process these keys belong to: [00-twin-contract.md](00-twin-contract.md).
 
 ## How a builder uses it
 

@@ -49,7 +49,10 @@
       "h": 13.9,
       "note": "the lamp shade (dome only, not the cord): large, pale grey, centred in the ring",
       "object": {
-        "min_fill": [0.72, 0.75],
+        "min_fill": [
+          0.72,
+          0.75
+        ],
         "aspect": 1.28,
         "aspect_tol": 0.2,
         "profile": {
@@ -138,5 +141,28 @@
       "tol": 4,
       "note": "dashed '360° view' ellipse directly under the lamp"
     }
-  }
+  },
+  "ref_frame": [
+    10,
+    732,
+    864
+  ],
+  "nav": {
+    "ref": "sidebar",
+    "min_routes": 7
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "All seven sidebar icons open their own working page"
+    },
+    {
+      "id": "R2",
+      "text": "Room buttons on the arc switch the room: readout, intensity, schedule and donut change"
+    },
+    {
+      "id": "R3",
+      "text": "The lamp in lamp.js stays as built by the maintainer"
+    }
+  ]
 }

@@ -1,3 +1,5 @@
+> **Building or changing a gallery dashboard? Read [00-twin-contract.md](00-twin-contract.md) first.** It is the definition of done and the order of work.
+
 # Dashboard style gallery
 
 A growing collection of **complete, working reference dashboards**, each with its own theme and variants, grouped by **style family** and **use case**. Agents pick one as the starting look for a new product; people browse them visually on the showcase site → **Dashboards**.

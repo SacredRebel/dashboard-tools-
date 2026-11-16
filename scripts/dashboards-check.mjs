@@ -425,6 +425,102 @@ for (const d of list) {
           // Full-length capture so reviewers see everything below the fold, not just 1440×900.
           await page.screenshot({ path: join(pagesDir, `${pg.id}-full.jpg`), type: 'jpeg', quality: 80, fullPage: true });
         }
+        // Strict gates for dashboards with a layout.json (docs/dashboards/00-twin-contract.md): compare sheet, materials, report, nav pages, dead controls.
+        if (pg.id === d.pages[0].id && variant.id === 'default' && w === 1440 && isFile(join(site, 'dashboards', d.id, 'layout.json'))) {
+          const spec = JSON.parse(readFileSync(join(site, 'dashboards', d.id, 'layout.json'), 'utf8'));
+          const sdir = join(site, 'dashboards', d.id); const strict = []; const kept = errs.slice(); // in-page navigation below clears errs (see watch), so keep what was found so far
+          const startHash = await page.evaluate(() => { scrollTo(0, 0); return location.hash; });
+          // 1. Compare sheet: every box, reference crop beside build crop. The builder must open it.
+          try {
+            const refFile = ['reference.png', 'reference.jpg', 'reference.jpeg', 'reference.webp'].map((f) => join(sdir, f)).find(isFile);
+            const rows = [];
+            for (const [name, b] of Object.entries(spec.boxes || {})) {
+              let r = b.ref;
+              if (!r && spec.ref_frame && [b.x, b.y, b.w, b.h].every((v) => v != null)) { const [fx, fy, fw] = spec.ref_frame; r = [fx + b.x * fw / 100, fy + b.y * fw / 100, b.w * fw / 100, b.h * fw / 100]; }
+              if (!r || !refFile) continue;
+              const loc = page.locator(`[data-ref="${name}"]`).first();
+              if (!(await loc.count()) || !(await loc.isVisible())) continue;
+              rows.push({ name, r, note: b.note || '', shot: (await loc.screenshot({ type: 'jpeg', quality: 82 })).toString('base64') });
+            }
+            if (rows.length) {
+              const refUrl = `data:${TYPES[extname(refFile)].split(';')[0]};base64,${readFileSync(refFile).toString('base64')}`;
+              const sheet = await browser.newPage({ viewport: { width: 1100, height: 800 } });
+              await sheet.setContent(`<body style="margin:16px;font:14px system-ui;background:#fff;color:#111"><h2>${d.id}: reference (left) and build (right), box by box</h2><div id="o"></div></body>`);
+              await sheet.evaluate(async ({ rows, refUrl }) => {
+                const img = new Image(); img.src = refUrl; await img.decode(); const o = document.getElementById('o');
+                for (const row of rows) {
+                  const [x, y, w, h] = row.r; const H = Math.min(300, Math.max(70, h * (500 / w))); const W = Math.min(500, w * (H / h));
+                  const wrap = document.createElement('div'); wrap.style.cssText = 'margin:0 0 18px;border-top:1px solid #ccc;padding-top:8px';
+                  wrap.innerHTML = `<b>${row.name}</b> <span style="color:#444">${row.note}</span><div style="display:flex;gap:16px;align-items:flex-start;margin-top:6px"><canvas width="${Math.round(W)}" height="${Math.round(H)}" style="border:1px solid #999"></canvas><img style="height:${Math.round(H)}px;max-width:520px;object-fit:contain;border:1px solid #999" src="data:image/jpeg;base64,${row.shot}"></div>`;
+                  wrap.querySelector('canvas').getContext('2d').drawImage(img, x, y, w, h, 0, 0, W, H); o.appendChild(wrap);
+                }
+              }, { rows, refUrl });
+              const outDir = join(root, 'docs/validation/dashboards'); mkdirSync(outDir, { recursive: true });
+              await sheet.screenshot({ path: join(outDir, `${d.id}-compare.jpg`), type: 'jpeg', quality: 72, fullPage: true });
+              await sheet.close();
+            }
+          } catch (e) { strict.push(`compare sheet could not be written: ${e.message}`); }
+          // 2. Materials and backdrop.
+          strict.push(...(await page.evaluate((spec) => {
+            const out = []; const alpha = (c) => { const m = /rgba?\(([^)]+)\)/.exec(c); if (!m) return null; const p = m[1].split(/[,\s/]+/).filter(Boolean); return p.length >= 4 ? parseFloat(p[3]) : 1; };
+            for (const [name, b] of Object.entries(spec.boxes || {})) {
+              if (b.material !== 'glass') continue;
+              const el = document.querySelector(`[data-ref="${name}"]`); if (!el) continue;
+              const cs = getComputedStyle(el); const bad = [];
+              const blur = +((/blur\(([\d.]+)px\)/.exec(cs.backdropFilter || cs.webkitBackdropFilter || '') || [])[1] || 0);
+              if (blur < 8) bad.push(`backdrop blur is ${blur}px (want ≥ 8px)`);
+              const fill = alpha(cs.backgroundColor); const stops = [...cs.backgroundImage.matchAll(/rgba?\([^)]+\)/g)].map((m) => alpha(m[0]));
+              if ((fill != null && fill > 0.62) || (stops.length && Math.min(...stops) > 0.62)) bad.push(`fill is nearly opaque (alpha ${fill > 0.62 ? fill : Math.min(...stops)}; want ≤ 0.62 so the backdrop shows through)`);
+              const edge = /inset/.test(cs.boxShadow) || (parseFloat(cs.borderTopWidth) > 0 && (alpha(cs.borderTopColor) ?? 1) < 1);
+              if (!edge) bad.push('no light edge (want an inset highlight or a translucent border)');
+              if (bad.length) out.push(`material ${name}: not glass: ${bad.join('; ')}`);
+            }
+            if (spec.frame && spec.frame.backdrop) {
+              const el = document.querySelector('[data-ref="backdrop"]'); const F = document.querySelector('[data-ref="frame"]');
+              if (!el) out.push(`backdrop: no element with data-ref="backdrop" — ${spec.frame.backdrop}`);
+              else { const cs = getComputedStyle(el); const rich = cs.backgroundImage !== 'none' || el.querySelector('img,canvas,svg'); const r = el.getBoundingClientRect();
+                if (!rich) out.push(`backdrop: it is a flat colour — ${spec.frame.backdrop}`);
+                if (F && r.width < F.getBoundingClientRect().width * 0.7) out.push('backdrop: it covers less than 70% of the frame width'); }
+            }
+            return out;
+          }, spec)));
+          // 3. The recorded report: tools used and every owner requirement answered.
+          const reportPath = join(root, 'docs/validation/dashboards', `${d.id}-polish.md`);
+          if (!isFile(reportPath)) strict.push(`report: docs/validation/dashboards/${d.id}-polish.md is missing (copy templates/polish-report.md and fill it)`);
+          else { const rep = readFileSync(reportPath, 'utf8');
+            if (!/Tools used/i.test(rep)) strict.push('report: no "Tools used" table');
+            for (const q of spec.requirements || []) if (!rep.includes(q.id)) strict.push(`report: owner requirement ${q.id} is not answered ("${q.text}")`); }
+          // 4. Every nav item opens its own page with its own content.
+          if (spec.nav) {
+            const sel = `[data-ref="${spec.nav.ref || 'nav'}"] :is(a, button, [role="tab"])`; const n = await page.locator(sel).count(); const seen = new Map();
+            if (n < (spec.nav.min_routes || 1)) strict.push(`nav: ${n} items, the reference has ${spec.nav.min_routes}`);
+            for (let i = 0; i < n; i++) {
+              const el = page.locator(sel).nth(i); if (!(await el.isVisible())) continue;
+              const label = ((await el.innerText()) || (await el.getAttribute('aria-label')) || `item ${i + 1}`).trim();
+              await el.click({ timeout: 3000 }).catch(() => {}); await page.waitForTimeout(400);
+              const st = await page.evaluate(() => { const m = [...document.querySelectorAll('[data-db-page]')].find((e) => !e.hidden && getComputedStyle(e).display !== 'none') || document.querySelector('main') || document.body; return { hash: location.hash, text: m.innerText.replace(/\s+/g, ' ').trim() }; });
+              if (seen.has(st.hash)) strict.push(`nav "${label}" opens the same route as "${seen.get(st.hash).label}" (${st.hash}): every nav item needs its own working page`);
+              else { if ([...seen.values()].some((v) => v.text === st.text)) strict.push(`nav "${label}" shows the same content as another page`);
+                if (st.text.length < 60) strict.push(`nav "${label}" opens a page with almost no content (${st.text.length} characters)`);
+                seen.set(st.hash, { label, text: st.text }); }
+            }
+            await page.evaluate((h) => { location.hash = h; }, startHash); await page.waitForTimeout(500);
+          }
+          // 5. No dead controls: every visible button on the overview changes something when clicked.
+          const dead = await page.evaluate(async (navRef) => {
+            const vis = (e) => { const r = e.getBoundingClientRect(); const c = getComputedStyle(e); return r.width > 4 && r.height > 4 && c.visibility !== 'hidden' && c.display !== 'none' && r.top < innerHeight && r.bottom > 0 && r.left < innerWidth && r.right > 0; };
+            const els = [...document.querySelectorAll('button, [role="tab"], [role="button"], a[href]')].filter((e) => vis(e) && !e.disabled && !/^#\//.test(e.getAttribute('href') || '') && !e.closest(`[data-ref="${navRef}"]`)).slice(0, 80);
+            const out = [];
+            for (const el of els) {
+              let changed = false; const mo = new MutationObserver(() => { changed = true; }); mo.observe(document.documentElement, { subtree: true, childList: true, attributes: true, characterData: true });
+              const h = location.hash; el.click(); await new Promise((r) => setTimeout(r, 200)); mo.disconnect();
+              if (!changed && location.hash === h) out.push((el.getAttribute('aria-label') || el.textContent || el.className || '').trim().slice(0, 28));
+            }
+            return out;
+          }, (spec.nav && spec.nav.ref) || 'nav');
+          if (dead.length) strict.push(`dead controls: clicking does nothing: ${dead.map((x) => `"${x}"`).join(', ')}. Wire each to a visible change, or make it plain text instead of a button`);
+          errs.length = 0; errs.push(...kept, ...strict);
+        }
         runs.push({ url, width: w, variant: variant.id, page: pg.id, errors: errs });
         problems.push(...errs.map((e) => `[page ${pg.id} ${w} ${variant.id}] ${e}`));
         await page.close();

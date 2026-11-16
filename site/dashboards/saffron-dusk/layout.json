@@ -1,22 +1,190 @@
 {
-  "reference": "reference.jpg (two liquid-glass phones on a muted slate-green field; not a desktop strip)",
+  "reference": "reference.jpg (two phone screens: Today on the left, Profile on the right)",
   "unit": "percent of the frame's width, measured from the frame's top-left corner; viewport 1440 wide, overview page, default variant",
-  "frame": { "min_w_vw": 88, "max_w_vw": 98, "aspect": [0.68, 0.82] },
+  "adaptation": "The reference has no desktop screen. This file is the desktop design: one wide dashboard that lays the two phone screens' cards out side by side. Do not draw phones or device frames on desktop. At 375px the Today page reads as the reference's left screen and the Profile page as its right screen.",
+  "frame": {
+    "min_w_vw": 90,
+    "aspect": [
+      0.58,
+      0.74
+    ],
+    "backdrop": "grey-green dusk gradient with the reference's dune lines and four-point stars; no photo"
+  },
+  "nav": {
+    "ref": "rail",
+    "min_routes": 4
+  },
   "boxes": {
-    "phone-left":  { "x": 16.5, "y": 4.3, "w": 28.5, "h": 64.7, "note": "light cream Today phone; tall glass shell ~28% of the frame, not a wide desktop panel" },
-    "phone-right": { "x": 52.0, "y": 4.3, "w": 27.3, "h": 64.7, "note": "dark olive Profile phone; twin of the left, same height" },
-    "title":       { "x": 18.5, "y": 7.0, "w": 22.0, "max_h": 6.5, "note": "WED + serif RAMADAN with superscript day; thin spaced caps, not a big Fasting headline" },
-    "dates":       { "x": 19.0, "y": 13.5, "w": 23.5, "h": 5.5, "note": "row of five round date chips (8–12); selected day is a dark filled circle" },
-    "date":        { "count": 5, "min_w": 2.8, "max_w": 5.5, "within": { "x": [17, 45], "y": [12, 20] }, "note": "each date chip is a round control" },
-    "arc":         { "x": 18.8, "y": 20.5, "w": 24.0, "h": 13.5, "note": "dusk-grey glass fasting card with imsak→iftar sun arc, times and countdown" },
-    "water":       { "x": 18.8, "y": 35.0, "w": 24.0, "h": 9.5, "note": "teal liquid-glass water card with drop gauge and segmented bar" },
-    "gather":      { "x": 18.8, "y": 45.5, "w": 24.0, "h": 8.0, "note": "saffron glass evening gather pill with avatar on the right" },
-    "nav-left":    { "x": 17.8, "y": 62.5, "w": 26.0, "h": 5.5, "note": "glass tab bar on the Today phone; Today active" },
-    "greet":       { "x": 54.0, "y": 7.0, "w": 20.0, "max_h": 7.0, "note": "script-style Good evening over the dune; not a sans greeting" },
-    "person":      { "x": 54.5, "y": 22.0, "w": 22.5, "h": 17.0, "note": "cream profile card; avatar overlaps the left edge; Share chip hangs off the bottom-left" },
-    "progress":    { "x": 54.5, "y": 40.5, "w": 22.5, "h": 12.5, "note": "amber Daily progress card with tree and seven thin vertical day bars" },
-    "day-bar":     { "count": 7, "min_w": 1.2, "max_w": 3.2, "within": { "x": [56, 76], "y": [42, 52] }, "note": "seven debossed vertical level sliders, not dots" },
-    "upgrade":     { "x": 54.5, "y": 53.5, "w": 22.5, "h": 6.0, "note": "dark glass Upgrade your experience row with flame" },
-    "nav-right":   { "x": 53.2, "y": 62.5, "w": 25.0, "h": 5.5, "note": "glass tab bar on the Profile phone; Profile active" }
-  }
+    "rail": {
+      "x": 1.5,
+      "y": 4,
+      "w": 6.5,
+      "h": 54,
+      "material": "glass",
+      "ref": [
+        200,
+        708,
+        342,
+        82
+      ],
+      "note": "the reference's tab bar turned vertical: Today, Progress, Sessions, Profile, icon over label, the active one with a soft glowing ring"
+    },
+    "title": {
+      "x": 10,
+      "y": 2.5,
+      "w": 30,
+      "max_h": 7,
+      "ref": [
+        215,
+        85,
+        330,
+        50
+      ],
+      "note": "WED RAMADAN 9 in the thin display serif with flourishes, moon and star mark at its right"
+    },
+    "dates": {
+      "x": 10,
+      "y": 9.5,
+      "w": 38,
+      "h": 5.5,
+      "ref": [
+        205,
+        145,
+        335,
+        60
+      ],
+      "note": "date beads joined by one poured strip; the active bead is dark with a warm glow"
+    },
+    "date": {
+      "count": 5,
+      "min_w": 2.6
+    },
+    "arc": {
+      "x": 10,
+      "y": 17,
+      "w": 38,
+      "h": 21,
+      "material": "glass",
+      "ref": [
+        228,
+        222,
+        288,
+        165
+      ],
+      "note": "Imsak and Iftar card: sun arc with a glowing sun over a frosted upper half, darker lower half with both times, bell line in a cut-out tab at the bottom right"
+    },
+    "water": {
+      "x": 10,
+      "y": 40,
+      "w": 18.5,
+      "h": 14,
+      "material": "glass",
+      "ref": [
+        228,
+        382,
+        288,
+        105
+      ],
+      "note": "teal liquid card with the WATER label in a poured tab at the top left, droplet in a round well, segmented bar"
+    },
+    "gather": {
+      "x": 29.5,
+      "y": 40,
+      "w": 18.5,
+      "h": 14,
+      "ref": [
+        228,
+        510,
+        288,
+        88
+      ],
+      "note": "amber pill event card, avatar at the right, glow underneath"
+    },
+    "dune": {
+      "x": 50,
+      "y": 2.5,
+      "w": 48,
+      "h": 20,
+      "ref": [
+        628,
+        90,
+        338,
+        150
+      ],
+      "note": "dark dune panel: Good evening in the display serif, large four-point star, layered dune lines, settings icon top right"
+    },
+    "person": {
+      "x": 52,
+      "y": 19,
+      "w": 22,
+      "h": 22,
+      "material": "glass",
+      "ref": [
+        635,
+        278,
+        305,
+        190
+      ],
+      "note": "profile card with the avatar tile overlapping its top-left corner, sessions and journeys counts, Share in a poured tab at the bottom left"
+    },
+    "progress": {
+      "x": 75.5,
+      "y": 19,
+      "w": 22.5,
+      "h": 22,
+      "ref": [
+        643,
+        437,
+        297,
+        140
+      ],
+      "note": "amber daily progress card with its title in a poured tab at the top right, tree icon, seven thin vertical bars with day labels"
+    },
+    "day-bar": {
+      "count": 7,
+      "max_w": 1.2,
+      "min_h": 4,
+      "note": "thin tall bars, not pills"
+    },
+    "upgrade": {
+      "x": 52,
+      "y": 43,
+      "w": 46,
+      "h": 11,
+      "material": "glass",
+      "ref": [
+        643,
+        578,
+        297,
+        85
+      ],
+      "note": "dark frosted upgrade strip with a flame mark"
+    }
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Desktop is a real dashboard in the reference's liquid language, not phone mockups placed on a page"
+    },
+    {
+      "id": "R2",
+      "text": "Liquid glass on every card at 1440 and at 375: translucent fill, blur, light edge, coloured glow under the teal and amber cards"
+    },
+    {
+      "id": "R3",
+      "text": "Poured tabs as in the reference: WATER label, Share, Daily progress title, bell line"
+    },
+    {
+      "id": "R4",
+      "text": "Navigation is the reference's: Today, Progress, Sessions, Profile; each opens a working page"
+    },
+    {
+      "id": "R5",
+      "text": "At 375 the Today page matches the reference's left screen and the Profile page its right screen, with a bottom tab bar fully visible"
+    },
+    {
+      "id": "R6",
+      "text": "Every date bead, water step, day bar and button changes something when clicked"
+    }
+  ]
 }

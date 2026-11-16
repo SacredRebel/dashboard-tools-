@@ -7,7 +7,8 @@
     "aspect": [
       0.7,
       0.95
-    ]
+    ],
+    "backdrop": "pale lilac-grey backdrop with a soft peach sweep rising from the lower left, visible through the frosted frame and cards"
   },
   "boxes": {
     "nav": {
@@ -15,7 +16,8 @@
       "y": 2.0,
       "w": 51.9,
       "h": 4.0,
-      "note": "white pill of six tabs in the frame's top bar"
+      "note": "white pill of six tabs in the frame's top bar",
+      "material": "glass"
     },
     "greeting": {
       "x": 2.5,
@@ -33,14 +35,16 @@
     "kpi": {
       "count": 4,
       "min_w": 15,
-      "max_h": 15
+      "max_h": 15,
+      "material": "glass"
     },
     "chart": {
       "x": 2.0,
       "y": 24.8,
       "w": 69.8,
       "h": 31.7,
-      "note": "Average sales card"
+      "note": "Average sales card",
+      "material": "glass"
     },
     "chart-bar": {
       "count": 9,
@@ -59,21 +63,24 @@
       "x": 2.0,
       "y": 57.6,
       "w": 69.8,
-      "note": "Recent emails starts directly under the chart, same column"
+      "note": "Recent emails starts directly under the chart, same column",
+      "material": "glass"
     },
     "formation": {
       "x": 73.1,
       "y": 10.1,
       "w": 25.1,
       "h": 23.7,
-      "note": "Formation status card, top of the right column"
+      "note": "Formation status card, top of the right column",
+      "material": "glass"
     },
     "success": {
       "x": 73.1,
       "y": 35.1,
       "w": 25.1,
       "h": 33.4,
-      "note": "Success rate card with title, arrow button, gauge, two stats"
+      "note": "Success rate card with title, arrow button, gauge, two stats",
+      "material": "glass"
     },
     "success-title": {
       "count": 1
@@ -84,7 +91,7 @@
     },
     "kpi-value": {
       "count": 4,
-      "min_h": 2.2,
+      "min_h": 2.4,
       "max_h": 3.8,
       "note": "the tile's number on one line (dollars and cents together), about 28px tall at 1440"
     },
@@ -97,6 +104,50 @@
       "y": 62.0,
       "tol": 4,
       "note": "Peoples and New users row sits right under the gauge text, no empty band above it"
+    },
+    "kpi-label": {
+      "count": 4,
+      "note": "label directly under the number; number and label sit in the middle of the tile under the icon, not pushed to the bottom with an empty band"
+    },
+    "topbar-actions": {
+      "x": 71.0,
+      "y": 1.6,
+      "w": 27.0,
+      "tol": 4,
+      "ref": [
+        478,
+        42,
+        170,
+        36
+      ],
+      "note": "phone, calendar, search, bell, then a photo avatar with a chevron"
     }
-  }
+  },
+  "ref_frame": [
+    22,
+    35,
+    646
+  ],
+  "nav": {
+    "ref": "nav",
+    "min_routes": 6
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Every nav tab (Dashboard, Finance, Accounts, HR and Payroll, Peoples, Contracts) opens its own working page with real content"
+    },
+    {
+      "id": "R2",
+      "text": "Cards are frosted glass over the backdrop, not solid white; the peach sweep shows through"
+    },
+    {
+      "id": "R3",
+      "text": "Tile numbers stay on one line, including $3,287.49"
+    },
+    {
+      "id": "R4",
+      "text": "Header matches the reference: logo mark, tab pill, four icon buttons, avatar"
+    }
+  ]
 }
