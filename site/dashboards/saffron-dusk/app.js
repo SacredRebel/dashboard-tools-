@@ -164,12 +164,35 @@
   renderDates(); renderArc(); renderWater(); renderBars();
   window.addEventListener('hashchange', route); route();
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.querySelector('[data-db-app]');
   if (!reduce && window.Motion?.animate) {
     const frame = $('[data-ref="frame"]');
-    if (frame) window.Motion.animate(frame, { opacity: [0.92, 1], transform: ['scale(0.985)', 'scale(1)'] }, { duration: 0.45, easing: [0.22, 1, 0.36, 1] });
+    if (frame) {
+      window.Motion.animate(frame, { opacity: [0.9, 1], transform: ['scale(0.985)', 'scale(1)'] }, { duration: 0.5, easing: [0.22, 1, 0.36, 1] });
+    }
+    $$('.sd-desk-card, .sd-phone').forEach((el, i) => {
+      window.Motion.animate(el, { opacity: [0, 1], transform: ['translateY(10px)', 'translateY(0)'] }, { delay: 0.05 + i * 0.04, duration: 0.4, easing: [0.22, 1, 0.36, 1] });
+    });
   }
+
+  // Specular follow for liquid panes (transform/opacity-friendly CSS vars)
+  if (!reduce && root) {
+    let raf = 0;
+    const onMove = (e) => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r = root.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / Math.max(1, r.width)) * 100;
+        const y = ((e.clientY - r.top) / Math.max(1, r.height)) * 100;
+        document.documentElement.style.setProperty('--spec-x', `${x.toFixed(1)}%`);
+        document.documentElement.style.setProperty('--spec-y', `${y.toFixed(1)}%`);
+      });
+    };
+    root.addEventListener('pointermove', onMove, { passive: true });
+  }
+
   if (window.DB?.onVisible) {
-    window.DB.onVisible(document.querySelector('[data-db-app]'), (visible) => {
+    window.DB.onVisible(root, (visible) => {
       document.documentElement.dataset.motionPaused = visible ? '' : '1';
     });
   }

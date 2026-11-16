@@ -44,8 +44,14 @@
   </svg>
 
   <div class="sd" data-db-app>
-    <header class="sd-chrome">
-      <a class="sd-brand" href="#/overview"><span class="sd-logo" aria-hidden="true"></span>Saffron Dusk</a>
+    <div class="sd-world" aria-hidden="true">
+      <img class="sd-world-dune" src="media/dune-silk.webp" srcset="media/dune-silk.webp 1920w, media/dune-silk.jpg 2560w" sizes="100vw" width="2560" height="1440" alt="" decoding="async">
+      <div class="sd-world-veil"></div>
+      <div class="sd-world-gold"></div>
+    </div>
+
+    <header class="sd-chrome sd-liquid">
+      <a class="sd-brand" href="#/overview"><span class="sd-logo" aria-hidden="true"></span><span class="sd-brand-text">Saffron Dusk</span></a>
       <nav class="sd-pages" aria-label="Pages">
         <a href="#/overview" data-route="overview" aria-current="page">Overview</a>
         <a href="#/vitals" data-route="vitals">Vitals</a>
@@ -53,15 +59,69 @@
         <a href="#/records" data-route="records">Records</a>
         <a href="#/settings" data-route="settings">Settings</a>
       </nav>
-      <p class="sd-tag">Fasting-day wellness · fictional</p>
+      <div class="sd-chrome-meta">
+        <span class="sd-chip sd-liquid-soft">Ramadan 9 · fictional</span>
+        <button type="button" class="sd-chip-btn sd-liquid-soft" data-act="remind-top">Iftar soon</button>
+      </div>
     </header>
 
     <main class="sd-main" id="main">
       <section class="sd-frame" data-ref="frame" data-page="overview" aria-label="Twin phone wellness">
         <div class="sd-haze" aria-hidden="true"></div>
+        <div class="sd-frame-silk" aria-hidden="true">
+          <img src="media/silk-panel.webp" width="720" height="1280" alt="" decoding="async">
+        </div>
         <svg class="sd-shape-wave" viewBox="0 0 1200 900" preserveAspectRatio="none" aria-hidden="true">
           <path data-shape="field" d="M0,520 C180,480 260,600 420,560 C620,510 740,420 900,470 C1040,510 1120,580 1200,540 L1200,900 L0,900 Z"/>
         </svg>
+
+        <!-- Desktop atmosphere in frame gutters (not layout-spec boxes) -->
+        <aside class="sd-desk sd-desk-left" aria-label="Desktop insights">
+          <article class="sd-desk-card sd-liquid mat-hover-lift">
+            <p class="sd-desk-kicker">Fasting window</p>
+            <p class="sd-desk-value num">86<span>%</span></p>
+            <p class="sd-desk-cap">toward iftar · sample</p>
+            <div class="sd-desk-meter" aria-hidden="true"><i style="--p:86%"></i></div>
+          </article>
+          <article class="sd-desk-card sd-liquid mat-hover-lift">
+            <p class="sd-desk-kicker">Water</p>
+            <p class="sd-desk-value num">1.9<span>L</span></p>
+            <p class="sd-desk-cap">of 2.5 L intention</p>
+            <div class="sd-desk-drops" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i class="off"></i><i class="off"></i></div>
+          </article>
+          <article class="sd-desk-card sd-liquid mat-hover-lift">
+            <p class="sd-desk-kicker">Tonight</p>
+            <p class="sd-desk-title">Laila House</p>
+            <p class="sd-desk-cap num">6:00 PM · Cedar Bay</p>
+          </article>
+        </aside>
+
+        <aside class="sd-desk sd-desk-right" aria-label="Journeys and schedule">
+          <article class="sd-desk-card sd-liquid mat-hover-lift">
+            <p class="sd-desk-kicker">Journeys</p>
+            <ul class="sd-desk-list">
+              <li><b>Olive path</b><span>Sun walk</span></li>
+              <li><b>Cedar house</b><span>Iftar host</span></li>
+              <li><b>Quiet dawn</b><span>Suhoor prep</span></li>
+            </ul>
+          </article>
+          <article class="sd-desk-card sd-liquid mat-hover-lift">
+            <p class="sd-desk-kicker">This week</p>
+            <div class="sd-desk-week" role="img" aria-label="Week intention bars">
+              <span style="--h:42%"><i></i><em>Th</em></span>
+              <span style="--h:68%"><i></i><em>Fr</em></span>
+              <span style="--h:55%"><i></i><em>Sa</em></span>
+              <span style="--h:88%" class="on"><i></i><em>Su</em></span>
+              <span style="--h:48%"><i></i><em>Mo</em></span>
+              <span style="--h:72%"><i></i><em>Tu</em></span>
+              <span style="--h:64%"><i></i><em>We</em></span>
+            </div>
+          </article>
+          <article class="sd-desk-card sd-liquid sd-desk-quote mat-hover-lift">
+            <p>Soft dusk, steady water, shared tables.</p>
+            <span>Saffron sample motto</span>
+          </article>
+        </aside>
 
         <article class="sd-phone sd-today" data-ref="phone-left" aria-labelledby="sd-today-h">
           <div class="sd-phone-bg sd-phone-bg-light" aria-hidden="true">
@@ -119,6 +179,7 @@
 
         <article class="sd-phone sd-profile" data-ref="phone-right" aria-labelledby="sd-prof-h">
           <div class="sd-phone-bg sd-phone-bg-dark" aria-hidden="true">
+            <img class="sd-phone-silk" src="media/silk-panel.webp" width="720" height="1280" alt="" decoding="async">
             <div class="sd-dunes"></div>
             <span class="sd-star-glow"></span>
             <span class="sd-spark s6"></span><span class="sd-spark s7"></span><span class="sd-spark s8"></span>
