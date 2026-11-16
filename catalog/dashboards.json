@@ -5391,7 +5391,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A soft neumorphic indoor lighting console: orange accent, left icon rail, pill search, pendant lamp photo on orbit rings, intensity slider, schedule, climate dial on Devices, line charts and a photo room preview.",
+      "summary": "A soft neumorphic indoor lighting console: orange accent, left icon rail, pill search, real three.js brushed-aluminium pendant lamp on orbit rings, intensity slider, schedule, climate dial on Devices, line charts and a photo room preview.",
       "mood": [
         "tactile",
         "soft",
@@ -5411,8 +5411,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "64px icon rail \u00b7 top (search, brand, undo/redo/settings) \u00b7 soft main well: left stack (intensity, schedule, arc dial) \u00b7 centre pendant stage with orbit room dots \u00b7 right stack (line chart, spark, video-sim)",
-        "responsive": "\u22641180px: right stack drops under centre \u00b7 \u2264960px: rail becomes top strip \u00b7 \u2264640px: single column, room dots scroll, charts full width"
+        "structure": "Soft-pill icon rail \u00b7 top (search, brand, undo/redo/settings orbs) \u00b7 centre concentric rings with WebGL pendant lamp, 12/7 + power, orbit room chips \u00b7 left intensity/schedule/orange gauge \u00b7 right usage/peak charts + dark room-view tile \u00b7 Devices page = thermostat knob scene",
+        "responsive": "\u2264720px: board flows as one column; lamp above numerals; room chips wrap; rail becomes fixed bottom tab bar; climate knob keeps \u00b1 and wind slider"
       },
       "components": [
         "Slim icon rail wired to multipage routes",
@@ -5421,15 +5421,14 @@
         "Horizontal intensity slider",
         "Schedule start\u2013end row",
         "Circular brightness dial",
-        "Pendant lamp photo hero with glow",
+        "WebGL brushed-aluminium pendant lamp (lathe shade, cord, emissive disc)",
         "Orbiting room picker dots",
         "Power toggle and lights fraction",
-        "Multi-line energy chart",
-        "Secondary spark line",
+        "Usage and peak line charts",
         "Photo room preview with play",
-        "Climate dial on Devices page"
+        "Thermostat knob scene on Devices page"
       ],
-      "signature": "A soft extruded well with a matte pendant lamp photo hanging inside concentric orbit rings, orange room dots and a bright orange power control.",
+      "signature": "A brushed-aluminium three.js pendant lamp hanging on a thin cord into soft concentric orbit rings, with thin 12/7 numerals, an orange power control and intensity-linked glow.",
       "palette": {
         "bg": "#f2f1ef",
         "surface": "#f7f6f4",
@@ -5471,7 +5470,7 @@
       ],
       "source": {
         "type": "screenshot",
-        "note": "Recreated in original code from a user-supplied soft neumorphic indoor-control collage (lamp + climate dial screens). Brand (Ember Rooms) and all copy are invented English; Chinese brand marks were not reused. Pendant and room camera use gallery media (`media/pendant.webp`, `media/room.webp`). Fidelity pass used local tesseract OCR + palette sample on reference.jpg. Owner original stored as `reference.jpg`."
+        "note": "Recreated in original code from a user-supplied soft neumorphic indoor-control collage (lamp + climate dial screens). Brand (Ember Rooms) and all copy are invented English; Chinese brand marks were not reused. Pendant is procedural three.js (`lamp.js`); room camera uses `media/room.webp`. Owner original stored as `reference.jpg`."
       },
       "path": "site/dashboards/ember-rooms/",
       "reference": "reference.jpg",
@@ -5520,9 +5519,7 @@
         "route"
       ],
       "materials": [
-        "neu",
-        "clay",
-        "tile3d"
+        "neu"
       ],
       "signature_tech": [
         "webgl"
