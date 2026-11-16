@@ -347,7 +347,8 @@ for (const d of list) {
         // Layout spec: the overview must match the measured reference (site/dashboards/<id>/layout.json, docs/dashboards/07-layout-spec.md).
         if (pg.id === d.pages[0].id && variant.id === 'default' && w === 1440 && isFile(join(site, 'dashboards', d.id, 'layout.json'))) {
           const spec = JSON.parse(readFileSync(join(site, 'dashboards', d.id, 'layout.json'), 'utf8'));
-          const lay = await page.evaluate((spec) => {
+          spec.__debug = !!process.env.LAYOUT_DEBUG;
+          const lay = await page.evaluate(async (spec) => {
             const out = [];
             const vis = (el) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width > 1 && r.height > 1 && cs.visibility !== 'hidden' && cs.display !== 'none' && +cs.opacity > 0.05; };
             const q = (name) => [...document.querySelectorAll(`[data-ref="${name}"]`)].filter(vis);
@@ -378,6 +379,37 @@ for (const d of list) {
                 if (b.within) {
                   const cx = got.x + got.w / 2, cy = got.y + got.h / 2; const [x0, x1] = b.within.x || [-1e9, 1e9]; const [y0, y1] = b.within.y || [-1e9, 1e9];
                   if (cx < x0 || cx > x1 || cy < y0 || cy > y1) bad.push(`centre ${Math.round(cx * 10) / 10},${Math.round(cy * 10) / 10} outside x ${x0}–${x1}, y ${y0}–${y1}`);
+                }
+                if (b.object) {
+                  // Object spec: measure the rendered 3D object's silhouette and shading (docs/dashboards/08-object-spec.md).
+                  const o = b.object; let url = null;
+                  try { url = window.DBHero && window.DBHero.poster && window.DBHero.poster(); } catch { url = null; }
+                  if (!url) bad.push('object: window.DBHero.poster() is missing, so the 3D object cannot be measured (is WebGL running?)');
+                  else {
+                    const img = new Image(); img.src = url; await img.decode();
+                    const c = document.createElement('canvas'); const W = c.width = Math.min(img.naturalWidth, 400); const H = c.height = Math.max(1, Math.round(img.naturalHeight * W / img.naturalWidth));
+                    const g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(img, 0, 0, W, H); const px = g.getImageData(0, 0, W, H).data;
+                    const rows = []; let x0 = W, x1 = -1, y0 = -1, y1 = -1, n = 0, sum = 0, sq = 0;
+                    for (let y = 0; y < H; y++) {
+                      let a0 = -1, a1 = -1;
+                      for (let x = 0; x < W; x++) { const i = (y * W + x) * 4; if (px[i + 3] > 128) { if (a0 < 0) a0 = x; a1 = x; const l = (0.2126 * px[i] + 0.7152 * px[i + 1] + 0.0722 * px[i + 2]) / 255; n++; sum += l; sq += l * l; } }
+                      rows.push(a0 < 0 ? 0 : a1 - a0 + 1);
+                      if (a0 >= 0) { if (y0 < 0) y0 = y; y1 = y; x0 = Math.min(x0, a0); x1 = Math.max(x1, a1); }
+                    }
+                    if (n < 50) bad.push('object: the canvas is empty or fully transparent');
+                    else {
+                      const bw = x1 - x0 + 1, bh = y1 - y0 + 1, r2 = (v) => Math.round(v * 100) / 100;
+                      const maxRow = Math.max(...rows); const shade = Math.sqrt(Math.max(0, sq / n - (sum / n) ** 2));
+                      const fill = [r2(bw / W), r2(bh / H)], asp = r2(bw / bh);
+                      const prof = (o.profile ? o.profile.at : []).map((t) => r2(rows[Math.min(y1, Math.round(y0 + t * (bh - 1)))] / maxRow));
+                      if (spec.__debug) out.push(`info object ${name}: fill ${fill} aspect ${asp} profile ${prof} shade ${r2(shade)}`);
+                      if (o.min_fill && (fill[0] < o.min_fill[0] || fill[1] < o.min_fill[1])) bad.push(`object fills ${fill[0]}×${fill[1]} of its box (want ≥ ${o.min_fill[0]}×${o.min_fill[1]}): too small or badly framed`);
+                      if (o.aspect && Math.abs(asp - o.aspect) > (o.aspect_tol ?? 0.2)) bad.push(`object silhouette width/height ${asp} (want ${o.aspect} ±${o.aspect_tol ?? 0.2})`);
+                      if (o.profile) { const tol = o.profile.tol ?? 0.15; o.profile.width.forEach((want, i) => { if (Math.abs(prof[i] - want) > tol) bad.push(`object silhouette at ${Math.round(o.profile.at[i] * 100)}% of its height is ${prof[i]} of its full width (want ${want} ±${tol})`); }); }
+                      if (o.min_shade && shade < o.min_shade) bad.push(`object shading spread ${r2(shade)} (want ≥ ${o.min_shade}): it reads as a flat blob, give it form with material and light`);
+                      if (o.no_clip && (x0 === 0 || x1 === W - 1 || y1 === H - 1)) bad.push('object touches the left, right or bottom edge of its canvas: it is cut off');
+                    }
+                  }
                 }
                 if (bad.length) { out.push(`layout ${name}: ${bad.join('; ')}${b.note ? ' — ' + b.note : ''}`); if (b.count) break; }
               }
