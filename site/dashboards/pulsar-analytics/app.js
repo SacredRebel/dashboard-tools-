@@ -1,693 +1,341 @@
-/* Pulsar Analytics: sample data, terrain viz, multipage + motion.
-   All data is fictional. No polling timers. */
-(function () {
-  const $ = (s, el = document) => el.querySelector(s);
-  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const root = $('[data-db-app]') || document.body;
-  const ICON = {
-    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
-    bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>',
-    arrowUpRight: '<path d="M7 17 17 7M8 7h9v9"/>',
-    users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.2a6.5 6.5 0 0 1 3.5 5.8"/>',
-    activity: '<path d="M3 12h4l3-8 4 16 3-8h4"/>',
-    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
-    dollar: '<path d="M12 2v20M17 6.5C17 4.6 14.8 3.5 12 3.5S7 4.8 7 7s2 3.2 5 4 5 1.8 5 4.2-2.2 3.3-5 3.3-5-1.1-5-3"/>',
-  };
-  const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (host = document) => $$('[data-icon]', host).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
-  const fmtNum = (v) => v.toLocaleString('en-US');
-  const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
-  const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
+/* Pulsar Analytics twin: soft-3D board + WebGL ridge terrain. Sample data only. */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (v) => String(v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function seg(group, onChange) {
-    group.addEventListener('click', (e) => {
-      const b = e.target.closest('button[data-v]'); if (!b) return;
-      $$('button[data-v]', group).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      onChange(b.dataset.v, b);
-    });
+const METRICS = [
+  { id: 'users', name: 'Active users', icon: 'i-users', value: 18420, delta: '+8.4%', series: [11, 13, 12, 15, 18, 17, 19, 21, 20, 22, 24, 23] },
+  { id: 'sessions', name: 'Sessions', icon: 'i-bolt', value: 96200, delta: '+4.1%', series: [40, 42, 38, 45, 48, 50, 47, 52, 55, 54, 58, 61] },
+  { id: 'errors', name: 'Error rate', icon: 'i-warn', value: 0.42, unit: '%', delta: '−0.08%', series: [0.7, 0.65, 0.6, 0.55, 0.5, 0.48, 0.52, 0.46, 0.44, 0.43, 0.41, 0.42] },
+  { id: 'latency', name: 'p95 latency', icon: 'i-pulse', value: 186, unit: 'ms', delta: '−12ms', series: [220, 210, 205, 198, 190, 195, 188, 184, 190, 182, 180, 186] },
+];
+
+const CHANNELS = [
+  { id: 'web', name: 'Web', fill: 78, h: 92 },
+  { id: 'ios', name: 'iOS', fill: 64, h: 76 },
+  { id: 'android', name: 'Android', fill: 52, h: 68 },
+  { id: 'api', name: 'API', fill: 88, h: 98 },
+  { id: 'edge', name: 'Edge', fill: 41, h: 54 },
+  { id: 'bots', name: 'Bots', fill: 22, h: 36 },
+];
+
+const EVENTS = [
+  { id: 'e1', name: 'checkout.completed', count: 8420, region: 'US-East', severity: 'info' },
+  { id: 'e2', name: 'auth.login', count: 22140, region: 'EU-West', severity: 'info' },
+  { id: 'e3', name: 'billing.retry', count: 612, region: 'US-West', severity: 'warn' },
+  { id: 'e4', name: 'edge.cache_miss', count: 3180, region: 'APAC', severity: 'info' },
+  { id: 'e5', name: 'job.timeout', count: 94, region: 'US-East', severity: 'error' },
+  { id: 'e6', name: 'feature.flag_on', count: 1560, region: 'EU-West', severity: 'info' },
+  { id: 'e7', name: 'stream.lag', count: 210, region: 'SA-East', severity: 'warn' },
+  { id: 'e8', name: 'search.query', count: 11980, region: 'US-East', severity: 'info' },
+  { id: 'e9', name: 'webhook.delivered', count: 4020, region: 'EU-Central', severity: 'info' },
+  { id: 'e10', name: 'quota.exceeded', count: 37, region: 'APAC', severity: 'error' },
+];
+
+const REGIONS = [
+  { id: 'us-east', name: 'US-East', rps: 18400, health: 96, bars: [62, 70, 68, 74, 80, 78, 84] },
+  { id: 'us-west', name: 'US-West', rps: 11200, health: 93, bars: [48, 52, 50, 55, 58, 60, 57] },
+  { id: 'eu-west', name: 'EU-West', rps: 15600, health: 97, bars: [55, 58, 62, 60, 66, 70, 68] },
+  { id: 'eu-central', name: 'EU-Central', rps: 8200, health: 91, bars: [36, 40, 38, 42, 44, 43, 46] },
+  { id: 'apac', name: 'APAC', rps: 9800, health: 89, bars: [40, 44, 42, 48, 50, 52, 49] },
+  { id: 'sa-east', name: 'SA-East', rps: 3100, health: 86, bars: [18, 20, 22, 21, 24, 26, 25] },
+  { id: 'af-south', name: 'AF-South', rps: 1400, health: 84, bars: [10, 12, 11, 13, 14, 15, 14] },
+  { id: 'me-central', name: 'ME-Central', rps: 2200, health: 88, bars: [14, 16, 15, 17, 18, 19, 18] },
+];
+
+const HOURS = [22, 18, 14, 12, 16, 28, 40, 55, 70, 82, 88, 76, 64, 58, 62, 70, 78, 85, 80, 66, 48, 36, 30, 26];
+const WAVE = [12, 18, 16, 24, 30, 28, 36, 42, 40, 48, 55, 52, 58, 62, 60, 66];
+
+const S = {
+  range: '7d',
+  metric: 'users',
+  channel: 'api',
+  q: '',
+  view: 'ready',
+  sort: 'count-desc',
+  region: 'us-east',
+  alerts: true,
+  digest: true,
+};
+
+const fmt = (m) => {
+  if (m.unit === '%') return m.value.toFixed(2) + '%';
+  if (m.unit === 'ms') return m.value + ' ms';
+  return m.value >= 1000 ? (m.value / 1000).toFixed(m.value >= 10000 ? 1 : 2).replace(/\.0$/, '') + 'k' : String(m.value);
+};
+
+function toast(msg) {
+  const t = $('[data-toast]');
+  t.textContent = msg;
+  t.hidden = false;
+  clearTimeout(toast.t);
+  toast.t = setTimeout(() => { t.hidden = true; }, 2600);
+}
+
+/* ---------- clock ticks ---------- */
+(function ticks() {
+  const g = $('[data-ticks]');
+  if (!g) return;
+  let html = '';
+  for (let i = 0; i < 60; i++) {
+    const a = (i / 60) * Math.PI * 2 - Math.PI / 2;
+    const major = i % 5 === 0;
+    const r0 = major ? 72 : 78;
+    const r1 = 86;
+    const x0 = 100 + Math.cos(a) * r0, y0 = 100 + Math.sin(a) * r0;
+    const x1 = 100 + Math.cos(a) * r1, y1 = 100 + Math.sin(a) * r1;
+    html += `<line x1="${x0.toFixed(1)}" y1="${y0.toFixed(1)}" x2="${x1.toFixed(1)}" y2="${y1.toFixed(1)}" stroke="${major ? 'rgb(196 155 255 / 0.75)' : 'rgb(196 155 255 / 0.28)'}" stroke-width="${major ? 2.2 : 1.2}"/>`;
   }
-  function smooth(pts) {
-    let p = `M${pts[0][0]},${pts[0][1]}`;
-    for (let i = 0; i < pts.length - 1; i++) {
-      const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
-      p += ` C${p1[0] + (p2[0] - p0[0]) / 6},${p1[1] + (p2[1] - p0[1]) / 6} ${p2[0] - (p3[0] - p1[0]) / 6},${p2[1] - (p3[1] - p1[1]) / 6} ${p2[0]},${p2[1]}`;
-    }
-    return p;
-  }
-  const niceStep = (raw) => { const p = 10 ** Math.floor(Math.log10(raw || 1)); const f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; };
-  function scale(vals, o) {
-    let min = o.min ?? Math.min(...vals), max = o.max ?? Math.max(...vals);
-    const step = o.step || niceStep((max - min || 1) / (o.ticks || 4));
-    min = Math.floor(min / step) * step; max = Math.ceil(max / step) * step; if (max === min) max = min + step;
-    const ticks = []; for (let v = min; v <= max + step / 1e6; v += step) ticks.push(+v.toFixed(6));
-    return { min, max, ticks };
-  }
-  let chartId = 0;
-  let sparkId = 0;
-
-  function lineChart(el, o) {
-    const fmt = o.fmt || fmtNum, n = o.labels.length, W = 600, H = 200;
-    const { min, max, ticks } = scale(o.series.flatMap((s) => s.values), o);
-    const x = (i) => (n > 1 ? (i / (n - 1)) * W : W / 2), y = (v) => H - ((v - min) / (max - min)) * H;
-    const top = (py) => `calc(var(--plot-h) * ${(py / H).toFixed(4)})`, uid = `pa-g${++chartId}`;
-    const sets = o.series.map((s) => {
-      const pts = s.values.map((v, i) => [x(i), y(v)]);
-      return { ...s, pts, d: o.curve === false ? 'M' + pts.map((p) => p.join(',')).join(' L') : smooth(pts) };
-    });
-    const every = o.xEvery || (n > 8 ? 2 : 1);
-    el.innerHTML = `<div class="pa-plot" style="--plot-h:${o.h || 200}px">
-      ${ticks.map((v) => `<span class="pa-y num" style="top:${top(y(v))}">${fmt(v)}</span>`).join('')}
-      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${o.label}">
-        <defs>${sets.map((s, k) => `<linearGradient id="${uid}-${k}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(${s.color});stop-opacity:${s.fill ?? 0.35}"/><stop offset="1" style="stop-color:var(${s.color});stop-opacity:0"/></linearGradient>`).join('')}</defs>
-        <g class="grid">${ticks.map((v) => `<line x1="0" x2="${W}" y1="${y(v)}" y2="${y(v)}" vector-effect="non-scaling-stroke"/>`).join('')}</g>
-        ${sets.map((s, k) => `${s.fill === 0 ? '' : `<path class="pa-layer" d="${s.d} L${W},${H} L0,${H} Z" fill="url(#${uid}-${k})"/>`}<path class="line pa-draw" d="${s.d}" style="stroke:var(${s.color})"${s.dash ? ` stroke-dasharray="${s.dash}"` : ''} vector-effect="non-scaling-stroke"/>`).join('')}
-      </svg>
-      ${o.dots ? sets[0].pts.map(([px, py]) => `<span class="pa-dot" style="left:${(px / W) * 100}%;top:${top(py)}"></span>`).join('') : ''}
-      ${o.labels.map((l, i) => (i % every === 0 ? `<span class="pa-x${(i / every) % 2 ? ' alt' : ''}" style="left:${(x(i) / W) * 100}%">${l}</span>` : '')).join('')}
-      <div class="pa-hit">${o.labels.map((l, i) => `<button type="button" aria-label="${l}: ${sets.map((s) => `${s.name ? s.name + ' ' : ''}${fmt(s.values[i])}`).join(', ')}"></button>`).join('')}</div>
-      <span class="pa-cursor" hidden></span><span class="pa-tip num" hidden></span>
-    </div>`;
-    const tip = $('.pa-tip', el), cur = $('.pa-cursor', el), dots = $$('.pa-dot', el);
-    const show = (i) => {
-      dots.forEach((d, k) => d.classList.toggle('on', k === i));
-      tip.hidden = cur.hidden = i < 0; if (i < 0) return;
-      tip.innerHTML = `<b>${o.labels[i]}</b> ${sets.map((s) => fmt(s.values[i])).join(' · ')}`;
-      tip.className = `pa-tip num${i === 0 ? ' l' : i === n - 1 ? ' r' : ''}`;
-      tip.style.left = cur.style.left = (x(i) / W) * 100 + '%';
-      tip.style.top = top(Math.min(...sets.map((s) => s.pts[i][1])));
-    };
-    $$('.pa-hit button', el).forEach((b, i) => {
-      b.addEventListener('mouseenter', () => show(i));
-      b.addEventListener('focus', () => show(i));
-      b.addEventListener('blur', () => show(-1));
-      if (o.onPick) b.addEventListener('click', () => o.onPick(i));
-    });
-    $('.pa-hit', el).addEventListener('mouseleave', () => show(-1));
-    return { sets, W, H, x, y, min, max };
-  }
-
-  function barChart(el, o) {
-    const fmt = o.fmt || fmtNum, n = o.labels.length;
-    const tot = o.labels.map((_, i) => (o.stacked ? o.series.reduce((a, s) => a + s.values[i], 0) : Math.max(...o.series.map((s) => s.values[i]))));
-    const { max, ticks } = scale(tot, { min: 0, max: o.max, ticks: o.ticks, step: o.step });
-    el.innerHTML = `<div class="pa-plot pa-barplot" style="--plot-h:${o.h || 200}px" role="group" aria-label="${o.label}">
-      ${o.noAxis ? '' : ticks.map((v) => `<span class="pa-y num" style="top:calc(var(--plot-h) * ${(1 - v / max).toFixed(4)})">${fmt(v)}</span><span class="pa-gl" style="top:calc(var(--plot-h) * ${(1 - v / max).toFixed(4)})"></span>`).join('')}
-      <div class="pa-cols">${o.labels.map((l, i) => `<button type="button" class="pa-col${o.stacked ? ' stack' : ''}${o.active === i ? ' on' : ''}" aria-label="${l}: ${o.series.map((s) => `${s.name ? s.name + ' ' : ''}${fmt(s.values[i])}`).join(', ')}"${o.onPick ? ` aria-pressed="${o.active === i}"` : ''}>${o.series.map((s) => `<span class="pa-bar" style="height:${((s.values[i] / max) * 100).toFixed(2)}%;--bar:var(${s.color})"></span>`).join('')}</button>`).join('')}</div>
-      <div class="pa-xs">${o.labels.map((l) => `<span>${l}</span>`).join('')}</div>
-      <span class="pa-tip num" hidden></span>
-    </div>`;
-    const tip = $('.pa-tip', el);
-    const show = (i) => {
-      tip.hidden = i < 0; if (i < 0) return;
-      tip.innerHTML = `<b>${o.labels[i]}</b> ${o.series.map((s) => fmt(s.values[i])).join(' · ')}`;
-      tip.className = `pa-tip num${i === 0 ? ' l' : i === n - 1 ? ' r' : ''}`;
-      tip.style.left = ((i + 0.5) / n) * 100 + '%';
-      tip.style.top = `calc(var(--plot-h) * ${(1 - tot[i] / max).toFixed(4)})`;
-    };
-    $$('.pa-col', el).forEach((b, i) => {
-      b.addEventListener('mouseenter', () => show(i));
-      b.addEventListener('focus', () => show(i));
-      b.addEventListener('blur', () => show(-1));
-      if (o.onPick) b.addEventListener('click', () => o.onPick(i));
-    });
-    $('.pa-cols', el).addEventListener('mouseleave', () => show(-1));
-  }
-
-  function donut(parts, { size = 120, w = 14, gap = 1.5, round = false } = {}) {
-    const total = parts.reduce((a, p) => a + p.value, 0), r = (size - w) / 2, c = size / 2; let off = 0;
-    return `<svg viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle class="track" cx="${c}" cy="${c}" r="${r}" fill="none" stroke-width="${w}"/>${parts.map((p) => {
-      const len = (p.value / total) * 100;
-      const seg = `<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke-width="${w}" pathLength="100" stroke-dasharray="${Math.max(0.01, len - gap).toFixed(2)} ${(100 - len + gap).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 ${c} ${c})" style="stroke:var(${p.color})"${round ? ' stroke-linecap="round"' : ''}/>`;
-      off += len; return seg;
-    }).join('')}</svg>`;
-  }
-
-  function spark(vals, { color = '--chart-1', fill = 0.25, w = 120, h = 36 } = {}) {
-    const mn = Math.min(...vals), mx = Math.max(...vals);
-    const pts = vals.map((v, i) => [(i / (vals.length - 1)) * w, h - 3 - ((v - mn) / (mx - mn || 1)) * (h - 6)]);
-    const d = 'M' + pts.map((p) => p.map((n) => n.toFixed(1)).join(',')).join(' L'), id = `pa-s${++sparkId}`;
-    return `<svg class="pa-spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(${color});stop-opacity:${fill}"/><stop offset="1" style="stop-color:var(${color});stop-opacity:0"/></linearGradient></defs><path d="${d} L${w},${h} L0,${h} Z" fill="url(#${id})"/><path d="${d}" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(${color})" vector-effect="non-scaling-stroke"/></svg>`;
-  }
-
-  function countUp(el, to, { duration = 800, format = (n) => String(Math.round(n)) } = {}) {
-    if (reduce) { el.textContent = format(to); return; }
-    const start = performance.now();
-    const from = 0;
-    function frame(now) {
-      const t = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = format(from + (to - from) * eased);
-      if (t < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-
-  function toast(msg) {
-    const t = $('[data-toast]');
-    if (!t) return;
-    t.textContent = msg; t.hidden = false;
-    clearTimeout(toast._id);
-    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
-  }
-
-  paintIcons();
-
-  // ---------------------------------------------------------------- sample data
-  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-  const wave = (n, base, amp, phase) => Array.from({ length: n }, (_, i) => Math.round(base + amp * Math.sin(i / 1.9 + phase) + amp * 0.45 * Math.sin(i / 0.9 + phase * 2) + amp * 0.2 * rnd()));
-  const RANGES = {
-    '24h': { n: 12, label: (i) => `${String(i * 2).padStart(2, '0')}:00`, k: 0.16, word: 'the last 24 hours' },
-    '7d': { n: 7, label: (i) => fmtDate(dayOffset(i - 6), { weekday: 'short' }), k: 1, word: 'the last 7 days' },
-    '30d': { n: 10, label: (i) => fmtDate(dayOffset((i - 9) * 3)), k: 4.2, word: 'the last 30 days' },
-  };
-  const METRICS = [
-    { id: 'users', name: 'Active users', icon: 'users', color: '--chart-1', base: 18400, amp: 5200, fmt: (v) => (v >= 1000 ? (v / 1000).toFixed(1) + 'k' : String(v)), delta: 12.4 },
-    { id: 'sessions', name: 'Sessions', icon: 'activity', color: '--chart-2', base: 31200, amp: 8800, fmt: (v) => (v >= 1000 ? (v / 1000).toFixed(1) + 'k' : String(v)), delta: 8.1 },
-    { id: 'conv', name: 'Conversion', icon: 'target', color: '--chart-3', base: 3.6, amp: 0.9, fmt: (v) => v.toFixed(1) + '%', delta: -0.6, pct: true },
-    { id: 'rev', name: 'Revenue', icon: 'dollar', color: '--chart-4', base: 42800, amp: 11500, fmt: (v) => '$' + (v >= 1000 ? (v / 1000).toFixed(1) + 'k' : v), delta: 5.7 },
-  ];
-  const data = {};
-  for (const r in RANGES) {
-    data[r] = {};
-    METRICS.forEach((m, k) => {
-      const mk = (ph) => wave(RANGES[r].n, m.base, m.amp, ph + k).map((v) => (m.pct ? +(m.base + (v - m.base) / 1).toFixed(1) : Math.round(v * (m.id === 'users' ? 1 : RANGES[r].k))));
-      data[r][m.id] = {
-        now: m.pct ? wave(RANGES[r].n, 36, 9, k).map((v) => v / 10) : mk(0.4),
-        prev: m.pct ? wave(RANGES[r].n, 34, 8, k + 2).map((v) => v / 10) : mk(2.2).map((v) => Math.round(v * 0.86)),
-      };
-    });
-  }
-  const CHANNELS = [['Search', 38, 14200], ['Direct', 24, 8900], ['Social', 16, 6100], ['Email', 12, 4400], ['Referral', 7, 2700], ['Paid', 3, 1150]];
-  const EVENTS = [['checkout.completed', 18420], ['plan.upgraded', 12880], ['invite.sent', 9610], ['report.exported', 6240], ['search.performed', 4975], ['page.viewed', 4120], ['trial.started', 2880]];
-  const REGIONS = [['NA', 41, 'North America'], ['EU', 29, 'Europe'], ['APAC', 18, 'Asia Pacific'], ['LATAM', 8, 'Latin America'], ['MEA', 4, 'Middle East & Africa']];
-  const HEALTH = [['Availability', 96, '--chart-2'], ['Latency', 84, '--chart-1'], ['Error rate', 78, '--chart-3'], ['Saturation', 71, '--chart-4']];
-  let range = '7d', metric = 'users', channel = 0;
-  const seenPages = new Set();
-
-  // ---------------------------------------------------------------- renderers
-  function renderDial() {
-    const up = 99.982, a = -130 + 260 * 0.86;
-    const ticks = Array.from({ length: 53 }, (_, i) => {
-      const d = (-130 + i * 5) * Math.PI / 180, big = i % 4 === 0, r0 = big ? 72 : 76;
-      const x = Math.sin(d), y = -Math.cos(d);
-      return `<line class="tick" x1="${100 + x * r0}" y1="${100 + y * r0}" x2="${100 + x * 82}" y2="${100 + y * 82}" stroke-width="${big ? 2 : 1}" opacity="${big ? 0.9 : 0.5}"/>`;
-    }).join('');
-    const pt = (deg, r) => [100 + r * Math.sin(deg * Math.PI / 180), 100 - r * Math.cos(deg * Math.PI / 180)];
-    const [sx, sy] = pt(-130, 90), [ex, ey] = pt(a, 90), [nx, ny] = pt(a, 62);
-    $('[data-dial]').innerHTML = `<svg viewBox="0 0 200 200" role="img" aria-label="Uptime ${up}% over 90 days">
-        <defs><linearGradient id="pa-sweep" x1="0" y1="1" x2="1" y2="0"><stop offset="0" style="stop-color:var(--chart-1)"/><stop offset="1" style="stop-color:var(--chart-2)"/></linearGradient></defs>
-        ${ticks}<path class="pa-draw" d="M${sx},${sy} A90,90 0 1 1 ${ex},${ey}" fill="none" stroke="url(#pa-sweep)" stroke-width="5" stroke-linecap="round"/>
-        <line class="needle" x1="100" y1="100" x2="${nx}" y2="${ny}" stroke-width="2.5" stroke-linecap="round"/><circle class="hub" cx="100" cy="100" r="6"/>
-      </svg><div class="pa-dial-read"><b class="num" data-uptime>${up}%</b><span>90-day uptime</span></div>`;
-    $('[data-kv]').innerHTML = [['p95 latency', '182 ms'], ['Error rate', '0.04%'], ['Deploys today', '6'], ['Open incidents', '0']]
-      .map(([k, v]) => `<div><dt>${k}</dt><dd class="num">${v}</dd></div>`).join('');
-  }
-
-  function renderHealth() {
-    const score = Math.round(HEALTH.reduce((a, h) => a + h[1], 0) / HEALTH.length);
-    $('[data-health]').innerHTML = `<div class="pa-health-ring" role="img" aria-label="Health score ${score} out of 100">${donut(HEALTH.map(([, v, c]) => ({ value: v, color: c })), { size: 124, w: 13, gap: 3, round: true })}<b class="num" data-health-score>${score}</b></div>
-      <ul>${HEALTH.map(([n, v, c]) => `<li><i style="background:var(${c})"></i>${n}<b class="num">${v}</b></li>`).join('')}</ul>`;
-  }
-
-  function renderOrbs() {
-    $('[data-orbs]').innerHTML = METRICS.map((m) => {
-      const d = data[range][m.id].now;
-      const v = m.pct ? d[d.length - 1] : d.reduce((a, b) => a + b, 0) / (m.id === 'users' ? d.length : 1);
-      return `<button type="button" class="pa-orb" style="--orb:var(${m.color})" data-metric="${m.id}" aria-pressed="${m.id === metric}"><span class="pa-orb-ball">${svg(m.icon, 2)}</span><span><b class="num" data-count="${m.pct ? v : Math.round(v)}" data-fmt="${m.id}">${m.fmt(Math.round(v * 10) / 10)}<em class="pa-delta${m.delta < 0 ? ' down' : ''}">${m.delta > 0 ? '+' : ''}${m.delta}%</em></b><span>${m.name}</span></span></button>`;
-    }).join('');
-  }
-
-  function renderTerrain() {
-    const m = METRICS.find((x) => x.id === metric), r = RANGES[range], d = data[range][metric];
-    $('[data-hero-title]').textContent = m.name;
-    $('[data-hero-sub]').textContent = `Terrain signal vs prior window · ${r.word}`;
-    const host = $('[data-hero]');
-    const meta = lineChart(host, {
-      labels: Array.from({ length: r.n }, (_, i) => r.label(i)),
-      fmt: m.fmt, h: 280, dots: true, ticks: 5,
-      series: [
-        { name: 'This period', color: '--chart-2', values: d.now, fill: 0.55 },
-        { name: 'Previous', color: '--chart-1', values: d.prev, fill: 0.5 },
-      ],
-      label: `${m.name} topographic terrain over ${r.word}`,
-    });
-    // Network overlay — nodes along peaks, edges between them (reference signature)
-    const net = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    net.setAttribute('class', 'pa-terrain-net');
-    net.setAttribute('viewBox', `0 0 ${meta.W} ${meta.H}`);
-    net.setAttribute('preserveAspectRatio', 'none');
-    net.setAttribute('aria-hidden', 'true');
-    const nowPts = meta.sets[0].pts;
-    const nodes = [0, Math.floor(nowPts.length / 3), Math.floor((nowPts.length * 2) / 3), nowPts.length - 1]
-      .filter((v, i, a) => a.indexOf(v) === i)
-      .map((i) => ({ i, x: nowPts[i][0], y: nowPts[i][1] - 8 }));
-    nodes.forEach((a, i) => {
-      nodes.slice(i + 1).forEach((b) => {
-        const e = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        e.setAttribute('class', 'edge');
-        e.setAttribute('x1', a.x); e.setAttribute('y1', a.y);
-        e.setAttribute('x2', b.x); e.setAttribute('y2', b.y);
-        net.appendChild(e);
-      });
-    });
-    nodes.forEach((n, i) => {
-      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('class', `node${i % 2 ? ' mint' : ''}`);
-      c.setAttribute('cx', n.x); c.setAttribute('cy', n.y); c.setAttribute('r', 4);
-      net.appendChild(c);
-    });
-    const plot = $('.pa-plot', host);
-    plot.appendChild(net);
-    // Floating peak labels
-    const peakIdx = nowPts.reduce((best, p, i) => (p[1] < nowPts[best][1] ? i : best), 0);
-    const label = document.createElement('span');
-    label.className = 'pa-terrain-label num';
-    label.textContent = `peak ${m.fmt(d.now[peakIdx])}`;
-    label.style.left = `${(nowPts[peakIdx][0] / meta.W) * 100}%`;
-    label.style.top = `calc(var(--plot-h) * ${(nowPts[peakIdx][1] / meta.H).toFixed(4)} - 28px)`;
-    plot.appendChild(label);
-    host.dataset.ambient = reduce ? '0' : '1';
-    drawCharts(host);
-  }
-
-  function renderMinis() {
-    const minis = [
-      ['Avg. session', '4m 12s', '--chart-2', wave(14, 40, 9, 1)],
-      ['Bounce rate', '31.8%', '--chart-4', wave(14, 30, 6, 3)],
-      ['New signups', fmtNum(Math.round(1284 * RANGES[range].k)), '--chart-1', wave(14, 50, 14, 5)],
-    ];
-    $('[data-minis]').innerHTML = minis.map(([n, v, c, s]) =>
-      `<section class="pa-card pa-mini" aria-label="${n}: ${v}"><p>${n}</p><b class="num">${v}</b><div class="pa-mini-spark">${spark(s, { color: c, fill: 0.4 })}</div></section>`
-    ).join('');
-  }
-
-  function renderPillars() {
-    const max = CHANNELS[0][1];
-    $('[data-pillars]').innerHTML = CHANNELS.map(([n, p], i) =>
-      `<button type="button" class="pa-pillar" data-ch="${i}" aria-pressed="${i === channel}" aria-label="${n}: ${p}% of sessions"><b class="num">${p}%</b><span class="pa-pillar-track"><span class="pa-pillar-fill" style="height:${(p / max) * 100}%"></span></span><span>${n}</span></button>`
-    ).join('');
-    const [n, p, s] = CHANNELS[channel];
-    let note = $('.pa-pillar-note');
-    if (!note) {
-      note = document.createElement('p');
-      note.className = 'pa-pillar-note';
-      note.setAttribute('aria-live', 'polite');
-      $('[data-pillars]').after(note);
-    }
-    note.innerHTML = `<b>${n}</b> brought <b class="num">${fmtNum(Math.round(s * RANGES[range].k))}</b> sessions, ${p}% of the total.`;
-    if (!reduce) {
-      $$('.pa-pillar-fill').forEach((f, i) => {
-        f.style.transform = 'scaleY(0)';
-        requestAnimationFrame(() => {
-          f.style.transition = `transform 420ms cubic-bezier(0.16,1,0.3,1) ${i * 40}ms`;
-          f.style.transform = 'scaleY(1)';
-        });
-      });
-    }
-  }
-
-  function renderSide() {
-    const k = RANGES[range].k, max = EVENTS[0][1];
-    $('[data-events]').innerHTML = EVENTS.slice(0, 5).map(([n, v]) =>
-      `<li><code>${n}</code><span class="num">${fmtNum(Math.round(v * k))}</span><i style="--w:${(v / max) * 100}%"></i></li>`
-    ).join('');
-    barChart($('[data-regions]'), {
-      labels: REGIONS.map((r) => r[0]),
-      series: [{ name: 'Share', color: '--chart-1', values: REGIONS.map((r) => r[1]) }],
-      fmt: (v) => v + '%', h: 110, noAxis: true, label: 'Share of sessions by region',
-    });
-    $$('[data-regions] .pa-bar').forEach((b, i) => b.style.setProperty('--bar', `var(--chart-${(i % 4) + 1})`));
-    const hrs = wave(12, 60, 26, 2);
-    barChart($('[data-hours]'), {
-      labels: hrs.map((_, i) => (i % 3 === 0 ? `${String(i * 2).padStart(2, '0')}h` : '')),
-      series: [{ name: 'Sessions', color: '--chart-2', values: hrs.map((v) => Math.round(v * 14 * k)) }],
-      h: 90, noAxis: true, label: 'Sessions for each two-hour block of the day',
-    });
-  }
-
-  function drawCharts(scope = document) {
-    if (reduce) return;
-    $$('.pa-draw', scope).forEach((path) => {
-      try {
-        const len = path.getTotalLength();
-        path.style.strokeDasharray = String(len);
-        path.style.strokeDashoffset = String(len);
-        path.getBoundingClientRect();
-        path.style.transition = 'stroke-dashoffset 700ms cubic-bezier(0.16,1,0.3,1)';
-        path.style.strokeDashoffset = '0';
-      } catch (_) { /* ignore */ }
-    });
-    $$('.pa-bar', scope).forEach((b, i) => {
-      b.style.transform = 'scaleY(0)';
-      requestAnimationFrame(() => {
-        b.style.transition = `transform 380ms cubic-bezier(0.16,1,0.3,1) ${i * 20}ms`;
-        b.style.transform = 'scaleY(1)';
-      });
-    });
-  }
-
-  function staggerReveal() {
-    if (reduce) return;
-    const cards = $$('.pa-reveal');
-    cards.forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(12px)';
-      setTimeout(() => {
-        el.style.transition = 'opacity 220ms cubic-bezier(0.16,1,0.3,1), transform 220ms cubic-bezier(0.16,1,0.3,1)';
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      }, 40 * i);
-    });
-  }
-
-  function animateCounts() {
-    const health = $('[data-health-score]');
-    if (health) countUp(health, 82, { duration: 700 });
-    $$('[data-count]').forEach((el) => {
-      const m = METRICS.find((x) => x.id === el.dataset.fmt);
-      const to = +el.dataset.count;
-      if (!m) return;
-      const delta = el.querySelector('.pa-delta');
-      countUp(el, to, {
-        duration: 750,
-        format: (n) => {
-          const main = m.fmt(m.pct ? Math.round(n * 10) / 10 : Math.round(n));
-          return delta ? main : main;
-        },
-      });
-      // restore delta after count finishes
-      setTimeout(() => {
-        if (!delta) return;
-        el.innerHTML = `${m.fmt(m.pct ? Math.round(to * 10) / 10 : Math.round(to))}${delta.outerHTML}`;
-      }, reduce ? 0 : 780);
-    });
-  }
-
-  const renderAll = () => {
-    renderOrbs();
-    renderTerrain();
-    renderMinis();
-    renderPillars();
-    renderSide();
-  };
-
-  seg($('[data-range]'), (v) => { range = v; renderAll(); });
-  $('[data-orbs]').addEventListener('click', (e) => {
-    const b = e.target.closest('[data-metric]'); if (!b) return;
-    metric = b.dataset.metric; renderOrbs(); renderTerrain(); animateCounts();
-    $(`[data-metric="${metric}"]`)?.focus();
-  });
-  $('[data-pillars]').addEventListener('click', (e) => {
-    const b = e.target.closest('[data-ch]'); if (!b) return;
-    channel = +b.dataset.ch; renderPillars();
-    $(`[data-ch="${channel}"]`)?.focus();
-  });
-  $('[data-notify]')?.addEventListener('click', () => toast('No new alerts · sample'));
-  $('[data-q]')?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      const q = e.target.value.trim();
-      toast(q ? `Search “${q}” · sample` : 'Type a query to search');
-    }
-  });
-
-  renderDial();
-  renderHealth();
-  renderAll();
-
-  // ---------------------------------------------------------------- multipage
-  const PAGES = [
-    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
-    { id: 'traffic', name: 'Traffic', pattern: 'Report' },
-    { id: 'events', name: 'Events', pattern: 'List' },
-    { id: 'regions', name: 'Regions', pattern: 'Detail' },
-  ];
-
-  const main = $('[data-main]');
-  const overview = $('[data-page-panel="overview"]');
-  let stub = null;
-  function ensureStub() {
-    if (stub) return stub;
-    stub = document.createElement('div');
-    stub.setAttribute('data-db-stub-host-legacy', '');
-    stub.hidden = true;
-    main.appendChild(stub);
-    return stub;
-  }
-
-  function pageHtml(page) {
-    if (page.id === 'traffic') {
-      return `<section class="pa-page" data-db-page="traffic" aria-labelledby="p-h">
-        <h1 id="p-h">Traffic</h1>
-        <p class="pa-page-lead">Channel mix and session volume for ${RANGES[range].word}. Sample data · fictional.</p>
-        <div class="pa-seg" role="group" aria-label="Traffic filter" data-traffic-tabs>
-          <button type="button" data-v="all" aria-pressed="true">All</button>
-          <button type="button" data-v="owned" aria-pressed="false">Owned</button>
-          <button type="button" data-v="paid" aria-pressed="false">Paid</button>
-        </div>
-        <div class="pa-page-grid" data-traffic-list></div>
-        <button type="button" class="pa-btn ghost" data-traffic-refresh>Refresh mix</button>
-        <div data-traffic-body></div>
-      </section>`;
-    }
-    if (page.id === 'events') {
-      return `<section class="pa-page" data-db-page="events" aria-labelledby="p-h">
-        <h1 id="p-h">Events</h1>
-        <p class="pa-page-lead">Instrument streams ranked by volume.</p>
-        <label class="pa-field">Filter events
-          <input data-ev-q type="search" placeholder="e.g. checkout" autocomplete="off">
-        </label>
-        <div class="pa-page-grid" data-ev-list></div>
-      </section>`;
-    }
-    if (page.id === 'regions') {
-      return `<section class="pa-page" data-db-page="regions" aria-labelledby="p-h">
-        <h1 id="p-h">Regions</h1>
-        <p class="pa-page-lead">Geographic share of sessions. Nothing is persisted in this demo.</p>
-        <form class="pa-page-card" data-region-form onsubmit="return false">
-          <label class="pa-field">Default region
-            <select name="region">
-              <option value="">Select…</option>
-              ${REGIONS.map(([code, , name]) => `<option value="${code}">${name}</option>`).join('')}
-            </select>
-          </label>
-          <p class="pa-error" data-form-err hidden>Pick a default region to continue.</p>
-          <button type="submit" class="pa-btn">Save preference</button>
-        </form>
-        <div class="pa-page-grid" data-region-cards></div>
-      </section>`;
-    }
-    return `<section class="pa-page" data-db-page="${page.id}"><h1>${page.name}</h1><p class="pa-page-lead">Sample data · fictional</p></section>`;
-  }
-
-  function wirePage(host, page) {
-    if (page.id === 'traffic') {
-      const list = host.querySelector('[data-traffic-list]');
-      const owned = new Set(['Search', 'Direct', 'Email']);
-      const paint = (filter = 'all') => {
-        const rows = CHANNELS.filter(([n]) => {
-          if (filter === 'owned') return owned.has(n);
-          if (filter === 'paid') return n === 'Paid' || n === 'Social';
-          return true;
-        });
-        if (!rows.length) {
-          list.innerHTML = `<div class="pa-empty"><p>No channels in this filter.</p></div>`;
-          return;
-        }
-        list.innerHTML = rows.map(([n, p, s]) =>
-          `<article class="pa-page-card"><div class="pa-row"><strong>${n}</strong><span class="num">${p}%</span></div><p class="pa-sub" style="margin:0">${fmtNum(Math.round(s * RANGES[range].k))} sessions</p></article>`
-        ).join('');
-      };
-      paint('all');
-      seg(host.querySelector('[data-traffic-tabs]'), (v) => paint(v));
-      host.querySelector('[data-traffic-refresh]')?.addEventListener('click', () => {
-        const body = host.querySelector('[data-traffic-body]');
-        body.innerHTML = `<div class="pa-loading" role="status"><p>Rebuilding channel mix…</p><div class="pa-skel"></div><div class="pa-skel"></div></div>`;
-        setTimeout(() => {
-          body.innerHTML = '';
-          paint(host.querySelector('[aria-pressed="true"]')?.dataset.v || 'all');
-          toast('Traffic mix refreshed (sample)');
-        }, reduce ? 0 : 650);
-      });
-    }
-    if (page.id === 'events') {
-      const list = host.querySelector('[data-ev-list]');
-      const paint = (q = '') => {
-        const rows = EVENTS.filter(([n]) => !q || n.includes(q));
-        if (!rows.length) {
-          list.innerHTML = `<div class="pa-empty"><p>No events match “${q}”.</p></div>`;
-          return;
-        }
-        const max = rows[0][1];
-        list.innerHTML = rows.map(([n, v]) =>
-          `<article class="pa-page-card"><div class="pa-row"><code>${n}</code><span class="num">${fmtNum(Math.round(v * RANGES[range].k))}</span></div><i style="display:block;height:6px;border-radius:999px;background:var(--surface);overflow:hidden"><span style="display:block;height:100%;width:${(v / max) * 100}%;background:linear-gradient(90deg,var(--chart-1),var(--chart-2))"></span></i></article>`
-        ).join('');
-      };
-      paint();
-      host.querySelector('[data-ev-q]')?.addEventListener('input', (e) => paint(e.target.value.trim().toLowerCase()));
-    }
-    if (page.id === 'regions') {
-      const cards = host.querySelector('[data-region-cards]');
-      cards.innerHTML = REGIONS.map(([code, share, name]) =>
-        `<article class="pa-page-card"><div class="pa-row"><strong>${name}</strong><span class="num">${share}%</span></div><p class="pa-sub" style="margin:0">${code} cluster</p></article>`
-      ).join('');
-      const form = host.querySelector('[data-region-form]');
-      form?.addEventListener('submit', () => {
-        const err = host.querySelector('[data-form-err]');
-        if (!form.region.value) { err.hidden = false; return; }
-        err.hidden = true;
-        toast(`Default region ${form.region.value} saved (sample)`);
-      });
-    }
-  }
-
-  if (window.DB?.onVisible) {
-    window.DB.onVisible(root, (visible) => {
-      document.documentElement.dataset.motionPaused = visible ? '' : '1';
-    });
-  }
-
-  if (!window.DB || typeof window.DB.route !== 'function') {
-    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
-  } else {
-    window.DB._legacyRouteDisabled && window.DB.route(PAGES, (id, page) => {
-      const isOverview = id === 'overview';
-      overview.hidden = !isOverview;
-      const host = ensureStub();
-      host.hidden = isOverview;
-      if (!isOverview) {
-        host.innerHTML = pageHtml(page);
-        paintIcons(host);
-        wirePage(host, page);
-      } else if (!seenPages.has('overview')) {
-        seenPages.add('overview');
-        staggerReveal();
-        animateCounts();
-      }
-      seenPages.add(id);
-    });
-  }
-
-  
-/* reveal-boot */
-if (typeof staggerReveal === "function") staggerReveal();
-/* === DB multipage polish (dense kit) === */
-(function wirePages() {
-  const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"traffic","name":"Traffic","pattern":"Report"},{"id":"events","name":"Events","pattern":"List"},{"id":"regions","name":"Regions","pattern":"Detail"}];
-  const root = document.querySelector('[data-db-app]') || document.body;
-  const main = document.querySelector('main') || document.body;
-  let overview = main.querySelector('[data-page-panel="overview"]');
-  if (!overview) {
-    overview = document.createElement('div');
-    overview.setAttribute('data-page-panel', 'overview');
-    [...main.children].forEach((ch) => {
-      if (ch.hasAttribute && (ch.hasAttribute('data-db-stub') || ch.getAttribute('data-db-page-host') != null)) return;
-      overview.appendChild(ch);
-    });
-    main.insertBefore(overview, main.firstChild);
-  }
-  main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
-  if (window.DB?.onVisible) window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
-  if (window.DB?.dense) {
-    const D = window.DB.dense;
-    window.DB.dense.mount({
-      main, overview, pages: PAGES, brand: "Pulsar Analytics",
-      renderPage(page) {
-        if (page.id === 'traffic') {
-          return `
-            ${D.kpiRow([
-              { to: 38, cap: 'Search share %', label: '38' },
-              { to: 24, cap: 'Direct %', label: '24' },
-              { to: 14200, cap: 'Search sessions', label: '14.2k' },
-              { to: 8.1, decimals: 1, suffix: '%', cap: 'WoW', label: '8.1' },
-            ])}
-            ${D.heroCard('Channel terrain', 'Session mix for the active window. Filter owned vs paid, then open a row for detail.', 'Report')}
-            ${D.tableCard('Channel register', ['Channel', 'Share', 'Sessions'], [
-              { id: 'c1', cells: ['Search', '<span class="num">38%</span>', '<span class="num">14,200</span>'] },
-              { id: 'c2', cells: ['Direct', '<span class="num">24%</span>', '<span class="num">9,010</span>'] },
-              { id: 'c3', cells: ['Social', '<span class="num">16%</span>', '<span class="num">6,040</span>'] },
-              { id: 'c4', cells: ['Email', '<span class="num">12%</span>', '<span class="num">4,510</span>'] },
-              { id: 'c5', cells: ['Referral', '<span class="num">7%</span>', '<span class="num">2,640</span>'] },
-              { id: 'c6', cells: ['Paid', '<span class="num">3%</span>', '<span class="num">1,120</span>'] },
-            ])}
-            ${D.chartCard('Share trend', 'line')}
-            ${D.chartCard('Volume mix', 'bars')}
-            ${D.listCard('Owned lanes', [
-              { k: 'Search', v: '38%' }, { k: 'Direct', v: '24%' },
-              { k: 'Email', v: '12%' }, { k: 'Referral', v: '7%' },
-            ])}
-            ${D.listCard('Paid lanes', [
-              { k: 'Social boost', v: '16%' }, { k: 'Paid search', v: '3%' },
-              { k: 'Partner', v: '—' }, { k: 'Retarget', v: '—' },
-            ])}`;
-        }
-        if (page.id === 'events') {
-          return `
-            ${D.kpiRow([
-              { to: 18420, cap: 'Top event', label: '18.4k' },
-              { to: 5, cap: 'Streams', label: '5' },
-              { to: 31.8, decimals: 1, suffix: '%', cap: 'Bounce', label: '31.8' },
-              { to: 1284, cap: 'Signups', label: '1,284' },
-            ])}
-            ${D.heroCard('Instrument streams', 'Events ranked by volume. Search to filter; open a row for the sample payload.', 'List')}
-            ${D.tableCard('Event register', ['Event', 'Volume', 'Delta'], [
-              { id: 'e1', cells: ['<code>checkout.completed</code>', '<span class="num">18,420</span>', '+6%'] },
-              { id: 'e2', cells: ['<code>plan.upgraded</code>', '<span class="num">12,880</span>', '+4%'] },
-              { id: 'e3', cells: ['<code>invite.sent</code>', '<span class="num">9,610</span>', '+2%'] },
-              { id: 'e4', cells: ['<code>report.exported</code>', '<span class="num">6,240</span>', '−1%'] },
-              { id: 'e5', cells: ['<code>search.performed</code>', '<span class="num">4,975</span>', '+9%'] },
-              { id: 'e6', cells: ['<code>session.started</code>', '<span class="num">41,200</span>', '+8%'] },
-              { id: 'e7', cells: ['<code>billing.retry</code>', '<span class="num">820</span>', '0%'] },
-              { id: 'e8', cells: ['<code>auth.locked</code>', '<span class="num">64</span>', '−3%'] },
-            ])}
-            ${D.chartCard('Event wave', 'line')}
-            ${D.chartCard('Volume pillars', 'bars')}
-            ${D.listCard('Watch list', [
-              { k: 'checkout.failed', v: 'Gate' }, { k: 'auth.locked', v: 'Watch' },
-              { k: 'billing.retry', v: 'Ok' }, { k: 'export.queued', v: 'Ok' },
-              { k: 'invite.bounced', v: 'Watch' }, { k: 'plan.cancelled', v: 'Ok' },
-            ])}
-            ${D.listCard('Owners', [
-              { k: 'Growth', v: 'checkout.*' }, { k: 'Lifecycle', v: 'invite.*' },
-              { k: 'Platform', v: 'session.*' }, { k: 'Finance', v: 'billing.*' },
-            ])}`;
-        }
-        if (page.id === 'regions') {
-          return `
-            ${D.kpiRow([
-              { to: 34, cap: 'Top share %', label: '34' },
-              { to: 6, cap: 'Clusters', label: '6' },
-              { to: 99.982, decimals: 3, suffix: '%', cap: 'Uptime', label: '99.982' },
-              { to: 182, cap: 'p95 ms', label: '182' },
-            ])}
-            ${D.heroCard('Region map', 'Geographic share of sessions. Set a default region — sample only, nothing is persisted.', 'Detail')}
-            ${D.tableCard('Region register', ['Region', 'Share', 'Code'], [
-              { id: 'r1', cells: ['Pacific', '<span class="num">34%</span>', 'US-W'] },
-              { id: 'r2', cells: ['Atlantic', '<span class="num">22%</span>', 'US-E'] },
-              { id: 'r3', cells: ['Central', '<span class="num">18%</span>', 'US-C'] },
-              { id: 'r4', cells: ['EU West', '<span class="num">14%</span>', 'EU-W'] },
-              { id: 'r5', cells: ['APAC', '<span class="num">8%</span>', 'APAC'] },
-              { id: 'r6', cells: ['LatAm', '<span class="num">4%</span>', 'LATAM'] },
-              { id: 'r7', cells: ['Canada', '<span class="num">3%</span>', 'CA'] },
-              { id: 'r8', cells: ['Other', '<span class="num">1%</span>', 'ROW'] },
-            ])}
-            ${D.chartCard('Share trend', 'line')}
-            ${D.chartCard('Cluster mix', 'bars')}
-            ${D.listCard('Routing', [
-              { k: 'Default region', v: 'Unset' }, { k: 'Failover', v: 'US-E' },
-              { k: 'Edge cache', v: 'On' }, { k: 'PII stay', v: 'Region' },
-              { k: 'Warm pool', v: '3' }, { k: 'Cold region', v: 'Off' },
-            ])}
-            ${D.listCard('Health', [
-              { k: 'Pacific latency', v: '142 ms' }, { k: 'Atlantic latency', v: '168 ms' },
-              { k: 'EU West latency', v: '121 ms' }, { k: 'APAC latency', v: '210 ms' },
-            ])}`;
-        }
-        return null;
-      },
-    });
-  }
+  g.innerHTML = html;
 })();
-/* === /DB multipage polish === */
+
+function setHands() {
+  const now = new Date();
+  const h = ((now.getHours() % 12) + now.getMinutes() / 60) / 12 * 360;
+  const m = (now.getMinutes() + now.getSeconds() / 60) / 60 * 360;
+  const hh = $('[data-hand-h]'), mm = $('[data-hand-m]');
+  if (hh) hh.style.transform = `rotate(${h}deg)`;
+  if (mm) mm.style.transform = `rotate(${m}deg)`;
+}
+setHands();
+if (!reduce) setInterval(setHands, 30000);
+
+/* ---------- overview widgets ---------- */
+function paintOrbs() {
+  const el = $('[data-orbs]');
+  el.innerHTML = METRICS.map((m) => `
+    <button type="button" class="pa-orb" data-metric="${m.id}" aria-pressed="${S.metric === m.id}" aria-label="${esc(m.name)} ${fmt(m)}">
+      <svg><use href="#${m.icon}"/></svg>
+      <b class="num">${esc(fmt(m))}</b>
+      <small>${esc(m.delta)}</small>
+    </button>`).join('');
+}
+
+function paintHours() {
+  const max = Math.max(...HOURS);
+  $('[data-hours]').innerHTML = HOURS.map((v, i) => `<span class="bar" style="--i:${i};height:${Math.max(12, (v / max) * 100)}%" title="Hour ${i}: ${v}"></span>`).join('');
+}
+
+function paintPills() {
+  $('[data-pills]').innerHTML = CHANNELS.map((c) => `
+    <button type="button" class="pa-pill" style="--h:${c.h};--fill:${c.fill}" data-channel="${c.id}" aria-pressed="${S.channel === c.id}" aria-label="${esc(c.name)} ${c.fill}%">
+      <span>${esc(c.name)}</span>
+    </button>`).join('');
+}
+
+function paintWave() {
+  const w = 280, h = 120;
+  const mx = Math.max(...WAVE), mn = Math.min(...WAVE);
+  const pts = WAVE.map((v, i) => {
+    const x = (i / (WAVE.length - 1)) * w;
+    const y = h - 12 - ((v - mn) / (mx - mn || 1)) * (h - 28);
+    return [x, y];
+  });
+  const line = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+  const area = `${line} L ${w} ${h} L 0 ${h} Z`;
+  $('[data-wave-area]').setAttribute('d', area);
+  $('[data-wave-line]').setAttribute('d', line);
+  $('[data-wave-n]').textContent = EVENTS.length + ' streams';
+}
+
+function paintRbars() {
+  const vals = REGIONS.slice(0, 7).map((r) => r.rps);
+  const mx = Math.max(...vals);
+  $('[data-rbars]').innerHTML = vals.map((v, i) => `<span class="pa-rbar" style="--i:${i};--h:${Math.max(18, (v / mx) * 100)}" title="${esc(REGIONS[i].name)}"></span>`).join('');
+}
+
+function sparkPath(series, color) {
+  const w = 160, h = 40;
+  const mx = Math.max(...series), mn = Math.min(...series);
+  const pts = series.map((v, i) => {
+    const x = (i / (series.length - 1)) * w;
+    const y = h - 4 - ((v - mn) / (mx - mn || 1)) * (h - 8);
+    return [x, y];
+  });
+  const d = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+  const area = `${d} L ${w} ${h} L 0 ${h} Z`;
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="${area}" style="fill:${color}22"/><path class="line" d="${d}" style="stroke:${color}"/></svg>`;
+}
+
+function paintSparks() {
+  const picks = [METRICS[0], METRICS[1], METRICS[2]];
+  const colors = ['#00ffcc', '#c49bff', '#ff7ab8'];
+  $('[data-sparks]').innerHTML = picks.map((m, i) => `
+    <article class="pa-spark">
+      <h3>${esc(m.name)}</h3>
+      <b class="num">${esc(fmt(m))}</b>
+      ${sparkPath(m.series, colors[i])}
+    </article>`).join('');
+}
+
+function paintHeroMeta() {
+  const m = METRICS.find((x) => x.id === S.metric) || METRICS[0];
+  $('[data-hero-title]').textContent = m.name;
+  $('[data-hero-sub]').textContent = S.range + ' ridge · ' + m.delta;
+  $('[data-hero-labels]').innerHTML = `
+    <span style="left:12%;top:18%">Peak ${fmt(m)}</span>
+    <span style="left:58%;top:30%">${esc(CHANNELS.find((c) => c.id === S.channel)?.name || 'API')}</span>
+    <span style="left:34%;top:62%">Pool</span>`;
+  $('[data-constellation]').innerHTML = `<svg viewBox="0 0 400 260" preserveAspectRatio="none">
+    <g stroke="rgb(255 255 255 / 0.35)" stroke-width="1" fill="none">
+      <path d="M40 180 L120 90 L200 140 L280 60 L360 110"/>
+      <path d="M80 200 L160 150 L240 170 L320 100"/>
+    </g>
+    <g fill="#00ffcc">${[[40,180],[120,90],[200,140],[280,60],[360,110],[160,150],[320,100]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="2.5"/>`).join('')}</g>
+  </svg>`;
+}
+
+/* ---------- WebGL terrain ---------- */
+/* ---------- range / interactions ---------- */
+$$('[data-range] [data-v]').forEach((b) => b.addEventListener('click', () => {
+  S.range = b.dataset.v;
+  $$('[data-range] [data-v]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  paintHeroMeta();
+  toast('Range set to ' + S.range);
+  render();
+}));
+
+$('[data-q]')?.addEventListener('input', (e) => { S.q = e.target.value; if (window.DB?.page && window.DB.page !== 'overview') render(); });
+
+$('[data-act="alerts"]')?.addEventListener('click', () => toast('3 alerts: job.timeout, quota.exceeded, stream.lag'));
+
+document.addEventListener('click', (e) => {
+  const orb = e.target.closest('[data-metric]');
+  if (orb) {
+    S.metric = orb.dataset.metric;
+    paintOrbs();
+    paintHeroMeta();
+    if (window.DBHero?.setMode) window.DBHero.setMode(S.metric);
+    toast('Terrain keyed to ' + (METRICS.find((m) => m.id === S.metric)?.name || S.metric));
+    return;
+  }
+  const ch = e.target.closest('[data-channel]');
+  if (ch) {
+    S.channel = ch.dataset.channel;
+    paintPills();
+    paintHeroMeta();
+    toast('Channel ' + ch.dataset.channel);
+  }
+});
+
+const frame = $('[data-frame]');
+if (!reduce && matchMedia('(pointer: fine)').matches && frame) {
+  frame.addEventListener('pointermove', (e) => {
+    const r = frame.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    $$('.pa-glass').forEach((el) => el.style.setProperty('--spec', (x * 28).toFixed(1) + 'px'));
+  });
+}
+
+/* ---------- inner pages ---------- */
+const stateBox = (items, emptyMsg, emptyBtn, body) => {
+  if (S.view === 'loading') return '<div class="pa-grid"><div class="pa-skel"></div><div class="pa-skel"></div><div class="pa-skel"></div></div>';
+  if (S.view === 'error') return '<div class="pa-state"><p>We couldn’t load this slice. Check the connection, then try again.</p><button class="pa-btn pa-btn--main" data-act="retry">Try again</button></div>';
+  if (S.view === 'empty' || !items.length) return `<div class="pa-state"><p>${esc(emptyMsg)}</p>${emptyBtn}</div>`;
+  return body(items);
+};
+
+const pages = {
+  overview() {
+    paintOrbs(); paintHours(); paintPills(); paintWave(); paintRbars(); paintSparks(); paintHeroMeta();
+  },
+  traffic(el) {
+    const q = S.q.trim().toLowerCase();
+    let list = CHANNELS.filter((c) => !q || c.name.toLowerCase().includes(q));
+    el.innerHTML = `<div class="pa-sheet-head"><div><h1>Traffic</h1><p class="pa-sub">Channel share for ${esc(S.range)}. Tap a channel to key the overview terrain.</p></div>
+      <div class="pa-tools"><input class="pa-field" type="search" placeholder="Filter channels" aria-label="Filter channels" value="${esc(S.q)}" data-page-q>
+        <select class="pa-field" aria-label="Sort channels" data-sort>${[['h-desc','Tallest first'],['fill-desc','Fill first'],['name-asc','Name A–Z']].map(([v,l]) => `<option value="${v}"${S.sort===v?' selected':''}>${l}</option>`).join('')}</select></div></div>
+      <div class="pa-kpi"><div><small>Total RPS</small><b class="num">${REGIONS.reduce((a,r)=>a+r.rps,0).toLocaleString('en-US')}</b></div>
+        <div><small>Active channel</small><b>${esc(CHANNELS.find(c=>c.id===S.channel)?.name||'—')}</b></div>
+        <div><small>Health</small><b class="num">88</b></div></div>
+      ${stateBox(list, q ? `No channels match “${S.q}”.` : 'No channels in this range.', '<button class="pa-btn pa-btn--main" data-act="clear">Clear search</button>', (items) => {
+        if (S.sort === 'name-asc') items = [...items].sort((a,b)=>a.name.localeCompare(b.name));
+        if (S.sort === 'fill-desc') items = [...items].sort((a,b)=>b.fill-a.fill);
+        if (S.sort === 'h-desc') items = [...items].sort((a,b)=>b.h-a.h);
+        return `<div class="pa-grid">${items.map((c,i)=>`<button type="button" class="pa-tile" style="--i:${i}" data-channel="${c.id}" aria-pressed="${S.channel===c.id}"><small>${esc(c.name)}</small><b class="num">${c.fill}%</b><small>pillar height ${c.h}</small></button>`).join('')}</div>`;
+      })}`;
+  },
+  events(el) {
+    const q = S.q.trim().toLowerCase();
+    let list = EVENTS.filter((e) => !q || (e.name + e.region).toLowerCase().includes(q));
+    if (S.sort === 'count-asc') list = [...list].sort((a,b)=>a.count-b.count);
+    else list = [...list].sort((a,b)=>b.count-a.count);
+    el.innerHTML = `<div class="pa-sheet-head"><div><h1>Events</h1><p class="pa-sub">${list.length} streams in the ${esc(S.range)} window.</p></div>
+      <div class="pa-tools"><input class="pa-field" type="search" placeholder="Search events" aria-label="Search events" value="${esc(S.q)}" data-page-q>
+        <select class="pa-field" data-sort aria-label="Sort events">${[['count-desc','Highest count'],['count-asc','Lowest count']].map(([v,l])=>`<option value="${v}"${S.sort===v?' selected':''}>${l}</option>`).join('')}</select></div></div>
+      ${stateBox(list, q ? `No events match “${S.q}”.` : 'No events yet.', '<button class="pa-btn pa-btn--main" data-act="clear">Clear search</button>', (items) => `
+        <table class="pa-table"><thead><tr><th>Event</th><th>Region</th><th>Count</th><th>Severity</th><th></th></tr></thead>
+        <tbody>${items.map((e)=>`<tr><td>${esc(e.name)}</td><td>${esc(e.region)}</td><td class="num">${e.count.toLocaleString('en-US')}</td><td>${esc(e.severity)}</td>
+          <td><button class="pa-btn" data-pin="${e.id}" aria-pressed="${S.region===e.region.toLowerCase().replace(/\s+/g,'-')?'false':'false'}">Inspect</button></td></tr>`).join('')}</tbody></table>`)}`;
+  },
+  regions(el) {
+    const q = S.q.trim().toLowerCase();
+    const list = REGIONS.filter((r) => !q || r.name.toLowerCase().includes(q));
+    const cur = REGIONS.find((r) => r.id === S.region) || REGIONS[0];
+    el.innerHTML = `<div class="pa-sheet-head"><div><h1>Regions</h1><p class="pa-sub">Throughput and health by edge. Selected: ${esc(cur.name)}.</p></div>
+      <div class="pa-tools"><input class="pa-field" type="search" placeholder="Filter regions" aria-label="Filter regions" value="${esc(S.q)}" data-page-q>
+        <label class="pa-label">Preview a state<select class="pa-field" data-view>${[['ready','Populated'],['loading','Loading'],['empty','Empty'],['error','Error']].map(([v,l])=>`<option value="${v}"${S.view===v?' selected':''}>${l}</option>`).join('')}</select></label></div></div>
+      ${stateBox(list, 'No regions match.', '<button class="pa-btn pa-btn--main" data-act="clear">Clear search</button>', (items) => `
+        <div class="pa-grid">${items.map((r,i)=>`<button type="button" class="pa-tile" style="--i:${i}" data-region="${r.id}" aria-pressed="${S.region===r.id}">
+          <small>${esc(r.name)}</small><b class="num">${r.rps.toLocaleString('en-US')}</b><small>rps · health ${r.health}</small>
+          <svg viewBox="0 0 120 28" aria-hidden="true">${r.bars.map((v,j)=>{const mx=Math.max(...r.bars);return `<rect x="${j*16+2}" y="${28-v/mx*24}" width="10" height="${v/mx*24}" rx="3" fill="${S.region===r.id?'#00ffcc':'#c49bff'}" opacity="0.85"/>`;}).join('')}</svg>
+        </button>`).join('')}</div>
+        <form class="pa-glass" data-region-form style="padding:18px;display:grid;gap:12px;border-radius:20px">
+          <h2>Watch ${esc(cur.name)}</h2>
+          <label class="pa-label">Alert email<input class="pa-field" name="email" type="email" required placeholder="ops@pulsar.example" value="ops@pulsar.example"></label>
+          <p class="pa-err" data-form-err hidden></p>
+          <div class="pa-switch"><span>Page on health &lt; 90</span><input type="checkbox" name="alerts" ${S.alerts?'checked':''}></div>
+          <div class="pa-switch"><span>Daily digest</span><input type="checkbox" name="digest" ${S.digest?'checked':''}></div>
+          <button class="pa-btn pa-btn--main" type="submit">Save watch</button>
+        </form>`)}`;
+  },
+};
+
+function bindSheet(el) {
+  $('[data-page-q]', el)?.addEventListener('input', (e) => { S.q = e.target.value; render(); });
+  $('[data-sort]', el)?.addEventListener('change', (e) => { S.sort = e.target.value; render(); });
+  $('[data-view]', el)?.addEventListener('change', (e) => { S.view = e.target.value; render(); });
+  $('[data-act="clear"]', el)?.addEventListener('click', () => { S.q = ''; S.view = 'ready'; render(); });
+  $('[data-act="retry"]', el)?.addEventListener('click', () => { S.view = 'ready'; render(); });
+  $$('[data-region]', el).forEach((b) => b.addEventListener('click', () => { S.region = b.dataset.region; toast('Watching ' + S.region); render(); }));
+  $$('[data-pin]', el).forEach((b) => b.addEventListener('click', () => {
+    const ev = EVENTS.find((x) => x.id === b.dataset.pin);
+    if (ev) { toast('Inspecting ' + ev.name); S.q = ev.name; }
+  }));
+  $$('[data-channel]', el).forEach((b) => b.addEventListener('click', () => {
+    S.channel = b.dataset.channel; paintPills(); paintHeroMeta(); toast('Channel ' + S.channel); render();
+  }));
+  const form = $('[data-region-form]', el);
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = form.email.value.trim();
+    const err = $('[data-form-err]', form);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.hidden = false; err.textContent = 'Enter a valid email so we can page on-call.'; form.email.focus(); return; }
+    err.hidden = true;
+    S.alerts = form.alerts.checked; S.digest = form.digest.checked;
+    toast('Watch saved for ' + S.region);
+  });
+}
+
+function render() {
+  const id = window.DB?.page || 'overview';
+  $$('[data-db-page]').forEach((sec) => { sec.hidden = sec.dataset.dbPage !== id; });
+  if (id === 'overview') pages.overview();
+  else {
+    const el = $(`[data-db-page="${id}"]`);
+    if (el) { pages[id]?.(el); bindSheet(el); }
+  }
+}
+
+DB.route([
+  { id: 'overview', name: 'Overview' },
+  { id: 'traffic', name: 'Traffic' },
+  { id: 'events', name: 'Events' },
+  { id: 'regions', name: 'Regions' },
+], () => render());
+
+render();
+document.addEventListener('db-hero-ready', () => { if (window.DBHero?.setMode) window.DBHero.setMode(S.metric); });
+if (window.DBHero?.setMode) window.DBHero.setMode(S.metric);
 document.documentElement.dataset.ready = 'true';
-})();
