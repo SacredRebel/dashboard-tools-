@@ -1,0 +1,20 @@
+{
+  "reference": "reference.png",
+  "unit": "percent of the frame's width, measured from the frame's top-left corner; viewport 1440 wide, overview page, default variant",
+  "frame": { "min_w_vw": 86, "max_w_vw": 97, "aspect": [0.7, 0.95] },
+  "boxes": {
+    "nav":        { "x": 16.9, "y": 2.0, "w": 51.9, "h": 4.0, "note": "white pill of six tabs in the frame's top bar" },
+    "greeting":   { "x": 2.5, "y": 6.7, "max_h": 4, "note": "small greeting line, about 2% tall, not a big headline" },
+    "kpis":       { "x": 2.0, "y": 10.1, "w": 69.8, "h": 13.5, "note": "row of four short tiles; value and label fill the tile" },
+    "kpi":        { "count": 4, "min_w": 15, "max_h": 15 },
+    "chart":      { "x": 2.0, "y": 24.8, "w": 69.8, "h": 31.7, "note": "Average sales card" },
+    "chart-bar":  { "count": 9, "min_w": 4.8, "note": "wide stacked hatched blocks, one column per month; not thin bars" },
+    "chart-axis": { "count": 1, "note": "y-axis labels ($0 to $1.2k) left of the bars" },
+    "chart-tip":  { "count": 1, "note": "tooltip with two values above the May column" },
+    "emails":     { "x": 2.0, "y": 57.6, "w": 69.8, "note": "Recent emails starts directly under the chart, same column" },
+    "formation":  { "x": 73.1, "y": 10.1, "w": 25.1, "h": 23.7, "note": "Formation status card, top of the right column" },
+    "success":    { "x": 73.1, "y": 35.1, "w": 25.1, "h": 33.4, "note": "Success rate card with title, arrow button, gauge, two stats" },
+    "success-title": { "count": 1 },
+    "gauge":      { "min_w": 14, "note": "segmented half gauge" }
+  }
+}

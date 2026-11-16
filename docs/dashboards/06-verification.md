@@ -90,3 +90,7 @@ Do at least three look-fix-look rounds on a new build. Stop when a round finds n
 | A name copied from the reference image | Mallow | question 9 |
 | Blocks piled on each other on phone | Meridian (first pass) | question 10 |
 | Layout collapsed into one narrow column | Glacier (rejected batch) | opening the capture at all |
+
+## Layout spec
+
+If `site/dashboards/<id>/layout.json` exists, the check also measures the overview against it. See [07-layout-spec.md](07-layout-spec.md). Fix every `layout` line before judging the look.
