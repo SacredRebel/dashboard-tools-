@@ -40,7 +40,7 @@
 [data-variant="daylight"] {
   --accent: #7c4dff; --accent-hover: #9b79ff; --focus: #7c4dff;
   --mint: #64ffda; --violet: #7c4dff; --peach: #ffd54f;
-  --glow: rgb(100 70 255 / 0.4);
+  --glow: rgb(100 70 255 / 0.4); --accent-fg: #ffffff; --accent: #6a3df0; --accent-hover: #7c4dff;
 }
 
 body { background: var(--bg); color: var(--text); overflow-x: hidden; font-family: var(--font-sans); }
@@ -62,31 +62,31 @@ button { cursor: pointer; }
 /* Frame: square-ish soft-3D charcoal board */
 .pa-frame {
   position: relative;
-  width: min(920px, 100vw - 48px, (100vh - 110px) * 1.024);
+  /* finishing pass: sized by width, not squeezed to the viewport height. A near-square board that must fit one screen
+     ends up a third of the width; letting the page scroll keeps every module at a readable size. */
+  width: min(1040px, 100vw - 48px);
   aspect-ratio: 680 / 664;
   container-type: inline-size;
-  border-radius: 6.5cqw;
-  background: linear-gradient(165deg, #353145 0%, #242030 42%, #1a1824 100%);
+  /* the reference is a flat dark canvas of separate soft tiles: no device-like rounded frame, no poured header */
+  border-radius: 1.4cqw;
+  background: linear-gradient(165deg, #2c2936 0%, #211e2b 45%, #19171f 100%);
   box-shadow: var(--shadow-frame), inset 0 1px 0 rgb(255 255 255 / 0.08), inset 0 -2px 8px rgb(0 0 0 / 0.35);
   overflow: hidden;
-  border: 0.35cqw solid rgb(255 255 255 / 0.06);
   animation: pa-in var(--dur-4) var(--ease-out) both;
 }
 @keyframes pa-in { from { opacity: 0; transform: scale(0.975) translateY(10px); } }
 .pa-glow { position: absolute; left: 10%; right: 10%; bottom: -8%; height: 28%; background: radial-gradient(50% 80% at 50% 30%, var(--glow), transparent 70%); pointer-events: none; z-index: 0; filter: blur(8px); }
 
-/* poured header band from top edge */
+/* header: one floating tile in the top row, like the other tiles */
 .pa-band {
   --f: 2.8cqw;
-  position: absolute; z-index: 5; top: -1px; left: 18%; width: 64%; height: 7.2cqw;
-  display: flex; align-items: center; gap: 1cqw; padding: 0 2cqw 0.5cqw;
+  position: absolute; z-index: 5; top: 1.5cqw; left: 18%; width: 64%; height: 6cqw;
+  display: flex; align-items: center; gap: 1cqw; padding: 0 1.6cqw;
   background: var(--surface-2);
-  border-radius: 0 0 3cqw 3cqw;
-  box-shadow: 0 10px 28px rgb(0 0 0 / 0.35), inset 0 1px 0 rgb(255 255 255 / 0.08);
-  animation: pa-pour var(--dur-4) var(--ease-out) 100ms both; transform-origin: top;
+  border-radius: 2cqw;
+  box-shadow: 0 10px 28px rgb(0 0 0 / 0.35), inset 0 1px 0 rgb(255 255 255 / 0.08), inset 0 -2px 6px rgb(0 0 0 / 0.3);
+  animation: pa-in var(--dur-4) var(--ease-out) 100ms both;
 }
-@keyframes pa-pour { from { transform: scaleY(0.2); opacity: 0; } }
-.pa-band::before, .pa-band::after { content: ""; position: absolute; top: 1px; width: var(--f); height: var(--f); pointer-events: none; }
 .pa-band::before { right: 100%; background: radial-gradient(circle at 0 100%, transparent calc(var(--f) - 0.5px), var(--surface-2) var(--f)); }
 .pa-band::after { left: 100%; background: radial-gradient(circle at 100% 100%, transparent calc(var(--f) - 0.5px), var(--surface-2) var(--f)); }
 
@@ -336,3 +336,17 @@ button { cursor: pointer; }
 
 .pa-gauge { position: relative; }
 .pa-ring-n-html { position: absolute; left: 12%; top: 50%; transform: translateY(-50%); width: 38%; text-align: center; font: 700 max(22px, 3.2cqw)/1 var(--font-display); color: #f1eff7; text-shadow: 0 2px 8px rgb(0 0 0 / 0.65); pointer-events: none; }
+
+/* finishing pass: traffic tiles carry the overview's glowing pill instead of a text line about it */
+.pa-tile { position: relative; padding-left: calc(16px + 34px) !important; min-height: 128px; }
+.pa-tile-bar { position: absolute; left: 14px; top: 14px; bottom: 14px; width: 22px; border-radius: 999px; background: rgb(255 255 255 / 0.07); box-shadow: inset 0 2px 6px rgb(0 0 0 / 0.5); display: flex; align-items: flex-end; overflow: hidden; }
+.pa-tile-bar i { width: 100%; border-radius: 999px; background: linear-gradient(180deg, var(--peach), var(--violet) 45%, var(--mint)); box-shadow: 0 0 14px var(--glow); transform-origin: 50% 100%; animation: pa-grow 800ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 60ms + 120ms); }
+@keyframes pa-grow { from { transform: scaleY(0.05); } }
+.pa-tile[aria-pressed="true"] .pa-tile-bar i { filter: brightness(1.25); }
+@media (prefers-reduced-motion: reduce) { .pa-tile-bar i { animation: none; } }
+
+.pa-hours { display: grid; gap: 10px; padding: 16px; border-radius: 22px; background: rgb(255 255 255 / 0.04); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08); }
+.pa-hours-bars { height: 150px; display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); gap: 5px; align-items: end; }
+.pa-hours-bars i { border-radius: 999px; background: linear-gradient(180deg, var(--mint), var(--violet)); box-shadow: 0 0 10px var(--glow); transform-origin: 50% 100%; animation: pa-grow 700ms var(--ease-out) both; animation-delay: calc(var(--k) * 18ms + 150ms); }
+.pa-hours-axis { display: flex; justify-content: space-between; margin: 0; font-size: 13px; color: var(--text-muted); }
+@media (prefers-reduced-motion: reduce) { .pa-hours-bars i { animation: none; } }

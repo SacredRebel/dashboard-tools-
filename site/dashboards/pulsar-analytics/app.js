@@ -253,8 +253,11 @@ const pages = {
         if (S.sort === 'name-asc') items = [...items].sort((a,b)=>a.name.localeCompare(b.name));
         if (S.sort === 'fill-desc') items = [...items].sort((a,b)=>b.fill-a.fill);
         if (S.sort === 'h-desc') items = [...items].sort((a,b)=>b.h-a.h);
-        return `<div class="pa-grid">${items.map((c,i)=>`<button type="button" class="pa-tile" style="--i:${i}" data-channel="${c.id}" aria-pressed="${S.channel===c.id}"><small>${esc(c.name)}</small><b class="num">${c.fill}%</b><small>pillar height ${c.h}</small></button>`).join('')}</div>`;
-      })}`;
+        return `<div class="pa-grid">${items.map((c,i)=>`<button type="button" class="pa-tile" style="--i:${i}" data-channel="${c.id}" aria-pressed="${S.channel===c.id}"><span class="pa-tile-bar" aria-hidden="true"><i style="height:${c.h}%"></i></span><small>${esc(c.name)}</small><b class="num">${c.fill}%</b><small>${c.fill >= 60 ? 'Above' : 'Below'} the 7-day average</small></button>`).join('')}</div>`;
+      })}
+      <section class="pa-hours"><h2>Requests by hour, ${esc(CHANNELS.find((c) => c.id === S.channel)?.name || 'all channels')}</h2>
+        <div class="pa-hours-bars" role="img" aria-label="Requests per hour over the last day, peaking in the early evening">${[...Array(24)].map((_, h) => { const seed = (CHANNELS.findIndex((c) => c.id === S.channel) + 2) * 7; const v = 22 + Math.round(60 * Math.max(0, Math.sin((h - 5) / 24 * Math.PI * 1.6)) + ((h * seed) % 17)); return `<i style="--k:${h};height:${Math.min(100, v)}%"></i>`; }).join('')}</div>
+        <p class="pa-hours-axis"><span>Midnight</span><span>6 am</span><span>Noon</span><span>6 pm</span><span>Now</span></p></section>`;
   },
   events(el) {
     const q = S.q.trim().toLowerCase();

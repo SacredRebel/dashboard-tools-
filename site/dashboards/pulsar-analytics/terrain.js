@@ -38,35 +38,40 @@ try {
   geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
   geo.computeVertexNormals();
 
-  const terrainMat = new THREE.MeshPhysicalMaterial({
-    vertexColors: true, roughness: 0.22, metalness: 0.08, transmission: 0.72, thickness: 0.85,
-    transparent: true, opacity: 0.82, flatShading: true, side: THREE.DoubleSide,
-    emissive: new THREE.Color('#3a1860'), emissiveIntensity: 0.32,
-  });
+  // Finishing pass: the reference is glowing ridge lines over dark glass, not a pale translucent sheet.
+  // Faces are near-black versions of the ridge colors, so a ridge in front hides the ones behind it;
+  // one additive polyline per row draws the neon ridges on top.
+  const dark = new Float32Array(colors.length); for (let i = 0; i < colors.length; i++) dark[i] = colors[i] * 0.16;
+  geo.setAttribute('color', new THREE.BufferAttribute(dark, 3));
+  const terrainMat = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.96, side: THREE.DoubleSide, toneMapped: false });
   const mesh = new THREE.Mesh(geo, terrainMat);
   mesh.rotation.x = -Math.PI / 2.35; mesh.position.y = -0.1; mesh.scale.setScalar(0.92);
   stage.root.add(mesh);
 
-  const edges = new THREE.EdgesGeometry(geo, 22);
-  const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.42, blending: THREE.AdditiveBlending }));
-  line.rotation.copy(mesh.rotation); line.position.copy(mesh.position); line.scale.copy(mesh.scale); line.position.y += 0.01;
-  stage.root.add(line);
+  const COLS = 121, ROWS = 91;
+  const lineMat = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false });
+  const line = new THREE.Group();
+  for (let r = 0; r < ROWS; r += 3) {
+    const p = new Float32Array(COLS * 3), c = new Float32Array(COLS * 3);
+    for (let k = 0; k < COLS; k++) { const i = r * COLS + k; p[k * 3] = pos.getX(i); p[k * 3 + 1] = pos.getY(i); p[k * 3 + 2] = pos.getZ(i) + 0.006; c[k * 3] = colors[i * 3]; c[k * 3 + 1] = colors[i * 3 + 1]; c[k * 3 + 2] = colors[i * 3 + 2]; }
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(p, 3)); g.setAttribute('color', new THREE.BufferAttribute(c, 3));
+    line.add(new THREE.Line(g, lineMat));
+  }
+  mesh.add(line);
 
   const pool = new THREE.Mesh(new THREE.CircleGeometry(1.35, 48), new THREE.MeshBasicMaterial({ color: 0xbf00ff, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending, depthWrite: false }));
   pool.rotation.x = -Math.PI / 2; pool.position.y = -0.55; stage.root.add(pool);
 
   let metric = 'users';
-  const emissiveFor = { users: '#3a1860', sessions: '#2a1048', errors: '#401028', latency: '#403010' };
+  const tintFor = { users: '#ffffff', sessions: '#9fe8ff', errors: '#ff9db0', latency: '#ffd9a0' };
   stage.onFrame((t) => {
     mesh.position.y = -0.1 + Math.sin(t * 0.6) * 0.02;
-    line.position.y = mesh.position.y + 0.01;
     pool.material.opacity = 0.28 + Math.sin(t * 0.9) * 0.08;
-    const boost = metric === 'errors' ? 0.55 : metric === 'latency' ? 0.35 : 0.28;
-    terrainMat.emissiveIntensity = boost + Math.sin(t) * 0.05;
+    lineMat.opacity = 0.85 + Math.sin(t * 1.3) * 0.1;
   });
 
   window.DBHero = {
-    setMode(next) { metric = next || 'users'; terrainMat.emissive = new THREE.Color(emissiveFor[metric] || emissiveFor.users); },
+    setMode(next) { metric = next || 'users'; lineMat.color.set(tintFor[metric] || tintFor.users); },
     poster() { stage.renderer.render(stage.scene, stage.camera); return canvas.toDataURL('image/png'); },
   };
   window.DBHero.setMode('users');

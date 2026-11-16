@@ -280,6 +280,10 @@ Both examples stopped with differences that code could not close. They are writt
 
 If what is left on your list is of this kind (needs a new image or model), say so and finish. If what is left is layout, shape, spacing, type or color, you are not finished.
 
+**The worked examples teach techniques, not form.** Copy how Haven pours a header or how Meridian mounts a 3D object. Do not put Haven's rounded frame or notch on a dashboard whose reference is a flat board. The form always comes from this dashboard's own reference image.
+
+After the checks pass, do the [finishing pass](04-finishing-pass.md).
+
 ## Step 12. Finish
 
 1. Update the dashboard's entry in `catalog/dashboards.json` (`summary`, `signature`, `layout`, `fx`, `materials`).

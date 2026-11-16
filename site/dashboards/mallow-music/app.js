@@ -45,7 +45,7 @@
   const S = {
     week: 'this', playing: null, favs: new Set(['t2', 't3', 't5']), genre: -1, day: -1,
     lib: 'all', q: '', view: 'ready', sort: 'recent',
-    profile: { name: 'Mia Reed', email: 'mia@mallow.example', notify: true, offline: true, hifi: false },
+    profile: { name: 'Juno Reed', email: 'juno@mallow.example', notify: true, offline: true, hifi: false },
   };
 
   /* decorative SVG bits */
@@ -54,7 +54,7 @@
 
   const h = new Date().getHours();
   const greet = h < 12 ? 'Good Morning' : h < 18 ? 'Good Afternoon' : 'Good Evening';
-  const _greet=$('[data-greet]'); if(_greet) _greet.innerHTML = `${greet}, Mia! <span aria-hidden="true">${h < 12 ? '☀️' : h < 18 ? '🌤️' : '🌙'}</span>`;
+  const _greet=$('[data-greet]'); if(_greet) _greet.innerHTML = `${greet}, Juno! <span aria-hidden="true">${h < 12 ? '☀️' : h < 18 ? '🌤️' : '🌙'}</span>`;
 
   function toast(msg, undo) {
     const t = $('[data-toast]');
@@ -79,7 +79,7 @@
       const len = (g.v / total) * 100;
       const active = S.genre === i;
       const sw = active ? w + 2 : w;
-      const seg = `<circle class="seg" cx="${c}" cy="${c}" r="${r}" fill="none" stroke-width="${sw}" pathLength="100" stroke-dasharray="${Math.max(0.01, len - gap).toFixed(2)} ${(100 - len + gap).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 ${c} ${c})" style="stroke:var(${g.c});stroke-dashoffset:1" pathLength="100"/>`;
+      const seg = `<circle class="seg" cx="${c}" cy="${c}" r="${r}" fill="none" stroke-width="${sw}" pathLength="100" stroke-dasharray="${Math.max(0.01, len - gap).toFixed(2)} ${(100 - len + gap).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 ${c} ${c})" style="stroke:var(${g.c})" pathLength="100"/>`;
       off += len; return seg;
     }).join('');
     const label = S.genre < 0 ? ['Top', 'mix'] : [GENRES[S.genre].v + '%', GENRES[S.genre].n];
@@ -162,7 +162,7 @@
             <p class="mm-err" id="err-name" role="alert"></p>
             <label class="mm-label">Email<input class="mm-field" type="email" name="email" value="${esc(p.email)}" aria-describedby="err-email"></label>
             <p class="mm-err" id="err-email" role="alert"></p>
-            <label class="mm-label">Display name<input class="mm-field" name="display" value="Mia" aria-describedby="hint-display"></label><p class="mm-sub" id="hint-display">Shown on shared playlists</p>
+            <label class="mm-label">Display name<input class="mm-field" name="display" value="Juno" aria-describedby="hint-display"></label><p class="mm-sub" id="hint-display">Shown on shared playlists</p>
             <label class="mm-label">Home city<input class="mm-field" name="city" value="Marrow Bay"></label>
             <button class="mm-btn-soft mm-btn-soft--main">Save profile</button>
           </form>
@@ -171,7 +171,7 @@
             <section class="mm-panel"><h2>Connected devices</h2>
               <div class="mm-row"><span><b>Studio MacBook</b><small>Last active · today</small></span><span class="mm-chip">This device</span></div>
               <div class="mm-row"><span><b>Kitchen speaker</b><small>Cast · idle</small></span><button type="button" class="mm-btn-soft" data-act="bell">Disconnect</button></div>
-              <div class="mm-row"><span><b>Mia’s phone</b><small>iOS · yesterday</small></span><button type="button" class="mm-btn-soft" data-act="bell">Remove</button></div>
+              <div class="mm-row"><span><b>Juno’s phone</b><small>iOS · yesterday</small></span><button type="button" class="mm-btn-soft" data-act="bell">Remove</button></div>
             </section>
             <section class="mm-panel"><h2>Preview a state</h2><p class="mm-sub">For design review: how lists look while loading, empty or failing.</p>
               <label class="mm-label">Lists show<select class="mm-field" data-view>${['ready', 'loading', 'empty', 'error'].map((v) => `<option${S.view === v ? ' selected' : ''}>${v}</option>`).join('')}</select></label>

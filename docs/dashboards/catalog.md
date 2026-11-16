@@ -1093,7 +1093,7 @@ Soft-3D charcoal analytics board with purple under-glow: recessed clock dial, gl
 - **Use cases:** Analytics & BI, SaaS admin · **Mode:** dark · **Mood:** neon, technical, moody, glossy, futuristic
 - **Pages:** Overview (`overview`, Dashboard) · Traffic (`traffic`, Report) · Events (`events`, List) · Regions (`regions`, Detail)
 - **Motion:** count-up, stagger, chart-draw, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
-- **Signature:** Layered translucent ridge terrain in teal, violet and peach with glowing constellation lines and a purple floor pool, set in a soft-3D charcoal board.
+- **Signature:** A live WebGL ridge terrain drawn as glowing mint-to-violet lines over dark glass, on a flat dark board of soft raised tiles.
 - **Layout:** One poured charcoal frame (cqw) · top band (brand, search, range) · left rail · left column (live chip, 3D clock dial, health ring 88, hour bars) · centre (4 glossy orbs, WebGL terrain, 3 spark cards) · right (channel pill bars, events wave, region bars) · Traffic/Events/Regions as frosted sheets in the same frame
 - **Responsive:** ≤720px: tall frame, bottom poured tab rail, stacked columns, hero terrain kept ≥200px
 - **Fonts:** Space Grotesk / Inter · **Palette:** bg `#12111a`, surface `#1e1d28`, text `#f1eff7`, muted `#b3afc2`, accent `#c49bff`, violet `#bf00ff`, mint `#00ffcc`, peach `#ffcc33`

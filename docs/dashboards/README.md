@@ -7,6 +7,7 @@ A growing collection of **complete, working reference dashboards**, each with it
 | This file | Choosing a dashboard style |
 | [01-add-a-dashboard.md](01-add-a-dashboard.md) | Adding a new dashboard (from a screenshot or an idea). The exact workflow |
 | [02-reference-twin-playbook.md](02-reference-twin-playbook.md) | Making a dashboard match its reference image: measured frame, poured and scooped shapes, layered glass, 3D heroes, pages in the same frame. Worked examples: `haven-listings` (photo frame, glass, organic shapes) , `meridian-labs` (flat board with a live 3D object) and `tidebath-showroom` (scrolling page with a CSS 3D hero) |
+| [04-finishing-pass.md](04-finishing-pass.md) | After a dashboard is built and passes the checks: the look-then-fix pass that takes it to finished, with the defects the checks cannot see |
 | [03-asset-and-tool-map.md](03-asset-and-tool-map.md) | Which outside tools help (image-to-3D, depth parallax, screenshot-to-code, motion libraries) and what to do when they can't run |
 | [catalog.md](catalog.md) | Browsing every dashboard with thumbnail, palette, layout (generated) |
 | [../../catalog/dashboards.json](../../catalog/dashboards.json) | Machine-readable source of truth |

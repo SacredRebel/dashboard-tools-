@@ -24,8 +24,9 @@
   --badge: #9a1f1f;
   --g1: #e08a5c; --g2: #e0b84a; --g3: #8faf8a; --g4: #d97858; --g5: #7aa0c4; --g6: #7ec4b0; --g7: #b39bc9;
   --leaf: #6fa37a; --leaf-2: #8fbf8a; --pot: #e8c9a0; --wood: #c49a6c; --gold: #e6b84d;
-  --clay: inset 0 -0.5cqw 0.85cqw rgb(58 42 32 / 0.07), inset 0 0.35cqw 0.55cqw rgb(255 255 255 / 0.78), 0 0.9cqw 1.8cqw rgb(58 42 32 / 0.1);
-  --clay-soft: inset 0 -0.35cqw 0.6cqw rgb(58 42 32 / 0.06), inset 0 0.25cqw 0.4cqw rgb(255 255 255 / 0.65), 0 0.7cqw 1.4cqw rgb(58 42 32 / 0.1);
+  --clay: inset 0 -0.7cqw 1.1cqw rgb(58 42 32 / 0.11), inset 0 0.5cqw 0.7cqw rgb(255 255 255 / 0.85), 0 1.3cqw 2.4cqw rgb(58 42 32 / 0.16), 0 0.2cqw 0.4cqw rgb(58 42 32 / 0.08);
+  --k1: #6f9c7c; --k1b: #8fbf9a; --k2: #ea8466; --k2b: #f7ab90; --k3: #e2a93a; --k3b: #f4cd6c; --k4: #6f9bcb; --k4b: #9cc0e6; --ico-fg: #ffffff;
+  --clay-soft: inset 0 -0.45cqw 0.7cqw rgb(58 42 32 / 0.09), inset 0 0.35cqw 0.5cqw rgb(255 255 255 / 0.75), 0 0.9cqw 1.6cqw rgb(58 42 32 / 0.14);
   --scoop: inset 0 0.45cqw 0.9cqw rgb(58 42 32 / 0.1), inset 0 -0.2cqw 0.35cqw rgb(255 255 255 / 0.55);
   --dur-1: 120ms; --dur-2: 200ms; --dur-3: 320ms; --dur-4: 640ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -90,7 +91,7 @@ h1, h2, h3, b { font-weight: 600; letter-spacing: -0.01em; }
   color: var(--text); text-decoration: none; font-size: max(13px, 1.25cqw); font-weight: 500;
   transition: background var(--dur-2) var(--ease-out), transform var(--dur-1) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
 }
-.mm-nav a svg { width: max(16px, 1.55cqw); height: max(16px, 1.55cqw); color: var(--text-muted); }
+.mm-nav a svg { width: max(18px, 1.95cqw); height: max(18px, 1.95cqw); color: var(--mint-deep); }
 .mm-nav a::after { content: ""; position: absolute; inset: 50% auto auto 50%; width: var(--hit); height: var(--hit); transform: translate(-50%, -50%); }
 .mm-nav a:hover { background: rgb(255 248 239 / 0.35); }
 .mm-nav a[aria-current="page"] { background: var(--card); box-shadow: var(--clay-soft); }
@@ -144,13 +145,15 @@ h1, h2, h3, b { font-weight: 600; letter-spacing: -0.01em; }
   position: absolute; left: 23.5%; top: 8.2cqw; width: 74%; height: 22cqw;
   background: var(--peach); border-radius: 3.2cqw; box-shadow: var(--clay);
   display: grid; grid-template-columns: 24cqw minmax(0,1fr) 14cqw; align-items: end; gap: 0.6cqw;
-  padding: 1cqw 1.4cqw 0; overflow: visible; z-index: 2; animation: mm-rise var(--dur-4) var(--ease-out) 60ms both;
+  padding: 0 1.4cqw 0 0; overflow: hidden; z-index: 2; animation: mm-rise var(--dur-4) var(--ease-out) 60ms both;
 }
 .mm-hero-art {
-  width: 24cqw; height: 26cqw; margin: 0 0 -1.2cqw -1.2cqw; justify-self: start; align-self: end;
-  filter: drop-shadow(0.4cqw 0.8cqw 0.9cqw rgb(58 42 32 / 0.18)); pointer-events: none;
+  /* finishing pass: the render has its own peach backdrop, so it is blended into the card instead of boxed:
+     sized to the card, edges faded with a mask, no shadow around the square */
+  width: 24cqw; height: 22cqw; margin: 0; justify-self: start; align-self: end; pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 52% 56% at 48% 56%, #000 74%, transparent 100%); mask-image: radial-gradient(ellipse 52% 56% at 48% 56%, #000 74%, transparent 100%);
 }
-.mm-hero-art img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+.mm-hero-art img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; transform: scale(1.12); transform-origin: 50% 70%; }
 .mm-hero-copy { align-self: center; padding-bottom: 2.2cqw; }
 .mm-hero-copy { display: grid; gap: 0.7cqw; align-content: center; min-width: 0; }
 .mm-hero-copy h2 { margin: 0; font-size: max(22px, 2.6cqw); line-height: 1.15; width: 100%; }
@@ -179,10 +182,13 @@ h1, h2, h3, b { font-weight: 600; letter-spacing: -0.01em; }
 .mm-kpi.t1 { background: #d7e6d6; --i: 0; } .mm-kpi.t2 { background: #f7d3c3; --i: 1; }
 .mm-kpi.t3 { background: var(--butter); --i: 2; } .mm-kpi.t4 { background: var(--sky); --i: 3; }
 .mm-ico {
-  width: max(40px, 4cqw); aspect-ratio: 1; border-radius: 1.3cqw; display: grid; place-items: center;
-  background: rgb(255 255 255 / 0.55); box-shadow: var(--clay-soft); font-size: max(18px, 1.8cqw); color: var(--text);
-  margin-bottom: 0.35cqw;
+  width: max(44px, 4.9cqw); aspect-ratio: 1; border-radius: 1.5cqw; display: grid; place-items: center;
+  background: linear-gradient(160deg, var(--kb, var(--k1b)), var(--k, var(--k1))); color: var(--ico-fg); font-size: max(22px, 2.5cqw);
+  box-shadow: inset 0 -0.45cqw 0.6cqw rgb(58 42 32 / 0.22), inset 0 0.4cqw 0.5cqw rgb(255 255 255 / 0.55), 0 0.8cqw 1.2cqw rgb(58 42 32 / 0.2);
+  margin-bottom: 0.5cqw; transition: transform var(--dur-2) var(--ease-out);
 }
+.mm-kpi:hover .mm-ico { transform: translateY(-0.3cqw) rotate(-5deg); }
+.mm-kpi.t2 .mm-ico { --k: var(--k2); --kb: var(--k2b); } .mm-kpi.t3 .mm-ico { --k: var(--k3); --kb: var(--k3b); } .mm-kpi.t4 .mm-ico { --k: var(--k4); --kb: var(--k4b); }
 .mm-kpi small { font-size: max(12px, 1.15cqw); color: var(--text-muted); }
 .mm-kpi b { font-size: max(22px, 2.5cqw); line-height: 1.1; }
 .mm-kpi em { font-style: normal; font-size: max(12px, 1.1cqw); color: var(--ok); font-weight: 600; }
@@ -224,7 +230,10 @@ h1, h2, h3, b { font-weight: 600; letter-spacing: -0.01em; }
 .mm-donut-label b { font-size: max(14px, 1.35cqw); line-height: 1.1; }
 .mm-donut-label small { font-size: max(12px, 1.1cqw); color: var(--text-muted); }
 .mm-donut svg { width: 100%; height: 100%; }
-.mm-donut .seg { stroke-linecap: round; animation: mm-draw 1s var(--ease-out) 300ms forwards; }
+/* each slice keeps its own dash offset (that is its position on the ring), so the ring is revealed as a whole */
+.mm-donut .seg { stroke-linecap: round; }
+.mm-donut svg { animation: mm-ring 900ms var(--ease-out) 250ms both; transform-origin: 50% 50%; }
+@keyframes mm-ring { from { opacity: 0; transform: rotate(-70deg) scale(0.9); } }
 .mm-legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55cqw; }
 .mm-legend li { display: flex; align-items: center; gap: 0.55cqw; font-size: max(12px, 1.15cqw); }
 .mm-legend button {
@@ -246,7 +255,7 @@ h1, h2, h3, b { font-weight: 600; letter-spacing: -0.01em; }
   min-height: max(48px, 5.6cqw); padding: 0.45cqw 0; border-top: 1px solid rgb(58 42 32 / 0.08);
 }
 .mm-tracks li:first-child { border-top: 0; }
-.mm-tracks img { width: 4.2cqw; aspect-ratio: 1; border-radius: 1.1cqw; object-fit: cover; box-shadow: var(--clay-soft); }
+.mm-tracks img { width: 4.2cqw; height: 4.2cqw; border-radius: 1.1cqw; object-fit: cover; box-shadow: var(--clay-soft); }
 .mm-tracks b { display: block; font-size: max(13px, 1.25cqw); } .mm-tracks small { color: var(--text-muted); font-size: max(12px, 1.1cqw); }
 .mm-play {
   width: max(36px, 3.4cqw); aspect-ratio: 1; border: 0; border-radius: 50%; background: var(--surface);
@@ -283,7 +292,8 @@ h1, h2, h3, b { font-weight: 600; letter-spacing: -0.01em; }
   display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.4cqw; padding: 0 1.6cqw;
   animation: mm-rise var(--dur-4) var(--ease-out) 220ms both;
 }
-.mm-star { width: max(48px, 5.5cqw); aspect-ratio: 1; object-fit: contain; filter: drop-shadow(0.2cqw 0.35cqw 0.4cqw rgb(58 42 32 / 0.18)); }
+/* width AND height: an <img> with a height attribute ignores aspect-ratio. multiply blends the render's cream backdrop into the banner */
+.mm-star { width: max(48px, 6cqw); height: max(48px, 6cqw); object-fit: contain; mix-blend-mode: multiply; }
 .mm-discover b { display: block; font-size: max(16px, 1.6cqw); } .mm-discover p { margin: 0.2cqw 0 0; color: var(--text-muted); font-size: max(13px, 1.25cqw); }
 
 .mm-sample { position: absolute; left: 0; right: 0; bottom: -26px; text-align: center; font-size: 12px; color: var(--text-muted); }
@@ -403,11 +413,11 @@ h1, h2, h3, b { font-weight: 600; letter-spacing: -0.01em; }
   }
   .mm-bars { height: 180px; gap: 6px; }
   .mm-gbody { grid-template-columns: 140px 1fr; height: auto; }
-  .mm-tracks img { width: 48px; }
+  .mm-tracks img { width: 48px; height: 48px; }
   .mm-mix-tile { height: 180px; border-radius: 18px; }
   .mm-discover { grid-template-columns: auto 1fr; gap: 10px; padding: 12px; }
   .mm-discover .mm-btn { grid-column: 1 / -1; justify-self: stretch; justify-content: center; }
-  .mm-star { width: 52px; }
+  .mm-star { width: 52px; height: 52px; }
   .mm-sample { position: static; padding-top: 8px; }
   .mm-page { position: static; padding: 0; overflow: visible; }
   .mm-drawer-panel { width: 100%; align-self: end; border-radius: 28px 28px 0 0; max-height: 88vh; }
@@ -416,6 +426,6 @@ h1, h2, h3, b { font-weight: 600; letter-spacing: -0.01em; }
 
 @media (prefers-reduced-motion: reduce) {
   .mm-board, .mm-side, .mm-top h1, .mm-hero, .mm-kpi, .mm-card, .mm-discover, .mm-page, .mm-toast, .mm-drawer-panel { animation: none; }
-  .mm-bar i, .mm-donut .seg, .mm-spark .ln { animation: none; stroke-dashoffset: 0; transform: none; }
+  .mm-bar i, .mm-spark .ln { animation: none; stroke-dashoffset: 0; transform: none; } .mm-donut svg { animation: none; }
   .mm-skel { animation: none; }
 }
