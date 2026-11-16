@@ -1,0 +1,1 @@
+✔ mauve-ledger: pages=4, variants=3, frames + shot@2x · pixel contrast · text ≥ 12px
