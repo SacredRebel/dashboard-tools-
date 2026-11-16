@@ -83,6 +83,7 @@ The catalog ([catalog/tools.json](catalog/tools.json)) has every tool with *use 
 | Build | `frontend-ui-engineering`, `incremental-implementation`, `calendar-hub` (anything with dates) | [05-build.md](docs/framework/05-build.md), [docs/calendars/](docs/calendars/README.md) |
 | Motion and depth | FX library, materials, shape kit | [09-motion-system.md](docs/design/09-motion-system.md), [10-materials.md](docs/design/10-materials.md), [12-microinteractions.md](docs/design/12-microinteractions.md) |
 | Shapes, glass, 3D hero, phone layout | the reference-twin playbook and its two worked examples | [02-reference-twin-playbook.md](docs/dashboards/02-reference-twin-playbook.md), `site/dashboards/haven-listings/`, `site/dashboards/meridian-labs/` |
+| Every element, before you build it | the tool routing table: pick the tool, record it in the polish report | [08-object-spec.md](docs/dashboards/08-object-spec.md#tool-routing-required-recorded), [03-asset-and-tool-map.md](docs/dashboards/03-asset-and-tool-map.md) |
 | Any step, when unsure | `quickref`, `learn-anything` | [03-when-you-dont-know.md](docs/onboarding/03-when-you-dont-know.md) |
 | Polish | `anti-slop`, `ux-audit-vectorlab`, `ux-ui-audit`, `browser-testing`, `verification-before-completion` | [02-rulebook.md](docs/design/02-rulebook.md), [13-high-end-checklist.md](docs/design/13-high-end-checklist.md) |
 | Ship (Level 2) | `vercel`, `github`, `security-review`, `shipping-and-launch` | [07-ship.md](docs/framework/07-ship.md) |
@@ -95,6 +96,7 @@ The catalog ([catalog/tools.json](catalog/tools.json)) has every tool with *use 
 - **Every page has a named pattern** and every data view has loading, empty, error and populated states.
 - **At most 5 KPI tiles** on the overview, and nothing editable there.
 - **No polling**, no auto-advancing carousels, no AI action without an approval step.
+- **Route every element to a tool and record it.** Layout, hero object, images and motion each get a row in the polish report's "Tools used" table.
 - **Check before you claim.** Open it, screenshot it at 375px and 1280px, read the console. Say plainly what you could not verify.
 - **Private by default** at Level 2: login required, row-level security on, secrets in environment variables.
 

@@ -188,3 +188,96 @@ Agent skill that settles page goal and visual direction before generating a UI d
 
 ---
 
+<a id="emilwallner-screenshot-to-code"></a>
+### Screenshot-to-code (emilwallner)
+
+`github.com/emilwallner/Screenshot-to-code` · reference · **situational** · phases: Design
+
+Early neural network that turns a screenshot into markup.
+
+**Use when**
+- Background reading on the approach
+
+**Avoid when**
+- Building a twin (measure the reference and write layout.json instead)
+
+**How to use**
+- Read for ideas only; never ship generated markup
+
+**Pairs with:** [screenshot-to-code](design-to-code.md#screenshot-to-code)
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/emilwallner/Screenshot-to-code
+
+---
+
+<a id="screenshot-to-page"></a>
+### screenshot-to-page
+
+`github.com/Mrxyy/screenshot-to-page` · cli · **situational** · phases: Design, Build
+
+Screenshot to a page through a vision model. Needs an API key.
+
+**Use when**
+- A first guess at structure when no layout.json exists yet
+
+**Avoid when**
+- A layout.json exists (it is the layout)
+- Shipping its output: it is rectangles
+
+**How to use**
+- Use its output only to list elements, then measure and build by the playbook
+
+**Pairs with:** [screenshot-to-code](design-to-code.md#screenshot-to-code)
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/Mrxyy/screenshot-to-page
+
+---
+
+<a id="ui-screenshot-to-prompt"></a>
+### ui-screenshot-to-prompt
+
+`github.com/s-smits/ui-screenshot-to-prompt` · cli · **situational** · phases: Design
+
+Turns a UI screenshot into a written description.
+
+**Use when**
+- Drafting the element inventory of a reference (playbook Step 1)
+
+**Avoid when**
+- You can see the image yourself
+
+**How to use**
+- Use the description as a checklist of elements, then verify each against the image
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/s-smits/ui-screenshot-to-prompt
+
+---
+
+<a id="umi-ocr"></a>
+### Umi-OCR
+
+`github.com/hiroi-sora/Umi-OCR` · cli · **situational** · phases: Design
+
+Offline OCR.
+
+**Use when**
+- Reading small labels in a reference image
+
+**Avoid when**
+- The labels are legible, or will be replaced by fictional copy anyway
+
+**How to use**
+- Run on the reference, keep structure words, replace all names and brands
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/hiroi-sora/Umi-OCR
+
+---
+

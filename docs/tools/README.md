@@ -2,28 +2,28 @@
 
 # Tools by category
 
-213 curated tools in 17 categories. Source of truth: [catalog/tools.json](../../catalog/tools.json). Visual browser: showcase site → Tools.
+247 curated tools in 17 categories. Source of truth: [catalog/tools.json](../../catalog/tools.json). Visual browser: showcase site → Tools.
 
 **Tiers:** `core` Use on every dashboard project. · `recommended` Use in most projects; skip only with a reason. · `optional` Useful add-on when the situation fits. · `situational` Only for a specific need (named in use_when).
 
 | Category | Tools | Core | What it covers |
 |---|---|---|---|
-| [Process & Planning](process.md) | 11 | 3 | Skills that keep the agent disciplined: brainstorm, spec, plan, then execute in small verified steps. |
+| [Process & Planning](process.md) | 15 | 3 | Skills that keep the agent disciplined: brainstorm, spec, plan, then execute in small verified steps. |
 | [Discovery & Research](research.md) | 11 | 2 | Turn interviews, voice notes, meeting transcripts and playbooks into clear needs and journeys. |
 | [Brand & Visual Direction](brand.md) | 12 | 1 | Decide what the product should feel like: positioning, palette, type, logo and mood boards. |
-| [UI / UX Design](uiux.md) | 23 | 5 | Screen design, interaction design, design systems and critique, from flows to finished screens. |
-| [Screenshot & Design to Code](design-to-code.md) | 7 | 1 | Turn screenshots and mockups into code, give text-only agents eyes, and present code nicely. Plus the dashboard style gallery to pick a look from. |
+| [UI / UX Design](uiux.md) | 26 | 5 | Screen design, interaction design, design systems and critique, from flows to finished screens. |
+| [Screenshot & Design to Code](design-to-code.md) | 11 | 1 | Turn screenshots and mockups into code, give text-only agents eyes, and present code nicely. Plus the dashboard style gallery to pick a look from. |
 | [UX Polish Rules](polish.md) | 22 | 7 | Small, strict rule-sets (spacing, type, motion, loaders, empty states) that separate premium from generic. |
-| [Motion & Animation](motion.md) | 14 | 0 | Motion tokens, vendored animation runtimes for the static gallery, and React animation libraries for product apps. |
+| [Motion & Animation](motion.md) | 19 | 0 | Motion tokens, vendored animation runtimes for the static gallery, and React animation libraries for product apps. |
 | [Dashboards & Data Viz](dataviz.md) | 9 | 1 | KPI tiles, charts, report layouts and honest data presentation. |
 | [CRM & Sales Workflows](crm.md) | 25 | 3 | Pipeline logic, follow-ups, call summaries, lead triage. The functionality behind a CRM dashboard. |
-| [Frontend Engineering](build.md) | 11 | 3 | Build production-quality UI incrementally, grounded in official docs. |
+| [Frontend Engineering](build.md) | 13 | 3 | Build production-quality UI incrementally, grounded in official docs. |
 | [Testing, Review & Accessibility](quality.md) | 14 | 5 | Prove it works: browser tests, audits, code review, security and verification gates. |
 | [Deploy & Operate](ship.md) | 6 | 3 | GitHub and Vercel: repos, previews, production deploys, logs and rollbacks. |
 | [Connectors & Data Sources](integrations.md) | 7 | 0 | Gmail, Calendar, Drive, spreadsheets and meeting recorders that feed the CRM. |
 | [Calendars & Scheduling](calendar.md) | 11 | 1 | Calendar views, provider APIs, agent connectors, ICS feeds and booking. Full repo directory: catalog/calendars.json. |
-| [Media & Assets](media.md) | 7 | 0 | Images, icons, illustrations, sound and video for a polished product. |
-| [Code Libraries & Services](libraries.md) | 16 | 4 | The recommended open-source building blocks and hosted services for the stack. |
+| [Media & Assets](media.md) | 22 | 0 | Images, icons, illustrations, sound and video for a polished product. |
+| [Code Libraries & Services](libraries.md) | 17 | 4 | The recommended open-source building blocks and hosted services for the stack. |
 | [Docs, Handover & Training](handover.md) | 7 | 1 | Make the client self-sufficient: docs, decision records and guided onboarding. |
 
 ## By phase (core + recommended)

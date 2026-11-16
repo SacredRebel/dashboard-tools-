@@ -19,6 +19,8 @@ Your last build was reviewed and rejected: it passed the old checks but its layo
 5. Then take a 1440px screenshot, put it beside the reference, and fix the look: materials, colour, type weight, detail (docs/dashboards/05-style-frameworks.md and 06-verification.md). Check the phone layout at 375px.
 6. Push to the same branch. In the pull request, paste the final check output and the side-by-side image.
 
+Tools: before each element (layout, hero object, images, motion) pick its tool from the routing table in docs/dashboards/08-object-spec.md and fill the "Tools used" table of templates/polish-report.md, saved as docs/validation/dashboards/<DASHBOARD>-polish.md. A pull request without it is not reviewed.
+
 Hard rules:
 - Do not edit layout.json, scripts/dashboards-check.mjs or catalog signature_tech. If you believe a number is wrong, say which one and why in the pull request.
 - Do not tag hidden, empty or wrapper elements to pass a box. The tagged element must be the thing its note describes.

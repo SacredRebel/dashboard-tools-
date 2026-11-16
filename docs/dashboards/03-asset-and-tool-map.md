@@ -4,6 +4,8 @@ Which outside tools help build a gallery dashboard, what each is good for, and w
 
 **The honest constraint:** most 3D-generation and image-generation projects need a GPU and several gigabytes of model weights. A coding agent in an editor or a cloud sandbox usually cannot run them. So every row below has a "when it can't run" column, and the default route for this gallery needs none of them.
 
+Every tool here is also an entry in [catalog/tools.json](../../catalog/tools.json) (the app's Tools tab). Which one to use for which element, and the rule that the choice is recorded: [08-object-spec.md](08-object-spec.md#tool-routing-required-recorded).
+
 ## Default route (always available)
 
 | Need | Use | Where |
@@ -51,6 +53,7 @@ Every image is original, exported as WebP at 2× the rendered size with `srcset`
 | Tool | What it does | Use here | When it can't run |
 |---|---|---|---|
 | [screenshot-to-code](https://github.com/abi/screenshot-to-code), [ScreenCoder](https://github.com/leigest519/ScreenCoder), [design2code](https://github.com/mostafasadeghi97/design2code), [draw-ui](https://github.com/oil-oil/draw-ui), [screenshot-to-page](https://github.com/Mrxyy/screenshot-to-page), [emilwallner/Screenshot-to-code](https://github.com/emilwallner/Screenshot-to-code) | Screenshot to HTML/CSS through a vision model (need API keys) | A first guess at structure and proportions only. Never ship their output: it is rectangles, which is the problem this playbook fixes | Measure the reference yourself (playbook Step 1). This is the default |
+| [agent-vision-toolkit](https://github.com/Anionex/agent-vision-toolkit) | Vision command-line tools for text-only coding agents | When the building model cannot see images: have it describe the reference and its own screenshots | Use a model with vision, or ask the maintainer for the `layout.json` |
 | [ui-screenshot-to-prompt](https://github.com/s-smits/ui-screenshot-to-prompt) | Screenshot to a written description | Drafting the Step 1 inventory | Write the inventory by looking |
 | [Umi-OCR](https://github.com/hiroi-sora/Umi-OCR) | Offline OCR | Reading labels in a reference | `tesseract`, or read them by eye; reference text is often garbled and gets replaced anyway |
 | [codeimage](https://github.com/riccardoperra/codeimage), [Codeexpander](https://github.com/oncework/Codeexpander) | Code screenshots; snippet manager | Not needed for building | Skip |

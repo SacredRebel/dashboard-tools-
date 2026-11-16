@@ -75,6 +75,24 @@ Order matters. Do not touch materials until the silhouette passes.
 
 Worked example: `site/dashboards/ember-rooms/lamp.js` (a lathe from ten profile points, a rim torus, a warm underside disc, and a CSS light pool whose strength follows the intensity slider). Others: `meridian-labs/helix.js` (instancing), `pulsar-analytics/terrain.js` (ribbons).
 
+## Tool routing (required, recorded)
+
+Before building each element, pick its tool from this table and write the choice in the polish report ([templates/polish-report.md](../../templates/polish-report.md), "Tools used"). A pull request without that table is not reviewed. Every tool is in [catalog/tools.json](../../catalog/tools.json) with *use when / avoid when / how / fallback*; the full map is [03-asset-and-tool-map.md](03-asset-and-tool-map.md).
+
+| Element | First choice (always works) | Use instead when | Catalog ids |
+|---|---|---|---|
+| Layout and structure | `layout.json`, or measure the reference yourself | no spec yet and you want a first list of elements | `screenshot-to-code`, `screencoder`, `design2code`, `draw-ui`, `screenshot-to-page`, `ui-screenshot-to-prompt`, `umi-ocr`; `agent-vision-toolkit` if your model cannot see images |
+| 3D object, round or flat | three.js lathe or extrude (this page) | never: this is faster and cleaner than generating | `threejs`, `cube-3d-text` |
+| 3D object, organic | three.js primitives in a group | a GPU is available and the tool runs within ten minutes | `hunyuan3d`, `wonder3d`, `3dtopia`, `image-to-3dlab`, `stable-dreamfusion`, `text2room`, `mvs-texturing`, `stl-texturizer` |
+| Depth on a photo | layered image with pointer parallax | the tool runs within ten minutes | `depthflow` |
+| Images | the agent's own image generation, or procedural SVG | a GPU is available | `stable-diffusion`, `text-to-image` |
+| Motion and micro-interactions | Motion and GSAP (vendored), CSS keyframes | looking for a pattern to rebuild in vanilla | `motion`, `gsap`, `react-bits`, `reactbits-tools`, `animata` |
+| Component behavior | this repo's rulebook | checking menu, dialog or focus behavior | `material-ui` |
+| Direction with no reference | this repo's themes and style frameworks | exploring palettes and type | `ui-ux-pro-max`, `hendurhance-ui-ux`, `design-resources-for-developers` |
+| Don't know how | [03-when-you-dont-know.md](../onboarding/03-when-you-dont-know.md) | | `quickref`, `learn-anything` |
+
+Three rules for every outside tool: never give it a gallery reference image; its output is a starting point that must still pass the spec; anything it produces that ships is original, optimized and credited in `media/CREDITS.md`.
+
 ## Who does what
 
 - **Maintainer:** measures the reference and writes `layout.json`, including any `object`. Reviews with the check output and one screenshot.

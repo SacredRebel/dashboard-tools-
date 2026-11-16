@@ -51,3 +51,15 @@ Not this:
 **Polished / Finished with a stated gap / Not finished**
 
 Remaining gaps and why: 
+
+## Tools used (required)
+
+One row per element. Ids come from `catalog/tools.json`; the routing table is in [docs/dashboards/08-object-spec.md](../docs/dashboards/08-object-spec.md#tool-routing-required-recorded).
+
+| Element | Tool or method used | Why this one | If a first choice could not run, what replaced it |
+|---|---|---|---|
+| Layout | | | |
+| Hero object | | | |
+| Images | | | |
+| Motion | | | |
+

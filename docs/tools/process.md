@@ -191,6 +191,28 @@ Meta-skill: how to discover and invoke the right skill for a task.
 
 ---
 
+<a id="claude-howto"></a>
+### claude-howto
+
+`github.com/luongnv89/claude-howto` · reference · **situational** · phases: Discover, Build
+
+Guide to running Claude Code well.
+
+**Use when**
+- Setting up the coding agent before a build
+
+**Avoid when**
+- Dashboard design questions
+
+**How to use**
+- Use for agent setup only
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/luongnv89/claude-howto
+
+---
+
 <a id="dispatching-parallel-agents"></a>
 ### Dispatching Parallel Agents
 
@@ -229,6 +251,72 @@ Runs independent plan tasks through fresh subagents with review between tasks.
 - Use only after the plan is stable
 
 **Pairs with:** [Dispatching Parallel Agents](process.md#dispatching-parallel-agents) · [Writing Plans](process.md#writing-plans)
+
+---
+
+<a id="ultracode-shim"></a>
+### UltraCode-Shim
+
+`github.com/OnlyTerp/UltraCode-Shim` · reference · **situational** · phases: Build
+
+Shim for running coding agents.
+
+**Use when**
+- Your agent setup needs it
+
+**Avoid when**
+- Dashboard design questions
+
+**How to use**
+- Use for agent setup only
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/OnlyTerp/UltraCode-Shim
+
+---
+
+<a id="ultracode-skill"></a>
+### ultracode-skill
+
+`github.com/PabloNAX/ultracode-skill` · reference · **situational** · phases: Build
+
+Skill for running coding agents.
+
+**Use when**
+- Your agent setup needs it
+
+**Avoid when**
+- Dashboard design questions
+
+**How to use**
+- Use for agent setup only
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/PabloNAX/ultracode-skill
+
+---
+
+<a id="vibe-coding-toolkit"></a>
+### vibe-coding-toolkit
+
+`github.com/soumatheusgomes/vibe-coding-toolkit` · reference · **situational** · phases: Discover, Build
+
+Guides and prompts for coding with agents.
+
+**Use when**
+- Setting up an agent workflow
+
+**Avoid when**
+- It conflicts with AGENTS.md (AGENTS.md wins)
+
+**How to use**
+- Use for agent setup only
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/soumatheusgomes/vibe-coding-toolkit
 
 ---
 

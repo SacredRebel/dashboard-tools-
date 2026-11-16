@@ -22,6 +22,8 @@ Build:
 4. Screenshot at 1440px, put it beside the reference, and fix material, colour, type and detail (docs/dashboards/05-style-frameworks.md, 06-verification.md). Check 375px.
 5. In the pull request: the final check output, the side-by-side image, and any spec number you believe is wrong, with your reason.
 
+Tools: before each element (layout, hero object, images, motion) pick its tool from the routing table in docs/dashboards/08-object-spec.md and fill the "Tools used" table of templates/polish-report.md, saved as docs/validation/dashboards/<DASHBOARD>-polish.md. A pull request without it is not reviewed.
+
 Hard rules:
 - Never edit layout.json, scripts/dashboards-check.mjs or catalog signature_tech.
 - Never tag a hidden, empty or wrapper element to pass a box.

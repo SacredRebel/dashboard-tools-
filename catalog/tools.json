@@ -6052,6 +6052,959 @@
       "fallback": "docs/onboarding/03-when-you-dont-know.md",
       "requires": null,
       "url": "https://learn-anything.xyz/explore"
+    },
+    {
+      "id": "hunyuan3d",
+      "name": "Hunyuan3D-1",
+      "invoke": "github.com/Tencent-Hunyuan/Hunyuan3D-1",
+      "kind": "cli",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Image or text to a textured 3D mesh. Needs a GPU.",
+      "use_when": [
+        "The reference has an organic hero object (figure, organ, helmet) that primitives cannot model"
+      ],
+      "avoid_when": [
+        "You have no GPU or cannot get it running in ten minutes (use the fallback)",
+        "Never feed it a gallery reference image: generate from an original image or a text prompt"
+      ],
+      "how_to_use": [
+        "Generate from an original image or prompt, export .glb, optimize with gltf-transform to under 1.5 MB, load with stage.loadGLB, credit in media/CREDITS.md",
+        "Then make it pass the object spec"
+      ],
+      "pairs_with": [
+        "threejs"
+      ],
+      "fallback": "docs/dashboards/08-object-spec.md",
+      "requires": null,
+      "url": "https://github.com/Tencent-Hunyuan/Hunyuan3D-1"
+    },
+    {
+      "id": "wonder3d",
+      "name": "Wonder3D",
+      "invoke": "github.com/xxlong0/Wonder3D",
+      "kind": "cli",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "One image to multi-view normals and a mesh. Needs a GPU.",
+      "use_when": [
+        "You have a clean original image of one object and need its geometry"
+      ],
+      "avoid_when": [
+        "You have no GPU or cannot get it running in ten minutes (use the fallback)",
+        "Never feed it a gallery reference image: generate from an original image or a text prompt"
+      ],
+      "how_to_use": [
+        "Same pipeline as Hunyuan3D: .glb, optimize, loadGLB, credit, object spec"
+      ],
+      "pairs_with": [
+        "threejs"
+      ],
+      "fallback": "docs/dashboards/08-object-spec.md",
+      "requires": null,
+      "url": "https://github.com/xxlong0/Wonder3D"
+    },
+    {
+      "id": "3dtopia",
+      "name": "3DTopia",
+      "invoke": "github.com/3DTopia/3DTopia",
+      "kind": "cli",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Text to 3D in two stages. Needs a GPU.",
+      "use_when": [
+        "Simple props: clay icons, relics, small decorative objects"
+      ],
+      "avoid_when": [
+        "You have no GPU or cannot get it running in ten minutes (use the fallback)",
+        "The object is round about an axis or flat with thickness (a lathe or extrude is faster and cleaner)"
+      ],
+      "how_to_use": [
+        "Prompt, export .glb, optimize, loadGLB, credit, object spec"
+      ],
+      "pairs_with": [
+        "threejs"
+      ],
+      "fallback": "docs/dashboards/08-object-spec.md",
+      "requires": null,
+      "url": "https://github.com/3DTopia/3DTopia"
+    },
+    {
+      "id": "stable-dreamfusion",
+      "name": "stable-dreamfusion",
+      "invoke": "github.com/ashawkey/stable-dreamfusion",
+      "kind": "cli",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Text to 3D by score distillation. Slow; needs a GPU.",
+      "use_when": [
+        "No other 3D generator is available and the object cannot be modelled by hand"
+      ],
+      "avoid_when": [
+        "You have no GPU or cannot get it running in ten minutes (use the fallback)",
+        "Hunyuan3D, Wonder3D or 3DTopia is available (prefer them)"
+      ],
+      "how_to_use": [
+        "Treat as last resort; same .glb pipeline"
+      ],
+      "pairs_with": [
+        "threejs"
+      ],
+      "fallback": "docs/dashboards/08-object-spec.md",
+      "requires": null,
+      "url": "https://github.com/ashawkey/stable-dreamfusion"
+    },
+    {
+      "id": "image-to-3dlab",
+      "name": "image-to-3dlab",
+      "invoke": "github.com/Bingeljell/image-to-3dlab",
+      "kind": "cli",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Local lab that wraps image-to-3D models behind one front end.",
+      "use_when": [
+        "The owner has a GPU machine and wants one place to try several image-to-3D models"
+      ],
+      "avoid_when": [
+        "You have no GPU or cannot get it running in ten minutes (use the fallback)",
+        "Never feed it a gallery reference image: generate from an original image or a text prompt"
+      ],
+      "how_to_use": [
+        "Run locally, export .glb, then the usual optimize, credit and object-spec steps"
+      ],
+      "pairs_with": [
+        "threejs"
+      ],
+      "fallback": "docs/dashboards/08-object-spec.md",
+      "requires": null,
+      "url": "https://github.com/Bingeljell/image-to-3dlab"
+    },
+    {
+      "id": "text2room",
+      "name": "text2room",
+      "invoke": "github.com/lukasHoel/text2room",
+      "kind": "cli",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Text to a textured room mesh. Needs a GPU.",
+      "use_when": [
+        "A smart-home or interior dashboard whose reference shows a 3D room"
+      ],
+      "avoid_when": [
+        "You have no GPU or cannot get it running in ten minutes (use the fallback)",
+        "A photo with pointer parallax is enough"
+      ],
+      "how_to_use": [
+        "Generate, decimate hard, export .glb; or fall back to a layered photo"
+      ],
+      "pairs_with": [
+        "threejs"
+      ],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/lukasHoel/text2room"
+    },
+    {
+      "id": "mvs-texturing",
+      "name": "mvs-texturing",
+      "invoke": "github.com/nmoehrle/mvs-texturing",
+      "kind": "cli",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Textures an existing mesh from photos.",
+      "use_when": [
+        "A generated mesh has good shape but poor texture and you have views of it"
+      ],
+      "avoid_when": [
+        "A three.js physical material would look better (usually true for dashboards)"
+      ],
+      "how_to_use": [
+        "Texture, bake to 1024px or less, convert to WebP"
+      ],
+      "pairs_with": [
+        "threejs"
+      ],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/nmoehrle/mvs-texturing"
+    },
+    {
+      "id": "stl-texturizer",
+      "name": "stlTexturizer",
+      "invoke": "github.com/CNCKitchen/stlTexturizer",
+      "kind": "cli",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Adds surface texture to an STL mesh.",
+      "use_when": [
+        "A mesh needs physical surface relief (knurling, fabric, grain)"
+      ],
+      "avoid_when": [
+        "A normal map or roughness on a physical material gives the same read"
+      ],
+      "how_to_use": [
+        "Texturize, convert to .glb, optimize"
+      ],
+      "pairs_with": [
+        "threejs"
+      ],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/CNCKitchen/stlTexturizer"
+    },
+    {
+      "id": "cube-3d-text",
+      "name": "cube-3d-text",
+      "invoke": "github.com/EaseCation/cube-3d-text",
+      "kind": "library",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "3D text in the browser.",
+      "use_when": [
+        "The reference has a 3D title, logo or numeral"
+      ],
+      "avoid_when": [
+        "Flat text reads better (most dashboard copy)"
+      ],
+      "how_to_use": [
+        "Use as a pattern; in this no-build gallery build it with three.js TextGeometry"
+      ],
+      "pairs_with": [
+        "threejs"
+      ],
+      "fallback": "docs/dashboards/08-object-spec.md",
+      "requires": null,
+      "url": "https://github.com/EaseCation/cube-3d-text"
+    },
+    {
+      "id": "awesome-3d-reconstruction",
+      "name": "awesome_3DReconstruction_list",
+      "invoke": "github.com/openMVG/awesome_3DReconstruction_list",
+      "kind": "reference",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Reading list of 3D reconstruction papers and tools.",
+      "use_when": [
+        "You need a newer or different reconstruction method than the ones in this catalog"
+      ],
+      "avoid_when": [
+        "A catalog tool already fits"
+      ],
+      "how_to_use": [
+        "Search the list for the object type, then follow the .glb pipeline"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/openMVG/awesome_3DReconstruction_list"
+    },
+    {
+      "id": "awesome-text-to-3d",
+      "name": "Awesome-Text-to-3D",
+      "invoke": "github.com/yyeboah/Awesome-Text-to-3D",
+      "kind": "reference",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Reading list of text-to-3D models.",
+      "use_when": [
+        "You need a newer text-to-3D model"
+      ],
+      "avoid_when": [
+        "A catalog tool already fits"
+      ],
+      "how_to_use": [
+        "Pick a model with a permissive license and a .glb export"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/yyeboah/Awesome-Text-to-3D"
+    },
+    {
+      "id": "image-to-3d-bbox",
+      "name": "image-to-3d-bbox",
+      "invoke": "github.com/experiencor/image-to-3d-bbox",
+      "kind": "reference",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "3D bounding boxes from driving images.",
+      "use_when": [
+        "Only if a dashboard visualizes detected vehicles in 3D"
+      ],
+      "avoid_when": [
+        "Any ordinary dashboard (not useful)"
+      ],
+      "how_to_use": [
+        "Skip unless the use case is exactly this"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/experiencor/image-to-3d-bbox"
+    },
+    {
+      "id": "text-to-motion",
+      "name": "text-to-motion",
+      "invoke": "github.com/EricGuo5513/text-to-motion",
+      "kind": "reference",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Generates human body motion from text.",
+      "use_when": [
+        "Only if a dashboard needs an animated human figure"
+      ],
+      "avoid_when": [
+        "UI motion (use Motion or GSAP)"
+      ],
+      "how_to_use": [
+        "Skip for dashboards; listed so nobody reaches for it by mistake"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/EricGuo5513/text-to-motion"
+    },
+    {
+      "id": "depthflow",
+      "name": "DepthFlow",
+      "invoke": "github.com/BrokenSource/DepthFlow",
+      "kind": "cli",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Turns one image into a 2.5D parallax scene using a depth map.",
+      "use_when": [
+        "A hero photo should feel deep without a real 3D model"
+      ],
+      "avoid_when": [
+        "The reference object must rotate or be lit (needs real 3D)"
+      ],
+      "how_to_use": [
+        "Take the idea: cut the image into 2 or 3 transparent layers and move them at different speeds on pointer move",
+        "Run the tool itself only if it starts in ten minutes"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/BrokenSource/DepthFlow"
+    },
+    {
+      "id": "stable-diffusion",
+      "name": "Stable Diffusion",
+      "invoke": "github.com/CompVis/stable-diffusion",
+      "kind": "cli",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Text to image. Needs a GPU.",
+      "use_when": [
+        "The dashboard needs an original hero photo, prop or avatar set"
+      ],
+      "avoid_when": [
+        "You have no GPU or cannot get it running in ten minutes (use the fallback)",
+        "Never feed it a gallery reference image: generate from an original image or a text prompt",
+        "Real people or brands"
+      ],
+      "how_to_use": [
+        "Generate original images, export WebP at 2x with srcset, credit in media/CREDITS.md"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/CompVis/stable-diffusion"
+    },
+    {
+      "id": "text-to-image",
+      "name": "text-to-image",
+      "invoke": "github.com/paarthneekhara/text-to-image",
+      "kind": "cli",
+      "plugin": null,
+      "category": "media",
+      "phases": [
+        "design",
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Early text-to-image model.",
+      "use_when": [
+        "Only when nothing newer is available"
+      ],
+      "avoid_when": [
+        "Any modern image generator is available"
+      ],
+      "how_to_use": [
+        "Prefer the agent's built-in image generation or Stable Diffusion"
+      ],
+      "pairs_with": [
+        "stable-diffusion"
+      ],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/paarthneekhara/text-to-image"
+    },
+    {
+      "id": "emilwallner-screenshot-to-code",
+      "name": "Screenshot-to-code (emilwallner)",
+      "invoke": "github.com/emilwallner/Screenshot-to-code",
+      "kind": "reference",
+      "plugin": null,
+      "category": "design-to-code",
+      "phases": [
+        "design"
+      ],
+      "tier": "situational",
+      "summary": "Early neural network that turns a screenshot into markup.",
+      "use_when": [
+        "Background reading on the approach"
+      ],
+      "avoid_when": [
+        "Building a twin (measure the reference and write layout.json instead)"
+      ],
+      "how_to_use": [
+        "Read for ideas only; never ship generated markup"
+      ],
+      "pairs_with": [
+        "screenshot-to-code"
+      ],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/emilwallner/Screenshot-to-code"
+    },
+    {
+      "id": "screenshot-to-page",
+      "name": "screenshot-to-page",
+      "invoke": "github.com/Mrxyy/screenshot-to-page",
+      "kind": "cli",
+      "plugin": null,
+      "category": "design-to-code",
+      "phases": [
+        "design",
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Screenshot to a page through a vision model. Needs an API key.",
+      "use_when": [
+        "A first guess at structure when no layout.json exists yet"
+      ],
+      "avoid_when": [
+        "A layout.json exists (it is the layout)",
+        "Shipping its output: it is rectangles"
+      ],
+      "how_to_use": [
+        "Use its output only to list elements, then measure and build by the playbook"
+      ],
+      "pairs_with": [
+        "screenshot-to-code"
+      ],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/Mrxyy/screenshot-to-page"
+    },
+    {
+      "id": "ui-screenshot-to-prompt",
+      "name": "ui-screenshot-to-prompt",
+      "invoke": "github.com/s-smits/ui-screenshot-to-prompt",
+      "kind": "cli",
+      "plugin": null,
+      "category": "design-to-code",
+      "phases": [
+        "design"
+      ],
+      "tier": "situational",
+      "summary": "Turns a UI screenshot into a written description.",
+      "use_when": [
+        "Drafting the element inventory of a reference (playbook Step 1)"
+      ],
+      "avoid_when": [
+        "You can see the image yourself"
+      ],
+      "how_to_use": [
+        "Use the description as a checklist of elements, then verify each against the image"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/s-smits/ui-screenshot-to-prompt"
+    },
+    {
+      "id": "umi-ocr",
+      "name": "Umi-OCR",
+      "invoke": "github.com/hiroi-sora/Umi-OCR",
+      "kind": "cli",
+      "plugin": null,
+      "category": "design-to-code",
+      "phases": [
+        "design"
+      ],
+      "tier": "situational",
+      "summary": "Offline OCR.",
+      "use_when": [
+        "Reading small labels in a reference image"
+      ],
+      "avoid_when": [
+        "The labels are legible, or will be replaced by fictional copy anyway"
+      ],
+      "how_to_use": [
+        "Run on the reference, keep structure words, replace all names and brands"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/hiroi-sora/Umi-OCR"
+    },
+    {
+      "id": "codeexpander",
+      "name": "Codeexpander",
+      "invoke": "github.com/oncework/Codeexpander",
+      "kind": "reference",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Snippet manager.",
+      "use_when": [
+        "A person wants to keep reusable snippets"
+      ],
+      "avoid_when": [
+        "Building dashboards (not needed)"
+      ],
+      "how_to_use": [
+        "Skip"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/oncework/Codeexpander"
+    },
+    {
+      "id": "reactbits-tools",
+      "name": "React Bits tools",
+      "invoke": "reactbits.dev/tools",
+      "kind": "reference",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Online generators from React Bits (backgrounds, shapes, text effects).",
+      "use_when": [
+        "You need parameters for an effect: a background, a blob, a gradient"
+      ],
+      "avoid_when": [
+        "Copying React code into the no-build gallery"
+      ],
+      "how_to_use": [
+        "Tune the effect there, read the values, rebuild in vanilla in _shared/fx/"
+      ],
+      "pairs_with": [
+        "react-bits"
+      ],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://reactbits.dev/tools"
+    },
+    {
+      "id": "animata",
+      "name": "animata",
+      "invoke": "github.com/codse/animata",
+      "kind": "library",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "design",
+        "build",
+        "polish"
+      ],
+      "tier": "situational",
+      "summary": "Animated React components: bento cards, lists, text effects.",
+      "use_when": [
+        "Looking for a micro-interaction or card pattern"
+      ],
+      "avoid_when": [
+        "Installing it into the no-build gallery"
+      ],
+      "how_to_use": [
+        "Take the pattern, rebuild in vanilla with Motion; install normally in a Level 2 React app"
+      ],
+      "pairs_with": [
+        "motion"
+      ],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/codse/animata"
+    },
+    {
+      "id": "material-ui",
+      "name": "Material UI",
+      "invoke": "github.com/mui/material-ui",
+      "kind": "library",
+      "plugin": null,
+      "category": "build",
+      "phases": [
+        "design",
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "React component library with thorough behavior and accessibility.",
+      "use_when": [
+        "Checking how a menu, dialog, combobox or focus trap should behave"
+      ],
+      "avoid_when": [
+        "Copying its look (every dashboard here has its own)"
+      ],
+      "how_to_use": [
+        "Read the component's behavior notes; build to this repo's tokens"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/mui/material-ui"
+    },
+    {
+      "id": "react-motion",
+      "name": "react-motion",
+      "invoke": "github.com/chenglou/react-motion",
+      "kind": "library",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Older React spring library.",
+      "use_when": [
+        "Maintaining a project that already uses it"
+      ],
+      "avoid_when": [
+        "New work (use Motion)"
+      ],
+      "how_to_use": [
+        "Prefer Motion"
+      ],
+      "pairs_with": [
+        "motion"
+      ],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/chenglou/react-motion"
+    },
+    {
+      "id": "react-native-motion",
+      "name": "react-native-motion",
+      "invoke": "github.com/xotahal/react-native-motion",
+      "kind": "library",
+      "plugin": null,
+      "category": "motion",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Animation helpers for React Native.",
+      "use_when": [
+        "A React Native companion app"
+      ],
+      "avoid_when": [
+        "Web dashboards"
+      ],
+      "how_to_use": [
+        "Prefer Motion on the web"
+      ],
+      "pairs_with": [
+        "motion"
+      ],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/xotahal/react-native-motion"
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "name": "UI UX Pro Max skill",
+      "invoke": "github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "kind": "reference",
+      "plugin": null,
+      "category": "uiux",
+      "phases": [
+        "direction",
+        "design"
+      ],
+      "tier": "situational",
+      "summary": "Design-intelligence skill: styles, palettes, font pairings.",
+      "use_when": [
+        "Direction step for a new dashboard with no reference"
+      ],
+      "avoid_when": [
+        "A reference image exists (it decides)",
+        "It conflicts with the rulebook (the rulebook wins)"
+      ],
+      "how_to_use": [
+        "Install as a skill if your agent supports it; use its suggestions as options, not rules"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/design/02-rulebook.md",
+      "requires": null,
+      "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"
+    },
+    {
+      "id": "hendurhance-ui-ux",
+      "name": "ui-ux (hendurhance)",
+      "invoke": "github.com/hendurhance/ui-ux",
+      "kind": "reference",
+      "plugin": null,
+      "category": "uiux",
+      "phases": [
+        "direction",
+        "design"
+      ],
+      "tier": "situational",
+      "summary": "Link collection of UI and UX resources.",
+      "use_when": [
+        "Looking for icons, illustration or pattern sources"
+      ],
+      "avoid_when": [
+        "You have not checked the asset's license"
+      ],
+      "how_to_use": [
+        "Find the source, check the license, credit it"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/hendurhance/ui-ux"
+    },
+    {
+      "id": "design-resources-for-developers",
+      "name": "design-resources-for-developers",
+      "invoke": "github.com/bradtraversy/design-resources-for-developers",
+      "kind": "reference",
+      "plugin": null,
+      "category": "uiux",
+      "phases": [
+        "direction",
+        "design"
+      ],
+      "tier": "situational",
+      "summary": "Link collection: icons, fonts, stock, illustration.",
+      "use_when": [
+        "Looking for a free asset source"
+      ],
+      "avoid_when": [
+        "You have not checked the asset's license"
+      ],
+      "how_to_use": [
+        "Find the source, check the license, self-host and credit"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/bradtraversy/design-resources-for-developers"
+    },
+    {
+      "id": "system-design-primer",
+      "name": "system-design-primer",
+      "invoke": "github.com/donnemartin/system-design-primer",
+      "kind": "reference",
+      "plugin": null,
+      "category": "build",
+      "phases": [
+        "define",
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Backend architecture reading.",
+      "use_when": [
+        "Planning the Level 2 working app: data, caching, scaling"
+      ],
+      "avoid_when": [
+        "A Level 1 prototype"
+      ],
+      "how_to_use": [
+        "Read the section that matches the decision; keep the stack in docs/stack/"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/stack/01-recommended-stack.md",
+      "requires": null,
+      "url": "https://github.com/donnemartin/system-design-primer"
+    },
+    {
+      "id": "claude-howto",
+      "name": "claude-howto",
+      "invoke": "github.com/luongnv89/claude-howto",
+      "kind": "reference",
+      "plugin": null,
+      "category": "process",
+      "phases": [
+        "discover",
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Guide to running Claude Code well.",
+      "use_when": [
+        "Setting up the coding agent before a build"
+      ],
+      "avoid_when": [
+        "Dashboard design questions"
+      ],
+      "how_to_use": [
+        "Use for agent setup only"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/luongnv89/claude-howto"
+    },
+    {
+      "id": "vibe-coding-toolkit",
+      "name": "vibe-coding-toolkit",
+      "invoke": "github.com/soumatheusgomes/vibe-coding-toolkit",
+      "kind": "reference",
+      "plugin": null,
+      "category": "process",
+      "phases": [
+        "discover",
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Guides and prompts for coding with agents.",
+      "use_when": [
+        "Setting up an agent workflow"
+      ],
+      "avoid_when": [
+        "It conflicts with AGENTS.md (AGENTS.md wins)"
+      ],
+      "how_to_use": [
+        "Use for agent setup only"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/soumatheusgomes/vibe-coding-toolkit"
+    },
+    {
+      "id": "ultracode-shim",
+      "name": "UltraCode-Shim",
+      "invoke": "github.com/OnlyTerp/UltraCode-Shim",
+      "kind": "reference",
+      "plugin": null,
+      "category": "process",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Shim for running coding agents.",
+      "use_when": [
+        "Your agent setup needs it"
+      ],
+      "avoid_when": [
+        "Dashboard design questions"
+      ],
+      "how_to_use": [
+        "Use for agent setup only"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/OnlyTerp/UltraCode-Shim"
+    },
+    {
+      "id": "ultracode-skill",
+      "name": "ultracode-skill",
+      "invoke": "github.com/PabloNAX/ultracode-skill",
+      "kind": "reference",
+      "plugin": null,
+      "category": "process",
+      "phases": [
+        "build"
+      ],
+      "tier": "situational",
+      "summary": "Skill for running coding agents.",
+      "use_when": [
+        "Your agent setup needs it"
+      ],
+      "avoid_when": [
+        "Dashboard design questions"
+      ],
+      "how_to_use": [
+        "Use for agent setup only"
+      ],
+      "pairs_with": [],
+      "fallback": "docs/dashboards/03-asset-and-tool-map.md",
+      "requires": null,
+      "url": "https://github.com/PabloNAX/ultracode-skill"
     }
   ]
 }

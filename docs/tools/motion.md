@@ -353,3 +353,121 @@ Micro-interaction icon animations to study.
 
 ---
 
+<a id="animata"></a>
+### animata
+
+`github.com/codse/animata` · library · **situational** · phases: Design, Build, Polish & QA
+
+Animated React components: bento cards, lists, text effects.
+
+**Use when**
+- Looking for a micro-interaction or card pattern
+
+**Avoid when**
+- Installing it into the no-build gallery
+
+**How to use**
+- Take the pattern, rebuild in vanilla with Motion; install normally in a Level 2 React app
+
+**Pairs with:** [Motion](polish.md#motion)
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/codse/animata
+
+---
+
+<a id="reactbits-tools"></a>
+### React Bits tools
+
+`reactbits.dev/tools` · reference · **situational** · phases: Design, Build, Polish & QA
+
+Online generators from React Bits (backgrounds, shapes, text effects).
+
+**Use when**
+- You need parameters for an effect: a background, a blob, a gradient
+
+**Avoid when**
+- Copying React code into the no-build gallery
+
+**How to use**
+- Tune the effect there, read the values, rebuild in vanilla in _shared/fx/
+
+**Pairs with:** [React Bits](motion.md#react-bits)
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://reactbits.dev/tools
+
+---
+
+<a id="react-motion"></a>
+### react-motion
+
+`github.com/chenglou/react-motion` · library · **situational** · phases: Build
+
+Older React spring library.
+
+**Use when**
+- Maintaining a project that already uses it
+
+**Avoid when**
+- New work (use Motion)
+
+**How to use**
+- Prefer Motion
+
+**Pairs with:** [Motion](polish.md#motion)
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/chenglou/react-motion
+
+---
+
+<a id="react-native-motion"></a>
+### react-native-motion
+
+`github.com/xotahal/react-native-motion` · library · **situational** · phases: Build
+
+Animation helpers for React Native.
+
+**Use when**
+- A React Native companion app
+
+**Avoid when**
+- Web dashboards
+
+**How to use**
+- Prefer Motion on the web
+
+**Pairs with:** [Motion](polish.md#motion)
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/xotahal/react-native-motion
+
+---
+
+<a id="text-to-motion"></a>
+### text-to-motion
+
+`github.com/EricGuo5513/text-to-motion` · reference · **situational** · phases: Build
+
+Generates human body motion from text.
+
+**Use when**
+- Only if a dashboard needs an animated human figure
+
+**Avoid when**
+- UI motion (use Motion or GSAP)
+
+**How to use**
+- Skip for dashboards; listed so nobody reaches for it by mistake
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/EricGuo5513/text-to-motion
+
+---
+

@@ -374,6 +374,28 @@ Physical damped-spring motion (tension ~100, friction ~20) for things the user d
 
 ---
 
+<a id="design-resources-for-developers"></a>
+### design-resources-for-developers
+
+`github.com/bradtraversy/design-resources-for-developers` · reference · **situational** · phases: Direction, Design
+
+Link collection: icons, fonts, stock, illustration.
+
+**Use when**
+- Looking for a free asset source
+
+**Avoid when**
+- You have not checked the asset's license
+
+**How to use**
+- Find the source, check the license, self-host and credit
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/bradtraversy/design-resources-for-developers
+
+---
+
 <a id="figma-use"></a>
 ### Figma (read/write)
 
@@ -441,6 +463,51 @@ Builds a Figma design-system library from the codebase tokens and components.
 **Pairs with:** [Figma (read/write)](uiux.md#figma-use)
 
 **Requires:** Figma connector
+
+---
+
+<a id="ui-ux-pro-max"></a>
+### UI UX Pro Max skill
+
+`github.com/nextlevelbuilder/ui-ux-pro-max-skill` · reference · **situational** · phases: Direction, Design
+
+Design-intelligence skill: styles, palettes, font pairings.
+
+**Use when**
+- Direction step for a new dashboard with no reference
+
+**Avoid when**
+- A reference image exists (it decides)
+- It conflicts with the rulebook (the rulebook wins)
+
+**How to use**
+- Install as a skill if your agent supports it; use its suggestions as options, not rules
+
+**If not installed:** follow [docs/design/02-rulebook.md](../../docs/design/02-rulebook.md)
+
+**Docs:** https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+
+---
+
+<a id="hendurhance-ui-ux"></a>
+### ui-ux (hendurhance)
+
+`github.com/hendurhance/ui-ux` · reference · **situational** · phases: Direction, Design
+
+Link collection of UI and UX resources.
+
+**Use when**
+- Looking for icons, illustration or pattern sources
+
+**Avoid when**
+- You have not checked the asset's license
+
+**How to use**
+- Find the source, check the license, credit it
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/hendurhance/ui-ux
 
 ---
 

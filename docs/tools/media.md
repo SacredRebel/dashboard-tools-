@@ -61,6 +61,31 @@ Prompting best practices for any text-to-image model.
 
 ---
 
+<a id="3dtopia"></a>
+### 3DTopia
+
+`github.com/3DTopia/3DTopia` · cli · **situational** · phases: Build, Polish & QA
+
+Text to 3D in two stages. Needs a GPU.
+
+**Use when**
+- Simple props: clay icons, relics, small decorative objects
+
+**Avoid when**
+- You have no GPU or cannot get it running in ten minutes (use the fallback)
+- The object is round about an axis or flat with thickness (a lathe or extrude is faster and cleaner)
+
+**How to use**
+- Prompt, export .glb, optimize, loadGLB, credit, object spec
+
+**Pairs with:** [Three.js](libraries.md#threejs)
+
+**If not installed:** follow [docs/dashboards/08-object-spec.md](../../docs/dashboards/08-object-spec.md)
+
+**Docs:** https://github.com/3DTopia/3DTopia
+
+---
+
 <a id="adobe-stock"></a>
 ### Adobe Stock
 
@@ -72,6 +97,50 @@ Find and license stock photos, vectors and icons.
 - Licensed photography for a login screen
 
 **Requires:** Adobe connector
+
+---
+
+<a id="awesome-3d-reconstruction"></a>
+### awesome_3DReconstruction_list
+
+`github.com/openMVG/awesome_3DReconstruction_list` · reference · **situational** · phases: Build
+
+Reading list of 3D reconstruction papers and tools.
+
+**Use when**
+- You need a newer or different reconstruction method than the ones in this catalog
+
+**Avoid when**
+- A catalog tool already fits
+
+**How to use**
+- Search the list for the object type, then follow the .glb pipeline
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/openMVG/awesome_3DReconstruction_list
+
+---
+
+<a id="awesome-text-to-3d"></a>
+### Awesome-Text-to-3D
+
+`github.com/yyeboah/Awesome-Text-to-3D` · reference · **situational** · phases: Build
+
+Reading list of text-to-3D models.
+
+**Use when**
+- You need a newer text-to-3D model
+
+**Avoid when**
+- A catalog tool already fits
+
+**How to use**
+- Pick a model with a permissive license and a .glb export
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/yyeboah/Awesome-Text-to-3D
 
 ---
 
@@ -88,6 +157,150 @@ Turns a project into a 15-25s promo video.
 **Pairs with:** [Remotion (video in React)](media.md#remotion)
 
 **Requires:** CoDesign MCP connector
+
+---
+
+<a id="cube-3d-text"></a>
+### cube-3d-text
+
+`github.com/EaseCation/cube-3d-text` · library · **situational** · phases: Build, Polish & QA
+
+3D text in the browser.
+
+**Use when**
+- The reference has a 3D title, logo or numeral
+
+**Avoid when**
+- Flat text reads better (most dashboard copy)
+
+**How to use**
+- Use as a pattern; in this no-build gallery build it with three.js TextGeometry
+
+**Pairs with:** [Three.js](libraries.md#threejs)
+
+**If not installed:** follow [docs/dashboards/08-object-spec.md](../../docs/dashboards/08-object-spec.md)
+
+**Docs:** https://github.com/EaseCation/cube-3d-text
+
+---
+
+<a id="depthflow"></a>
+### DepthFlow
+
+`github.com/BrokenSource/DepthFlow` · cli · **situational** · phases: Build, Polish & QA
+
+Turns one image into a 2.5D parallax scene using a depth map.
+
+**Use when**
+- A hero photo should feel deep without a real 3D model
+
+**Avoid when**
+- The reference object must rotate or be lit (needs real 3D)
+
+**How to use**
+- Take the idea: cut the image into 2 or 3 transparent layers and move them at different speeds on pointer move
+- Run the tool itself only if it starts in ten minutes
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/BrokenSource/DepthFlow
+
+---
+
+<a id="hunyuan3d"></a>
+### Hunyuan3D-1
+
+`github.com/Tencent-Hunyuan/Hunyuan3D-1` · cli · **situational** · phases: Build, Polish & QA
+
+Image or text to a textured 3D mesh. Needs a GPU.
+
+**Use when**
+- The reference has an organic hero object (figure, organ, helmet) that primitives cannot model
+
+**Avoid when**
+- You have no GPU or cannot get it running in ten minutes (use the fallback)
+- Never feed it a gallery reference image: generate from an original image or a text prompt
+
+**How to use**
+- Generate from an original image or prompt, export .glb, optimize with gltf-transform to under 1.5 MB, load with stage.loadGLB, credit in media/CREDITS.md
+- Then make it pass the object spec
+
+**Pairs with:** [Three.js](libraries.md#threejs)
+
+**If not installed:** follow [docs/dashboards/08-object-spec.md](../../docs/dashboards/08-object-spec.md)
+
+**Docs:** https://github.com/Tencent-Hunyuan/Hunyuan3D-1
+
+---
+
+<a id="image-to-3d-bbox"></a>
+### image-to-3d-bbox
+
+`github.com/experiencor/image-to-3d-bbox` · reference · **situational** · phases: Build
+
+3D bounding boxes from driving images.
+
+**Use when**
+- Only if a dashboard visualizes detected vehicles in 3D
+
+**Avoid when**
+- Any ordinary dashboard (not useful)
+
+**How to use**
+- Skip unless the use case is exactly this
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/experiencor/image-to-3d-bbox
+
+---
+
+<a id="image-to-3dlab"></a>
+### image-to-3dlab
+
+`github.com/Bingeljell/image-to-3dlab` · cli · **situational** · phases: Build, Polish & QA
+
+Local lab that wraps image-to-3D models behind one front end.
+
+**Use when**
+- The owner has a GPU machine and wants one place to try several image-to-3D models
+
+**Avoid when**
+- You have no GPU or cannot get it running in ten minutes (use the fallback)
+- Never feed it a gallery reference image: generate from an original image or a text prompt
+
+**How to use**
+- Run locally, export .glb, then the usual optimize, credit and object-spec steps
+
+**Pairs with:** [Three.js](libraries.md#threejs)
+
+**If not installed:** follow [docs/dashboards/08-object-spec.md](../../docs/dashboards/08-object-spec.md)
+
+**Docs:** https://github.com/Bingeljell/image-to-3dlab
+
+---
+
+<a id="mvs-texturing"></a>
+### mvs-texturing
+
+`github.com/nmoehrle/mvs-texturing` · cli · **situational** · phases: Build, Polish & QA
+
+Textures an existing mesh from photos.
+
+**Use when**
+- A generated mesh has good shape but poor texture and you have views of it
+
+**Avoid when**
+- A three.js physical material would look better (usually true for dashboards)
+
+**How to use**
+- Texture, bake to 1024px or less, convert to WebP
+
+**Pairs with:** [Three.js](libraries.md#threejs)
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/nmoehrle/mvs-texturing
 
 ---
 
@@ -122,6 +335,153 @@ Scroll-scrubbed frame sequences for a cinematic product tour on a landing page.
 **Pairs with:** [Brag storyboard method (latent-spaces/brag)](media.md#brag-storyboard)
 
 **Docs:** https://github.com/singhharsh1708/scrollcraft
+
+---
+
+<a id="stable-diffusion"></a>
+### Stable Diffusion
+
+`github.com/CompVis/stable-diffusion` · cli · **situational** · phases: Design, Build, Polish & QA
+
+Text to image. Needs a GPU.
+
+**Use when**
+- The dashboard needs an original hero photo, prop or avatar set
+
+**Avoid when**
+- You have no GPU or cannot get it running in ten minutes (use the fallback)
+- Never feed it a gallery reference image: generate from an original image or a text prompt
+- Real people or brands
+
+**How to use**
+- Generate original images, export WebP at 2x with srcset, credit in media/CREDITS.md
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/CompVis/stable-diffusion
+
+---
+
+<a id="stable-dreamfusion"></a>
+### stable-dreamfusion
+
+`github.com/ashawkey/stable-dreamfusion` · cli · **situational** · phases: Build, Polish & QA
+
+Text to 3D by score distillation. Slow; needs a GPU.
+
+**Use when**
+- No other 3D generator is available and the object cannot be modelled by hand
+
+**Avoid when**
+- You have no GPU or cannot get it running in ten minutes (use the fallback)
+- Hunyuan3D, Wonder3D or 3DTopia is available (prefer them)
+
+**How to use**
+- Treat as last resort; same .glb pipeline
+
+**Pairs with:** [Three.js](libraries.md#threejs)
+
+**If not installed:** follow [docs/dashboards/08-object-spec.md](../../docs/dashboards/08-object-spec.md)
+
+**Docs:** https://github.com/ashawkey/stable-dreamfusion
+
+---
+
+<a id="stl-texturizer"></a>
+### stlTexturizer
+
+`github.com/CNCKitchen/stlTexturizer` · cli · **situational** · phases: Build, Polish & QA
+
+Adds surface texture to an STL mesh.
+
+**Use when**
+- A mesh needs physical surface relief (knurling, fabric, grain)
+
+**Avoid when**
+- A normal map or roughness on a physical material gives the same read
+
+**How to use**
+- Texturize, convert to .glb, optimize
+
+**Pairs with:** [Three.js](libraries.md#threejs)
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/CNCKitchen/stlTexturizer
+
+---
+
+<a id="text-to-image"></a>
+### text-to-image
+
+`github.com/paarthneekhara/text-to-image` · cli · **situational** · phases: Design, Build
+
+Early text-to-image model.
+
+**Use when**
+- Only when nothing newer is available
+
+**Avoid when**
+- Any modern image generator is available
+
+**How to use**
+- Prefer the agent's built-in image generation or Stable Diffusion
+
+**Pairs with:** [Stable Diffusion](media.md#stable-diffusion)
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/paarthneekhara/text-to-image
+
+---
+
+<a id="text2room"></a>
+### text2room
+
+`github.com/lukasHoel/text2room` · cli · **situational** · phases: Build, Polish & QA
+
+Text to a textured room mesh. Needs a GPU.
+
+**Use when**
+- A smart-home or interior dashboard whose reference shows a 3D room
+
+**Avoid when**
+- You have no GPU or cannot get it running in ten minutes (use the fallback)
+- A photo with pointer parallax is enough
+
+**How to use**
+- Generate, decimate hard, export .glb; or fall back to a layered photo
+
+**Pairs with:** [Three.js](libraries.md#threejs)
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/lukasHoel/text2room
+
+---
+
+<a id="wonder3d"></a>
+### Wonder3D
+
+`github.com/xxlong0/Wonder3D` · cli · **situational** · phases: Build, Polish & QA
+
+One image to multi-view normals and a mesh. Needs a GPU.
+
+**Use when**
+- You have a clean original image of one object and need its geometry
+
+**Avoid when**
+- You have no GPU or cannot get it running in ten minutes (use the fallback)
+- Never feed it a gallery reference image: generate from an original image or a text prompt
+
+**How to use**
+- Same pipeline as Hunyuan3D: .glb, optimize, loadGLB, credit, object spec
+
+**Pairs with:** [Three.js](libraries.md#threejs)
+
+**If not installed:** follow [docs/dashboards/08-object-spec.md](../../docs/dashboards/08-object-spec.md)
+
+**Docs:** https://github.com/xxlong0/Wonder3D
 
 ---
 

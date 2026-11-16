@@ -180,3 +180,47 @@ Multiple languages, regional formats, RTL.
 
 ---
 
+<a id="material-ui"></a>
+### Material UI
+
+`github.com/mui/material-ui` · library · **situational** · phases: Design, Build
+
+React component library with thorough behavior and accessibility.
+
+**Use when**
+- Checking how a menu, dialog, combobox or focus trap should behave
+
+**Avoid when**
+- Copying its look (every dashboard here has its own)
+
+**How to use**
+- Read the component's behavior notes; build to this repo's tokens
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/mui/material-ui
+
+---
+
+<a id="system-design-primer"></a>
+### system-design-primer
+
+`github.com/donnemartin/system-design-primer` · reference · **situational** · phases: Define, Build
+
+Backend architecture reading.
+
+**Use when**
+- Planning the Level 2 working app: data, caching, scaling
+
+**Avoid when**
+- A Level 1 prototype
+
+**How to use**
+- Read the section that matches the decision; keep the stack in docs/stack/
+
+**If not installed:** follow [docs/stack/01-recommended-stack.md](../../docs/stack/01-recommended-stack.md)
+
+**Docs:** https://github.com/donnemartin/system-design-primer
+
+---
+

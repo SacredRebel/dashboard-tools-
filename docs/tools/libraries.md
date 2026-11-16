@@ -263,6 +263,28 @@ Native, scriptable animations you can pause, seek and cancel. One rAF clock can 
 
 ---
 
+<a id="codeexpander"></a>
+### Codeexpander
+
+`github.com/oncework/Codeexpander` · reference · **situational** · phases: Build
+
+Snippet manager.
+
+**Use when**
+- A person wants to keep reusable snippets
+
+**Avoid when**
+- Building dashboards (not needed)
+
+**How to use**
+- Skip
+
+**If not installed:** follow [docs/dashboards/03-asset-and-tool-map.md](../../docs/dashboards/03-asset-and-tool-map.md)
+
+**Docs:** https://github.com/oncework/Codeexpander
+
+---
+
 <a id="gsap"></a>
 ### GSAP + ScrollTrigger
 
