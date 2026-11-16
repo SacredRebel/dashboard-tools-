@@ -26,7 +26,12 @@
     { id: 'pantry', name: 'Pantry', icon: 'er-pot', label: 'PN', on: false, lights: 1 },
   ];
   const USAGE = [18, 24, 21, 32, 28, 36, 42];
-  const PEAK = [4.2, 5.1, 6.8, 5.4, 7.2, 8.1, 9.4];
+  const PEAK = {
+    '1H': [6.1, 6.8, 7.4, 8.0, 8.6, 9.1, 9.4],
+    '2H': [5.2, 5.8, 6.4, 7.1, 7.9, 8.6, 9.0],
+    '3H': [4.6, 5.1, 5.9, 6.6, 7.4, 8.2, 8.7],
+    '4H': [4.2, 5.1, 6.8, 5.4, 7.2, 8.1, 9.4],
+  };
   const ENERGY_WEEK = [
     { d: 'Mon', v: 5.2 }, { d: 'Tue', v: 6.1 }, { d: 'Wed', v: 4.8 },
     { d: 'Thu', v: 7.4 }, { d: 'Fri', v: 8.2 }, { d: 'Sat', v: 9.1 }, { d: 'Sun', v: 6.6 },
@@ -35,7 +40,7 @@
 
   const S = {
     page: 'overview', room: 2, bright: 68, power: true, start: 2, end: 4, playing: false,
-    temp: 23, cool: true, wind: 45, mode: 'cool', q: '', hist: [], future: [],
+    temp: 23, cool: true, wind: 45, mode: 'cool', day: '1H', q: '', hist: [], future: [],
     settingsPreview: 'populated', notify: true, autoDim: true,
   };
 
@@ -105,10 +110,14 @@
     }
     const usage = $('[data-usage]');
     const peak = $('[data-peak]');
+    const peakSeries = PEAK[S.day] || PEAK['1H'];
     if (usage) usage.textContent = String(USAGE[USAGE.length - 1]);
-    if (peak) peak.textContent = String(PEAK[PEAK.length - 1]);
+    if (peak) peak.textContent = String(peakSeries[peakSeries.length - 1]);
     $$('[data-chart]').forEach((el) => {
-      el.innerHTML = spark(el.dataset.chart === 'peak' ? PEAK : USAGE, el.dataset.chart !== 'peak');
+      el.innerHTML = spark(el.dataset.chart === 'peak' ? peakSeries : USAGE, el.dataset.chart === 'peak');
+    });
+    $$('[data-day]').forEach((btn) => {
+      btn.setAttribute('aria-pressed', btn.dataset.day === S.day ? 'true' : 'false');
     });
     const play = $('[data-play]');
     if (play) play.setAttribute('aria-pressed', S.playing ? 'true' : 'false');
@@ -200,7 +209,7 @@
         <div class="er-bar" style="--k:${i}"><i style="height:${(x.v / max) * 100}%"></i><span>${x.d}</span></div>`).join('')}</div>
       <div class="er-grid">
         <article class="er-card"><span class="er-pill">Usage</span><b class="num">${USAGE.reduce((a, b) => a + b, 0)} kWh</b><small>Last 7 days across lit rooms</small></article>
-        <article class="er-card"><span class="er-pill">Peak</span><b class="num">${Math.max(...PEAK)} kW</b><small>Highest draw this afternoon</small></article>
+        <article class="er-card"><span class="er-pill">Peak</span><b class="num">${Math.max(...(PEAK[S.day] || PEAK['1H']))} kW</b><small>Highest draw this afternoon</small></article>
         <article class="er-card"><span class="er-pill">Saved</span><b class="num">12%</b><small>vs last week with auto-dim</small></article>
         <article class="er-card"><span class="er-pill">Cost</span><b class="num">$18.40</b><small>Estimated week at sample tariff</small></article>
         <article class="er-card"><span class="er-pill">Co₂</span><b class="num">9.1 kg</b><small>Avoided with schedule cuts</small></article>
@@ -291,6 +300,8 @@
     if (e.target.closest('[data-cool]')) { S.cool = !S.cool; S.mode = S.cool ? 'cool' : 'light'; render(); return; }
     const modeChip = e.target.closest('[data-mode-chip]');
     if (modeChip) { S.mode = modeChip.dataset.modeChip; S.cool = S.mode === 'cool'; render(); return; }
+    const dayChip = e.target.closest('[data-day]');
+    if (dayChip) { S.day = dayChip.dataset.day; render(); toast(`Peak · ${S.day}`); return; }
     const sw = e.target.closest('[data-sw]');
     if (sw) { S[sw.dataset.sw] = !(sw.getAttribute('aria-checked') === 'true'); render(); return; }
     const prev = e.target.closest('[data-preview]');

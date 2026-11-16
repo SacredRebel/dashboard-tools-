@@ -130,11 +130,16 @@ h1,h2,h3{font-family:var(--font-display);font-weight:500;letter-spacing:-.02em}
   animation:er-rise var(--dur-4) var(--ease-out) 70ms both;
 }
 .er-orb{
+  position:relative;
   width:3.5cqw; aspect-ratio:1; border-radius:50%;
   display:grid; place-items:center;
   background:var(--surface); box-shadow:var(--neu-raised-sm);
   color:var(--text-muted); font-size:1.35cqw; text-decoration:none;
   transition:transform var(--dur-1) var(--ease-out),box-shadow var(--dur-2) var(--ease-out),color var(--dur-2) var(--ease-out);
+}
+.er-orb::after{
+  content:""; position:absolute; inset:50% auto auto 50%;
+  width:var(--hit); height:var(--hit); transform:translate(-50%,-50%);
 }
 .er-orb:hover{color:var(--text); transform:translateY(-2px)}
 .er-orb:active{box-shadow:var(--neu-pressed); transform:translateY(0)}
@@ -351,7 +356,7 @@ html[data-page="devices"] .er-hero{opacity:0; pointer-events:none; visibility:hi
 .er-chart[data-ref="card-a"]{left:72.1cqw; top:8.8cqw; width:25cqw; height:9.3cqw}
 .er-chart[data-ref="card-b"]{left:72.1cqw; top:20.4cqw; width:25cqw; height:14.1cqw}
 .er-spark{margin-top:.4cqw; height:3.6cqw}
-.er-chart-2 .er-spark{height:7.5cqw}
+.er-chart-2 .er-spark{height:5.2cqw}
 .er-spark svg{width:100%; height:100%; overflow:visible}
 .er-spark .ln{
   fill:none; stroke:var(--chart); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
@@ -360,6 +365,22 @@ html[data-page="devices"] .er-hero{opacity:0; pointer-events:none; visibility:hi
 }
 .er-spark .dot{fill:var(--accent-hot)}
 .er-chart-2 .ln{stroke:var(--chart-2)}
+.er-days{
+  display:flex; align-items:center; justify-content:space-between; gap:.4cqw;
+  margin-top:.55cqw;
+}
+.er-day{
+  flex:1; min-width:0; height:max(28px,2.4cqw); min-height:28px;
+  border-radius:999px; font-size:max(12px,.95cqw); font-weight:600;
+  color:var(--text-muted); background:var(--surface); box-shadow:var(--neu-pressed);
+  transition:background var(--dur-2) var(--ease-out),color var(--dur-2) var(--ease-out),box-shadow var(--dur-2) var(--ease-out);
+}
+.er-day[aria-pressed="true"]{
+  color:var(--accent-fg); background:var(--accent-hot);
+  box-shadow:0 .25cqw .6cqw rgb(196 85 0 / .35);
+}
+.er-day:hover{color:var(--text)}
+.er-day[aria-pressed="true"]:hover{color:var(--accent-fg)}
 
 .er-video{
   left:72.1cqw; top:36.6cqw; width:25cqw; height:14.1cqw;
@@ -556,7 +577,14 @@ html[data-page="devices"] .er-hero{opacity:0; pointer-events:none; visibility:hi
   .er-rail-pill{flex-direction:row; justify-content:space-around; width:100%; height:auto; padding:8px 10px; gap:4px}
   .er-rail-btn{width:36px; font-size:16px}
   .er-search{position:relative!important; left:auto; top:auto; width:auto; height:44px; margin:0 16px; order:2}
-  .er-tools{position:relative!important; left:auto; top:auto; width:auto; height:auto; margin:0 16px; justify-content:flex-start; gap:10px; order:3}
+  .er-search svg{width:18px; height:18px}
+  .er-search input{font-size:15px}
+  .er-tools{position:relative!important; left:auto; top:auto; width:auto; height:auto; margin:0 16px; justify-content:flex-start; gap:12px; order:3}
+  .er-orb{
+    width:44px; height:44px; min-width:44px; min-height:44px; font-size:18px;
+  }
+  .er-orb::after{display:none}
+  .er-orb svg{width:20px; height:20px}
   .er-cord{display:none}
   .er-hero{
     position:relative!important; left:auto!important; top:auto!important;
@@ -575,10 +603,18 @@ html[data-page="devices"] .er-hero{opacity:0; pointer-events:none; visibility:hi
   }
   .er-orbit{
     position:relative!important; left:auto; top:auto; width:100%; height:auto;
-    display:flex; flex-wrap:wrap; gap:10px; justify-content:center; order:3; pointer-events:auto;
+    display:flex; flex-wrap:nowrap; gap:12px; justify-content:center; order:3; pointer-events:auto;
   }
-  .er-room{position:relative!important; left:auto!important; top:auto!important; margin:0; width:44px}
-  .er-room-code{position:static; transform:none; margin-top:4px}
+  .er-room{
+    position:relative!important; left:auto!important; top:auto!important; margin:0;
+    width:44px; height:44px; min-width:44px; min-height:44px; font-size:18px;
+  }
+  .er-room::after{display:none}
+  .er-room svg{width:20px; height:20px}
+  .er-room-code{position:static; transform:none; margin-top:6px; font-size:12px}
+  .er-chart-2 .er-spark{height:88px}
+  .er-days{gap:8px; margin-top:10px}
+  .er-day{height:44px; min-height:44px; font-size:14px}
   .er-left{
     position:relative!important; left:auto; top:auto; width:100%; height:auto;
     order:4; display:grid!important; gap:14px;
