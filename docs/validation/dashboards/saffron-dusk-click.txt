@@ -1,0 +1,76 @@
+d1440 nav overview: {"hash":"#/overview","page":"overview","text":"WED\n\nRAMADAN 9\n8\n9\n10\n11\n12\nFasting window\nIMSAK\n4:15AM\nIFTAR\n6:08PM\nIftar in 1H"}
+d1440 nav progress: {"hash":"#/progress","page":"progress","text":"Progress\n\nWeek intention for Mira Nazari · fictional sample.\n\nTHIS WEEK\n\n62%\n\nav"}
+d1440 nav sessions: {"hash":"#/sessions","page":"sessions","text":"Sessions\n\nRecent fasting days, walks and community circles.\n\nSESSIONS\n\n8\n\nthis R"}
+d1440 nav profile: {"hash":"#/profile","page":"profile","text":"Profile\n\nPreferences and account for Mira Nazari · fictional sample.\n\nDISPLAY NA"}
+d1440 click date-10: mutated=true live="Ramadan 10 · sample fasting window."
+d1440 click water-7: mutated=true live="Water 7 of 8 glasses."
+d1440 click day-fr: mutated=true live="Fr: 68% of daily intention."
+d1440 click remind: mutated=true live="Reminder set for 20 minutes before iftar."
+d1440 click gather: mutated=true live="RSVP kept for Laila House (sample)."
+d1440 click share: mutated=true live="Share link copied for Mira Nazari (sample)."
+d1440 click upgrade: mutated=true live="Upgrade preview · Journeys unlocked in sample mode."
+m375 nav overview: {"hash":"#/overview","page":"overview","text":"WED\n\nRAMADAN 9\n8\n9\n10\n11\n12\nFasting window\nIMSAK\n4:15AM\nIFTAR\n6:08PM\nIftar in 1H"}
+m375 nav progress: {"hash":"#/progress","page":"progress","text":"Progress\n\nWeek intention for Mira Nazari · fictional sample.\n\nTHIS WEEK\n\n62%\n\nav"}
+m375 nav sessions: {"hash":"#/sessions","page":"sessions","text":"Sessions\n\nRecent fasting days, walks and community circles.\n\nSESSIONS\n\n8\n\nthis R"}
+m375 nav profile: {"hash":"#/profile","page":"profile","text":"Good evening\nMira Nazari\n\nmira.nazari@saffron.example\n\n8\nSESSIONS\n2\nJOURNEYS\nSHA"}
+m375 click date-10: mutated=true live="Ramadan 10 · sample fasting window."
+m375 click water-7: mutated=true live="Water 7 of 8 glasses."
+m375 FAIL day-fr: page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('[data-wd="1"]')
+    - locator resolved to 2 elements. Proceeding with the first one: <button data-wd="1" type="button" aria-current="false" aria-label="Fr 68 percent">…</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    58 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+m375 click day-fr: mutated=false live="Water 7 of 8 glasses."
+m375 click remind: mutated=true live="Reminder set for 20 minutes before iftar."
+m375 click gather: mutated=true live="RSVP kept for Laila House (sample)."
+m375 FAIL share: page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('[data-share]')
+    - locator resolved to <button type="button" data-share="" class="sd-share sd-pour-tab sd-pour-share">…</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    58 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+m375 click share: mutated=false live="RSVP kept for Laila House (sample)."
+m375 FAIL upgrade: page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('[data-upgrade]')
+    - locator resolved to <button type="button" data-upgrade="" data-ref="upgrade" class="sd-card sd-upgrade sd-glass">…</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    58 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+m375 click upgrade: mutated=false live="RSVP kept for Laila House (sample)."

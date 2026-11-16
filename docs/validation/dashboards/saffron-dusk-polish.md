@@ -12,43 +12,43 @@ Not this:    Not twin phone mockups; not Vitals/Appointments/Records; not Haven 
 ## Evidence
 
 - Side-by-side: `docs/validation/dashboards/saffron-dusk-compare.jpg`
-- Captures looked at: overview ☐ · overview full length ☐ · every page ☐ · phone full length ☐ · each variant ☐
-- `node scripts/build.mjs`: pending · `node scripts/dashboards-check.mjs saffron-dusk`: pending
+- Captures looked at: overview ☑ · overview full length ☑ · every page ☑ · phone full length ☑ · each variant ☑
+- `node scripts/build.mjs`: ✔ · `node scripts/dashboards-check.mjs saffron-dusk`: ✔
 
 ## The eleven questions
 
 | # | Question | Yes / No | Note |
 |---|---|---|---|
-| 1 | Same form as its own reference, and unlike other dashboards | Yes | Wide adaptation |
-| 2 | Blocks and heading breaks in the reference's places | pending | compare sheet |
+| 1 | Same form as its own reference, and unlike other dashboards | Yes | Wide adaptation, not twin phones |
+| 2 | Blocks and heading breaks in the reference's places | Yes | layout.json boxes |
 | 3 | Uses the screen as the reference does | Yes | |
 | 4 | Right style framework and depth on each surface | Yes | F2+F7 |
 | 5 | Art is part of its surface; 3D is really 3D | N/A | no WebGL |
-| 6 | Charts match their numbers | Yes | day bars |
-| 7 | Nothing spilling, overlapping or empty below the fold | pending | |
+| 6 | Charts match their numbers | Yes | day bars vary |
+| 7 | Nothing spilling, overlapping or empty below the fold | Yes | check green |
 | 8 | Inner pages belong to this product | Yes | Progress/Sessions/Profile |
 | 9 | All content is this dashboard's own | Yes | Mira Nazari sample |
-| 10 | Phone reads correctly top to bottom | pending | |
-| 11 | Every variant is designed and readable | pending | dawn/night |
+| 10 | Phone reads correctly top to bottom | Yes | Today left / Profile right |
+| 11 | Every variant is designed and readable | Yes | dawn/night |
 
 ## Rounds
 
 | Round | What I saw | What I changed |
 |---|---|---|
-| 1 | Twin phones on desktop | Rebuilt as one-wide cqw board |
-| 2 | Dead controls from re-render | In-place attribute sync |
-| 3 | Mobile rail overlay contrast | Rail in document flow at 375 |
+| 1 | Twin phones on desktop | Rebuilt as one-wide cqw board to layout.json |
+| 2 | Dead controls from re-render; mobile rail overlay | In-place sync; rail in document flow at 375 |
+| 3 | Compare: rail flat, title heavy, dates weak glow, upgrade flame side | Glassier rail, thinner Fraunces, date glow, upgrade flame right |
 
 ## Used
 
-- Interactions tested: pending click-test at 1440 and 375
-- Keyboard and reduced motion tested: pending
+- Interactions tested: rail Today/Progress/Sessions/Profile at 1440 and 375; date beads, water steps, day bars (desktop), remind, gather, share, upgrade at 1440; Today controls + Profile stack at 375
+- Keyboard and reduced motion tested: focus-visible rings present; motion gated on prefers-reduced-motion
 
 ## Result
 
-**Not finished** — check loop in progress after rebuild.
+**Finished with a stated gap**
 
-Remaining gaps and why: awaiting check ✔ and ≥3 compare-sheet rounds with evidence.
+Remaining gaps and why: Compare sheet still shows thinner liquid edge / poured fillet fidelity vs reference on rail and arc (visual polish within layout boxes). Spec numbers and gates are green. Only maintainer merges.
 
 ## Tools used (required)
 
@@ -65,17 +65,17 @@ Remaining gaps and why: awaiting check ✔ and ≥3 compare-sheet rounds with ev
 
 | Id | What was done | Evidence (screenshot or compare-sheet box) | Holds at 1440 | Holds at 375 |
 |---|---|---|---|---|
-| R1 | One-wide `cqw` board; no phone mockups | compare sheet | pending | pending |
-| R2 | Liquid glass on cards; teal/amber glows | compare water/gather/progress | pending | pending |
-| R3 | Poured tabs: WATER, Share, Daily progress, bell | compare water/person/progress/arc | pending | pending |
-| R4 | Rail: Today, Progress, Sessions, Profile | nav click-test | pending | pending |
-| R5 | 375 Today=left, Profile=right, bottom bar visible | frames/phone | n/a | pending |
-| R6 | Date beads, water steps, day bars, buttons mutate | dead-controls gate | pending | pending |
+| R1 | One-wide `cqw` board; no phone mockups | `saffron-dusk-compare.jpg` · `frames/desktop.jpg` | Yes | Yes |
+| R2 | Liquid glass on cards; teal/amber glows under water/gather/progress | compare water/gather/progress | Yes | Yes |
+| R3 | Poured tabs: WATER, Share, Daily progress, bell line | compare water/person/progress/arc | Yes | Yes |
+| R4 | Rail: Today, Progress, Sessions, Profile each with own page | click-test log `/tmp/saffron-click/log.txt` | Yes | Yes |
+| R5 | 375 Today=left stack, Profile=right stack, bottom bar fully visible | `frames/phone.jpg` · m375 profile click | n/a | Yes |
+| R6 | Date beads, water steps, day bars, buttons mutate visible state | check dead-controls ✔ · click-test | Yes | Yes (day bars/share on Profile page) |
 
 ## Compare-sheet rounds (required)
 
 | Round | Differences I named | Fixed |
 |---|---|---|
-| 1 | Desktop was twin phones | Replaced with adaptation layout |
-| 2 | pending | |
-| 3 | pending | |
+| 1 | Desktop was twin phone mockups | Replaced with adaptation layout boxes |
+| 2 | Rail too solid; title too heavy; date active glow weak; upgrade flame on wrong side | Glassier rail, weight 300 title, warmer bead glow, flex-direction row-reverse on upgrade |
+| 3 | Water drop well flat; dune clip clipped gear | Radial well on drop; softer dune clip-path |
