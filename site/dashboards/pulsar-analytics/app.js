@@ -1,7 +1,4 @@
 /* Pulsar Analytics twin: soft-3D board + WebGL ridge terrain. Sample data only. */
-import * as THREE from 'three';
-import { createStage } from '../_shared/three/stage.js';
-
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = (v) => String(v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -190,110 +187,6 @@ function paintHeroMeta() {
 }
 
 /* ---------- WebGL terrain ---------- */
-let stage = null;
-let terrainMat = null;
-function buildTerrain() {
-  const canvas = $('canvas[data-hero]');
-  if (!canvas) return;
-  stage = createStage(canvas, {
-    poster: 'media/hero-poster.png',
-    fov: 42,
-    parallaxDeg: 7,
-    idlePeriod: 16,
-    toneMappingExposure: 1.05,
-  });
-  stage.envRoom();
-  stage.camera.position.set(0, 1.35, 3.4);
-  stage.camera.lookAt(0, 0.1, 0);
-  stage.contactShadow.position.y = -0.55;
-  stage.contactShadow.scale.set(1.6, 1.6, 1);
-  stage.key.intensity = 1.1;
-  stage.key.position.set(1.5, 3.2, 2.2);
-  const violet = new THREE.PointLight(0xbf00ff, 2.2, 8);
-  violet.position.set(0, -0.2, 0.4);
-  stage.scene.add(violet);
-  const mint = new THREE.PointLight(0x00ffcc, 1.1, 6);
-  mint.position.set(-1.4, 0.8, 0.6);
-  stage.scene.add(mint);
-
-  const geo = new THREE.PlaneGeometry(4.6, 3.4, 120, 90);
-  const pos = geo.attributes.position;
-  const colors = [];
-  const cMint = new THREE.Color('#00ffcc');
-  const cViolet = new THREE.Color('#bf00ff');
-  const cPeach = new THREE.Color('#ffcc99');
-  for (let i = 0; i < pos.count; i++) {
-    const x = pos.getX(i);
-    const y = pos.getY(i);
-    const n1 = Math.sin(x * 1.85) * Math.cos(y * 1.45);
-    const n2 = Math.sin(x * 3.4 + y * 1.9) * 0.42;
-    const n3 = Math.cos(x * 0.85 - y * 2.4) * 0.28;
-    const ridge = Math.pow(Math.max(0, n1), 1.4) * 0.9;
-    const h = (ridge + n2 + n3) * 0.72 + 0.08;
-    pos.setZ(i, h);
-    const tt = (h + 0.35) / 1.35;
-    const col = cMint.clone().lerp(cViolet, Math.min(1, Math.max(0, tt)));
-    if (x > 0.4) col.lerp(cPeach, Math.min(1, (x - 0.4) / 1.6) * 0.85);
-    colors.push(col.r, col.g, col.b);
-  }
-  geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-  geo.computeVertexNormals();
-
-  terrainMat = new THREE.MeshPhysicalMaterial({
-    vertexColors: true,
-    roughness: 0.22,
-    metalness: 0.08,
-    transmission: 0.72,
-    thickness: 0.85,
-    transparent: true,
-    opacity: 0.82,
-    flatShading: true,
-    side: THREE.DoubleSide,
-    emissive: new THREE.Color('#3a1860'),
-    emissiveIntensity: 0.32,
-  });
-  const mesh = new THREE.Mesh(geo, terrainMat);
-  mesh.rotation.x = -Math.PI / 2.35;
-  mesh.position.y = -0.15;
-  stage.root.add(mesh);
-
-  // glowing ridge lines
-  const edges = new THREE.EdgesGeometry(geo, 22);
-  const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({
-    color: 0xffffff,
-    transparent: true,
-    opacity: 0.42,
-    blending: THREE.AdditiveBlending,
-  }));
-  line.rotation.copy(mesh.rotation);
-  line.position.copy(mesh.position);
-  line.position.y += 0.01;
-  stage.root.add(line);
-
-  // purple pool disc
-  const pool = new THREE.Mesh(
-    new THREE.CircleGeometry(1.5, 48),
-    new THREE.MeshBasicMaterial({ color: 0xbf00ff, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending, depthWrite: false }),
-  );
-  pool.rotation.x = -Math.PI / 2;
-  pool.position.y = -0.52;
-  stage.root.add(pool);
-
-  stage.onFrame((t) => {
-    mesh.position.y = -0.15 + Math.sin(t * 0.6) * 0.02;
-    line.position.y = mesh.position.y + 0.01;
-    pool.material.opacity = 0.28 + Math.sin(t * 0.9) * 0.08;
-    const boost = S.metric === 'errors' ? 0.55 : S.metric === 'latency' ? 0.35 : 0.25;
-    terrainMat.emissiveIntensity = boost + Math.sin(t) * 0.05;
-  });
-}
-
-function applyMetricToTerrain() {
-  if (!terrainMat) return;
-  const map = { users: '#00ffcc', sessions: '#c49bff', errors: '#ff7ab8', latency: '#ffcc33' };
-  terrainMat.emissive = new THREE.Color(map[S.metric] || '#2a1040');
-}
-
 /* ---------- range / interactions ---------- */
 $$('[data-range] [data-v]').forEach((b) => b.addEventListener('click', () => {
   S.range = b.dataset.v;
@@ -313,7 +206,7 @@ document.addEventListener('click', (e) => {
     S.metric = orb.dataset.metric;
     paintOrbs();
     paintHeroMeta();
-    applyMetricToTerrain();
+    if (window.DBHero?.setMode) window.DBHero.setMode(S.metric);
     toast('Terrain keyed to ' + (METRICS.find((m) => m.id === S.metric)?.name || S.metric));
     return;
   }
@@ -442,7 +335,7 @@ DB.route([
   { id: 'regions', name: 'Regions' },
 ], () => render());
 
-buildTerrain();
-applyMetricToTerrain();
 render();
+document.addEventListener('db-hero-ready', () => { if (window.DBHero?.setMode) window.DBHero.setMode(S.metric); });
+if (window.DBHero?.setMode) window.DBHero.setMode(S.metric);
 document.documentElement.dataset.ready = 'true';

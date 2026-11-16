@@ -88,3 +88,35 @@ _(filled after each playbook step that changes the page)_
 ### Incomplete / tool notes
 - Screenshot-to-code: not run (default measure route).
 - Image-to-3D: not run — procedural three.js terrain via `_shared/three/stage.js`.
+
+## Architect addon compliance (2026-11-16)
+
+### Example choice
+Opened Haven Listings and Meridian Labs (from `origin/main` twin: `helix.js`) at 1440×900 and 375×812, all pages.
+
+**Chosen primary exemplar: Meridian Labs for the 3D hero pattern**; Haven remains the frame/pour/sheet method already used.
+
+Why Meridian for 3D: Pulsar’s gated tech is `webgl` + glass. Meridian’s `helix.js` is the procedural hero pattern (separate module, `createStage`, HTML poster + `data-live`, `window.DBHero.poster()` / `setMode()`, page control reacts to the mesh). Align Pulsar terrain to that.
+
+Haven still owns: cqw poured frame, frosted inner sheets, phone bottom rail.
+
+### Hard stops
+| Stop | Status |
+|---|---|
+| Phone overlapping blocks / sideways scroll | Fixed — center/hero first, bottom inset clears rail; overflow 0 |
+| Heading line-break ≠ reference | N/A — reference has no multi-line hero headline; twin has none |
+| 3D cut off by canvas edge | Fixed — camera pulled back, mesh scale 0.92 |
+| Missing hero poster | Fixed — `media/hero-poster.png` via `scripts/hero-poster.mjs` + HTML `<img class="pa-hero-poster">` |
+
+### Shared-file touches
+- Added `scripts/hero-poster.mjs` from `origin/main` (required to generate poster). No other shared runtime edits.
+
+### Post-fix screenshots (opened)
+- `pulsar-final-1440.png` / `frames/pages/overview.jpg`: Meridian-style poster+canvas live; terrain fills well without canvas crop; labels readable above mesh; poured band + glass panes intact.
+- `pulsar-final-375.png`: hero first, no sideways scroll, rail clear of content; clock/gauge below fold ok.
+- Compare sheet refreshed after addon.
+
+### Remaining visual diffs vs reference
+- Moodboard still denser with micro chrome chips.
+- Dial remains SVG soft-3D (WebGL hero = terrain, Meridian pattern).
+- Pill peach tips slightly softer than ref collage.
