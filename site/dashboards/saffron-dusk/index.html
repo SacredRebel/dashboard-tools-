@@ -3,126 +3,317 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Saffron Dusk · Dashboard Tools gallery</title>
-  <meta name="description" content="Glass fasting-day wellness twin phones: sun arc, water tracker, evening gather and profile progress. Sample data.">
+  <meta name="description" content="Twin liquid-glass phones for a fictional fasting-day wellness board: sun arc, water, evening gather, profile and daily progress. Sample data.">
   <link rel="stylesheet" href="../_vendor/fonts/fraunces/family.css">
   <link rel="stylesheet" href="../_vendor/fonts/plus-jakarta-sans/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
+  <link rel="stylesheet" href="../_shared/fx/materials.css">
   <link rel="stylesheet" href="../_shared/fx/fx.css">
-  <link rel="stylesheet" href="../_shared/dense-pages.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
-  <script src="../_shared/dense-pages.js"></script>
   <script type="module" src="../_shared/fx/index.js"></script>
-  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
   <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
+  <svg class="vh" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="sd-liquid" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="4" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <clipPath id="sd-dune-clip" clipPathUnits="objectBoundingBox">
+        <path data-shape="dune" d="M0,0.42 C0.12,0.28 0.22,0.55 0.38,0.48 C0.55,0.4 0.62,0.22 0.78,0.3 C0.9,0.36 0.96,0.5 1,0.46 L1,1 L0,1 Z"/>
+      </clipPath>
+      <clipPath id="sd-upgrade-clip" clipPathUnits="objectBoundingBox">
+        <path data-shape="upgrade" d="M0.04,0 C0.02,0 0,0.08 0,0.14 L0,0.72 C0,0.9 0.08,1 0.22,1 L0.92,0.86 C0.98,0.84 1,0.78 1,0.7 L1,0.14 C1,0.06 0.96,0 0.9,0 Z"/>
+      </clipPath>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+      <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol>
+      <symbol id="i-hour" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M7 3c0 5 5 6 5 9s-5 4-5 9M17 3c0 5-5 6-5 9s5 4 5 9"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.2"/><circle cx="16" cy="8" r="2.2"/><circle cx="8" cy="16" r="2.2"/><circle cx="16" cy="16" r="2.2"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.6 5L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-2zM19 16.2l.7 2L22 19l-2.1.7L19 22l-.7-2.3L16 19l2.3-.8z"/></symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></symbol>
+      <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-4 3-7 1 2 2 3 3 3 0-3-1-5 0-7Z"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.2A8.2 8.2 0 1 1 9.8 4a6.8 6.8 0 0 0 10.2 10.2z"/><path d="M16.2 5.2l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5z"/></symbol>
+      <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 21v-5M8 21h8"/><path d="M12 3c4 3 6 6 5 9-2 0-3-1-5-1s-3 1-5 1c-1-3 1-6 5-9z"/><path d="M7.5 13.5C6 15 6.5 17 9 17c1 0 1.5-.4 3-.4s2 .4 3 .4c2.5 0 3-2 1.5-3.5"/></symbol>
+      <symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 7h11v7a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V7z"/><path d="M16 9h2.2A2.8 2.8 0 0 1 21 11.8V12a3 3 0 0 1-3 3h-2"/></symbol>
+    </defs>
+  </svg>
+
   <div class="sd" data-db-app>
-    <header class="sd-brandbar">
-      <a class="sd-brand" href="#/overview" aria-label="Saffron Dusk home">
-        <span class="sd-logo" aria-hidden="true"></span>
-        Saffron Dusk
-      </a>
-      <p class="sd-tag">Fasting-day wellness · fictional</p>
+    <div class="sd-world" aria-hidden="true">
+      <img class="sd-world-dune" src="media/dune-silk.webp" srcset="media/dune-silk.webp 1920w, media/dune-silk.jpg 2560w" sizes="100vw" width="2560" height="1440" alt="" decoding="async">
+      <div class="sd-world-veil"></div>
+      <div class="sd-world-gold"></div>
+    </div>
+
+    <header class="sd-chrome sd-liquid">
+      <a class="sd-brand" href="#/overview"><span class="sd-logo" aria-hidden="true"></span><span class="sd-brand-text">Saffron Dusk</span></a>
+      <nav class="sd-pages" aria-label="Pages">
+        <a href="#/overview" data-route="overview" aria-current="page">Overview</a>
+        <a href="#/vitals" data-route="vitals">Vitals</a>
+        <a href="#/appointments" data-route="appointments">Appointments</a>
+        <a href="#/records" data-route="records">Records</a>
+        <a href="#/settings" data-route="settings">Settings</a>
+      </nav>
+      <div class="sd-chrome-meta">
+        <span class="sd-chip sd-liquid-soft">Ramadan 9 · fictional</span>
+        <button type="button" class="sd-chip-btn sd-liquid-soft" data-act="remind-top">Iftar soon</button>
+      </div>
     </header>
 
-    <main class="sd-stage" aria-label="Twin phone wellness">
-      <!-- Today phone -->
-      <section class="sd-phone sd-today" aria-labelledby="sd-today-h" data-panel="today">
-        <header class="sd-head">
-          <div>
-            <p class="sd-dow" data-dow>Wed</p>
-            <h2 id="sd-today-h" class="sd-title"><span class="sd-serif">Fasting</span> <span class="num" data-daynum>9</span></h2>
-          </div>
-          <span class="sd-crescent" aria-hidden="true" data-crescent></span>
-        </header>
+    <main class="sd-main" id="main">
+      <section class="sd-frame" data-ref="frame" data-page="overview" aria-label="Twin phone wellness">
+        <div class="sd-haze" aria-hidden="true"></div>
+        <div class="sd-frame-silk" aria-hidden="true">
+          <img src="media/silk-panel.webp" width="720" height="1280" alt="" decoding="async">
+        </div>
+        <svg class="sd-shape-wave" viewBox="0 0 1200 900" preserveAspectRatio="none" aria-hidden="true">
+          <path data-shape="field" d="M0,520 C180,480 260,600 420,560 C620,510 740,420 900,470 C1040,510 1120,580 1200,540 L1200,900 L0,900 Z"/>
+        </svg>
 
-        <div class="sd-dates" role="tablist" aria-label="Day of month" data-dates></div>
+        <!-- Desktop atmosphere in frame gutters (not layout-spec boxes) -->
+        <aside class="sd-desk sd-desk-left" aria-label="Desktop insights">
+          <article class="sd-desk-card sd-liquid mat-hover-lift">
+            <p class="sd-desk-kicker">Fasting window</p>
+            <p class="sd-desk-value num">86<span>%</span></p>
+            <p class="sd-desk-cap">toward iftar · sample</p>
+            <div class="sd-desk-meter" aria-hidden="true"><i style="--p:86%"></i></div>
+          </article>
+          <article class="sd-desk-card sd-liquid mat-hover-lift">
+            <p class="sd-desk-kicker">Water</p>
+            <p class="sd-desk-value num">1.9<span>L</span></p>
+            <p class="sd-desk-cap">of 2.5 L intention</p>
+            <div class="sd-desk-drops" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i class="off"></i><i class="off"></i></div>
+          </article>
+          <article class="sd-desk-card sd-liquid mat-hover-lift">
+            <p class="sd-desk-kicker">Tonight</p>
+            <p class="sd-desk-title">Laila House</p>
+            <p class="sd-desk-cap num">6:00 PM · Cedar Bay</p>
+          </article>
+        </aside>
 
-        <article class="sd-card sd-arc-card" aria-labelledby="sd-arc-h">
-          <h3 id="sd-arc-h" class="vh">Fasting window</h3>
-          <div class="sd-arc-labels">
-            <div><span>Imsak</span><b class="num" data-imsak>4:15 AM</b></div>
-            <div class="sd-arc-end"><span>Iftar</span><b class="num" data-iftar>6:08 PM</b></div>
+        <aside class="sd-desk sd-desk-right" aria-label="Journeys and schedule">
+          <article class="sd-desk-card sd-liquid mat-hover-lift">
+            <p class="sd-desk-kicker">Journeys</p>
+            <ul class="sd-desk-list">
+              <li><b>Olive path</b><span>Sun walk</span></li>
+              <li><b>Cedar house</b><span>Iftar host</span></li>
+              <li><b>Quiet dawn</b><span>Suhoor prep</span></li>
+            </ul>
+          </article>
+          <article class="sd-desk-card sd-liquid mat-hover-lift">
+            <p class="sd-desk-kicker">This week</p>
+            <div class="sd-desk-week" role="img" aria-label="Week intention bars">
+              <span style="--h:42%"><i></i><em>Th</em></span>
+              <span style="--h:68%"><i></i><em>Fr</em></span>
+              <span style="--h:55%"><i></i><em>Sa</em></span>
+              <span style="--h:88%" class="on"><i></i><em>Su</em></span>
+              <span style="--h:48%"><i></i><em>Mo</em></span>
+              <span style="--h:72%"><i></i><em>Tu</em></span>
+              <span style="--h:64%"><i></i><em>We</em></span>
+            </div>
+          </article>
+          <article class="sd-desk-card sd-liquid sd-desk-quote mat-hover-lift">
+            <p>Soft dusk, steady water, shared tables.</p>
+            <span>Saffron sample motto</span>
+          </article>
+        </aside>
+
+        <article class="sd-phone sd-today" data-ref="phone-left" aria-labelledby="sd-today-h">
+          <div class="sd-phone-bg sd-phone-bg-light" aria-hidden="true">
+            <span class="sd-spark s1"></span><span class="sd-spark s2"></span><span class="sd-spark s3"></span>
+            <span class="sd-spark s4"></span><span class="sd-spark s5"></span>
+            <div class="sd-path-light"></div>
           </div>
-          <div class="sd-arc" data-arc role="img" aria-label="Sun path from imsak to iftar"></div>
-          <p class="sd-countdown"><span data-countdown>Iftar in 1 hr 34 min</span><button type="button" class="sd-bell" aria-label="Remind me before iftar" data-remind><span data-icon="bell"></span></button></p>
+          <header class="sd-title" data-ref="title">
+            <p class="sd-dow">Wed</p>
+            <h2 id="sd-today-h" class="sd-ramadan">Ramadan<sup class="num" data-daynum>9</sup></h2>
+            <span class="sd-crescent" aria-hidden="true"><svg><use href="#i-moon"/></svg></span>
+          </header>
+          <div class="sd-dates" data-ref="dates" role="tablist" aria-label="Day of month" data-dates></div>
+          <article class="sd-card sd-arc mat-glass" data-ref="arc" aria-labelledby="sd-arc-h">
+            <h3 id="sd-arc-h" class="vh">Fasting window</h3>
+            <div class="sd-arc-row">
+              <div><span>Imsak</span><b class="num" data-imsak>4:15AM</b></div>
+              <div class="sd-arc-end"><span>Iftar</span><b class="num sd-gold" data-iftar>6:08PM</b></div>
+            </div>
+            <div class="sd-arc-plot" data-arc role="img" aria-label="Sun path from imsak to iftar"></div>
+            <p class="sd-countdown">
+              <button type="button" class="sd-bell" aria-label="Remind me before iftar" data-remind aria-pressed="false"><svg><use href="#i-bell"/></svg></button>
+              <span data-countdown>Iftar in 1HR 34MIN</span>
+            </p>
+          </article>
+          <article class="sd-card sd-water mat-glass" data-ref="water" aria-labelledby="sd-water-h">
+            <div class="sd-water-head">
+              <h3 id="sd-water-h">Water</h3>
+              <p class="sd-meta"><svg class="sd-ico-sm"><use href="#i-cup"/></svg><span class="num" data-water-label>6 of 8</span></p>
+            </div>
+            <div class="sd-water-row">
+              <span class="sd-drop" aria-hidden="true"><svg><use href="#i-drop"/></svg></span>
+              <div class="sd-water-main">
+                <div class="sd-segs" role="group" aria-label="Glasses of water" data-segs></div>
+                <p class="sd-meta" data-liters>1.9 LITERS of 2.5 LITERS</p>
+              </div>
+            </div>
+          </article>
+          <article class="sd-card sd-gather mat-glass" data-ref="gather" aria-labelledby="sd-gather-h">
+            <div class="sd-gather-copy">
+              <h3 id="sd-gather-h">Iftar in Laila House</h3>
+              <p class="sd-meta num" data-gather-time>6:00 PM</p>
+            </div>
+            <span class="sd-avatar sd-avatar-round" role="img" aria-label="Host Laila Noor">
+              <img src="media/gather.webp" width="128" height="128" alt="" decoding="async">
+            </span>
+          </article>
+          <nav class="sd-nav mat-glass" data-ref="nav-left" aria-label="Today phone">
+            <button type="button" aria-current="page" data-nav="today"><span class="sd-nav-ico"><svg><use href="#i-sun"/></svg></span><span>Today</span></button>
+            <button type="button" data-nav="progress"><span class="sd-nav-ico"><svg><use href="#i-hour"/></svg></span><span>Progress</span></button>
+            <button type="button" data-nav="sessions"><span class="sd-nav-ico"><svg><use href="#i-grid"/></svg></span><span>Sessions</span></button>
+            <button type="button" data-nav="profile"><span class="sd-nav-ico"><svg><use href="#i-spark"/></svg></span><span>Profile</span></button>
+          </nav>
         </article>
 
-        <article class="sd-card sd-water" aria-labelledby="sd-water-h">
-          <div class="sd-water-top">
-            <h3 id="sd-water-h">Water</h3>
-            <p class="sd-meta num" data-water-label>6 of 8</p>
+        <article class="sd-phone sd-profile" data-ref="phone-right" aria-labelledby="sd-prof-h">
+          <div class="sd-phone-bg sd-phone-bg-dark" aria-hidden="true">
+            <img class="sd-phone-silk" src="media/silk-panel.webp" width="720" height="1280" alt="" decoding="async">
+            <div class="sd-dunes"></div>
+            <span class="sd-star-glow"></span>
+            <span class="sd-spark s6"></span><span class="sd-spark s7"></span><span class="sd-spark s8"></span>
           </div>
-          <div class="sd-water-row">
-            <span class="sd-drop" aria-hidden="true"><span data-icon="drop"></span></span>
-            <div class="sd-segs" role="group" aria-label="Glasses of water" data-segs></div>
-          </div>
-          <p class="sd-meta" data-liters>1.9 liters of 2.5 liters</p>
+          <header class="sd-greet" data-ref="greet">
+            <h2 id="sd-prof-h" data-greet>Good evening</h2>
+            <button type="button" class="sd-gear" aria-label="Open settings" data-settings><svg><use href="#i-gear"/></svg></button>
+          </header>
+          <article class="sd-card sd-person mat-glass" data-ref="person" aria-labelledby="sd-person-h">
+            <div class="sd-person-top">
+              <span class="sd-avatar sd-avatar-sq" role="img" aria-label="Mira Nazari">
+                <img src="media/profile.webp" width="160" height="160" alt="" decoding="async">
+              </span>
+              <div class="sd-person-copy">
+                <h3 id="sd-person-h">Mira Nazari</h3>
+                <p class="sd-meta">mira.nazari@saffron.example</p>
+              </div>
+            </div>
+            <div class="sd-stats">
+              <div><b class="num" data-sessions>8</b><span>Sessions</span></div>
+              <div class="sd-stats-div" aria-hidden="true"></div>
+              <div><b class="num" data-journeys>2</b><span>Journeys</span></div>
+            </div>
+            <button type="button" class="sd-share" data-share><svg><use href="#i-spark"/></svg> Share</button>
+          </article>
+          <article class="sd-card sd-daily mat-glass" data-ref="progress" aria-labelledby="sd-daily-h">
+            <div class="sd-daily-top">
+              <span class="sd-tree" aria-hidden="true"><svg><use href="#i-tree"/></svg></span>
+              <h3 id="sd-daily-h">Daily progress</h3>
+            </div>
+            <div class="sd-daybars" data-daybars role="img" aria-label="Daily progress this week"></div>
+          </article>
+          <button type="button" class="sd-card sd-upgrade mat-glass" data-ref="upgrade" data-upgrade>
+            <span>Upgrade<br><em>your experience ›</em></span>
+            <span class="sd-flame" aria-hidden="true"><svg><use href="#i-flame"/></svg></span>
+          </button>
+          <nav class="sd-nav mat-glass" data-ref="nav-right" aria-label="Profile phone">
+            <button type="button" data-nav="today"><span class="sd-nav-ico"><svg><use href="#i-sun"/></svg></span><span>Today</span></button>
+            <button type="button" data-nav="progress"><span class="sd-nav-ico"><svg><use href="#i-hour"/></svg></span><span>Progress</span></button>
+            <button type="button" data-nav="sessions"><span class="sd-nav-ico"><svg><use href="#i-grid"/></svg></span><span>Sessions</span></button>
+            <button type="button" aria-current="page" data-nav="profile"><span class="sd-nav-ico"><svg><use href="#i-spark"/></svg></span><span>Profile</span></button>
+          </nav>
         </article>
-
-        <article class="sd-card sd-gather" aria-labelledby="sd-gather-h">
-          <div>
-            <h3 id="sd-gather-h">Iftar at Cedar House</h3>
-            <p class="sd-meta num" data-gather-time>6:00 PM</p>
-          </div>
-          <span class="sd-avatar sd-avatar-sm" role="img" aria-label="Host Mira Nazari"><img data-gsap="float" data-gsap-dur="14" src="media/avatar.webp" width="64" height="64" alt="" decoding="async"></span>
-        </article>
-
-        <nav class="sd-nav" aria-label="Today phone">
-          <button type="button" aria-current="page" data-nav="today"><span data-icon="sun"></span><span>Today</span></button>
-          <button type="button" data-nav="progress"><span data-icon="hourglass"></span><span>Progress</span></button>
-          <button type="button" data-nav="sessions"><span data-icon="grid"></span><span>Sessions</span></button>
-          <button type="button" data-nav="profile"><span data-icon="sparkle"></span><span>Profile</span></button>
-        </nav>
       </section>
 
-      <!-- Profile phone -->
-      <section class="sd-phone sd-profile" aria-labelledby="sd-prof-h" data-panel="profile">
-        <header class="sd-prof-head">
-          <h2 id="sd-prof-h" class="sd-serif sd-greet" data-greet>Good evening</h2>
-          <span class="sd-star" aria-hidden="true" data-star></span>
-          <button type="button" class="sd-gear" aria-label="Settings" data-settings><span data-icon="settings"></span></button>
-        </header>
+      <section class="sd-page" data-page="vitals" hidden>
+        <header class="sd-page-h"><h2>Vitals</h2><p>Hydration, fasting window and evening gather for Mira Nazari.</p></header>
+        <div class="sd-page-grid">
+          <article class="sd-tile mat-glass"><h3>Water today</h3><p class="num sd-big" data-v-water>1.9 L</p><p class="sd-meta">of 2.5 L intention</p><div class="sd-mini-segs" data-v-segs aria-hidden="true"></div><button type="button" data-act="log-water">Log a glass</button></article>
+          <article class="sd-tile mat-glass"><h3>Fasting window</h3><p class="num sd-big">13h 53m</p><p class="sd-meta">Imsak 4:15 · Iftar 6:08</p><button type="button" data-act="window">Adjust window</button></article>
+          <article class="sd-tile mat-glass"><h3>Resting pulse</h3><p class="num sd-big">62</p><p class="sd-meta">bpm · calm sample</p><button type="button" data-act="pulse">Open trend</button></article>
+          <article class="sd-tile mat-glass"><h3>Steps</h3><p class="num sd-big">4,820</p><p class="sd-meta">evening walk logged</p><button type="button" data-act="steps">Add walk</button></article>
+          <article class="sd-tile mat-glass"><h3>Sleep debt</h3><p class="num sd-big">−24m</p><p class="sd-meta">vs seven-day average</p><button type="button" data-act="sleep">Review sleep</button></article>
+          <article class="sd-tile mat-glass"><h3>Mood check</h3><p class="num sd-big">Steady</p><p class="sd-meta">logged after asr</p><button type="button" data-act="mood">Update mood</button></article>
+          <article class="sd-tile mat-glass"><h3>Caffeine</h3><p class="num sd-big">1 cup</p><p class="sd-meta">before imsak sample</p><button type="button" data-act="caffeine">Log cup</button></article>
+          <article class="sd-tile mat-glass"><h3>Focus blocks</h3><p class="num sd-big">3</p><p class="sd-meta">deep work this morning</p><button type="button" data-act="focus">Start block</button></article>
+        </div>
+        <p class="sd-state-note">Vitals stay fictional sample readings for Mira Nazari.</p>
+      </section>
 
-        <article class="sd-card sd-person" aria-labelledby="sd-person-h">
-          <div class="sd-person-top">
-            <span class="sd-avatar" role="img" aria-label="Noor El-Amin">NE</span>
-            <div>
-              <h3 id="sd-person-h">Noor El-Amin</h3>
-              <p class="sd-meta">noor@saffrondusk.example</p>
+      <section class="sd-page" data-page="appointments" hidden>
+        <header class="sd-page-h"><h2>Appointments</h2><p>Evening gathers and check-ins this week.</p></header>
+        <ul class="sd-list">
+          <li class="sd-tile mat-glass"><b>Iftar in Laila House</b><span>Wed · 6:00 PM</span><button type="button" data-act="rsvp">Keep RSVP</button></li>
+          <li class="sd-tile mat-glass"><b>Hydration coaching</b><span>Thu · 10:30 AM</span><button type="button" data-act="reschedule">Reschedule</button></li>
+          <li class="sd-tile mat-glass"><b>Community circle</b><span>Sat · 7:15 PM</span><button type="button" data-act="join">Join call</button></li>
+          <li class="sd-tile mat-glass"><b>Olive path walk</b><span>Sun · 5:40 PM</span><button type="button" data-act="walk">Add to calendar</button></li>
+          <li class="sd-tile mat-glass"><b>Clinic follow-up</b><span>Mon · 9:15 AM</span><button type="button" data-act="clinic">Confirm visit</button></li>
+          <li class="sd-tile mat-glass"><b>Family suhoor</b><span>Tue · 3:50 AM</span><button type="button" data-act="suhoor">Set alarm</button></li>
+        </ul>
+        <p class="sd-empty-state" data-appt-empty hidden>No gatherings this week. Open Overview to add an evening gather.</p>
+        <div class="sd-page-grid" style="margin-top:14px">
+          <article class="sd-tile mat-glass"><h3>This week</h3><p class="num sd-big">6</p><p class="sd-meta">scheduled gathers</p><button type="button" data-act="week">Open week</button></article>
+          <article class="sd-tile mat-glass"><h3>Hosts</h3><p class="num sd-big">4</p><p class="sd-meta">Laila · Noor · Samir · Mira</p><button type="button" data-act="hosts">View hosts</button></article>
+          <article class="sd-tile mat-glass"><h3>Travel time</h3><p class="num sd-big">18m</p><p class="sd-meta">to Laila House sample</p><button type="button" data-act="map">Open map</button></article>
+        </div>
+      </section>
+
+      <section class="sd-page" data-page="records" hidden>
+        <header class="sd-page-h"><h2>Records</h2><p>Recent sessions and journeys.</p></header>
+        <div class="sd-page-grid" style="margin-bottom:14px">
+          <article class="sd-tile mat-glass"><h3>Sessions</h3><p class="num sd-big">8</p><p class="sd-meta">this Ramadan sample</p></article>
+          <article class="sd-tile mat-glass"><h3>Journeys</h3><p class="num sd-big">2</p><p class="sd-meta">Olive path · Cedar house</p></article>
+          <article class="sd-tile mat-glass"><h3>Streak</h3><p class="num sd-big">4</p><p class="sd-meta">days with water goal</p></article>
+        </div>
+        <div class="sd-table-wrap mat-glass">
+          <table class="sd-table">
+            <thead><tr><th scope="col">Day</th><th scope="col">Session</th><th scope="col">Water</th><th scope="col">Note</th></tr></thead>
+            <tbody data-records>
+              <tr><td>Wed 9</td><td>Fasting day</td><td>6 / 8</td><td>On track</td></tr>
+              <tr><td>Tue 8</td><td>Fasting day</td><td>5 / 8</td><td>Missed afternoon glass</td></tr>
+              <tr><td>Mon 7</td><td>Journey · Olive path</td><td>7 / 8</td><td>Evening walk</td></tr>
+              <tr><td>Sun 6</td><td>Fasting day</td><td>8 / 8</td><td>Complete</td></tr>
+              <tr><td>Sat 5</td><td>Community circle</td><td>6 / 8</td><td>Shared recipes</td></tr>
+              <tr><td>Fri 4</td><td>Fasting day</td><td>7 / 8</td><td>Steady</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sd-page" data-page="settings" hidden>
+        <header class="sd-page-h"><h2>Settings</h2><p>Sample preferences for this fictional board.</p></header>
+        <div class="sd-page-grid" style="margin-bottom:14px">
+          <article class="sd-tile mat-glass"><h3>Theme</h3><p class="sd-meta">Dusk · Dawn · Night via gallery variants</p><button type="button" data-act="theme">Preview dusk</button></article>
+          <article class="sd-tile mat-glass"><h3>Privacy</h3><p class="sd-meta">Data stays on-device in this sample</p><button type="button" data-act="privacy">Review privacy</button></article>
+          <article class="sd-tile mat-glass"><h3>Notifications</h3><p class="sd-meta">Iftar reminder · water nudges</p><button type="button" data-act="notes">Edit alerts</button></article>
+        </div>
+        <form class="sd-form mat-glass" data-settings-form>
+          <label>Display name<input name="name" value="Mira Nazari" autocomplete="name"></label>
+          <label>Email<input name="email" type="email" value="mira.nazari@saffron.example" autocomplete="email"></label>
+          <label>City<input name="city" value="Cedar Bay" autocomplete="address-level2"></label>
+          <label>Iftar reminder
+            <select name="remind">
+              <option value="20">20 minutes before</option>
+              <option value="30">30 minutes before</option>
+              <option value="0">Off</option>
+            </select>
+          </label>
+          <fieldset>
+            <legend>View state</legend>
+            <div class="sd-seg" role="group" aria-label="View state">
+              <button type="button" data-state="ready" aria-pressed="true">Ready</button>
+              <button type="button" data-state="loading">Loading</button>
+              <button type="button" data-state="empty">Empty</button>
+              <button type="button" data-state="error">Error</button>
             </div>
-          </div>
-          <div class="sd-stats">
-            <div><b class="num" data-sessions>8</b><span>Sessions</span></div>
-            <div><b class="num" data-journeys>2</b><span>Journeys</span></div>
-          </div>
-          <button type="button" class="sd-share" data-share><span data-icon="sparkle"></span> Share</button>
-        </article>
-
-        <article class="sd-card sd-daily" aria-labelledby="sd-daily-h">
-          <div class="sd-daily-top">
-            <span class="sd-tree" aria-hidden="true" data-tree></span>
-            <h3 id="sd-daily-h">Daily progress</h3>
-          </div>
-          <div class="sd-daybars" data-daybars role="img" aria-label="Daily progress this week"></div>
-          <p class="sd-empty" data-daily-empty hidden>No sessions this week. Open Today to log water or an evening gather.</p>
-        </article>
-
-        <button type="button" class="sd-card sd-upgrade" data-upgrade>
-          <span>Upgrade your experience</span>
-          <span data-icon="flame" aria-hidden="true"></span>
-        </button>
-
-        <nav class="sd-nav" aria-label="Profile phone">
-          <button type="button" data-nav="today"><span data-icon="sun"></span><span>Today</span></button>
-          <button type="button" data-nav="progress"><span data-icon="hourglass"></span><span>Progress</span></button>
-          <button type="button" data-nav="sessions"><span data-icon="grid"></span><span>Sessions</span></button>
-          <button type="button" aria-current="page" data-nav="profile"><span data-icon="sparkle"></span><span>Profile</span></button>
-        </nav>
+          </fieldset>
+          <button type="submit" class="sd-save">Save preferences</button>
+        </form>
+        <p class="sd-state-note" data-state-note>Showing ready sample data.</p>
+        <div class="sd-page-grid" style="margin-top:14px">
+          <article class="sd-tile mat-glass"><h3>Export</h3><p class="sd-meta">Download a fictional week summary</p><button type="button" data-act="export">Export CSV</button></article>
+          <article class="sd-tile mat-glass"><h3>Reset</h3><p class="sd-meta">Return sample board to day 9</p><button type="button" data-act="reset">Reset sample</button></article>
+        </div>
       </section>
     </main>
 

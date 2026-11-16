@@ -1,0 +1,22 @@
+{
+  "reference": "reference.jpg (two liquid-glass phones on a muted slate-green field; not a desktop strip)",
+  "unit": "percent of the frame's width, measured from the frame's top-left corner; viewport 1440 wide, overview page, default variant",
+  "frame": { "min_w_vw": 88, "max_w_vw": 98, "aspect": [0.68, 0.82] },
+  "boxes": {
+    "phone-left":  { "x": 16.5, "y": 4.3, "w": 28.5, "h": 64.7, "note": "light cream Today phone; tall glass shell ~28% of the frame, not a wide desktop panel" },
+    "phone-right": { "x": 52.0, "y": 4.3, "w": 27.3, "h": 64.7, "note": "dark olive Profile phone; twin of the left, same height" },
+    "title":       { "x": 18.5, "y": 7.0, "w": 22.0, "max_h": 6.5, "note": "WED + serif RAMADAN with superscript day; thin spaced caps, not a big Fasting headline" },
+    "dates":       { "x": 19.0, "y": 13.5, "w": 23.5, "h": 5.5, "note": "row of five round date chips (8–12); selected day is a dark filled circle" },
+    "date":        { "count": 5, "min_w": 2.8, "max_w": 5.5, "within": { "x": [17, 45], "y": [12, 20] }, "note": "each date chip is a round control" },
+    "arc":         { "x": 18.8, "y": 20.5, "w": 24.0, "h": 13.5, "note": "dusk-grey glass fasting card with imsak→iftar sun arc, times and countdown" },
+    "water":       { "x": 18.8, "y": 35.0, "w": 24.0, "h": 9.5, "note": "teal liquid-glass water card with drop gauge and segmented bar" },
+    "gather":      { "x": 18.8, "y": 45.5, "w": 24.0, "h": 8.0, "note": "saffron glass evening gather pill with avatar on the right" },
+    "nav-left":    { "x": 17.8, "y": 62.5, "w": 26.0, "h": 5.5, "note": "glass tab bar on the Today phone; Today active" },
+    "greet":       { "x": 54.0, "y": 7.0, "w": 20.0, "max_h": 7.0, "note": "script-style Good evening over the dune; not a sans greeting" },
+    "person":      { "x": 54.5, "y": 22.0, "w": 22.5, "h": 17.0, "note": "cream profile card; avatar overlaps the left edge; Share chip hangs off the bottom-left" },
+    "progress":    { "x": 54.5, "y": 40.5, "w": 22.5, "h": 12.5, "note": "amber Daily progress card with tree and seven thin vertical day bars" },
+    "day-bar":     { "count": 7, "min_w": 1.2, "max_w": 3.2, "within": { "x": [56, 76], "y": [42, 52] }, "note": "seven debossed vertical level sliders, not dots" },
+    "upgrade":     { "x": 54.5, "y": 53.5, "w": 22.5, "h": 6.0, "note": "dark glass Upgrade your experience row with flame" },
+    "nav-right":   { "x": 53.2, "y": 62.5, "w": 25.0, "h": 5.5, "note": "glass tab bar on the Profile phone; Profile active" }
+  }
+}
