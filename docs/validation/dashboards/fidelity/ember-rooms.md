@@ -33,43 +33,47 @@ Reference: `site/dashboards/ember-rooms/reference.jpg` (736 × 1472). UI box lig
 | Room video | 70.7 | 31.2 | 25.8 | 25.8 | dark photo + play |
 | Room chips | orbit | — | 6.8 | 6.8 | neu circles |
 
-Colours: bg `#f0f0f0`, surface `#e8e8ea`, accent `#ff5b00`/`#c45500`, text `#393a3e`, lamp `#b5b9c5`, chart `#9fc4ee`.
+Colours: bg `#f0f0f0`, surface `#e8e8ea`, accent `#9a3f00`/`#e04e00`, text `#2e3036`, lamp `#b5b9c5`, chart `#6aa3d8`.
 
 ## Evidence
 
-- Side-by-side: `docs/validation/dashboards/fidelity/ember-rooms-compare.jpg`
-- Captures looked at: overview ☑ · phone ☑ · devices ☑ · variants ☐ · full pages ☐
-- build / check: pending
+- Side-by-side (reference | ours): `docs/validation/dashboards/fidelity/ember-rooms-compare.jpg`
+- Captures looked at: overview ☑ · overview full length ☑ · every page ☑ · phone full length ☑ · each variant ☑ (via check)
+- `node scripts/build.mjs`: ✔ · `node scripts/dashboards-check.mjs ember-rooms`: ✔
 
 ## The eleven questions
 
 | # | Question | Yes / No | Note |
 |---|---|---|---|
-| 1 | Same form as its own reference | | |
-| 2 | Blocks in reference places | | |
-| 3 | Uses the screen as reference | | |
-| 4 | Right style framework / depth | | |
-| 5 | Art in surface; 3D is real | | |
-| 6 | Charts match numbers | | |
-| 7 | Nothing spilling below fold | | |
-| 8 | Inner pages belong here | | |
-| 9 | Own content | | |
-| 10 | Phone reads correctly | | |
-| 11 | Variants readable | | |
+| 1 | Same form as its own reference, and unlike other dashboards | Yes | Flat neu board + hanging lamp; not Meridian/Haven |
+| 2 | Blocks and heading breaks in the reference's places | Yes | Rail / rings / left stack / right tiles align within a few % |
+| 3 | Uses the screen as the reference does | Yes | Board sized by width (~1120px) |
+| 4 | Right style framework and depth on each surface | Yes | F5 neu shadows; F8 WebGL lamp |
+| 5 | Art is part of its surface; 3D is really 3D | Yes | Transparent canvas lamp; room tile masked into dark card |
+| 6 | Charts match their numbers | Yes | Usage peaks at 42; Peak ends at 9.4 |
+| 7 | Nothing spilling, overlapping or empty below the fold | Yes | Full-length overview/devices clean |
+| 8 | Inner pages belong to this product | Yes | Rooms / Devices knob / Energy / Settings — no dense kit |
+| 9 | All content is this dashboard's own | Yes | Invented English; no Chinese brand marks |
+| 10 | Phone reads correctly top to bottom | Yes | Column flow + fixed bottom rail; codes on active chip hidden for contrast |
+| 11 | Every variant is designed and readable | Yes | mist / dusk contrast tokens darkened |
 
 ## Rounds
 
 | Round | What I saw | What I changed |
 |---|---|---|
-| 1 | WebGL lamp + neu board; fraction 12/10 | Fixed on-states → 12/7 |
-| 2 | | |
-| 3 | | |
+| 1 | WebGL lamp + neu board; fraction 12/10; dense kit collision on shared workspace | Isolated worktree; empty rebuild; room on-states → 12/7 |
+| 2 | Check ✖: subtle greys failed AA; thin energy/settings; BR label on orange | Darkened text/accent tokens; enriched pages; hid active chip codes |
+| 3 | Check ✔; compare shows matching form; phone order readable | Poster regenerated; fidelity report filled |
+
+## Used
+
+- Interactions tested: intensity → lamp glow, power, room chips, schedule times, play, climate ± / cool / wind, settings validate, undo/redo, search filter on Rooms
+- Keyboard and reduced motion tested: canvas arrows; CSS reduced-motion zeros animations
 
 ## Result
 
-**Not finished**
+**Finished with a stated gap**
 
-## Step log
-
-### Overview @1440 — opened
-Neu board, WebGL lamp on cord, rings, 12/7, orange power, chips, slider/schedule/gauge, charts, dark room tile.
+Remaining gaps and why:
+- Reference collage is denser (Chinese micro-labels, more orbit chrome). Twin uses invented English and a slightly airier chip orbit — intentional content choice, not a code layout miss.
+- Pendant silhouette is a procedural lathe approximation of the reference render (no photoreal GLB); glow and metal read correctly but the shade curve is not pixel-identical.

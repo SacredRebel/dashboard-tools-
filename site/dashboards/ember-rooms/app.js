@@ -18,6 +18,12 @@
     { id: 'bath', name: 'Bath', icon: 'er-bath', label: 'BA', on: false, lights: 2, angle: 95, radius: 44 },
     { id: 'study', name: 'Study', icon: 'er-desk', label: 'ST', on: true, lights: 1, angle: 160, radius: 48 },
   ];
+  const EXTRA_ROOMS = [
+    { id: 'nursery', name: 'Nursery', icon: 'er-bed', label: 'NU', on: false, lights: 2 },
+    { id: 'garage', name: 'Garage', icon: 'er-desk', label: 'GA', on: false, lights: 3 },
+    { id: 'patio', name: 'Patio', icon: 'er-sun', label: 'PA', on: true, lights: 2 },
+    { id: 'pantry', name: 'Pantry', icon: 'er-pot', label: 'PN', on: false, lights: 1 },
+  ];
   const USAGE = [18, 24, 21, 32, 28, 36, 42];
   const PEAK = [4.2, 5.1, 6.8, 5.4, 7.2, 8.1, 9.4];
   const ENERGY_WEEK = [
@@ -115,7 +121,8 @@
 
   function renderRoomsPage(el) {
     const q = S.q.trim().toLowerCase();
-    const list = ROOMS.filter((r) => !q || r.name.toLowerCase().includes(q) || r.label.toLowerCase().includes(q));
+    const allRooms = ROOMS.concat(EXTRA_ROOMS);
+    const list = allRooms.filter((r) => !q || r.name.toLowerCase().includes(q) || r.label.toLowerCase().includes(q));
     if (S.settingsPreview === 'loading') {
       el.innerHTML = `<h1>Rooms</h1><p class="er-lead">Zones on this floor.</p>${stateBox('loading', 'Loading rooms…', 'Pulling the latest scene map.')}`;
       return;
@@ -130,10 +137,14 @@
     }
     el.innerHTML = `<h1>Rooms</h1><p class="er-lead">Pick a zone to focus the pendant stage and schedule.</p>
       <div class="er-grid">${list.map((r, i) => `
-        <button type="button" class="er-card" data-pick-room="${ROOMS.indexOf(r)}" style="--i:${i}">
+        <button type="button" class="er-card" data-pick-room="${Math.max(0, ROOMS.findIndex(x => x.id === r.id))}" style="--i:${i}">
           <span class="er-pill ${r.on ? '' : 'is-off'}">${r.on ? 'Lit' : 'Off'}</span>
           <b>${r.name}</b><small>${r.lights} fixtures · ${r.label}</small>
-        </button>`).join('')}</div>`;
+        </button>`).join('')}
+        <article class="er-card"><span class="er-pill">Scenes</span><b>Evening calm</b><small>Dims living + bedroom to 35%</small></article>
+        <article class="er-card"><span class="er-pill">Scenes</span><b>Guest ready</b><small>Warms nursery path lights</small></article>
+        <article class="er-card"><span class="er-pill">Alert</span><b>Bath humidity</b><small>Fan suggested after shower</small></article>
+      </div>`;
   }
 
   function renderDevicesPage(el) {
@@ -142,6 +153,7 @@
     const arcLen = circ * 0.55;
     const offset = circ - arcLen * tNorm;
     el.innerHTML = `
+      <h1 class="vh">Climate</h1>
       <div class="er-climate-stage">
         <div class="er-climate-rings" aria-hidden="true"><i></i><i></i><i></i></div>
         <button type="button" class="er-cool" data-cool aria-pressed="${S.cool}"><svg><use href="#er-snow"/></svg> Cool air</button>
@@ -161,11 +173,27 @@
           </div>
         </div>
         <label class="er-wind"><span>Low</span><input type="range" min="0" max="100" value="${S.wind}" data-wind aria-label="Wind speed"><span>High</span></label>
+      </div>
+      <div class="er-grid" style="margin-top:1.5cqw;width:100%">
+        <article class="er-card"><span class="er-pill">Humidity</span><b class="num">46%</b><small>Living room sensor</small></article>
+        <article class="er-card"><span class="er-pill">Air</span><b class="num">Good</b><small>PM2.5 · 8 µg/m³</small></article>
+        <article class="er-card"><span class="er-pill">Filter</span><b class="num">72%</b><small>Life remaining</small></article>
+        <article class="er-card"><span class="er-pill">Fan</span><b class="num">${S.wind}%</b><small>Current wind speed</small></article>
+        <article class="er-card"><span class="er-pill">Mode</span><b>${S.cool ? 'Cool' : 'Heat'}</b><small>Active climate mode</small></article>
+        <article class="er-card"><span class="er-pill">Target</span><b class="num">${S.temp}°C</b><small>Bedroom setpoint</small></article>
       </div>`;
   }
 
   function renderEnergyPage(el) {
     const max = Math.max(...ENERGY_WEEK.map((x) => x.v));
+    const circuits = [
+      { name: 'Ceiling pendants', w: 86, note: 'Bedroom + living' },
+      { name: 'Cove LEDs', w: 42, note: 'Kitchen run' },
+      { name: 'Bath sconces', w: 28, note: 'Night path' },
+      { name: 'Study desk', w: 35, note: 'Task lamp' },
+      { name: 'Hall spots', w: 19, note: 'Motion scenes' },
+      { name: 'Exterior porch', w: 24, note: 'Dusk schedule' },
+    ];
     el.innerHTML = `<h1>Energy</h1><p class="er-lead">Week of lighting load for Ember Rooms sample home.</p>
       <div class="er-bars">${ENERGY_WEEK.map((x, i) => `
         <div class="er-bar" style="--k:${i}"><i style="height:${(x.v / max) * 100}%"></i><span>${x.d}</span></div>`).join('')}</div>
@@ -173,10 +201,21 @@
         <article class="er-card"><span class="er-pill">Usage</span><b class="num">${USAGE.reduce((a, b) => a + b, 0)} kWh</b><small>Last 7 days across lit rooms</small></article>
         <article class="er-card"><span class="er-pill">Peak</span><b class="num">${Math.max(...PEAK)} kW</b><small>Highest draw this afternoon</small></article>
         <article class="er-card"><span class="er-pill">Saved</span><b class="num">12%</b><small>vs last week with auto-dim</small></article>
-      </div>`;
+        <article class="er-card"><span class="er-pill">Cost</span><b class="num">$18.40</b><small>Estimated week at sample tariff</small></article>
+        <article class="er-card"><span class="er-pill">Co₂</span><b class="num">9.1 kg</b><small>Avoided with schedule cuts</small></article>
+        <article class="er-card"><span class="er-pill">Scenes</span><b class="num">14</b><small>Automations that fired</small></article>
+      </div>
+      <h2 style="margin:2cqw 0 1cqw;font-size:max(16px,1.6cqw)">Circuits</h2>
+      <div class="er-grid">${circuits.map((c) => `
+        <article class="er-card"><span class="er-pill">${c.w}%</span><b>${c.name}</b><small>${c.note}</small></article>`).join('')}</div>`;
   }
 
   function renderSettingsPage(el) {
+    const hubs = [
+      { name: 'Loft hub', detail: 'Online · 14 devices' },
+      { name: 'Garden bridge', detail: 'Idle · 3 devices' },
+      { name: 'Guest suite', detail: 'Sleeping · 6 devices' },
+    ];
     el.innerHTML = `<h1>Settings</h1><p class="er-lead">Home profile and preview states for this console.</p>
       <form class="er-form" data-settings-form novalidate>
         <div class="er-field" data-field="name">
@@ -188,13 +227,21 @@
           <label for="er-zone">Default zone</label>
           <select id="er-zone" name="zone">${ROOMS.map((r, i) => `<option value="${r.id}" ${i === S.room ? 'selected' : ''}>${r.name}</option>`).join('')}</select>
         </div>
+        <div class="er-field">
+          <label for="er-tz">Time zone</label>
+          <select id="er-tz" name="tz"><option>Pacific — Los Angeles</option><option>Mountain — Denver</option><option>Eastern — New York</option></select>
+        </div>
         <div class="er-switch"><span>Notify on schedule</span><button type="button" role="switch" data-sw="notify" aria-checked="${S.notify}" aria-label="Notify on schedule"></button></div>
         <div class="er-switch"><span>Auto-dim after sunset</span><button type="button" role="switch" data-sw="autoDim" aria-checked="${S.autoDim}" aria-label="Auto-dim after sunset"></button></div>
+        <div class="er-switch"><span>Share room previews</span><button type="button" role="switch" data-sw="notify" aria-checked="false" aria-label="Share room previews"></button></div>
         <div class="er-actions">
           <button type="submit" class="er-btn er-btn-primary">Save profile</button>
           <button type="button" class="er-btn" data-reset>Reset sample</button>
+          <button type="button" class="er-btn" data-undo>Undo last edit</button>
         </div>
       </form>
+      <h2 style="margin:2cqw 0 1cqw;font-size:max(16px,1.6cqw)">Hubs</h2>
+      <div class="er-grid">${hubs.map((h) => `<article class="er-card"><span class="er-pill">Hub</span><b>${h.name}</b><small>${h.detail}</small></article>`).join('')}</div>
       <div class="er-preview" aria-label="Preview a state">
         <span class="er-k" style="align-self:center">Preview a state</span>
         ${['populated', 'loading', 'empty', 'error'].map((k) => `<button type="button" data-preview="${k}" aria-pressed="${S.settingsPreview === k}">${k}</button>`).join('')}
