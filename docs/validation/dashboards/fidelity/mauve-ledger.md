@@ -1,6 +1,6 @@
 # Polish report: Mauve Ledger (`mauve-ledger`)
 
-> Method: [docs/dashboards/06-verification.md](../../dashboards/06-verification.md).
+> Method: [docs/dashboards/06-verification.md](../../dashboards/06-verification.md). Template: [templates/polish-report.md](../../../../templates/polish-report.md).
 
 ## Identity (written before any code)
 
@@ -54,39 +54,40 @@ Vertical units use **cqw = px ÷ W × 100**.
 |---|---|---|---|
 | 1 | Same form as its own reference, and unlike other dashboards | Yes | Light scrolling glass desk; no Haven frame |
 | 2 | Blocks and heading breaks in the reference's places | Yes | Greeting → KPIs → sales+side → emails |
-| 3 | Uses the screen as the reference does | Yes | Width-led board ~1104px, not height-squeezed |
-| 4 | Right style framework and depth on each surface | Yes | F1 five-layer glass; hatched fills |
-| 5 | Art is part of its surface; 3D is really 3D | Yes | Procedural CSS haze only (no WebGL required) |
-| 6 | Charts match their numbers | Yes | May selected tallest; gauge ~51% ticks filled |
-| 7 | Nothing spilling, overlapping or empty below the fold | Yes | Full-length overview + emails reviewed |
+| 3 | Uses the screen as the reference does | Yes | Width-led board ~1104px |
+| 4 | Right style framework and depth on each surface | Yes | F1 five-layer frost 55%/42% tint + blur 24px; haze through panes |
+| 5 | Art is part of its surface; 3D is really 3D | Yes | Procedural CSS haze only (no WebGL) |
+| 6 | Charts match their numbers | Yes | Online $100,799 readable; May tallest + hatched; gauge ~51% ticks |
+| 7 | Nothing spilling, overlapping or empty below the fold | Yes | Full-length: emails + peach bloom through glass |
 | 8 | Inner pages belong to this product | Yes | Finance / Accounts / Contracts glass sheets |
-| 9 | All content is this dashboard's own | Yes | Fictional Mauve Ledger copy; no dense-kit |
-| 10 | Phone reads correctly top to bottom | Yes | 2×2 KPIs, stacked panes, fixed rail; no sideways scroll |
+| 9 | All content is this dashboard's own | Yes | Fictional Mauve Ledger copy |
+| 10 | Phone reads correctly top to bottom | Yes | 2×2 KPIs, stacked panes, rail; no sideways scroll |
 | 11 | Every variant is designed and readable | Yes | Lilac / Blush / Slate pass pixel contrast |
 
 ## Rounds
 
 | Round | What I saw | What I changed |
 |---|---|---|
-| 1 | Form right; glass a bit opaque; haze weak; gauge too continuous; decimals same size; gates failing thin pages / 11px / contrast | Lower glass tint; stronger peach/lilac blooms; radial tick gauge; smaller dimmed `.dec`; enrich Accounts/Contracts; ≥12px; darker good/bad |
-| 2 | Opened compare + phone + Finance page: hatched May + formation match; avatar initials (ref uses photos); phone mail meta order messy | Phone mail grid areas for urg/time; budget % chip for contrast |
-| 3 | Opened final overview/compare/phone/inner pages: layout matches; gates ✔; leftover is photo avatars vs initials | Stop — asset gap only |
+| 1 | Form right; glass opaque-ish; haze weak; gauge continuous; tip covered Online | Lower glass tint; stronger blooms; radial ticks; tip hover-only; ≥12px; enrich inner pages |
+| 2 | Compare + phone + Finance: hatched May/formation match; avatar initials | Phone mail grid; budget % chip |
+| 3 | Final overview/full/phone: layout matches; gates ✔ | Stated photo-avatar gap |
+| 4 (frameworks reinforce) | Opened `/tmp/mauve-r2/after-overview.png` + compare: Online covered by always-on tip; glass milky; peach weak; `.49` wrapped; formation short vs ref | Stronger peach/lilac (#e89aab); glass 55%/42% + blur 24/saturate 165; tip hover-only; formation 78%; dimmed KPI decimals nowrap; clearer hatch stripes |
 
 ## Step log (screenshot → open → note)
 
-- Step empty frame / first overview @1440: opened `/tmp/mauve-shots/step2-frame-1440.png` — pill nav + KPI row + sales/side present; serif gone.
-- Full overview: opened `final-full.jpg` — emails under fold present; haze blooms visible through glass.
-- Phone full: opened `final-phone.jpg` — 2×2 KPIs, hatched bar, rail pinned; no overlap.
-- Compare: opened `mauve-ledger-compare.jpg` — same kind of desk; hatched May + segmented arc present.
-- Finance page: opened `final-transactions.jpg` — glass ledger list, same chrome.
+- Reinforcement before: opened `/tmp/mauve-r2/overview.png` — Online obscured by tip; glass milky; peach soft.
+- After harden: opened `/tmp/mauve-r2/final2.png` — Offline $12,201.00 + Online $100,799.00 both clear; hatched May; peach bloom stronger through emails on full capture.
+- Tip hover: opened `/tmp/mauve-r2/after-tip.png` — May tooltip Offline $612 · Online $1,008.
+- Full length: opened `/tmp/mauve-r2/final2-full.jpg` — emails pane; peach shows through frost.
+- Compare: opened `mauve-ledger-compare.jpg` — same desk kind; glass + haze closer.
 
 ## Used
 
-- Interactions tested: period select, bar pick + tooltip, mail All/Urgent, formation View status, Finance search/sort, Accounts range, Contracts save + Preview a state + variant select, toasts, bottom rail
-- Keyboard and reduced motion tested: Tab through bars/filters; `prefers-reduced-motion` kills rise/grow animations
+- Interactions tested: period select, bar pick + hover tip, mail All/Urgent, formation View status, Finance search/sort, Accounts range, Contracts save + Preview a state + variant, toasts, bottom rail
+- Keyboard and reduced motion tested: Tab through bars/filters; reduced-motion kills rise/grow
 
 ## Result
 
 **Finished with a stated gap**
 
-Remaining gaps and why: reference uses photo avatars in the header and email rows; twin uses initials chips (needs generated/cut-out photos). Peach bloom intensity still slightly softer than the reference crop (procedural CSS vs painted mock). No code-fixable layout/shape/type gaps left after three rounds.
+Remaining gaps and why: reference photo avatars (header + emails) are initials chips here — needs generated/cut-out photos. Peach bloom still slightly softer than the painted mock (procedural CSS). No remaining code-fixable “no” on the eleven questions.

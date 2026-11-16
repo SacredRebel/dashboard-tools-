@@ -107,17 +107,23 @@
   }
 
   function renderKpis() {
-    $('[data-kpis]').innerHTML = KPIS.map((k, i) => `
+    $('[data-kpis]').innerHTML = KPIS.map((k, i) => {
+      const parts = moneyParts(k.value);
+      const val = parts.dec
+        ? `${parts.whole}<span class="dec">${parts.dec}</span>`
+        : k.value;
+      return `
       <article class="mv-kpi" style="--d:${80 + i * 40}ms">
         <div class="mv-kpi-top">
           <span class="mv-kpi-ic">${svg(k.icon)}</span>
           ${k.menu ? `<button type="button" class="mv-kpi-menu" aria-label="Balance options" data-toast="Balance options (sample).">${svg('dots')}</button>` : '<span></span>'}
         </div>
         <div>
-          <b class="num">${k.value}</b>
+          <b class="num">${val}</b>
           <span>${k.label}</span>
         </div>
-      </article>`).join('');
+      </article>`;
+    }).join('');
   }
 
   function renderChannels() {
@@ -161,7 +167,7 @@
       tip.hidden = false;
       tip.innerHTML = `<b>${p.labels[i]}</b>Offline $${p.offlineV[i].toLocaleString()} · Online $${p.onlineV[i].toLocaleString()}`;
       tip.style.left = ((i + 0.5) / p.labels.length) * 100 + '%';
-      tip.style.top = `${(1 - totals[i] / max) * 100}%`;
+      tip.style.top = `calc(${(1 - totals[i] / max) * 100}% + 1.2cqw)`;
     };
     $$('.mv-bar', el).forEach((b) => {
       const i = +b.dataset.i;
@@ -174,7 +180,7 @@
       });
     });
     $('.mv-bars', el).addEventListener('mouseleave', () => show(-1));
-    if (S.salesIdx >= 0) show(S.salesIdx);
+    /* Tip only on hover/focus so Online $100,799 stays readable (chart numbers match). */
   }
 
   function renderGauge() {
