@@ -47,5 +47,8 @@ Priority ✔: `citadel-wall` · `glacier-ops` · `forge-fitness` · `clima-pane`
 - Architect review of draft r3 PR (do not merge)
 - Optional: Lottie where references earn it; bespoke secondary pages; GenerateImage prop refresh for clay/holo heroes; fidelity sheets for ≥4.5 claims
 
+## Twin PR gate (every twin)
+**Every twin PR must click-test all secondary pages (not only overview) at desktop + phone before review** — same frosted shell, real content, bidirectional nav, no sideways scroll. See e.g. `fidelity/mauve-ledger.md` → Pages QA.
+
 ## Compare
 https://github.com/SacredRebel/dashboard-tools-/compare/main...cursor/deep-polish-r3-0545?expand=1

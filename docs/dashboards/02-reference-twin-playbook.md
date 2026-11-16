@@ -256,6 +256,8 @@ node scripts/build.mjs
 node scripts/dashboards-check.mjs <id>
 ```
 
+**Before review:** click-test **every** secondary page (all hash routes), not only overview — desktop and phone. Confirm the same frosted frame/shell, real content, bidirectional nav, and no sideways scroll.
+
 Then, every round:
 
 1. Open `site/dashboards/<id>/frames/pages/overview-full.jpg`, every other page capture, and `frames/phone.jpg`. **Look at each one.**

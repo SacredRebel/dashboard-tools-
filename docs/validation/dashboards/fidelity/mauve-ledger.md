@@ -20,6 +20,21 @@ Not this:    Solid white cards, thin unhatched bars, emails full-width under a g
 - Side-by-side (reference | ours): `docs/validation/dashboards/fidelity/mauve-ledger-compare.jpg`
 - Captures: overview / overview-full / phone / variants via dashboards-check
 
+## Pages QA (2026-11-16)
+
+Click-tested all 4 hash routes at **1440** and **375** (local serve of this branch). Shell = same `.mv-frame` frosted window + haze; no bare blank cards. Console: only unrelated `/favicon.ico` 404. Nav works both directions (top nav + phone rail).
+
+| Page | Route | Desktop 1440 | Phone 375 |
+|---|---|---|---|
+| Overview (Dashboard) | `#/overview` | pass | pass |
+| Finance | `#/transactions` | pass | pass |
+| Accounts | `#/budgets` | pass | pass |
+| Contracts | `#/settings` | pass | pass |
+
+`node scripts/dashboards-check.mjs mauve-ledger` ✔ (`pages=4, variants=3`).
+
+**Future deployments / twin PRs:** before review, click every secondary page (not only overview) at desktop and phone — confirm frosted shell, real content, bidirectional nav, no sideways scroll. Overview-only checks miss blank/broken inner routes.
+
 ## Remaining gaps
 
 - Header + email avatars are initials chips, not photo cut-outs from the reference.
