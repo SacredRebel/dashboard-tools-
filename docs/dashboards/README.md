@@ -55,3 +55,5 @@ New families can be added to `style_families` in the catalog when a dashboard do
 - **Original work:** recreated from the reference in our own code. No copied logos, brand names, photos or icons from the source screenshot. Scenery and images are code-drawn (SVG/CSS) or from a license that allows reuse, credited in the catalog.
 - **Fictional sample data**, labeled as such somewhere on the page.
 - **Works at 375px and 1440px**, keyboard reachable, AA contrast, `prefers-reduced-motion` respected, no polling, no console errors. `scripts/dashboards-check.mjs` enforces the mechanical parts.
+
+**Layout spec.** When a dashboard has a `layout.json`, its reference layout is checked by numbers: [07-layout-spec.md](07-layout-spec.md). Read it before building.
