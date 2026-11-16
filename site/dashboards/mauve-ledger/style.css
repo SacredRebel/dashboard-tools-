@@ -448,8 +448,10 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   padding: 1.3cqw 1.5cqw 1.2cqw;
-  /* visible so the gauge tip above the arc is not clipped */
-  overflow: visible;
+  overflow: hidden;
+}
+.mv-success .mv-sub {
+  color: var(--text);
 }
 
 /* emails: x 2.0 y 57.6 w 69.8 — directly under chart */
@@ -710,26 +712,36 @@ a { color: inherit; text-decoration: none; }
   box-shadow: inset 0 0 0 1px rgb(120 110 160 / 0.22);
 }
 
-/* Success gauge — min_w 17 of frame (~¾ of success card) */
+/* Success gauge — min_w 17 of frame (~¾ of success card).
+   Tip lives in top padding above the SVG so it clears the arc without
+   needing overflow:visible on the frosted success pane. */
 .mv-gauge-wrap {
   position: relative;
   display: grid;
+  grid-template-rows: auto 1fr;
   place-items: center;
-  margin: 0.4cqw auto 0.2cqw;
+  margin: 0.15cqw auto 0.2cqw;
   width: min(100%, 19cqw);
   min-width: 17cqw;
-  aspect-ratio: 1.55 / 1;
+  /* tip row + arc; data-ref=gauge is the svg host below the tip */
+  padding-top: 2.4cqw;
+  aspect-ratio: 1.45 / 1;
   flex: none;
   overflow: visible;
 }
-.mv-gauge { width: 100%; height: 100%; }
+.mv-gauge {
+  width: 100%;
+  height: 100%;
+  grid-row: 2;
+  min-height: 0;
+}
 .mv-gauge svg { width: 100%; height: 100%; stroke: none; }
-/* Chip sits above the arc apex (~51%), not on the stroke */
+/* Chip above the arc apex (~51%), clear of the stroke */
 .mv-gauge-tip {
   position: absolute;
-  top: -0.15cqw;
+  top: 0.15cqw;
   left: 52%;
-  transform: translate(-50%, -100%);
+  transform: translateX(-50%);
   padding: 0.3cqw 0.55cqw;
   border-radius: 0.55cqw;
   background: var(--accent);
