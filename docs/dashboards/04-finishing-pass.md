@@ -4,6 +4,8 @@
 
 It was written from finishing two dashboards another agent built (`mallow-music`, `pulsar-analytics`). Every item below is a defect that was really there and passed every automated check.
 
+Which recipe fixes which surface: [05-style-frameworks.md](05-style-frameworks.md). How to decide it is done: [06-verification.md](06-verification.md).
+
 ## Tools and skills
 
 | For | Use |

@@ -62,6 +62,8 @@ Build order: tokens and theme → app shell and navigation → overview page →
 
 Run the checks in [docs/onboarding/02-build-playbook.md](docs/onboarding/02-build-playbook.md#polish): the rulebook pass, [templates/qa-checklist.md](templates/qa-checklist.md), [docs/design/13-high-end-checklist.md](docs/design/13-high-end-checklist.md), and a look at your own screenshots at 375px and 1280px. Fix what you find before you show anything.
 
+Choose the look's techniques from [docs/dashboards/05-style-frameworks.md](docs/dashboards/05-style-frameworks.md): one framework per kind of surface, shape and object. The chosen reference sets the dashboard's form; never carry another dashboard's frame or layout into it. Verify with [docs/dashboards/06-verification.md](docs/dashboards/06-verification.md) and record it in [templates/polish-report.md](templates/polish-report.md).
+
 Then do the finishing pass in [docs/dashboards/04-finishing-pass.md](docs/dashboards/04-finishing-pass.md): look at full-length captures of every page, list what is still wrong, and fix it. Passing checks means the page is not broken; it does not mean it is finished.
 
 ### Step 5 · Deliver (approval 2)

@@ -29,6 +29,8 @@ One dashboard at a time. Finish it completely before you open the next one.
 4. **Never edit `scripts/dashboards-check.mjs` or `signature_tech` in the catalog.** If a gate looks wrong, stop and write that in the PR.
 5. **Stop when stuck.** If a step fails twice, stop, commit what works, and write exactly what failed. Do not paper over it.
 
+**Before Step 1:** write the four identity lines (Form, Frameworks, Signature, Not this) from [05-style-frameworks.md](05-style-frameworks.md) into the dashboard's report. **After Step 11:** decide with [06-verification.md](06-verification.md).
+
 ## Step 1. Measure the reference (15 minutes, no code yet)
 
 1. Open `site/dashboards/<id>/reference.*`. Find the rectangle that is the actual UI (ignore mock-up backgrounds, hands, captions). Write its pixel box: `x0, y0, x1, y1`. Call its width `W` and height `H`.
