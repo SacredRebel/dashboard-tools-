@@ -11,14 +11,17 @@
     toast._id = setTimeout(() => { t.hidden = true; }, 2200);
   }
 
-  /* Left-arc angles (deg): 0 = right, y-down. Sit on the ring circumference. */
+  /* Left-arc angles (deg): 0 = right, y-down. Sit on the ring circumference.
+     Each room carries intensity, schedule and lit count so selecting it
+     retargets readout, slider, schedule and donut (R2). */
   const ROOMS = [
-    { id: 'living', name: 'Living room', icon: 'er-sofa', label: 'LV', on: true, lights: 4, angle: 228, radius: 49 },
-    { id: 'kitchen', name: 'Kitchen', icon: 'er-pot', label: 'KT', on: false, lights: 3, angle: 204, radius: 49 },
-    { id: 'bedroom', name: 'Bedroom', icon: 'er-bed', label: 'BR', on: true, lights: 2, angle: 180, radius: 49 },
-    { id: 'bath', name: 'Bath', icon: 'er-bath', label: 'BA', on: false, lights: 2, angle: 156, radius: 49 },
-    { id: 'study', name: 'Study', icon: 'er-desk', label: 'ST', on: true, lights: 1, angle: 132, radius: 49 },
+    { id: 'living', name: 'Living room', icon: 'er-sofa', label: 'LV', on: true, lights: 4, angle: 228, radius: 49, bright: 72, start: 2, end: 5, lit: 7 },
+    { id: 'kitchen', name: 'Kitchen', icon: 'er-pot', label: 'KT', on: false, lights: 3, angle: 204, radius: 49, bright: 48, start: 1, end: 4, lit: 5 },
+    { id: 'bedroom', name: 'Bedroom', icon: 'er-bed', label: 'BR', on: true, lights: 2, angle: 180, radius: 49, bright: 68, start: 3, end: 6, lit: 4 },
+    { id: 'bath', name: 'Bath', icon: 'er-bath', label: 'BA', on: false, lights: 2, angle: 156, radius: 49, bright: 35, start: 0, end: 2, lit: 3 },
+    { id: 'study', name: 'Study', icon: 'er-desk', label: 'ST', on: true, lights: 1, angle: 132, radius: 49, bright: 90, start: 4, end: 7, lit: 6 },
   ];
+  const TOTAL_LIGHTS = 12;
   const EXTRA_ROOMS = [
     { id: 'nursery', name: 'Nursery', icon: 'er-bed', label: 'NU', on: false, lights: 2 },
     { id: 'garage', name: 'Garage', icon: 'er-desk', label: 'GA', on: false, lights: 3 },
@@ -39,29 +42,74 @@
   const TIMES = ['6:30 AM', '7:00 AM', '8:30 AM', '9:00 AM', '4:30 PM', '6:00 PM', '8:00 PM', '10:30 PM'];
 
   const S = {
-    page: 'overview', room: 2, bright: 68, power: true, start: 2, end: 4, playing: false,
+    page: 'overview', room: 2, bright: 68, power: true, start: 3, end: 6, playing: false,
     temp: 23, cool: true, wind: 45, mode: 'cool', day: '1H', q: '', hist: [], future: [],
     settingsPreview: 'populated', notify: true, autoDim: true,
+    airflowZone: 'living', airflowSpeed: 2, sceneId: 'evening',
   };
 
   function pushHist() {
-    S.hist.push({ room: S.room, bright: S.bright, power: S.power, temp: S.temp });
+    S.hist.push({ room: S.room, bright: S.bright, power: S.power, temp: S.temp, start: S.start, end: S.end });
     if (S.hist.length > 20) S.hist.shift();
     S.future = [];
   }
 
-  function spark(values, accentDot) {
+  function applyRoomProfile(idx) {
+    const room = ROOMS[idx];
+    if (!room) return;
+    S.room = idx;
+    S.bright = room.bright;
+    S.start = room.start;
+    S.end = room.end;
+    room.on = true;
+  }
+
+  function spark(values, opts = {}) {
+    const accentDot = !!opts.accentDot;
+    const fill = !!opts.fill;
+    const soft = opts.soft || null;
     const w = 200, h = 56, pad = 4;
-    const max = Math.max(...values), min = Math.min(...values);
-    const pts = values.map((v, i) => {
-      const x = pad + (i / (values.length - 1)) * (w - pad * 2);
+    const max = Math.max(...values, ...(soft || []));
+    const min = Math.min(...values, ...(soft || []));
+    const toPts = (arr) => arr.map((v, i) => {
+      const x = pad + (i / (arr.length - 1)) * (w - pad * 2);
       const y = h - pad - ((v - min) / (max - min || 1)) * (h - pad * 2);
       return [x, y];
     });
-    const path = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+    function curve(pts) {
+      if (pts.length < 2) return '';
+      let d = `M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+      for (let i = 0; i < pts.length - 1; i++) {
+        const p0 = pts[i - 1] || pts[i];
+        const p1 = pts[i];
+        const p2 = pts[i + 1];
+        const p3 = pts[i + 2] || p2;
+        const c1x = p1[0] + (p2[0] - p0[0]) / 6;
+        const c1y = p1[1] + (p2[1] - p0[1]) / 6;
+        const c2x = p2[0] - (p3[0] - p1[0]) / 6;
+        const c2y = p2[1] - (p3[1] - p1[1]) / 6;
+        d += ` C${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+      }
+      return d;
+    }
+    const pts = toPts(values);
+    const path = curve(pts);
     const last = pts[pts.length - 1];
+    const area = fill
+      ? `<path class="area" d="${path} L ${last[0].toFixed(1)} ${h - pad} L ${pts[0][0].toFixed(1)} ${h - pad} Z"/>`
+      : '';
+    const softPath = soft ? `<path class="ln-soft" d="${curve(toPts(soft))}"/>` : '';
+    const grids = [0.25, 0.5, 0.75].map((t) => {
+      const x = pad + t * (w - pad * 2);
+      return `<line class="grid" x1="${x}" y1="${pad}" x2="${x}" y2="${h - pad}"/>`;
+    }).join('');
+    const baseY = h - pad - ((values.reduce((a, b) => a + b, 0) / values.length - min) / (max - min || 1)) * (h - pad * 2);
+    const base = `<line class="base" x1="${pad}" y1="${baseY.toFixed(1)}" x2="${w - pad}" y2="${baseY.toFixed(1)}"/>`;
+    const defs = fill
+      ? `<defs><linearGradient id="er-usage-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--chart-2)" stop-opacity=".5"/><stop offset="100%" stop-color="var(--chart-2)" stop-opacity="0"/></linearGradient></defs>`
+      : '';
     const dot = accentDot ? `<circle class="dot" cx="${last[0]}" cy="${last[1]}" r="3.2"/>` : '';
-    return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path class="ln" d="${path}"/>${dot}</svg>`;
+    return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">${defs}${grids}${fill ? base : ''}${area}${softPath}<path class="ln" d="${path}"/>${dot}</svg>`;
   }
 
   function syncHero() {
@@ -74,21 +122,29 @@
   function renderOrbit() {
     const host = $('[data-orbit]');
     if (!host) return;
-    host.innerHTML = ROOMS.map((r, i) => {
-      const rad = (r.angle * Math.PI) / 180;
-      const x = 50 + Math.cos(rad) * r.radius;
-      const y = 50 + Math.sin(rad) * r.radius;
-      return `<button type="button" class="er-room" data-ref="room" style="left:${x}%;top:${y}%;--i:${i}" data-room="${r.id}" aria-pressed="${i === S.room}" aria-label="${r.name}">
-        <svg><use href="#${r.icon}"/></svg><span class="er-room-code">${r.label}</span></button>`;
-    }).join('');
+    /* Build once; later updates only flip aria-pressed so dead-control checks keep live nodes. */
+    if (!host.dataset.ready) {
+      host.innerHTML = ROOMS.map((r, i) => {
+        const rad = (r.angle * Math.PI) / 180;
+        const x = 50 + Math.cos(rad) * r.radius;
+        const y = 50 + Math.sin(rad) * r.radius;
+        return `<button type="button" class="er-room" data-ref="room" style="left:${x}%;top:${y}%;--i:${i}" data-room="${r.id}" aria-pressed="${i === S.room}" aria-label="${r.name}">
+          <svg><use href="#${r.icon}"/></svg><span class="er-room-code">${r.label}</span></button>`;
+      }).join('');
+      host.dataset.ready = '1';
+      return;
+    }
+    $$('[data-room]', host).forEach((btn) => {
+      const idx = ROOMS.findIndex((r) => r.id === btn.dataset.room);
+      btn.setAttribute('aria-pressed', idx === S.room ? 'true' : 'false');
+    });
   }
 
   function renderOverviewBits() {
     const room = ROOMS[S.room];
-    const totalLights = ROOMS.reduce((a, r) => a + r.lights, 0);
-    const lit = S.power ? ROOMS.filter((r) => r.on).reduce((a, r) => a + r.lights, 0) : 0;
+    const lit = S.power ? room.lit : 0;
     const frac = $('[data-frac]');
-    if (frac) frac.textContent = `${totalLights}/${lit}`;
+    if (frac) frac.innerHTML = `${TOTAL_LIGHTS}<span class="er-slash">/</span><span class="er-lit">${lit}</span>`;
     const label = $('.er-light-label');
     if (label) label.textContent = `${room.name} ceiling`;
     const bright = $('[data-bright]');
@@ -96,7 +152,10 @@
     if (bright) bright.value = String(S.bright);
     if (bout) bout.textContent = `${S.bright}%`;
     const power = $('[data-power]');
-    if (power) power.setAttribute('aria-pressed', S.power ? 'true' : 'false');
+    if (power) {
+      power.setAttribute('aria-pressed', S.power ? 'true' : 'false');
+      power.setAttribute('aria-label', `Toggle ${room.name.toLowerCase()} light`);
+    }
     const start = $('[data-start]');
     const end = $('[data-end]');
     if (start) start.textContent = TIMES[S.start];
@@ -114,7 +173,12 @@
     if (usage) usage.textContent = String(USAGE[USAGE.length - 1]);
     if (peak) peak.textContent = String(peakSeries[peakSeries.length - 1]);
     $$('[data-chart]').forEach((el) => {
-      el.innerHTML = spark(el.dataset.chart === 'peak' ? peakSeries : USAGE, el.dataset.chart === 'peak');
+      if (el.dataset.chart === 'peak') {
+        const softSeries = peakSeries.map((v, i) => v * (0.72 + (i % 3) * 0.04));
+        el.innerHTML = spark(peakSeries, { accentDot: true, soft: softSeries });
+      } else {
+        el.innerHTML = spark(USAGE, { fill: true });
+      }
     });
     $$('[data-day]').forEach((btn) => {
       btn.setAttribute('aria-pressed', btn.dataset.day === S.day ? 'true' : 'false');
@@ -147,7 +211,7 @@
     }
     el.innerHTML = `<h1>Rooms</h1><p class="er-lead">Pick a zone to focus the pendant stage and schedule.</p>
       <div class="er-grid">${list.map((r, i) => `
-        <button type="button" class="er-card" data-pick-room="${Math.max(0, ROOMS.findIndex(x => x.id === r.id))}" style="--i:${i}">
+        <button type="button" class="er-card" data-pick-room="${Math.max(0, ROOMS.findIndex((x) => x.id === r.id))}" style="--i:${i}">
           <span class="er-pill ${r.on ? '' : 'is-off'}">${r.on ? 'Lit' : 'Off'}</span>
           <b>${r.name}</b><small>${r.lights} fixtures · ${r.label}</small>
         </button>`).join('')}
@@ -220,13 +284,65 @@
         <article class="er-card"><span class="er-pill">${c.w}%</span><b>${c.name}</b><small>${c.note}</small></article>`).join('')}</div>`;
   }
 
+  function renderAirflowPage(el) {
+    const zones = [
+      { id: 'living', name: 'Living supply', cfm: 220, note: 'Main return open' },
+      { id: 'kitchen', name: 'Kitchen exhaust', cfm: 180, note: 'Range hood linked' },
+      { id: 'bedroom', name: 'Bedroom soft', cfm: 95, note: 'Night quiet cap' },
+      { id: 'bath', name: 'Bath purge', cfm: 140, note: 'Humidity trigger' },
+      { id: 'study', name: 'Study desk', cfm: 110, note: 'Task boost' },
+    ];
+    const speeds = ['Off', 'Low', 'Medium', 'High'];
+    const active = zones.find((z) => z.id === S.airflowZone) || zones[0];
+    const boost = Math.round(active.cfm * (0.55 + S.airflowSpeed * 0.18));
+    el.innerHTML = `<h1>Airflow</h1><p class="er-lead">Vent routes and fan speed for the sample loft — independent of the climate dial.</p>
+      <div class="er-grid">
+        <article class="er-card"><span class="er-pill">Zone</span><b>${active.name}</b><small>${active.note}</small></article>
+        <article class="er-card"><span class="er-pill">Speed</span><b class="num" data-af-speed-label>${speeds[S.airflowSpeed]}</b><small>Current fan step</small></article>
+        <article class="er-card"><span class="er-pill">Flow</span><b class="num" data-af-cfm>${boost}</b><small>cfm estimated</small></article>
+        <article class="er-card"><span class="er-pill">Filter</span><b class="num">81%</b><small>Life remaining</small></article>
+      </div>
+      <h2 style="margin:2cqw 0 1cqw;font-size:max(16px,1.6cqw)">Supply zones</h2>
+      <div class="er-grid">${zones.map((z) => `
+        <button type="button" class="er-card" data-af-zone="${z.id}" aria-pressed="${z.id === S.airflowZone}">
+          <span class="er-pill">${z.cfm} cfm</span><b>${z.name}</b><small>${z.note}</small>
+        </button>`).join('')}</div>
+      <div class="er-actions" style="margin-top:1.6cqw">
+        <button type="button" class="er-btn" data-af-speed="-1" ${S.airflowSpeed <= 0 ? 'disabled' : ''}>Slower</button>
+        <button type="button" class="er-btn er-btn-primary" data-af-speed="1" ${S.airflowSpeed >= 3 ? 'disabled' : ''}>Faster</button>
+      </div>`;
+  }
+
+  function renderScenesPage(el) {
+    const scenes = [
+      { id: 'evening', name: 'Evening calm', detail: 'Dims living + bedroom to 35%', rooms: 'Living · Bedroom' },
+      { id: 'guest', name: 'Guest ready', detail: 'Warms nursery path lights', rooms: 'Hall · Nursery' },
+      { id: 'focus', name: 'Focus desk', detail: 'Study task lamp at 90%, others off', rooms: 'Study' },
+      { id: 'film', name: 'Film night', detail: 'Living cove 18%, accent orange', rooms: 'Living' },
+      { id: 'away', name: 'Away secure', detail: 'Path lights only, lock confirm', rooms: 'Hall · Porch' },
+      { id: 'dawn', name: 'Dawn rise', detail: 'Kitchen then living over 20 min', rooms: 'Kitchen · Living' },
+    ];
+    el.innerHTML = `<h1>Scenes</h1><p class="er-lead">Named lighting recipes for the sample home. Applying one updates the overview stage.</p>
+      <div class="er-grid">${scenes.map((sc) => `
+        <article class="er-card" data-scene-card="${sc.id}">
+          <span class="er-pill">${sc.id === S.sceneId ? 'Active' : 'Scene'}</span>
+          <b>${sc.name}</b><small>${sc.detail}</small>
+          <small>${sc.rooms}</small>
+          <div class="er-actions">
+            <button type="button" class="er-btn ${sc.id === S.sceneId ? 'er-btn-primary' : ''}" data-apply-scene="${sc.id}" aria-pressed="${sc.id === S.sceneId}">
+              ${sc.id === S.sceneId ? 'Running' : 'Apply scene'}
+            </button>
+          </div>
+        </article>`).join('')}</div>`;
+  }
+
   function renderSettingsPage(el) {
     const hubs = [
       { name: 'Loft hub', detail: 'Online · 14 devices' },
       { name: 'Garden bridge', detail: 'Idle · 3 devices' },
       { name: 'Guest suite', detail: 'Sleeping · 6 devices' },
     ];
-    el.innerHTML = `<h1>Settings</h1><p class="er-lead">Home profile and preview states for this console.</p>
+    el.innerHTML = `<h1>Security</h1><p class="er-lead">Home profile and preview states for this console.</p>
       <form class="er-form" data-settings-form novalidate>
         <div class="er-field" data-field="name">
           <label for="er-name">Home name</label>
@@ -268,17 +384,55 @@
     else if (S.page === 'devices') renderDevicesPage(el);
     else if (S.page === 'energy') renderEnergyPage(el);
     else if (S.page === 'settings') renderSettingsPage(el);
+    else if (S.page === 'airflow') renderAirflowPage(el);
+    else if (S.page === 'scenes') renderScenesPage(el);
   }
 
   document.addEventListener('click', (e) => {
     const roomBtn = e.target.closest('[data-room]');
     if (roomBtn) {
       const idx = ROOMS.findIndex((r) => r.id === roomBtn.dataset.room);
-      if (idx >= 0) { pushHist(); S.room = idx; ROOMS[idx].on = true; render(); toast(`${ROOMS[idx].name} focused`); }
+      if (idx >= 0) {
+        pushHist();
+        applyRoomProfile(idx);
+        renderOverviewBits();
+        toast(`${ROOMS[idx].name} focused`);
+      }
       return;
     }
     const pick = e.target.closest('[data-pick-room]');
-    if (pick) { pushHist(); S.room = Number(pick.dataset.pickRoom); location.hash = '#/overview'; toast(`${ROOMS[S.room].name} on overview`); return; }
+    if (pick) {
+      const idx = Number(pick.dataset.pickRoom);
+      if (idx >= 0 && ROOMS[idx]) {
+        pushHist();
+        applyRoomProfile(idx);
+        location.hash = '#/overview';
+        toast(`${ROOMS[idx].name} on overview`);
+      }
+      return;
+    }
+    const afZone = e.target.closest('[data-af-zone]');
+    if (afZone) { S.airflowZone = afZone.dataset.afZone; render(); toast(`${afZone.querySelector('b')?.textContent || 'Zone'} selected`); return; }
+    const afSpeed = e.target.closest('[data-af-speed]');
+    if (afSpeed && !afSpeed.disabled) {
+      S.airflowSpeed = Math.max(0, Math.min(3, S.airflowSpeed + Number(afSpeed.dataset.afSpeed)));
+      render();
+      toast(`Fan ${['off', 'low', 'medium', 'high'][S.airflowSpeed]}`);
+      return;
+    }
+    const sceneBtn = e.target.closest('[data-apply-scene]');
+    if (sceneBtn) {
+      const id = sceneBtn.dataset.applyScene;
+      S.sceneId = id;
+      const map = { evening: 0, guest: 2, focus: 4, film: 0, away: 3, dawn: 1 };
+      const idx = map[id] ?? 0;
+      applyRoomProfile(idx);
+      if (id === 'evening' || id === 'film' || id === 'away') S.bright = Math.min(S.bright, 35);
+      if (id === 'focus') S.bright = 90;
+      render();
+      toast(`Scene “${sceneBtn.closest('.er-card')?.querySelector('b')?.textContent || id}” applied`);
+      return;
+    }
     if (e.target.closest('[data-power]')) { pushHist(); S.power = !S.power; render(); toast(S.power ? 'Light on' : 'Light off'); return; }
     if (e.target.closest('[data-play]')) { S.playing = !S.playing; render(); toast(S.playing ? 'Preview playing' : 'Preview paused'); return; }
     if (e.target.closest('[data-start]')) { pushHist(); S.start = (S.start + 1) % TIMES.length; render(); return; }
@@ -286,13 +440,13 @@
     if (e.target.closest('[data-undo]')) {
       const prev = S.hist.pop();
       if (!prev) { toast('Nothing to undo'); return; }
-      S.future.push({ room: S.room, bright: S.bright, power: S.power, temp: S.temp });
+      S.future.push({ room: S.room, bright: S.bright, power: S.power, temp: S.temp, start: S.start, end: S.end });
       Object.assign(S, prev); render(); toast('Undid last change'); return;
     }
     if (e.target.closest('[data-redo]')) {
       const next = S.future.pop();
       if (!next) { toast('Nothing to redo'); return; }
-      S.hist.push({ room: S.room, bright: S.bright, power: S.power, temp: S.temp });
+      S.hist.push({ room: S.room, bright: S.bright, power: S.power, temp: S.temp, start: S.start, end: S.end });
       Object.assign(S, next); render(); toast('Redid change'); return;
     }
     const tempBtn = e.target.closest('[data-temp]');
@@ -349,9 +503,11 @@
   const PAGES = [
     { id: 'overview', name: 'Overview' },
     { id: 'rooms', name: 'Rooms' },
-    { id: 'devices', name: 'Devices' },
+    { id: 'devices', name: 'Climate' },
     { id: 'energy', name: 'Energy' },
-    { id: 'settings', name: 'Settings' },
+    { id: 'settings', name: 'Security' },
+    { id: 'airflow', name: 'Airflow' },
+    { id: 'scenes', name: 'Scenes' },
   ];
   if (window.DB && typeof window.DB.route === 'function') {
     window.DB.route(PAGES, (id) => { S.page = id; render(); });

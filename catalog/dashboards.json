@@ -5487,7 +5487,7 @@
         },
         {
           "id": "devices",
-          "name": "Devices",
+          "name": "Climate",
           "pattern": "List"
         },
         {
@@ -5497,8 +5497,18 @@
         },
         {
           "id": "settings",
-          "name": "Settings",
+          "name": "Security",
           "pattern": "Settings"
+        },
+        {
+          "id": "airflow",
+          "name": "Airflow",
+          "pattern": "List"
+        },
+        {
+          "id": "scenes",
+          "name": "Scenes",
+          "pattern": "List"
         }
       ],
       "motion": [
