@@ -1,4 +1,4 @@
-/* Mauve Ledger — sample data, KPIs, hatched sales bars, segmented gauge, emails.
+/* Mauve Ledger — sample data, stacked hatched bars, y-axis, tip, gauge.
    All data is fictional. No polling. */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
@@ -28,20 +28,21 @@
     { icon: 'card', value: '$3,287.49', label: "This week's card spending" },
   ];
 
+  /* Tip values on May match the reference dual tooltip ($598 / $245). */
   const PERIODS = {
     current: {
       offline: '$12,201.00', offDelta: '-11%', offCls: 'bad',
       online: '$100,799.00', onDelta: '+6%', onCls: 'good',
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-      offlineV: [420, 480, 450, 520, 612, 550, 580, 630, 570],
-      onlineV: [700, 740, 720, 800, 1008, 880, 900, 950, 930],
+      offlineV: [320, 360, 340, 400, 245, 380, 410, 430, 390],
+      onlineV: [520, 560, 540, 600, 598, 640, 660, 700, 680],
     },
     last: {
       offline: '$13,740.00', offDelta: '-4%', offCls: 'bad',
       online: '$95,120.00', onDelta: '+3%', onCls: 'good',
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-      offlineV: [400, 440, 500, 480, 550, 520, 490, 540, 510],
-      onlineV: [660, 700, 680, 750, 840, 820, 860, 880, 850],
+      offlineV: [300, 330, 360, 350, 280, 340, 320, 360, 310],
+      onlineV: [480, 520, 500, 560, 540, 580, 600, 620, 590],
     },
   };
 
@@ -52,8 +53,6 @@
     { av: 'TS', name: 'Theo Santos', sub: 'Q3 budget draft attached', who: '3 invited', urg: 'Pending', time: '9:15 AM' },
     { av: 'EL', name: 'Elena Park', sub: 'Vendor onboarding checklist', who: '5 invited', urg: 'Pending', time: 'Yesterday' },
     { av: 'JK', name: 'Jordan Kim', sub: 'Payroll cut-off reminder', who: 'HR', urg: 'Urgent', time: 'Yesterday' },
-    { av: 'NB', name: 'Noor Blake', sub: 'Contract renewal — Apex Ops', who: '2 invited', urg: 'Pending', time: 'Mon' },
-    { av: 'VW', name: 'Vera Walsh', sub: 'Card spend exception review', who: 'You', urg: 'Pending', time: 'Mon' },
   ];
 
   const TX = [
@@ -113,7 +112,7 @@
         ? `${parts.whole}<span class="dec">${parts.dec}</span>`
         : k.value;
       return `
-      <article class="mv-kpi" style="--d:${80 + i * 40}ms">
+      <article class="mv-kpi" data-ref="kpi" style="--d:${80 + i * 40}ms">
         <div class="mv-kpi-top">
           <span class="mv-kpi-ic">${svg(k.icon)}</span>
           ${k.menu ? `<button type="button" class="mv-kpi-menu" aria-label="Balance options" data-toast="Balance options (sample).">${svg('dots')}</button>` : '<span></span>'}
@@ -145,42 +144,50 @@
       </div>`;
   }
 
+  function fmtTip(n) {
+    return '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
   function renderSalesChart() {
     const p = PERIODS[S.period];
     const totals = p.labels.map((_, i) => p.offlineV[i] + p.onlineV[i]);
-    const max = Math.max(...totals) * 1.08;
+    const max = 1200; /* matches y-axis $0–$1.2k */
     const el = $('[data-sales-chart]');
     el.innerHTML = `
-      <div class="mv-bars" role="group" aria-label="Average sales by month">
-        ${p.labels.map((lab, i) => {
-          const h = ((totals[i] / max) * 100).toFixed(2);
-          const on = i === S.salesIdx ? ' on' : '';
-          return `<button type="button" class="mv-bar${on}" aria-pressed="${i === S.salesIdx}" aria-label="${lab}: offline $${p.offlineV[i]}, online $${p.onlineV[i]}" data-i="${i}"><i style="height:${h}%"></i></button>`;
-        }).join('')}
+      <div class="mv-axis" data-ref="chart-axis" aria-hidden="true">
+        <span>$1.2k</span><span>$900</span><span>$600</span><span>$300</span><span>$0</span>
       </div>
-      <div class="mv-xs">${p.labels.map((l) => `<span>${l}</span>`).join('')}</div>
-      <div class="mv-tip" data-tip hidden></div>`;
+      <div class="mv-bars-wrap">
+        <div class="mv-bars" role="group" aria-label="Average sales by month">
+          ${p.labels.map((lab, i) => {
+            const offH = ((p.offlineV[i] / max) * 100).toFixed(2);
+            const onH = ((p.onlineV[i] / max) * 100).toFixed(2);
+            const on = i === S.salesIdx ? ' on' : '';
+            return `<button type="button" class="mv-bar${on}" data-ref="chart-bar" aria-pressed="${i === S.salesIdx}" aria-label="${lab}: offline ${fmtTip(p.offlineV[i])}, online ${fmtTip(p.onlineV[i])}" data-i="${i}"><span class="stack" style="height:${((totals[i] / max) * 100).toFixed(2)}%"><i class="seg" style="height:${(p.offlineV[i] / totals[i] * 100).toFixed(2)}%"></i><i class="seg seg--top" style="height:${(p.onlineV[i] / totals[i] * 100).toFixed(2)}%"></i></span></button>`;
+          }).join('')}
+        </div>
+        <div class="mv-tip" data-ref="chart-tip" data-tip></div>
+      </div>
+      <div class="mv-xs">${p.labels.map((l) => `<span>${l}</span>`).join('')}</div>`;
 
     const tip = $('[data-tip]', el);
     const show = (i) => {
-      if (i < 0) { tip.hidden = true; return; }
+      if (i < 0) i = S.salesIdx;
       tip.hidden = false;
-      tip.innerHTML = `<b>${p.labels[i]}</b>Offline $${p.offlineV[i].toLocaleString()} · Online $${p.onlineV[i].toLocaleString()}`;
+      tip.innerHTML = `<b>${fmtTip(p.onlineV[i])}</b>${fmtTip(p.offlineV[i])}`;
       tip.style.left = ((i + 0.5) / p.labels.length) * 100 + '%';
-      tip.style.top = `calc(${(1 - totals[i] / max) * 100}% + 1.2cqw)`;
+      tip.style.top = `${(1 - totals[i] / max) * 100}%`;
     };
     $$('.mv-bar', el).forEach((b) => {
       const i = +b.dataset.i;
       b.addEventListener('mouseenter', () => show(i));
       b.addEventListener('focus', () => show(i));
-      b.addEventListener('blur', () => show(-1));
       b.addEventListener('click', () => {
         S.salesIdx = i;
         renderSalesChart();
       });
     });
-    $('.mv-bars', el).addEventListener('mouseleave', () => show(-1));
-    /* Tip only on hover/focus so Online $100,799 stays readable (chart numbers match). */
+    show(S.salesIdx);
   }
 
   function renderGauge() {
@@ -270,7 +277,6 @@
     renderTx();
   }
 
-  /* —— wire —— */
   renderKpis();
   renderGauge();
   renderBudgets();
@@ -351,7 +357,6 @@
   const curVar = document.documentElement.dataset.variant || 'default';
   $('[data-variant-select]').value = curVar;
 
-  /* glass specular follows pointer lightly */
   if (!reduce) {
     document.addEventListener('pointermove', (e) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 18;
@@ -359,7 +364,6 @@
     });
   }
 
-  /* routing */
   const PAGES = [
     { id: 'overview', name: 'Overview' },
     { id: 'transactions', name: 'Finance' },
@@ -377,9 +381,14 @@
       else a.removeAttribute('aria-current');
       a.classList.toggle('is-active', a.dataset.nav === 'overview' && id === 'overview');
     });
-    /* Dashboard pill active on overview; Contracts maps to settings */
     $$('.mv-nav a[data-nav="overview"]').forEach((a) => {
       if (id === 'overview') a.setAttribute('aria-current', 'page');
+    });
+    $$('.mv-rail a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      const pid = href.replace(/^#\//, '');
+      if (pid === id) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
     });
   }
 
