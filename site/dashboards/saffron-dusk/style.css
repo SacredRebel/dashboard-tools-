@@ -135,7 +135,7 @@ svg{display:block;width:1em;height:1em;fill:none;stroke:currentColor;stroke-widt
 .sd-upgrade span:first-child{font-size:max(12px,1.1cqw);font-weight:700;letter-spacing:.1em;text-transform:uppercase;line-height:1.25;color:#f4f0e6}
 .sd-upgrade em{font-style:normal;font-weight:500;font-size:max(12px,1em);opacity:.95;color:#f4f0e6}
 .sd-flame{width:max(28px,2.4cqw);height:max(28px,2.4cqw);color:#f0e0c0}.sd-flame svg{width:100%;height:100%;fill:currentColor;stroke:none}
-.sd-page{padding:8px 4px 32px}.sd-page[hidden]{display:none!important}
+.sd-page{padding:8px 4px 32px}.sd-page[hidden],.sd-frame[hidden]{display:none!important}
 .sd-page-h{margin-bottom:18px}.sd-page-h h2{margin:0 0 6px;font-family:var(--font-display);font-weight:600;font-size:28px}
 .sd-page-h p{margin:0;color:#2a3428;font-size:15px;max-width:52ch}
 [data-variant="night"] .sd-page-h p{color:#d8d0c2}
@@ -144,7 +144,7 @@ svg{display:block;width:1em;height:1em;fill:none;stroke:currentColor;stroke-widt
 .sd-tile h3{margin:0 0 8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
 .sd-big{margin:0;font-family:var(--font-display);font-size:36px;font-weight:600;line-height:1}
 .sd-meta{margin:6px 0 0;font-size:13px;color:#3a3228}
-[data-variant="night"] .sd-meta,[data-variant="night"] .sd-tile .sd-meta{color:#d8d0c2}
+[data-variant="night"] .sd-tile .sd-meta,[data-variant="night"] .sd-page-h p,[data-variant="night"] .sd-list span{color:#d8d0c2}
 .sd-mini-segs{display:flex;gap:4px;margin-top:12px}.sd-mini-segs i{flex:1;height:8px;border-radius:999px;background:color-mix(in srgb,var(--teal) 35%,transparent)}.sd-mini-segs i.on{background:var(--teal)}
 .sd-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .sd-list li{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center}
@@ -176,3 +176,6 @@ svg{display:block;width:1em;height:1em;fill:none;stroke:currentColor;stroke-widt
 }
 @media (max-width:520px){.sd{padding:12px 10px 40px}.sd-chrome{border-radius:22px}.sd-pages{width:100%;margin-left:0}.sd-tag{text-align:left}.sd-list li{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.sd-gather .sd-meta,.sd-person .sd-meta,.sd-stats span,.sd-person h3,.sd-gather h3{color:#1a140c!important}
+.sd-daybars .lab{color:#1a140c!important}
