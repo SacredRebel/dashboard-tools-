@@ -913,15 +913,15 @@ A soft dark reading club: book shelf and friends on the left, a current-book her
 
 _Tidebath Showroom · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A soft-light bathroom showroom: curved 3-bay photo room carousel with hotspot markers and a 6m² badge, above a four-column board for inspirations, product icons, store search and contact — plus Catalog, Orders and Settings. English copy throughout.
+A bathroom showroom you can turn: a curved wall of small-room layouts in 3D perspective on a white floor, with glossy product pins, a dark floor wedge and a stone size marker; below it a light landing page with the catalog strip, a store finder, downloads and contact.
 
 - **Use cases:** E-commerce & retail, Hospitality & food · **Mode:** light · **Mood:** airy, minimal, clean, sculptural, calm
 - **Pages:** Overview (`overview`, Dashboard) · Catalog (`catalog`, List) · Orders (`orders`, List) · Settings (`settings`, Settings)
 - **Motion:** stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
-- **Signature:** A soft white cylindrical stage holding three angled photoreal bathroom bays, with blue tide-wave hotspot markers and a recessed circular 6m² badge.
-- **Layout:** Tidebath mark + pages nav · curved 3-bay photo carousel with prev/next, hotspots and 6m² badge · 4-column lower board (inspirations + social · product icons + store search · downloads · contact)
-- **Responsive:** ≤1100px: carousel scales, board becomes 2×2 · ≤700px: nav wraps under brand, carousel full-bleed with stacked arrows, board single column
-- **Fonts:** DM Serif Display / DM Sans · **Palette:** bg `#f4f5f7`, surface `#ffffff`, text `#2c333d`, muted `#4a5560`, accent `#2f6fed`, orange `#e8793a`, stage `#e8eaee`, hotspot `#3b82f6`
+- **Signature:** A CSS 3D curved wall of room panels that rotates on arrows, drag and keys, with stone-shaped arrow buttons and a size pebble.
+- **Layout:** A scrolling page sized in container units · top: four tilted page links with slanted dividers around a centred wordmark · hero: six room panels on a concave arc in CSS 3D (centre faces front, neighbours turn away and fade), floor disc, dark wedge, size pebble, stone arrows · three columns of sections: inspirations and social, product strip and store finder, downloads and contact · inner pages keep the wall at half height above their content
+- **Responsive:** ≤720px: the wall keeps one room in front with two peeking; page links become a floating bottom tab bar; sections stack with the catalog first; the wall is hidden on inner pages
+- **Fonts:** Rajdhani / DM Sans · **Palette:** bg `#f4f5f7`, surface `#ffffff`, text `#2c333d`, muted `#4a5560`, accent `#2f6fed`, orange `#e8793a`, stage `#e8eaee`, hotspot `#3b82f6`
 - **Variants:** Porcelain, Mist, Dusk · **Closest toolkit theme:** `linen`
 
 **Best for**

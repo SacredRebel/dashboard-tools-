@@ -2,12 +2,13 @@
 
 **How to rebuild a gallery dashboard so it matches its `reference.*` image.** Follow the steps in order. Do not skip a step, do not reorder, do not invent a different method. Every pattern here is taken from one finished build you must open and copy from:
 
-> **Two worked examples. Open both in a browser, then read their files top to bottom.**
+> **Three worked examples. Open both in a browser, then read their files top to bottom.**
 >
 > | Example | Copy it when the reference is… | Files |
 > |---|---|---|
 > | `site/dashboards/haven-listings/` | a **picture frame**: a photo or scene fills a frame and UI shapes pour over it (glass, notches, scoops) | `index.html`, `style.css`, `app.js` |
 > | `site/dashboards/meridian-labs/` | a **flat board**: blocks on a plain surface around a **3D object** | `index.html`, `style.css`, `app.js`, `helix.js` |
+> | `site/dashboards/tidebath-showroom/` | a **tall scrolling page** with a hero built in **CSS 3D** (a carousel, a tilted pane, a wall of panels) | `index.html`, `style.css`, `app.js` |
 >
 > When this playbook says "like Haven" or "like Meridian", copy that code and change the numbers.
 >
@@ -69,6 +70,27 @@ Take a screenshot. The empty frame must sit where the reference's frame sits.
 - **Hero art** fills the frame as an `<img>` with `object-fit: cover`. Give it `srcset` with a file at least 1.5× the rendered width.
 - **Light it for text:** one overlay div with gradients (`.hl-sky`): a top tint and a side scrim where text sits.
 - **3D object instead of a photo:** when `signature_tech` has `webgl`, the hero is a three.js canvas with a transparent background, never a picture of a 3D thing. See Step 7.
+
+### A page that scrolls instead of a fixed frame (like Tidebath)
+
+When the reference is a tall landing page, the container has **no aspect ratio**: `.x-page { width: min(1100px, 100%); container-type: inline-size; }`. Sections flow down the page. Sizes are still in cqw so the proportions match at any width. Three things to get right:
+
+- **The hero goes inside `<main>`.** The check measures `<main>`; a hero placed above it makes the page look empty to the check and to screen readers.
+- **Keep a background color when you use a gradient:** `background: var(--bg) linear-gradient(…)`. A bare `background: linear-gradient(…)` clears the color and the check reports the page as unstyled.
+- **Text on a photo gets a solid backing** (a dark translucent pill), not a text-shadow. Shadows do not count toward contrast.
+
+### A hero in CSS 3D (when `signature_tech` has `tilt3d`)
+
+No WebGL needed for flat panels in space. The stage gets `perspective: 150cqw`, the ring gets `transform-style: preserve-3d`, and each panel is placed by its distance from the active one:
+
+```css
+.x-room[data-o="0"]  { transform: translateZ(4cqw); z-index: 5; }
+.x-room[data-o="-1"] { transform: translateX(-29cqw) translateZ(-9cqw)  rotateY(46deg)  scale(.84); z-index: 4; }
+.x-room[data-o="1"]  { transform: translateX(29cqw)  translateZ(-9cqw)  rotateY(-46deg) scale(.84); z-index: 4; }
+.x-room[data-o="-2"] { transform: translateX(-44cqw) translateZ(-22cqw) rotateY(64deg)  scale(.66); opacity: .5; }
+```
+
+JavaScript only sets `data-o` (offset from the active index, wrapped) and the CSS transition does the turn. Add arrows, click-a-side-panel, drag, and Left/Right keys. Controls inside panels that are not in front get `tabindex="-1"`. When the hero shrinks on inner pages, **hide its loose parts** (floor wedge, badges, labels) rather than scaling each one; pieces scaled separately drift apart.
 
 ## Step 4. Outlines that are not rectangles
 

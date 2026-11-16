@@ -4130,7 +4130,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A soft-light bathroom showroom: curved 3-bay photo room carousel with hotspot markers and a 6m² badge, above a four-column board for inspirations, product icons, store search and contact — plus Catalog, Orders and Settings. English copy throughout.",
+      "summary": "A bathroom showroom you can turn: a curved wall of small-room layouts in 3D perspective on a white floor, with glossy product pins, a dark floor wedge and a stone size marker; below it a light landing page with the catalog strip, a store finder, downloads and contact.",
       "mood": [
         "airy",
         "minimal",
@@ -4150,8 +4150,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Tidebath mark + pages nav · curved 3-bay photo carousel with prev/next, hotspots and 6m² badge · 4-column lower board (inspirations + social · product icons + store search · downloads · contact)",
-        "responsive": "≤1100px: carousel scales, board becomes 2×2 · ≤700px: nav wraps under brand, carousel full-bleed with stacked arrows, board single column"
+        "structure": "A scrolling page sized in container units · top: four tilted page links with slanted dividers around a centred wordmark · hero: six room panels on a concave arc in CSS 3D (centre faces front, neighbours turn away and fade), floor disc, dark wedge, size pebble, stone arrows · three columns of sections: inspirations and social, product strip and store finder, downloads and contact · inner pages keep the wall at half height above their content",
+        "responsive": "≤720px: the wall keeps one room in front with two peeking; page links become a floating bottom tab bar; sections stack with the catalog first; the wall is hidden on inner pages"
       },
       "components": [
         "Centered brand mark with wave logo",
@@ -4166,7 +4166,7 @@
         "Downloads link list",
         "Contact phone and email"
       ],
-      "signature": "A soft white cylindrical stage holding three angled photoreal bathroom bays, with blue tide-wave hotspot markers and a recessed circular 6m² badge.",
+      "signature": "A CSS 3D curved wall of room panels that rotates on arrows, drag and keys, with stone-shaped arrow buttons and a size pebble.",
       "palette": {
         "bg": "#f4f5f7",
         "surface": "#ffffff",
@@ -4178,7 +4178,7 @@
         "hotspot": "#3b82f6"
       },
       "fonts": {
-        "display": "DM Serif Display",
+        "display": "Rajdhani",
         "sans": "DM Sans"
       },
       "variants": [
@@ -4246,13 +4246,10 @@
       ],
       "fx": [
         "reveal",
-        "count",
-        "draw",
         "route"
       ],
       "materials": [
-        "clay",
-        "neu"
+        "paper"
       ],
       "signature_tech": [
         "tilt3d"

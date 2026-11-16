@@ -10,9 +10,10 @@ Rebuild the gallery dashboard `<id>` in the repo `SacredRebel/dashboard-tools-` 
 
 1. Pull `main`. Create branch `cursor/twin-<id>`.
 2. Start a local server and keep it running: `python3 -m http.server 8080 -d site`.
-3. Open both finished examples at 1440×900 and at 375×812 and click through every page:
+3. Open the three finished examples at 1440×900 and at 375×812 and click through every page:
    - `http://localhost:8080/dashboards/haven-listings/` (a picture frame with poured shapes and glass)
    - `http://localhost:8080/dashboards/meridian-labs/` (a flat board around a live 3D object)
+   - `http://localhost:8080/dashboards/tidebath-showroom/` (a tall scrolling page with a CSS 3D hero)
    Decide which one your reference is closer to. Read **all** of that example's files (`index.html`, `style.css`, `app.js`, and `helix.js` for Meridian). If your dashboard's `signature_tech` includes `webgl`, read `meridian-labs/helix.js` whichever example you chose.
 4. Read `docs/dashboards/02-reference-twin-playbook.md` completely.
 5. Follow the playbook Step 0 to Step 12 for `<id>`. Use the architect's spec for this dashboard in `prompts/cursor-fidelity-r4.md` §6 as the content list.

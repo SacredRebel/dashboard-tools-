@@ -6,103 +6,63 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Tidebath Showroom · Dashboard Tools gallery</title>
-  <meta name="description" content="Soft-light bathroom showroom with a curved 3-bay photo room carousel, hotspot markers and a four-column utility board. Sample data.">
-  <link rel="stylesheet" href="../_vendor/fonts/dm-serif-display/family.css">
+  <meta name="description" content="A bathroom showroom you can turn: a curved wall of small-room layouts in 3D perspective, a product catalog, a store finder and orders. Sample data.">
+  <link rel="stylesheet" href="../_vendor/fonts/rajdhani/family.css">
   <link rel="stylesheet" href="../_vendor/fonts/dm-sans/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
-  <link rel="stylesheet" href="../_shared/fx/fx.css">
-  <link rel="stylesheet" href="../_shared/dense-pages.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
-  <script src="../_shared/dense-pages.js"></script>
-  <script type="module" src="../_shared/fx/index.js"></script>
-  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
-  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
   <div class="tb" data-db-app>
-    <header class="tb-top">
-      <a class="tb-brand" href="#/overview" aria-label="Tidebath home">
-        <span class="tb-mark" data-mark aria-hidden="true"></span>
-        <span class="tb-name">Tidebath</span>
-        <span class="tb-tag">showroom</span>
-      </a>
-      <nav class="tb-pages" aria-label="Primary">
-        <a href="#/overview" aria-current="page">Overview</a>
-        <a href="#/catalog">Catalog</a>
-        <a href="#/orders">Orders</a>
-        <a href="#/settings">Settings</a>
-      </nav>
-      <nav class="tb-nav" aria-label="On this page">
-        <a href="#inspo">Inspirations</a>
-        <a href="#stores">Stores</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+    <div class="tb-page">
+      <header class="tb-top">
+        <nav class="tb-nav" aria-label="Pages">
+          <a href="#/overview">Showroom</a><a href="#/catalog">Catalog</a>
+          <a class="tb-logo" href="#/overview" aria-label="Tidebath, showroom"><b>tide<i>bath</i></b><em>compact.</em><small>Bathrooms for small rooms</small></a>
+          <a href="#/orders">Orders</a><a href="#/settings">Settings</a>
+        </nav>
+      </header>
 
-    <div data-main>
-      <div class="tb-overview" data-page-panel="overview">
-        <main>
-          <section class="tb-stage tb-reveal" aria-labelledby="tb-stage-h">
-            <h1 id="tb-stage-h" class="vh">Room carousel</h1>
-            <button class="tb-arrow tb-prev" type="button" data-prev aria-label="Previous room">
-              <span data-icon="chevLeft"></span>
-            </button>
-            <div class="tb-carousel" data-carousel role="group" aria-roledescription="carousel" aria-label="Bathroom layouts"></div>
-            <button class="tb-arrow tb-next" type="button" data-next aria-label="Next room">
-              <span data-icon="chevRight"></span>
-            </button>
-            <div class="tb-badge" aria-label="Room size 6 square metres">
-              <span class="num">6</span><small>m²</small>
-            </div>
-            <p class="tb-roomname" data-roomname aria-live="polite"></p>
-          </section>
+      <main class="tb-main" id="main">
+      <!-- the curved wall: CSS 3D, one stage shared by every page (it shrinks on inner pages) -->
+      <section class="tb-stage" data-stage aria-roledescription="carousel" aria-label="Room layouts">
+        <button type="button" class="tb-arrow tb-arrow--l" data-act="prev" aria-label="Previous room"><svg viewBox="0 0 24 24"><path d="m14 6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="tb-ring" data-ring></div>
+        <div class="tb-wedge" aria-hidden="true"></div>
+        <button type="button" class="tb-size" data-act="size" aria-label="Room size"><b class="num" data-size>6</b><small>m²</small></button>
+        <button type="button" class="tb-arrow tb-arrow--r" data-act="next" aria-label="Next room"><svg viewBox="0 0 24 24"><path d="m10 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <p class="tb-room-name" aria-live="polite" data-room-name></p>
+      </section>
 
-          <section class="tb-board tb-reveal" aria-label="Showroom tools">
-            <article class="tb-cell" id="inspo" aria-labelledby="tb-inspo-h">
-              <h2 id="tb-inspo-h">Inspirations</h2>
-              <p class="tb-blurb">Browse compact layouts that stretch light and space — from city flats to guest suites.</p>
-              <p class="tb-sub">Find us on</p>
-              <ul class="tb-social" data-social></ul>
-            </article>
-
-            <article class="tb-cell" id="products" aria-labelledby="tb-prod-h">
-              <h2 id="tb-prod-h">Product catalog</h2>
-              <div class="tb-icons" role="list" data-products></div>
-              <button type="button" class="tb-dl" data-download><span>Download PDF</span><span data-icon="arrowRight"></span></button>
-              <div class="tb-stores" id="stores">
-                <h3>Stores</h3>
-                <form class="tb-search" data-store-form>
-                  <label class="vh" for="tb-city">Your town</label>
-                  <input id="tb-city" type="search" name="city" placeholder="Your town" autocomplete="address-level2" data-city>
-                  <button type="submit">OK</button>
-                </form>
-                <button type="button" class="tb-maplink" data-map>See on map</button>
-                <p class="tb-storemsg" data-storemsg aria-live="polite"></p>
-              </div>
-            </article>
-
-            <article class="tb-cell" aria-labelledby="tb-dl-h">
-              <h2 id="tb-dl-h">Downloads</h2>
-              <ul class="tb-links" data-downloads></ul>
-            </article>
-
-            <article class="tb-cell" id="contact" aria-labelledby="tb-ct-h">
-              <h2 id="tb-ct-h">Contact</h2>
-              <ul class="tb-contact" data-contact></ul>
-            </article>
-          </section>
-        </main>
-        <p class="db-sample tb-foot">Sample data · fictional brand and stores</p>
-      </div>
+        <section data-db-page="overview" class="tb-over">
+          <div class="tb-colA">
+            <section><h2>Inspirations</h2><p class="tb-note">Small is big. Turn the wall and see why.</p><button type="button" class="tb-link" data-act="next">Show me another room</button></section>
+            <section><h3>We are <b>on</b></h3><ul class="tb-social" data-social></ul></section>
+          </div>
+          <div class="tb-colB">
+            <section><div class="tb-h"><h2><small>Product</small>catalog</h2><p class="tb-note">Our newest catalog</p></div>
+              <div class="tb-strip" data-strip></div><div class="tb-rule"><button type="button" class="tb-link" data-act="dl-cat">Download</button></div></section>
+            <section><h2 class="tb-big">Stores</h2><p class="tb-note">Tell us your town and we will show you the nearest store.</p>
+              <form class="tb-find" data-find novalidate><label for="tb-town">Your town</label><input id="tb-town" name="town" placeholder="Marrow Bay" autocomplete="off" aria-describedby="tb-town-err"><button class="tb-ok">ok</button>
+                <span>Nearest store</span><output data-nearest>Harbor Row · Old Harbour</output><p class="tb-err" id="tb-town-err" role="alert"></p></form>
+              <div class="tb-rule"><button type="button" class="tb-link" data-act="map">See on the map</button></div></section>
+          </div>
+          <div class="tb-colC">
+            <section><h2><small>For</small>download</h2><ul class="tb-dl" data-dl></ul></section>
+            <section><h2 class="tb-big">Contact</h2><ul class="tb-contact"><li><span class="tb-ico"><svg viewBox="0 0 24 24"><path d="M7 4h3l1.5 4-2 1.500a11 11 0 0 0 5 5l1.5-2 4 1.500v3a2 2 0 0 1-2 2A15 15 0 0 1 5 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span><a href="tel:+15550148213" class="num">(555) 014-8213</a></li>
+              <li><span class="tb-ico"><svg viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m4.5 7.5 7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><a href="mailto:hello@tidebath.example">hello@tidebath.example</a></li></ul></section>
+          </div>
+        </section>
+        <section data-db-page="catalog" class="tb-inner" hidden></section>
+        <section data-db-page="orders" class="tb-inner" hidden></section>
+        <section data-db-page="settings" class="tb-inner" hidden></section>
+      </main>
+      <footer class="tb-foot"><a href="#/overview">Showroom</a><a href="#/catalog">Catalog</a><a href="#/orders">Orders</a><a href="#/settings">Settings</a><p class="db-sample">Sample data · fictional brand, stores and orders</p></footer>
     </div>
-
-    <aside class="tb-tip" data-tip hidden role="status">
-      <b data-tip-title></b>
-      <span data-tip-body></span>
-    </aside>
   </div>
-  <div class="tb-toast" data-toast hidden role="status"></div>
+  <div class="tb-drawer" data-drawer hidden role="dialog" aria-modal="true" aria-labelledby="tb-drawer-title"><div class="tb-drawer-panel" data-drawer-panel></div></div>
+  <div class="tb-toast" data-toast role="status" aria-live="polite" hidden></div>
   <script src="app.js"></script>
 </body>
 </html>
