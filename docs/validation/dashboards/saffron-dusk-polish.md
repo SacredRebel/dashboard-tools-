@@ -12,8 +12,8 @@ Not this:    Not twin phone mockups; not Vitals/Appointments/Records; not Haven 
 ## Evidence
 
 - Side-by-side: `docs/validation/dashboards/saffron-dusk-compare.jpg`
-- Captures looked at: overview ☑ · overview full length ☑ · every page ☑ · phone full length ☑ · each variant ☑
-- `node scripts/build.mjs`: ✔ · `node scripts/dashboards-check.mjs saffron-dusk`: ✔
+- Captures looked at: overview ☑ · overview full length ☑ · every page ☑ · phone full length ☑ · each variant ☑ · tablet 768 ☑
+- `node scripts/dashboards-check.mjs saffron-dusk`: ✔
 
 ## The eleven questions
 
@@ -28,54 +28,66 @@ Not this:    Not twin phone mockups; not Vitals/Appointments/Records; not Haven 
 | 7 | Nothing spilling, overlapping or empty below the fold | Yes | check green |
 | 8 | Inner pages belong to this product | Yes | Progress/Sessions/Profile |
 | 9 | All content is this dashboard's own | Yes | Mira Nazari sample |
-| 10 | Phone reads correctly top to bottom | Yes | Today left / Profile right |
+| 10 | Phone reads correctly top to bottom | Yes | Today left / Profile right; bottom rail |
 | 11 | Every variant is designed and readable | Yes | dawn/night |
 
-## Rounds
+## Owner rejection rounds (responsive + liquid)
 
-| Round | What I saw | What I changed |
-|---|---|---|
-| 1 | Twin phones on desktop | Rebuilt as one-wide cqw board to layout.json |
-| 2 | Dead controls from re-render; mobile rail overlay | In-place sync; rail in document flow at 375 |
-| 3 | Compare: rail flat, title heavy, dates weak glow, upgrade flame side | Glassier rail, thinner Fraunces, date glow, upgrade flame right |
+### Round A — look (pre-fix)
+
+| Width | What was wrong |
+|------:|---|
+| 1440 | Wide board present; glass rims/glows still short of reference liquid language |
+| 768 | Tiny scaled desktop (aspect-ratio lock → ~722×448); not a tablet layout |
+| 375 | Tab bar at **top** (DOM order); Today/Profile stacks otherwise OK |
+
+### Round A — fix
+
+- Added `@media (max-width:1100px) and (min-width:721px)` tablet: unlock aspect-ratio, grid reflow, px side rail
+- Mobile: `order` puts rail at bottom; fixed frame height so tab bar stays in-view on tall pages
+- Boosted liquid glass: blur 28px, brighter rims, stronger teal/amber glows, larger poured `--f`
+
+### Round B — look (post-fix screenshots opened)
+
+| Width | What I saw | Still wrong |
+|------:|---|---|
+| 1440 | One-wide board; vertical rail; glows on water/gather/daily; poured WATER/Share/Daily/bell | Title flourishes + arc sun still softer than reference |
+| 768 | Tall grid board; side rail; 2-col water\|gather + person\|daily; distinct from phone & desktop | Gather pill could be taller; rail labels a bit tight |
+| 375 | Bottom tab fully visible; Today≈left; Profile≈right; countdown untruncated | Upgrade contrast failed check → darkened m-upgrade |
+
+### Round B — fix
+
+- Gather overflow visible so amber glow escapes; mobile arc mask off for full bell text
+- Stronger date-bead + rail active glow; glowing flame well on upgrade
+- Opaque dark m-upgrade for WCAG on profile 375
 
 ## Used
 
-- Interactions tested: rail Today/Progress/Sessions/Profile at 1440 and 375; date beads, water steps, day bars (desktop), remind, gather, share, upgrade at 1440; Today controls + Profile stack at 375
-- Keyboard and reduced motion tested: focus-visible rings present; motion gated on prefers-reduced-motion
+- Interactions: all four routes at 1440 / 768 / 375; date beads + water segments; rail `aria-current`
+- Keyboard / reduced motion: focus-visible rings; motion gated
 
 ## Result
 
 **Finished with a stated gap**
 
-Remaining gaps and why: Compare sheet still shows thinner liquid edge / poured fillet fidelity vs reference on rail and arc (visual polish within layout boxes). Spec numbers and gates are green. Only maintainer merges.
+Remaining: reference still denser on title flourishes and arc sun; poured fillets can go another notch on rail icons. Spec gates green. Do not merge.
 
-## Tools used (required)
+## Owner requirements
 
-| Element | Tool or method used | Why this one | If a first choice could not run, what replaced it |
-|---|---|---|---|
-| Layout | `layout.json` boxes in `cqw` | Spec measured by maintainer | — |
-| Hero object | N/A | No `object` in spec | — |
-| Images | Existing `media/` avatars + procedural SVG dunes/stars | Backdrop must be no-photo | Procedural CSS/SVG |
-| Motion | Motion (vendored) + CSS | Catalog motion | — |
-| Glass / poured tabs | Style frameworks F2 + F7 | Liquid glass + poured fillets | — |
-| Component behavior | Repo rulebook | Focus, 44px, reduced motion | — |
-
-## Owner requirements (required)
-
-| Id | What was done | Evidence (screenshot or compare-sheet box) | Holds at 1440 | Holds at 375 |
+| Id | What was done | Holds at 1440 | Holds at 768 | Holds at 375 |
 |---|---|---|---|---|
-| R1 | One-wide `cqw` board; no phone mockups | `saffron-dusk-compare.jpg` · `frames/desktop.jpg` | Yes | Yes |
-| R2 | Liquid glass on cards; teal/amber glows under water/gather/progress | compare water/gather/progress | Yes | Yes |
-| R3 | Poured tabs: WATER, Share, Daily progress, bell line | compare water/person/progress/arc | Yes | Yes |
-| R4 | Rail: Today, Progress, Sessions, Profile each with own page | click-test log `/tmp/saffron-click/log.txt` | Yes | Yes |
-| R5 | 375 Today=left stack, Profile=right stack, bottom bar fully visible | `frames/phone.jpg` · m375 profile click | n/a | Yes |
-| R6 | Date beads, water steps, day bars, buttons mutate visible state | check dead-controls ✔ · click-test | Yes | Yes (day bars/share on Profile page) |
+| R1 | One-wide cqw board; no phone mockups | Yes | Yes (reflow, not phones) | Yes |
+| R2 | Liquid glass + teal/amber glows | Yes | Yes | Yes |
+| R3 | Poured WATER / Share / Daily / bell | Yes | Yes | Yes |
+| R4 | Rail Today/Progress/Sessions/Profile | Yes | Yes | Yes |
+| R5 | 375 Today=left, Profile=right, bottom bar | n/a | n/a | Yes |
+| R6 | Controls mutate | Yes | Yes | Yes |
+| NEW | Desktop ≠ tablet ≠ mobile | desktop board | intermediate grid | phone stack |
 
-## Compare-sheet rounds (required)
+## Compare-sheet rounds
 
 | Round | Differences I named | Fixed |
 |---|---|---|
-| 1 | Desktop was twin phone mockups | Replaced with adaptation layout boxes |
-| 2 | Rail too solid; title too heavy; date active glow weak; upgrade flame on wrong side | Glassier rail, weight 300 title, warmer bead glow, flex-direction row-reverse on upgrade |
-| 3 | Water drop well flat; dune clip clipped gear | Radial well on drop; softer dune clip-path |
+| 1–3 | Twin phones; flat rail; weak glows | Prior rebuild |
+| 4 | Tablet was tiny-desktop; mobile rail on top | Tablet breakpoint; bottom `order` |
+| 5 | Gather glow clipped; bell truncated; upgrade contrast | overflow/mask/opaque upgrade |
