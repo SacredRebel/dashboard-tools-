@@ -118,7 +118,7 @@
           ${k.menu ? `<button type="button" class="mv-kpi-menu" aria-label="Balance options" data-toast="Balance options (sample).">${svg('dots')}</button>` : '<span></span>'}
         </div>
         <div>
-          <b class="num">${val}</b>
+          <b class="num" data-ref="kpi-value">${val}</b>
           <span>${k.label}</span>
         </div>
       </article>`;
