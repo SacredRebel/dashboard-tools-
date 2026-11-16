@@ -1,4 +1,4 @@
-/* Saffron Dusk: fictional fasting-day wellness — twin liquid-glass phones. */
+/* Saffron Dusk — one-wide liquid-glass fasting board (fictional sample). */
 (function () {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -14,187 +14,105 @@
     { lab: 'Th', v: 42 }, { lab: 'Fr', v: 68 }, { lab: 'Sa', v: 55 },
     { lab: 'Su', v: 88 }, { lab: 'Mo', v: 48 }, { lab: 'Tu', v: 72 }, { lab: 'We', v: 64 },
   ];
-  let day = 9, glasses = 6, activeDay = 3, remind = false, viewState = 'ready';
   const GOAL = 8, LITERS = 2.5;
-  $('[data-greet]').textContent = 'Good evening';
-  const live = (msg) => { $('[data-live]').textContent = msg; };
-
-  function renderDates() {
-    $('[data-dates]').innerHTML = DAYS.map((d) =>
-      `<button type="button" role="tab" data-ref="date" aria-selected="${d === day}" data-day="${d}">${d}</button>`
-    ).join('');
-    $('[data-daynum]').textContent = String(day);
-  }
+  let day = 9, glasses = 6, activeDay = 3, remind = false, gatherOn = false, built = false;
+  const liveEl = $('[data-live]');
+  const live = (msg) => {
+    if (!liveEl) return;
+    liveEl.textContent = msg; liveEl.dataset.on = '1';
+    clearTimeout(live._t); live._t = setTimeout(() => { liveEl.dataset.on = '0'; }, 2200);
+  };
   function sunArc(pct) {
-    const p = Math.max(0.02, Math.min(1, pct));
-    const pts = [];
-    for (let i = 0; i <= 32; i++) {
-      const t = i / 32;
-      pts.push(`${(8 + t * 184).toFixed(1)},${(52 - Math.sin(Math.PI * t) * 40).toFixed(1)}`);
-    }
+    const p = Math.max(0.02, Math.min(1, pct)); const pts = [];
+    for (let i = 0; i <= 32; i++) { const t = i / 32; pts.push(`${(8 + t * 184).toFixed(1)},${(52 - Math.sin(Math.PI * t) * 40).toFixed(1)}`); }
     const sx = 8 + p * 184, sy = 52 - Math.sin(Math.PI * p) * 40;
-    return `<svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
-      <defs><linearGradient id="sd-arc-g" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#fff" stop-opacity="0.35"/><stop offset="0.55" stop-color="#fff" stop-opacity="0.95"/>
-        <stop offset="1" stop-color="#e8c078" stop-opacity="0.9"/></linearGradient>
-        <filter id="sd-sun-glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      </defs>
-      <polyline points="${pts.join(' ')}" fill="none" stroke="url(#sd-arc-g)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="5.2" fill="#fff" filter="url(#sd-sun-glow)"/>
-      <circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="2.4" fill="#fff6d8"/>
-    </svg>`;
+    return `<svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sd-arc-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0.35"/><stop offset="0.55" stop-color="#fff" stop-opacity="0.95"/><stop offset="1" stop-color="#e8c078" stop-opacity="0.9"/></linearGradient><filter id="sd-sun-glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><polyline points="${pts.join(' ')}" fill="none" stroke="url(#sd-arc-g)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="5.2" fill="#fff" filter="url(#sd-sun-glow)"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="2.4" fill="#fff6d8"/></svg>`;
   }
-  function renderArc() {
-    const w = WINDOWS[day] || WINDOWS[9];
-    $('[data-imsak]').textContent = w.imsak;
-    $('[data-iftar]').textContent = w.iftar;
-    $('[data-countdown]').textContent = w.left;
-    $('[data-arc]').innerHTML = sunArc(w.pct);
-  }
-  function renderWater() {
-    $('[data-segs]').innerHTML = Array.from({ length: GOAL }, (_, i) => {
-      const n = i + 1;
-      return `<button type="button" data-glass="${n}" aria-pressed="${n <= glasses}" aria-label="${n} of ${GOAL} glasses"></button>`;
-    }).join('');
-    $('[data-water-label]').textContent = `${glasses} of ${GOAL}`;
-    const liters = ((glasses / GOAL) * LITERS).toFixed(1);
-    $('[data-liters]').textContent = `${liters} LITERS of ${LITERS.toFixed(1)} LITERS`;
-    const mini = $('[data-v-segs]');
-    if (mini) mini.innerHTML = Array.from({ length: GOAL }, (_, i) => `<i class="${i < glasses ? 'on' : ''}"></i>`).join('');
-    const vw = $('[data-v-water]');
-    if (vw) vw.textContent = `${liters} L`;
-  }
-  function renderBars() {
+  function ensureControls() {
+    if (built) return; built = true;
+    const dates = $('[data-dates]');
+    if (dates) dates.innerHTML = DAYS.map((d) => `<button type="button" role="tab" data-ref="date" aria-selected="${d === day}" data-day="${d}">${d}</button>`).join('');
+    const segs = $('[data-segs]');
+    if (segs) segs.innerHTML = Array.from({ length: GOAL }, (_, i) => { const n = i + 1; return `<button type="button" data-glass="${n}" aria-pressed="${n <= glasses}" aria-label="${n} of ${GOAL} glasses"></button>`; }).join('');
     const max = Math.max(...WEEK.map((d) => d.v), 1);
-    $('[data-daybars]').innerHTML = WEEK.map((d, i) => {
-      const h = Math.max(18, Math.round((d.v / max) * 100));
-      return `<button type="button" data-wd="${i}" aria-current="${i === activeDay}" aria-label="${d.lab} ${d.v} percent">
-        <span class="bar" style="--h:${h}%" data-ref="day-bar"></span><span class="lab">${d.lab}</span></button>`;
-    }).join('');
+    const barHtml = WEEK.map((d, i) => { const h = Math.max(18, Math.round((d.v / max) * 100)); return `<button type="button" data-wd="${i}" aria-current="${i === activeDay}" aria-label="${d.lab} ${d.v} percent"><span class="bar" style="--h:${h}%" data-ref="day-bar"></span><span class="lab">${d.lab}</span></button>`; }).join('');
+    $$('[data-daybars], [data-daybars-m]').forEach((host) => { host.innerHTML = barHtml; });
+    const chart = $('[data-p-bars]');
+    if (chart) chart.innerHTML = WEEK.map((d, i) => `<i style="--h:${d.v}%" data-i="${i}" class="${i === activeDay ? 'on' : ''}"></i>`).join('');
   }
-  function syncNav(which) {
-    $$('.sd-nav').forEach((nav) => {
-      $$('button[data-nav]', nav).forEach((b) => {
-        if (b.dataset.nav === which) b.setAttribute('aria-current', 'page');
-        else b.removeAttribute('aria-current');
-      });
-    });
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (which === 'profile') $('[data-ref="phone-right"]')?.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
-    else if (which === 'today') $('[data-ref="phone-left"]')?.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
-    else live(`${which[0].toUpperCase()}${which.slice(1)} opens on phone in this sample.`);
+  function syncDates() { $$('[data-dates] [data-day]').forEach((b) => b.setAttribute('aria-selected', String(+b.dataset.day === day))); $$('[data-daynum]').forEach((el) => { el.textContent = String(day); }); }
+  function syncArc() {
+    const w = WINDOWS[day] || WINDOWS[9];
+    const imsak = $('[data-imsak]'); const iftar = $('[data-iftar]'); const countdown = $('[data-countdown]'); const arc = $('[data-arc]');
+    if (imsak) imsak.textContent = w.imsak; if (iftar) iftar.textContent = w.iftar;
+    if (countdown) countdown.textContent = remind ? `Reminder on · ${w.left}` : w.left;
+    if (arc) arc.innerHTML = sunArc(w.pct);
   }
-  function applyViewState() {
-    const note = $('[data-state-note]'), empty = $('[data-appt-empty]'), list = $('.sd-list'), records = $('[data-records]');
-    if (viewState === 'empty') {
-      if (list) list.hidden = true; if (empty) empty.hidden = false; if (records) records.innerHTML = '';
-      if (note) note.textContent = 'Showing empty states where a module has no rows.';
-    } else if (viewState === 'loading') {
-      if (list) list.hidden = false; if (empty) empty.hidden = true;
-      if (records) records.innerHTML = '<tr><td colspan="4">Loading sample records…</td></tr>';
-      if (note) note.textContent = 'Showing loading placeholders.';
-    } else if (viewState === 'error') {
-      if (list) list.hidden = false; if (empty) empty.hidden = true;
-      if (records) records.innerHTML = '<tr><td colspan="4">Could not load records. Try Save preferences again.</td></tr>';
-      if (note) note.textContent = 'Showing an error state. Prefer Ready for demos.';
-    } else {
-      if (list) list.hidden = false; if (empty) empty.hidden = true;
-      if (records) records.innerHTML = `<tr><td>Wed 9</td><td>Fasting day</td><td>6 / 8</td><td>On track</td></tr>
-        <tr><td>Tue 8</td><td>Fasting day</td><td>5 / 8</td><td>Missed afternoon glass</td></tr>
-        <tr><td>Mon 7</td><td>Journey · Olive path</td><td>7 / 8</td><td>Evening walk</td></tr>
-        <tr><td>Sun 6</td><td>Fasting day</td><td>8 / 8</td><td>Complete</td></tr>
-        <tr><td>Sat 5</td><td>Community circle</td><td>6 / 8</td><td>Shared recipes</td></tr>
-        <tr><td>Fri 4</td><td>Fasting day</td><td>7 / 8</td><td>Steady</td></tr>`;
-      if (note) note.textContent = 'Showing ready sample data.';
-    }
+  function syncWater() {
+    $$('[data-glass]').forEach((b) => b.setAttribute('aria-pressed', String(+b.dataset.glass <= glasses)));
+    const liters = ((glasses / GOAL) * LITERS).toFixed(1);
+    const label = $('[data-water-label]'); if (label) label.textContent = `${glasses} of ${GOAL}`;
+    const lit = $('[data-liters]'); if (lit) lit.textContent = `${liters} LITERS of ${LITERS.toFixed(1)} LITERS`;
+    const streak = $('[data-p-streak]'); if (streak) streak.textContent = String(Math.max(1, Math.min(7, glasses - 2)));
+  }
+  function syncBars() {
+    $$('[data-wd]').forEach((b) => b.setAttribute('aria-current', String(+b.dataset.wd === activeDay)));
+    const note = `${WEEK[activeDay].lab} · ${WEEK[activeDay].v}% of daily intention`;
+    $$('[data-day-note], [data-day-note-m]').forEach((el) => { el.textContent = note; });
+    const weekAvg = $('[data-p-week]'); if (weekAvg) weekAvg.textContent = `${Math.round(WEEK.reduce((s, d) => s + d.v, 0) / WEEK.length)}%`;
+    $$('[data-p-bars] i').forEach((el) => el.classList.toggle('on', +el.dataset.i === activeDay));
   }
   function showPage(id) {
-    $$('[data-page]').forEach((el) => {
-      if (el.classList.contains('sd-frame') || el.classList.contains('sd-page')) el.hidden = el.getAttribute('data-page') !== id;
-    });
-    $$('.sd-pages [data-route]').forEach((a) => {
-      if (a.dataset.route === id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
-    });
-    document.documentElement.dataset.page = id;
-    applyViewState();
+    $$('[data-db-page]').forEach((el) => { el.hidden = el.getAttribute('data-db-page') !== id; });
+    $$('.sd-rail [data-route]').forEach((a) => { if (a.dataset.route === id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
   }
-  function route() {
-    const id = (location.hash.replace(/^#\/?/, '') || 'overview').split('?')[0];
-    const known = ['overview', 'vitals', 'appointments', 'records', 'settings'];
-    showPage(known.includes(id) ? id : 'overview');
-  }
-
-  $('[data-dates]').addEventListener('click', (e) => {
-    const b = e.target.closest('[data-day]'); if (!b) return;
-    day = +b.dataset.day; renderDates(); renderArc(); b.focus();
-  });
-  $('[data-segs]').addEventListener('click', (e) => {
-    const b = e.target.closest('[data-glass]'); if (!b) return;
-    const n = +b.dataset.glass; glasses = glasses === n ? n - 1 : n; renderWater();
-  });
-  $('[data-daybars]').addEventListener('click', (e) => {
-    const b = e.target.closest('[data-wd]'); if (!b) return;
-    activeDay = +b.dataset.wd; renderBars(); live(`${WEEK[activeDay].lab}: ${WEEK[activeDay].v}% of daily intention.`); b.focus();
-  });
-  $$('.sd-nav').forEach((nav) => nav.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-nav]'); if (!b) return; syncNav(b.dataset.nav);
-  }));
-  $('[data-remind]').addEventListener('click', () => {
-    remind = !remind; $('[data-remind]').setAttribute('aria-pressed', String(remind));
-    live(remind ? 'Reminder set for 20 minutes before iftar.' : 'Iftar reminder cleared.');
-  });
-  $('[data-share]').addEventListener('click', () => live('Share link copied for Mira Nazari (sample).'));
-  $('[data-upgrade]').addEventListener('click', () => { live('Upgrade preview · Journeys unlocked in sample mode.'); $('[data-journeys]').textContent = '3'; });
-  $('[data-settings]').addEventListener('click', () => { location.hash = '#/settings'; });
+  ensureControls(); syncDates(); syncArc(); syncWater(); syncBars();
+  $('[data-dates]')?.addEventListener('click', (e) => { const b = e.target.closest('[data-day]'); if (!b) return; day = +b.dataset.day; syncDates(); syncArc(); live(`Ramadan ${day} · sample fasting window.`); });
+  $('[data-segs]')?.addEventListener('click', (e) => { const b = e.target.closest('[data-glass]'); if (!b) return; const n = +b.dataset.glass; glasses = glasses === n ? Math.max(0, n - 1) : n; syncWater(); live(`Water ${glasses} of ${GOAL} glasses.`); });
+  function onDayBarClick(e) { const b = e.target.closest('[data-wd]'); if (!b) return; activeDay = +b.dataset.wd; syncBars(); live(`${WEEK[activeDay].lab}: ${WEEK[activeDay].v}% of daily intention.`); }
+  $('[data-daybars]')?.addEventListener('click', onDayBarClick);
+  $('[data-daybars-m]')?.addEventListener('click', onDayBarClick);
+  $('[data-remind]')?.addEventListener('click', () => { remind = !remind; $('[data-remind]').setAttribute('aria-pressed', String(remind)); syncArc(); const lab = $('[data-remind-label]'); if (lab) lab.textContent = remind ? '20 minutes before' : 'Off'; live(remind ? 'Reminder set for 20 minutes before iftar.' : 'Iftar reminder cleared.'); });
+  $('[data-gather]')?.addEventListener('click', () => { gatherOn = !gatherOn; $('[data-gather]').setAttribute('aria-pressed', String(gatherOn)); const t = $('[data-gather-time]'); if (t) t.textContent = gatherOn ? 'RSVP kept · 6:00 PM' : '6:00 PM'; live(gatherOn ? 'RSVP kept for Laila House (sample).' : 'Gather card reset.'); });
+  function doShare(btn) { btn?.setAttribute('data-shared', String(Date.now())); live('Share link copied for Mira Nazari (sample).'); }
+  $('[data-share]')?.addEventListener('click', (e) => doShare(e.currentTarget));
+  $('[data-share-m]')?.addEventListener('click', (e) => doShare(e.currentTarget));
+  function doUpgrade(btn) { $$('[data-journeys], [data-journeys-m]').forEach((el) => { el.textContent = '3'; }); btn?.setAttribute('data-upgraded', String(Date.now())); live('Upgrade preview · Journeys unlocked in sample mode.'); }
+  $('[data-upgrade]')?.addEventListener('click', (e) => doUpgrade(e.currentTarget));
+  $('[data-upgrade-m]')?.addEventListener('click', (e) => doUpgrade(e.currentTarget));
+  $('[data-settings]')?.addEventListener('click', () => { if (window.DB?.route) location.hash = '#/profile'; else location.hash = '#/profile'; live('Opening profile settings.'); });
+  $('[data-settings-m]')?.addEventListener('click', () => { remind = !remind; $('[data-settings-m]').setAttribute('aria-pressed', String(remind)); const lab = $('[data-remind-label]'); if (lab) lab.textContent = remind ? '20 minutes before' : 'Off'; live(remind ? 'Reminder preference on.' : 'Reminder preference off.'); });
   document.addEventListener('click', (e) => {
     const b = e.target.closest('[data-act]'); if (!b) return;
-    const map = { rsvp: 'RSVP kept for Laila House.', reschedule: 'Reschedule sheet opened (sample).', join: 'Joining community circle (sample).' };
-    live(map[b.dataset.act] || `${b.textContent.trim()} · sample action.`);
+    const act = b.dataset.act;
+    if (act === 'edit-name') { const n = $('[data-name]'); if (n) n.textContent = n.textContent === 'Mira Nazari' ? 'Mira N. (sample)' : 'Mira Nazari'; }
+    else if (act === 'edit-city') { const c = $('[data-city]'); if (c) c.textContent = c.textContent === 'Cedar Bay' ? 'Olive Ridge' : 'Cedar Bay'; }
+    else if (act === 'edit-remind') { remind = !remind; const lab = $('[data-remind-label]'); if (lab) lab.textContent = remind ? '20 minutes before' : 'Off'; }
+    else if (act === 'streak') { glasses = Math.min(GOAL, glasses + 1); syncWater(); }
+    else if (act === 'week-detail') { activeDay = (activeDay + 1) % WEEK.length; syncBars(); }
+    b.setAttribute('data-used', String(Date.now())); live(`${b.textContent.trim()} · sample action.`);
   });
-  const form = $('[data-settings-form]');
-  if (form) {
-    form.addEventListener('submit', (e) => { e.preventDefault(); live('Preferences saved on-device for this sample.'); });
-    form.addEventListener('click', (e) => {
-      const b = e.target.closest('[data-state]'); if (!b) return;
-      viewState = b.dataset.state;
-      $$('[data-state]', form).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      applyViewState();
-    });
+  const pages = [
+    { id: 'overview', name: 'Today' },
+    { id: 'progress', name: 'Progress' },
+    { id: 'sessions', name: 'Sessions' },
+    { id: 'profile', name: 'Profile' },
+  ];
+  if (window.DB && typeof window.DB.route === 'function') {
+    window.DB.route(pages, (id) => showPage(id));
+  } else {
+    const route = () => { const id = (location.hash.replace(/^#\/?/, '') || 'overview').split('?')[0]; const known = pages.map((p) => p.id); showPage(known.includes(id) ? id : 'overview'); document.documentElement.dataset.page = known.includes(id) ? id : 'overview'; };
+    window.addEventListener('hashchange', route); route();
   }
-  renderDates(); renderArc(); renderWater(); renderBars();
-  window.addEventListener('hashchange', route); route();
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const root = document.querySelector('[data-db-app]');
   if (!reduce && window.Motion?.animate) {
     const frame = $('[data-ref="frame"]');
-    if (frame) {
-      window.Motion.animate(frame, { opacity: [0.9, 1], transform: ['scale(0.985)', 'scale(1)'] }, { duration: 0.5, easing: [0.22, 1, 0.36, 1] });
-    }
-    $$('.sd-desk-card, .sd-phone').forEach((el, i) => {
-      window.Motion.animate(el, { opacity: [0, 1], transform: ['translateY(10px)', 'translateY(0)'] }, { delay: 0.05 + i * 0.04, duration: 0.4, easing: [0.22, 1, 0.36, 1] });
-    });
+    if (frame) window.Motion.animate(frame, { opacity: [0.92, 1], transform: ['scale(0.988)', 'scale(1)'] }, { duration: 0.45, easing: [0.22, 1, 0.36, 1] });
   }
-
-  // Specular follow for liquid panes (transform/opacity-friendly CSS vars)
   if (!reduce && root) {
     let raf = 0;
-    const onMove = (e) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const r = root.getBoundingClientRect();
-        const x = ((e.clientX - r.left) / Math.max(1, r.width)) * 100;
-        const y = ((e.clientY - r.top) / Math.max(1, r.height)) * 100;
-        document.documentElement.style.setProperty('--spec-x', `${x.toFixed(1)}%`);
-        document.documentElement.style.setProperty('--spec-y', `${y.toFixed(1)}%`);
-      });
-    };
-    root.addEventListener('pointermove', onMove, { passive: true });
-  }
-
-  if (window.DB?.onVisible) {
-    window.DB.onVisible(root, (visible) => {
-      document.documentElement.dataset.motionPaused = visible ? '' : '1';
-    });
+    root.addEventListener('pointermove', (e) => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { const r = root.getBoundingClientRect(); document.documentElement.style.setProperty('--spec-x', `${(((e.clientX - r.left) / Math.max(1, r.width)) * 100).toFixed(1)}%`); document.documentElement.style.setProperty('--spec-y', `${(((e.clientY - r.top) / Math.max(1, r.height)) * 100).toFixed(1)}%`); }); }, { passive: true });
   }
   document.documentElement.dataset.ready = 'true';
 })();
