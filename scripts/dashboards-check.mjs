@@ -122,15 +122,18 @@ async function textAudit(page) {
       if (s.visibility === 'hidden' || +s.opacity === 0 || el.closest('.vh,[aria-hidden="true"],[disabled],[aria-disabled="true"],script,style,noscript')) continue;
       let clip = false; for (let a = el, k = 0; a && k < 4; a = a.parentElement, k++) { const cs = getComputedStyle(a); if (cs.backgroundClip === 'text' || cs.webkitBackgroundClip === 'text') clip = true; }
       if (clip) continue;
-      const r = document.createRange(); r.selectNodeContents(t); const rc = r.getBoundingClientRect();
+      const r = document.createRange(); r.selectNodeContents(t); let rc = r.getBoundingClientRect();
       if (rc.width < 2 || rc.height < 2) continue;
-      // Text scrolled out of view inside a scroll container is not on screen: sampling there reads the wrong pixels.
-      let hiddenByScroll = false;
-      for (let a = el.parentElement; a && a !== document.body; a = a.parentElement) {
+      // Only the part of the text that is actually painted counts: clip its box to every ancestor that clips
+      // (scroll containers, and the element's own box when it truncates with an ellipsis).
+      let L = rc.left, T = rc.top, Rr = rc.right, B = rc.bottom;
+      for (let a = el; a && a !== document.body; a = a.parentElement) {
         const cs = getComputedStyle(a); if (cs.overflowY === 'visible' && cs.overflowX === 'visible') continue;
-        const ar = a.getBoundingClientRect(); if (rc.bottom > ar.bottom + 1 || rc.top < ar.top - 1 || rc.right > ar.right + 1 || rc.left < ar.left - 1) { hiddenByScroll = true; break; }
+        const ar = a.getBoundingClientRect(); L = Math.max(L, ar.left); T = Math.max(T, ar.top); Rr = Math.min(Rr, ar.right); B = Math.min(B, ar.bottom);
       }
-      if (hiddenByScroll) continue;
+      if (Rr - L < 2 || B - T < 2) continue;
+      if (B - T < rc.height * 0.6) continue;   // mostly scrolled out of view
+      rc = { left: L, top: T, width: Rr - L, height: B - T };
       res.push({ text: t.textContent.trim().slice(0, 32), color: s.color, size: parseFloat(s.fontSize), weight: +s.fontWeight || 400, x: rc.left + scrollX, y: rc.top + scrollY, w: rc.width, h: rc.height });
     }
     return res;

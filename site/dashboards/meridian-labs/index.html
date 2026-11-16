@@ -6,88 +6,93 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Meridian Labs · Dashboard Tools gallery</title>
-  <meta name="description" content="Soft health diagnostics with test cards, SVG DNA helix, vitamin grid and week schedule. Sample data.">
+  <meta name="description" content="A calm personal-health board: tests and analysis, a 3D DNA helix you can turn, a supplement shelf and a week of doses. Sample data.">
   <link rel="stylesheet" href="../_vendor/fonts/plus-jakarta-sans/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
-  <link rel="stylesheet" href="../_shared/fx/fx.css">
-  <link rel="stylesheet" href="../_shared/dense-pages.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
-  <script src="../_shared/dense-pages.js"></script>
-  <script type="module" src="../_shared/fx/index.js"></script>
-  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
-  <script src="../_vendor/motion@12.23.12/motion.js"></script>
+  <script type="importmap">{ "imports": { "three": "../_vendor/three@0.170.0/three.module.min.js", "three/addons/": "../_vendor/three@0.170.0/examples/jsm/" } }</script>
 </head>
 <body>
-  <div class="me" data-db-app>
-    <header class="me-top">
-      <a class="me-brand" href="#/overview" aria-label="Meridian Labs home">
-        <span class="me-logo" aria-hidden="true"></span>
-        <span>Meridian Labs</span>
-      </a>
-      <nav class="me-orbnav" aria-label="Primary" data-nav>
-        <button type="button" data-v="home" aria-current="page" aria-label="Overview"><span data-icon="grid"></span></button>
-        <button type="button" data-v="tests" aria-label="Tests"><span data-icon="file"></span></button>
-        <button type="button" data-v="calendar" aria-label="Calendar"><span data-icon="calendar"></span></button>
-        <button type="button" data-v="alerts" aria-label="Notifications, new"><span data-icon="bell"></span><i class="me-dot" aria-hidden="true"></i></button>
-        <button type="button" data-v="settings" aria-label="Settings"><span data-icon="settings"></span></button>
-      </nav>
-      <button type="button" class="me-profile" aria-label="Account menu">
-        <span class="me-avatar" aria-hidden="true">HO</span>
-        <span class="me-who"><b>Hugo Olafsson</b><small>hugo@meridian.example</small></span>
-        <span data-icon="chevDown" aria-hidden="true"></span>
-      </button>
-    </header>
+  <svg width="0" height="0" class="vh" aria-hidden="true"><defs>
+    <symbol id="m-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="8" r="2"/><circle cx="16" cy="8" r="2"/><circle cx="8" cy="16" r="2"/><circle cx="16" cy="16" r="2"/></g></symbol>
+    <symbol id="m-clip" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="5" width="13" height="15" rx="3"/><path d="M9 5a3 3 0 0 1 6 0M9 11h6M9 15h4"/></g></symbol>
+    <symbol id="m-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="4.5" y="5.5" width="15" height="14" rx="3"/><path d="M4.5 10h15M8.5 3.5v4M15.5 3.5v4M9 14h.01M12 14h.01M15 14h.01"/></g></symbol>
+    <symbol id="m-pulse" viewBox="0 0 24 24"><path d="M3 12.500h4l2-5 3.5 10 2.5-7 1.5 2h4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="m-gear" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2M6.3 6.300l1.5 1.500M16.2 16.200l1.5 1.500M17.7 6.300l-1.5 1.500M7.8 16.200l-1.5 1.5"/></g></symbol>
+    <symbol id="m-bell" viewBox="0 0 24 24"><path d="M6.5 16.500V11a5.5 5.5 0 0 1 11 0v5.500l1.5 1.500h-14zM10 20.500h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="m-left" viewBox="0 0 24 24"><path d="m14 7-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="m-right" viewBox="0 0 24 24"><path d="m10 7 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="m-heart" viewBox="0 0 24 24"><path d="M12 19.500s-7-4.3-7-9.500a4 4 0 0 1 7-2.600A4 4 0 0 1 19 10c0 5.2-7 9.5-7 9.500z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 12h2l1-2 1.5 3.5 1-1.500H16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="m-dna" viewBox="0 0 24 24"><path d="M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9s8 4 8 9M9.5 6.500h5M9.5 17.500h5M8.5 12h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="m-scan" viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="m-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.4" fill="currentColor"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2M6.5 6.500l1.3 1.300M16.2 16.200l1.3 1.300M17.5 6.500l-1.3 1.300M7.8 16.200l-1.3 1.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="m-moon" viewBox="0 0 24 24"><path d="M18 14.500A7 7 0 0 1 9.5 6a7 7 0 1 0 8.5 8.500z" fill="currentColor"/></symbol>
+    <symbol id="m-x" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="m-logo" viewBox="0 0 40 24"><path d="M9 9l9 8M18 17l8-9" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><circle cx="8" cy="8" r="5.5" fill="currentColor"/><circle cx="18" cy="17" r="5.5" fill="currentColor"/><circle cx="27" cy="7" r="4" fill="currentColor"/></symbol>
+  </defs></svg>
 
-    <main class="me-main">
-      <div class="me-board">
-        <section class="me-tests" aria-labelledby="me-te-h">
-          <div class="me-sechead">
-            <button type="button" class="me-round" aria-label="Back" data-back><span data-icon="arrowLeft"></span></button>
-            <h1 id="me-te-h">Personal Tests and Analysis</h1>
-          </div>
-          <div class="me-filters" role="group" aria-label="Filter tests" data-filters></div>
-          <div class="me-carousel" data-tests tabindex="0" aria-label="Test cards"></div>
-          <p class="me-state" data-tests-state aria-live="polite"></p>
-        </section>
+  <div class="ml" data-db-app>
+    <div class="ml-board" data-board>
+      <header class="ml-top">
+        <a class="ml-logo" href="#/overview" aria-label="Meridian Labs, overview"><svg><use href="#m-logo"/></svg><span><b>meridian</b><small>Personal diagnostics</small></span></a>
+        <nav class="ml-nav" aria-label="Pages">
+          <a href="#/overview" aria-label="Overview"><svg><use href="#m-grid"/></svg></a>
+          <a href="#/records" aria-label="Records"><svg><use href="#m-clip"/></svg></a>
+          <a href="#/appointments" aria-label="Appointments"><svg><use href="#m-cal"/></svg></a>
+          <a href="#/vitals" aria-label="Vitals"><svg><use href="#m-pulse"/></svg><i></i></a>
+          <a href="#/settings" aria-label="Settings"><svg><use href="#m-gear"/></svg></a>
+        </nav>
+        <div class="ml-user"><span><b data-user-name>Ilse Varga</b><small>ilse@meridian.example</small></span><span class="ml-ava" aria-hidden="true">IV</span></div>
+      </header>
 
-        <section class="me-dna" aria-labelledby="me-dna-h">
-          <h2 id="me-dna-h" class="vh">DNA structure view</h2>
-          <div class="me-dnastats">
-            <p><b>B</b> Structure</p>
-            <p class="num"><b data-angstrom>23.3</b> Angstrom</p>
-          </div>
-          <div class="me-helix" data-helix aria-hidden="true"><img data-gsap="float" data-gsap-dur="14" class="me-dna" src="media/dna@2x.webp" srcset="media/dna.webp 1x, media/dna@2x.webp 2x" width="825" height="1100" alt="" decoding="async"></div>
-          <div class="me-dnaorb" role="toolbar" aria-label="DNA tools" data-dnatools>
-            <button type="button" aria-label="Heart markers" data-tool="heart" aria-pressed="true"><span data-icon="heart"></span></button>
-            <button type="button" aria-label="Activity leads" data-tool="pulse" aria-pressed="false"><span data-icon="activity"></span></button>
-            <button type="button" aria-label="Scan frame" data-tool="scan" aria-pressed="false"><span data-icon="expand"></span></button>
-          </div>
-        </section>
-
-        <section class="me-vits" aria-labelledby="me-vi-h">
-          <div class="me-sechead me-sechead-end">
-            <h2 id="me-vi-h">Your Vitamin Supplements</h2>
-            <button type="button" class="me-round" aria-label="Browse supplements" data-vitnext><span data-icon="arrowRight"></span></button>
-          </div>
-          <div class="me-vitgrid" data-vits></div>
-          <div class="me-pages" role="group" aria-label="Supplement pages" data-vitpages></div>
-        </section>
+      <!-- the 3D helix: one canvas, shared by every page (it moves aside on inner pages) -->
+      <div class="ml-hero" data-hero>
+        <img class="ml-hero-poster" src="media/helix-poster.png" alt="" width="640" height="1000">
+        <canvas data-hero-canvas aria-label="A 3D model of a DNA double helix. Drag to turn it." role="img"></canvas>
+        <div class="ml-pins" data-pins></div>
       </div>
 
-      <section class="me-week" aria-labelledby="me-wk-h">
-        <div class="me-weekhead">
-          <button type="button" class="me-round" aria-label="Previous week" data-wk="-1"><span data-icon="chevLeft"></span></button>
-          <h2 id="me-wk-h" data-month></h2>
-          <button type="button" class="me-round" aria-label="Next week" data-wk="1"><span data-icon="chevRight"></span></button>
-        </div>
-        <div class="me-weekstrip" data-week role="list"></div>
-        <p class="me-state" data-week-state aria-live="polite"></p>
-      </section>
-    </main>
+      <main class="ml-main" id="main">
+        <section data-db-page="overview" class="ml-over">
+          <div class="ml-col ml-tests">
+            <button type="button" class="ml-round ml-prev" data-act="tests-prev" aria-label="Scroll tests back"><svg><use href="#m-left"/></svg></button>
+            <h1>Personal tests and analysis</h1>
+            <div class="ml-chips" role="group" aria-label="Filter tests" data-chips></div>
+            <div class="ml-cards" data-cards tabindex="0" aria-label="Your tests"></div>
+          </div>
 
-    <p class="db-sample me-foot">Sample data · fictional</p>
+          <div class="ml-struct" aria-live="polite"><b data-s="form">B</b><small>Structure</small><b class="num" data-s="val">23.3</b><small data-s="unit">Angstrom</small></div>
+          <div class="ml-modes" role="group" aria-label="What the model shows">
+            <button type="button" data-mode="heart" aria-pressed="false" aria-label="Heart markers"><svg><use href="#m-heart"/></svg></button>
+            <button type="button" data-mode="dna" aria-pressed="true" aria-label="Structure"><svg><use href="#m-dna"/></svg></button>
+            <button type="button" data-mode="scan" aria-pressed="false" aria-label="Scan focus"><svg><use href="#m-scan"/></svg></button>
+          </div>
+
+          <div class="ml-col ml-vits">
+            <h2>Your vitamin supplements</h2>
+            <button type="button" class="ml-round ml-next" data-act="vits-next" aria-label="Next supplements"><svg><use href="#m-right"/></svg></button>
+            <div class="ml-shelf" data-shelf></div>
+            <div class="ml-dots" data-dots role="group" aria-label="Supplement pages"></div>
+          </div>
+
+          <div class="ml-week">
+            <div class="ml-month"><button type="button" class="ml-step" data-act="week-prev" aria-label="Previous week"><svg><use href="#m-left"/></svg></button><h2 data-month></h2><button type="button" class="ml-step" data-act="week-next" aria-label="Next week"><svg><use href="#m-right"/></svg></button></div>
+            <div class="ml-days" data-days></div>
+          </div>
+        </section>
+        <section data-db-page="vitals" class="ml-page" hidden></section>
+        <section data-db-page="appointments" class="ml-page" hidden></section>
+        <section data-db-page="records" class="ml-page" hidden></section>
+        <section data-db-page="settings" class="ml-page" hidden></section>
+      </main>
+      <p class="ml-sample db-sample">Sample data · fictional · not medical advice</p>
+    </div>
   </div>
+
+  <div class="ml-drawer" data-drawer hidden role="dialog" aria-modal="true" aria-labelledby="ml-drawer-title"><div class="ml-drawer-panel" data-drawer-panel></div></div>
+  <div class="ml-toast" data-toast role="status" aria-live="polite" hidden></div>
   <script src="app.js"></script>
+  <script type="module" src="helix.js"></script>
 </body>
 </html>

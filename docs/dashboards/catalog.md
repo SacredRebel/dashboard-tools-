@@ -977,14 +977,14 @@ A soft-light SOC ops board: copper accents on white, concentric radar arcs with 
 
 _Meridian Labs · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A soft health diagnostics board: filterable doctor test cards, a code-drawn DNA helix centerpiece, a vitamin supplement grid with SVG bottles, and a week schedule strip with an orange highlight day.
+A calm personal-health board on soft grey: tests and analysis on the left with scrollable doctor cards, a real 3D DNA helix you can turn in the centre with clickable markers, a shelf of supplements on the right and a week of doses along the bottom.
 
 - **Use cases:** Health & fitness · **Mode:** light · **Mood:** soft, clinical, calm, airy, reassuring
 - **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
 - **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
-- **Signature:** A soft off-white diagnostics layout centered on a code-drawn DNA helix, with an orange-highlighted day on the week strip and SVG vitamin bottles instead of product photos.
-- **Layout:** Top bar: brand · circular icon nav · profile · three columns: personal tests + filter pills · DNA helix · vitamin grid · full-width week schedule strip
-- **Responsive:** ≤1180px: vitamins under tests, DNA stays · ≤960px: single column, DNA shortens · ≤640px: test cards and week strip scroll horizontally inside
+- **Signature:** A segmented DNA double helix rendered live in WebGL, lying diagonally across the board with a soft ground shadow and pinned marker buttons.
+- **Layout:** One board sized in container units (aspect 1080:768) · top: wordmark, five round page icons, profile · left column: back button, title, five filter chips, horizontally scrolling test cards with mini charts · centre: structure readout, 3D helix with markers, three round mode buttons · right column: title, next button, 2×2 supplement tiles, pager · bottom: month stepper and a seven-day strip of dose cells · inner pages keep the board and stand the helix at the right edge
+- **Responsive:** ≤720px: the board becomes one column in reading order (readout and helix, tests, supplements, week as a list); the page icons become a floating bottom tab bar; the helix is hidden on inner pages
 - **Fonts:** Plus Jakarta Sans / Plus Jakarta Sans · **Palette:** bg `#f3f4f6`, surface `#ffffff`, text `#1a1d24`, muted `#6b7280`, accent `#5b7cfa`, highlight `#ff8a48`, lavender `#e8ecff`, ok `#1f7a4c`
 - **Variants:** Soft blue, Citrus, Night · **Closest toolkit theme:** `blush`
 

@@ -1,5 +1,4 @@
-# Media — Meridian Labs
+# Media credits: Meridian Labs
 
-## dna.webp
-Original GenerateImage (2026-11-14): soft-clay monochrome DNA helix.
-Palette/subject inspired by reference only — not a trace or copy.
+- `helix-poster.png`: a still of this dashboard's own WebGL DNA helix (`helix.js`, three.js geometry written for this repo). Made with `node scripts/hero-poster.mjs meridian-labs`. No third-party model or image.
+- Supplement and chart drawings are inline SVG written for this dashboard.

@@ -8,7 +8,7 @@ Which outside tools help build a gallery dashboard, what each is good for, and w
 
 | Need | Use | Where |
 |---|---|---|
-| 3D hero object, geometric | three.js geometry and physical materials | playbook Step 7, `_vendor/three@*`, `_shared/three/stage.js` |
+| 3D hero object, geometric | three.js geometry and physical materials | playbook Step 7, `_vendor/three@*`, `_shared/three/stage.js`; worked example `meridian-labs/helix.js`; poster with `scripts/hero-poster.mjs` |
 | Organic outlines | CSS radial-gradient fillets, CSS masks, inline SVG paths | playbook Step 4 |
 | Glass, clay, HUD surfaces | layered CSS | playbook Step 5, `docs/design/10-materials.md` |
 | Rock, paper, sand backdrops | SVG `feTurbulence` + `feDiffuseLighting` | `haven-listings/index.html` `#hl-rock` |

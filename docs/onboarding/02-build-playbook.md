@@ -46,6 +46,8 @@ Every list and chart shows four states: loading (skeleton shaped like the conten
 
 The reference dashboard sets the style. Take from it, in this order: background and atmosphere, surface material ([10-materials.md](../design/10-materials.md)), type pairing and sizes, spacing rhythm, chart style, icon style, then its signature element (the brief names it). Use the reference's techniques where it has them: layered glass, cut or organic shapes, a 3D or illustrated hero, depth and soft shadows. A dashboard that has the reference's colors but flat rectangles has not matched it.
 
+**How to build those techniques:** follow [docs/dashboards/02-reference-twin-playbook.md](../dashboards/02-reference-twin-playbook.md). It has copy-ready code for the scaling frame, poured and scooped shapes, layered glass, a live 3D hero and the phone layout, taken from two finished dashboards you can read end to end: `site/dashboards/haven-listings/` (photo frame, glass, organic shapes) and `site/dashboards/meridian-labs/` (flat board around a 3D object). Start a new dashboard by copying whichever is closer, then replace its content with the brief's.
+
 Do not copy the reference's content, business or images. Make new imagery for this business ([11-hero-art-direction.md](../design/11-hero-art-direction.md)).
 
 ### 6. Motion

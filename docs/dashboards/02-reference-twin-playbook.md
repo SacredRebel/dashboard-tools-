@@ -2,7 +2,19 @@
 
 **How to rebuild a gallery dashboard so it matches its `reference.*` image.** Follow the steps in order. Do not skip a step, do not reorder, do not invent a different method. Every pattern here is taken from one finished build you must open and copy from:
 
-> **Worked example: `site/dashboards/haven-listings/`** (`index.html`, `style.css`, `app.js`). Open it in a browser first. Then read its three files top to bottom. When this playbook says "like Haven", copy that code and change the numbers.
+> **Two worked examples. Open both in a browser, then read their files top to bottom.**
+>
+> | Example | Copy it when the reference is… | Files |
+> |---|---|---|
+> | `site/dashboards/haven-listings/` | a **picture frame**: a photo or scene fills a frame and UI shapes pour over it (glass, notches, scoops) | `index.html`, `style.css`, `app.js` |
+> | `site/dashboards/meridian-labs/` | a **flat board**: blocks on a plain surface around a **3D object** | `index.html`, `style.css`, `app.js`, `helix.js` |
+>
+> When this playbook says "like Haven" or "like Meridian", copy that code and change the numbers.
+>
+> **Serve the site over HTTP while you work** (3D modules do not load from `file://`):
+> ```bash
+> python3 -m http.server 8080 -d site      # then open http://localhost:8080/dashboards/<id>/
+> ```
 
 One dashboard at a time. Finish it completely before you open the next one.
 
@@ -48,6 +60,8 @@ Haven's numbers, as an example: frame `708 × 500`; header band `left 26.6%, wid
 - Small round controls get a 44px invisible hit area with an `::after` (see `.hl-rail a::after`).
 
 Take a screenshot. The empty frame must sit where the reference's frame sits.
+
+**Check the line breaks of every heading against the reference.** If the reference title breaks into three lines, yours must too: adjust the heading's `width` and `font-size` in cqw until the breaks match. Do not use `text-wrap: balance` on measured headings; it moves the breaks.
 
 ## Step 3. Backdrop and hero art
 
@@ -155,7 +169,23 @@ Build the object from three.js geometry:
 | Lamp | `LatheGeometry` profile + cylinder cord + emissive disc | brushed aluminum |
 | Clay forms | spheres, capsules, tori, beveled `ExtrudeGeometry` | roughness 0.85, sheen 0.4 |
 
-Required: loop runs only while visible, one frame under reduced motion, a transparent 2× PNG poster as fallback, pointer tilt of at most 8°. The object must react to one control on the page. Tools for organic models and what to do when they are unavailable: [03-asset-and-tool-map.md](03-asset-and-tool-map.md).
+Required: loop runs only while visible, one frame under reduced motion, a transparent PNG poster as fallback, pointer tilt of at most 8°. The object must react to one control on the page.
+
+**Do it the way `meridian-labs/helix.js` does. These are the parts people get wrong:**
+
+1. **A separate module file** (`helix.js`, `cube.js`…), loaded with `<script type="module">` after `app.js`. `app.js` stays a plain script.
+2. **Expose one small API on `window.DBHero`** so `app.js` can drive it: `setMode(name)`, `recolor()`, and `poster()` (render one frame, return `canvas.toDataURL('image/png')`). Fire `document.dispatchEvent(new CustomEvent('db-hero-ready'))` when it is up.
+3. **Poster first.** The HTML has `<img class="…-poster" src="media/hero-poster.png">` under the canvas. The module sets `data-live="1"` on the wrapper when WebGL works, which hides the poster. Wrap the whole module in `try { … } catch { data-live = "0" }`. Make the poster with:
+   ```bash
+   node scripts/hero-poster.mjs <id> site/dashboards/<id>/media/hero-poster.png
+   ```
+4. **Fit the object inside the canvas.** After your first render, look at the screenshot: if any part touches the canvas edge it is being cut off. Lower `group.scale` or move the camera back until there is clear space all round. Then size and place the canvas block with the measured cqw numbers.
+5. **Many repeated parts = `InstancedMesh`**, one geometry, one material. To orient a part along a curve, build an exact frame and use `matrix.makeBasis(tangent, outward, across).setPosition(pos)`. `Quaternion.setFromUnitVectors` alone leaves the part twisted.
+6. **Ground shadow = CSS**, not a 3D shadow: `filter: drop-shadow(1.6cqw 2.6cqw 1.6cqw rgb(20 22 30 / .2))` on the canvas wrapper. Turn the stage's own contact shadow off.
+7. **Labels and markers on the object are HTML buttons**, absolutely positioned over the canvas and moved every frame by projecting a 3D point (`vector.project(camera)` → pixels). They stay focusable, clickable and readable. Never draw text in WebGL.
+8. **Colors come from CSS tokens** read with `getComputedStyle` (`--helix`, `--helix-2`…), and `recolor()` re-reads them when the variant changes.
+9. **Let people turn it:** pointer drag and Left/Right arrow keys on the focused canvas; `touch-action: pan-y` so the page still scrolls on a phone.
+10. **Test in headless Chrome with software GL:** launch with `--use-gl=swiftshader --enable-unsafe-swiftshader --ignore-gpu-blocklist`. Tools for organic models and what to do when they are unavailable: [03-asset-and-tool-map.md](03-asset-and-tool-map.md).
 
 ## Step 8. Motion (copy the keyframes from Haven)
 
@@ -168,11 +198,30 @@ Required: loop runs only while visible, one frame under reduced motion, a transp
 
 ## Step 9. Inner pages live in the same frame
 
-Do what Haven does: the frame, the header and the navigation stay. The page content appears as **one frosted sheet inside the frame** (`.hl-sheet`), with the hero art still visible around it. Each page's content is written for this product. Never a new bare page with grey cards.
+The frame or board, the header and the navigation stay on every page. Pick the variant that fits:
+
+- **Picture frame (like Haven):** the page content appears as **one frosted sheet inside the frame** (`.hl-sheet`), with the hero art still visible around it.
+- **Flat board with a 3D hero (like Meridian):** the page content takes the left ~78% of the board (`.ml-page`) and the **same hero canvas moves to stand at the right edge**, smaller. One CSS rule does it: `html:not([data-page="overview"]) .ml-hero { left: …; width: …; }` with a transition. Hide its markers there.
+
+Each page's content is written for this product. Never a new bare page with grey cards.
 
 ## Step 10. Phone (≤ 720px)
 
-Redesign, don't shrink. Haven's phone layout: the frame becomes tall, the header band holds the mode pills and filters, the page rail pours out of the **bottom** edge as a tab bar, the secondary slab is hidden, the glass card spans the width. Units switch from cqw to px inside the media query.
+Redesign, don't shrink.
+
+**First, undo the measured positions with one rule.** Desktop blocks are `position: absolute` with selectors of mixed strength, so a plain reset loses to some of them and blocks pile on top of each other. Inside the phone media query write:
+
+```css
+.x-main, .x-over, .x-over * { position: static !important; }   /* everything back into normal flow */
+.x-over { display: grid; gap: 14px; position: relative !important; }
+/* then re-position only what must overlap, also with !important */
+.x-tile, .x-round-button { position: relative !important; }
+.x-badge { position: absolute !important; }
+```
+
+Then set the reading order with `order:` on the blocks. Add `overflow-x: clip` to the board so a stray hit area cannot widen the page. Take the phone screenshot as a **full-page** capture and scroll through all of it: overlaps hide below the first screen.
+
+Haven's phone layout: the frame becomes tall, the header band holds the mode pills and filters, the page rail pours out of the **bottom** edge as a tab bar, the secondary slab is hidden, the glass card spans the width. Units switch from cqw to px inside the media query.
 
 ## Step 11. Check, look, compare (three rounds minimum)
 
@@ -196,6 +245,18 @@ Checks that fail and what they mean:
 | `signature_tech …` | the technique is missing; build it for real |
 | `low-res image` | export the image larger or add a `srcset` |
 | `generic page kit` / `filler rows` | a shared template or placeholder names are on the page; write real content |
+| `text below 12px` | a chip, initials badge or count is too small; 12px minimum everywhere |
+| `horizontal overflow` at 375 | an absolute block kept its desktop position (see Step 10) or a hit area sticks out; fix the block, then `overflow-x: clip` on the board |
+| `low contrast` on a chart label inside `<svg>` | do not use SVG `<text>` for labels; put axis labels and values in HTML under or beside the chart |
+
+### What "close enough" looked like in the two worked examples
+
+Both examples stopped with differences that code could not close. They are written down, not hidden:
+
+- **Haven:** the photo's sky is darker than the reference's (needs a different photo).
+- **Meridian:** supplement bottles are flat vector drawings where the reference has photoreal renders; doctor avatars are initials where the reference has photos (both need generated images).
+
+If what is left on your list is of this kind (needs a new image or model), say so and finish. If what is left is layout, shape, spacing, type or color, you are not finished.
 
 ## Step 12. Finish
 

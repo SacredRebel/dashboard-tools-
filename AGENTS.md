@@ -36,7 +36,7 @@ You are an AI agent asked to **design and build a dashboard** (for example a CRM
 | 4 | [docs/design/02-rulebook.md](docs/design/02-rulebook.md) | Hard design rules (before any UI work) |
 | 4a | [docs/design/08-polish-standard.md](docs/design/08-polish-standard.md) · [10-materials.md](docs/design/10-materials.md) · [11-hero-art-direction.md](docs/design/11-hero-art-direction.md) · [12-microinteractions.md](docs/design/12-microinteractions.md) · [13-high-end-checklist.md](docs/design/13-high-end-checklist.md) | Template-grade polish (fidelity L1–L5, materials, hero art, FX) |
 | 5 | [docs/crm/](docs/crm/) (if building a CRM) | Data model, views, features |
-| 5a | [docs/dashboards/README.md](docs/dashboards/README.md) (Direction phase, or "make it look like this") | Pick a complete reference dashboard by style and use case from `catalog/dashboards.json`; add new ones with [01-add-a-dashboard.md](docs/dashboards/01-add-a-dashboard.md); match a reference image with [02-reference-twin-playbook.md](docs/dashboards/02-reference-twin-playbook.md) (worked example: `site/dashboards/haven-listings/`) |
+| 5a | [docs/dashboards/README.md](docs/dashboards/README.md) (Direction phase, or "make it look like this") | Pick a complete reference dashboard by style and use case from `catalog/dashboards.json`; add new ones with [01-add-a-dashboard.md](docs/dashboards/01-add-a-dashboard.md); match a reference image with [02-reference-twin-playbook.md](docs/dashboards/02-reference-twin-playbook.md) (worked examples: `site/dashboards/haven-listings/` and `site/dashboards/meridian-labs/`) |
 | 6 | [docs/stack/](docs/stack/) (before Build) | Stack, data/auth, GitHub + Vercel workflow, performance & privacy contract |
 | 6a | [docs/calendars/README.md](docs/calendars/README.md) (anything with dates: meetings, follow-ups, booking, sync) | Approach chooser, calendar styles, repo licenses; machine-readable in `catalog/calendars.json` |
 | 6b | [docs/design/07-showcase-patterns.md](docs/design/07-showcase-patterns.md) (when presenting) | Story players, device frames, before/after, glass worlds, approval gates |
@@ -162,6 +162,8 @@ templates/               ← brief, starter/ (prototype skeleton), spec, discove
 prompts/                 ← copy-paste prompts for each phase
 site/                    ← showcase site (static; deployed on Vercel); site/dashboards/<id>/ = gallery dashboards
 scripts/build.mjs        ← validates catalog, regenerates site data + docs/tools
+scripts/dashboards-check.mjs ← gallery gates: loads every page and variant, contrast, density, required techniques
+scripts/hero-poster.mjs  ← saves the fallback image for a dashboard's WebGL hero
 ```
 
 ## 8. Maintaining this repo
