@@ -8,22 +8,21 @@ Branch `cursor/contract-saffron-dusk-0545`. Maintainer merges only.
 ✔ saffron-dusk: pages=4, variants=3, frames + shot@2x · pixel contrast · text ≥ 12px
 ```
 
-### Owner rejection fix (responsive separation + liquid polish)
+### Material polish (owner: recreate reference liquid)
 
-**Desktop (~1440)** — one wide adapted board (layout.json boxes). Vertical glass rail, title, date beads, arc/water/gathering, dune, profile, daily progress, upgrade. Not twin phones. Not a phone UI scaled up.
+**Frameworks applied:** F2 liquid glass · F7 poured tabs · F11 atmosphere/dune silk (GenerateImage originals) · F12 Pillow-sampled dusk palette · F13 Fraunces · F14 motion.
 
-**Tablet (~768)** — distinct intermediate: frame unlocks aspect-ratio; CSS grid reflow (2 columns); vertical side rail in px; cards stack/reflow. Neither phone stack nor tiny-desktop.
+**Desktop (~1440):** one-wide adapted board — luminous cream/sage dusk behind translucent panes, bright rims, teal water + amber gather/progress glows, poured WATER / Share / Daily / bell.
 
-**Mobile (~375)** — Today ≈ reference left; Profile ≈ right; bottom tab bar pinned in-view on every page (`order:2` + fixed frame height). No desktop gutter/rail as phone chrome.
+**Tablet (~768):** intermediate grid reflow + side rail (not tiny-desktop, not phone).
 
-### Liquid glass
-Bright rims, lower-alpha translucency, stronger teal/amber glows, larger poured fillets on WATER / Share / Daily progress / bell — at all three widths.
+**Mobile (~375):** Today≈left · Profile≈right · bottom tab bar pinned.
 
 ### Look-fix-look
-≥2 rounds with screenshots opened at 1440 / 768 / 375 (logged in `saffron-dusk-polish.md`). Click-test all four routes at each width (`saffron-dusk-click.txt`).
+3 material rounds with screenshots opened (`saffron-dusk-polish.md`). Click-test all routes @ 1440/768/375.
 
 ### Remaining gaps
-Reference still wins on title flourishes and arc sun intensity; poured fillets can go another notch denser on the rail icons. Spec gates are green.
+Reference still denser on title flourishes and painted faces. Spec gates green.
 
 ### Do not merge — maintainer review only.
 <!-- CURSOR_AGENT_PR_BODY_END -->

@@ -1,33 +1,17 @@
-# Click-test log — saffron-dusk (owner polish pass)
+# Click-test log — saffron-dusk (material polish)
 
-Date: 2026-11-16
 Branch: cursor/contract-saffron-dusk-0545
 
-## Breakpoint separation (verified)
+## Breakpoints
 
-| Width | Frame display | Rail | Notes |
+| Width | Frame | Rail | Result |
 |------:|---|---|---|
-| 1440 | `block` + aspect 100/62 | vertical column, left | one-wide cqw board |
-| 768 | `grid` 76px + 1fr | vertical side rail (px) | 2-col card reflow; not tiny-desktop |
-| 375 | `flex` column | horizontal, bottom (`order:2`) | Today≈left · Profile≈right |
-
-## Routes clicked (all widths)
-
-| Width | overview | progress | sessions | profile |
-|------:|:---:|:---:|:---:|:---:|
-| 1440 | ✔ aria-current + visible | ✔ | ✔ | ✔ |
-| 768 | ✔ | ✔ | ✔ | ✔ |
-| 375 | ✔ rail in-view | ✔ rail in-view | ✔ rail in-view | ✔ rail in-view |
+| 1440 | block + aspect board | vertical left | all 4 routes ✔ |
+| 768 | grid reflow | vertical side | all 4 routes ✔ |
+| 375 | flex column | bottom, in-view | all 4 routes ✔ |
 
 ## Controls
+Date beads, water segments, rail `aria-current` mutate on overview.
 
-- Date beads mutate selected day (1440 / 768 / 375)
-- Water segments toggle (overview)
-- Rail navigation updates `aria-current="page"` without dead re-render
-
-## Evidence
-
-- `/tmp/sd-polish/r1/` look round 1
-- `/tmp/sd-polish/r2/` look round 2
-- `/tmp/sd-polish/clicks/` route shots
-- `node scripts/dashboards-check.mjs saffron-dusk` → ✔
+## Check
+`node scripts/dashboards-check.mjs saffron-dusk` → ✔
