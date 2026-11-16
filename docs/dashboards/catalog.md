@@ -1157,14 +1157,14 @@ Soft extruded surfaces, depth, physical-feeling controls. Smart home, devices, a
 
 _Mallow Music · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A claymorphic listening dashboard for a music app: puffy pastel tiles with soft inner highlights, a peach hero with code-drawn clay headphones and a plant, a now-playing bar you can scrub, colourful weekly listening bars, a genre donut, recently played songs and a daily mix drawn as a cosy room.
+A claymorphic listening board: mint sidebar with Mia’s avatar, peach hero with clay headphones and a plant, pastel KPI tiles, weekly pill bars, a genre donut, recently played, a cozy Daily Mix tile and a Discover banner — all with puffy two-tone clay shadows.
 
 - **Use cases:** Music & media · **Mode:** light · **Mood:** cosy, playful, warm, soft, friendly
 - **Pages:** Overview (`overview`, Dashboard) · Library (`library`, List) · Activity (`activity`, Report) · Settings (`settings`, Settings)
 - **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
-- **Signature:** Puffy clay surfaces with an outer shadow and an inner highlight, in cream, sage, peach, butter and sky, with glossy SVG headphones on the hero shelf.
-- **Layout:** 220px clay sidebar (avatar, 6 links, Plus card) · main: title + search + bell · peach hero (art 220px, greeting, plant) · now-playing bar · 4 stat tiles · listening bars (1.25fr) + top genres (1fr) · recently played + daily mix
-- **Responsive:** ≤1100px: sidebar becomes a top block, stats 2×2 · ≤700px: single column, nav in 3×2 grid, hero art above copy, player wraps to two rows
+- **Signature:** Puffy cream-and-mint clay board: peach hero shelf with a clay girl in pink headphones, pastel KPI tiles, pill listening bars and a cozy Daily Mix photo.
+- **Layout:** Mint clay sidebar (avatar, 7 links, Go Premium) · cream board: header + peach hero · 4 pastel KPIs · listening bars + genres donut · recently played + daily mix · discover banner
+- **Responsive:** ≤720px: sidebar becomes a top mint block, nav 3×2, hero stacks, KPIs 2×2, cards flow in one column
 - **Fonts:** Fredoka / Fredoka · **Palette:** bg `#f4ece1`, surface `#fbf6ef`, text `#3a2a20`, muted `#6b5546`, accent `#b04a2f`, sage `#cfe1d8`, peach `#f7d3c1`, butter `#f8e2b0`
 - **Variants:** Cream, Berry, Cocoa · **Closest toolkit theme:** `blush`
 

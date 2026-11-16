@@ -6,87 +6,136 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Mallow Music · Dashboard Tools gallery</title>
-  <meta name="description" content="Claymorphic listening dashboard for a music app: puffy pastel tiles, a now-playing bar, weekly listening, top genres and a daily mix. Sample data.">
+  <meta name="description" content="A claymorphic listening dashboard: mint sidebar, peach hero with clay headphones, pastel KPIs, weekly bars, genre donut, recently played and a daily mix. Sample data.">
   <link rel="stylesheet" href="../_vendor/fonts/fredoka/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
-  <link rel="stylesheet" href="../_shared/fx/fx.css">
-  <link rel="stylesheet" href="../_shared/dense-pages.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
-  <script src="../_shared/dense-pages.js"></script>
-  <script src="../_vendor/motion@12.23.12/motion.js"></script>
-  <script type="module" src="../_shared/fx/index.js"></script>
-  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
 </head>
 <body>
-  <div class="mm" data-db-app>
-    <aside class="mm-side">
-      <div class="mm-me"><span class="mm-avatar" aria-hidden="true" data-avatar></span><p>Hi, Juno</p></div>
-      <nav aria-label="Main">
-        <a href="#/overview" aria-current="page"><span data-icon="home"></span>Dashboard</a>
-        <a href="#/library"><span data-icon="music"></span>My music</a>
-        <a href="#/activity"><span data-icon="heart"></span>Favourites</a>
-        <a href="#/library"><span data-icon="list"></span>Playlists</a>
-        <a href="#/activity"><span data-icon="mic"></span>Podcasts</a>
-        <a href="#/settings"><span data-icon="settings"></span>Settings</a>
-      </nav>
-      <div class="mm-plus"><span data-crown aria-hidden="true"></span><b>Mallow Plus</b><p>No ads, offline mixes and lossless sound.</p><button data-plus>Try Plus free</button></div>
-    </aside>
+  <svg width="0" height="0" class="vh" aria-hidden="true"><defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m4 11 8-7 8 7v9a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="6.5" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.5" cy="16" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.2-4.4-7.2-9.8A4.2 4.2 0 0 1 12 7.4a4.2 4.2 0 0 1 7.2 2.8C19.2 15.6 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2-5 3.5 10 2.5-7 1.5 2H21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M6 6l1.6 1.6M16.4 16.4 18 18M18 6l-1.6 1.6M7.6 16.4 6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m16.2 16.2 3.6 3.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 1.5h-14zM10 20.5h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c1.2 3.8 6 5.5 6 10.5a6 6 0 0 1-12 0c0-2.8 1.8-4 2.8-6.8.8 1.8 1.8 2.8 3.2 2.8 0-2.6-1-4.6 0-6.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  </defs></svg>
 
-    <main class="mm-main">
+  <div class="mm" data-db-app>
+    <div class="mm-board" data-board>
+      <aside class="mm-side" aria-label="Sidebar">
+        <div class="mm-me">
+          <span class="mm-ava" aria-hidden="true"><img src="media/avatar.webp" srcset="media/avatar.webp 1x, media/avatar@2x.webp 2x" width="512" height="512" alt="" decoding="async"></span>
+          <p>Hi, Mia! <span aria-hidden="true">👋</span></p>
+        </div>
+        <nav class="mm-nav" aria-label="Pages">
+          <a href="#/overview" data-nav="overview" aria-current="page"><svg><use href="#i-home"/></svg><span>Dashboard</span></a>
+          <a href="#/library" data-nav="library" data-lib="all"><svg><use href="#i-music"/></svg><span>My Music</span></a>
+          <a href="#/library" data-nav="library" data-lib="favs"><svg><use href="#i-heart"/></svg><span>Favorites</span></a>
+          <a href="#/library" data-nav="library" data-lib="playlists"><svg><use href="#i-list"/></svg><span>Playlists</span></a>
+          <a href="#/library" data-nav="library" data-lib="podcasts"><svg><use href="#i-mic"/></svg><span>Podcasts</span></a>
+          <a href="#/activity" data-nav="activity"><svg><use href="#i-pulse"/></svg><span>Activity</span></a>
+          <a href="#/settings" data-nav="settings"><svg><use href="#i-gear"/></svg><span>Settings</span></a>
+        </nav>
+        <div class="mm-plus">
+          <span class="mm-crown" aria-hidden="true"></span>
+          <b>Go Premium</b>
+          <p>Unlock ad-free music and more!</p>
+          <button type="button" data-act="upgrade">Upgrade Now</button>
+        </div>
+      </aside>
+
       <header class="mm-top">
-        <h1>Dashboard</h1>
-        <label class="mm-search"><span data-icon="search"></span><span class="vh">Search recently played</span><input type="search" placeholder="Search songs or artists" data-q></label>
-        <button class="mm-round" aria-label="Notifications, 3 new"><span data-icon="bell"></span><i class="num">3</i></button>
+        <h1 data-title>Dashboard</h1>
+        <label class="mm-search"><svg><use href="#i-search"/></svg><span class="vh">Search</span><input type="search" placeholder="Search for songs, artists…" data-q aria-label="Search for songs or artists"></label>
+        <button type="button" class="mm-round" data-act="bell" aria-label="Notifications, 3 new"><svg><use href="#i-bell"/></svg><i>3</i></button>
+        <span class="mm-top-ava" aria-hidden="true"><img src="media/avatar.webp" srcset="media/avatar.webp 1x, media/avatar@2x.webp 2x" width="96" height="96" alt="" decoding="async"></span>
       </header>
 
-      <section class="mm-hero" aria-labelledby="mm-hero-h">
-        <div class="mm-heroart" data-hero data-fx="parallax" aria-hidden="true"><img data-gsap="float" data-gsap-dur="14" class="mm-head" data-fx="ambient" data-fx-dur="14" src="media/head.webp" srcset="media/head.webp 1x, media/head@2x.webp 2x" width="1600" height="1600" alt="" decoding="async"></div>
-        <div class="mm-herocopy"><h2 id="mm-hero-h" data-greet></h2><p>Your Sunday slow-down mix is ready.</p><button class="mm-btn" data-playmix><span data-icon="play"></span>Play the mix</button></div>
-        <div class="mm-plant" data-plant aria-hidden="true"></div>
-      </section>
+      <main class="mm-main" id="main">
+        <section data-db-page="overview" class="mm-over">
+          <div class="mm-hero">
+            <div class="mm-hero-art" aria-hidden="true">
+              <img src="media/head.webp" srcset="media/head.webp 1x, media/head@2x.webp 2x" width="1600" height="1600" alt="" decoding="async">
+            </div>
+            <div class="mm-hero-copy">
+              <h2 data-greet>Good Morning, Mia! <span aria-hidden="true">☀️</span></h2>
+              <p>Let's enjoy some music today!</p>
+              <button type="button" class="mm-btn" data-act="play-mix"><svg><use href="#i-play"/></svg>Play Something</button>
+            </div>
+            <div class="mm-plant" aria-hidden="true"></div>
+          </div>
 
-      <section class="mm-player" aria-label="Now playing">
-        <span class="mm-cover" data-cover aria-hidden="true"></span>
-        <span class="mm-now"><b data-now-t></b><small data-now-a></small></span>
-        <button class="mm-round mm-play" data-toggle aria-label="Play"><span data-icon="play"></span></button>
-        <label class="mm-scrub"><span class="vh">Position in song</span><input type="range" min="0" max="100" value="22" data-pos></label>
-        <span class="mm-time num" data-time></span>
-      </section>
-      <section class="mm-stats" aria-label="This week">
-        <div class="mm-stat t1" data-fx="reveal"><span data-icon="music"></span><p>Songs played</p><b class="num" data-fx="count" data-to="1312">1,312</b><small>+14% this week</small></div>
-        <div class="mm-stat t2" data-fx="reveal"><span data-icon="heart" data-anim="hover"></span><p>Favourites</p><b class="num" data-favs data-fx="count" data-to="0">0</b><small>Tap a heart to add</small></div>
-        <div class="mm-stat t3" data-fx="reveal"><span data-icon="clock"></span><p>Hours listened</p><b class="num" data-fx="count" data-to="31.8" data-decimals="1">31.8</b><small>+4.2 this week</small></div>
-        <div class="mm-stat t4" data-fx="reveal"><span data-icon="flame"></span><p>Listening streak</p><b class="num" data-fx="count" data-to="9">9</b><small>days in a row</small></div>
-      </section>
+          <div class="mm-kpis" aria-label="This week">
+            <article class="mm-kpi t1"><span class="mm-ico" aria-hidden="true"><svg><use href="#i-music"/></svg></span><small>Songs Played</small><b class="num" data-kpi="songs">1,248</b><em>+18% this week</em></article>
+            <article class="mm-kpi t2"><span class="mm-ico" aria-hidden="true"><svg><use href="#i-heart"/></svg></span><small>Favorites</small><b class="num" data-kpi="favs">128</b><em>+8 this week</em></article>
+            <article class="mm-kpi t3"><span class="mm-ico" aria-hidden="true"><svg><use href="#i-clock"/></svg></span><small>Hours Listened</small><b class="num" data-kpi="hours">34.6</b><em>+6.2 this week</em></article>
+            <article class="mm-kpi t4"><span class="mm-ico" aria-hidden="true"><svg><use href="#i-flame"/></svg></span><small>Current Streak</small><b class="num" data-kpi="streak">7</b><em>days in a row</em></article>
+          </div>
 
-      <div class="mm-row">
-        <section class="mm-card mm-listen mat-clay" data-fx="reveal spotlight" aria-labelledby="mm-l-h">
-          <div class="mm-head"><h2 id="mm-l-h">Listening this week</h2>
-            <div class="mm-seg" role="group" aria-label="Week" data-week><button data-v="this" aria-pressed="true">This week</button><button data-v="last" aria-pressed="false">Last week</button></div></div>
-          <div data-bars data-fx="draw"></div>
-        </section>
-        <section class="mm-card mm-genres mat-clay" data-fx="reveal spotlight" aria-labelledby="mm-g-h">
-          <h2 id="mm-g-h">Top genres</h2>
-          <div class="mm-gbody"><div class="mm-donut" data-donut data-fx="draw"></div><ul class="mm-legend" data-legend></ul></div>
-        </section>
-      </div>
+          <section class="mm-card mm-listen" aria-labelledby="mm-l-h">
+            <div class="mm-card-h">
+              <h2 id="mm-l-h">Listening Overview</h2>
+              <button type="button" class="mm-chip" data-act="week" aria-haspopup="listbox"><span data-week-label>This Week</span><svg><use href="#i-chev"/></svg></button>
+            </div>
+            <div class="mm-bars" data-bars role="img" aria-label="Hours listened each day this week"></div>
+          </section>
 
-      <div class="mm-row">
-        <section class="mm-card mm-recent" aria-labelledby="mm-r-h">
-          <div class="mm-head"><h2 id="mm-r-h">Recently played</h2><span class="mm-meta" data-count></span></div>
-          <ul class="mm-tracks" data-tracks></ul>
-        </section>
-        <section class="mm-card mm-mix" aria-labelledby="mm-m-h">
-          <div class="mm-head"><h2 id="mm-m-h">Daily mix</h2><button class="mm-chip" data-nextmix>Next mix</button></div>
-          <div class="mm-room" data-room aria-hidden="true"></div>
-          <div class="mm-mixcap"><span><b data-mixname></b><small data-mixcount></small></span><button class="mm-round mm-play" data-playroom aria-label="Play this mix"><span data-icon="play"></span></button></div>
-        </section>
-      </div>
+          <section class="mm-card mm-genres" aria-labelledby="mm-g-h">
+            <h2 id="mm-g-h">Top Genres</h2>
+            <div class="mm-gbody">
+              <div class="mm-donut" data-donut aria-hidden="true"></div>
+              <ul class="mm-legend" data-legend></ul>
+            </div>
+          </section>
 
-      <p class="db-sample mm-foot">Sample data · fictional artists and songs</p>
-    </main>
+          <section class="mm-card mm-recent" aria-labelledby="mm-r-h">
+            <div class="mm-card-h">
+              <h2 id="mm-r-h">Recently Played</h2>
+              <button type="button" class="mm-chip" data-act="see-recent">See All</button>
+            </div>
+            <ul class="mm-tracks" data-tracks></ul>
+          </section>
+
+          <section class="mm-card mm-mix" aria-labelledby="mm-m-h">
+            <div class="mm-card-h">
+              <h2 id="mm-m-h">Daily Mix</h2>
+              <button type="button" class="mm-chip" data-act="see-mix">See All</button>
+            </div>
+            <button type="button" class="mm-mix-tile" data-act="play-daily" aria-label="Play Chill Vibes, 80 songs">
+              <img src="media/daily-mix.webp" srcset="media/daily-mix.webp 1x, media/daily-mix@2x.webp 2x" width="1600" height="900" alt="" decoding="async">
+              <span class="mm-mix-meta"><b>Chill Vibes</b><small>80 songs</small></span>
+              <span class="mm-mix-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            </button>
+          </section>
+
+          <aside class="mm-discover" aria-label="Discover">
+            <img class="mm-star" src="media/star.webp" srcset="media/star.webp 1x, media/star@2x.webp 2x" width="256" height="256" alt="" decoding="async">
+            <div><b>Discover new music <span aria-hidden="true">✨</span></b><p>Made just for you</p></div>
+            <button type="button" class="mm-btn mm-btn--mint" data-act="explore">Explore Now</button>
+          </aside>
+        </section>
+
+        <section data-db-page="library" class="mm-page" hidden></section>
+        <section data-db-page="activity" class="mm-page" hidden></section>
+        <section data-db-page="settings" class="mm-page" hidden></section>
+      </main>
+      <p class="mm-sample db-sample">Sample data · fictional</p>
+    </div>
   </div>
+
+  <div class="mm-drawer" data-drawer hidden role="dialog" aria-modal="true" aria-labelledby="mm-drawer-title"><div class="mm-drawer-panel" data-drawer-panel></div></div>
+  <div class="mm-toast" data-toast role="status" aria-live="polite" hidden></div>
   <script src="app.js"></script>
 </body>
 </html>
