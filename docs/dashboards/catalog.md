@@ -445,15 +445,15 @@ A dark cyan glass analytics HUD floating over a blurred office scene: Q4 revenue
 
 _Mauve Ledger · original owner reference (`reference.png`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A light lilac glass finance desk: frosted KPI tiles over a soft lavender haze, average sales bars, formation status, a segmented success gauge and a recent-email list.
+A light lilac glass finance desk: near-white frosted KPI panes over lilac haze with peach bloom, hatched sales bars, formation status, a segmented success gauge and recent emails.
 
 - **Use cases:** Finance & banking · **Mode:** light · **Mood:** airy, soft, premium, calm, lilac
 - **Pages:** Overview (`overview`, Dashboard) · Transactions (`transactions`, List) · Budgets (`budgets`, Report) · Settings (`settings`, Settings)
 - **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
-- **Signature:** Frosted lilac glass cards on a soft lavender–pink haze, anchored by a segmented 51.2% success gauge.
+- **Signature:** Near-white frosted panes on lilac–peach haze, with a diagonally hatched May sales bar and a segmented 51.2% success arc of rounded ticks.
 - **Layout:** Top bar (logo, pill nav, utility icons, avatar) · greeting · 4 KPI glass cards · 12-col: average sales (8) + formation status + success gauge (4) · recent emails full width
 - **Responsive:** ≤1180px: KPIs 2×2, sales full width above side stack · ≤960px: nav scrolls · ≤640px: single column, email rows compact
-- **Fonts:** Fraunces / Outfit · **Palette:** bg `#ddd6f3`, surface `#f7f4ff`, text `#2a2740`, muted `#6e6890`, accent `#6a58c8`, good `#16a34a`, bad `#dc2626`, haze `#c4b5fd`
+- **Fonts:** Outfit / Outfit · **Palette:** bg `#ddd6f3`, surface `#f7f4ff`, text `#2a2740`, muted `#6e6890`, accent `#6a58c8`, good `#16a34a`, bad `#dc2626`, haze `#c4b5fd`
 - **Variants:** Lilac, Blush, Slate · **Closest toolkit theme:** `blush`
 
 **Best for**

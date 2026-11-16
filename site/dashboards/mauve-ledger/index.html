@@ -6,106 +6,264 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Mauve Ledger · Dashboard Tools gallery</title>
-  <meta name="description" content="Light lilac glass finance dashboard with KPIs, sales bars, formation status, success gauge and emails. Sample data.">
-  <link rel="stylesheet" href="../_vendor/fonts/fraunces/family.css">
+  <meta name="description" content="Light lilac frosted-glass finance desk: KPI panes, hatched sales bars, formation status, segmented success gauge and recent emails. Sample data.">
   <link rel="stylesheet" href="../_vendor/fonts/outfit/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
-  <link rel="stylesheet" href="../_shared/fx/fx.css">
-  <link rel="stylesheet" href="../_shared/dense-pages.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
-  <script src="../_shared/dense-pages.js"></script>
-  <script type="module" src="../_shared/fx/index.js"></script>
-  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
-  <script src="../_vendor/motion@12.23.12/motion.js"></script>
 </head>
 <body>
-  <div class="ml-haze" aria-hidden="true"><img data-gsap="float" data-gsap-dur="14" src="media/haze@2x.webp" srcset="media/haze.webp 1x, media/haze@2x.webp 2x" width="1280" height="720" alt="" decoding="async"></div>
-  <div class="ml" data-db-app>
-  <main class="ml-main">
-    <header class="ml-top">
-      <a class="ml-brand" href="#/overview" aria-label="Mauve Ledger home"><span class="ml-logo" aria-hidden="true">M</span></a>
-      <nav class="ml-nav" aria-label="Sections" data-nav>
-        <button data-v="dashboard" aria-pressed="true">Dashboard</button>
-        <button data-v="finance" aria-pressed="false">Finance</button>
-        <button data-v="accounts" aria-pressed="false">Accounts</button>
-        <button data-v="hr" aria-pressed="false">HR and payroll</button>
-        <button data-v="people" aria-pressed="false">People</button>
-        <button data-v="contracts" aria-pressed="false">Contracts</button>
-      </nav>
-      <div class="ml-utils">
-        <button class="ml-iconbtn" aria-label="Call"><span data-icon="phone"></span></button>
-        <button class="ml-iconbtn" aria-label="Calendar"><span data-icon="calendar"></span></button>
-        <button class="ml-iconbtn" aria-label="Search"><span data-icon="search"></span></button>
-        <button class="ml-iconbtn" aria-label="Notifications"><span data-icon="bell"></span></button>
-        <button class="ml-who" type="button" aria-label="Account menu for James Okoro"><span class="ml-avatar">JO</span><span data-icon="chevDown"></span></button>
-      </div>
-    </header>
-
-    <div class="ml-hello">
-      <h1>Good morning, James!</h1>
-      <p class="ml-lead" data-lead>Here’s your ledger for <span data-today></span>.</p>
-    </div>
-
-    <section class="ml-kpis" aria-label="Key figures" data-kpis></section>
-
-    <div class="ml-body">
-      <section class="ml-card ml-sales" aria-labelledby="ml-sales-h">
-        <div class="ml-card-head">
-          <div>
-            <h2 id="ml-sales-h">Average sales</h2>
-            <p class="ml-sub">Sales overview from all channels</p>
-          </div>
-          <div class="ml-sales-tools">
-            <div class="ml-seg" role="group" aria-label="Period" data-period>
-              <button data-v="current" aria-pressed="true">Current month</button>
-              <button data-v="last" aria-pressed="false">Last month</button>
-            </div>
-            <button class="ml-iconbtn" aria-label="Expand chart"><span data-icon="expand"></span></button>
-          </div>
-        </div>
-        <div class="ml-channels" data-channels></div>
-        <div data-sales-chart></div>
-        <p class="ml-note" data-sales-note aria-live="polite"></p>
-      </section>
-
-      <aside class="ml-side">
-        <section class="ml-card ml-form" aria-labelledby="ml-form-h">
-          <h2 id="ml-form-h">Formation status</h2>
-          <p class="ml-status">In progress</p>
-          <div class="ml-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="62" aria-label="Formation 62 percent complete"><i style="width:62%"></i></div>
-          <p class="ml-sub">Estimated processing: 4–5 business days</p>
-          <button class="ml-linkbtn" type="button" data-status>View status</button>
-        </section>
-
-        <section class="ml-card ml-success" aria-labelledby="ml-suc-h">
-          <h2 id="ml-suc-h">Success rate</h2>
-          <p class="ml-sub">Share of closed invoices this week</p>
-          <div class="ml-gauge-wrap">
-            <div class="ml-gauge" data-gauge></div>
-            <p class="ml-gauge-val"><b class="num" data-suc>51.2%</b><span class="ml-delta good">+5%</span></p>
-          </div>
-          <p class="ml-cheer" data-cheer>Hooray — you earned $150 today and $1,470 this week. Keep it up.</p>
-          <dl class="ml-suc-stats"><div><dt>People</dt><dd class="num">15,110</dd></div><div><dt>New users</dt><dd class="num">91,130</dd></div></dl>
-        </section>
-      </aside>
-    </div>
-
-    <section class="ml-card ml-mail" aria-labelledby="ml-mail-h">
-      <div class="ml-card-head">
-        <h2 id="ml-mail-h">Recent emails</h2>
-        <div class="ml-seg" role="group" aria-label="Filter emails" data-mail-filter>
-          <button data-v="all" aria-pressed="true">All</button>
-          <button data-v="urgent" aria-pressed="false">Urgent</button>
-        </div>
-      </div>
-      <ul class="ml-mails" data-mails></ul>
-      <p class="ml-empty" data-mail-empty hidden>No urgent emails right now.</p>
-    </section>
-
-    <p class="db-sample ml-foot">Sample data · fictional company and inbox</p>
-  </main>
+  <div class="mv-haze" aria-hidden="true">
+    <span class="mv-haze-lilac"></span>
+    <span class="mv-haze-peach"></span>
+    <span class="mv-haze-cool"></span>
   </div>
+
+  <div class="mv" data-db-app>
+    <div class="mv-page">
+      <header class="mv-top">
+        <a class="mv-logo" href="#/overview" aria-label="Mauve Ledger home">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="currentColor"/><circle cx="20" cy="20" r="7" fill="none" stroke="#fff" stroke-width="2.4"/><circle cx="20" cy="20" r="2.6" fill="#fff"/></svg>
+        </a>
+        <nav class="mv-nav" aria-label="Primary">
+          <a href="#/overview" data-nav="overview">Dashboard</a>
+          <a href="#/transactions" data-nav="transactions">Finance</a>
+          <a href="#/budgets" data-nav="budgets">Accounts</a>
+          <button type="button" data-toast="HR and Payroll is a sample view.">HR and Payroll</button>
+          <button type="button" data-toast="People directory is a sample view.">Peoples</button>
+          <a href="#/settings" data-nav="settings">Contracts</a>
+        </nav>
+        <div class="mv-utils">
+          <button type="button" class="mv-ico" aria-label="Call" data-toast="Dialer is sample-only.">
+            <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+          </button>
+          <button type="button" class="mv-ico" aria-label="Calendar" data-toast="Calendar opens on Finance.">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+          </button>
+          <button type="button" class="mv-ico" aria-label="Search" data-act="search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          </button>
+          <button type="button" class="mv-ico mv-ico--bell" aria-label="Notifications, 2 new" data-toast="2 new ledger alerts (sample).">
+            <svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>
+            <i></i>
+          </button>
+          <button type="button" class="mv-who" aria-label="Account menu for James Okoro" data-toast="Account menu (sample).">
+            <span class="mv-av" aria-hidden="true">JO</span>
+            <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="mv-main" id="main">
+        <!-- Overview -->
+        <section data-db-page="overview" class="mv-over">
+          <div class="mv-hello mv-rise" style="--d:40ms">
+            <h1>Good morning, James!</h1>
+          </div>
+
+          <section class="mv-kpis" aria-label="Key figures" data-kpis></section>
+
+          <div class="mv-body">
+            <section class="mv-pane mv-sales mv-rise" style="--d:160ms" aria-labelledby="mv-sales-h">
+              <div class="mv-pane-head">
+                <div>
+                  <h2 id="mv-sales-h">Average sales</h2>
+                  <p class="mv-sub">Sales overview from all channels</p>
+                </div>
+                <div class="mv-sales-tools">
+                  <label class="mv-select">
+                    <span class="sr-only">Period</span>
+                    <select data-period aria-label="Sales period">
+                      <option value="current">Current Month</option>
+                      <option value="last">Last Month</option>
+                    </select>
+                  </label>
+                  <button type="button" class="mv-chip" aria-label="Expand chart" data-toast="Chart expands on Finance.">
+                    <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="mv-channels" data-channels></div>
+              <div class="mv-chart" data-sales-chart></div>
+            </section>
+
+            <aside class="mv-side">
+              <section class="mv-pane mv-form mv-rise" style="--d:200ms" aria-labelledby="mv-form-h">
+                <div class="mv-pane-head">
+                  <h2 id="mv-form-h">Formation status</h2>
+                  <button type="button" class="mv-chip" aria-label="Open formation details" data-act="formation">
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </button>
+                </div>
+                <p class="mv-status">In progress</p>
+                <div class="mv-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="62" aria-label="Formation 62 percent complete">
+                  <i style="width:62%"></i>
+                </div>
+                <p class="mv-sub">Estimated Processing 4–5 Business Days</p>
+                <button type="button" class="mv-btn" data-act="formation">View status</button>
+              </section>
+
+              <section class="mv-pane mv-success mv-rise" style="--d:240ms" aria-labelledby="mv-suc-h">
+                <h2 id="mv-suc-h" class="sr-only">Success rate</h2>
+                <div class="mv-gauge-wrap">
+                  <div class="mv-gauge" data-gauge></div>
+                  <p class="mv-gauge-val"><b class="num" data-suc>51.2%</b><span class="mv-delta good">+5%</span></p>
+                </div>
+                <p class="mv-cheer" data-cheer>Hooray, you have completed more than half of monthly goal and still have 14 days left.</p>
+                <dl class="mv-suc-stats">
+                  <div><dt>Peoples</dt><dd class="num">15,110</dd></div>
+                  <div><dt>New Users</dt><dd class="num">91,130</dd></div>
+                </dl>
+              </section>
+            </aside>
+          </div>
+
+          <section class="mv-pane mv-mail mv-rise" style="--d:280ms" aria-labelledby="mv-mail-h">
+            <div class="mv-pane-head">
+              <h2 id="mv-mail-h">Recent emails</h2>
+              <div class="mv-seg" role="group" aria-label="Filter emails" data-mail-filter>
+                <button type="button" data-v="all" aria-pressed="true">All</button>
+                <button type="button" data-v="urgent" aria-pressed="false">Urgent</button>
+              </div>
+            </div>
+            <ul class="mv-mails" data-mails></ul>
+            <p class="mv-empty" data-mail-empty hidden>No urgent emails right now.</p>
+          </section>
+        </section>
+
+        <!-- Transactions / Finance -->
+        <section data-db-page="transactions" class="mv-sheet" hidden>
+          <div class="mv-sheet-head">
+            <div>
+              <h1>Finance</h1>
+              <p class="mv-sub">Ledger lines for Mauve Ledger · sample</p>
+            </div>
+            <div class="mv-tools">
+              <label class="mv-search">
+                <span class="sr-only">Search transactions</span>
+                <input type="search" data-tx-q placeholder="Search vendor or memo" autocomplete="off">
+              </label>
+              <div class="mv-seg" role="group" aria-label="Sort" data-tx-sort>
+                <button type="button" data-v="newest" aria-pressed="true">Newest</button>
+                <button type="button" data-v="amount" aria-pressed="false">Amount</button>
+              </div>
+            </div>
+          </div>
+          <div class="mv-pane">
+            <ul class="mv-tx" data-tx></ul>
+            <p class="mv-empty" data-tx-empty hidden>No matches. Clear search to see all sample lines.</p>
+          </div>
+        </section>
+
+        <!-- Budgets / Accounts -->
+        <section data-db-page="budgets" class="mv-sheet" hidden>
+          <div class="mv-sheet-head">
+            <div>
+              <h1>Accounts</h1>
+              <p class="mv-sub">Budget envelopes for this month</p>
+            </div>
+            <div class="mv-tools">
+              <div class="mv-seg" role="group" aria-label="Budget range" data-budget-range>
+                <button type="button" data-v="month" aria-pressed="true">This month</button>
+                <button type="button" data-v="quarter" aria-pressed="false">Quarter</button>
+              </div>
+              <button type="button" class="mv-btn" data-toast="Budget export is sample-only.">Export CSV</button>
+            </div>
+          </div>
+          <div class="mv-stat-row">
+            <article class="mv-pane"><span class="mv-sub">Committed</span><b class="num" data-bud-committed>$76,200</b></article>
+            <article class="mv-pane"><span class="mv-sub">Spent</span><b class="num" data-bud-spent>$41,207</b></article>
+            <article class="mv-pane"><span class="mv-sub">Remaining</span><b class="num" data-bud-left>$34,993</b></article>
+          </div>
+          <div class="mv-budget-grid" data-budgets></div>
+          <section class="mv-pane">
+            <h2>Envelope notes</h2>
+            <p class="mv-budget-note">Payroll is tracking 2 days ahead of the bi-weekly cut. Marketing includes the May campaign kit; travel is mostly unused after the Apex Ops kickoff moved virtual. Contingency stays locked unless Formation clears legal review.</p>
+            <ul class="mv-tx" data-budget-notes>
+              <li><span class="mv-av" aria-hidden="true">PR</span><span><b>Payroll buffer</b><small>Keep 8% headroom through June hire</small></span><span class="amt num">8%</span><time>Open</time></li>
+              <li><span class="mv-av" aria-hidden="true">MK</span><span><b>Marketing freeze</b><small>Pause new ads until formation lands</small></span><span class="amt num">Watch</span><time>Flag</time></li>
+              <li><span class="mv-av" aria-hidden="true">FC</span><span><b>Facilities</b><small>Lease renewal draft with Contracts</small></span><span class="amt num">Draft</span><time>Due Fri</time></li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Settings / Contracts -->
+        <section data-db-page="settings" class="mv-sheet" hidden>
+          <div class="mv-sheet-head">
+            <div>
+              <h1>Contracts</h1>
+              <p class="mv-sub">Workspace preferences · sample</p>
+            </div>
+            <button type="button" class="mv-btn" data-toast="Contract vault is sample-only.">Open vault</button>
+          </div>
+          <div class="mv-stat-row">
+            <article class="mv-pane"><span class="mv-sub">Active contracts</span><b class="num">14</b></article>
+            <article class="mv-pane"><span class="mv-sub">Awaiting signature</span><b class="num">3</b></article>
+            <article class="mv-pane"><span class="mv-sub">Renewals · 30d</span><b class="num">2</b></article>
+          </div>
+          <div class="mv-settings-grid">
+            <form class="mv-pane mv-form-card" data-settings novalidate>
+              <label class="mv-field">Display name
+                <input name="name" type="text" value="James Okoro" required minlength="2" autocomplete="name">
+              </label>
+              <label class="mv-field">Alert email
+                <input name="email" type="email" value="james@mauveledger.example" required autocomplete="email">
+              </label>
+              <label class="mv-field">Company
+                <input name="company" type="text" value="Mauve Ledger Studio" autocomplete="organization">
+              </label>
+              <fieldset class="mv-fieldset">
+                <legend>Notifications</legend>
+                <label class="mv-switch"><input type="checkbox" name="urgent" checked> Urgent email alerts</label>
+                <label class="mv-switch"><input type="checkbox" name="formation" checked> Formation status updates</label>
+                <label class="mv-switch"><input type="checkbox" name="digest"> Weekly digest</label>
+                <label class="mv-switch"><input type="checkbox" name="renewals" checked> Contract renewal reminders</label>
+              </fieldset>
+              <label class="mv-field">Colour variant
+                <select name="variant" data-variant-select>
+                  <option value="default">Lilac</option>
+                  <option value="blush">Blush</option>
+                  <option value="slate">Slate</option>
+                </select>
+              </label>
+              <p class="mv-form-err" data-settings-err hidden></p>
+              <div class="mv-form-actions">
+                <button type="submit" class="mv-btn">Save preferences</button>
+                <button type="button" class="mv-btn mv-btn--ghost" data-preview-state>Preview a state</button>
+              </div>
+              <div class="mv-statebox" data-statebox hidden></div>
+            </form>
+            <aside class="mv-settings-side">
+              <section class="mv-pane">
+                <h2>Renewal queue</h2>
+                <ul class="mv-tx" data-renewals>
+                  <li><span class="mv-av" aria-hidden="true">AO</span><span><b>Apex Ops · MSA</b><small>Auto-renew · 12 months</small></span><span class="amt num">12 May</span><time>Review</time></li>
+                  <li><span class="mv-av" aria-hidden="true">NW</span><span><b>Northwind Studio</b><small>Design retainers</small></span><span class="amt num">28 May</span><time>Draft</time></li>
+                  <li><span class="mv-av" aria-hidden="true">CF</span><span><b>Cloudflare</b><small>Workers plan</small></span><span class="amt num">2 Jun</span><time>OK</time></li>
+                  <li><span class="mv-av" aria-hidden="true">LM</span><span><b>Lumen &amp; Co</b><small>Office lease · Unit 4</small></span><span class="amt num">30 Jun</span><time>Watch</time></li>
+                </ul>
+              </section>
+              <section class="mv-pane">
+                <h2>Signing rules</h2>
+                <p class="mv-budget-note">Dual approval above $5,000. Formation packets route to legal before finance countersigns. Sample workspace — no real contracts are stored here.</p>
+                <button type="button" class="mv-btn" data-toast="Signing rules editor is sample-only.">Edit rules</button>
+              </section>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <nav class="mv-rail" aria-label="Pages">
+        <a href="#/overview"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg><span>Home</span></a>
+        <a href="#/transactions"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>Finance</span></a>
+        <a href="#/budgets"><svg viewBox="0 0 24 24"><path d="M4 19V5h4v14H4zm6 0V9h4v10h-4zm6 0v-7h4v7h-4z"/></svg><span>Accounts</span></a>
+        <a href="#/settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2.5M12 19.5V22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M2 12h2.5M19.5 12H22M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><span>Contracts</span></a>
+      </nav>
+    </div>
+    <p class="mv-sample db-sample">Sample data · fictional company and inbox</p>
+  </div>
+
+  <div class="mv-toast" data-toast-el role="status" aria-live="polite" hidden></div>
   <script src="app.js"></script>
 </body>
 </html>
