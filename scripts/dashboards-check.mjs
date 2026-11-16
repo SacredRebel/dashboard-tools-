@@ -344,6 +344,48 @@ for (const d of list) {
           }, d.signature_tech);
           errs.push(...tech);
         }
+        // Layout spec: the overview must match the measured reference (site/dashboards/<id>/layout.json, docs/dashboards/07-layout-spec.md).
+        if (pg.id === d.pages[0].id && variant.id === 'default' && w === 1440 && isFile(join(site, 'dashboards', d.id, 'layout.json'))) {
+          const spec = JSON.parse(readFileSync(join(site, 'dashboards', d.id, 'layout.json'), 'utf8'));
+          const lay = await page.evaluate((spec) => {
+            const out = [];
+            const vis = (el) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width > 1 && r.height > 1 && cs.visibility !== 'hidden' && cs.display !== 'none' && +cs.opacity > 0.05; };
+            const q = (name) => [...document.querySelectorAll(`[data-ref="${name}"]`)].filter(vis);
+            const frameEl = q('frame')[0];
+            if (!frameEl) return ['layout: no visible element with data-ref="frame"'];
+            const F = frameEl.getBoundingClientRect();
+            const pct = (v) => Math.round((v / F.width) * 1000) / 10;
+            const f = spec.frame || {};
+            const vw = Math.round((F.width / innerWidth) * 1000) / 10; const asp = Math.round((F.height / F.width) * 100) / 100;
+            if (f.min_w_vw && vw < f.min_w_vw) out.push(`layout frame: width is ${vw}% of the viewport, reference needs ≥ ${f.min_w_vw}%`);
+            if (f.max_w_vw && vw > f.max_w_vw) out.push(`layout frame: width is ${vw}% of the viewport, reference needs ≤ ${f.max_w_vw}%`);
+            if (f.aspect && (asp < f.aspect[0] || asp > f.aspect[1])) out.push(`layout frame: height/width is ${asp}, reference needs ${f.aspect[0]}–${f.aspect[1]}`);
+            for (const [name, b] of Object.entries(spec.boxes || {})) {
+              const els = q(name);
+              const need = b.count || 1;
+              if (els.length < need) { out.push(`layout ${name}: found ${els.length} visible data-ref="${name}", need ${need}${b.note ? ' — ' + b.note : ''}`); continue; }
+              for (const el of (b.count ? els : els.slice(0, 1))) {
+                const r = el.getBoundingClientRect();
+                const got = { x: pct(r.left - F.left), y: pct(r.top - F.top), w: pct(r.width), h: pct(r.height) };
+                const bad = [];
+                for (const k of ['x', 'y', 'w', 'h']) {
+                  if (b[k] == null) continue;
+                  const tol = b.tol ?? ((k === 'x' || k === 'y') ? 3 : Math.max(1.5, b[k] * 0.25));
+                  if (Math.abs(got[k] - b[k]) > tol) bad.push(`${k} ${got[k]} (want ${b[k]} ±${Math.round(tol * 10) / 10})`);
+                }
+                for (const [k, lim] of [['min_w', 'w'], ['min_h', 'h']]) if (b[k] != null && got[lim] < b[k]) bad.push(`${lim} ${got[lim]} (want ≥ ${b[k]})`);
+                for (const [k, lim] of [['max_w', 'w'], ['max_h', 'h']]) if (b[k] != null && got[lim] > b[k]) bad.push(`${lim} ${got[lim]} (want ≤ ${b[k]})`);
+                if (b.within) {
+                  const cx = got.x + got.w / 2, cy = got.y + got.h / 2; const [x0, x1] = b.within.x || [-1e9, 1e9]; const [y0, y1] = b.within.y || [-1e9, 1e9];
+                  if (cx < x0 || cx > x1 || cy < y0 || cy > y1) bad.push(`centre ${Math.round(cx * 10) / 10},${Math.round(cy * 10) / 10} outside x ${x0}–${x1}, y ${y0}–${y1}`);
+                }
+                if (bad.length) { out.push(`layout ${name}: ${bad.join('; ')}${b.note ? ' — ' + b.note : ''}`); if (b.count) break; }
+              }
+            }
+            return out;
+          }, spec);
+          errs.push(...lay.map((e) => `${e} [% of frame width, from the frame's top-left]`));
+        }
         errs.push(...gate);
         errs.push(...(await textAudit(page)));
         if (!errs.length && variant.id === 'default' && w === 1440) {
