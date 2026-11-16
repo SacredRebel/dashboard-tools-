@@ -1,344 +1,120 @@
-/* Pulsar Analytics twin: soft-3D board + WebGL ridge terrain. Sample data only. */
-const $ = (s, r = document) => r.querySelector(s);
-const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-const esc = (v) => String(v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* Pulsar Analytics: a board of tiles around one live scene (terrain.js), plus three pages. Sample data is fictional.
+   No polling; state lives in memory. */
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const esc = (v) => String(v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const k = (n) => (n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n));
 
-const METRICS = [
-  { id: 'users', name: 'Active users', icon: 'i-users', value: 18420, delta: '+8.4%', series: [11, 13, 12, 15, 18, 17, 19, 21, 20, 22, 24, 23] },
-  { id: 'sessions', name: 'Sessions', icon: 'i-bolt', value: 96200, delta: '+4.1%', series: [40, 42, 38, 45, 48, 50, 47, 52, 55, 54, 58, 61] },
-  { id: 'errors', name: 'Error rate', icon: 'i-warn', value: 0.42, unit: '%', delta: '−0.08%', series: [0.7, 0.65, 0.6, 0.55, 0.5, 0.48, 0.52, 0.46, 0.44, 0.43, 0.41, 0.42] },
-  { id: 'latency', name: 'p95 latency', icon: 'i-pulse', value: 186, unit: 'ms', delta: '−12ms', series: [220, 210, 205, 198, 190, 195, 188, 184, 190, 182, 180, 186] },
-];
+  const RANGES = { '24h': 0.16, '7d': 1, '30d': 4.1 };
+  const METRICS = { users: { name: 'Active users', base: 18400, fmt: k, delta: '+22%', face: 'repeating-linear-gradient(180deg, var(--amber) 0 12%, transparent 12% 24%)', glow: 'var(--amber)' },
+    sessions: { name: 'Sessions', base: 96200, fmt: k, delta: '+4.1%', face: 'radial-gradient(circle, var(--mint) 0 14%, transparent 15%) 0 0 / 34% 34%, #123a36', glow: 'var(--mint)' },
+    errors: { name: 'Error rate', base: 0.42, fmt: (n) => n.toFixed(2) + '%', flat: true, delta: '−0.08%', face: 'radial-gradient(circle at 40% 35%, #f0d4ff, var(--violet) 60%)', glow: 'var(--violet)' },
+    latency: { name: 'p95 latency', base: 186, fmt: (n) => Math.round(n) + ' ms', flat: true, delta: '−12 ms', face: 'linear-gradient(135deg, var(--mint), var(--pink))', glow: 'var(--pink)' } };
+  const CHANNELS = [['Search', 34, 'violet'], ['Direct', 38, 'violet'], ['Social', 42, 'violet'], ['Email', 46, 'violet'], ['Referral', 50, 'violet'], ['Paid', 44, 'teal'], ['Partners', 52, 'mint'], ['API', 58, 'mint'], ['App', 56, 'mint']].map(([name, h, top], i) => ({ id: 'c' + i, name, h, top, share: Math.round(h / 4.2) }));
+  const TAGS = [['Checkout', '62%', 24, 9, 'violet'], ['API gateway', 'steady', 2, 11, 'mint'], ['Search', '18.4k', 41, 18, 'pink'], ['Auth', '99.9%', 41, 29, 'violet'], ['Jobs queue', '412 waiting', 0, 34, 'amber'], ['Peak · Thu 19:00', '', 17, 35, 'mint'], ['EU-west', '42 ms', 55, 39, 'mint'], ['Cache', 'warm', 51, 53, 'amber'], ['Pool', '71% used', 23, 86, 'violet'], ['Edge', '0.2% errors', 34, 86, 'pink']];
+  const EVENTS = [['checkout.completed', 'Checkout', 18420, 'OK', '2 min ago'], ['plan.upgraded', 'Billing', 12880, 'OK', '4 min ago'], ['invite.sent', 'Growth', 9610, 'OK', '6 min ago'], ['report.exported', 'Product', 6240, 'OK', '9 min ago'], ['search.performed', 'Product', 4975, 'OK', '11 min ago'], ['payment.failed', 'Billing', 312, 'Error', '14 min ago'], ['login.blocked', 'Auth', 148, 'Error', '21 min ago'], ['webhook.retried', 'API', 96, 'Error', '33 min ago'], ['trial.started', 'Growth', 2210, 'OK', '40 min ago'], ['seat.added', 'Billing', 1630, 'OK', '52 min ago']].map(([name, area, n, status, ago], i) => ({ id: 'e' + i, name, area, n, status, ago }));
+  const REGIONS = [['US-east', 22400, 38, 99.98], ['EU-west', 18900, 42, 99.97], ['AP-south', 12600, 71, 99.91], ['SA-east', 6800, 96, 99.84], ['AF-south', 4100, 118, 99.79], ['AP-north', 5100, 64, 99.93]].map(([name, rps, ms, up], i) => ({ id: 'r' + i, name, rps, ms, up }));
+  const S = { range: '7d', metric: 'users', tag: 0, channel: 'c7', q: '', area: 'All', sort: 'n', dir: -1, region: 'r0', view: 'ready', watches: [{ id: 'w1', region: 'r3', ms: 110 }] };
+  const mult = () => RANGES[S.range];
 
-const CHANNELS = [
-  { id: 'web', name: 'Web', fill: 78, h: 92 },
-  { id: 'ios', name: 'iOS', fill: 64, h: 76 },
-  { id: 'android', name: 'Android', fill: 52, h: 68 },
-  { id: 'api', name: 'API', fill: 88, h: 98 },
-  { id: 'edge', name: 'Edge', fill: 41, h: 54 },
-  { id: 'bots', name: 'Bots', fill: 22, h: 36 },
-];
+  function toast(msg, undo) { const t = $('[data-toast]'); t.innerHTML = `<span>${esc(msg)}</span>${undo ? '<button type="button">Undo</button>' : ''}`; t.hidden = false; if (undo) $('button', t).onclick = () => { undo(); t.hidden = true; };
+    clearTimeout(toast.t); toast.t = setTimeout(() => { t.hidden = true; }, undo ? 6000 : 2800); }
+  const line = (v, w = 120, h = 50) => { const mx = Math.max(...v), mn = Math.min(...v); return v.map((y, i) => (i ? 'L' : 'M') + ((i / (v.length - 1)) * w).toFixed(1) + ' ' + (h - 5 - ((y - mn) / (mx - mn || 1)) * (h - 10)).toFixed(1)).join(' '); };
+  const series = (seed, n = 14) => [...Array(n)].map((_, i) => 30 + Math.sin(i * 0.7 + seed) * 14 + ((i * seed * 7) % 11) + i * (seed % 3));
 
-const EVENTS = [
-  { id: 'e1', name: 'checkout.completed', count: 8420, region: 'US-East', severity: 'info' },
-  { id: 'e2', name: 'auth.login', count: 22140, region: 'EU-West', severity: 'info' },
-  { id: 'e3', name: 'billing.retry', count: 612, region: 'US-West', severity: 'warn' },
-  { id: 'e4', name: 'edge.cache_miss', count: 3180, region: 'APAC', severity: 'info' },
-  { id: 'e5', name: 'job.timeout', count: 94, region: 'US-East', severity: 'error' },
-  { id: 'e6', name: 'feature.flag_on', count: 1560, region: 'EU-West', severity: 'info' },
-  { id: 'e7', name: 'stream.lag', count: 210, region: 'SA-East', severity: 'warn' },
-  { id: 'e8', name: 'search.query', count: 11980, region: 'US-East', severity: 'info' },
-  { id: 'e9', name: 'webhook.delivered', count: 4020, region: 'EU-Central', severity: 'info' },
-  { id: 'e10', name: 'quota.exceeded', count: 37, region: 'APAC', severity: 'error' },
-];
+  /* ---------- static pieces ---------- */
+  $('[data-range]').innerHTML = Object.keys(RANGES).map((r) => `<button type="button" data-range-v="${r}" aria-pressed="${S.range === r}">${r}</button>`).join('');
+  $('[data-stars]').innerHTML = [[120, 150, 330, 60], [330, 60, 520, 190], [520, 190, 700, 110], [240, 300, 430, 250], [430, 250, 640, 330], [640, 330, 860, 250], [90, 420, 260, 360]].map(([a, b, c, d]) => `<line x1="${a}" y1="${b}" x2="${c}" y2="${d}"/><circle cx="${a}" cy="${b}" r="1.8"/><circle cx="${c}" cy="${d}" r="1.8"/>`).join('');
+  $('[data-dial]').innerHTML = `<svg viewBox="0 0 100 100" aria-hidden="true">${[...Array(48)].map((_, i) => `<line x1="50" y1="${i % 4 ? 9 : 7}" x2="50" y2="14" stroke="${i > 30 ? 'var(--violet)' : 'var(--text-subtle)'}" stroke-width="${i % 4 ? 0.8 : 1.4}" transform="rotate(${i * 7.5} 50 50)"/>`).join('')}
+    <circle cx="50" cy="50" r="29" fill="none" stroke="var(--violet)" stroke-width="5" stroke-linecap="round" stroke-dasharray="52 200" transform="rotate(-150 50 50)" opacity="0.9"/><circle cx="50" cy="50" r="22" fill="#1d1b24"/>
+    <g class="hand" data-hand1><line x1="50" y1="50" x2="50" y2="24" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round"/></g><g class="hand" data-hand2><line x1="50" y1="50" x2="76" y2="50" stroke="var(--mint)" stroke-width="2.4" stroke-linecap="round"/></g><circle cx="50" cy="50" r="2.6" fill="#ffffff"/></svg>`;
 
-const REGIONS = [
-  { id: 'us-east', name: 'US-East', rps: 18400, health: 96, bars: [62, 70, 68, 74, 80, 78, 84] },
-  { id: 'us-west', name: 'US-West', rps: 11200, health: 93, bars: [48, 52, 50, 55, 58, 60, 57] },
-  { id: 'eu-west', name: 'EU-West', rps: 15600, health: 97, bars: [55, 58, 62, 60, 66, 70, 68] },
-  { id: 'eu-central', name: 'EU-Central', rps: 8200, health: 91, bars: [36, 40, 38, 42, 44, 43, 46] },
-  { id: 'apac', name: 'APAC', rps: 9800, health: 89, bars: [40, 44, 42, 48, 50, 52, 49] },
-  { id: 'sa-east', name: 'SA-East', rps: 3100, health: 86, bars: [18, 20, 22, 21, 24, 26, 25] },
-  { id: 'af-south', name: 'AF-South', rps: 1400, health: 84, bars: [10, 12, 11, 13, 14, 15, 14] },
-  { id: 'me-central', name: 'ME-Central', rps: 2200, health: 88, bars: [14, 16, 15, 17, 18, 19, 18] },
-];
-
-const HOURS = [22, 18, 14, 12, 16, 28, 40, 55, 70, 82, 88, 76, 64, 58, 62, 70, 78, 85, 80, 66, 48, 36, 30, 26];
-const WAVE = [12, 18, 16, 24, 30, 28, 36, 42, 40, 48, 55, 52, 58, 62, 60, 66];
-
-const S = {
-  range: '7d',
-  metric: 'users',
-  channel: 'api',
-  q: '',
-  view: 'ready',
-  sort: 'count-desc',
-  region: 'us-east',
-  alerts: true,
-  digest: true,
-};
-
-const fmt = (m) => {
-  if (m.unit === '%') return m.value.toFixed(2) + '%';
-  if (m.unit === 'ms') return m.value + ' ms';
-  return m.value >= 1000 ? (m.value / 1000).toFixed(m.value >= 10000 ? 1 : 2).replace(/\.0$/, '') + 'k' : String(m.value);
-};
-
-function toast(msg) {
-  const t = $('[data-toast]');
-  t.textContent = msg;
-  t.hidden = false;
-  clearTimeout(toast.t);
-  toast.t = setTimeout(() => { t.hidden = true; }, 2600);
-}
-
-/* ---------- clock ticks ---------- */
-(function ticks() {
-  const g = $('[data-ticks]');
-  if (!g) return;
-  let html = '';
-  for (let i = 0; i < 60; i++) {
-    const a = (i / 60) * Math.PI * 2 - Math.PI / 2;
-    const major = i % 5 === 0;
-    const r0 = major ? 72 : 78;
-    const r1 = 86;
-    const x0 = 100 + Math.cos(a) * r0, y0 = 100 + Math.sin(a) * r0;
-    const x1 = 100 + Math.cos(a) * r1, y1 = 100 + Math.sin(a) * r1;
-    html += `<line x1="${x0.toFixed(1)}" y1="${y0.toFixed(1)}" x2="${x1.toFixed(1)}" y2="${y1.toFixed(1)}" stroke="${major ? 'rgb(196 155 255 / 0.75)' : 'rgb(196 155 255 / 0.28)'}" stroke-width="${major ? 2.2 : 1.2}"/>`;
+  /* ---------- overview ---------- */
+  function paintOverview() {
+    const m = METRICS[S.metric], x = mult(), val = (key) => { const d = METRICS[key]; return d.fmt(d.flat ? d.base * (1 + (x - 1) * 0.03) : d.base * x); };
+    $('[data-mini]').innerHTML = [['Requests', k(Math.round(4.2e6 * x))], ['Errors', k(Math.round(17600 * x))], ['Apdex', '0.94'], ['p50', '48 ms'], ['p95', '186 ms'], ['p99', '412 ms'], ['Deploys', String(Math.max(1, Math.round(6 * x)))], ['Rollbacks', x > 2 ? '1' : '0'], ['Incidents', x > 2 ? '2' : '0']].map(([l, v]) => `<span><small>${l}</small><b class="num">${v}</b></span>`).join('');
+    $('[data-hand1]').style.transform = `rotate(${-40 + x * 30}deg)`; $('[data-hand2]').style.transform = `rotate(${20 + Object.keys(METRICS).indexOf(S.metric) * 28}deg)`;
+    $('[data-checks]').innerHTML = [['API', 96], ['Jobs', 84], ['Edge', 78], ['Database', 91], ['Cache', 88]].map(([n, v]) => `<li><span>${n}</span><b class="num">${v}</b></li>`).join('');
+    const segs = [['--mint', 34], ['--amber', 14], ['--violet', 24], ['--pink', 16]]; let off = 0;
+    $('[data-ring]').innerHTML = `<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="rgb(0 0 0 / 0.35)" stroke-width="8"/>${segs.map(([c, len]) => { const o = off; off += len + 2; return `<circle class="seg" cx="50" cy="50" r="40" stroke="var(${c})" stroke-width="8" pathLength="100" stroke-dasharray="${len} ${100 - len}" stroke-dashoffset="${-o}" transform="rotate(-120 50 50)"/>`; }).join('')}</svg><b class="num">88<small>health</small></b>`;
+    $('[data-hours]').innerHTML = [...Array(18)].map((_, i) => `<i style="--k:${i};height:${28 + ((i * 37) % 60)}%;--b1:var(${i % 3 ? '--mint' : '--violet'});--b2:var(${i % 3 ? '--teal' : '--violet'})"></i>`).join('');
+    $('[data-deploys]').innerHTML = [['v4.12', 'cache keys', '2 h', '--mint'], ['v4.11', 'checkout retry', '1 d', '--violet'], ['v4.10', 'search index', '3 d', '--amber']].map(([v, n, t, c]) => `<li><i style="--c:var(${c})"></i><span><b>${v}</b> ${n}</span><span>${t}</span></li>`).join('');
+    $('[data-orbs]').innerHTML = Object.entries(METRICS).map(([id, d]) => `<button type="button" class="pz-orb" data-metric="${id}" aria-pressed="${S.metric === id}"><span style="--face:${d.face};--glow:${d.glow}"></span><b class="num">${val(id)}</b>${esc(d.name)}</button>`).join('');
+    $('[data-metric-name]').textContent = m.name; $('[data-delta]').textContent = m.delta;
+    $('[data-tags]').innerHTML = TAGS.map(([n, v, l, t, c], i) => `<button type="button" class="pz-tag" style="left:${l}%;top:${t}%;--i:${i};--c:var(--${c})" data-tag="${i}" aria-pressed="${S.tag === i}"><i></i>${esc(n)}${v ? ` <small>${esc(v)}</small>` : ''}</button>`).join('');
+    const tg = TAGS[S.tag]; $('[data-focus]').innerHTML = `<small>Selected</small><b>${esc(tg[0])}</b><p>${tg[1] ? esc(tg[1]) + ' · ' : ''}${esc(m.name.toLowerCase())} ${m.delta} over ${S.range}.</p><p>Tap a tag in the scene to inspect it.</p>`;
+    $('[data-stats]').innerHTML = [`<i class="pz-live"></i>${k(Math.round(6830 * (0.9 + x * 0.1)))} rps`, 'p95 186 ms · steady', `${k(Math.round(8234 * (0.8 + x * 0.2)))} online`].map((t) => `<span class="pz-chip">${t}</span>`).join('');
+    $('[data-sparks]').innerHTML = [['Sign-ups', 3, '--mint'], ['Churn', 5, '--pink'], ['Latency', 8, '--amber'], ['Regions', 4, '--violet']].map(([n, seed, c]) => `<div class="pz-spark"><small>${n}</small><svg viewBox="0 0 120 50" preserveAspectRatio="none" aria-hidden="true"><path d="${line(series(seed))} L 120 50 L 0 50 Z" fill="var(${c})" opacity="0.16"/><path class="ln" pathLength="1" d="${line(series(seed))}" stroke="var(${c})"/></svg></div>`).join('');
+    $('[data-streams]').innerHTML = EVENTS.slice(0, 6).map((e, i) => `<li><button type="button" data-stream="${e.area}" aria-label="${esc(e.name)}, ${k(e.n)} events. Open in Events."><i style="--c:var(${i % 2 ? '--mint' : '--pink'})"></i><span style="--c:var(${i % 2 ? '--mint' : '--pink'});--w:${40 + ((i * 23) % 55)}%"></span></button></li>`).join('');
+    const q = Math.min(96, Math.round(52 + x * 20)); $('[data-quota]').textContent = q + '%'; $('[data-quota-bar]').style.width = q + '%';
+    $('[data-pills]').innerHTML = CHANNELS.map((c, i) => `<button type="button" class="pz-pill" style="--h:${c.h}%;--k:${i};--top:var(--${c.top})" data-channel="${c.id}" aria-pressed="${S.channel === c.id}" aria-label="${esc(c.name)}, ${c.share}% of traffic. Open in Traffic."><i></i></button>`).join('');
+    $('[data-rev]').textContent = '$' + k(Math.round(271300 * x));
+    $('[data-weeks]').innerHTML = [38, 30, 52, 44, 66, 56, 46, 60, 72].map((h, i) => `<i style="--k:${i};height:${h}%"></i>`).join('');
+    window.DBHero?.setMode(S.metric);
   }
-  g.innerHTML = html;
+  document.addEventListener('db-hero-ready', () => window.DBHero.setMode(S.metric));
+
+  /* ---------- inner pages ---------- */
+  const stateBox = (items, empty, body) => S.view === 'loading' ? '<div class="pz-skel"></div><div class="pz-skel"></div><div class="pz-skel"></div>' : S.view === 'error' ? '<div class="pz-state"><p>We couldn’t load this. Check your connection, then try again.</p><button class="pz-btn pz-btn--main" data-act="retry">Try again</button></div>' : (S.view === 'empty' || !items.length) ? `<div class="pz-state"><p>${esc(empty)}</p><button class="pz-btn" data-act="clear">Clear filters</button></div>` : body(items);
+  const pages = {
+    overview: paintOverview,
+    traffic(el) { const q = S.q.trim().toLowerCase(), list = CHANNELS.filter((c) => !q || c.name.toLowerCase().includes(q)).sort((a, b) => b.h - a.h), cur = CHANNELS.find((c) => c.id === S.channel);
+      el.innerHTML = `<div class="pz-sheet-head"><div><h1>Traffic</h1><p class="pz-sub">Share of requests by channel over ${S.range}. Pick a channel to see its day.</p></div><div class="pz-tools"><input class="pz-field" type="search" placeholder="Filter channels" aria-label="Filter channels" value="${esc(S.q)}" data-q></div></div>
+        ${stateBox(list, `No channels match “${S.q}”.`, (it) => `<div class="pz-grid">${it.map((c, i) => `<button type="button" class="pz-card" style="--k:${i}" data-channel="${c.id}" aria-pressed="${S.channel === c.id}"><span class="bar" aria-hidden="true"><i style="height:${c.h * 1.6}%"></i></span><small>${esc(c.name)}</small><b class="num">${c.share}%</b><small>${k(Math.round(c.share * 4200 * mult()))} requests</small></button>`).join('')}</div>`)}
+        <section class="pz-panel"><h2>${esc(cur.name)}: requests by hour</h2><div class="pz-hours" role="img" aria-label="Requests per hour for ${esc(cur.name)}, peaking in the early evening">${[...Array(24)].map((_, h) => `<i style="--k:${h};height:${Math.min(100, 20 + Math.round(60 * Math.max(0, Math.sin((h - 5) / 24 * Math.PI * 1.6)) + ((h * (cur.h + 3)) % 17)))}%"></i>`).join('')}</div><p class="pz-axis"><span>Midnight</span><span>6 am</span><span>Noon</span><span>6 pm</span><span>Now</span></p></section>`; },
+    events(el) { const q = S.q.trim().toLowerCase(), list = EVENTS.filter((e) => (S.area === 'All' || e.area === S.area) && (!q || (e.name + e.area).toLowerCase().includes(q))).sort((a, b) => (S.sort === 'n' ? a.n - b.n : a[S.sort].localeCompare(b[S.sort])) * S.dir);
+      const th = (key, l) => `<th aria-sort="${S.sort === key ? (S.dir > 0 ? 'ascending' : 'descending') : 'none'}"><button data-sort="${key}">${l}</button></th>`;
+      el.innerHTML = `<div class="pz-sheet-head"><div><h1>Events</h1><p class="pz-sub">${list.length} of ${EVENTS.length} event types in ${S.range}.</p></div><div class="pz-tools"><input class="pz-field" type="search" placeholder="Search events" aria-label="Search events" value="${esc(S.q)}" data-q></div></div>
+        <div class="pz-tools" role="group" aria-label="Area">${['All', ...new Set(EVENTS.map((e) => e.area))].map((a) => `<button class="pz-btn" data-area="${a}" aria-pressed="${S.area === a}">${a}</button>`).join('')}</div>
+        <section class="pz-panel">${stateBox(list, q ? `No events match “${S.q}”.` : 'No events in this area.', (it) => `<table class="pz-table"><thead><tr>${th('name', 'Event')}${th('status', 'Status')}${th('area', 'Area')}${th('n', 'Count')}</tr></thead><tbody>${it.map((e) => `<tr tabindex="0" data-event="${e.id}"><td><b>${esc(e.name)}</b></td><td><span class="pz-pilltag" data-s="${e.status}">${e.status}</span></td><td>${e.area}</td><td class="num">${k(Math.round(e.n * mult()))}</td></tr>`).join('')}</tbody></table>`)}</section>`; },
+    regions(el) { const r = REGIONS.find((x) => x.id === S.region), max = Math.max(...REGIONS.map((x) => x.ms));
+      el.innerHTML = `<div class="pz-sheet-head"><div><h1>Regions</h1><p class="pz-sub">Latency and uptime by region. Pick one to see it and set a watch.</p></div></div>
+        <div class="pz-cols"><section class="pz-panel">${stateBox(REGIONS, 'No regions reporting.', (it) => it.map((x) => `<button type="button" class="pz-row" data-region="${x.id}" aria-pressed="${S.region === x.id}"><span><b>${x.name}</b><small>${k(Math.round(x.rps * (0.8 + mult() * 0.2)))} rps · ${x.up}% up</small><span class="pz-meter"><i style="width:${(x.ms / max) * 100}%"></i></span></span><b class="num">${x.ms} ms</b></button>`).join(''))}</section>
+          <div style="display:grid;gap:16px"><section class="pz-panel"><h2>${r.name}</h2><div class="pz-row"><span>p95 latency</span><b class="num">${r.ms} ms</b></div><div class="pz-row"><span>Throughput</span><b class="num">${k(r.rps)} rps</b></div><div class="pz-row"><span>Uptime</span><b class="num">${r.up}%</b></div></section>
+            <form class="pz-panel" data-watch novalidate><h2>Watch ${r.name}</h2><label class="pz-label">Alert me above (ms)<input class="pz-field" name="ms" inputmode="numeric" value="${r.ms + 30}" aria-describedby="err-ms"></label><p class="pz-err" id="err-ms" role="alert"></p><button class="pz-btn pz-btn--main">Save watch</button>
+              ${S.watches.map((w) => `<div class="pz-row"><span><b>${REGIONS.find((x) => x.id === w.region).name}</b><small>above ${w.ms} ms</small></span><button type="button" class="pz-btn" data-unwatch="${w.id}">Remove</button></div>`).join('')}</form>
+            <section class="pz-panel"><h2>Preview a state</h2><label class="pz-label">Lists show<select class="pz-field" data-view>${['ready', 'loading', 'empty', 'error'].map((v) => `<option${S.view === v ? ' selected' : ''}>${v}</option>`).join('')}</select></label></section></div></div>`; },
+  };
+
+  /* ---------- drawer ---------- */
+  let lastFocus = null;
+  function openEvent(id) { const e = EVENTS.find((x) => x.id === id); lastFocus = document.activeElement;
+    $('[data-drawer-panel]').innerHTML = `<div class="pz-drawer-top"><div><h2 id="pz-drawer-title">${esc(e.name)}</h2><p class="pz-sub">${e.area} · last seen ${e.ago}</p></div><button class="pz-x" data-act="close" aria-label="Close">×</button></div>
+      <section class="pz-panel"><div class="pz-row"><span>Count in ${S.range}</span><b class="num">${k(Math.round(e.n * mult()))}</b></div><div class="pz-row"><span>Status</span><span class="pz-pilltag" data-s="${e.status}">${e.status}</span></div><div class="pz-row"><span>Share of all events</span><b class="num">${((e.n / EVENTS.reduce((s, x) => s + x.n, 0)) * 100).toFixed(1)}%</b></div></section>
+      <div class="pz-tools"><button class="pz-btn pz-btn--main" data-act="mute" data-name="${esc(e.name)}">Mute alerts for 1 hour</button><button class="pz-btn" data-act="copy" data-name="${esc(e.name)}">Copy event name</button></div>`;
+    $('[data-drawer]').hidden = false; $('.pz-x').focus(); }
+  function closeDrawer() { $('[data-drawer]').hidden = true; lastFocus?.focus?.(); }
+
+  /* ---------- events ---------- */
+  document.addEventListener('click', (e) => {
+    if (e.target.matches('[data-drawer]')) return closeDrawer();
+    const t = e.target.closest('[data-range-v],[data-metric],[data-tag],[data-channel],[data-stream],[data-act],[data-area],[data-sort],[data-event],[data-region],[data-unwatch]'); if (!t) return; const d = t.dataset;
+    if (d.rangeV) { S.range = d.rangeV; $$('[data-range-v]').forEach((b) => b.setAttribute('aria-pressed', String(b === t))); return render(); }
+    if (d.metric) { S.metric = d.metric; return render(); } if (d.tag) { S.tag = +d.tag; return render(); }
+    if (d.channel) { S.channel = d.channel; if (current === 'overview') { location.hash = '#/traffic'; return; } return render(); }
+    if (d.stream) { S.area = d.stream; S.q = ''; location.hash = '#/events'; return; }
+    if (d.area) { S.area = d.area; return render(); } if (d.sort) { S.dir = S.sort === d.sort ? -S.dir : 1; S.sort = d.sort; return render(); }
+    if (d.event) return openEvent(d.event); if (d.region) { S.region = d.region; return render(); }
+    if (d.unwatch) { const i = S.watches.findIndex((w) => w.id === d.unwatch), gone = S.watches.splice(i, 1)[0]; render(); return toast('Watch removed', () => { S.watches.splice(i, 0, gone); render(); }); }
+    switch (d.act) { case 'bell': return toast('2 alerts: payment.failed is up; AF-south latency above 110 ms'); case 'close': return closeDrawer(); case 'mute': closeDrawer(); return toast(`Alerts for ${d.name} muted for 1 hour`); case 'copy': return toast(`${d.name} copied`);
+      case 'retry': S.view = 'ready'; return render(); case 'clear': S.q = ''; S.area = 'All'; S.view = 'ready'; return render(); }
+  });
+  document.addEventListener('keydown', (e) => { const dr = $('[data-drawer]'); if (e.key === 'Enter' && e.target.matches('tr[data-event]')) return openEvent(e.target.dataset.event); if (dr.hidden) return; if (e.key === 'Escape') return closeDrawer();
+    if (e.key === 'Tab') { const f = $$('button,select,input,a[href]', dr), a = f[0], z = f.at(-1); if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } } });
+  document.addEventListener('input', (e) => { if (e.target.matches('[data-q]')) { S.q = e.target.value; render(); const q = $('[data-q]'); q.focus(); q.setSelectionRange(q.value.length, q.value.length); } });
+  document.addEventListener('change', (e) => { if (e.target.matches('[data-view]')) { S.view = e.target.value; toast(`Lists now show the ${S.view} state`); render(); } });
+  document.addEventListener('submit', (e) => { e.preventDefault(); const f = e.target; if (!f.matches('[data-watch]')) return; const ms = parseInt(f.ms.value, 10);
+    if (!Number.isFinite(ms) || ms < 10 || ms > 2000) { $('#err-ms').textContent = 'Enter a number of milliseconds between 10 and 2000.'; return f.ms.focus(); }
+    S.watches = S.watches.filter((w) => w.region !== S.region); S.watches.push({ id: 'w' + Date.now(), region: S.region, ms }); render(); toast(`Watching ${REGIONS.find((x) => x.id === S.region).name} above ${ms} ms`); });
+
+  /* ---------- routing ---------- */
+  let current = 'overview';
+  function render() { pages[current]($(`[data-db-page="${current}"]`)); }
+  window.DB.route([{ id: 'overview', name: 'Overview' }, { id: 'traffic', name: 'Traffic' }, { id: 'events', name: 'Events' }, { id: 'regions', name: 'Regions' }], (id) => {
+    current = id; if (id !== 'events') S.q = S.q; $$('[data-db-page]').forEach((s) => { s.hidden = s.dataset.dbPage !== id; });
+    $$('.pz-nav a').forEach((a) => { a.hash === '#/' + id ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); }); render();
+  });
+  new MutationObserver(() => window.DBHero?.recolor()).observe(document.documentElement, { attributes: true, attributeFilter: ['data-variant'] });
+  document.documentElement.dataset.ready = 'true';
 })();
-
-function setHands() {
-  const now = new Date();
-  const h = ((now.getHours() % 12) + now.getMinutes() / 60) / 12 * 360;
-  const m = (now.getMinutes() + now.getSeconds() / 60) / 60 * 360;
-  const hh = $('[data-hand-h]'), mm = $('[data-hand-m]');
-  if (hh) hh.style.transform = `rotate(${h}deg)`;
-  if (mm) mm.style.transform = `rotate(${m}deg)`;
-}
-setHands();
-if (!reduce) setInterval(setHands, 30000);
-
-/* ---------- overview widgets ---------- */
-function paintOrbs() {
-  const el = $('[data-orbs]');
-  el.innerHTML = METRICS.map((m) => `
-    <button type="button" class="pa-orb" data-metric="${m.id}" aria-pressed="${S.metric === m.id}" aria-label="${esc(m.name)} ${fmt(m)}">
-      <svg><use href="#${m.icon}"/></svg>
-      <b class="num">${esc(fmt(m))}</b>
-      <small>${esc(m.delta)}</small>
-    </button>`).join('');
-}
-
-function paintHours() {
-  const max = Math.max(...HOURS);
-  $('[data-hours]').innerHTML = HOURS.map((v, i) => `<span class="bar" style="--i:${i};height:${Math.max(12, (v / max) * 100)}%" title="Hour ${i}: ${v}"></span>`).join('');
-}
-
-function paintPills() {
-  $('[data-pills]').innerHTML = CHANNELS.map((c) => `
-    <button type="button" class="pa-pill" style="--h:${c.h};--fill:${c.fill}" data-channel="${c.id}" aria-pressed="${S.channel === c.id}" aria-label="${esc(c.name)} ${c.fill}%">
-      <span>${esc(c.name)}</span>
-    </button>`).join('');
-}
-
-function paintWave() {
-  const w = 280, h = 120;
-  const mx = Math.max(...WAVE), mn = Math.min(...WAVE);
-  const pts = WAVE.map((v, i) => {
-    const x = (i / (WAVE.length - 1)) * w;
-    const y = h - 12 - ((v - mn) / (mx - mn || 1)) * (h - 28);
-    return [x, y];
-  });
-  const line = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
-  const area = `${line} L ${w} ${h} L 0 ${h} Z`;
-  $('[data-wave-area]').setAttribute('d', area);
-  $('[data-wave-line]').setAttribute('d', line);
-  $('[data-wave-n]').textContent = EVENTS.length + ' streams';
-}
-
-function paintRbars() {
-  const vals = REGIONS.slice(0, 7).map((r) => r.rps);
-  const mx = Math.max(...vals);
-  $('[data-rbars]').innerHTML = vals.map((v, i) => `<span class="pa-rbar" style="--i:${i};--h:${Math.max(18, (v / mx) * 100)}" title="${esc(REGIONS[i].name)}"></span>`).join('');
-}
-
-function sparkPath(series, color) {
-  const w = 160, h = 40;
-  const mx = Math.max(...series), mn = Math.min(...series);
-  const pts = series.map((v, i) => {
-    const x = (i / (series.length - 1)) * w;
-    const y = h - 4 - ((v - mn) / (mx - mn || 1)) * (h - 8);
-    return [x, y];
-  });
-  const d = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
-  const area = `${d} L ${w} ${h} L 0 ${h} Z`;
-  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="${area}" style="fill:${color}22"/><path class="line" d="${d}" style="stroke:${color}"/></svg>`;
-}
-
-function paintSparks() {
-  const picks = [METRICS[0], METRICS[1], METRICS[2]];
-  const colors = ['#00ffcc', '#c49bff', '#ff7ab8'];
-  $('[data-sparks]').innerHTML = picks.map((m, i) => `
-    <article class="pa-spark">
-      <h3>${esc(m.name)}</h3>
-      <b class="num">${esc(fmt(m))}</b>
-      ${sparkPath(m.series, colors[i])}
-    </article>`).join('');
-}
-
-function paintHeroMeta() {
-  const m = METRICS.find((x) => x.id === S.metric) || METRICS[0];
-  $('[data-hero-title]').textContent = m.name;
-  $('[data-hero-sub]').textContent = S.range + ' ridge · ' + m.delta;
-  $('[data-hero-labels]').innerHTML = `
-    <span style="left:12%;top:18%">Peak ${fmt(m)}</span>
-    <span style="left:58%;top:30%">${esc(CHANNELS.find((c) => c.id === S.channel)?.name || 'API')}</span>
-    <span style="left:34%;top:62%">Pool</span>`;
-  $('[data-constellation]').innerHTML = `<svg viewBox="0 0 400 260" preserveAspectRatio="none">
-    <g stroke="rgb(255 255 255 / 0.35)" stroke-width="1" fill="none">
-      <path d="M40 180 L120 90 L200 140 L280 60 L360 110"/>
-      <path d="M80 200 L160 150 L240 170 L320 100"/>
-    </g>
-    <g fill="#00ffcc">${[[40,180],[120,90],[200,140],[280,60],[360,110],[160,150],[320,100]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="2.5"/>`).join('')}</g>
-  </svg>`;
-}
-
-/* ---------- WebGL terrain ---------- */
-/* ---------- range / interactions ---------- */
-$$('[data-range] [data-v]').forEach((b) => b.addEventListener('click', () => {
-  S.range = b.dataset.v;
-  $$('[data-range] [data-v]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-  paintHeroMeta();
-  toast('Range set to ' + S.range);
-  render();
-}));
-
-$('[data-q]')?.addEventListener('input', (e) => { S.q = e.target.value; if (window.DB?.page && window.DB.page !== 'overview') render(); });
-
-$('[data-act="alerts"]')?.addEventListener('click', () => toast('3 alerts: job.timeout, quota.exceeded, stream.lag'));
-
-document.addEventListener('click', (e) => {
-  const orb = e.target.closest('[data-metric]');
-  if (orb) {
-    S.metric = orb.dataset.metric;
-    paintOrbs();
-    paintHeroMeta();
-    if (window.DBHero?.setMode) window.DBHero.setMode(S.metric);
-    toast('Terrain keyed to ' + (METRICS.find((m) => m.id === S.metric)?.name || S.metric));
-    return;
-  }
-  const ch = e.target.closest('[data-channel]');
-  if (ch) {
-    S.channel = ch.dataset.channel;
-    paintPills();
-    paintHeroMeta();
-    toast('Channel ' + ch.dataset.channel);
-  }
-});
-
-const frame = $('[data-frame]');
-if (!reduce && matchMedia('(pointer: fine)').matches && frame) {
-  frame.addEventListener('pointermove', (e) => {
-    const r = frame.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    $$('.pa-glass').forEach((el) => el.style.setProperty('--spec', (x * 28).toFixed(1) + 'px'));
-  });
-}
-
-/* ---------- inner pages ---------- */
-const stateBox = (items, emptyMsg, emptyBtn, body) => {
-  if (S.view === 'loading') return '<div class="pa-grid"><div class="pa-skel"></div><div class="pa-skel"></div><div class="pa-skel"></div></div>';
-  if (S.view === 'error') return '<div class="pa-state"><p>We couldn’t load this slice. Check the connection, then try again.</p><button class="pa-btn pa-btn--main" data-act="retry">Try again</button></div>';
-  if (S.view === 'empty' || !items.length) return `<div class="pa-state"><p>${esc(emptyMsg)}</p>${emptyBtn}</div>`;
-  return body(items);
-};
-
-const pages = {
-  overview() {
-    paintOrbs(); paintHours(); paintPills(); paintWave(); paintRbars(); paintSparks(); paintHeroMeta();
-  },
-  traffic(el) {
-    const q = S.q.trim().toLowerCase();
-    let list = CHANNELS.filter((c) => !q || c.name.toLowerCase().includes(q));
-    el.innerHTML = `<div class="pa-sheet-head"><div><h1>Traffic</h1><p class="pa-sub">Channel share for ${esc(S.range)}. Tap a channel to key the overview terrain.</p></div>
-      <div class="pa-tools"><input class="pa-field" type="search" placeholder="Filter channels" aria-label="Filter channels" value="${esc(S.q)}" data-page-q>
-        <select class="pa-field" aria-label="Sort channels" data-sort>${[['h-desc','Tallest first'],['fill-desc','Fill first'],['name-asc','Name A–Z']].map(([v,l]) => `<option value="${v}"${S.sort===v?' selected':''}>${l}</option>`).join('')}</select></div></div>
-      <div class="pa-kpi"><div><small>Total RPS</small><b class="num">${REGIONS.reduce((a,r)=>a+r.rps,0).toLocaleString('en-US')}</b></div>
-        <div><small>Active channel</small><b>${esc(CHANNELS.find(c=>c.id===S.channel)?.name||'—')}</b></div>
-        <div><small>Health</small><b class="num">88</b></div></div>
-      ${stateBox(list, q ? `No channels match “${S.q}”.` : 'No channels in this range.', '<button class="pa-btn pa-btn--main" data-act="clear">Clear search</button>', (items) => {
-        if (S.sort === 'name-asc') items = [...items].sort((a,b)=>a.name.localeCompare(b.name));
-        if (S.sort === 'fill-desc') items = [...items].sort((a,b)=>b.fill-a.fill);
-        if (S.sort === 'h-desc') items = [...items].sort((a,b)=>b.h-a.h);
-        return `<div class="pa-grid">${items.map((c,i)=>`<button type="button" class="pa-tile" style="--i:${i}" data-channel="${c.id}" aria-pressed="${S.channel===c.id}"><span class="pa-tile-bar" aria-hidden="true"><i style="height:${c.h}%"></i></span><small>${esc(c.name)}</small><b class="num">${c.fill}%</b><small>${c.fill >= 60 ? 'Above' : 'Below'} the 7-day average</small></button>`).join('')}</div>`;
-      })}
-      <section class="pa-hours"><h2>Requests by hour, ${esc(CHANNELS.find((c) => c.id === S.channel)?.name || 'all channels')}</h2>
-        <div class="pa-hours-bars" role="img" aria-label="Requests per hour over the last day, peaking in the early evening">${[...Array(24)].map((_, h) => { const seed = (CHANNELS.findIndex((c) => c.id === S.channel) + 2) * 7; const v = 22 + Math.round(60 * Math.max(0, Math.sin((h - 5) / 24 * Math.PI * 1.6)) + ((h * seed) % 17)); return `<i style="--k:${h};height:${Math.min(100, v)}%"></i>`; }).join('')}</div>
-        <p class="pa-hours-axis"><span>Midnight</span><span>6 am</span><span>Noon</span><span>6 pm</span><span>Now</span></p></section>`;
-  },
-  events(el) {
-    const q = S.q.trim().toLowerCase();
-    let list = EVENTS.filter((e) => !q || (e.name + e.region).toLowerCase().includes(q));
-    if (S.sort === 'count-asc') list = [...list].sort((a,b)=>a.count-b.count);
-    else list = [...list].sort((a,b)=>b.count-a.count);
-    el.innerHTML = `<div class="pa-sheet-head"><div><h1>Events</h1><p class="pa-sub">${list.length} streams in the ${esc(S.range)} window.</p></div>
-      <div class="pa-tools"><input class="pa-field" type="search" placeholder="Search events" aria-label="Search events" value="${esc(S.q)}" data-page-q>
-        <select class="pa-field" data-sort aria-label="Sort events">${[['count-desc','Highest count'],['count-asc','Lowest count']].map(([v,l])=>`<option value="${v}"${S.sort===v?' selected':''}>${l}</option>`).join('')}</select></div></div>
-      ${stateBox(list, q ? `No events match “${S.q}”.` : 'No events yet.', '<button class="pa-btn pa-btn--main" data-act="clear">Clear search</button>', (items) => `
-        <table class="pa-table"><thead><tr><th>Event</th><th>Region</th><th>Count</th><th>Severity</th><th></th></tr></thead>
-        <tbody>${items.map((e)=>`<tr><td>${esc(e.name)}</td><td>${esc(e.region)}</td><td class="num">${e.count.toLocaleString('en-US')}</td><td>${esc(e.severity)}</td>
-          <td><button class="pa-btn" data-pin="${e.id}" aria-pressed="${S.region===e.region.toLowerCase().replace(/\s+/g,'-')?'false':'false'}">Inspect</button></td></tr>`).join('')}</tbody></table>`)}`;
-  },
-  regions(el) {
-    const q = S.q.trim().toLowerCase();
-    const list = REGIONS.filter((r) => !q || r.name.toLowerCase().includes(q));
-    const cur = REGIONS.find((r) => r.id === S.region) || REGIONS[0];
-    el.innerHTML = `<div class="pa-sheet-head"><div><h1>Regions</h1><p class="pa-sub">Throughput and health by edge. Selected: ${esc(cur.name)}.</p></div>
-      <div class="pa-tools"><input class="pa-field" type="search" placeholder="Filter regions" aria-label="Filter regions" value="${esc(S.q)}" data-page-q>
-        <label class="pa-label">Preview a state<select class="pa-field" data-view>${[['ready','Populated'],['loading','Loading'],['empty','Empty'],['error','Error']].map(([v,l])=>`<option value="${v}"${S.view===v?' selected':''}>${l}</option>`).join('')}</select></label></div></div>
-      ${stateBox(list, 'No regions match.', '<button class="pa-btn pa-btn--main" data-act="clear">Clear search</button>', (items) => `
-        <div class="pa-grid">${items.map((r,i)=>`<button type="button" class="pa-tile" style="--i:${i}" data-region="${r.id}" aria-pressed="${S.region===r.id}">
-          <small>${esc(r.name)}</small><b class="num">${r.rps.toLocaleString('en-US')}</b><small>rps · health ${r.health}</small>
-          <svg viewBox="0 0 120 28" aria-hidden="true">${r.bars.map((v,j)=>{const mx=Math.max(...r.bars);return `<rect x="${j*16+2}" y="${28-v/mx*24}" width="10" height="${v/mx*24}" rx="3" fill="${S.region===r.id?'#00ffcc':'#c49bff'}" opacity="0.85"/>`;}).join('')}</svg>
-        </button>`).join('')}</div>
-        <form class="pa-glass" data-region-form style="padding:18px;display:grid;gap:12px;border-radius:20px">
-          <h2>Watch ${esc(cur.name)}</h2>
-          <label class="pa-label">Alert email<input class="pa-field" name="email" type="email" required placeholder="ops@pulsar.example" value="ops@pulsar.example"></label>
-          <p class="pa-err" data-form-err hidden></p>
-          <div class="pa-switch"><span>Page on health &lt; 90</span><input type="checkbox" name="alerts" ${S.alerts?'checked':''}></div>
-          <div class="pa-switch"><span>Daily digest</span><input type="checkbox" name="digest" ${S.digest?'checked':''}></div>
-          <button class="pa-btn pa-btn--main" type="submit">Save watch</button>
-        </form>`)}`;
-  },
-};
-
-function bindSheet(el) {
-  $('[data-page-q]', el)?.addEventListener('input', (e) => { S.q = e.target.value; render(); });
-  $('[data-sort]', el)?.addEventListener('change', (e) => { S.sort = e.target.value; render(); });
-  $('[data-view]', el)?.addEventListener('change', (e) => { S.view = e.target.value; render(); });
-  $('[data-act="clear"]', el)?.addEventListener('click', () => { S.q = ''; S.view = 'ready'; render(); });
-  $('[data-act="retry"]', el)?.addEventListener('click', () => { S.view = 'ready'; render(); });
-  $$('[data-region]', el).forEach((b) => b.addEventListener('click', () => { S.region = b.dataset.region; toast('Watching ' + S.region); render(); }));
-  $$('[data-pin]', el).forEach((b) => b.addEventListener('click', () => {
-    const ev = EVENTS.find((x) => x.id === b.dataset.pin);
-    if (ev) { toast('Inspecting ' + ev.name); S.q = ev.name; }
-  }));
-  $$('[data-channel]', el).forEach((b) => b.addEventListener('click', () => {
-    S.channel = b.dataset.channel; paintPills(); paintHeroMeta(); toast('Channel ' + S.channel); render();
-  }));
-  const form = $('[data-region-form]', el);
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = form.email.value.trim();
-    const err = $('[data-form-err]', form);
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.hidden = false; err.textContent = 'Enter a valid email so we can page on-call.'; form.email.focus(); return; }
-    err.hidden = true;
-    S.alerts = form.alerts.checked; S.digest = form.digest.checked;
-    toast('Watch saved for ' + S.region);
-  });
-}
-
-function render() {
-  const id = window.DB?.page || 'overview';
-  $$('[data-db-page]').forEach((sec) => { sec.hidden = sec.dataset.dbPage !== id; });
-  if (id === 'overview') pages.overview();
-  else {
-    const el = $(`[data-db-page="${id}"]`);
-    if (el) { pages[id]?.(el); bindSheet(el); }
-  }
-}
-
-DB.route([
-  { id: 'overview', name: 'Overview' },
-  { id: 'traffic', name: 'Traffic' },
-  { id: 'events', name: 'Events' },
-  { id: 'regions', name: 'Regions' },
-], () => render());
-
-render();
-document.addEventListener('db-hero-ready', () => { if (window.DBHero?.setMode) window.DBHero.setMode(S.metric); });
-if (window.DBHero?.setMode) window.DBHero.setMode(S.metric);
-document.documentElement.dataset.ready = 'true';

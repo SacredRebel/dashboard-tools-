@@ -241,6 +241,8 @@ Redesign, don't shrink.
 .x-badge { position: absolute !important; }
 ```
 
+Reset the offsets too (`left: 0; top: 0`) on any block you make `position: relative`, or it stays shifted by its desktop numbers. If the phone layout has a `position: fixed` tab bar, set `container-type: normal` on the board: a container is the containing block for fixed children, so the bar would stick to the board instead of the screen.
+
 Then set the reading order with `order:` on the blocks. Add `overflow-x: clip` to the board so a stray hit area cannot widen the page. Take the phone screenshot as a **full-page** capture and scroll through all of it: overlaps hide below the first screen.
 
 Haven's phone layout: the frame becomes tall, the header band holds the mode pills and filters, the page rail pours out of the **bottom** edge as a tab bar, the secondary slab is hidden, the glass card spans the width. Units switch from cqw to px inside the media query.

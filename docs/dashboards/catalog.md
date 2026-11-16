@@ -1088,14 +1088,14 @@ Near-black canvas with vivid neon accents and gradients. Gaming, crypto, music, 
 
 _Pulsar Analytics · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-Soft-3D charcoal analytics board with purple under-glow: recessed clock dial, glossy metric orbs, tall gradient pill bars, and a WebGL translucent ridge terrain (teal/violet/peach) over a purple pool with constellation lines.
+A dark analytics board of matte charcoal tiles around one live scene: mint and peach ridges rise over a glowing violet pool across the centre and right, with floating tags, a clock dial, a ring gauge, tall pill bars and mini charts.
 
 - **Use cases:** Analytics & BI, SaaS admin · **Mode:** dark · **Mood:** neon, technical, moody, glossy, futuristic
 - **Pages:** Overview (`overview`, Dashboard) · Traffic (`traffic`, Report) · Events (`events`, List) · Regions (`regions`, Detail)
 - **Motion:** count-up, stagger, chart-draw, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
-- **Signature:** A live WebGL ridge terrain drawn as glowing mint-to-violet lines over dark glass, on a flat dark board of soft raised tiles.
-- **Layout:** One poured charcoal frame (cqw) · top band (brand, search, range) · left rail · left column (live chip, 3D clock dial, health ring 88, hour bars) · centre (4 glossy orbs, WebGL terrain, 3 spark cards) · right (channel pill bars, events wave, region bars) · Traffic/Events/Regions as frosted sheets in the same frame
-- **Responsive:** ≤720px: tall frame, bottom poured tab rail, stacked columns, hero terrain kept ≥200px
+- **Signature:** Layered ridge silhouettes in WebGL (bright crest, fading base, additive crest line) spanning two columns behind the tiles, over a glowing pool.
+- **Layout:** One board sized in container units (aspect 1322:1225), no outer frame · left column: stats and clock dial, health list with ring gauge, sessions bars, deploys · centre: header tile (brand, pages, range), four round metric buttons, the scene with floating tags and a focus card, three stat chips, four mini charts, streams list · right column: quota bar, nine tall pill bars, a note, revenue bars · the WebGL scene sits behind the centre and right columns · inner pages are a full-width sheet with the scene as a strip above
+- **Responsive:** ≤720px: tiles flow in one column; the scene is a 280px band with three tags; pages become a fixed bottom tab bar
 - **Fonts:** Space Grotesk / Inter · **Palette:** bg `#12111a`, surface `#1e1d28`, text `#f1eff7`, muted `#b3afc2`, accent `#c49bff`, violet `#bf00ff`, mint `#00ffcc`, peach `#ffcc33`
 - **Variants:** Violet mint, Ember, Daylight · **Closest toolkit theme:** `aurora`
 

@@ -3,174 +3,72 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Pulsar Analytics · Dashboard Tools gallery</title>
-  <meta name="description" content="Soft-3D charcoal analytics board with a WebGL ridge terrain, clock dial, glossy orbs and glass panes. Sample data.">
+  <meta name="description" content="A dark board of matte charcoal tiles around one live scene: mint and peach ridges over a glowing violet pool, with a clock dial, ring gauge, pill bars and floating tags. Sample data.">
   <link rel="stylesheet" href="../_vendor/fonts/space-grotesk/family.css">
   <link rel="stylesheet" href="../_vendor/fonts/inter/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
-  <script type="importmap">{
-    "imports": {
-      "three": "../_vendor/three@0.170.0/three.module.min.js",
-      "three/addons/": "../_vendor/three@0.170.0/examples/jsm/"
-    }
-  }</script>
+  <script type="importmap">{ "imports": { "three": "../_vendor/three@0.170.0/three.module.min.js", "three/addons/": "../_vendor/three@0.170.0/examples/jsm/" } }</script>
 </head>
 <body>
-  <svg width="0" height="0" class="vh" aria-hidden="true">
-    <defs>
-      <filter id="pa-rock" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-        <feTurbulence type="fractalNoise" baseFrequency="0.004 0.007" numOctaves="6" seed="19" result="n"/>
-        <feDiffuseLighting in="n" surfaceScale="18" diffuseConstant="1.05" lighting-color="#2a1a38"><feDistantLight azimuth="210" elevation="48"/></feDiffuseLighting>
-      </filter>
-      <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h3.2l2-5.5L12 18l2.5-6.5H21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-      <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="17" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.2 19c.4-2 1.6-3.2 3.3-3.2 1.2 0 2.2.6 2.8 1.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 5.5 13.5H12l-1 7.5L18.5 10H12z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
-      <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4 21 19H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4.5M12 17.2v.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 12h16M12 4c2.4 2.6 3.6 5.4 3.6 8s-1.2 5.4-3.6 8c-2.4-2.6-3.6-5.4-3.6-8s1.2-5.4 3.6-8z" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
-      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 1.5h-14zM10 20.5h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M5 19V9M10 19V5M15 19v-7M20 19v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-      <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-    </defs>
-  </svg>
+  <div class="pz" data-db-app>
+    <div class="pz-board" data-board>
+      <main class="pz-main" id="main">
+        <!-- E: header tile -->
+        <header class="pz-tile pz-head">
+          <a class="pz-brand" href="#/overview"><i aria-hidden="true"></i><b>Pulsar</b></a>
+          <nav class="pz-nav" aria-label="Pages"><a href="#/overview">Overview</a><a href="#/traffic">Traffic</a><a href="#/events">Events</a><a href="#/regions">Regions</a></nav>
+          <div class="pz-seg" role="group" aria-label="Time range" data-range></div>
+          <button type="button" class="pz-round" data-act="bell" aria-label="Alerts, 2 new"><svg viewBox="0 0 24 24"><path d="M6.5 16.500V11a5.5 5.5 0 0 1 11 0v5.500l1.5 1.500h-14zM10 20.500h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><i></i></button>
+          <span class="pz-ava" aria-hidden="true">MO</span>
+        </header>
 
-  <div class="pa" data-db-app>
-    <div class="pa-back" aria-hidden="true"><i></i><i></i><i></i></div>
-    <p class="pa-corner pa-corner--l">Pulsar Analytics</p>
-    <p class="pa-corner pa-corner--r db-sample">Sample data · fictional</p>
-
-    <div class="pa-frame" data-frame>
-      <div class="pa-glow" aria-hidden="true"></div>
-
-      <header class="pa-band">
-        <a class="pa-brand" href="#/overview"><span class="pa-brand-mark" aria-hidden="true"></span>Pulsar</a>
-        <form class="pa-search" role="search" onsubmit="return false">
-          <svg aria-hidden="true"><use href="#i-search"/></svg>
-          <label class="vh" for="pa-q">Search metrics</label>
-          <input id="pa-q" type="search" placeholder="Search metrics…" autocomplete="off" data-q>
-        </form>
-        <div class="pa-seg" role="group" aria-label="Time range" data-range>
-          <button type="button" data-v="24h" aria-pressed="false">24h</button>
-          <button type="button" data-v="7d" aria-pressed="true">7d</button>
-          <button type="button" data-v="30d" aria-pressed="false">30d</button>
+        <!-- the scene: one WebGL canvas spanning the centre and right columns -->
+        <div class="pz-scene" data-hero>
+          <img class="pz-poster" src="media/hero-poster.png" alt="" width="1010" height="650">
+          <canvas data-hero-canvas aria-label="Layered ridges over a glowing pool. Move the pointer to shift the depth." role="img"></canvas>
+          <svg class="pz-stars" viewBox="0 0 1010 650" preserveAspectRatio="none" aria-hidden="true" data-stars></svg>
+          <div class="pz-tags" data-tags></div>
         </div>
-        <button type="button" class="pa-bell" data-act="alerts" aria-label="Alerts, 3 new"><svg><use href="#i-bell"/></svg><i></i></button>
-        <button type="button" class="pa-avatar" aria-label="Account">MO</button>
-      </header>
 
-      <nav class="pa-rail" aria-label="Pages">
-        <a href="#/overview" aria-label="Overview"><svg><use href="#i-pulse"/></svg></a>
-        <a href="#/traffic" aria-label="Traffic"><svg><use href="#i-chart"/></svg></a>
-        <a href="#/events" aria-label="Events"><svg><use href="#i-list"/></svg></a>
-        <a href="#/regions" aria-label="Regions"><svg><use href="#i-globe"/></svg></a>
-      </nav>
+        <section data-db-page="overview" class="pz-over">
+          <!-- left column -->
+          <section class="pz-tile pz-a" aria-label="Uptime"><div class="pz-mini" data-mini></div>
+            <div class="pz-dial" data-dial role="img" aria-label="Uptime dial"></div>
+            <p class="pz-foot"><i class="pz-live"></i><span>Live</span><b class="num" data-uptime>99.97%</b></p></section>
+          <section class="pz-tile pz-b" aria-label="Health"><ul class="pz-checks" data-checks></ul><div class="pz-ring" data-ring></div>
+            <div class="pz-chips2"><span class="pz-chip">Deploy v4.12 · 2 h ago</span><span class="pz-chip"><i class="pz-live"></i>On call: M. Okonkwo</span></div></section>
+          <section class="pz-tile pz-c" aria-label="Sessions by hour"><h2>Sessions by hour</h2><div class="pz-bars" data-hours></div></section>
+          <section class="pz-tile pz-d" aria-label="Recent deploys"><h2>Recent deploys</h2><ul class="pz-rows" data-deploys></ul></section>
 
-      <main class="pa-main" id="main">
-        <section data-db-page="overview" class="pa-over">
-          <aside class="pa-left">
-            <div class="pa-glass pa-status" data-status>
-              <span class="pa-chip"><i></i>Live</span>
-              <b class="num" data-uptime-pct>99.97%</b>
-              <small>Cluster uptime</small>
-            </div>
+          <!-- centre -->
+          <section class="pz-tile pz-f" aria-label="Key metrics"><p class="pz-lab">Terrain<br><b data-metric-name>Active users</b></p><div class="pz-orbs" role="group" aria-label="Pick a metric" data-orbs></div><span class="pz-chip pz-up" data-delta>+22%</span></section>
+          <aside class="pz-tile pz-g2" aria-live="polite" data-focus></aside>
+          <div class="pz-h" data-stats></div>
+          <section class="pz-tile pz-i" aria-label="Trends"><div class="pz-sparks" data-sparks></div></section>
+          <section class="pz-tile pz-n" aria-label="Streams"><h2>Streams</h2><ul class="pz-streams" data-streams></ul></section>
 
-            <div class="pa-well pa-clock-well">
-              <div class="pa-clock" data-clock aria-label="Uptime dial">
-                <svg viewBox="0 0 200 200" role="img" aria-label="Uptime clock dial">
-                  <defs>
-                    <radialGradient id="pa-dial-g" cx="40%" cy="35%" r="65%">
-                      <stop offset="0%" stop-color="#3a3550"/>
-                      <stop offset="100%" stop-color="#16141f"/>
-                    </radialGradient>
-                  </defs>
-                  <circle cx="100" cy="100" r="88" fill="url(#pa-dial-g)" stroke="rgb(180 140 255 / 0.25)" stroke-width="2"/>
-                  <g class="pa-ticks" data-ticks></g>
-                  <circle cx="100" cy="100" r="62" fill="none" stroke="rgb(0 255 204 / 0.18)" stroke-width="8" stroke-dasharray="120 280" stroke-linecap="round" transform="rotate(-90 100 100)"/>
-                  <circle cx="100" cy="100" r="62" fill="none" stroke="rgb(191 0 255 / 0.55)" stroke-width="8" stroke-dasharray="70 330" stroke-linecap="round" transform="rotate(40 100 100)" class="pa-arc"/>
-                  <line class="pa-hand pa-hand--h" data-hand-h x1="100" y1="100" x2="100" y2="48" stroke="#c49bff" stroke-width="3" stroke-linecap="round"/>
-                  <line class="pa-hand pa-hand--m" data-hand-m x1="100" y1="100" x2="148" y2="100" stroke="#00ffcc" stroke-width="2.2" stroke-linecap="round"/>
-                  <circle cx="100" cy="100" r="6" fill="#f1eff7"/>
-                </svg>
-                <p class="pa-clock-label">Uptime dial</p>
-              </div>
-            </div>
-
-            <div class="pa-glass pa-gauge" data-gauge>
-              <svg class="pa-ring" viewBox="0 0 120 120" role="img" aria-label="Health score 88">
-                <defs>
-                  <linearGradient id="pa-ring-grad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#00ffcc"/>
-                    <stop offset="45%" stop-color="#ffcc33"/>
-                    <stop offset="100%" stop-color="#ff7ab8"/>
-                  </linearGradient>
-                </defs>
-                <circle cx="60" cy="60" r="48" fill="none" stroke="rgb(255 255 255 / 0.08)" stroke-width="10"/>
-                <circle class="pa-ring-seg" cx="60" cy="60" r="48" fill="none" stroke="url(#pa-ring-grad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="220 302" pathLength="302" transform="rotate(-90 60 60)"/>
-              </svg>
-              <span class="pa-ring-n-html num" aria-hidden="true">88</span>
-              <div class="pa-gauge-meta">
-                <h2>Health</h2>
-                <ul>
-                  <li><i style="background:var(--mint)"></i>API</li>
-                  <li><i style="background:var(--peach)"></i>Jobs</li>
-                  <li><i style="background:var(--rose)"></i>Edge</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="pa-glass pa-hours" data-hours aria-label="Sessions by hour"></div>
-          </aside>
-
-          <div class="pa-center">
-            <div class="pa-orbs" data-orbs role="group" aria-label="Key metrics"></div>
-
-            <div class="pa-hero-well">
-              <div class="pa-hero" data-hero>
-                <img class="pa-hero-poster" src="media/hero-poster.png" alt="" width="1600" height="1000" decoding="async">
-                <canvas data-hero-canvas width="800" height="520" aria-label="Layered translucent ridge terrain. Pointer tilts the view." role="img"></canvas>
-                <div class="pa-constellation" data-constellation aria-hidden="true"></div>
-                <div class="pa-hero-labels" data-hero-labels></div>
-              </div>
-              <p class="pa-hero-cap"><span data-hero-title>Active users</span> · <span data-hero-sub>7-day ridge</span></p>
-            </div>
-
-            <div class="pa-sparks" data-sparks></div>
-          </div>
-
-          <aside class="pa-right">
-            <div class="pa-glass pa-pills" data-pills aria-label="Channel share"></div>
-            <div class="pa-glass pa-wave" data-wave>
-              <div class="pa-card-head"><h2>Top events</h2><span class="pa-muted" data-wave-n></span></div>
-              <svg class="pa-wave-svg" viewBox="0 0 280 120" preserveAspectRatio="none" role="img" aria-label="Event volume area chart">
-                <defs>
-                  <linearGradient id="pa-wave-fill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#ffcc99" stop-opacity="0.75"/>
-                    <stop offset="55%" stop-color="#c49bff" stop-opacity="0.45"/>
-                    <stop offset="100%" stop-color="#bf00ff" stop-opacity="0.05"/>
-                  </linearGradient>
-                </defs>
-                <path class="pa-wave-area" data-wave-area fill="url(#pa-wave-fill)"/>
-                <path class="pa-wave-line" data-wave-line fill="none" stroke="#ffd4a8" stroke-width="2" pathLength="1"/>
-              </svg>
-            </div>
-            <div class="pa-glass pa-rbars" data-rbars aria-label="Region throughput"></div>
-          </aside>
+          <!-- right column -->
+          <section class="pz-tile pz-j" aria-label="Quota"><p class="pz-legend"><span><i style="--c:var(--mint)"></i>Web</span><span><i style="--c:var(--pink)"></i>App</span><span><i style="--c:var(--amber)"></i>API</span><b class="num" data-quota>72%</b></p><div class="pz-prog"><i data-quota-bar></i></div></section>
+          <section class="pz-k" aria-label="Channel share"><div class="pz-pills" data-pills></div></section>
+          <section class="pz-tile pz-l" aria-label="Note"><p><b>Checkout latency eased</b> after the 14:20 cache change. Watching through the evening peak.</p></section>
+          <section class="pz-tile pz-m" aria-label="Revenue by week"><h2>Revenue by week</h2><p class="pz-big num" data-rev>$271.3k</p><div class="pz-bars pz-bars--tall" data-weeks></div></section>
         </section>
 
-        <section data-db-page="traffic" class="pa-sheet" hidden></section>
-        <section data-db-page="events" class="pa-sheet" hidden></section>
-        <section data-db-page="regions" class="pa-sheet" hidden></section>
+        <section data-db-page="traffic" class="pz-sheet" hidden></section>
+        <section data-db-page="events" class="pz-sheet" hidden></section>
+        <section data-db-page="regions" class="pz-sheet" hidden></section>
       </main>
     </div>
-
-    <a class="pa-corner pa-corner--cta" href="#/traffic">Open traffic</a>
+    <p class="pz-sample db-sample">Sample data · fictional</p>
   </div>
-
-  <div class="pa-toast" data-toast role="status" aria-live="polite" hidden></div>
-  <script type="module" src="app.js"></script>
+  <div class="pz-drawer" data-drawer hidden role="dialog" aria-modal="true" aria-labelledby="pz-drawer-title"><div class="pz-drawer-panel" data-drawer-panel></div></div>
+  <div class="pz-toast" data-toast role="status" aria-live="polite" hidden></div>
+  <script src="app.js"></script>
   <script type="module" src="terrain.js"></script>
 </body>
 </html>
