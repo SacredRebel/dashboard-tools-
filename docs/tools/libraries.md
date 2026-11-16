@@ -135,6 +135,34 @@ Consistent open-source icon set (shadcn default).
 
 ---
 
+<a id="quickref"></a>
+### QuickRef.ME
+
+`https://quickref.me/index.html` · reference · **recommended** · phases: Design, Build, Polish & QA, Ship
+
+One-page cheat sheets for languages, frameworks and tools: exact syntax with examples, grouped in tables.
+
+**Use when**
+- You are unsure of a syntax or command (CSS, JavaScript, TypeScript, regex, Git, SQL, Tailwind, React, Bash)
+- Before writing code with a feature you have not used recently
+
+**Avoid when**
+- The question is how this toolkit does something (read the repo docs first)
+- You need the current API of one specific library version (read its own docs)
+
+**How to use**
+- Open https://quickref.me/<topic>.html, for example css3, javascript, git, regex, postgres
+- Read only the section you need
+- Then apply it the way the reference-twin playbook shows
+
+**Pairs with:** [Learn Anything](research.md#learn-anything)
+
+**If not installed:** follow [docs/onboarding/03-when-you-dont-know.md](../../docs/onboarding/03-when-you-dont-know.md)
+
+**Docs:** https://quickref.me/index.html
+
+---
+
 <a id="recharts"></a>
 ### Recharts
 

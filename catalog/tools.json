@@ -5982,6 +5982,76 @@
       "fallback": "docs/design/09-motion-system.md",
       "requires": null,
       "url": "https://useanimations.com"
+    },
+    {
+      "id": "quickref",
+      "name": "QuickRef.ME",
+      "invoke": "https://quickref.me/index.html",
+      "kind": "reference",
+      "plugin": null,
+      "category": "libraries",
+      "phases": [
+        "design",
+        "build",
+        "polish",
+        "ship"
+      ],
+      "tier": "recommended",
+      "summary": "One-page cheat sheets for languages, frameworks and tools: exact syntax with examples, grouped in tables.",
+      "use_when": [
+        "You are unsure of a syntax or command (CSS, JavaScript, TypeScript, regex, Git, SQL, Tailwind, React, Bash)",
+        "Before writing code with a feature you have not used recently"
+      ],
+      "avoid_when": [
+        "The question is how this toolkit does something (read the repo docs first)",
+        "You need the current API of one specific library version (read its own docs)"
+      ],
+      "how_to_use": [
+        "Open https://quickref.me/<topic>.html, for example css3, javascript, git, regex, postgres",
+        "Read only the section you need",
+        "Then apply it the way the reference-twin playbook shows"
+      ],
+      "pairs_with": [
+        "learn-anything"
+      ],
+      "fallback": "docs/onboarding/03-when-you-dont-know.md",
+      "requires": null,
+      "url": "https://quickref.me/index.html"
+    },
+    {
+      "id": "learn-anything",
+      "name": "Learn Anything",
+      "invoke": "https://learn-anything.xyz/explore",
+      "kind": "reference",
+      "plugin": null,
+      "category": "research",
+      "phases": [
+        "discover",
+        "define",
+        "design",
+        "build"
+      ],
+      "tier": "recommended",
+      "summary": "Curated learning paths and best links for any topic: use it to understand a business field or a technology area before designing for it.",
+      "use_when": [
+        "The person's business is a field you do not know well",
+        "A technique or technology area is new to you (WebGL, accessibility, databases)"
+      ],
+      "avoid_when": [
+        "You need exact syntax (use quickref)",
+        "The answer is a fact about the person's own business (ask them)"
+      ],
+      "how_to_use": [
+        "Search the topic on the Explore page",
+        "Read the short guide and one or two top links",
+        "Confirm what you learned with the person; their words win"
+      ],
+      "pairs_with": [
+        "quickref"
+      ],
+      "fallback": "docs/onboarding/03-when-you-dont-know.md",
+      "requires": null,
+      "url": "https://learn-anything.xyz/explore"
     }
   ]
 }

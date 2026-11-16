@@ -29,8 +29,10 @@ What happens next: the AI asks three short rounds of questions (every one has a 
 | | What | Where |
 |---|---|---|
 | 🚀 | **Onboarding**: one-prompt entry, intake interview, 15 business-type recipes, brief template, starter prototype, build playbook | [START.md](START.md) · [docs/onboarding/](docs/onboarding/README.md) · [catalog/recipes.json](catalog/recipes.json) · [templates/starter/](templates/starter/) |
+| ✨ | **High-end build recipe**: the reference-twin playbook (scaling frame, poured and scooped shapes, layered glass, live 3D heroes, phone layout) with two finished worked examples, plus a map of outside 3D, image and motion tools | [docs/dashboards/02-reference-twin-playbook.md](docs/dashboards/02-reference-twin-playbook.md) · [haven-listings](site/dashboards/haven-listings/) · [meridian-labs](site/dashboards/meridian-labs/) · [03-asset-and-tool-map.md](docs/dashboards/03-asset-and-tool-map.md) |
+| 🔎 | **When an AI doesn't know how**: a fixed lookup order (this repo, quickref.me for syntax, learn-anything.xyz for topics, library docs, the person) | [docs/onboarding/03-when-you-dont-know.md](docs/onboarding/03-when-you-dont-know.md) |
 | 🧭 | **Framework**: 8 phases (Discover → Define → Direction → Design → Build → Polish → Ship → Handover), each with steps, tools and a gate | [docs/framework/](docs/framework/00-overview.md) |
-| 🧰 | **Tool catalog**: 198 curated skills, connectors, agents and libraries with *use when / avoid when / how / pairs with / fallback* | [catalog/tools.json](catalog/tools.json) · [docs/tools/](docs/tools/README.md) |
+| 🧰 | **Tool catalog**: 213 curated skills, connectors, agents and libraries with *use when / avoid when / how / pairs with / fallback* | [catalog/tools.json](catalog/tools.json) · [docs/tools/](docs/tools/README.md) |
 | 📋 | **Full inventory**: all 499 installed skills across 40 plugins, rated for relevance | [catalog/inventory.json](catalog/inventory.json) |
 | 📐 | **Design rulebook**: hard rules for patterns, surfaces, color, type, spacing, motion, states, forms, copy, accessibility, responsive | [docs/design/02-rulebook.md](docs/design/02-rulebook.md) |
 | 🎨 | **Design system**: tokens + 10 themes: 6 classic (Atelier, Linen, Coastal, Blush, Noir, Midnight) and 4 cinematic glass (Grove, Tide, Ember, Aurora), Tailwind/shadcn mapping | [design-system/](design-system/README.md) |

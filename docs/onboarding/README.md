@@ -9,6 +9,7 @@ This folder is the fast path an AI follows when a person says "build me a dashbo
 | 1a | [recipes.md](recipes.md) · [catalog/recipes.json](../../catalog/recipes.json) | Starting points by business type: pages, records, numbers, steps, looks |
 | 2 | [templates/brief.md](../../templates/brief.md) | One-page brief and the chosen look; the person approves |
 | 3 | [02-build-playbook.md](02-build-playbook.md) | Build the clickable prototype from [templates/starter/](../../templates/starter/), styled after a gallery reference |
+| any | [03-when-you-dont-know.md](03-when-you-dont-know.md) | Where to look things up: this repo, quickref.me, learn-anything.xyz, library docs, the person |
 | 4 | [02-build-playbook.md#polish](02-build-playbook.md#polish) | Rulebook, high-end checklist, function and screenshot checks |
 | 5 | [02-build-playbook.md](02-build-playbook.md#deliver) | Link or file, screenshots, next step; then the working app if wanted |
 

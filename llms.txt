@@ -12,6 +12,7 @@ If a person asked you to build a dashboard and gave you this repository, read ST
 - [Brief template](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/templates/brief.md): the one page the person approves
 - [Build playbook](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/onboarding/02-build-playbook.md): prototype first, then the working app; polish and delivery
 - [Design rulebook](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/design/02-rulebook.md): hard rules for spacing, type, color, motion, states, copy
+- [When you don't know how](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/onboarding/03-when-you-dont-know.md): lookup order: this repo, quickref.me (syntax), learn-anything.xyz (topics), library docs, the person
 - [AGENTS.md](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/AGENTS.md): ground rules, definition of done, what is always wrong
 
 ## Design system
@@ -28,6 +29,10 @@ If a person asked you to build a dashboard and gave you this repository, read ST
 - [Gallery guide](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/dashboards/README.md)
 - [Gallery catalog (JSON)](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/catalog/dashboards.json): 38 dashboards with style family, use cases, palette, layout, mood, best for, avoid when
 - [Gallery catalog (readable)](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/dashboards/catalog.md)
+- [Reference-twin playbook](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/dashboards/02-reference-twin-playbook.md): how to build a high-end dashboard that matches a look: scaling frame, poured and scooped shapes, layered glass, live 3D hero, pages in one frame, phone layout
+- Worked example, photo frame with glass and organic shapes: [index.html](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/site/dashboards/haven-listings/index.html) · [style.css](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/site/dashboards/haven-listings/style.css) · [app.js](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/site/dashboards/haven-listings/app.js)
+- Worked example, flat board with a live 3D object: [index.html](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/site/dashboards/meridian-labs/index.html) · [style.css](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/site/dashboards/meridian-labs/style.css) · [app.js](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/site/dashboards/meridian-labs/app.js) · [helix.js](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/site/dashboards/meridian-labs/helix.js)
+- [Asset and tool map](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/dashboards/03-asset-and-tool-map.md): outside tools for 3D, images, screenshots and motion, each with a fallback
 - Live preview of any dashboard: https://dashboard-tools-three.vercel.app/#/dashboards/<id>
 - Source of any dashboard: https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/site/dashboards/<id>/index.html, style.css, app.js
 

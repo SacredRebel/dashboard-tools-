@@ -41,6 +41,7 @@ You are an AI agent asked to **design and build a dashboard** (for example a CRM
 | 6a | [docs/calendars/README.md](docs/calendars/README.md) (anything with dates: meetings, follow-ups, booking, sync) | Approach chooser, calendar styles, repo licenses; machine-readable in `catalog/calendars.json` |
 | 6b | [docs/design/07-showcase-patterns.md](docs/design/07-showcase-patterns.md) (when presenting) | Story players, device frames, before/after, glass worlds, approval gates |
 | 7 | [catalog/tools.json](catalog/tools.json) | Every tool with use / avoid / how, filtered by phase |
+| 8 | [docs/onboarding/03-when-you-dont-know.md](docs/onboarding/03-when-you-dont-know.md) (any time you are unsure) | Lookup order: this repo, quickref.me, learn-anything.xyz, library docs, the person |
 
 Don't load everything at once. Read the phase doc when you enter that phase.
 

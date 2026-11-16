@@ -26,6 +26,8 @@ Say in one line which mode you're in, then continue. In modes B and C you can't 
 
 Read the rest when the step that needs it says so. Loading everything first wastes your context.
 
+**Unsure how to do something at any point?** Don't guess. Follow [docs/onboarding/03-when-you-dont-know.md](docs/onboarding/03-when-you-dont-know.md): this repo first, then [quickref.me](https://quickref.me/index.html) for exact syntax, then [learn-anything.xyz](https://learn-anything.xyz/explore) to understand a topic or the person's field, then the library's own docs, then ask the person.
+
 ## 3. The flow
 
 ```
@@ -76,6 +78,8 @@ The catalog ([catalog/tools.json](catalog/tools.json)) has every tool with *use 
 | Screens | `page-patterns`, `surfaces`, `interaction-design`, `ux-writing`, `dataviz` | [03-page-patterns.md](docs/design/03-page-patterns.md), [04-data-viz.md](docs/design/04-data-viz.md) |
 | Build | `frontend-ui-engineering`, `incremental-implementation`, `calendar-hub` (anything with dates) | [05-build.md](docs/framework/05-build.md), [docs/calendars/](docs/calendars/README.md) |
 | Motion and depth | FX library, materials, shape kit | [09-motion-system.md](docs/design/09-motion-system.md), [10-materials.md](docs/design/10-materials.md), [12-microinteractions.md](docs/design/12-microinteractions.md) |
+| Shapes, glass, 3D hero, phone layout | the reference-twin playbook and its two worked examples | [02-reference-twin-playbook.md](docs/dashboards/02-reference-twin-playbook.md), `site/dashboards/haven-listings/`, `site/dashboards/meridian-labs/` |
+| Any step, when unsure | `quickref`, `learn-anything` | [03-when-you-dont-know.md](docs/onboarding/03-when-you-dont-know.md) |
 | Polish | `anti-slop`, `ux-audit-vectorlab`, `ux-ui-audit`, `browser-testing`, `verification-before-completion` | [02-rulebook.md](docs/design/02-rulebook.md), [13-high-end-checklist.md](docs/design/13-high-end-checklist.md) |
 | Ship (Level 2) | `vercel`, `github`, `security-review`, `shipping-and-launch` | [07-ship.md](docs/framework/07-ship.md) |
 
@@ -96,6 +100,7 @@ The catalog ([catalog/tools.json](catalog/tools.json)) has every tool with *use 
 - [ ] Every page in the brief exists, is reachable from the navigation and does its job
 - [ ] The overview answers "what needs my attention today?" in five seconds
 - [ ] Interactions work: search, filter, sort, open a record, add or edit one, move a card or book a slot
-- [ ] It matches the chosen reference's style: materials, type, spacing, motion
+- [ ] It matches the chosen reference's style: materials, shapes, type, spacing, motion. A reference with glass, organic outlines or a 3D object has them here too, built as the playbook shows, not as flat rectangles
+- [ ] You opened your own screenshots (desktop, and the full phone page) and compared them with the reference
 - [ ] It passes [AGENTS.md §5](AGENTS.md) at 375px and 1280px
 - [ ] The person has the link or file, screenshots, and a clear next step

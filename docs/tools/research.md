@@ -91,6 +91,34 @@ Read and extract content from the client's playbook, spreadsheets and documents.
 
 ---
 
+<a id="learn-anything"></a>
+### Learn Anything
+
+`https://learn-anything.xyz/explore` · reference · **recommended** · phases: Discover, Define, Design, Build
+
+Curated learning paths and best links for any topic: use it to understand a business field or a technology area before designing for it.
+
+**Use when**
+- The person's business is a field you do not know well
+- A technique or technology area is new to you (WebGL, accessibility, databases)
+
+**Avoid when**
+- You need exact syntax (use quickref)
+- The answer is a fact about the person's own business (ask them)
+
+**How to use**
+- Search the topic on the Explore page
+- Read the short guide and one or two top links
+- Confirm what you learned with the person; their words win
+
+**Pairs with:** [QuickRef.ME](libraries.md#quickref)
+
+**If not installed:** follow [docs/onboarding/03-when-you-dont-know.md](../../docs/onboarding/03-when-you-dont-know.md)
+
+**Docs:** https://learn-anything.xyz/explore
+
+---
+
 <a id="user-research"></a>
 ### User Research
 
