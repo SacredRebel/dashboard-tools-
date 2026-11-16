@@ -1088,14 +1088,14 @@ Near-black canvas with vivid neon accents and gradients. Gaming, crypto, music, 
 
 _Pulsar Analytics · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A dark neon product-analytics board: glossy metric orbs switch a topographic mint/violet terrain chart with network nodes, a ticked uptime dial, gradient pillars, and Traffic / Events / Regions pages.
+Soft-3D charcoal analytics board with purple under-glow: recessed clock dial, glossy metric orbs, tall gradient pill bars, and a WebGL translucent ridge terrain (teal/violet/peach) over a purple pool with constellation lines.
 
 - **Use cases:** Analytics & BI, SaaS admin · **Mode:** dark · **Mood:** neon, technical, moody, glossy, futuristic
 - **Pages:** Overview (`overview`, Dashboard) · Traffic (`traffic`, Report) · Events (`events`, List) · Regions (`regions`, Detail)
 - **Motion:** count-up, stagger, chart-draw, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
-- **Signature:** Layered mint and violet topographic terrain waves under a neon network of nodes, rising from a blurred purple floor glow.
-- **Layout:** Top bar (brand, Overview/Traffic/Events/Regions nav, pill search, range toggle, bell, avatar) · 3 columns at 1440px: 288px left rail (uptime dial, health donut, hourly bars) · fluid centre (4 metric orbs, topographic terrain chart, 3 sparkline tiles) · 304px right rail (channel pillars, top events, regions) · 18px gaps
-- **Responsive:** ≤1180px: centre column spans full width on top, rails sit side by side below, search hides · ≤960px: nav wraps under the bar, orbs 2×2 · ≤640px: single column, orbs stack, chart 200px tall
+- **Signature:** Layered translucent ridge terrain in teal, violet and peach with glowing constellation lines and a purple floor pool, set in a soft-3D charcoal board.
+- **Layout:** One poured charcoal frame (cqw) · top band (brand, search, range) · left rail · left column (live chip, 3D clock dial, health ring 88, hour bars) · centre (4 glossy orbs, WebGL terrain, 3 spark cards) · right (channel pill bars, events wave, region bars) · Traffic/Events/Regions as frosted sheets in the same frame
+- **Responsive:** ≤720px: tall frame, bottom poured tab rail, stacked columns, hero terrain kept ≥200px
 - **Fonts:** Space Grotesk / Inter · **Palette:** bg `#12111a`, surface `#1e1d28`, text `#f1eff7`, muted `#b3afc2`, accent `#c49bff`, violet `#bf00ff`, mint `#00ffcc`, peach `#ffcc33`
 - **Variants:** Violet mint, Ember, Daylight · **Closest toolkit theme:** `aurora`
 
