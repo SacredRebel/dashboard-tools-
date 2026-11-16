@@ -279,7 +279,7 @@
       "mode": "dark",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A dark neon product-analytics board: glossy metric orbs switch a topographic mint/violet terrain chart with network nodes, a ticked uptime dial, gradient pillars, and Traffic / Events / Regions pages.",
+      "summary": "Soft-3D charcoal analytics board with purple under-glow: recessed clock dial, glossy metric orbs, tall gradient pill bars, and a WebGL translucent ridge terrain (teal/violet/peach) over a purple pool with constellation lines.",
       "mood": [
         "neon",
         "technical",
@@ -299,8 +299,8 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Top bar (brand, Overview/Traffic/Events/Regions nav, pill search, range toggle, bell, avatar) · 3 columns at 1440px: 288px left rail (uptime dial, health donut, hourly bars) · fluid centre (4 metric orbs, topographic terrain chart, 3 sparkline tiles) · 304px right rail (channel pillars, top events, regions) · 18px gaps",
-        "responsive": "≤1180px: centre column spans full width on top, rails sit side by side below, search hides · ≤960px: nav wraps under the bar, orbs 2×2 · ≤640px: single column, orbs stack, chart 200px tall"
+        "structure": "One poured charcoal frame (cqw) · top band (brand, search, range) · left rail · left column (live chip, 3D clock dial, health ring 88, hour bars) · centre (4 glossy orbs, WebGL terrain, 3 spark cards) · right (channel pill bars, events wave, region bars) · Traffic/Events/Regions as frosted sheets in the same frame",
+        "responsive": "≤720px: tall frame, bottom poured tab rail, stacked columns, hero terrain kept ≥200px"
       },
       "components": [
         "Metric orbs (toggle buttons that switch the chart)",
@@ -314,7 +314,7 @@
         "Key-value list",
         "Traffic / Events / Regions multipage views"
       ],
-      "signature": "Layered mint and violet topographic terrain waves under a neon network of nodes, rising from a blurred purple floor glow.",
+      "signature": "Layered translucent ridge terrain in teal, violet and peach with glowing constellation lines and a purple floor pool, set in a soft-3D charcoal board.",
       "palette": {
         "bg": "#12111a",
         "surface": "#1e1d28",

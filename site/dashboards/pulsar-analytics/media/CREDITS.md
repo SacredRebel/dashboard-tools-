@@ -1,5 +1,5 @@
-# Media — Pulsar Analytics
+# Pulsar Analytics media
 
-## terrain.webp / terrain@2x.webp
-Original GenerateImage (2026-11-14): neon topographic mountain waves on charcoal.
-Palette/subject inspired by reference only — not a trace or copy.
+- `hero-poster.png` — transparent WebGL fallback captured via `scripts/hero-poster.mjs` from the procedural terrain (`terrain.js`). No third-party asset.
+- Terrain is live three.js geometry (Meridian-style `DBHero` module), not a photo.
+- Screenshot-to-code and image-to-3D tools unavailable; default route from `docs/dashboards/03-asset-and-tool-map.md`.
