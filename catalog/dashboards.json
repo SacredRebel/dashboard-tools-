@@ -4832,7 +4832,7 @@
       "mode": "light",
       "status": "ready",
       "added": "2026-11-13",
-      "summary": "A respectful fictional fasting-day wellness board in liquid glass: twin phones with a date strip, imsak→iftar sun arc, water segments, an evening gather card, plus a glass profile, daily progress bars and an upgrade row.",
+      "summary": "A respectful fictional fasting-day wellness board in liquid glass: one wide dusk dashboard with a vertical rail, date beads, imsak→iftar sun arc, water and gather cards, dune greeting, profile, daily progress and upgrade strip.",
       "mood": [
         "serene",
         "warm",
@@ -4842,7 +4842,7 @@
       ],
       "best_for": [
         "Health and education apps around daily ritual or wellness habits",
-        "Phone-first glass concepts shown as twin panels on desktop",
+        "Liquid-glass wellness concepts adapted from phone to desktop",
         "Brands that want serif display type with calm frosted cards"
       ],
       "avoid_when": [
@@ -4852,12 +4852,12 @@
       ],
       "layout": {
         "pattern": "Dashboard",
-        "structure": "Stage · twin phones: Today (date strip, sun-arc card, water, gather, nav) · Profile (greeting, profile card, daily bars, upgrade, nav)",
-        "responsive": "≤1100px: phones stack · ≤700px: single column, date strip scrolls inside its row, nav stays sticky to each phone"
+        "structure": "Wide dusk board · vertical glass rail (Today, Progress, Sessions, Profile) · left Today cards · right Profile cards",
+        "responsive": "≤720px: Today stacks left-screen cards with bottom tab bar; Profile stacks right-screen cards"
       },
       "components": [
-        "Twin glass phone shells",
-        "Horizontal date strip",
+        "Vertical glass nav rail",
+        "Horizontal date beads",
         "Imsak→iftar sun arc card",
         "Water tracker with tappable segments",
         "Evening gather card with silhouette avatar",
@@ -4866,7 +4866,7 @@
         "Upgrade row",
         "Glass bottom navigation"
       ],
-      "signature": "Frosted cream and olive glass phones with a white fasting sun arc, teal water segments and warm saffron gather/progress panels under Fraunces headlines.",
+      "signature": "One-wide liquid-glass dusk board with a vertical rail, white fasting sun arc, teal water segments and warm saffron gather/progress panels under Fraunces headlines.",
       "palette": {
         "bg": "#e8efe8",
         "surface": "#f4f7f2",
@@ -4915,27 +4915,22 @@
       "pages": [
         {
           "id": "overview",
-          "name": "Overview",
+          "name": "Today",
           "pattern": "Dashboard"
         },
         {
-          "id": "vitals",
-          "name": "Vitals",
+          "id": "progress",
+          "name": "Progress",
           "pattern": "Report"
         },
         {
-          "id": "appointments",
-          "name": "Appointments",
-          "pattern": "Calendar"
-        },
-        {
-          "id": "records",
-          "name": "Records",
+          "id": "sessions",
+          "name": "Sessions",
           "pattern": "List"
         },
         {
-          "id": "settings",
-          "name": "Settings",
+          "id": "profile",
+          "name": "Profile",
           "pattern": "Settings"
         }
       ],

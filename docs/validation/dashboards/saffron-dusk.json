@@ -1,7 +1,7 @@
 {
   "id": "saffron-dusk",
-  "checked": "2026-11-16",
-  "ok": false,
+  "checked": "2026-11-17",
+  "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -57,23 +57,7 @@
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": [
-        "layout frame: height/width is 0.75, reference needs 0.58–0.74 [% of frame width, from the frame's top-left]",
-        "layout rail: found 0 visible data-ref=\"rail\", need 1 — the reference's tab bar turned vertical: Today, Progress, Sessions, Profile, icon over label, the active one with a soft glowing ring [% of frame width, from the frame's top-left]",
-        "layout title: x 18.5 (want 10 ±3); y 7 (want 2.5 ±3); w 22 (want 30 ±7.5) — WED RAMADAN 9 in the thin display serif with flourishes, moon and star mark at its right [% of frame width, from the frame's top-left]",
-        "layout dates: x 19 (want 10 ±3); y 13.5 (want 9.5 ±3); w 23.5 (want 38 ±9.5) — date beads joined by one poured strip; the active bead is dark with a warm glow [% of frame width, from the frame's top-left]",
-        "layout arc: x 18.8 (want 10 ±3); y 20.5 (want 17 ±3); w 24 (want 38 ±9.5); h 13.5 (want 21 ±5.3) — Imsak and Iftar card: sun arc with a glowing sun over a frosted upper half, darker lower half with both times, bell line in a cut-out tab at the bottom right [% of frame width, from the frame's top-left]",
-        "layout water: x 18.8 (want 10 ±3); y 35 (want 40 ±3); w 24 (want 18.5 ±4.6); h 9.5 (want 14 ±3.5) — teal liquid card with the WATER label in a poured tab at the top left, droplet in a round well, segmented bar [% of frame width, from the frame's top-left]",
-        "layout gather: x 18.8 (want 29.5 ±3); y 45.5 (want 40 ±3); w 24 (want 18.5 ±4.6); h 8 (want 14 ±3.5) — amber pill event card, avatar at the right, glow underneath [% of frame width, from the frame's top-left]",
-        "layout dune: found 0 visible data-ref=\"dune\", need 1 — dark dune panel: Good evening in the display serif, large four-point star, layered dune lines, settings icon top right [% of frame width, from the frame's top-left]",
-        "layout progress: x 54.5 (want 75.5 ±3); y 40.5 (want 19 ±3); h 12.5 (want 22 ±5.5) — amber daily progress card with its title in a poured tab at the top right, tree icon, seven thin vertical bars with day labels [% of frame width, from the frame's top-left]",
-        "layout day-bar: h 1 (want ≥ 4); w 1.8 (want ≤ 1.2) — thin tall bars, not pills [% of frame width, from the frame's top-left]",
-        "layout upgrade: y 53.5 (want 43 ±3); w 22.5 (want 46 ±11.5); h 6 (want 11 ±2.8) — dark frosted upgrade strip with a flame mark [% of frame width, from the frame's top-left]",
-        "backdrop: no element with data-ref=\"backdrop\" — grey-green dusk gradient with the reference's dune lines and four-point stars; no photo",
-        "report: docs/validation/dashboards/saffron-dusk-polish.md is missing (copy templates/polish-report.md and fill it)",
-        "nav: 0 items, the reference has 4",
-        "dead controls: clicking does nothing: \"9\", \"10\", \"11\", \"12\", \"2 of 8 glasses\", \"3 of 8 glasses\", \"4 of 8 glasses\", \"5 of 8 glasses\", \"6 of 8 glasses\", \"7 of 8 glasses\", \"8 of 8 glasses\", \"Fr 68 percent\", \"Sa 55 percent\", \"Su 88 percent\", \"Mo 48 percent\", \"Tu 72 percent\", \"We 64 percent\". Wire each to a visible change, or make it plain text instead of a button"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/saffron-dusk/#/overview",
@@ -111,171 +95,129 @@
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/#/vitals",
+      "url": "/dashboards/saffron-dusk/#/progress",
       "width": 1440,
       "variant": "default",
-      "page": "vitals",
+      "page": "progress",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/#/vitals",
+      "url": "/dashboards/saffron-dusk/#/progress",
       "width": 375,
       "variant": "default",
-      "page": "vitals",
+      "page": "progress",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=dawn#/vitals",
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/progress",
       "width": 1440,
       "variant": "dawn",
-      "page": "vitals",
+      "page": "progress",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=dawn#/vitals",
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/progress",
       "width": 375,
       "variant": "dawn",
-      "page": "vitals",
+      "page": "progress",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=night#/vitals",
+      "url": "/dashboards/saffron-dusk/?variant=night#/progress",
       "width": 1440,
       "variant": "night",
-      "page": "vitals",
+      "page": "progress",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=night#/vitals",
+      "url": "/dashboards/saffron-dusk/?variant=night#/progress",
       "width": 375,
       "variant": "night",
-      "page": "vitals",
+      "page": "progress",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/#/appointments",
+      "url": "/dashboards/saffron-dusk/#/sessions",
       "width": 1440,
       "variant": "default",
-      "page": "appointments",
+      "page": "sessions",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/#/appointments",
+      "url": "/dashboards/saffron-dusk/#/sessions",
       "width": 375,
       "variant": "default",
-      "page": "appointments",
+      "page": "sessions",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=dawn#/appointments",
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/sessions",
       "width": 1440,
       "variant": "dawn",
-      "page": "appointments",
+      "page": "sessions",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=dawn#/appointments",
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/sessions",
       "width": 375,
       "variant": "dawn",
-      "page": "appointments",
+      "page": "sessions",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=night#/appointments",
+      "url": "/dashboards/saffron-dusk/?variant=night#/sessions",
       "width": 1440,
       "variant": "night",
-      "page": "appointments",
+      "page": "sessions",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=night#/appointments",
+      "url": "/dashboards/saffron-dusk/?variant=night#/sessions",
       "width": 375,
       "variant": "night",
-      "page": "appointments",
+      "page": "sessions",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/#/records",
+      "url": "/dashboards/saffron-dusk/#/profile",
       "width": 1440,
       "variant": "default",
-      "page": "records",
+      "page": "profile",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/#/records",
+      "url": "/dashboards/saffron-dusk/#/profile",
       "width": 375,
       "variant": "default",
-      "page": "records",
+      "page": "profile",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=dawn#/records",
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/profile",
       "width": 1440,
       "variant": "dawn",
-      "page": "records",
+      "page": "profile",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=dawn#/records",
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/profile",
       "width": 375,
       "variant": "dawn",
-      "page": "records",
+      "page": "profile",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=night#/records",
+      "url": "/dashboards/saffron-dusk/?variant=night#/profile",
       "width": 1440,
       "variant": "night",
-      "page": "records",
+      "page": "profile",
       "errors": []
     },
     {
-      "url": "/dashboards/saffron-dusk/?variant=night#/records",
+      "url": "/dashboards/saffron-dusk/?variant=night#/profile",
       "width": 375,
       "variant": "night",
-      "page": "records",
-      "errors": []
-    },
-    {
-      "url": "/dashboards/saffron-dusk/#/settings",
-      "width": 1440,
-      "variant": "default",
-      "page": "settings",
-      "errors": []
-    },
-    {
-      "url": "/dashboards/saffron-dusk/#/settings",
-      "width": 375,
-      "variant": "default",
-      "page": "settings",
-      "errors": []
-    },
-    {
-      "url": "/dashboards/saffron-dusk/?variant=dawn#/settings",
-      "width": 1440,
-      "variant": "dawn",
-      "page": "settings",
-      "errors": []
-    },
-    {
-      "url": "/dashboards/saffron-dusk/?variant=dawn#/settings",
-      "width": 375,
-      "variant": "dawn",
-      "page": "settings",
-      "errors": []
-    },
-    {
-      "url": "/dashboards/saffron-dusk/?variant=night#/settings",
-      "width": 1440,
-      "variant": "night",
-      "page": "settings",
-      "errors": []
-    },
-    {
-      "url": "/dashboards/saffron-dusk/?variant=night#/settings",
-      "width": 375,
-      "variant": "night",
-      "page": "settings",
+      "page": "profile",
       "errors": []
     },
     {

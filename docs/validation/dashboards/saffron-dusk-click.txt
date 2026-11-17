@@ -1,0 +1,17 @@
+# Click-test log — saffron-dusk (material polish)
+
+Branch: cursor/contract-saffron-dusk-0545
+
+## Breakpoints
+
+| Width | Frame | Rail | Result |
+|------:|---|---|---|
+| 1440 | block + aspect board | vertical left | all 4 routes ✔ |
+| 768 | grid reflow | vertical side | all 4 routes ✔ |
+| 375 | flex column | bottom, in-view | all 4 routes ✔ |
+
+## Controls
+Date beads, water segments, rail `aria-current` mutate on overview.
+
+## Check
+`node scripts/dashboards-check.mjs saffron-dusk` → ✔

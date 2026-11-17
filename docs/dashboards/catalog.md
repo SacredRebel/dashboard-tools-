@@ -477,20 +477,20 @@ A light lilac glass finance desk: near-white frosted KPI panes over lilac haze w
 
 _Saffron Dusk · original owner reference (`reference.jpg`; recreation `shot.jpg`, card `thumb.jpg`)._
 
-A respectful fictional fasting-day wellness board in liquid glass: twin phones with a date strip, imsak→iftar sun arc, water segments, an evening gather card, plus a glass profile, daily progress bars and an upgrade row.
+A respectful fictional fasting-day wellness board in liquid glass: one wide dusk dashboard with a vertical rail, date beads, imsak→iftar sun arc, water and gather cards, dune greeting, profile, daily progress and upgrade strip.
 
 - **Use cases:** Health & fitness, Education · **Mode:** light · **Mood:** serene, warm, reverent, airy, soft
-- **Pages:** Overview (`overview`, Dashboard) · Vitals (`vitals`, Report) · Appointments (`appointments`, Calendar) · Records (`records`, List) · Settings (`settings`, Settings)
+- **Pages:** Today (`overview`, Dashboard) · Progress (`progress`, Report) · Sessions (`sessions`, List) · Profile (`profile`, Settings)
 - **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
-- **Signature:** Frosted cream and olive glass phones with a white fasting sun arc, teal water segments and warm saffron gather/progress panels under Fraunces headlines.
-- **Layout:** Stage · twin phones: Today (date strip, sun-arc card, water, gather, nav) · Profile (greeting, profile card, daily bars, upgrade, nav)
-- **Responsive:** ≤1100px: phones stack · ≤700px: single column, date strip scrolls inside its row, nav stays sticky to each phone
+- **Signature:** One-wide liquid-glass dusk board with a vertical rail, white fasting sun arc, teal water segments and warm saffron gather/progress panels under Fraunces headlines.
+- **Layout:** Wide dusk board · vertical glass rail (Today, Progress, Sessions, Profile) · left Today cards · right Profile cards
+- **Responsive:** ≤720px: Today stacks left-screen cards with bottom tab bar; Profile stacks right-screen cards
 - **Fonts:** Fraunces / Plus Jakarta Sans · **Palette:** bg `#e8efe8`, surface `#f4f7f2`, text `#1a2a24`, muted `#4a5c54`, accent `#c4783a`, teal `#2f6f6a`, olive `#3a4a38`, saffron `#e8a85a`
 - **Variants:** Dusk, Dawn, Night · **Closest toolkit theme:** `coastal`
 
 **Best for**
 - Health and education apps around daily ritual or wellness habits
-- Phone-first glass concepts shown as twin panels on desktop
+- Liquid-glass wellness concepts adapted from phone to desktop
 - Brands that want serif display type with calm frosted cards
 
 **Avoid when**
@@ -498,7 +498,7 @@ A respectful fictional fasting-day wellness board in liquid glass: twin phones w
 - Brands that forbid glass blur or serif display
 - Low-end devices where backdrop-filter is costly
 
-**Components:** Twin glass phone shells · Horizontal date strip · Imsak→iftar sun arc card · Water tracker with tappable segments · Evening gather card with silhouette avatar · Glass profile card with share action · Daily progress bar chart · Upgrade row · Glass bottom navigation
+**Components:** Vertical glass nav rail · Horizontal date beads · Imsak→iftar sun arc card · Water tracker with tappable segments · Evening gather card with silhouette avatar · Glass profile card with share action · Daily progress bar chart · Upgrade row · Glass bottom navigation
 
 ---
 
