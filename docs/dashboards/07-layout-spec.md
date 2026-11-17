@@ -29,7 +29,7 @@ Written rules did not stop builders from getting the layout wrong while every ot
 | `min_w`, `max_w`, `min_h`, `max_h` | size limits |
 | `within` | the element's centre must fall inside this x and y range |
 | `object` | measures a 3D hero's silhouette and shading: see [08-object-spec.md](08-object-spec.md) |
-| `material` | `"glass"`: the element must have a backdrop blur of at least 8px, a fill no more opaque than 0.62 and a light edge |
+| `material` | `"clay"`: at least two shadow layers (soft dark drop plus light highlight) and a corner radius of 12px or more. `"glass"`: the element must have a backdrop blur of at least 8px, a fill no more opaque than 0.62 and a light edge |
 | `ref` | `[x, y, w, h]` in reference-image pixels: the part of the reference this box must look like, used for the compare sheet when the box is not at the reference's own position |
 | `note` | what the element is, printed with the failure |
 

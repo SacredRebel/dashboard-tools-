@@ -1,0 +1,289 @@
+{
+  "reference": "reference.jpg (two phone screens: mission on the left in cream clay, calibration on the right in dark green)",
+  "unit": "percent of the frame's width, measured from the frame's top-left corner; viewport 1440 wide, overview page, default variant",
+  "adaptation": "The reference has no desktop screen. This file is the desktop design: one wide clay board that joins the two phone screens into a single app. The left half is the cream mission panel, the right half is the dark green calibration panel, with one rail and one top bar across both. Do not draw phones or device frames on desktop. At 375px the Overview page reads as the reference's left screen followed by its right screen. The reference's text is garbled: use real, fictional words.",
+  "frame": {
+    "min_w_vw": 90,
+    "aspect": [
+      0.56,
+      0.7
+    ],
+    "backdrop": "the reference's split backdrop: deep green on the left, warm tan on the right, with a soft shadow under the board"
+  },
+  "nav": {
+    "ref": "rail",
+    "min_routes": 4
+  },
+  "boxes": {
+    "rail": {
+      "x": 1.5,
+      "y": 4,
+      "w": 6,
+      "h": 50,
+      "material": "clay",
+      "ref": [
+        270,
+        400,
+        175,
+        40
+      ],
+      "note": "clay rail with four icon buttons (Overview, Library, Activity, Settings): the reference's round foot icons, raised, with the active one pressed in"
+    },
+    "score": {
+      "x": 10,
+      "y": 3,
+      "w": 20,
+      "max_h": 9,
+      "ref": [
+        75,
+        130,
+        95,
+        45
+      ],
+      "note": "large dark-green score numerals with a small label under them and two thin rule lines"
+    },
+    "actions": {
+      "x": 84,
+      "y": 3,
+      "w": 14,
+      "max_h": 8,
+      "ref": [
+        205,
+        88,
+        55,
+        80
+      ],
+      "note": "dark green toggle pill and a round gold avatar orb"
+    },
+    "mission": {
+      "x": 10,
+      "y": 13,
+      "w": 36,
+      "h": 40,
+      "material": "clay",
+      "ref": [
+        62,
+        70,
+        203,
+        385
+      ],
+      "note": "cream clay panel: thick soft edges, raised from the board"
+    },
+    "ring": {
+      "x": 15,
+      "y": 15,
+      "w": 26,
+      "h": 26,
+      "ref": [
+        80,
+        185,
+        170,
+        165
+      ],
+      "note": "gold ring, thin and slightly raised, the helmet sits inside it and overlaps its lower edge"
+    },
+    "helmet": {
+      "x": 17.5,
+      "y": 17,
+      "w": 21,
+      "h": 22,
+      "ref": [
+        105,
+        205,
+        115,
+        135
+      ],
+      "object": {
+        "min_fill": [
+          0.7,
+          0.7
+        ],
+        "aspect": 0.95,
+        "aspect_tol": 0.2,
+        "profile": {
+          "at": [
+            0.1,
+            0.5,
+            0.9
+          ],
+          "width": [
+            0.6,
+            1.0,
+            0.55
+          ],
+          "tol": 0.18
+        },
+        "min_shade": 0.08,
+        "no_clip": true
+      },
+      "note": "3D astronaut helmet in three-quarter view: dark green rounded shell, cream ear cup with a gold centre, gold mesh visor, cream trim band, short neck collar. Matte clay, soft light from the upper left"
+    },
+    "tag": {
+      "count": 2,
+      "min_w": 2.2,
+      "ref": [
+        78,
+        335,
+        30,
+        45
+      ],
+      "note": "two small dark green house-shaped tags, one each side under the ring, each a working toggle"
+    },
+    "pager": {
+      "x": 20,
+      "y": 45,
+      "w": 16,
+      "tol": 4,
+      "ref": [
+        118,
+        368,
+        95,
+        16
+      ],
+      "note": "row of small dots; the current one is larger"
+    },
+    "pager-dot": {
+      "count": 5
+    },
+    "start": {
+      "x": 20,
+      "y": 48.5,
+      "w": 16,
+      "h": 4.5,
+      "ref": [
+        105,
+        392,
+        112,
+        28
+      ],
+      "note": "dark green raised pill button, cream label"
+    },
+    "calibration": {
+      "x": 48,
+      "y": 13,
+      "w": 34,
+      "h": 40,
+      "material": "clay",
+      "ref": [
+        258,
+        42,
+        190,
+        425
+      ],
+      "note": "dark green panel with the terrain inside it"
+    },
+    "terrain": {
+      "x": 48,
+      "y": 24,
+      "w": 34,
+      "h": 29,
+      "ref": [
+        262,
+        150,
+        185,
+        200
+      ],
+      "note": "layered cream clay mountains with soft shadows between layers, rising from the panel's lower half; not a flat chart"
+    },
+    "terrain-layer": {
+      "count": 3,
+      "note": "at least three overlapping ridge layers"
+    },
+    "spire": {
+      "count": 1,
+      "min_h": 14,
+      "max_w": 3,
+      "ref": [
+        318,
+        150,
+        22,
+        180
+      ],
+      "note": "tall thin cream spire rising from the terrain"
+    },
+    "sphere": {
+      "count": 1,
+      "min_w": 1,
+      "max_w": 3,
+      "ref": [
+        345,
+        125,
+        16,
+        180
+      ],
+      "note": "small gold sphere on a thin vertical rail; dragging it up and down changes the calibration value"
+    },
+    "kpis": {
+      "x": 84,
+      "y": 13,
+      "w": 14,
+      "h": 26,
+      "ref": [
+        365,
+        135,
+        75,
+        115
+      ],
+      "note": "three stacked readouts in gold numerals with small labels"
+    },
+    "kpi": {
+      "count": 3
+    },
+    "calibrate": {
+      "x": 84,
+      "y": 42,
+      "w": 14,
+      "h": 4.5,
+      "ref": [
+        365,
+        322,
+        60,
+        18
+      ],
+      "note": "small raised pill button"
+    },
+    "stepper": {
+      "x": 84,
+      "y": 48.5,
+      "w": 14,
+      "h": 5,
+      "ref": [
+        272,
+        402,
+        172,
+        32
+      ],
+      "note": "round minus and plus buttons with the current value between them"
+    }
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Desktop is a real wide dashboard in the same clay style as the phone screens, not phone mockups on a page"
+    },
+    {
+      "id": "R2",
+      "text": "Desktop, tablet and phone are three distinct layouts of one app: same tokens, type, materials, icons and pages. Never swap one for another"
+    },
+    {
+      "id": "R3",
+      "text": "The helmet is a real 3D object that matches the reference and turns when dragged"
+    },
+    {
+      "id": "R4",
+      "text": "The terrain is layered clay with the spire and the gold sphere; dragging the sphere changes a readout"
+    },
+    {
+      "id": "R5",
+      "text": "Clay everywhere: thick soft edges, a dark drop shadow and a light highlight, matte surfaces, nothing flat"
+    },
+    {
+      "id": "R6",
+      "text": "All four pages work and every button, toggle, dot and stepper changes something"
+    },
+    {
+      "id": "R7",
+      "text": "All copy is real fictional words; none of the reference's garbled text"
+    }
+  ]
+}

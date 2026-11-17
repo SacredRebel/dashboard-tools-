@@ -22,7 +22,7 @@ It exists because builders kept delivering work that passed its own review and w
 |---|---|---|---|---|
 | 1 | Layout | wrong place or size, missing parts, a phone pasted on desktop | `frame`, `boxes` | [07](07-layout-spec.md) |
 | 2 | Object | a 3D hero that is tiny, a blob, flat or cut off | `boxes.<name>.object` | [08](08-object-spec.md) |
-| 3 | Material | "glass" that is opaque, unblurred or edgeless; a flat backdrop | `boxes.<name>.material`, `frame.backdrop` | [05](05-style-frameworks.md) |
+| 3 | Material | "glass" that is opaque, unblurred or edgeless; "clay" that is flat or sharp-cornered; a flat backdrop | `boxes.<name>.material`, `frame.backdrop` | [05](05-style-frameworks.md) |
 | 4 | Navigation | a nav item with no page of its own, or an empty page | `nav` | below |
 | 5 | Controls | a button that does nothing when clicked | always on | below |
 | 6 | Record | no report, no tools table, an owner requirement left unanswered | `requirements` | [templates/polish-report.md](../../templates/polish-report.md) |

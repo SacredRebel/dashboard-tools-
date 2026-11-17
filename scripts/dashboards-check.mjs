@@ -464,6 +464,14 @@ for (const d of list) {
           strict.push(...(await page.evaluate((spec) => {
             const out = []; const alpha = (c) => { const m = /rgba?\(([^)]+)\)/.exec(c); if (!m) return null; const p = m[1].split(/[,\s/]+/).filter(Boolean); return p.length >= 4 ? parseFloat(p[3]) : 1; };
             for (const [name, b] of Object.entries(spec.boxes || {})) {
+              if (b.material === 'clay') {
+                const el = document.querySelector(`[data-ref="${name}"]`); if (!el) continue; const cs = getComputedStyle(el); const bad = [];
+                const layers = cs.boxShadow === 'none' ? 0 : cs.boxShadow.split(/,(?![^(]*\))/).length;
+                if (layers < 2) bad.push(`${layers} shadow layer(s) (want a soft dark drop shadow plus a light highlight, at least 2)`);
+                if (parseFloat(cs.borderTopLeftRadius) < 12) bad.push(`corner radius ${cs.borderTopLeftRadius} (want ≥ 12px: clay has soft, thick edges)`);
+                if (bad.length) out.push(`material ${name}: not clay: ${bad.join('; ')}`);
+                continue;
+              }
               if (b.material !== 'glass') continue;
               const el = document.querySelector(`[data-ref="${name}"]`); if (!el) continue;
               const cs = getComputedStyle(el); const bad = [];
