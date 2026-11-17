@@ -24,9 +24,12 @@
   };
   function sunArc(pct) {
     const p = Math.max(0.02, Math.min(1, pct)); const pts = [];
-    for (let i = 0; i <= 32; i++) { const t = i / 32; pts.push(`${(8 + t * 184).toFixed(1)},${(52 - Math.sin(Math.PI * t) * 40).toFixed(1)}`); }
+    const steps = 32; const last = Math.max(1, Math.round(p * steps));
+    for (let i = 0; i <= last; i++) { const t = i / steps; pts.push(`${(8 + t * 184).toFixed(1)},${(52 - Math.sin(Math.PI * t) * 40).toFixed(1)}`); }
     const sx = 8 + p * 184, sy = 52 - Math.sin(Math.PI * p) * 40;
-    return `<svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sd-arc-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#f0c878" stop-opacity="0.95"/></linearGradient><filter id="sd-sun-glow" x="-180%" y="-180%" width="460%" height="460%"><feGaussianBlur stdDeviation="4.2" result="b"/><feGaussianBlur stdDeviation="2.2" result="b2"/><feMerge><feMergeNode in="b"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><polyline points="${pts.join(' ')}" fill="none" stroke="url(#sd-arc-g)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="11" fill="rgba(255,230,160,.28)" filter="url(#sd-sun-glow)"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="6.4" fill="rgba(255,245,210,.55)" filter="url(#sd-sun-glow)"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="3.6" fill="#fffef6" stroke="rgba(255,236,190,.95)" stroke-width="1.1"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="1.6" fill="#fff"/></svg>`;
+    pts[pts.length - 1] = `${sx.toFixed(1)},${sy.toFixed(1)}`;
+    const left = ((sx / 200) * 100).toFixed(2), top = ((sy / 60) * 100).toFixed(2);
+    return `<svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sd-arc-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0.5"/><stop offset="0.55" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#f0c878" stop-opacity="0.95"/></linearGradient></defs><polyline points="${pts.join(' ')}" fill="none" stroke="url(#sd-arc-g)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sd-sun" style="left:${left}%;top:${top}%" aria-hidden="true"></span>`;
   }
   function ensureControls() {
     if (built) return; built = true;
