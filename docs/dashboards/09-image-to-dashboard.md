@@ -94,7 +94,7 @@ When the reference shows phones only, the build is **one app at three sizes**. T
 
 ## 5. Every page is the same app
 
-The check runs `page_style` on **every page at 1440 and 375**: the backdrop is visible, the nav is visible, at least `min` cards use the reference's material, and at least `shapes` elements use the shape grammar.
+The check runs `page_style` on **every page at every width**: the backdrop is visible, the nav is visible, at least `min` cards use the reference's material, at least `shapes` elements use the shape grammar, a `hero` surface from the reference is present, and no text is covered (by an avatar, tab or overlay) or cut off by a clip-path.
 
 Inner-page recipe:
 1. Start from the overview's backdrop, nav and title style. Same frame.
