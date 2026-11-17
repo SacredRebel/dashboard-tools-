@@ -84,7 +84,7 @@
   function showPage(id) {
     $$('[data-db-page]').forEach((el) => { el.hidden = el.getAttribute('data-db-page') !== id; });
     $$('.sd-rail [data-route]').forEach((a) => { if (a.dataset.route === id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
-    const main = $('.sd-main'); if (main) main.scrollTop = 0;
+    const scroller = $('.sd-pages') || $('.sd-main'); if (scroller) scroller.scrollTop = 0;
     syncNavShape();
   }
   ensureControls(); syncDates(); syncArc(); syncWater(); syncBars();

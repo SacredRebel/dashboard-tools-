@@ -281,3 +281,33 @@ Checker re-run after the pass: `node scripts/dashboards-check.mjs saffron-dusk` 
 Honest residuals this round: title flourishes and the painted reference art remain approximations (font axes + generated images); the arc's taupe bands and the molded path are gradients/SVG, not painted surfaces; the Share↔Daily join on the phone profile overlaps by a few px rather than inked edges; inner-page heroes reuse the overview dune band.
 
 Remaining honest differences: title flourishes and painted character art are denser in the reference than font axes and generated avatars; the journey card is a maintainer-designed region; poured-tab junctions are cleaner vector cuts than the reference's inked edges; inner-page heroes reuse the overview dune band rather than per-page reference art (the reference only shows the phone screens).
+
+## Round 8 — maintainer round 4 (final): 6px shape-edge gate + residual defects
+
+New gate merged from main: text inside shaped cards must keep ≥6px from the clip edge. Maintainer's defect list: stats text ("JOURNEYS", "olive · cedar") and phone "Share" running into card/tab edges; Progress page notch bite on "SLEEP DEBT", "FASTING DAYS" crossing its tab edge, and the grid stopping short of the hero; arc lower band reading near-black; phone arc not visibly rising, molded path a thin "smile", hanging-star threads clipped; phone Profile "DAILY PROGRESS" riding the tab's top edge.
+
+Fixes: stats gained real inner padding (`padding-right` on `.sd-stats`, `.sd-m-share`); Progress tiles got top-padding floors and shape opts re-tuned (`tab h:9%→4%`, `notch at:70%` clear of left labels); `.sd-page-grid`/`.sd-list`/`.sd-week-chart` `max-width:none` so they span hero width; arc shell gradient lifted to warm taupe `#4f4738→#3e382c` range with a lighter scrim; phone arc plot `top:-24%;height:80%` so the arc clears the card edge; molded path widened (viewBox 100×30, band ≈33% height, `blur(.7px)`) and star threads un-clipped by moving `clip-path` onto `.hs::after` plus 1.5px/.72-alpha threads; `.sd-m-daily .sd-pour-daily` centred in the tab lip (`top:3px`, verified 3–21px inside the 25px band).
+
+Gate-discovered regressions fixed in the same pass: the wider grid pushed bottom-row text into the rail's overlay band (rail is `position:absolute` over `.sd-main`'s bottom ~67–87px at every size) — solved by introducing `.sd-pages`, an inner scroller ending above the rail (`bottom:5.8cqw` desktop, `12.2cqw` tablet; in-flow on phone where the rail already sits below), with `.sd-over` raised to `z-index:2` so the empty wrapper never intercepts overview hit-tests; `.sd-thread` had no background of its own so tray relief ridges showed through the glass and failed pixel contrast — given the same cream gradient surface as `.sd-tile`/`.sd-list`; `showPage()` now resets `.sd-pages.scrollTop`.
+
+Verification: `node scripts/dashboards-check.mjs saffron-dusk` → zero failures after each stage (edge gate → covered-text/contrast → final). DOM probes: grid/chart right edge == hero right edge (1348.1 @1440, 776.8 @820, 355 @375); arc plot top 40.3px above card top @375; pour label 3–21px inside 25.1px lip; band pixels sample rgb(55–65,49–59,39–47) warm taupe not black; stats right gap clears the 6px rule at all sizes. Fresh captures: 12 shots (4 pages × 1440/820/375) + compare sheets + frames/{desktop,tablet,phone}.jpg regenerated.
+
+| box | what differs | fix | score |
+|---|---|---|---|
+| title | unchanged this round | — | 4 |
+| dates | unchanged | — | 4 |
+| date | unchanged | — | 4 |
+| arc | lower band now warm taupe gradient (sampled rgb ~57,51,41 / 65,59,47) not near-black; phone arc rises 40px above the card edge; times keep small-caps meridiem | verified; still gradient not painted glass | 4 |
+| water | unchanged | — | 4 |
+| gather | unchanged | — | 4 |
+| stars | path widened to a soft cream band (~33% height, blurred); threads now render (1.5px, .72 alpha, unclipped) | verified; SVG/CSS not molded geometry | 4 |
+| sky | unchanged | — | 4 |
+| person | stats padding-right clears card edge ≥6px at 1440/820/375-profile; Share padding clears its tab | verified | 4 |
+| daily | phone pour label centred inside tab lip (3–21px of 25px) | verified | 4 |
+| day-bar | unchanged | — | 4 |
+| upgrade | unchanged | — | 4 |
+| journey | unchanged | — | 4 |
+| nav | unchanged; rail band no longer covers checkable text (`.sd-pages` ends above it) | verified | 4 |
+| inner pages | grid/list/chart now span hero width; tile padding keeps labels inside tab/notch shapes; Sleep-debt notch clear of its label | verified | 4 |
+
+Honest residuals this round: the arc's warm taupe is a translucent gradient (sampled ≈#393329–#413b2f, inside the requested #4f4738–#3e382c neighbourhood), not painted glass; the molded path and star threads are SVG/CSS approximations; tile/tab inner padding is uniform rather than reference-measured; `.sd-pages` means inner pages scroll in a slightly shorter port than the overview's full frame.
