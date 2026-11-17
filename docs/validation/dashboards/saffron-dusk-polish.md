@@ -101,3 +101,11 @@ Five fixes, three layouts left in place (absolute board at 1440, two-column refl
 | Profile name | “Mira Nazari” starts to the right of the overlapping avatar | Same offset in the reflow card | Profile page avatar overlaps the corner; name and email sit to its right |
 | Litres | Plain cream line under the segments, no chip | Plain line | Plain line on one row |
 | Gather | Wide amber pill, avatar on the right | Wide pill in the right column | Full-width pill, not a circle |
+
+## Maintainer polish (after PR 18)
+
+- Water card is now light teal liquid glass with dark text, as in the reference (was dark green).
+- Rail is frosted light glass with dark labels, as the reference nav bar (was near-black); night variant keeps a dark rail.
+- Removed the grey box behind the profile stats.
+- Phone: stars fill the empty sky between the gathering pill and the nav bar.
+- Checked at 1440, 820 and 375 plus the Profile page; check passes on all pages and variants.
