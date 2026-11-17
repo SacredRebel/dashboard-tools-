@@ -492,6 +492,35 @@ for (const d of list) {
             if (ps.shapes) { const cut = (e) => { const c = getComputedStyle(e); const b = getComputedStyle(e, '::before'); return [c, b].some((x) => (x.clipPath && x.clipPath !== 'none') || (x.maskImage || x.webkitMaskImage || 'none') !== 'none'); };
               const n = cards.filter(cut).length + document.querySelectorAll('[data-db-page]:not([hidden]) svg path[data-shape]').length;
               if (n < ps.shapes) out.push(`page style: ${n} shaped elements (tab, notch, bridge, organic) on this page (want ≥ ${ps.shapes}; the reference's shape grammar applies to every page)`); }
+            // Hero: every page opens with a signature surface from the reference (not only the overview).
+            if (ps.hero && ![...document.querySelectorAll(ps.hero)].some((el) => vis(el) && el.closest('[data-db-page]:not([hidden])'))) out.push(`page style: no hero surface ("${ps.hero}") on this page (each page needs one signature element from the reference, not only a grid of cards)`);
+            // Covered or clipped text: sample points inside each text box; the topmost element there must be the text itself.
+            const root = document.querySelector('[data-db-page]:not([hidden])') || document.querySelector('main') || document.body;
+            const bad = [];
+            for (const el of root.querySelectorAll('*')) {
+              if (bad.length >= 6) break;
+              const own = [...el.childNodes].filter((n) => n.nodeType === 3 && n.textContent.trim());
+              if (!own.length || !vis(el)) continue;
+              const rg = document.createRange(); rg.setStartBefore(own[0]); rg.setEndAfter(own[own.length - 1]); const rs = [...rg.getClientRects()].filter((q) => q.width > 0); const r = rs.length === 1 ? rs[0] : (() => { const t = document.createRange(); t.selectNodeContents(own[0]); return t.getBoundingClientRect(); })();
+              if (r.width < 6 || r.height < 6 || r.bottom < 0 || r.top > innerHeight || r.right < 0 || r.left > innerWidth) continue;
+              // Visible window: intersect with every scrolling/clipping ancestor (text scrolled out of a panel is not "covered").
+              let vx0 = 0, vy0 = 0, vx1 = innerWidth, vy1 = innerHeight;
+              for (let n = el.parentElement; n && n !== document.body; n = n.parentElement) { const c = getComputedStyle(n); if (/(auto|scroll|hidden|clip)/.test(c.overflow + c.overflowY)) { const nr = n.getBoundingClientRect(); vx0 = Math.max(vx0, nr.left); vy0 = Math.max(vy0, nr.top); vx1 = Math.min(vx1, nr.right); vy1 = Math.min(vy1, nr.bottom); } }
+              if (r.top < vy0 || r.bottom > vy1) continue;
+              let clipAnc = null; for (let n = el; n && n !== document.body; n = n.parentElement) if (getComputedStyle(n).clipPath !== 'none') { clipAnc = n; break; }
+              for (const [fx, fy] of [[0.06, 0.5], [0.5, 0.5], [0.94, 0.5], [0.3, 0.2], [0.7, 0.2], [0.5, 0.85]]) {
+                const x = r.left + r.width * fx, y = r.top + r.height * fy; if (x < 1 || y < 1 || x > innerWidth - 1 || y > innerHeight - 1) continue;
+                const top = document.elementFromPoint(x, y);
+                const paints = (t) => { const tr = t.getBoundingClientRect(); if (x < tr.left || x > tr.right || y < tr.top || y > tr.bottom) return false; // only a pseudo-element hit area
+                  const c = getComputedStyle(t); if (/^(IMG|SVG|CANVAS|VIDEO|PICTURE)$/i.test(t.tagName) || c.backgroundImage !== 'none') return true;
+                  const m = /rgba?\(([^)]+)\)/.exec(c.backgroundColor); const al = m ? (m[1].split(/[,\s/]+/).filter(Boolean)[3] ?? 1) : 0; return +al > 0.05 || [...t.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()); };
+                const fixed = (t) => { for (let n = t; n && n !== document.body; n = n.parentElement) { const ps = getComputedStyle(n).position; if (ps === 'fixed' || ps === 'sticky') return true; } return false; };
+                if (top && clipAnc && (() => { const cr = clipAnc.getBoundingClientRect(); return x > cr.left + 2 && x < cr.right - 2 && y > cr.top + 2 && y < cr.bottom - 2; })() && !clipAnc.contains(top) && top !== el && !el.contains(top) && !top.contains(el) && !fixed(top) && !top.closest('[data-shape]')?.contains(el)) { bad.push(`"${el.textContent.trim().slice(0, 24)}" covered by ${top.tagName.toLowerCase()} or cut off by its card's clip-path`); break; }
+                if (top && top !== el && !el.contains(top) && !top.contains(el) && paints(top) && !fixed(top)) { bad.push(`"${el.textContent.trim().slice(0, 24)}" under ${top.tagName.toLowerCase()}${top.className && typeof top.className === 'string' ? '.' + top.className.split(' ')[0] : ''}`); break; }
+                if (!top) { bad.push(`"${el.textContent.trim().slice(0, 24)}" clipped`); break; }
+              }
+            }
+            if (bad.length) out.push(`covered or clipped text: ${bad.join('; ')} (text must be fully visible: move it clear of avatars, tabs and clip-path cuts)`);
             return out;
           }, SPEC.page_style)));
         }

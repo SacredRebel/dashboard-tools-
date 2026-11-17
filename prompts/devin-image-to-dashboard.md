@@ -76,3 +76,20 @@ Change:
 Open the PR with the check output, every compare sheet and captures at 1440, 820 and 375 (overview and each inner page). Do not merge.
 
 Do Task A first, then Task B. Report honestly what still differs from the reference in each PR.
+
+---
+
+## Task B · round 2 (same branch `devin/saffron-unfold`, PR 20)
+
+`git fetch origin && git merge origin/main` first: the check gained a covered/clipped-text gate and a per-page `hero` gate, and the spec gained R14 and R15. Good progress: the structure, bottom nav, sky, stars and journey are right. The maintainer's review found these defects, and your report scored them 4 or more, so **re-score honestly** after fixing:
+
+1. **WATER tab (all sizes):** a pale yellow rectangle shows to the right of the tab. Something behind the clipped card is not clipped (glow, wrapper or pseudo-element). Where the outline steps down, the backdrop must show through.
+2. **DAILY PROGRESS tab (all sizes):** the label is cut to "LY PROGRESS", and an olive block shows left of the tab. Same cause; the whole label must sit inside the tab.
+3. **Avatar covers the "8"** in SESSIONS on desktop (the check now fails this). Move the stats clear of the avatar.
+4. **Diagonal stripe texture on the cream tray:** the reference has none. Replace it with a smooth cream frosted surface plus soft relief ridges hugging the cards (dna.md §Backdrop 2).
+5. **Upgrade:** the text is right-aligned with an empty left half. The reference has UPGRADE / YOUR EXPERIENCE › in tracked caps on the left and the flame on the right.
+6. **Tablet:** the Journey card is a large empty dark slab with tiny labels in one row. Compose it (the desktop's vertical thread, or two columns of days). The bottom bar sits outside the frame on a dark strip; put it inside the frame on the backdrop. Soften the hard olive rectangle behind the right column.
+7. **Inner pages (R15):** Progress, Sessions and Profile are uniform grids of identical cream tiles, and Progress has large grey circles at the bottom. Each page opens with a hero surface (a dune-sky band with the page title, `data-hero`) and then mixes the overview's card types: teal and amber glass, tabs, notches, and the thread-of-stars list for sessions.
+8. **Phone Profile:** the Daily progress tab label is clipped as on desktop.
+
+Run three new review rounds (Round 4–6) in the report, scoring every box. Then update PR 20 with the check output and captures at 1440, 820 and 375 for every page. Do not merge.

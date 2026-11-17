@@ -19,7 +19,8 @@
   "material": "glass",
   "min": 3,
   "shapes": 1,
-  "nav": "nav"
+  "nav": "nav",
+  "hero": "[data-ref=\"sky\"], [data-ref=\"arc\"], [data-hero]"
  },
  "boxes": {
   "title": {
@@ -584,6 +585,14 @@
   {
    "id": "R13",
    "text": "Progress, Sessions and Profile pages use the same backdrop, nav, glass cards and shapes as Today; no plain boxes or settings rows"
+  },
+  {
+   "id": "R14",
+   "text": "No defects inside shapes: tab labels fully visible (no 'LY PROGRESS'), no leftover blocks beside a tab, the avatar never covers the stats, no stripe texture the reference does not have"
+  },
+  {
+   "id": "R15",
+   "text": "Inner pages open with a hero surface from the reference (the dune sky band, or a large teal/amber glass card) and use varied card types and tabs like the overview, not a uniform grid of identical cream tiles"
   }
  ]
 }
