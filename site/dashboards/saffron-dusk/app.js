@@ -65,9 +65,25 @@
     const weekAvg = $('[data-p-week]'); if (weekAvg) weekAvg.textContent = `${Math.round(WEEK.reduce((s, d) => s + d.v, 0) / WEEK.length)}%`;
     $$('[data-p-bars] i').forEach((el) => el.classList.toggle('on', +el.dataset.i === activeDay));
   }
+  function syncNavShape() {
+    $$('.sd-rail [data-route]').forEach((a) => {
+      const on = a.getAttribute('aria-current') === 'page';
+      if (on && !a.dataset.shape) {
+        a.dataset.shape = 'bump';
+        a.dataset.shapeOpts = 'at:50%;a:38%;s:10;r:18';
+        a.dataset.shapeEdge = 'rgba(255,255,255,.8)';
+      } else if (!on && a.dataset.shape) {
+        delete a.dataset.shape; delete a.dataset.shapeOpts; delete a.dataset.shapeEdge;
+        a.style.clipPath = ''; a.style.webkitClipPath = '';
+        const sv = a.querySelector('svg.shp-edge'); if (sv) sv.remove();
+      }
+    });
+    window.DBShapes?.applyShapes();
+  }
   function showPage(id) {
     $$('[data-db-page]').forEach((el) => { el.hidden = el.getAttribute('data-db-page') !== id; });
     $$('.sd-rail [data-route]').forEach((a) => { if (a.dataset.route === id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    syncNavShape();
   }
   ensureControls(); syncDates(); syncArc(); syncWater(); syncBars();
   $('[data-dates]')?.addEventListener('click', (e) => { const b = e.target.closest('[data-day]'); if (!b) return; day = +b.dataset.day; syncDates(); syncArc(); live(`Ramadan ${day} · sample fasting window.`); });

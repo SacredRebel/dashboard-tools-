@@ -63,8 +63,13 @@ Not this:    Not Haven poured device frame; not Pulsar tiles; not twin phone she
 | R4 | Today/Progress/Sessions/Profile pages | click log | Yes | Yes | Yes |
 | R5 | 375 Today≈left, Profile≈right, bottom bar | frames/phone.jpg | n/a | n/a | Yes |
 | R6 | Beads, water, day bars, buttons mutate | dead-controls ✔ | Yes | Yes | Yes |
-| R7 | Three distinct layouts: desktop absolute cqw board; tablet two-column CSS grid reflow; phone stacked Today/Profile with bottom rail — never swaps one for another | frames/desktop.jpg · frames/tablet.jpg · frames/phone.jpg · style.css media queries | Yes | Yes | Yes |
+| R7 | Three distinct layouts: desktop absolute cqw board; tablet two-column reflow + journey strip; phone Today=left screen / Profile=right screen with bottom bar — never swaps one for another | frames/desktop.jpg · frames/tablet.jpg · frames/phone.jpg · style.css media queries | Yes | Yes | Yes |
 | R8 | Thin high-contrast Fraunces for RAMADAN + Good evening; small tracked caps for IMSAK/IFTAR/WATER/labels | overview + dune panel + compare | Yes | Yes | Yes |
+| R9 | Backdrop layers on every page and size: sage→charcoal gradient, molded cream tray with relief ridges around Today, hanging stars on threads under Gather, dark dune sky behind Evening/Profile, frosted nav band | `.sd-backdrop*`, `.sd-tray`, `.sd-stars`, `.sd-evening`, `.sd-m-veil`, `.sd-dune`, `.sd-m-greet` in style.css; visible in all page captures | Yes | Yes | Yes |
+| R10 | Organic shapes via `shapes.js`: WATER left tab, DAILY PROGRESS right tab, avatar notch with break-out, Share cut tab, Upgrade sloped top, nav raised dome on active item | `data-shape` + `data-shape-opts` on water/daily/person/share/upgrade/nav/tile cards; clip-path verified in DOM | Yes | Yes | Yes |
+| R11 | Bottom frosted nav bar at desktop, tablet and phone; icon over small tracked label; raised dome (bump) on the active item; no dark side rail | `.sd-rail` bottom-docked at all sizes; `data-ref="nav"`; bump clip-path on `[aria-current]` | Yes | Yes | Yes |
+| R12 | At 375 Today matches the reference's left screen and Profile matches the right screen box by box (stars under Gather included); bottom tab bar fully visible | `saffron-dusk-compare-overview-375.jpg` + `saffron-dusk-compare-profile-375.jpg`; all view boxes pass layout gate | n/a | n/a | Yes |
+| R13 | Progress, Sessions and Profile keep the same backdrop, bottom nav, glass cards (blur + translucent fill + light edge) and shape grammar; no plain settings rows | page_style gate green on all four pages at 1440/375/820 and all variants; `.sd-card` tiles + shaped tab/wave/slant cards on inner pages | Yes | Yes | Yes |
 
 ## Material look-for-look (this pass)
 
@@ -109,3 +114,70 @@ Five fixes, three layouts left in place (absolute board at 1440, two-column refl
 - Removed the grey box behind the profile stats.
 - Phone: stars fill the empty sky between the gathering pill and the nav bar.
 - Checked at 1440, 820 and 375 plus the Profile page; check passes on all pages and variants.
+
+## Unfold rounds (layout.json contract, devin/saffron-unfold)
+
+### Round 1 — structure pass
+
+First full unfold: tray/stars/evening/sky/journey markup added, every box repositioned in cqw per the three size tables, `sd-card` + `data-shape` wired on inner pages, shapes.js imported, nav bump sync in app.js.
+
+| box | what differs | fix | score |
+|---|---|---|---|
+| title | right column, weight ok; swash flourishes simplified | kept Fraunces WONK axis | 3 |
+| dates | bead band position ok; beads small vs reference | widened hit area, kept glass pill | 3 |
+| date | beads render; selected halo reads gold | verified ring + glow | 3 |
+| arc | shell + sun + bell present; times row sat inside the mask cut | moved times up, padded right | 3 |
+| water | teal tab cut works; tab label collided with tab corner | label repositioned | 3 |
+| gather | saffron pill ok; avatar size approximate | kept generated avatar | 3 |
+| stars | ornament added; thread/star sizes approximate | tuned % sizes per breakpoint | 3 |
+| sky | dune panel + ridges + star present; greet weight ok | verified box | 3 |
+| person | notch + avatar breakout + share tab; copy margin wrong at tablet | margin-left fix to clear avatar | 3 |
+| daily | amber right tab; pour label failed contrast on dark composite | gradient/label fixes in round 2 | 3 |
+| day-bar | bars render; today highlight ok | verified | 3 |
+| upgrade | slant cut works; fill too light for its text | darkened with inner veil | 3 |
+| journey | designed region present; text failed on light composite | darkened with inner veil | 3 |
+| nav | frosted bar + bump dome; fill alpha too high, labels thin at 820 | alpha + label colour fixes | 3 |
+
+### Round 2 — material and contrast pass
+
+Checker run after round 1: all layout boxes inside tolerance; failures were contrast (journey/upgrade text, daily pour label, arc-times in the notch mask, person name over avatar at 820, nav labels at 820, 11.55px ramadan sup, nav glass alpha) and the profile desk grid hidden at desktop/tablet.
+
+| box | what differs | fix | score |
+|---|---|---|---|
+| title | sup "9" measured 11.55px | font floor 12px | 4 |
+| dates | ok | — | 4 |
+| date | ok | — | 4 |
+| arc | times row clipped by bell-tab mask zone | times moved above mask, right padding added | 4 |
+| water | ok after alpha token fix | stops ≤ 0.62 | 4 |
+| gather | ok | — | 4 |
+| stars | ok | — | 4 |
+| sky | ok | — | 4 |
+| person | name sat under avatar at 820 | copy margin-left 33 percent | 4 |
+| daily | pour label on corner arc + dark composite | label moved inward; medium dusk wash | 4 |
+| day-bar | ok | — | 4 |
+| upgrade | smoked tray read mid-grey; text failed | inner dark veil layer keeps glass alpha | 4 |
+| journey | same composite problem | inner dark veil layer | 4 |
+| nav | fill alpha over glass limit; labels failed at 820 | alpha ≤ 0.62; darker label colour | 4 |
+
+### Round 3 — final verification
+
+`node scripts/dashboards-check.mjs saffron-dusk`: zero failures — every layout box inside tolerance at 1440/820/375, all page_style gates (backdrop, nav, ≥3 glass cards, ≥1 shape per page), material glass checks, contrast and text-size audits, dead-control and nav-page checks green on all four pages and three variants. Captures: `saffron-dusk-1440|820|375-{overview,progress,sessions,profile}.jpg` plus checker compare sheets.
+
+| box | what differs | fix | score |
+|---|---|---|---|
+| title | thin Fraunces caps match weight/spacing; reference's hand-painted swash flourishes are simplified to the font's WONK axis | documented residual | 4 |
+| dates | frosted pill + bead strip matches; bead gloss is CSS-approximated | documented residual | 4 |
+| date | circular beads, selected gold halo ring | verified | 4 |
+| arc | cream-to-smoked shell, gold sun, bell tab, times band; curve smoother than the reference's sketchy arc | documented residual | 4 |
+| water | teal left tab, drop icon, eight segments, litres line | verified | 4 |
+| gather | saffron pill with round avatar; copy breaks slightly differently | documented residual | 4 |
+| stars | three hanging four-point stars on threads + dots; ink-drawn in reference, CSS-drawn here | documented residual | 4 |
+| sky | dark dune panel, layered ridges, thin-serif greet, gear, one bright star | verified | 4 |
+| person | notch bite, avatar break-out, share cut-tab, stats row | verified | 4 |
+| daily | amber right tab, tree glyph, seven day bars, note line | verified | 4 |
+| day-bar | rounded bars, current day highlighted | verified | 4 |
+| upgrade | smoked slant tray, flame medallion, tracked caps | verified | 4 |
+| journey | designed region (not in the reference): vertical thread of stars and times | contract-designed | 4 |
+| nav | frosted bottom bar, icon over tracked label, raised dome on active | verified | 4 |
+
+Remaining honest differences: the reference's title flourishes and painted character art are denser than the font axes and generated avatars; the journey card is a maintainer-designed region with no reference counterpart; poured-tab junctions are cleaner vector cuts than the reference's inked edges.
