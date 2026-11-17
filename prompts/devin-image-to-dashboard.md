@@ -50,9 +50,18 @@ First `git fetch origin && git merge origin/main` into your branch (the spec and
 
 Push to the same branch; update PR 19's description with the final check output, all compare sheets and 1440/820/375 captures. Do not merge.
 
-## Task B · Saffron Dusk rebuild (new branch `devin/saffron-unfold`, new PR "Twin: Saffron Dusk (unfold)")
+## Task B · Saffron Dusk, build on what is there (new branch `devin/saffron-unfold`, new PR "Twin: Saffron Dusk (unfold)")
 
-The owner's verdict: the phone looks different from (and worse than) the reference, desktop and tablet are badly organised, the nav is the wrong style, the cards lack the reference's organic shapes, the inner pages do not share the style, and the backdrop is missing. Rebuild the layout to the new spec; keep what is good (the date beads, the arc's sun, the daily bars, the working routes and controls).
+The owner's verdict: the phone looks different from (and worse than) the reference, desktop and tablet are badly organised, the nav is the wrong style, the cards lack the reference's organic shapes, the inner pages do not share the style, and the backdrop is missing. **Do not start from scratch.** Work on top of the current files in `site/dashboards/saffron-dusk/`; most of the content and logic stays.
+
+Keep as is (restyle only where a step below says so): `app.js` (routes, date beads, water segments, day bars, toasts, all control wiring), the card markup and copy, the arc SVG and glowing sun, the daily bars, the dune art, the fonts and colour tokens, the Progress/Sessions/Profile page content, the night/dawn variants.
+
+Change:
+- `style.css` positions and grid per size (desktop, tablet, phone) to the new boxes.
+- The rail markup becomes the bottom bar (same four links, same routes).
+- Add `data-shape` attributes and the `shapes.js` import to the existing cards.
+- New markup only for: the backdrop layers (tray relief, hanging stars, sky), the `journey` card, and `data-ref` names that are new (`nav`, `sky`, `stars`, `daily`, `journey`).
+- Inner pages: wrap their existing content in the overview's glass cards and shapes.
 
 1. Read `site/dashboards/saffron-dusk/layout.json` (rewritten: desktop unfold, tablet columns, phone views for Today and Profile, `page_style`, R1–R13) and `dna.md` (maintainer-written; extend it if you find more, never delete).
 2. **Nav (R11):** replace the dark side rail with the reference's frosted bottom bar at every size, active item in a raised dome (`shapes.js bump`), teal-tinted active icon, icon over small tracked label. `data-ref="nav"`.
