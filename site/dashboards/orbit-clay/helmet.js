@@ -32,96 +32,127 @@ const TOKENS = {
   mesh: ['--oc-mesh', '#d8b878'],
   ink: ['--oc-green-deep', '#1d2f26'],
 };
+/* gold mesh texture for the visor — diagonal crosshatch over a gold gradient */
+function meshTexture() {
+  const c = document.createElement('canvas');
+  c.width = c.height = 256;
+  const g = c.getContext('2d');
+  const grad = g.createLinearGradient(0, 0, 256, 256);
+  grad.addColorStop(0, '#f6dc96'); grad.addColorStop(0.5, '#e2b95e'); grad.addColorStop(1, '#b98c3e');
+  g.fillStyle = grad; g.fillRect(0, 0, 256, 256);
+  g.strokeStyle = 'rgba(96,64,20,0.5)'; g.lineWidth = 2.4;
+  const s = 30;
+  for (let i = -256; i < 512; i += s) {
+    g.beginPath(); g.moveTo(i, 0); g.lineTo(i + 256, 256); g.stroke();
+    g.beginPath(); g.moveTo(i + 256, 0); g.lineTo(i, 256); g.stroke();
+  }
+  g.fillStyle = 'rgba(255,248,214,0.7)';
+  for (let y = s / 2; y < 256; y += s) for (let x = s / 2; x < 256; x += s) {
+    g.beginPath(); g.arc(x, y, 2.1, 0, 7); g.fill();
+  }
+  const t = new THREE.CanvasTexture(c);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 4;
+  return t;
+}
+
 const MAT = {};
+let meshTex = null;
 function buildMaterials() {
   for (const k of Object.keys(MAT)) MAT[k].dispose();
-  MAT.shell = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.shell), roughness: 0.78, metalness: 0.02, clearcoat: 0.22, clearcoatRoughness: 0.7, envMapIntensity: 0.7 });
-  MAT.cup = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.cup), roughness: 0.8, metalness: 0.02, clearcoat: 0.12, clearcoatRoughness: 0.8, envMapIntensity: 0.55 });
-  MAT.gold = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.gold), roughness: 0.38, metalness: 0.85, clearcoat: 0.5, clearcoatRoughness: 0.35, envMapIntensity: 1.15 });
-  MAT.goldHi = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.goldHi), roughness: 0.3, metalness: 0.9, clearcoat: 0.55, clearcoatRoughness: 0.3, envMapIntensity: 1.25 });
-  MAT.visor = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.visor), roughness: 0.12, metalness: 0.15, clearcoat: 1, clearcoatRoughness: 0.08, envMapIntensity: 1.3 });
-  MAT.mesh = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.mesh), roughness: 0.5, metalness: 0.7, wireframe: true, envMapIntensity: 0.8 });
+  if (meshTex) meshTex.dispose();
+  meshTex = meshTexture();
+  MAT.shell = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.shell), roughness: 0.74, metalness: 0.03, clearcoat: 0.28, clearcoatRoughness: 0.65, envMapIntensity: 0.75 });
+  MAT.cup = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.cup), roughness: 0.78, metalness: 0.02, clearcoat: 0.14, clearcoatRoughness: 0.8, envMapIntensity: 0.6 });
+  MAT.gold = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.gold), roughness: 0.36, metalness: 0.55, clearcoat: 0.5, clearcoatRoughness: 0.35, envMapIntensity: 1.15 });
+  MAT.goldHi = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.goldHi), roughness: 0.3, metalness: 0.6, clearcoat: 0.55, clearcoatRoughness: 0.3, envMapIntensity: 1.25 });
+  MAT.visor = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.visor), roughness: 0.16, metalness: 0.1, clearcoat: 0.9, clearcoatRoughness: 0.12, envMapIntensity: 1.1 });
+  MAT.mesh = new THREE.MeshPhysicalMaterial({ map: meshTex, color: col(...TOKENS.goldHi), roughness: 0.38, metalness: 0.5, clearcoat: 0.5, clearcoatRoughness: 0.28, envMapIntensity: 1.2 });
   MAT.ink = new THREE.MeshPhysicalMaterial({ color: col(...TOKENS.ink), roughness: 0.85, metalness: 0.02, clearcoat: 0.1, clearcoatRoughness: 0.8, envMapIntensity: 0.5 });
 }
 buildMaterials();
 envRoom();
+/* warm frontal fill so the face port, ear discs and collar read as clay, not silhouette */
+{
+  const fill = new THREE.DirectionalLight('#ffe8c0', 0.55);
+  fill.position.set(0.6, 0.4, 3.2);
+  scene.add(fill);
+  const under = new THREE.DirectionalLight('#d8e4c8', 0.3);
+  under.position.set(-0.5, -2.2, 1.4);
+  scene.add(under);
+}
 
-/* ---- compound helmet ---- */
+/* ---- compound helmet: rounded shell, face port (cream rim + gold mesh), ear discs, gold collar ---- */
 const model = new THREE.Group();
 root.add(model);
 const parts = []; // {mesh, key}
 const add = (mesh, key) => { model.add(mesh); parts.push({ mesh, key }); return mesh; };
 
-const shell = new THREE.Mesh(new THREE.SphereGeometry(0.62, 48, 36), MAT.shell);
-shell.scale.set(1.1, 1.0, 0.95);
-shell.position.y = 0.16;
+/* shell — squashed sphere, deep green clay */
+const shell = new THREE.Mesh(new THREE.SphereGeometry(0.6, 48, 36), MAT.shell);
+shell.scale.set(1.1, 0.97, 0.9);
+shell.position.y = 0.15;
 add(shell, 'shell');
 
-const band = new THREE.Mesh(new THREE.TorusGeometry(0.615, 0.055, 20, 56), MAT.cup);
-band.rotation.x = Math.PI / 2;
-band.position.y = -0.5;
-band.scale.set(1.02, 0.94, 1);
-add(band, 'cup');
+/* neck + gold collar ring at the base */
+const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.36, 0.26, 36), MAT.ink);
+neck.position.y = -0.6;
+add(neck, 'ink');
+const collar = new THREE.Mesh(new THREE.TorusGeometry(0.52, 0.055, 18, 56), MAT.gold);
+collar.rotation.x = Math.PI / 2;
+collar.position.y = -0.46;
+add(collar, 'gold');
+const collarLip = new THREE.Mesh(new THREE.TorusGeometry(0.47, 0.03, 14, 48), MAT.goldHi);
+collarLip.rotation.x = Math.PI / 2;
+collarLip.position.y = -0.73;
+add(collarLip, 'goldHi');
 
-const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.58, 0.26, 40), MAT.ink);
-collar.position.y = -0.78;
-add(collar, 'ink');
-const collarRim = new THREE.Mesh(new THREE.TorusGeometry(0.56, 0.045, 16, 48), MAT.goldHi);
-collarRim.rotation.x = Math.PI / 2;
-collarRim.position.y = -0.66;
-add(collarRim, 'goldHi');
+/* face opening — three-quarter view: port sits front-right of the shell */
+const FACE = new THREE.Vector3(0.13, 0.14, 0.52);
+const cavity = new THREE.Mesh(new THREE.CircleGeometry(0.3, 44), MAT.visor);
+cavity.position.set(FACE.x, FACE.y, FACE.z - 0.015);
+add(cavity, 'visor');
+const visorMesh = new THREE.Mesh(new THREE.CircleGeometry(0.302, 44), MAT.mesh);
+visorMesh.position.set(FACE.x, FACE.y, FACE.z + 0.012);
+add(visorMesh, 'mesh');
+/* thick cream rim around the opening — the helmet's signature frame */
+const rim = new THREE.Mesh(new THREE.TorusGeometry(0.318, 0.082, 20, 56), MAT.cup);
+rim.scale.set(1.12, 0.88, 1);
+rim.position.set(FACE.x, FACE.y, FACE.z + 0.03);
+add(rim, 'cup');
 
-const visorGeo = new THREE.SphereGeometry(0.655, 40, 24, Math.PI / 2 - 0.82, 1.64, 0.62, 1.15);
-const visor = new THREE.Mesh(visorGeo, MAT.visor);
-visor.scale.set(1.0, 1.1, 0.92);
-visor.position.set(0, 0.16, 0.02);
-add(visor, 'visor');
-const meshV = new THREE.Mesh(visorGeo, MAT.mesh);
-meshV.scale.set(1.005, 1.105, 0.925);
-meshV.position.copy(visor.position);
-add(meshV, 'mesh');
-const rim = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.035, 14, 48, Math.PI * 1.15), MAT.goldHi);
-rim.position.set(0, 0.3, 0.56);
-rim.rotation.set(0.35, 0, Math.PI * 0.92);
-rim.scale.set(1.15, 0.85, 1);
-add(rim, 'goldHi');
-
+/* round cream ear discs on both sides, gold hubs */
 for (const side of [-1, 1]) {
-  const cup = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.34, 28), MAT.cup);
-  cup.rotation.z = Math.PI / 2;
-  cup.position.set(side * 0.72, -0.02, 0.06);
-  add(cup, 'cup');
-  const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.36, 24), MAT.gold);
+  const disc = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.07, 32), MAT.cup);
+  disc.rotation.z = Math.PI / 2;
+  disc.position.set(side * 0.7, 0.0, 0.08);
+  add(disc, 'cup');
+  const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.085, 0.085, 0.095, 24), MAT.gold);
   hub.rotation.z = Math.PI / 2;
-  hub.position.set(side * 0.72, -0.02, 0.06);
+  hub.position.set(side * 0.735, 0.0, 0.08);
   add(hub, 'gold');
-  const hubCap = new THREE.Mesh(new THREE.SphereGeometry(0.1, 20, 14), MAT.goldHi);
-  hubCap.scale.set(0.5, 1, 1);
-  hubCap.position.set(side * 0.9, -0.02, 0.06);
+  const hubCap = new THREE.Mesh(new THREE.SphereGeometry(0.05, 16, 12), MAT.goldHi);
+  hubCap.scale.set(0.45, 1, 1);
+  hubCap.position.set(side * 0.78, 0.0, 0.08);
   add(hubCap, 'goldHi');
 }
 
-// crown ridge — wide blunt band around the dome's upper third (helmet seal ring)
-const crown = new THREE.Mesh(new THREE.TorusGeometry(0.56, 0.07, 18, 56), MAT.cup);
-crown.rotation.x = Math.PI / 2;
-crown.position.y = 0.42;
-crown.scale.set(1.08, 0.95, 1);
-add(crown, 'cup');
-
+/* small gold crown stud */
 const stud = new THREE.Mesh(new THREE.SphereGeometry(0.05, 16, 12), MAT.goldHi);
-stud.position.set(0.14, 0.8, 0.1);
+stud.position.set(0.1, 0.74, 0.04);
 add(stud, 'goldHi');
 
-model.rotation.y = -0.42;
-model.rotation.x = 0.06;
-model.scale.setScalar(0.8);
+/* three-quarter side view, sitting low in frame */
+model.rotation.y = 0.5;
+model.rotation.x = 0.05;
 
-/* camera framing */
-camera.position.set(0, 0.24, 3.15);
-camera.lookAt(0, 0.02, 0);
+/* camera framing — helmet sits low, fills the box */
+camera.position.set(0, 0.32, 3.35);
+camera.lookAt(0, -0.16, 0);
 if (stage.contactShadow) {
-  stage.contactShadow.position.y = -1.05;
-  stage.contactShadow.scale.setScalar(0.72);
+  stage.contactShadow.position.y = -0.98;
+  stage.contactShadow.scale.setScalar(0.8);
 }
 
 /* ---- interaction ---- */
@@ -166,7 +197,7 @@ onFrame((t, { visible }) => {
 window.DBHero = {
   poster() {
     const ry = model.rotation.y, rx = model.rotation.x;
-    model.rotation.y = -0.42; model.rotation.x = 0.06;
+    model.rotation.y = 0.5; model.rotation.x = 0.05;
     const sh = stage.contactShadow;
     if (sh) sh.visible = false;
     renderer.render(scene, camera);

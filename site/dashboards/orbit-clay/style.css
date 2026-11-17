@@ -132,6 +132,35 @@ body {
   content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
   background: linear-gradient(90deg, transparent 46.5%, rgba(29, 47, 38, 0.0) 47%, rgba(29, 47, 38, 0.55) 52%, rgba(29, 47, 38, 0.72) 100%);
 }
+/* hairline gold rule connecting the top readouts */
+.oc-board::after {
+  content: ""; position: absolute; left: 9.5cqw; right: 9.5cqw; top: 2.3cqw; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(201,162,74,0.65) 10%, rgba(201,162,74,0.65) 90%, transparent);
+}
+
+/* bottom telemetry strip — fills the board's lower band */
+.oc-statusbar {
+  position: absolute; left: 1.5cqw; right: 1.5cqw; top: 53.9cqw; height: 4cqw;
+  border-radius: 1.8cqw; z-index: 5;
+  display: flex; align-items: center; gap: 1.2cqw; padding: 0 1.4cqw;
+  background: linear-gradient(172deg, var(--oc-panel-hi), var(--oc-panel) 55%, var(--oc-panel-lo));
+  box-shadow:
+    0 0.7cqw 1.4cqw -0.35cqw var(--oc-shadow),
+    inset 0 0.3cqw 0 rgba(255,255,255,0.14),
+    inset 0 -0.4cqw 0.8cqw rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+.oc-status-ridge { width: 7cqw; height: 1.6cqw; flex: none; opacity: 0.9; }
+.oc-status-tick {
+  margin: 0; flex: 1; text-align: center;
+  font-size: clamp(12px, 0.82cqw, 12px); font-weight: 700; letter-spacing: 0.22em;
+  color: #cfd8bd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.oc-status-coord {
+  margin: 0; flex: none;
+  font-size: clamp(12px, 0.78cqw, 12px); font-weight: 700; letter-spacing: 0.12em;
+  color: var(--oc-gold-hi);
+}
 
 /* ---------- rail ---------- */
 
@@ -177,11 +206,16 @@ body {
 .oc-main { position: absolute; inset: 0; }
 .oc-over { position: absolute; inset: 0; }
 
-/* score */
+/* score — cream clay plaque */
 .oc-score {
-  position: absolute; left: 10cqw; top: 3cqw; width: 20cqw; max-height: 9cqw;
+  position: absolute; left: 10cqw; top: 3cqw; width: 20cqw; max-height: 9cqw; z-index: 5;
   display: flex; flex-direction: column; justify-content: center; gap: 0.5cqw;
   padding: 0.6cqw 1.2cqw 0.7cqw; border-radius: 1.6cqw;
+  background: linear-gradient(170deg, var(--oc-cream-hi), var(--oc-cream) 60%, var(--oc-cream-lo));
+  box-shadow:
+    0 0.55cqw 1.1cqw -0.3cqw var(--oc-shadow),
+    inset 0 0.3cqw 0 var(--oc-hi),
+    inset 0 -0.35cqw 0.6cqw rgba(96,108,62,0.16);
 }
 .oc-score-num {
   margin: 0; font-size: clamp(28px, 4.6cqw, 64px); font-weight: 800; line-height: 0.95;
@@ -211,10 +245,16 @@ body {
   padding: 1.2cqw 0.8cqw; gap: 1cqw;
 }
 
+/* actions plaque — sits on the side column's top on desktop, own chip on phone */
 .oc-actions {
-  position: absolute; right: 0; top: 0; width: 14cqw; max-height: 8cqw;
+  position: absolute; left: 84cqw; top: 3cqw; width: 14cqw; max-height: 8cqw; z-index: 6;
   display: flex; align-items: center; justify-content: space-between; gap: 0.6cqw;
-  padding: 0 0.4cqw;
+  padding: 0.5cqw 0.7cqw; border-radius: 1.8cqw;
+  background: linear-gradient(170deg, var(--oc-panel-lo), rgba(20,30,24,0.55));
+  box-shadow:
+    0 0.45cqw 0.9cqw -0.25cqw var(--oc-shadow),
+    inset 0 0.25cqw 0 rgba(255,255,255,0.1),
+    inset 0 -0.3cqw 0.5cqw rgba(0,0,0,0.28);
 }
 
 .oc-toggle {
@@ -271,6 +311,24 @@ body {
 .oc-kpi-num {
   margin: 0.1cqw 0 0; font-size: clamp(14px, 1.9cqw, 26px); font-weight: 800;
   color: var(--oc-gold-hi); text-shadow: 0 0.15cqw 0.3cqw rgba(0,0,0,0.4);
+}
+.oc-kpi-spark {
+  display: flex; align-items: flex-end; gap: 0.28cqw; height: 1.5cqw; margin-top: 0.4cqw;
+}
+.oc-kpi-spark i {
+  flex: 1; border-radius: 0.3cqw 0.3cqw 0 0;
+  background: linear-gradient(180deg, var(--oc-gold-hi), var(--oc-gold-lo));
+  opacity: 0.85;
+}
+.oc-kpi-spark i:nth-child(1) { height: 35%; }
+.oc-kpi-spark i:nth-child(2) { height: 60%; }
+.oc-kpi-spark i:nth-child(3) { height: 45%; }
+.oc-kpi-spark i:nth-child(4) { height: 80%; }
+.oc-kpi-spark i:nth-child(5) { height: 100%; }
+.oc-side-label {
+  position: absolute; left: 0.8cqw; right: 0.8cqw; top: 36.6cqw; margin: 0;
+  font-size: clamp(12px, 0.72cqw, 12px); font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: #8fa37f; text-align: center;
 }
 
 /* calibrate + stepper */
@@ -357,6 +415,40 @@ body {
 .oc-hero canvas:active { cursor: grabbing; }
 .oc-hero canvas:focus-visible { outline: 0.28cqw solid var(--oc-gold); outline-offset: 0.2cqw; border-radius: 1cqw; }
 
+/* slim clay channels along the mission panel's sides — fill the gutters */
+.oc-medge {
+  position: absolute; top: 1.2cqw; bottom: 1.2cqw; width: 0.7cqw;
+  border-radius: 0.6cqw; pointer-events: none;
+  background: linear-gradient(180deg, rgba(96,108,62,0.16), rgba(96,108,62,0.05) 40%, rgba(96,108,62,0.12));
+  box-shadow: inset 0 0 0.3cqw rgba(255,255,255,0.25);
+}
+.oc-medge-l { left: 0.9cqw; }
+.oc-medge-r { right: 0.9cqw; }
+
+/* small gold sparks tucked inside the ring's lower corners */
+.oc-spark {
+  position: absolute; width: 1.1cqw; height: 1.1cqw; pointer-events: none;
+  background: linear-gradient(135deg, var(--oc-gold-hi), var(--oc-gold) 60%, var(--oc-gold-lo));
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  opacity: 0.9;
+  filter: drop-shadow(0 0.2cqw 0.3cqw rgba(60,40,10,0.4));
+}
+.oc-spark-l { left: 7.4cqw; top: 24.6cqw; transform: rotate(-12deg); }
+.oc-spark-r { right: 7.4cqw; top: 24.6cqw; transform: rotate(14deg); }
+
+/* telemetry chips flanking the Start slab */
+.oc-mchips {
+  position: absolute; left: 1cqw; right: 1cqw; top: 36.1cqw; height: 3.6cqw;
+  display: flex; justify-content: space-between; align-items: center; pointer-events: none;
+}
+.oc-mchips i {
+  font-style: normal; font-size: clamp(12px, 0.72cqw, 12px); font-weight: 700;
+  letter-spacing: 0.1em; color: var(--oc-ink-soft);
+  background: rgba(46,70,57,0.08); border-radius: 0.9cqw; padding: 0.28cqw 0.6cqw;
+  box-shadow: inset 0 0.18cqw 0.3cqw rgba(60,70,40,0.12), inset 0 -0.12cqw 0.2cqw rgba(255,255,255,0.4);
+  white-space: nowrap;
+}
+
 /* house tags */
 .oc-tags {
   position: absolute; left: 2cqw; top: 27.2cqw; width: 32cqw; height: 3.2cqw;
@@ -394,7 +486,7 @@ body {
   transition: transform 160ms cubic-bezier(.3,1.5,.5,1), opacity 160ms ease, background 160ms ease;
 }
 .oc-pdot[aria-selected="true"] {
-  width: 1.5cqw; height: 1.5cqw; opacity: 1;
+  width: 1.35cqw; height: 0.85cqw; opacity: 1; border-radius: 0.5cqw;
   background: radial-gradient(circle at 35% 30%, var(--oc-gold-hi), var(--oc-gold) 70%);
   box-shadow: 0 0.25cqw 0.5cqw rgba(20,26,20,0.35);
 }
@@ -444,15 +536,28 @@ body {
   text-transform: uppercase; color: #c3d0ae;
 }
 
+/* sky ornament inside the calibration panel — faint stars + horizon glow */
+.oc-cal-sky {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(224,192,120,0.5) 0 0.22cqw, transparent 0.3cqw),
+    radial-gradient(circle at 46% 12%, rgba(207,216,189,0.4) 0 0.16cqw, transparent 0.24cqw),
+    radial-gradient(circle at 74% 26%, rgba(224,192,120,0.42) 0 0.2cqw, transparent 0.28cqw),
+    radial-gradient(circle at 30% 34%, rgba(207,216,189,0.3) 0 0.14cqw, transparent 0.22cqw),
+    radial-gradient(circle at 62% 8%, rgba(207,216,189,0.35) 0 0.15cqw, transparent 0.23cqw),
+    radial-gradient(circle at 88% 18%, rgba(224,192,120,0.4) 0 0.18cqw, transparent 0.26cqw),
+    linear-gradient(180deg, transparent 26%, rgba(120,140,105,0.16) 34%, transparent 42%);
+}
+
 /* terrain */
 .oc-terrain {
   position: absolute; left: 0; right: 0; top: 11cqw; bottom: 0;
 }
 .oc-ridges { position: absolute; inset: 0; width: 100%; height: 100%; }
-.oc-ridge { fill: #eef1d8; }
-.oc-ridge-1 { fill: #e9edcf; opacity: 0.95; filter: drop-shadow(0 0.4cqw 0.35cqw rgba(0,0,0,0.16)); }
-.oc-ridge-2 { fill: #dde3b8; opacity: 0.97; filter: drop-shadow(0 0.5cqw 0.4cqw rgba(0,0,0,0.24)); }
-.oc-ridge-3 { fill: #ccd59c; filter: drop-shadow(0 0.55cqw 0.45cqw rgba(0,0,0,0.32)); }
+.oc-ridge { }
+.oc-ridge-far { }
+.oc-ridge-mid { }
+.oc-ridge-near { filter: drop-shadow(0 0.5cqw 0.5cqw rgba(0,0,0,0.28)); }
 
 /* soft shade at terrain base */
 .oc-terrain-shade {
@@ -461,24 +566,26 @@ body {
   pointer-events: none;
 }
 
-/* spire — rises from the terrain into the panel's header area */
+/* spire — tall thin cream shard rising from the middle ridge */
 .oc-spire {
-  position: absolute; left: 63%; bottom: 34%; width: 1.5cqw; height: 23cqw;
-  background: linear-gradient(180deg, #f4f7e0, #ccd3a6);
-  clip-path: polygon(50% 0, 80% 100%, 20% 100%);
-  filter: drop-shadow(0 0.3cqw 0.4cqw rgba(0,0,0,0.3));
+  position: absolute; left: 62%; bottom: 30%; width: 2cqw; height: 24cqw;
+  background:
+    linear-gradient(90deg, rgba(96,108,62,0.35), transparent 30%),
+    linear-gradient(180deg, #f4f7e0, #d4dcae 70%, #b3bd8e);
+  clip-path: polygon(46% 0, 72% 12%, 84% 100%, 16% 100%, 28% 12%);
+  filter: drop-shadow(0 0.35cqw 0.45cqw rgba(0,0,0,0.32));
   transform-origin: bottom center;
 }
 
 /* sphere rail + draggable gold sphere */
 .oc-srail {
-  position: absolute; left: 24%; top: 6%; bottom: 18%; width: 0.28cqw;
-  background: linear-gradient(180deg, rgba(232,238,218,0.85), rgba(232,238,218,0.35));
+  position: absolute; left: 25%; top: 3%; bottom: 4%; width: 0.26cqw;
+  background: linear-gradient(180deg, rgba(232,238,218,0.9), rgba(232,238,218,0.3));
   border-radius: 1cqw;
 }
 .oc-sphere {
-  position: absolute; left: calc(24% - 1.1cqw); top: 30%; width: 2.4cqw; height: 2.4cqw;
-  min-width: 22px; min-height: 22px; border: 0; border-radius: 50%; cursor: grab; padding: 0;
+  position: absolute; left: calc(25% - 1.2cqw); top: 30%; width: 2.4cqw; height: 2.4cqw;
+  min-width: 18px; min-height: 18px; border: 0; border-radius: 50%; cursor: grab; padding: 0;
   background: radial-gradient(circle at 34% 28%, var(--oc-gold-hi), var(--oc-gold) 52%, var(--oc-gold-lo));
   box-shadow:
     0 0.5cqw 0.9cqw -0.2cqw var(--oc-shadow),
@@ -516,7 +623,7 @@ body {
 /* ---------- secondary pages (Library / Activity / Settings) ---------- */
 
 .oc-page {
-  position: absolute; inset: 1.6cqw 1.6cqw 1.6cqw 9.4cqw;
+  position: absolute; inset: 1.6cqw 1.6cqw 8.6cqw 9.4cqw;
   border-radius: 2.2cqw;
   background: linear-gradient(170deg, var(--oc-cream-hi), var(--oc-cream) 55%, var(--oc-cream-lo));
   box-shadow:
@@ -610,19 +717,43 @@ body {
 
 /* ---------- tablet: mission left, calibration + controls stacked right ---------- */
 @media (min-width: 701px) and (max-width: 1150px) {
-  .oc-board { width: min(96vw, calc((100dvh - 3vh) * 1.12)); aspect-ratio: 1.12; }
-  .oc-mission { left: 9cqw; top: 11cqw; width: 48cqw; height: 46cqw; }
-  .oc-cal { left: 60cqw; top: 11cqw; width: 37cqw; height: 23cqw; }
+  .oc-board { width: min(96vw, calc((100dvh - 3vh) * 1.45)); aspect-ratio: 1.45; }
+  .oc-mission { left: 9cqw; top: 10cqw; width: 48cqw; height: 50cqw; }
+  .oc-ring { top: 3cqw; }
+  .oc-hero { top: 6cqw; }
+  .oc-tags { top: 33.6cqw; }
+  .oc-mname { top: 37cqw; }
+  .oc-pager { top: 38.8cqw; }
+  .oc-start { top: 42.6cqw; height: 5cqw; }
+  .oc-mchips { top: 43.4cqw; }
+  .oc-cal { left: 60cqw; top: 10cqw; width: 37cqw; height: 28cqw; }
   .oc-cal .oc-terrain { top: 7cqw; }
-  .oc-side { left: 60cqw; right: auto; top: 35cqw; width: 37cqw; height: 20cqw; }
-  .oc-actions { top: 0; }
-  .oc-kpis { top: 2.2cqw; height: 9.5cqw; }
+  .oc-side { left: 60cqw; right: auto; top: 39cqw; width: 37cqw; height: 24cqw; }
+  .oc-actions { left: 83cqw; top: 3cqw; width: 14cqw; }
+  .oc-kpis { top: 2cqw; height: 10.5cqw; }
   .oc-kpi-num { font-size: clamp(12px, 1.6cqw, 20px); }
-  .oc-calibrate { top: 12.6cqw; }
-  .oc-stepper { top: 17.6cqw; }
+  .oc-kpi-spark { display: none; }
+  .oc-calibrate { top: 13.8cqw; }
+  .oc-stepper { top: 19.2cqw; }
+  .oc-side-label { display: none; }
+  .oc-cal .oc-spire { height: 17cqw; bottom: 26%; }
   .oc-score { left: 9cqw; }
-  .oc-rail { height: 46cqw; }
+  .oc-rail { height: 56cqw; }
+  .oc-statusbar { top: 64.4cqw; height: 3.4cqw; }
+  .oc-sample { display: none; }
 }
+
+/* ---------- activity page extras ---------- */
+.oc-act-tools { padding: 0.7cqw 0.9cqw; }
+.oc-act-summary {
+  display: flex; gap: 1cqw; padding: 0.9cqw 1.2cqw; align-items: center;
+}
+.oc-act-stat { flex: 1; display: flex; align-items: baseline; gap: 0.45cqw; }
+.oc-act-stat span { font-size: clamp(16px, 2cqw, 26px); font-weight: 800; color: var(--oc-green-deep); }
+.oc-act-stat small { font-size: clamp(12px, 0.8cqw, 12px); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--oc-ink-soft); }
+
+/* phone-only calibration clone (top of Activity at ≤700px) */
+.oc-phone-cal { display: none; }
 
 /* ---------- phone ---------- */
 @media (max-width: 700px) {
@@ -631,7 +762,7 @@ body {
     width: 100vw; height: 100dvh; aspect-ratio: auto;
     border-radius: 0; box-shadow: none;
   }
-  .oc-board::before { display: none; }
+  .oc-board::before, .oc-board::after, .oc-statusbar, .oc-sample { display: none; }
   /* rail becomes bottom bar */
   .oc-rail { left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 12.5dvh; min-height: 64px; }
   .oc-rail-pill {
@@ -641,57 +772,115 @@ body {
   }
   .oc-rail-btn { width: 44px; height: 44px; }
   .oc-main { bottom: 12.5dvh; }
-  /* overview reflows: score strip, then the reference's left screen (mission),
-     then its right screen (calibration), then the control strip — one scroll */
-  .oc-over { display: flex; flex-direction: column; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
-  .oc-over::-webkit-scrollbar { display: none; }
-  .oc-score { position: relative; left: auto; top: auto; width: auto; max-height: none; padding: 0.7rem 1.1rem 0.3rem; order: 1; flex: none; }
-  .oc-score-num { font-size: 2.1rem; }
+
+  /* ===== overview = the reference's left screen, box by box ===== */
+  .oc-over { position: absolute; inset: 0; overflow: hidden; }
   .oc-mission {
-    position: relative; left: auto; top: auto; width: auto; height: 76dvh; min-height: 540px; flex: none;
-    margin: 0.55rem 0.9rem 0; border-radius: 1.6rem; order: 2;
+    position: absolute; inset: 0; left: 0; top: 0; width: auto; height: auto;
+    border-radius: 0; margin: 0;
+    background: linear-gradient(172deg, var(--oc-cream-hi), var(--oc-cream) 52%, var(--oc-cream-lo));
   }
-  /* mission internals: ring + helmet up top, controls in non-overlapping bands */
-  .oc-ring { left: 50%; top: 31%; width: 58cqw; height: 58cqw; transform: translate(-50%, -50%); }
-  .oc-hero { left: 50%; top: 30%; width: 33cqw; height: 33cqw; transform: translate(-50%, -50%); }
-  .oc-tags { left: 50%; top: 54%; transform: translateX(-50%); width: 68%; height: auto; }
-  .oc-tag { width: 13%; height: 46px; min-width: 44px; }
-  .oc-mname { position: absolute; left: 0; width: 100%; top: 63.5%; font-size: 0.82rem; }
-  .oc-pager { left: 50%; top: 69%; width: auto; transform: translateX(-50%); gap: 2px; }
-  .oc-pdot {
-    width: 44px; height: 44px; min-width: 0; min-height: 0; padding: 16px;
-    background-clip: content-box; box-shadow: none;
+  .oc-medge, .oc-spark, .oc-mchips { display: none; }
+  .oc-over .oc-cal, .oc-over .oc-side { display: none; }
+
+  /* score plaque — upper left */
+  .oc-score {
+    left: 8.9cqw; top: 34.5cqw; width: 30.5cqw; max-height: none; z-index: 10;
+    padding: 0.9cqw 1.4cqw 1cqw; border-radius: 3.4cqw; gap: 0.4cqw;
+    box-shadow:
+      0 0.7cqw 1.4cqw -0.35cqw var(--oc-shadow),
+      inset 0 0.35cqw 0 var(--oc-hi),
+      inset 0 -0.4cqw 0.7cqw rgba(96,108,62,0.16);
   }
-  .oc-pdot[aria-selected="true"] { width: 44px; height: 44px; padding: 14px; filter: drop-shadow(0 2px 3px rgba(20,26,20,0.35)); }
-  .oc-start { left: 50%; top: 79.5%; transform: translateX(-50%); width: 58%; height: 54px; min-height: 44px; font-size: 0.85rem; }
-  .oc-cal {
-    position: relative; left: auto; top: auto; width: auto; height: 56dvh; min-height: 350px; flex: none;
-    margin: 0.55rem 0.9rem 0; border-radius: 1.6rem; order: 3;
+  .oc-score-num { font-size: clamp(30px, 8.6cqw, 40px); }
+  .oc-score-label { font-size: 12px; letter-spacing: 0.14em; }
+
+  /* actions plaque — upper right, stacked */
+  .oc-actions {
+    left: 73cqw; top: 13cqw; width: 19cqw; height: 37cqw; max-height: none; z-index: 10;
+    flex-direction: column; justify-content: center; align-items: center; gap: 1.4cqw;
+    padding: 1.2cqw 0.6cqw; border-radius: 3.4cqw;
+    box-shadow:
+      0 0.7cqw 1.4cqw -0.35cqw var(--oc-shadow),
+      inset 0 0.3cqw 0 rgba(255,255,255,0.12),
+      inset 0 -0.4cqw 0.7cqw rgba(0,0,0,0.3);
   }
-  .oc-cal-title { font-size: 0.85rem; }
-  /* side controls become a compact dark strip under the calibration panel */
-  .oc-side {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; align-items: stretch;
-    position: relative; left: auto; top: auto; right: auto; bottom: auto;
-    width: auto; height: auto; flex: none; order: 4;
-    margin: 0.6rem 0.9rem 1rem; padding: 0.7rem; border-radius: 1.4rem;
-  }
-  .oc-actions { position: static; width: auto; max-height: none; padding: 0; grid-column: 1 / -1; justify-content: flex-start; }
-  .oc-kpis { position: static; width: auto; height: auto; grid-column: 1 / -1; flex-direction: row; gap: 0.45rem; padding: 0; }
-  .oc-kpi { flex: 1; padding: 0.45rem 0.55rem; }
-  .oc-kpi-num { font-size: 1rem; }
-  .oc-calibrate { position: static; width: auto; height: 2.9rem; }
-  .oc-stepper { position: static; width: auto; height: 2.9rem; }
-  .oc-step { width: 2.9rem; height: 2.9rem; min-width: 44px; min-height: 44px; }
-  .oc-step-val { font-size: 0.95rem; }
-  .oc-step-val small { font-size: 12px; }
-  .oc-orb { width: 2.9rem; height: 2.9rem; min-width: 44px; min-height: 44px; }
-  .oc-toggle { min-height: 44px; }
+  .oc-toggle { flex-direction: column; gap: 0.5cqw; min-height: 44px; justify-content: center; }
+  .oc-toggle-word { font-size: 12px; }
   .oc-toggle-track { min-width: 52px; min-height: 26px; }
-  .oc-terrain { top: 3.6rem; }
-  .oc-sphere { min-width: 44px; min-height: 44px; left: calc(30% - 22px); }
-  .oc-srail { left: 30%; }
-  .oc-spire { left: 66%; }
+  .oc-orb { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+
+  /* the big gold ring + large helmet, low inside it */
+  .oc-ring { left: 8.9cqw; top: 57.6cqw; width: 83.7cqw; height: 81.3cqw; }
+  .oc-hero { left: 21cqw; top: 67.5cqw; width: 56.7cqw; height: 66.5cqw; z-index: 4; }
+
+  /* two house tags under the ring */
+  .oc-tags {
+    left: 0; right: 0; top: 138.6cqw; width: auto; height: 7.4cqw;
+    justify-content: space-between; align-items: flex-start; padding: 0 9.6cqw;
+  }
+  .oc-tag { width: 11.7cqw; height: 7.4cqw; min-width: 0; }
+  .oc-mname { left: 0; width: 100%; top: 151.6cqw; font-size: 12px; }
+
+  /* small pager: dots with a slightly longer gold pill for the active one */
+  .oc-pager { left: 27.6cqw; top: 147.7cqw; width: 46.8cqw; height: 3cqw; gap: 0.8cqw; }
+  .oc-pdot {
+    position: relative; width: 26px; height: 26px; min-width: 0; min-height: 0;
+    border: 0; padding: 0; background: transparent; border-radius: 50%; cursor: pointer;
+  }
+  .oc-pdot::before {
+    content: ""; position: absolute; left: 50%; top: 50%;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--oc-green); opacity: 0.45;
+    transform: translate(-50%, -50%);
+    transition: width 160ms cubic-bezier(.3,1.4,.5,1), height 160ms ease, background 160ms ease, opacity 160ms ease;
+  }
+  .oc-pdot[aria-selected="true"]::before {
+    width: 17px; height: 7px; border-radius: 4px; opacity: 1;
+    background: radial-gradient(circle at 35% 30%, var(--oc-gold-hi), var(--oc-gold) 70%);
+    filter: drop-shadow(0 2px 3px rgba(20,26,20,0.35));
+  }
+  .oc-pdot:hover::before { opacity: 0.85; }
+
+  /* Start slab */
+  .oc-start {
+    left: 21.2cqw; top: 159.6cqw; width: 55.2cqw; height: 13.8cqw;
+    transform: none; border-radius: 3.4cqw; font-size: 14px;
+  }
+
+  /* ===== activity: the reference's right screen as the top block ===== */
+  .oc-phone-cal { display: block; flex: none; width: calc(100% + 2rem); margin: -4.2rem -1rem 0; }
+  .oc-cal--clone {
+    position: relative; left: auto; top: auto; width: 100%; height: 204cqw;
+    border-radius: 3.6cqw; margin: 0; overflow: hidden;
+  }
+  .oc-cal--clone .oc-cal-title { font-size: 13px; }
+  .oc-cal--clone .oc-cal-sub { font-size: 12px; }
+  .oc-cal--clone .oc-terrain { left: 3.6cqw; right: auto; top: 56cqw; bottom: auto; width: 96cqw; height: 103.6cqw; }
+  .oc-cal--clone .oc-spire { left: 60%; bottom: 30%; width: 5cqw; height: 44cqw; }
+  .oc-cal--clone .oc-srail { left: 27%; top: 4%; bottom: 6%; }
+  .oc-cal--clone .oc-sphere { left: calc(27% - 3.2cqw); width: 6.4cqw; height: 6.4cqw; min-width: 24px; min-height: 24px; }
+  .oc-cal--clone .oc-kpis {
+    left: 57cqw; right: auto; top: 48cqw; width: 39cqw; height: 59.6cqw;
+    flex-direction: column; gap: 1.1cqw; padding: 0;
+  }
+  .oc-cal--clone .oc-kpi {
+    flex: 1; padding: 0.9cqw 1cqw;
+    background: linear-gradient(180deg, rgba(28,42,32,0.96), rgba(14,22,15,0.97));
+    box-shadow:
+      0 0.4cqw 0.8cqw -0.2cqw rgba(0,0,0,0.45),
+      inset 0 0.25cqw 0 rgba(255,255,255,0.12),
+      inset 0 -0.3cqw 0.5cqw rgba(0,0,0,0.35);
+  }
+  .oc-cal--clone .oc-kpi-num { font-size: clamp(15px, 4.4cqw, 22px); }
+  .oc-cal--clone .oc-kpi-label { font-size: 12px; }
+  .oc-cal--clone .oc-calibrate { left: 57cqw; right: auto; top: 145cqw; width: 31cqw; height: 9.3cqw; border-radius: 3.6cqw; }
+  .oc-cal--clone .oc-stepper { left: 8.8cqw; right: auto; top: 186.5cqw; width: 89cqw; height: 16.6cqw; border-radius: 3.6cqw; }
+  .oc-cal--clone .oc-step { width: 12cqw; height: 12cqw; min-width: 44px; min-height: 44px; border-radius: 2.4cqw; }
+  .oc-cal--clone .oc-step-val { font-size: 15px; }
+  .oc-cal--clone .oc-step-val small { font-size: 12px; }
+  .oc-side-label { display: none; }
+
   .oc-page { inset: 0; border-radius: 0; box-shadow: none; padding: 4.2rem 1rem 5.5rem; }
   .oc-page-head { flex-wrap: wrap; }
   .oc-lib-grid { grid-template-columns: repeat(2, 1fr); }
