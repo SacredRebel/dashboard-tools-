@@ -39,6 +39,7 @@ If a person asked you to build a dashboard and gave you this repository, read ST
 - [Asset and tool map](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/dashboards/03-asset-and-tool-map.md): outside tools for 3D, images, screenshots and motion, each with a fallback
 - [Twin contract](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/dashboards/00-twin-contract.md): read first for any reference-matched dashboard: roles, six gates, work loop, compare sheet, never-list
 - [Layout spec](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/dashboards/07-layout-spec.md): the reference layout as numbers the check measures
+- [Image to dashboard](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/dashboards/09-image-to-dashboard.md): the full protocol from one reference image: design DNA sheet, shape grammar primitives, phone-only unfold to tablet and desktop, page consistency, three scored review rounds
 - [Elements and objects](https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/docs/dashboards/08-object-spec.md): guardrail layers, 3D object spec and build recipe, required tool routing
 - Live preview of any dashboard: https://dashboard-tools-three.vercel.app/#/dashboards/<id>
 - Source of any dashboard: https://raw.githubusercontent.com/SacredRebel/dashboard-tools-/main/site/dashboards/<id>/index.html, style.css, app.js

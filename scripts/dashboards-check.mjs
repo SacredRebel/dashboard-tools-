@@ -244,10 +244,52 @@ for (const d of list) {
     await page.close();
   }
 
+  // Layout spec (docs/dashboards/07-layout-spec.md): the overview at 1440, plus any measured phone/tablet/page views.
+  const specPath = join(dir, 'layout.json');
+  const SPEC = isFile(specPath) ? JSON.parse(readFileSync(specPath, 'utf8')) : null;
+  const WIDTHS = [[1440, 900], [375, 812]];
+  for (const v of (SPEC && SPEC.views) || []) if (!WIDTHS.some(([x]) => x === v.width)) WIDTHS.push([v.width, v.height || 1180]);
+  const viewsFor = (pgId, vId, w) => { if (!SPEC || vId !== 'default') return []; const out = [];
+    if (pgId === d.pages[0].id && w === 1440) out.push({ ...SPEC, __label: 'overview 1440', __suffix: '' });
+    for (const x of SPEC.views || []) if (x.page === pgId && x.width === w) out.push({ ...x, __label: `${x.page} ${x.width}`, __suffix: `-${x.page}-${x.width}` });
+    return out; };
+  // Compare sheet: every box, reference crop beside build crop. The builder must open it.
+  const writeCompare = async (page, spec, sdir) => { const suffix = spec.__suffix;
+    try {
+            const refFile = ['reference.png', 'reference.jpg', 'reference.jpeg', 'reference.webp'].map((f) => join(sdir, f)).find(isFile);
+            const rows = [];
+            for (const [name, b] of Object.entries(spec.boxes || {})) {
+              let r = b.ref;
+              if (!r && spec.ref_frame && [b.x, b.y, b.w, b.h].every((v) => v != null)) { const [fx, fy, fw] = spec.ref_frame; r = [fx + b.x * fw / 100, fy + b.y * fw / 100, b.w * fw / 100, b.h * fw / 100]; }
+              if (!r || !refFile) continue;
+              const loc = page.locator(`[data-ref="${name}"]`).first();
+              if (!(await loc.count()) || !(await loc.isVisible())) continue;
+              rows.push({ name, r, note: b.note || '', shot: (await loc.screenshot({ type: 'jpeg', quality: 82 })).toString('base64') });
+            }
+            if (rows.length) {
+              const refUrl = `data:${TYPES[extname(refFile)].split(';')[0]};base64,${readFileSync(refFile).toString('base64')}`;
+              const sheet = await browser.newPage({ viewport: { width: 1100, height: 800 } });
+              await sheet.setContent(`<body style="margin:16px;font:14px system-ui;background:#fff;color:#111"><h2>${d.id}: ${spec.__label}: reference (left) and build (right), box by box</h2><div id="o"></div></body>`);
+              await sheet.evaluate(async ({ rows, refUrl }) => {
+                const img = new Image(); img.src = refUrl; await img.decode(); const o = document.getElementById('o');
+                for (const row of rows) {
+                  const [x, y, w, h] = row.r; const H = Math.min(300, Math.max(70, h * (500 / w))); const W = Math.min(500, w * (H / h));
+                  const wrap = document.createElement('div'); wrap.style.cssText = 'margin:0 0 18px;border-top:1px solid #ccc;padding-top:8px';
+                  wrap.innerHTML = `<b>${row.name}</b> <span style="color:#444">${row.note}</span><div style="display:flex;gap:16px;align-items:flex-start;margin-top:6px"><canvas width="${Math.round(W)}" height="${Math.round(H)}" style="border:1px solid #999"></canvas><img style="height:${Math.round(H)}px;max-width:520px;object-fit:contain;border:1px solid #999" src="data:image/jpeg;base64,${row.shot}"></div>`;
+                  wrap.querySelector('canvas').getContext('2d').drawImage(img, x, y, w, h, 0, 0, W, H); o.appendChild(wrap);
+                }
+              }, { rows, refUrl });
+              const outDir = join(root, 'docs/validation/dashboards'); mkdirSync(outDir, { recursive: true });
+              await sheet.screenshot({ path: join(outDir, `${d.id}-compare${suffix}.jpg`), type: 'jpeg', quality: 72, fullPage: true });
+              await sheet.close();
+            }
+    } catch (e) { return [`compare sheet ${spec.__label} could not be written: ${e.message}`]; }
+    return []; };
+
   // Every catalog page × default + each variant at 1440 and 375
   for (const pg of d.pages) {
     for (const variant of d.variants) {
-      for (const [w, h] of [[1440, 900], [375, 812]]) {
+      for (const [w, h] of WIDTHS) {
         const q = variant.id === 'default' ? '' : `?variant=${variant.id}`;
         const url = `${p}/${q}#/${pg.id}`;
         const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 1 });
@@ -345,8 +387,7 @@ for (const d of list) {
           errs.push(...tech);
         }
         // Layout spec: the overview must match the measured reference (site/dashboards/<id>/layout.json, docs/dashboards/07-layout-spec.md).
-        if (pg.id === d.pages[0].id && variant.id === 'default' && w === 1440 && isFile(join(site, 'dashboards', d.id, 'layout.json'))) {
-          const spec = JSON.parse(readFileSync(join(site, 'dashboards', d.id, 'layout.json'), 'utf8'));
+        for (const spec of viewsFor(pg.id, variant.id, w)) {
           spec.__debug = !!process.env.LAYOUT_DEBUG;
           const lay = await page.evaluate(async (spec) => {
             const out = [];
@@ -411,14 +452,49 @@ for (const d of list) {
                     }
                   }
                 }
+                // Material (docs/dashboards/00-twin-contract.md gate 3) and shape grammar (docs/dashboards/09-image-to-dashboard.md).
+                { const cs = getComputedStyle(el); const alpha = (c) => { const m = /rgba?\(([^)]+)\)/.exec(c); if (!m) return null; const p = m[1].split(/[,\s/]+/).filter(Boolean); return p.length >= 4 ? parseFloat(p[3]) : 1; };
+                  if (b.material === 'clay') { const layers = cs.boxShadow === 'none' ? 0 : cs.boxShadow.split(/,(?![^(]*\))/).length;
+                    if (layers < 2) bad.push(`not clay: ${layers} shadow layer(s) (want a soft dark drop shadow plus a light highlight)`);
+                    if (parseFloat(cs.borderTopLeftRadius) < 12 && cs.clipPath === 'none') bad.push(`not clay: corner radius ${cs.borderTopLeftRadius} (want ≥ 12px)`); }
+                  if (b.material === 'glass') { const blur = +((/blur\(([\d.]+)px\)/.exec(cs.backdropFilter || cs.webkitBackdropFilter || '') || [])[1] || 0);
+                    if (blur < 8) bad.push(`not glass: backdrop blur ${blur}px (want ≥ 8px)`);
+                    const fill = alpha(cs.backgroundColor); const stops = [...cs.backgroundImage.matchAll(/rgba?\([^)]+\)/g)].map((m) => alpha(m[0]));
+                    if ((fill != null && fill > 0.62) || (stops.length && Math.min(...stops) > 0.62)) bad.push(`not glass: fill nearly opaque (want alpha ≤ 0.62)`);
+                    if (!(/inset/.test(cs.boxShadow) || (parseFloat(cs.borderTopWidth) > 0 && (alpha(cs.borderTopColor) ?? 1) < 1))) bad.push('not glass: no light edge (inset highlight or translucent border)'); }
+                  if (b.shape) { const R = el.getBoundingClientRect(); const cut = (e, pseudo) => { const c = getComputedStyle(e, pseudo); return (c.clipPath && c.clipPath !== 'none') || ((c.maskImage || c.webkitMaskImage || 'none') !== 'none'); };
+                    const big = (e) => { const r = e.getBoundingClientRect(); return r.width * r.height >= R.width * R.height * 0.4; };
+                    const ok = cut(el) || cut(el, '::before') || cut(el, '::after') || [...el.querySelectorAll('*')].some((e) => big(e) && cut(e)) || !!el.querySelector('svg path[data-shape]') || !!el.closest('[data-shape]') && cut(el.closest('[data-shape]'));
+                    if (!ok) bad.push(`shape "${b.shape}" missing: no clip-path, mask or svg path[data-shape] on it (a rounded rectangle is not ${b.shape}; use site/dashboards/_shared/shapes.js)`); } }
                 if (bad.length) { out.push(`layout ${name}: ${bad.join('; ')}${b.note ? ' — ' + b.note : ''}`); if (b.count) break; }
               }
             }
             return out;
           }, spec);
-          errs.push(...lay.map((e) => `${e} [% of frame width, from the frame's top-left]`));
+          errs.push(...lay.map((e) => `[${spec.__label}] ${e} [% of frame width, from the frame's top-left]`));
+          errs.push(...(await writeCompare(page, spec, dir)));
         }
         errs.push(...gate);
+        // Page style (docs/dashboards/09-image-to-dashboard.md §5): every page keeps the overview's backdrop, nav and card material.
+        if (SPEC && SPEC.page_style && variant.id === 'default') {
+          errs.push(...(await page.evaluate((ps) => {
+            const out = []; const vis = (el) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width > 1 && r.height > 1 && cs.visibility !== 'hidden' && cs.display !== 'none' && +cs.opacity > 0.05; };
+            const F = document.querySelector('[data-ref="frame"]'); const bd = document.querySelector('[data-ref="backdrop"]');
+            if (!bd || !vis(bd) || (F && bd.getBoundingClientRect().width < F.getBoundingClientRect().width * 0.7)) out.push('page style: the backdrop is missing or hidden on this page (every page sits on the same backdrop)');
+            if (ps.nav && ![...document.querySelectorAll(`[data-ref="${ps.nav}"]`)].some(vis)) out.push(`page style: the nav (data-ref="${ps.nav}") is not visible on this page`);
+            const cards = [...document.querySelectorAll(ps.card)].filter((el) => vis(el) && el.closest('[data-db-page]:not([hidden])'));
+            const alpha = (c) => { const m = /rgba?\(([^)]+)\)/.exec(c); if (!m) return 1; const p = m[1].split(/[,\s/]+/).filter(Boolean); return p.length >= 4 ? parseFloat(p[3]) : 1; };
+            const good = cards.filter((el) => { const cs = getComputedStyle(el);
+              if (ps.material === 'glass') return /blur\(/.test(cs.backdropFilter || cs.webkitBackdropFilter || '') && alpha(cs.backgroundColor) <= 0.62;
+              if (ps.material === 'clay') return cs.boxShadow !== 'none' && cs.boxShadow.split(/,(?![^(]*\))/).length >= 2;
+              return true; });
+            if (good.length < (ps.min || 3)) out.push(`page style: ${good.length} ${ps.material || ''} cards matching "${ps.card}" on this page (want ≥ ${ps.min || 3}; inner pages use the overview's card material, not plain boxes)`);
+            if (ps.shapes) { const cut = (e) => { const c = getComputedStyle(e); const b = getComputedStyle(e, '::before'); return [c, b].some((x) => (x.clipPath && x.clipPath !== 'none') || (x.maskImage || x.webkitMaskImage || 'none') !== 'none'); };
+              const n = cards.filter(cut).length + document.querySelectorAll('[data-db-page]:not([hidden]) svg path[data-shape]').length;
+              if (n < ps.shapes) out.push(`page style: ${n} shaped elements (tab, notch, bridge, organic) on this page (want ≥ ${ps.shapes}; the reference's shape grammar applies to every page)`); }
+            return out;
+          }, SPEC.page_style)));
+        }
         errs.push(...(await textAudit(page)));
         if (!errs.length && variant.id === 'default' && w === 1440) {
           await capture(page, join(pagesDir, `${pg.id}.jpg`));
@@ -430,59 +506,9 @@ for (const d of list) {
           const spec = JSON.parse(readFileSync(join(site, 'dashboards', d.id, 'layout.json'), 'utf8'));
           const sdir = join(site, 'dashboards', d.id); const strict = []; const kept = errs.slice(); // in-page navigation below clears errs (see watch), so keep what was found so far
           const startHash = await page.evaluate(() => { scrollTo(0, 0); return location.hash; });
-          // 1. Compare sheet: every box, reference crop beside build crop. The builder must open it.
-          try {
-            const refFile = ['reference.png', 'reference.jpg', 'reference.jpeg', 'reference.webp'].map((f) => join(sdir, f)).find(isFile);
-            const rows = [];
-            for (const [name, b] of Object.entries(spec.boxes || {})) {
-              let r = b.ref;
-              if (!r && spec.ref_frame && [b.x, b.y, b.w, b.h].every((v) => v != null)) { const [fx, fy, fw] = spec.ref_frame; r = [fx + b.x * fw / 100, fy + b.y * fw / 100, b.w * fw / 100, b.h * fw / 100]; }
-              if (!r || !refFile) continue;
-              const loc = page.locator(`[data-ref="${name}"]`).first();
-              if (!(await loc.count()) || !(await loc.isVisible())) continue;
-              rows.push({ name, r, note: b.note || '', shot: (await loc.screenshot({ type: 'jpeg', quality: 82 })).toString('base64') });
-            }
-            if (rows.length) {
-              const refUrl = `data:${TYPES[extname(refFile)].split(';')[0]};base64,${readFileSync(refFile).toString('base64')}`;
-              const sheet = await browser.newPage({ viewport: { width: 1100, height: 800 } });
-              await sheet.setContent(`<body style="margin:16px;font:14px system-ui;background:#fff;color:#111"><h2>${d.id}: reference (left) and build (right), box by box</h2><div id="o"></div></body>`);
-              await sheet.evaluate(async ({ rows, refUrl }) => {
-                const img = new Image(); img.src = refUrl; await img.decode(); const o = document.getElementById('o');
-                for (const row of rows) {
-                  const [x, y, w, h] = row.r; const H = Math.min(300, Math.max(70, h * (500 / w))); const W = Math.min(500, w * (H / h));
-                  const wrap = document.createElement('div'); wrap.style.cssText = 'margin:0 0 18px;border-top:1px solid #ccc;padding-top:8px';
-                  wrap.innerHTML = `<b>${row.name}</b> <span style="color:#444">${row.note}</span><div style="display:flex;gap:16px;align-items:flex-start;margin-top:6px"><canvas width="${Math.round(W)}" height="${Math.round(H)}" style="border:1px solid #999"></canvas><img style="height:${Math.round(H)}px;max-width:520px;object-fit:contain;border:1px solid #999" src="data:image/jpeg;base64,${row.shot}"></div>`;
-                  wrap.querySelector('canvas').getContext('2d').drawImage(img, x, y, w, h, 0, 0, W, H); o.appendChild(wrap);
-                }
-              }, { rows, refUrl });
-              const outDir = join(root, 'docs/validation/dashboards'); mkdirSync(outDir, { recursive: true });
-              await sheet.screenshot({ path: join(outDir, `${d.id}-compare.jpg`), type: 'jpeg', quality: 72, fullPage: true });
-              await sheet.close();
-            }
-          } catch (e) { strict.push(`compare sheet could not be written: ${e.message}`); }
           // 2. Materials and backdrop.
           strict.push(...(await page.evaluate((spec) => {
             const out = []; const alpha = (c) => { const m = /rgba?\(([^)]+)\)/.exec(c); if (!m) return null; const p = m[1].split(/[,\s/]+/).filter(Boolean); return p.length >= 4 ? parseFloat(p[3]) : 1; };
-            for (const [name, b] of Object.entries(spec.boxes || {})) {
-              if (b.material === 'clay') {
-                const el = document.querySelector(`[data-ref="${name}"]`); if (!el) continue; const cs = getComputedStyle(el); const bad = [];
-                const layers = cs.boxShadow === 'none' ? 0 : cs.boxShadow.split(/,(?![^(]*\))/).length;
-                if (layers < 2) bad.push(`${layers} shadow layer(s) (want a soft dark drop shadow plus a light highlight, at least 2)`);
-                if (parseFloat(cs.borderTopLeftRadius) < 12) bad.push(`corner radius ${cs.borderTopLeftRadius} (want ≥ 12px: clay has soft, thick edges)`);
-                if (bad.length) out.push(`material ${name}: not clay: ${bad.join('; ')}`);
-                continue;
-              }
-              if (b.material !== 'glass') continue;
-              const el = document.querySelector(`[data-ref="${name}"]`); if (!el) continue;
-              const cs = getComputedStyle(el); const bad = [];
-              const blur = +((/blur\(([\d.]+)px\)/.exec(cs.backdropFilter || cs.webkitBackdropFilter || '') || [])[1] || 0);
-              if (blur < 8) bad.push(`backdrop blur is ${blur}px (want ≥ 8px)`);
-              const fill = alpha(cs.backgroundColor); const stops = [...cs.backgroundImage.matchAll(/rgba?\([^)]+\)/g)].map((m) => alpha(m[0]));
-              if ((fill != null && fill > 0.62) || (stops.length && Math.min(...stops) > 0.62)) bad.push(`fill is nearly opaque (alpha ${fill > 0.62 ? fill : Math.min(...stops)}; want ≤ 0.62 so the backdrop shows through)`);
-              const edge = /inset/.test(cs.boxShadow) || (parseFloat(cs.borderTopWidth) > 0 && (alpha(cs.borderTopColor) ?? 1) < 1);
-              if (!edge) bad.push('no light edge (want an inset highlight or a translucent border)');
-              if (bad.length) out.push(`material ${name}: not glass: ${bad.join('; ')}`);
-            }
             if (spec.frame && spec.frame.backdrop) {
               const el = document.querySelector('[data-ref="backdrop"]'); const F = document.querySelector('[data-ref="frame"]');
               if (!el) out.push(`backdrop: no element with data-ref="backdrop" — ${spec.frame.backdrop}`);
@@ -492,12 +518,28 @@ for (const d of list) {
             }
             return out;
           }, spec)));
+          // Design DNA sheet (docs/dashboards/09-image-to-dashboard.md §2), written before code.
+          { const dna = join(sdir, 'dna.md');
+            if (!isFile(dna)) strict.push(`dna: site/dashboards/${d.id}/dna.md is missing (write the design DNA sheet before code: docs/dashboards/09-image-to-dashboard.md §2)`);
+            else { const t = readFileSync(dna, 'utf8'); const miss = ['Backdrop', 'Shape grammar', 'Materials', 'Palette', 'Nav', 'Composition', 'Element inventory'].filter((h) => !new RegExp('^#{2,3}\\s*' + h, 'mi').test(t));
+              if (miss.length) strict.push(`dna: dna.md has no section for ${miss.join(', ')}`); } }
           // 3. The recorded report: tools used and every owner requirement answered.
           const reportPath = join(root, 'docs/validation/dashboards', `${d.id}-polish.md`);
           if (!isFile(reportPath)) strict.push(`report: docs/validation/dashboards/${d.id}-polish.md is missing (copy templates/polish-report.md and fill it)`);
           else { const rep = readFileSync(reportPath, 'utf8');
             if (!/Tools used/i.test(rep)) strict.push('report: no "Tools used" table');
-            for (const q of spec.requirements || []) if (!rep.includes(q.id)) strict.push(`report: owner requirement ${q.id} is not answered ("${q.text}")`); }
+            for (const q of spec.requirements || []) if (!rep.includes(q.id)) strict.push(`report: owner requirement ${q.id} is not answered ("${q.text}")`);
+            // Review rounds (docs/dashboards/09-image-to-dashboard.md §6): at least 3 rounds against the reference, and a final score ≥ 4 of 5 for every box.
+            const rounds = (rep.match(/^#{2,4}\s*Round\s+\d/gim) || []).length;
+            if (rounds < 3) strict.push(`report: ${rounds} review round(s) recorded (want ≥ 3 "### Round N" sections, each comparing every box with the reference)`);
+            const names = new Set([...Object.keys(spec.boxes || {}), ...(spec.views || []).flatMap((v) => Object.keys(v.boxes || {}))]);
+            const low = [], missing = [];
+            for (const n of names) { const lines = rep.split('\n').filter((l) => new RegExp('^\\|\\s*`?' + n.replace(/[-]/g, '\\-') + '`?\\s*\\|').test(l));
+              if (!lines.length) { missing.push(n); continue; }
+              const cells = lines[lines.length - 1].split('|').map((c) => c.trim()).filter(Boolean); const sc = cells.map(Number).filter((v) => !Number.isNaN(v) && v >= 0 && v <= 5).pop();
+              if (sc == null) missing.push(n); else if (sc < 4) low.push(`${n} ${sc}`); }
+            if (missing.length) strict.push(`report: no fidelity score for ${missing.join(', ')} (a table row "| name | what differs | score |" per box, score 0–5)`);
+            if (low.length) strict.push(`report: boxes scored below 4 of 5: ${low.join(', ')} (fix them before the PR)`); }
           // 4. Every nav item opens its own page with its own content.
           if (spec.nav) {
             const sel = `[data-ref="${spec.nav.ref || 'nav'}"] :is(a, button, [role="tab"])`; const n = await page.locator(sel).count(); const seen = new Map();

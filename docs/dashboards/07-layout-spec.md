@@ -7,7 +7,7 @@ Written rules did not stop builders from getting the layout wrong while every ot
 `site/dashboards/<id>/layout.json`, written by the maintainer from the reference image. It names the major elements of the overview and gives each a box.
 
 - **Unit:** percent of the frame's width, measured from the frame's top-left corner. Heights use the frame's width too, so a reference that is cropped at the bottom still measures correctly.
-- **Where it is checked:** the overview page, default variant, 1440px wide.
+- **Where it is checked:** the overview page, default variant, 1440px wide; plus every entry in `views` (phone, tablet, inner pages) at its own page and width.
 
 ```json
 {
@@ -31,6 +31,7 @@ Written rules did not stop builders from getting the layout wrong while every ot
 | `object` | measures a 3D hero's silhouette and shading: see [08-object-spec.md](08-object-spec.md) |
 | `material` | `"clay"`: at least two shadow layers (soft dark drop plus light highlight) and a corner radius of 12px or more. `"glass"`: the element must have a backdrop blur of at least 8px, a fill no more opaque than 0.62 and a light edge |
 | `ref` | `[x, y, w, h]` in reference-image pixels: the part of the reference this box must look like, used for the compare sheet when the box is not at the reference's own position |
+| `shape` | `"tab"`, `"notch"`, `"bump"`, `"wave"`, `"slant"` or `"organic"`: the element (or a big child, or a pseudo-element) must have a clip-path, mask or `svg path[data-shape]`. Build it with [shapes.js](../../site/dashboards/_shared/shapes.js) ([09](09-image-to-dashboard.md) §3) |
 | `note` | what the element is, printed with the failure |
 
 Top-level keys beside `frame` and `boxes`:
@@ -42,6 +43,8 @@ Top-level keys beside `frame` and `boxes`:
 | `nav` | `{ "ref": "<box name>", "min_routes": n }`: every control in that box opens its own page |
 | `requirements` | owner requests, `{ "id": "R1", "text": "…" }`; each must be answered in the polish report |
 | `adaptation` | set when the reference lacks this screen size and the maintainer designed it |
+| `views` | more measured views: `[{ "page": "overview", "width": 375, "ref_frame": [x,y,w], "boxes": {…} }]`. Each is checked on that page at that width with the same box keys (incl. `material`, `shape`) and gets its own compare sheet `<id>-compare-<page>-<width>.jpg`. A width other than 1440/375 (for example 820) adds that width to every run |
+| `page_style` | `{ "card": ".x-card", "material": "glass", "min": 3, "shapes": 1, "nav": "nav" }`: checked on **every page at every width**: backdrop visible, nav visible, at least `min` cards in the material, at least `shapes` shaped elements |
 
 The whole process these keys belong to: [00-twin-contract.md](00-twin-contract.md).
 

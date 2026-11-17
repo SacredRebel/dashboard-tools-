@@ -60,4 +60,6 @@ New families can be added to `style_families` in the catalog when a dashboard do
 
 **Layout spec.** When a dashboard has a `layout.json`, its reference layout is checked by numbers: [07-layout-spec.md](07-layout-spec.md). Read it before building.
 
+**Image to dashboard.** From one reference image to every size and page, with the shape primitives and the review rounds: [09-image-to-dashboard.md](09-image-to-dashboard.md).
+
 **Elements and objects.** The full guardrail framework, including how a 3D hero object is specified and built: [08-object-spec.md](08-object-spec.md).
