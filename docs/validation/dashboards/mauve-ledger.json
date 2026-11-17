@@ -1,7 +1,7 @@
 {
   "id": "mauve-ledger",
   "checked": "2026-11-16",
-  "ok": false,
+  "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -57,14 +57,7 @@
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": [
-        "layout kpi-label: found 0 visible data-ref=\"kpi-label\", need 4 — label directly under the number; number and label sit in the middle of the tile under the icon, not pushed to the bottom with an empty band [% of frame width, from the frame's top-left]",
-        "layout topbar-actions: found 0 visible data-ref=\"topbar-actions\", need 1 — phone, calendar, search, bell, then a photo avatar with a chevron [% of frame width, from the frame's top-left]",
-        "backdrop: no element with data-ref=\"backdrop\" — pale lilac-grey backdrop with a soft peach sweep rising from the lower left, visible through the frosted frame and cards",
-        "report: docs/validation/dashboards/mauve-ledger-polish.md is missing (copy templates/polish-report.md and fill it)",
-        "nav \"HR and Payroll\" opens the same route as \"Accounts\" (#/budgets): every nav item needs its own working page",
-        "nav \"Peoples\" opens the same route as \"Accounts\" (#/budgets): every nav item needs its own working page"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/mauve-ledger/#/overview",
@@ -183,6 +176,90 @@
       "width": 375,
       "variant": "slate",
       "page": "budgets",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/hr",
+      "width": 1440,
+      "variant": "default",
+      "page": "hr",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/hr",
+      "width": 375,
+      "variant": "default",
+      "page": "hr",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/hr",
+      "width": 1440,
+      "variant": "blush",
+      "page": "hr",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/hr",
+      "width": 375,
+      "variant": "blush",
+      "page": "hr",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/hr",
+      "width": 1440,
+      "variant": "slate",
+      "page": "hr",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/hr",
+      "width": 375,
+      "variant": "slate",
+      "page": "hr",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/peoples",
+      "width": 1440,
+      "variant": "default",
+      "page": "peoples",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/#/peoples",
+      "width": 375,
+      "variant": "default",
+      "page": "peoples",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/peoples",
+      "width": 1440,
+      "variant": "blush",
+      "page": "peoples",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=blush#/peoples",
+      "width": 375,
+      "variant": "blush",
+      "page": "peoples",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/peoples",
+      "width": 1440,
+      "variant": "slate",
+      "page": "peoples",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/mauve-ledger/?variant=slate#/peoples",
+      "width": 375,
+      "variant": "slate",
+      "page": "peoples",
       "errors": []
     },
     {

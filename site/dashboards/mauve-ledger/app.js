@@ -34,15 +34,15 @@
       offline: '$12,201.00', offDelta: '-11%', offCls: 'bad',
       online: '$100,799.00', onDelta: '+6%', onCls: 'good',
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-      offlineV: [320, 360, 340, 400, 245, 380, 410, 430, 390],
-      onlineV: [520, 560, 540, 600, 598, 640, 660, 700, 680],
+      offlineV: [90, 160, 130, 280, 245, 210, 300, 140, 200],
+      onlineV: [170, 360, 250, 420, 598, 390, 470, 240, 360],
     },
     last: {
       offline: '$13,740.00', offDelta: '-4%', offCls: 'bad',
       online: '$95,120.00', onDelta: '+3%', onCls: 'good',
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-      offlineV: [300, 330, 360, 350, 280, 340, 320, 360, 310],
-      onlineV: [480, 520, 500, 560, 540, 580, 600, 620, 590],
+      offlineV: [80, 150, 200, 240, 280, 180, 260, 120, 170],
+      onlineV: [150, 320, 220, 360, 540, 330, 400, 210, 300],
     },
   };
 
@@ -77,6 +77,17 @@
     { name: 'Contingency', used: 12, cap: '$5,000', spent: '$600' },
   ];
 
+  const PEOPLE = [
+    { name: 'Hannah Morgan', role: 'Ops lead', team: 'ops', seat: 'Desk 12', status: 'Office' },
+    { name: 'Megan Clark', role: 'Marketing', team: 'studio', seat: 'Remote', status: 'Remote' },
+    { name: 'Amina Rahman', role: 'Finance', team: 'ops', seat: 'Desk 4', status: 'Office' },
+    { name: 'Theo Santos', role: 'Designer', team: 'studio', seat: 'Desk 18', status: 'Office' },
+    { name: 'Elena Park', role: 'Research', team: 'studio', seat: 'Remote', status: 'Remote' },
+    { name: 'Jordan Kim', role: 'HR partner', team: 'ops', seat: 'Desk 2', status: 'Office' },
+    { name: 'James Okoro', role: 'Founder', team: 'ops', seat: 'Desk 1', status: 'Office' },
+    { name: 'Priya Nair', role: 'Engineer', team: 'studio', seat: 'Remote', status: 'Remote' },
+  ];
+
   const S = {
     period: 'current',
     salesIdx: 4,
@@ -84,6 +95,9 @@
     txQ: '',
     txSort: 'newest',
     statePreview: 0,
+    peopleQ: '',
+    peopleFilter: 'all',
+    hrCycle: 'current',
   };
 
   const toastEl = $('[data-toast-el]');
@@ -115,11 +129,11 @@
       <article class="mv-kpi" data-ref="kpi" style="--d:${80 + i * 40}ms">
         <div class="mv-kpi-top">
           <span class="mv-kpi-ic">${svg(k.icon)}</span>
-          ${k.menu ? `<button type="button" class="mv-kpi-menu" aria-label="Balance options" data-toast="Balance options (sample).">${svg('dots')}</button>` : '<span></span>'}
+          ${k.menu ? `<button type="button" class="mv-kpi-menu" aria-label="Balance options" data-toast="Balance options (sample).">${svg('dots')}</button>` : '<span class="mv-kpi-spacer" aria-hidden="true"></span>'}
         </div>
-        <div>
+        <div class="mv-kpi-body">
           <b class="num" data-ref="kpi-value">${val}</b>
-          <span>${k.label}</span>
+          <span data-ref="kpi-label">${k.label}</span>
         </div>
       </article>`;
     }).join('');
@@ -255,6 +269,35 @@
       </article>`).join('');
   }
 
+  function renderPeople() {
+    let rows = PEOPLE.slice();
+    if (S.peopleFilter !== 'all') rows = rows.filter((p) => p.team === S.peopleFilter);
+    const q = S.peopleQ.trim().toLowerCase();
+    if (q) rows = rows.filter((p) => (p.name + ' ' + p.role).toLowerCase().includes(q));
+    $('[data-people-empty]').hidden = rows.length > 0;
+    $('[data-people-total]').textContent = String(rows.length);
+    $('[data-people-office]').textContent = String(rows.filter((p) => p.status === 'Office').length);
+    $('[data-people-remote]').textContent = String(rows.filter((p) => p.status === 'Remote').length);
+    $('[data-people]').innerHTML = rows.map((p) => `
+      <li>
+        <span class="mv-av" aria-hidden="true">${p.name.slice(0, 2).toUpperCase()}</span>
+        <span><b>${p.name}</b><small>${p.role} · ${p.seat}</small></span>
+        <span class="amt num">${p.status}</span>
+        <time>${p.team === 'ops' ? 'Ops' : 'Studio'}</time>
+      </li>`).join('');
+  }
+  function setHrCycle(v) {
+    S.hrCycle = v;
+    if (v === 'next') {
+      $('[data-hr-gross]').textContent = '$51,080'; $('[data-hr-count]').textContent = '44'; $('[data-hr-pto]').textContent = '3';
+      $('[data-hr-note]').textContent = 'Next cycle includes two June starts. Confirm contractor invoices before the draft locks.';
+      toast('Showing next payroll cycle (sample).');
+    } else {
+      $('[data-hr-gross]').textContent = '$48,260'; $('[data-hr-count]').textContent = '42'; $('[data-hr-pto]').textContent = '5';
+      $('[data-hr-note]').textContent = 'Review checklist is open. Confirm hours for the Harbor Dental surge team before Friday cut-off.';
+      toast('Showing this payroll cycle (sample).');
+    }
+  }
   function stateBox(kind) {
     const box = $('[data-statebox]');
     const states = {
@@ -280,6 +323,7 @@
   renderKpis();
   renderGauge();
   renderBudgets();
+  renderPeople();
   render();
 
   $('[data-period]').addEventListener('change', (e) => {
@@ -301,6 +345,9 @@
     }
     toast(v === 'quarter' ? 'Showing quarter envelopes (sample).' : 'Showing this month (sample).');
   });
+  seg($('[data-hr-cycle]'), (v) => setHrCycle(v));
+  seg($('[data-people-filter]'), (v) => { S.peopleFilter = v; renderPeople(); });
+  $('[data-people-q]').addEventListener('input', (e) => { S.peopleQ = e.target.value; renderPeople(); });
   $('[data-tx-q]').addEventListener('input', (e) => { S.txQ = e.target.value; renderTx(); });
 
   document.addEventListener('click', (e) => {
@@ -311,6 +358,10 @@
     if (act.dataset.act === 'formation') {
       $('[data-cheer]').textContent = 'Formation packet is with legal review — next update in 2 business days (sample).';
       toast('Opened formation status (sample).');
+    }
+    if (act.dataset.act === 'hr-run') {
+      $('[data-hr-note]').textContent = 'Pay run marked reviewed. Treasury can release after dual approval (sample).';
+      toast('Payroll run marked reviewed (sample).');
     }
     if (act.dataset.act === 'search') {
       location.hash = '#/transactions';
@@ -368,6 +419,8 @@
     { id: 'overview', name: 'Overview' },
     { id: 'transactions', name: 'Finance' },
     { id: 'budgets', name: 'Accounts' },
+    { id: 'hr', name: 'HR and Payroll' },
+    { id: 'peoples', name: 'Peoples' },
     { id: 'settings', name: 'Contracts' },
   ];
 
@@ -379,10 +432,7 @@
     $$('.mv-nav a[data-nav]').forEach((a) => {
       if (a.dataset.nav === id) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
-      a.classList.toggle('is-active', a.dataset.nav === 'overview' && id === 'overview');
-    });
-    $$('.mv-nav a[data-nav="overview"]').forEach((a) => {
-      if (id === 'overview') a.setAttribute('aria-current', 'page');
+      a.classList.toggle('is-active', a.dataset.nav === id);
     });
     $$('.mv-rail a').forEach((a) => {
       const href = a.getAttribute('href') || '';

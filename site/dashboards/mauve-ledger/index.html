@@ -21,6 +21,12 @@
 
   <div class="mv" data-db-app>
     <div class="mv-frame" data-ref="frame">
+      <div class="mv-backdrop" data-ref="backdrop" aria-hidden="true">
+        <span class="mv-backdrop-lilac"></span>
+        <span class="mv-backdrop-peach"></span>
+        <span class="mv-backdrop-cool"></span>
+        <img class="mv-backdrop-img" src="media/haze.webp" alt="" width="1280" height="800" decoding="async">
+      </div>
       <a class="mv-logo" href="#/overview" aria-label="Mauve Ledger home">
         <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="currentColor"/><circle cx="20" cy="20" r="7" fill="none" stroke="#fff" stroke-width="2.4"/><circle cx="20" cy="20" r="2.6" fill="#fff"/></svg>
       </a>
@@ -28,11 +34,11 @@
         <a href="#/overview" data-nav="overview">Dashboard</a>
         <a href="#/transactions" data-nav="transactions">Finance</a>
         <a href="#/budgets" data-nav="budgets">Accounts</a>
-        <button type="button" data-toast="HR and Payroll is a sample view.">HR and Payroll</button>
-        <button type="button" data-toast="People directory is a sample view.">Peoples</button>
+        <a href="#/hr" data-nav="hr">HR and Payroll</a>
+        <a href="#/peoples" data-nav="peoples">Peoples</a>
         <a href="#/settings" data-nav="settings">Contracts</a>
       </nav>
-      <div class="mv-utils">
+      <div class="mv-utils" data-ref="topbar-actions">
         <button type="button" class="mv-ico" aria-label="Call" data-toast="Dialer is sample-only.">
           <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
         </button>
@@ -47,7 +53,7 @@
           <i></i>
         </button>
         <button type="button" class="mv-who" aria-label="Account menu for James Okoro" data-toast="Account menu (sample).">
-          <span class="mv-av" aria-hidden="true">JO</span>
+          <img class="mv-av mv-av--photo" src="media/avatar.jpg" alt="" width="48" height="48" decoding="async">
           <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
         </button>
       </div>
@@ -190,6 +196,59 @@
           </section>
         </section>
 
+        <!-- HR and Payroll -->
+        <section data-db-page="hr" class="mv-sheet" hidden>
+          <div class="mv-sheet-head"><div><h1>HR and Payroll</h1><p class="mv-sub">Pay runs, time-off and headcount · sample</p></div>
+            <div class="mv-tools">
+              <div class="mv-seg" role="group" aria-label="Payroll cycle" data-hr-cycle>
+                <button type="button" data-v="current" aria-pressed="true">This cycle</button>
+                <button type="button" data-v="next" aria-pressed="false">Next cycle</button>
+              </div>
+              <button type="button" class="mv-btn" data-toast="Payroll export is sample-only.">Export payroll</button>
+            </div>
+          </div>
+          <div class="mv-stat-row">
+            <article class="mv-pane"><span class="mv-sub">Gross payroll</span><b class="num" data-hr-gross>$48,260</b></article>
+            <article class="mv-pane"><span class="mv-sub">Employees on payroll</span><b class="num" data-hr-count>42</b></article>
+            <article class="mv-pane"><span class="mv-sub">PTO pending</span><b class="num" data-hr-pto>5</b></article>
+          </div>
+          <div class="mv-pane">
+            <div class="mv-pane-head"><h2>Upcoming pay run</h2><button type="button" class="mv-btn" data-act="hr-run">Mark as reviewed</button></div>
+            <ul class="mv-tx" data-hr-runs>
+              <li><span class="mv-av" aria-hidden="true">PR</span><span><b>Bi-weekly · Ops + Studio</b><small>Cut-off Fri 5 PM · deposit Tue</small></span><span class="amt num">$31,420</span><time>Open</time></li>
+              <li><span class="mv-av" aria-hidden="true">CN</span><span><b>Contractors · May</b><small>Design + research retainers</small></span><span class="amt num">$9,840</span><time>Draft</time></li>
+              <li><span class="mv-av" aria-hidden="true">TX</span><span><b>Tax remittance</b><small>Federal + state withholdings</small></span><span class="amt num">$7,000</span><time>Queued</time></li>
+            </ul>
+            <p class="mv-budget-note" data-hr-note>Review checklist is open. Confirm hours for the Harbor Dental surge team before Friday cut-off.</p>
+          </div>
+          <div class="mv-budget-grid">
+            <article class="mv-pane mv-budget"><div class="row"><h2>Amina Rahman</h2><span class="pct num">3d</span></div><p class="mv-sub">Personal leave · Jun 3–5</p><button type="button" class="mv-btn" data-toast="Approved Amina Rahman leave (sample).">Approve</button></article>
+            <article class="mv-pane mv-budget"><div class="row"><h2>Theo Santos</h2><span class="pct num">1d</span></div><p class="mv-sub">Medical · May 22</p><button type="button" class="mv-btn" data-toast="Approved Theo Santos leave (sample).">Approve</button></article>
+            <article class="mv-pane mv-budget"><div class="row"><h2>Elena Park</h2><span class="pct num">5d</span></div><p class="mv-sub">Vacation · Jun 10–14</p><button type="button" class="mv-btn" data-toast="Approved Elena Park leave (sample).">Approve</button></article>
+            <article class="mv-pane mv-budget"><div class="row"><h2>Jordan Kim</h2><span class="pct num">2d</span></div><p class="mv-sub">Family · May 28–29</p><button type="button" class="mv-btn" data-toast="Approved Jordan Kim leave (sample).">Approve</button></article>
+          </div>
+        </section>
+
+        <!-- Peoples -->
+        <section data-db-page="peoples" class="mv-sheet" hidden>
+          <div class="mv-sheet-head"><div><h1>Peoples</h1><p class="mv-sub">Directory and seating · sample</p></div>
+            <div class="mv-tools">
+              <label class="mv-search"><span class="sr-only">Search people</span><input type="search" data-people-q placeholder="Search name or role" autocomplete="off"></label>
+              <div class="mv-seg" role="group" aria-label="Team filter" data-people-filter>
+                <button type="button" data-v="all" aria-pressed="true">All</button>
+                <button type="button" data-v="ops" aria-pressed="false">Ops</button>
+                <button type="button" data-v="studio" aria-pressed="false">Studio</button>
+              </div>
+            </div>
+          </div>
+          <div class="mv-stat-row">
+            <article class="mv-pane"><span class="mv-sub">Directory</span><b class="num" data-people-total>24</b></article>
+            <article class="mv-pane"><span class="mv-sub">In office today</span><b class="num" data-people-office>11</b></article>
+            <article class="mv-pane"><span class="mv-sub">Remote</span><b class="num" data-people-remote>13</b></article>
+          </div>
+          <div class="mv-pane"><ul class="mv-tx" data-people></ul><p class="mv-empty" data-people-empty hidden>No people match that search. Clear filters to see the full directory.</p></div>
+        </section>
+
         <!-- Settings / Contracts -->
         <section data-db-page="settings" class="mv-sheet" hidden>
           <div class="mv-sheet-head">
@@ -261,6 +320,8 @@
       <a href="#/overview"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg><span>Home</span></a>
       <a href="#/transactions"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>Finance</span></a>
       <a href="#/budgets"><svg viewBox="0 0 24 24"><path d="M4 19V5h4v14H4zm6 0V9h4v10h-4zm6 0v-7h4v7h-4z"/></svg><span>Accounts</span></a>
+      <a href="#/hr"><svg viewBox="0 0 24 24"><path d="M4 7h16v12H4z"/><path d="M8 7V5h8v2M9 12h6M9 16h4"/></svg><span>HR</span></a>
+      <a href="#/peoples"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5.5a3 3 0 0 1 0 5.5M18 14a5.5 5.5 0 0 1 3 5"/></svg><span>People</span></a>
       <a href="#/settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2.5M12 19.5V22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M2 12h2.5M19.5 12H22M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><span>Contracts</span></a>
     </nav>
     <p class="mv-sample db-sample">Sample data · fictional company and inbox</p>

@@ -448,7 +448,7 @@ _Mauve Ledger · original owner reference (`reference.png`; recreation `shot.jpg
 A light lilac glass finance desk: near-white frosted KPI panes over lilac haze with peach bloom, hatched sales bars, formation status, a segmented success gauge and recent emails.
 
 - **Use cases:** Finance & banking · **Mode:** light · **Mood:** airy, soft, premium, calm, lilac
-- **Pages:** Overview (`overview`, Dashboard) · Transactions (`transactions`, List) · Budgets (`budgets`, Report) · Settings (`settings`, Settings)
+- **Pages:** Overview (`overview`, Dashboard) · Finance (`transactions`, List) · Accounts (`budgets`, Report) · HR and Payroll (`hr`, Report) · Peoples (`peoples`, List) · Contracts (`settings`, Settings)
 - **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** Near-white frosted panes on lilac–peach haze, with a diagonally hatched May sales bar and a segmented 51.2% success arc of rounded ticks.
 - **Layout:** Top bar (logo, pill nav, utility icons, avatar) · greeting · 4 KPI glass cards · 12-col: average sales (8) + formation status + success gauge (4) · recent emails full width
