@@ -6,128 +6,158 @@
   <!-- URL guard: relative CSS/JS below only resolve when the URL ends in "/" or ".html". Keep this first. -->
   <script>if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash);</script>
   <title>Orbit Clay · Dashboard Tools gallery</title>
-  <meta name="description" content="Cream, forest and gold claymorphism twin-phone media console with clay astronaut helmet photo and dune landscape. Sample data.">
+  <meta name="description" content="Cream and forest clay mission board with a real 3D astronaut helmet in a gold ring and layered calibration terrain. Sample data.">
   <link rel="stylesheet" href="../_vendor/fonts/outfit/family.css">
   <link rel="stylesheet" href="../_shared/base.css">
-  <link rel="stylesheet" href="../_shared/fx/fx.css">
-  <link rel="stylesheet" href="../_shared/dense-pages.css">
   <link rel="stylesheet" href="style.css">
   <script src="../_shared/frame.js"></script>
-  <script src="../_shared/dense-pages.js"></script>
-  <script type="module" src="../_shared/fx/index.js"></script>
-  <script type="module" src="../_shared/fx/ambient-gsap.js"></script>
-  <script src="../_vendor/motion@12.23.12/motion.js"></script>
+  <script type="importmap">{ "imports": { "three": "../_vendor/three@0.170.0/three.module.min.js", "three/addons/": "../_vendor/three@0.170.0/examples/jsm/" } }</script>
 </head>
 <body>
+  <svg width="0" height="0" class="vh" aria-hidden="true"><defs>
+    <symbol id="oc-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="3" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="13" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="13" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="oc-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 20.5V5.5M20 18H6.5A2.5 2.5 0 0 0 4 20.5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="oc-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 4 12 2.5-6h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="oc-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v3M12 18.5v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2.5 12h3M18.5 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="oc-home" viewBox="0 0 24 24"><path d="m3 10.5 9-7 9 7V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="oc-minus" viewBox="0 0 24 24"><path d="M6 12h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="oc-plus" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="oc-flag" viewBox="0 0 24 24"><path d="M6 21V4m0 1h11l-2.5 4L17 13H6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="oc-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5 5l1.8 1.8M17.2 17.2 19 19M19 5l-1.8 1.8M6.8 17.2 5 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="oc-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="1" fill="currentColor"/></symbol>
+    <symbol id="oc-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m3 13 9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="oc-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m20.5 20.5-4.6-4.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="oc-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></symbol>
+  </defs></svg>
+
+  <div class="oc-backdrop" data-ref="backdrop" aria-hidden="true"><i class="oc-bd-grain"></i></div>
+
   <div class="oc" data-db-app>
-    <main class="oc-stage-wrap" data-main>
-      <div class="oc-overview" data-page-panel="overview">
-        <header class="oc-brandbar oc-reveal">
-          <a class="oc-brand" href="#/overview" aria-label="Orbit Clay home">
-            <span class="oc-mark" aria-hidden="true"></span>
-            <span>Orbit Clay</span>
-          </a>
-          <nav class="oc-nav" aria-label="Primary">
-            <a href="#/overview" aria-current="page">Overview</a>
-            <a href="#/library">Library</a>
-            <a href="#/activity">Activity</a>
-            <a href="#/settings">Settings</a>
-          </nav>
-          <p class="oc-tag">Calibration media · fictional run</p>
-          <div class="oc-modes" role="group" aria-label="Run mode" data-modes>
-            <button type="button" data-v="orbit" aria-pressed="true">Orbit</button>
-            <button type="button" data-v="drift" aria-pressed="false">Drift</button>
-            <button type="button" data-v="dock" aria-pressed="false">Dock</button>
+    <div class="oc-board" data-ref="frame">
+      <aside class="oc-rail" data-ref="rail" aria-label="Orbit Clay sections">
+        <nav class="oc-rail-pill" aria-label="Primary">
+          <a href="#/overview" class="oc-rail-btn" aria-current="page" aria-label="Overview"><svg><use href="#oc-grid"/></svg></a>
+          <a href="#/library" class="oc-rail-btn" aria-label="Library"><svg><use href="#oc-book"/></svg></a>
+          <a href="#/activity" class="oc-rail-btn" aria-label="Activity"><svg><use href="#oc-pulse"/></svg></a>
+          <a href="#/settings" class="oc-rail-btn" aria-label="Settings"><svg><use href="#oc-gear"/></svg></a>
+        </nav>
+      </aside>
+
+      <main class="oc-main" id="main">
+        <section data-db-page="overview" class="oc-over">
+          <div class="oc-score" data-ref="score" data-card>
+            <p class="oc-score-num num"><span data-score>0</span></p>
+            <p class="oc-score-label">Orbit score</p>
+            <span class="oc-rule" aria-hidden="true"></span><span class="oc-rule oc-rule-2" aria-hidden="true"></span>
           </div>
-        </header>
 
-        <section class="oc-stage" aria-label="Twin phone console">
-          <section class="oc-phone oc-phone-a oc-reveal" aria-labelledby="oc-a-h">
-            <h2 id="oc-a-h" class="vh">Mission phone</h2>
-            <div class="oc-a-top">
-              <p class="oc-score num" data-score>227</p>
-              <button type="button" class="oc-knob" aria-label="Mission status" data-knob aria-pressed="false">
-                <i></i><i></i>
-              </button>
+          <div class="oc-actions" data-ref="actions" data-card>
+            <button type="button" class="oc-toggle" data-live aria-pressed="true" aria-label="Live telemetry">
+              <span class="oc-toggle-track"><i></i></span><span class="oc-toggle-word">Live</span>
+            </button>
+            <button type="button" class="oc-orb" data-orb aria-label="Crew avatar, Nova-4"><i></i></button>
+          </div>
+
+          <div class="oc-side" data-card>
+            <div class="oc-kpis" data-ref="kpis" aria-label="Calibration readouts">
+              <div class="oc-kpi" data-ref="kpi"><span class="oc-kpi-label">Altitude</span><p class="oc-kpi-num num" data-kpi-alt>2 840</p><span class="oc-kpi-spark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="oc-kpi" data-ref="kpi"><span class="oc-kpi-label">Signal</span><p class="oc-kpi-num num" data-kpi-sig>11 204</p><span class="oc-kpi-spark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="oc-kpi" data-ref="kpi"><span class="oc-kpi-label">Thrust</span><p class="oc-kpi-num num" data-kpi-thr>3 012</p><span class="oc-kpi-spark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
             </div>
-
-            <div class="oc-well" data-helmet role="img" aria-label="Clay astronaut helmet in a gold ring">
-              <img class="oc-helmet oc-ambient" data-gsap="float" data-gsap-dur="12" src="media/helmet@2x.webp" srcset="media/helmet.webp 1x, media/helmet@2x.webp 2x" width="640" height="640" alt="" decoding="async">
+            <p class="oc-side-label">Calibration</p>
+            <button type="button" class="oc-calibrate" data-ref="calibrate" data-calibrate>Calibrate</button>
+            <div class="oc-stepper" data-ref="stepper" aria-label="Orbit count">
+              <button type="button" class="oc-step" data-step="-1" aria-label="Fewer orbits"><svg><use href="#oc-minus"/></svg></button>
+              <p class="oc-step-val num"><span data-orbits>6</span><small>orbits</small></p>
+              <button type="button" class="oc-step" data-step="1" aria-label="More orbits"><svg><use href="#oc-plus"/></svg></button>
             </div>
+          </div>
 
-            <div class="oc-pager" role="tablist" aria-label="Mission pages" data-pager>
-              <button type="button" role="tab" aria-selected="true" data-page="0" aria-label="Mission 1"></button>
-              <button type="button" role="tab" aria-selected="false" data-page="1" aria-label="Mission 2"></button>
-              <button type="button" role="tab" aria-selected="false" data-page="2" aria-label="Mission 3"></button>
-              <button type="button" role="tab" aria-selected="false" data-page="3" aria-label="Mission 4"></button>
-              <button type="button" role="tab" aria-selected="false" data-page="4" aria-label="Mission 5"></button>
+          <section class="oc-mission" data-ref="mission" data-card aria-labelledby="oc-mis-h">
+            <h2 id="oc-mis-h" class="vh">Mission</h2>
+            <i class="oc-medge oc-medge-l" aria-hidden="true"></i><i class="oc-medge oc-medge-r" aria-hidden="true"></i>
+            <div class="oc-ring" data-ref="ring"></div>
+            <i class="oc-spark oc-spark-l" aria-hidden="true"></i><i class="oc-spark oc-spark-r" aria-hidden="true"></i>
+            <div class="oc-hero" data-hero data-ref="helmet">
+              <img class="oc-hero-poster" src="media/hero-poster.png" alt="" width="512" height="512">
+              <canvas data-hero-canvas aria-label="A 3D clay astronaut helmet in a gold ring. Drag to turn it." role="img" tabindex="0"></canvas>
             </div>
-
-            <div class="oc-houses" role="group" aria-label="Base markers">
-              <button type="button" class="oc-house mat-clay mat-hover-lift" data-base="alpha" aria-pressed="true" aria-label="Base Alpha"><span data-icon="home"></span></button>
-              <button type="button" class="oc-house mat-clay mat-hover-lift" data-base="beta" aria-pressed="false" aria-label="Base Beta"><span data-icon="home"></span></button>
+            <div class="oc-tags" role="group" aria-label="Base markers">
+              <button type="button" class="oc-tag" data-ref="tag" data-base="alpha" aria-pressed="true" aria-label="Base Alpha"><svg><use href="#oc-home"/></svg></button>
+              <button type="button" class="oc-tag" data-ref="tag" data-base="beta" aria-pressed="false" aria-label="Base Beta"><svg><use href="#oc-home"/></svg></button>
             </div>
-
-            <p class="oc-mission" data-mission aria-live="polite">Mission Nova · Base Alpha</p>
-
-            <button type="button" class="oc-start" data-start aria-pressed="false">START</button>
+            <p class="oc-mname" data-mname>Nova pass · Alpha</p>
+            <div class="oc-pager" data-ref="pager" role="tablist" aria-label="Mission pages">
+              <button type="button" role="tab" class="oc-pdot" data-ref="pager-dot" data-page="0" aria-selected="true" aria-label="Mission page 1"></button>
+              <button type="button" role="tab" class="oc-pdot" data-ref="pager-dot" data-page="1" aria-selected="false" aria-label="Mission page 2"></button>
+              <button type="button" role="tab" class="oc-pdot" data-ref="pager-dot" data-page="2" aria-selected="false" aria-label="Mission page 3"></button>
+              <button type="button" role="tab" class="oc-pdot" data-ref="pager-dot" data-page="3" aria-selected="false" aria-label="Mission page 4"></button>
+              <button type="button" role="tab" class="oc-pdot" data-ref="pager-dot" data-page="4" aria-selected="false" aria-label="Mission page 5"></button>
+            </div>
+            <button type="button" class="oc-start" data-ref="start" data-start aria-pressed="false">Start</button>
+            <span class="oc-mchips" aria-hidden="true"><i>O₂ 98</i><i>PWR 72</i><i>LINK ·3</i></span>
           </section>
 
-          <section class="oc-phone oc-phone-b oc-reveal" aria-labelledby="oc-b-h">
-            <h2 id="oc-b-h" class="vh">Calibration phone</h2>
-            <div class="oc-b-sky">
-              <div class="oc-kpis" aria-label="Run metrics">
-                <div>
-                  <span class="oc-kpi-label">Altitude</span>
-                  <p class="oc-kpi num" data-kpi-a>3330</p>
-                </div>
-                <div>
-                  <span class="oc-kpi-label">Signal</span>
-                  <p class="oc-kpi oc-kpi-mid num" data-kpi-b>11 009</p>
-                </div>
-                <div>
-                  <span class="oc-kpi-label">Thrust</span>
-                  <p class="oc-kpi num" data-kpi-c>3 007</p>
-                </div>
-              </div>
-              <p class="oc-runnote" data-runnote>Idle · set altitude then start</p>
+          <section class="oc-cal" data-ref="calibration" data-card aria-labelledby="oc-cal-h">
+            <i class="oc-cal-sky" aria-hidden="true"></i>
+            <h2 id="oc-cal-h" class="oc-cal-title">Terrain calibration</h2>
+            <p class="oc-cal-sub" data-cal-sub>Idle · set altitude then start</p>
+            <div class="oc-terrain" data-ref="terrain" data-terrain>
+              <svg class="oc-ridges" viewBox="0 0 340 190" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="oc-dune-far" x1="0" y1="0" x2="0.4" y2="1">
+                    <stop offset="0" stop-color="#e3e7c6"/><stop offset="0.55" stop-color="#ccd3a4"/><stop offset="1" stop-color="#9aa878"/>
+                  </linearGradient>
+                  <linearGradient id="oc-dune-mid" x1="0" y1="0" x2="0.4" y2="1">
+                    <stop offset="0" stop-color="#e9eecb"/><stop offset="0.5" stop-color="#d4dca6"/><stop offset="1" stop-color="#a3ad74"/>
+                  </linearGradient>
+                  <linearGradient id="oc-dune-near" x1="0" y1="0" x2="0.4" y2="1">
+                    <stop offset="0" stop-color="#f0f3da"/><stop offset="0.45" stop-color="#dde3b4"/><stop offset="1" stop-color="#a9b37e"/>
+                  </linearGradient>
+                  <linearGradient id="oc-dune-valley" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="rgba(16,24,16,0.55)"/><stop offset="1" stop-color="rgba(16,24,16,0)"/>
+                  </linearGradient>
+                  <filter id="oc-dune-blur" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="7"/></filter>
+                  <filter id="oc-dune-blur-lg" x="-15%" y="-15%" width="130%" height="130%"><feGaussianBlur stdDeviation="13"/></filter>
+                </defs>
+                <!-- far dune field: palest, softest, fades into panel green -->
+                <path class="oc-ridge oc-ridge-far" data-ref="terrain-layer" data-shape="wave" d="M0 108 C22 92 44 88 68 96 C94 105 110 82 142 86 C172 90 190 68 224 74 C256 80 284 64 340 76 L340 190 L0 190 Z" fill="url(#oc-dune-far)" opacity="0.62" filter="url(#oc-dune-blur-lg)"/>
+                <!-- valley shadow cast by mid dunes onto the far field -->
+                <path d="M0 120 C40 104 80 100 118 112 C152 122 176 104 214 110 C252 116 296 104 340 114 L340 190 L0 190 Z" fill="url(#oc-dune-valley)" opacity="0.5" filter="url(#oc-dune-blur)"/>
+                <!-- middle dune ridge -->
+                <path class="oc-ridge oc-ridge-mid" data-ref="terrain-layer" d="M0 138 C30 116 58 108 88 120 C118 132 136 106 172 112 C208 118 226 96 262 104 C296 111 320 100 340 106 L340 190 L0 190 Z" fill="url(#oc-dune-mid)" opacity="0.92" filter="url(#oc-dune-blur)"/>
+                <!-- shadow between mid and near ridges -->
+                <path d="M0 152 C44 134 84 128 124 140 C162 151 190 130 230 138 C268 145 306 134 340 142 L340 190 L0 190 Z" fill="url(#oc-dune-valley)" opacity="0.55" filter="url(#oc-dune-blur)"/>
+                <!-- near dune ridge: boldest crests, warmest clay -->
+                <path class="oc-ridge oc-ridge-near" data-ref="terrain-layer" d="M0 166 C34 146 66 140 100 152 C134 164 154 136 194 142 C234 148 252 124 292 132 C318 138 330 132 340 136 L340 190 L0 190 Z" fill="url(#oc-dune-near)"/>
+                <!-- crest highlights: thin light rims along the near ridge's crowns -->
+                <path d="M0 166 C34 146 66 140 100 152 C134 164 154 136 194 142 C234 148 252 124 292 132 C318 138 330 132 340 136" fill="none" stroke="rgba(255,253,235,0.5)" stroke-width="1.6"/>
+              </svg>
+              <span class="oc-spire" data-ref="spire" aria-hidden="true"></span>
+              <span class="oc-srail" aria-hidden="true"></span>
+              <button type="button" class="oc-sphere" data-ref="sphere" data-sphere aria-label="Calibration sphere, drag up and down" aria-valuetext="62 percent"></button>
+              <span class="oc-terrain-shade" aria-hidden="true"></span>
             </div>
-
-            <div class="oc-terrain" data-terrain>
-              <div class="oc-land" data-land aria-hidden="true">
-                <img data-gsap="float" data-gsap-dur="14" class="oc-dunes" src="media/dunes@2x.webp" srcset="media/dunes.webp 1x, media/dunes@2x.webp 2x" width="960" height="720" alt="" decoding="async">
-              </div>
-              <label class="oc-rail">
-                <span class="vh">Calibration altitude</span>
-                <input type="range" min="0" max="100" value="62" orient="vertical" data-alt>
-                <span class="oc-sphere" data-sphere aria-hidden="true"></span>
-              </label>
-              <button type="button" class="oc-nest mat-clay" data-fx="reveal" data-lock aria-pressed="false">LOCK</button>
-            </div>
-
-            <footer class="oc-foot" aria-label="Quick tools">
-              <button type="button" aria-label="Target"><span data-icon="target"></span></button>
-              <span class="num" data-foot-l>0</span>
-              <button type="button" aria-label="Layers"><span data-icon="layers"></span></button>
-              <span class="num" data-foot-r>5</span>
-              <button type="button" aria-label="Open settings" data-go-settings><span data-icon="settings"></span></button>
-            </footer>
           </section>
         </section>
 
-        <section class="oc-strip oc-reveal" aria-label="Mission strip">
-          <article><h3>Telemetry</h3><p class="num" data-strip-a>62%</p><span>Altitude lock</span></article>
-          <article><h3>Signal</h3><p class="num" data-strip-b>11k</p><span>Uplink steady</span></article>
-          <article><h3>Thrust</h3><p class="num" data-strip-c>3.0k</p><span>Idle burn</span></article>
-          <article><h3>Bases</h3><p>Alpha · Beta</p><span>Two pads live</span></article>
-          <article><h3>Crew</h3><p>Nova-4</p><span>Sample roster</span></article>
-          <article><h3>Next</h3><p>Drift pass</p><span>After lock</span></article>
-        </section>
-        <p class="db-sample oc-sample">Sample data · fictional · Orbit Clay</p>
+        <section data-db-page="library" class="oc-page oc-lib" hidden></section>
+        <section data-db-page="activity" class="oc-page oc-act" hidden></section>
+        <section data-db-page="settings" class="oc-page oc-set" hidden></section>
+      </main>
+
+      <div class="oc-statusbar" aria-hidden="true">
+        <svg class="oc-status-ridge" viewBox="0 0 120 18" preserveAspectRatio="none"><path d="M0 14 C14 8 26 6 40 9 C54 12 66 5 82 7 C96 9 110 5 120 8 L120 18 L0 18 Z" fill="#33503f" opacity=".8"/></svg>
+        <p class="oc-status-tick">ORBIT-7 · PASS 12 · TELEMETRY NOMINAL · GRID ALPHA</p>
+        <p class="oc-status-coord">51.4°N · 0.1°W</p>
       </div>
-    </main>
-    <div class="oc-toast" data-toast hidden role="status" aria-live="polite"></div>
+
+      <p class="db-sample oc-sample">Sample data · fictional · Orbit Clay</p>
+    </div>
   </div>
+
+  <div class="oc-toast" data-toast role="status" aria-live="polite" hidden></div>
   <script src="app.js"></script>
+  <script type="module" src="helmet.js"></script>
 </body>
 </html>
