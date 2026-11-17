@@ -4,11 +4,11 @@
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const DAYS = [8, 9, 10, 11, 12];
   const WINDOWS = {
-    8: { imsak: '4:18AM', iftar: '6:05PM', left: 'Iftar in 2HR 10MIN', pct: 0.72 },
-    9: { imsak: '4:15AM', iftar: '6:08PM', left: 'Iftar in 1HR 34MIN', pct: 0.86 },
-    10: { imsak: '4:13AM', iftar: '6:10PM', left: 'Iftar in 3HR 02MIN', pct: 0.64 },
-    11: { imsak: '4:11AM', iftar: '6:12PM', left: 'Iftar in 45MIN', pct: 0.94 },
-    12: { imsak: '4:09AM', iftar: '6:14PM', left: 'Iftar in 4HR 20MIN', pct: 0.48 },
+    8: { imsak: '4:18AM', iftar: '6:05PM', left: 'Iftar in 2hr 10min', pct: 0.72 },
+    9: { imsak: '4:15AM', iftar: '6:08PM', left: 'Iftar in 1hr 34min', pct: 0.86 },
+    10: { imsak: '4:13AM', iftar: '6:10PM', left: 'Iftar in 3hr 02min', pct: 0.64 },
+    11: { imsak: '4:11AM', iftar: '6:12PM', left: 'Iftar in 45min', pct: 0.94 },
+    12: { imsak: '4:09AM', iftar: '6:14PM', left: 'Iftar in 4hr 20min', pct: 0.48 },
   };
   const WEEK = [
     { lab: 'Th', v: 42 }, { lab: 'Fr', v: 68 }, { lab: 'Sa', v: 55 },
@@ -26,7 +26,7 @@
     const p = Math.max(0.02, Math.min(1, pct)); const pts = [];
     for (let i = 0; i <= 32; i++) { const t = i / 32; pts.push(`${(8 + t * 184).toFixed(1)},${(52 - Math.sin(Math.PI * t) * 40).toFixed(1)}`); }
     const sx = 8 + p * 184, sy = 52 - Math.sin(Math.PI * p) * 40;
-    return `<svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sd-arc-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0.4"/><stop offset="0.5" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#f0c878" stop-opacity="0.95"/></linearGradient><filter id="sd-sun-glow" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="3.2" result="b"/><feGaussianBlur stdDeviation="1.2" in="SourceGraphic" result="b2"/><feMerge><feMergeNode in="b"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><polyline points="${pts.join(' ')}" fill="none" stroke="url(#sd-arc-g)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="7.2" fill="rgba(255,240,200,.35)" filter="url(#sd-sun-glow)"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="4.6" fill="#fff" stroke="rgba(255,230,180,.9)" stroke-width="1.4"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="2.1" fill="#fff8e0"/></svg>`;
+    return `<svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="sd-arc-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#f0c878" stop-opacity="0.95"/></linearGradient><filter id="sd-sun-glow" x="-180%" y="-180%" width="460%" height="460%"><feGaussianBlur stdDeviation="4.2" result="b"/><feGaussianBlur stdDeviation="2.2" result="b2"/><feMerge><feMergeNode in="b"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><polyline points="${pts.join(' ')}" fill="none" stroke="url(#sd-arc-g)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="11" fill="rgba(255,230,160,.28)" filter="url(#sd-sun-glow)"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="6.4" fill="rgba(255,245,210,.55)" filter="url(#sd-sun-glow)"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="3.6" fill="#fffef6" stroke="rgba(255,236,190,.95)" stroke-width="1.1"/><circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="1.6" fill="#fff"/></svg>`;
   }
   function ensureControls() {
     if (built) return; built = true;

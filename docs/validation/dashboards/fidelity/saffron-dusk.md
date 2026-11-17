@@ -8,7 +8,7 @@ Not this:    Not Haven device frame; not Pulsar tiles; not twin phone shells on 
 ```
 
 ## Material rounds (owner polish)
-See `docs/validation/dashboards/saffron-dusk-polish.md` for Tools used + R1–R6 + look-fix-look.
+See `docs/validation/dashboards/saffron-dusk-polish.md` for Tools used + R1–R8 + compare-sheet rounds.
 
 ## Check
 `node scripts/dashboards-check.mjs saffron-dusk` → ✔

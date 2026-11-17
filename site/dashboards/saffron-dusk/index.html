@@ -53,10 +53,10 @@
           <span class="sd-star s-g"></span><span class="sd-star s-h"></span>
         </div>
         <nav class="sd-rail sd-glass" data-ref="rail" aria-label="Primary">
-          <a href="#/overview" data-route="overview"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-sun"/></svg></span><span>Today</span></a>
-          <a href="#/progress" data-route="progress"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-hour"/></svg></span><span>Progress</span></a>
-          <a href="#/sessions" data-route="sessions"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-grid"/></svg></span><span>Sessions</span></a>
-          <a href="#/profile" data-route="profile"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-spark"/></svg></span><span>Profile</span></a>
+          <a href="#/overview" data-route="overview" data-ref="rail-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-sun"/></svg></span><span>Today</span></a>
+          <a href="#/progress" data-route="progress" data-ref="rail-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-hour"/></svg></span><span>Progress</span></a>
+          <a href="#/sessions" data-route="sessions" data-ref="rail-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-grid"/></svg></span><span>Sessions</span></a>
+          <a href="#/profile" data-route="profile" data-ref="rail-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-spark"/></svg></span><span>Profile</span></a>
         </nav>
         <main class="sd-main" id="main">
           <section class="sd-over" data-db-page="overview" aria-label="Today board">
@@ -68,14 +68,20 @@
             <div class="sd-dates" data-ref="dates" role="tablist" aria-label="Day of month" data-dates></div>
             <article class="sd-card sd-arc sd-glass" data-ref="arc" aria-labelledby="sd-arc-h">
               <h2 id="sd-arc-h" class="vh">Fasting window</h2>
-              <div class="sd-arc-row">
-                <div><span>Imsak</span><b class="num" data-imsak>4:15AM</b></div>
-                <div class="sd-arc-end"><span>Iftar</span><b class="num sd-gold" data-iftar>6:08PM</b></div>
+              <div class="sd-arc-shell">
+                <div class="sd-arc-labels" aria-hidden="true">
+                  <span>Imsak</span>
+                  <span>Iftar</span>
+                </div>
+                <div class="sd-arc-plot" data-arc role="img" aria-label="Sun path from imsak to iftar"></div>
+                <div class="sd-arc-times" data-ref="arc-times">
+                  <b class="num" data-imsak>4:15AM</b>
+                  <b class="num sd-gold" data-iftar>6:08PM</b>
+                </div>
               </div>
-              <div class="sd-arc-plot" data-arc role="img" aria-label="Sun path from imsak to iftar"></div>
-              <div class="sd-bell-tab">
+              <div class="sd-bell-tab" data-ref="bell">
                 <button type="button" class="sd-bell" aria-label="Remind me before iftar" data-remind aria-pressed="false"><svg><use href="#i-bell"/></svg></button>
-                <span data-countdown>Iftar in 1HR 34MIN</span>
+                <span data-countdown>Iftar in 1hr 34min</span>
               </div>
             </article>
             <article class="sd-card sd-water sd-glass sd-glow-teal" data-ref="water" aria-labelledby="sd-water-h">
@@ -104,6 +110,12 @@
               <span class="sd-dune-star" aria-hidden="true"></span>
               <h2 id="sd-greet-h" data-greet>Good evening</h2>
               <button type="button" class="sd-gear" aria-label="Open profile settings" data-settings><svg><use href="#i-gear"/></svg></button>
+              <svg class="sd-dune-ridges" viewBox="0 0 480 160" preserveAspectRatio="none" aria-hidden="true">
+                <path data-ref="dune-line" class="sd-dune-line l1" d="M0 52 C70 28 140 78 220 48 C300 18 360 62 480 36 L480 160 L0 160 Z"/>
+                <path data-ref="dune-line" class="sd-dune-line l2" d="M0 78 C90 58 150 98 240 72 C330 46 390 88 480 64 L480 160 L0 160 Z"/>
+                <path data-ref="dune-line" class="sd-dune-line l3" d="M0 108 C100 90 170 124 270 102 C360 82 420 118 480 96 L480 160 L0 160 Z"/>
+                <path data-ref="dune-line" class="sd-dune-line l4" d="M0 132 C110 118 190 142 290 128 C380 116 430 140 480 126 L480 160 L0 160 Z"/>
+              </svg>
               <div class="sd-dune-lines" aria-hidden="true"></div>
             </section>
             <article class="sd-card sd-person sd-glass" data-ref="person" aria-labelledby="sd-person-h">
@@ -113,9 +125,9 @@
                 <p class="sd-meta">mira.nazari@saffron.example</p>
               </div>
               <div class="sd-stats">
-                <div><b class="num" data-sessions>8</b><span>Sessions</span></div>
+                <div><b class="num" data-sessions>8</b><span>Sessions</span><em class="sd-stat-note">this Ramadan</em></div>
                 <div class="sd-stats-div" aria-hidden="true"></div>
-                <div><b class="num" data-journeys>2</b><span>Journeys</span></div>
+                <div><b class="num" data-journeys>2</b><span>Journeys</span><em class="sd-stat-note">olive · cedar</em></div>
               </div>
               <button type="button" class="sd-share sd-pour-tab sd-pour-share" data-share><svg><use href="#i-spark"/></svg> Share</button>
             </article>
@@ -174,6 +186,11 @@
                 <span class="sd-dune-star" aria-hidden="true"></span>
                 <h2 data-greet-m>Good evening</h2>
                 <button type="button" class="sd-gear" aria-label="Toggle reminder preference" data-settings-m><svg><use href="#i-gear"/></svg></button>
+                <svg class="sd-dune-ridges" viewBox="0 0 480 160" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="sd-dune-line l1" d="M0 52 C70 28 140 78 220 48 C300 18 360 62 480 36 L480 160 L0 160 Z"/>
+                  <path class="sd-dune-line l2" d="M0 78 C90 58 150 98 240 72 C330 46 390 88 480 64 L480 160 L0 160 Z"/>
+                  <path class="sd-dune-line l3" d="M0 108 C100 90 170 124 270 102 C360 82 420 118 480 96 L480 160 L0 160 Z"/>
+                </svg>
               </header>
               <article class="sd-card sd-person sd-glass sd-m-person">
                 <span class="sd-avatar sd-avatar-sq" role="img" aria-label="Mira Nazari"><img src="media/profile.webp" width="160" height="160" alt="" decoding="async"></span>
