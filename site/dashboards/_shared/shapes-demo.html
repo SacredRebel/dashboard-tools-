@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shape grammar</title>
+<style>
+body{margin:0;min-height:100vh;font:14px system-ui;background:linear-gradient(160deg,#c9d2c6,#7f8f87 60%,#3c4a42);color:#1a140c;padding:32px;box-sizing:border-box}
+h1{font-weight:500;margin:0 0 24px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:36px}
+.drop{filter:drop-shadow(0 12px 24px rgba(20,30,25,.28))}
+.card{height:170px;padding:44px 20px 18px;box-sizing:border-box;background:rgba(250,246,234,.5);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%)}
+.teal{background:linear-gradient(155deg,rgba(150,232,232,.7),rgba(84,196,200,.6))}.amber{background:linear-gradient(160deg,rgba(255,214,140,.75),rgba(232,160,70,.6))}.dark{background:rgba(30,38,32,.55);color:#f4f0e6}
+b{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+</style></head><body><h1>Shape grammar primitives (shapes.js)</h1><div class="grid">
+<div class="drop"><article class="card teal" data-shape="tab" data-shape-opts="side:left; w:38%; h:30; r:26; tr:14; f:12" data-shape-edge="rgba(255,255,255,.75)"><b>tab · left</b>Water card with a pour tab.</article></div>
+<div class="drop"><article class="card amber" data-shape="tab" data-shape-opts="side:right; w:50%; h:30; r:26" data-shape-edge="rgba(255,255,255,.7)"><b>tab · right</b>Daily progress label tab.</article></div>
+<div class="drop"><article class="card" data-shape="notch" data-shape-opts="edge:top; at:22%; R:38; r:26" data-shape-edge="rgba(255,255,255,.8)"><b>notch · top</b>Bite for an overlapping avatar.</article></div>
+<div class="drop"><nav class="card" style="height:110px" data-shape="bump" data-shape-opts="at:18%; a:38; s:18; r:26" data-shape-edge="rgba(255,255,255,.8)"><b>bump</b>Nav bar with a raised active dome.</nav></div>
+<div class="drop"><section class="card dark" data-shape="wave" data-shape-opts="amp:26; r:28; phase:0.35" data-shape-edge="rgba(255,255,255,.35)"><b>wave</b>Organic tray / dune panel.</section></div>
+<div class="drop"><article class="card dark" data-shape="slant" data-shape-opts="rise:26; r:22" data-shape-edge="rgba(255,255,255,.35)"><b>slant</b>Upgrade tray with a sloped top.</article></div>
+</div><script type="module" src="./shapes.js"></script></body></html>

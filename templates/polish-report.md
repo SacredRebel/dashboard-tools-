@@ -71,11 +71,21 @@ One row per requirement id in `layout.json`. Check every row again before every 
 |---|---|---|---|---|
 | R1 | | | | |
 
-## Compare-sheet rounds (required)
+## Review rounds (required, at least 3)
 
-| Round | Differences I named | Fixed |
-|---|---|---|
-| 1 | | |
-| 2 | | |
-| 3 | | |
+Method: [docs/dashboards/09-image-to-dashboard.md §6](../docs/dashboards/09-image-to-dashboard.md). Every box name in `layout.json` (including `views`) gets a row in every round. Score 0–5; the check reads the **last** row per box and fails anything below 4.
 
+### Round 1
+| box | what differs from the reference | fix applied | score |
+|---|---|---|---|
+| | | | |
+
+### Round 2
+| box | what differs from the reference | fix applied | score |
+|---|---|---|---|
+| | | | |
+
+### Round 3
+| box | what differs from the reference | fix applied | score |
+|---|---|---|---|
+| | | | |

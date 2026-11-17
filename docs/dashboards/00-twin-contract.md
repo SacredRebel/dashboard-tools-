@@ -14,7 +14,7 @@ It exists because builders kept delivering work that passed its own review and w
 | Merge to `main` | does it | never does it |
 | A number or requirement that looks wrong | fixes the spec | says so in the pull request and keeps building to the spec |
 
-## 2. The six gates
+## 2. The gates
 
 `node scripts/dashboards-check.mjs <id>` runs all of them on a dashboard that has a `layout.json`. Zero failures is the entry ticket to review, not the finish.
 
@@ -25,7 +25,13 @@ It exists because builders kept delivering work that passed its own review and w
 | 3 | Material | "glass" that is opaque, unblurred or edgeless; "clay" that is flat or sharp-cornered; a flat backdrop | `boxes.<name>.material`, `frame.backdrop` | [05](05-style-frameworks.md) |
 | 4 | Navigation | a nav item with no page of its own, or an empty page | `nav` | below |
 | 5 | Controls | a button that does nothing when clicked | always on | below |
-| 6 | Record | no report, no tools table, an owner requirement left unanswered | `requirements` | [templates/polish-report.md](../../templates/polish-report.md) |
+| 6 | Record | no report, no tools table, an owner requirement left unanswered, fewer than 3 review rounds, any box scored below 4 | `requirements`, every box name | [templates/polish-report.md](../../templates/polish-report.md) |
+| 7 | Shape | a tab, notch, bump, slope or organic edge built as a plain rounded rectangle | `boxes.<name>.shape` | [09](09-image-to-dashboard.md) §3 |
+| 8 | Views | phone or tablet that is not the reference's composition | `views` | [09](09-image-to-dashboard.md) §4 |
+| 9 | Page style | an inner page without the backdrop, the nav, the card material or the shape grammar | `page_style` | [09](09-image-to-dashboard.md) §5 |
+| 10 | DNA | building before reading: no `dna.md` design DNA sheet | always on with a spec | [09](09-image-to-dashboard.md) §2 |
+
+**How to build to these gates, step by step, from one image: [09-image-to-dashboard.md](09-image-to-dashboard.md).**
 
 Older gates still apply to every dashboard: console errors, contrast, text size, thin pages, image resolution, required techniques.
 
