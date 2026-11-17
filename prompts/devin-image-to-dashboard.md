@@ -93,3 +93,15 @@ Do Task A first, then Task B. Report honestly what still differs from the refere
 8. **Phone Profile:** the Daily progress tab label is clipped as on desktop.
 
 Run three new review rounds (Round 4–6) in the report, scoring every box. Then update PR 20 with the check output and captures at 1440, 820 and 375 for every page. Do not merge.
+
+---
+
+## Task B · round 3 (same branch, PR 20)
+
+`git fetch origin && git merge origin/main` (a new page-area gate). The overview is now good at all three sizes. Remaining:
+
+1. **Desktop inner pages are blank (blocker).** At 1440, Progress, Sessions and Profile render the hero band and then an empty cream panel: each `[data-db-page]` is a 244px-tall box with `overflow:auto`, so every card is hidden inside it. Your own evidence images (`saffron-dusk-1440-progress.jpg` etc.) show this, and the report scored these pages 4+. Make each page fill the frame and scroll with it, then **open your captures and look at them** before scoring.
+2. **Tablet bottom bar** still sits on a dark strip below the cream tray. Extend the tray and backdrop under it so the bar floats on the same surface as on desktop.
+3. **Profile card (desktop and tablet):** a large empty area under the avatar; the stats are pushed right. Rebalance as in the reference: stats start under the name, and Share tucks into the lower-left corner.
+
+Add Round 7 to the report with honest scores, update PR 20 with fresh captures of every page at 1440, 820 and 375, and do not merge.
