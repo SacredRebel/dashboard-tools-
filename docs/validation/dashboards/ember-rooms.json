@@ -1,7 +1,7 @@
 {
   "id": "ember-rooms",
   "checked": "2026-11-16",
-  "ok": false,
+  "ok": true,
   "server": "worst-case clean URLs (see scripts/dashboards-check.mjs)",
   "runs": [
     {
@@ -57,12 +57,7 @@
       "width": 1440,
       "variant": "default",
       "page": "overview",
-      "errors": [
-        "report: docs/validation/dashboards/ember-rooms-polish.md is missing (copy templates/polish-report.md and fill it)",
-        "nav \"Airflow\" opens the same route as \"Climate\" (#/devices): every nav item needs its own working page",
-        "nav \"Scenes\" opens the same route as \"Rooms\" (#/rooms): every nav item needs its own working page",
-        "dead controls: clicking does nothing: \"Kitchen\", \"Bedroom\", \"Bath\", \"Study\". Wire each to a visible change, or make it plain text instead of a button"
-      ]
+      "errors": []
     },
     {
       "url": "/dashboards/ember-rooms/#/overview",
@@ -265,6 +260,90 @@
       "width": 375,
       "variant": "dusk",
       "page": "settings",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/airflow",
+      "width": 1440,
+      "variant": "default",
+      "page": "airflow",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/airflow",
+      "width": 375,
+      "variant": "default",
+      "page": "airflow",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/airflow",
+      "width": 1440,
+      "variant": "mist",
+      "page": "airflow",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/airflow",
+      "width": 375,
+      "variant": "mist",
+      "page": "airflow",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/airflow",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "airflow",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/airflow",
+      "width": 375,
+      "variant": "dusk",
+      "page": "airflow",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/scenes",
+      "width": 1440,
+      "variant": "default",
+      "page": "scenes",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/#/scenes",
+      "width": 375,
+      "variant": "default",
+      "page": "scenes",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/scenes",
+      "width": 1440,
+      "variant": "mist",
+      "page": "scenes",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=mist#/scenes",
+      "width": 375,
+      "variant": "mist",
+      "page": "scenes",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/scenes",
+      "width": 1440,
+      "variant": "dusk",
+      "page": "scenes",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/ember-rooms/?variant=dusk#/scenes",
+      "width": 375,
+      "variant": "dusk",
+      "page": "scenes",
       "errors": []
     },
     {

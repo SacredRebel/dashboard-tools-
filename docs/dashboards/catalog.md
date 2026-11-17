@@ -1288,7 +1288,7 @@ _Ember Rooms · original owner reference (`reference.jpg`; recreation `shot.jpg`
 A soft neumorphic indoor lighting console: orange accent, left icon rail, pill search, real three.js brushed-aluminium pendant lamp on orbit rings, intensity slider, schedule, climate dial on Devices, line charts and a photo room preview.
 
 - **Use cases:** Smart home & IoT · **Mode:** light · **Mood:** tactile, soft, warm, calm, orange
-- **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Devices (`devices`, List) · Energy (`energy`, Report) · Settings (`settings`, Settings)
+- **Pages:** Overview (`overview`, Dashboard) · Rooms (`rooms`, List) · Climate (`devices`, List) · Energy (`energy`, Report) · Security (`settings`, Settings) · Airflow (`airflow`, List) · Scenes (`scenes`, List)
 - **Motion:** count-up, stagger, hover-lift, press, page-transition, ambient, skeleton, toast, icon-state
 - **Signature:** A brushed-aluminium three.js pendant lamp hanging on a thin cord into soft concentric orbit rings, with thin 12/7 numerals, an orange power control and intensity-linked glow.
 - **Layout:** Soft-pill icon rail · top (search, brand, undo/redo/settings orbs) · centre concentric rings with WebGL pendant lamp, 12/7 + power, orbit room chips · left intensity/schedule/orange gauge · right usage/peak charts + dark room-view tile · Devices page = thermostat knob scene
