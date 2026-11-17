@@ -511,7 +511,9 @@ for (const d of list) {
               let vx0 = 0, vy0 = 0, vx1 = innerWidth, vy1 = innerHeight;
               for (let n = el.parentElement; n && n !== document.body; n = n.parentElement) { const c = getComputedStyle(n); if (/(auto|scroll|hidden|clip)/.test(c.overflow + c.overflowY)) { const nr = n.getBoundingClientRect(); vx0 = Math.max(vx0, nr.left); vy0 = Math.max(vy0, nr.top); vx1 = Math.min(vx1, nr.right); vy1 = Math.min(vy1, nr.bottom); } }
               if (r.top < vy0 || r.bottom > vy1) continue;
+              if (r.right > vx1 + 1 || r.left < vx0 - 1) { bad.push(`"${el.textContent.trim().slice(0, 24)}" cut off at its card's edge`); continue; }
               let clipAnc = null; for (let n = el; n && n !== document.body; n = n.parentElement) if (getComputedStyle(n).clipPath !== 'none') { clipAnc = n; break; }
+              if (clipAnc) { const cr = clipAnc.getBoundingClientRect(); if (r.right > cr.right - 6 || r.left < cr.left + 6) { bad.push(`"${el.textContent.trim().slice(0, 24)}" runs into its card's edge (keep ≥ 6px inside the shape)`); continue; } }
               for (const [fx, fy] of [[0.06, 0.5], [0.5, 0.5], [0.94, 0.5], [0.3, 0.2], [0.7, 0.2], [0.5, 0.85]]) {
                 const x = r.left + r.width * fx, y = r.top + r.height * fy; if (x < 1 || y < 1 || x > innerWidth - 1 || y > innerHeight - 1) continue;
                 const top = document.elementFromPoint(x, y);
