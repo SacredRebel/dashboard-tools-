@@ -67,6 +67,13 @@
       "errors": []
     },
     {
+      "url": "/dashboards/saffron-dusk/#/overview",
+      "width": 820,
+      "variant": "default",
+      "page": "overview",
+      "errors": []
+    },
+    {
       "url": "/dashboards/saffron-dusk/?variant=dawn#/overview",
       "width": 1440,
       "variant": "dawn",
@@ -76,6 +83,13 @@
     {
       "url": "/dashboards/saffron-dusk/?variant=dawn#/overview",
       "width": 375,
+      "variant": "dawn",
+      "page": "overview",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/overview",
+      "width": 820,
       "variant": "dawn",
       "page": "overview",
       "errors": []
@@ -95,6 +109,13 @@
       "errors": []
     },
     {
+      "url": "/dashboards/saffron-dusk/?variant=night#/overview",
+      "width": 820,
+      "variant": "night",
+      "page": "overview",
+      "errors": []
+    },
+    {
       "url": "/dashboards/saffron-dusk/#/progress",
       "width": 1440,
       "variant": "default",
@@ -104,6 +125,13 @@
     {
       "url": "/dashboards/saffron-dusk/#/progress",
       "width": 375,
+      "variant": "default",
+      "page": "progress",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/progress",
+      "width": 820,
       "variant": "default",
       "page": "progress",
       "errors": []
@@ -123,6 +151,13 @@
       "errors": []
     },
     {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/progress",
+      "width": 820,
+      "variant": "dawn",
+      "page": "progress",
+      "errors": []
+    },
+    {
       "url": "/dashboards/saffron-dusk/?variant=night#/progress",
       "width": 1440,
       "variant": "night",
@@ -132,6 +167,13 @@
     {
       "url": "/dashboards/saffron-dusk/?variant=night#/progress",
       "width": 375,
+      "variant": "night",
+      "page": "progress",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/progress",
+      "width": 820,
       "variant": "night",
       "page": "progress",
       "errors": []
@@ -151,6 +193,13 @@
       "errors": []
     },
     {
+      "url": "/dashboards/saffron-dusk/#/sessions",
+      "width": 820,
+      "variant": "default",
+      "page": "sessions",
+      "errors": []
+    },
+    {
       "url": "/dashboards/saffron-dusk/?variant=dawn#/sessions",
       "width": 1440,
       "variant": "dawn",
@@ -160,6 +209,13 @@
     {
       "url": "/dashboards/saffron-dusk/?variant=dawn#/sessions",
       "width": 375,
+      "variant": "dawn",
+      "page": "sessions",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/sessions",
+      "width": 820,
       "variant": "dawn",
       "page": "sessions",
       "errors": []
@@ -179,6 +235,13 @@
       "errors": []
     },
     {
+      "url": "/dashboards/saffron-dusk/?variant=night#/sessions",
+      "width": 820,
+      "variant": "night",
+      "page": "sessions",
+      "errors": []
+    },
+    {
       "url": "/dashboards/saffron-dusk/#/profile",
       "width": 1440,
       "variant": "default",
@@ -188,6 +251,13 @@
     {
       "url": "/dashboards/saffron-dusk/#/profile",
       "width": 375,
+      "variant": "default",
+      "page": "profile",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/#/profile",
+      "width": 820,
       "variant": "default",
       "page": "profile",
       "errors": []
@@ -202,6 +272,13 @@
     {
       "url": "/dashboards/saffron-dusk/?variant=dawn#/profile",
       "width": 375,
+      "variant": "dawn",
+      "page": "profile",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=dawn#/profile",
+      "width": 820,
       "variant": "dawn",
       "page": "profile",
       "errors": []
@@ -216,6 +293,13 @@
     {
       "url": "/dashboards/saffron-dusk/?variant=night#/profile",
       "width": 375,
+      "variant": "night",
+      "page": "profile",
+      "errors": []
+    },
+    {
+      "url": "/dashboards/saffron-dusk/?variant=night#/profile",
+      "width": 820,
       "variant": "night",
       "page": "profile",
       "errors": []

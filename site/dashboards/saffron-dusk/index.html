@@ -30,6 +30,7 @@
       <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-4 3-7 1 2 2 3 3 3 0-3-1-5 0-7Z"/></symbol>
       <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.2A8.2 8.2 0 1 1 9.8 4a6.8 6.8 0 0 0 10.2 10.2z"/><path d="M16.2 5.2l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5z"/></symbol>
       <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 21v-5M8 21h8"/><path d="M12 3c4 3 6 6 5 9-2 0-3-1-5-1s-3 1-5 1c-1-3 1-6 5-9z"/><path d="M7.5 13.5C6 15 6.5 17 9 17c1 0 1.5-.4 3-.4s2 .4 3 .4c2.5 0 3-2 1.5-3.5"/></symbol>
+      <symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 8h11v6.5A5.5 5.5 0 0 1 10.5 20h-1A5.5 5.5 0 0 1 4 14.5z"/><path d="M16 9.5h1.6a2.4 2.4 0 0 1 0 4.8H16"/><path d="M8.5 4.5c0-1 .8-1 .8-2M12 4.5c0-1 .8-1 .8-2"/></symbol>
     </defs>
   </svg>
 
@@ -48,15 +49,16 @@
             <path d="M0 460 C170 420 270 510 410 475 C570 435 650 370 790 405 C890 430 945 480 1000 455 L1000 660 L0 660 Z" fill="url(#sd-dune-b)"/>
             <path d="M0 530 C190 500 310 555 470 530 C630 505 710 465 850 495 C925 512 970 540 1000 528 L1000 660 L0 660 Z" fill="rgba(22,30,24,.55)"/>
           </svg>
+          <div class="sd-tray" aria-hidden="true"></div>
           <span class="sd-star s-a"></span><span class="sd-star s-b"></span><span class="sd-star s-c"></span>
           <span class="sd-star s-d"></span><span class="sd-star s-e"></span><span class="sd-star s-f"></span>
           <span class="sd-star s-g"></span><span class="sd-star s-h"></span>
         </div>
-        <nav class="sd-rail sd-glass" data-ref="rail" aria-label="Primary">
-          <a href="#/overview" data-route="overview" data-ref="rail-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-sun"/></svg></span><span>Today</span></a>
-          <a href="#/progress" data-route="progress" data-ref="rail-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-hour"/></svg></span><span>Progress</span></a>
-          <a href="#/sessions" data-route="sessions" data-ref="rail-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-grid"/></svg></span><span>Sessions</span></a>
-          <a href="#/profile" data-route="profile" data-ref="rail-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-spark"/></svg></span><span>Profile</span></a>
+        <nav class="sd-rail sd-glass" data-ref="nav" aria-label="Primary">
+          <a href="#/overview" data-route="overview" data-ref="nav-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-sun"/></svg></span><span>Today</span></a>
+          <a href="#/progress" data-route="progress" data-ref="nav-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-hour"/></svg></span><span>Progress</span></a>
+          <a href="#/sessions" data-route="sessions" data-ref="nav-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-grid"/></svg></span><span>Sessions</span></a>
+          <a href="#/profile" data-route="profile" data-ref="nav-item"><span class="sd-rail-ico" aria-hidden="true"><svg><use href="#i-spark"/></svg></span><span>Profile</span></a>
         </nav>
         <main class="sd-main" id="main">
           <section class="sd-over" data-db-page="overview" aria-label="Today board">
@@ -68,33 +70,34 @@
             <div class="sd-dates" data-ref="dates" role="tablist" aria-label="Day of month" data-dates></div>
             <article class="sd-card sd-arc sd-glass" data-ref="arc" aria-labelledby="sd-arc-h">
               <h2 id="sd-arc-h" class="vh">Fasting window</h2>
-              <div class="sd-arc-shell">
-                <div class="sd-arc-labels" aria-hidden="true">
-                  <span>Imsak</span>
-                  <span>Iftar</span>
-                </div>
-                <div class="sd-arc-plot" data-arc role="img" aria-label="Sun path from imsak to iftar"></div>
-                <div class="sd-arc-times" data-ref="arc-times">
-                  <b class="num" data-imsak>4:15AM</b>
-                  <b class="num sd-gold" data-iftar>6:08PM</b>
-                </div>
+              <div class="sd-arc-shell"></div>
+              <div class="sd-arc-plot" data-arc role="img" aria-label="Sun path from imsak to iftar"></div>
+              <div class="sd-arc-labels" aria-hidden="true">
+                <span>Imsak</span>
+                <span>Iftar</span>
+              </div>
+              <div class="sd-arc-times" data-ref="arc-times">
+                <b class="num" data-imsak>4:15AM</b>
+                <b class="num sd-gold" data-iftar>6:08PM</b>
               </div>
               <div class="sd-bell-tab" data-ref="bell">
                 <button type="button" class="sd-bell" aria-label="Remind me before iftar" data-remind aria-pressed="false"><svg><use href="#i-bell"/></svg></button>
                 <span data-countdown>Iftar in 1hr 34min</span>
               </div>
             </article>
-            <article class="sd-card sd-water sd-glass sd-glow-teal" data-ref="water" aria-labelledby="sd-water-h">
-              <span class="sd-pour-tab sd-pour-water" id="sd-water-h">Water</span>
-              <div class="sd-water-body">
-                <span class="sd-drop" aria-hidden="true"><svg><use href="#i-drop"/></svg></span>
-                <div class="sd-water-main">
-                  <p class="sd-water-count num" data-water-label>6 of 8</p>
-                  <div class="sd-segs" role="group" aria-label="Glasses of water" data-segs></div>
+            <div class="sd-water sd-clip sd-glow-teal" data-shape="tab" data-shape-opts="side:left;h:8%;w:34%;r:16;tr:10;f:9" data-shape-edge="rgba(255,255,255,.55)">
+              <article class="sd-card sd-water-in sd-glass" data-ref="water" aria-labelledby="sd-water-h">
+                <div class="sd-water-body">
+                  <span class="sd-drop" aria-hidden="true"><svg><use href="#i-drop"/></svg></span>
+                  <div class="sd-water-main">
+                    <p class="sd-water-count num"><svg class="sd-cup" aria-hidden="true"><use href="#i-cup"/></svg><span data-water-label>6 of 8</span></p>
+                    <div class="sd-segs" role="group" aria-label="Glasses of water" data-segs></div>
+                  </div>
                 </div>
-              </div>
-              <p class="sd-meta" data-liters>1.9 LITERS of 2.5 LITERS</p>
-            </article>
+                <p class="sd-meta" data-liters>1.9 LITERS of 2.5 LITERS</p>
+              </article>
+              <span class="sd-pour-tab sd-pour-water" id="sd-water-h">Water</span>
+            </div>
             <article class="sd-card sd-gather sd-glass sd-glow-amber" data-ref="gather" aria-labelledby="sd-gather-h">
               <button type="button" class="sd-gather-hit" data-gather aria-describedby="sd-gather-h">
                 <div class="sd-gather-copy">
@@ -104,8 +107,14 @@
                 <span class="sd-avatar sd-avatar-round" aria-hidden="true"><img src="media/gather.webp" width="128" height="128" alt="" decoding="async"></span>
               </button>
             </article>
+            <div class="sd-stars" data-ref="stars" aria-hidden="true">
+              <svg class="sd-path" viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M0 3 C30 16 70 16 100 3 L100 12 C70 26 30 26 0 12 Z" fill="rgba(250,246,230,.55)"/></svg>
+              <i class="hs t1"></i><i class="hs t2"></i><i class="hs t3"></i>
+              <i class="hd d1"></i><i class="hd d2"></i><i class="hd d3"></i><i class="hd d4"></i><i class="hd d5"></i><i class="hd d6"></i>
+            </div>
+            <div class="sd-evening" aria-hidden="true"></div>
 
-            <section class="sd-dune" data-ref="dune" aria-labelledby="sd-greet-h">
+            <section class="sd-dune" data-ref="sky" aria-labelledby="sd-greet-h">
               <img class="sd-dune-art" src="media/dune-panel.webp" width="2200" height="1238" alt="" decoding="async">
               <span class="sd-dune-star" aria-hidden="true"></span>
               <h2 id="sd-greet-h" data-greet>Good evening</h2>
@@ -118,73 +127,125 @@
               </svg>
               <div class="sd-dune-lines" aria-hidden="true"></div>
             </section>
-            <article class="sd-card sd-person sd-glass" data-ref="person" aria-labelledby="sd-person-h">
+            <div class="sd-person-wrap">
+              <div class="sd-person-clip" data-shape="notch" data-shape-opts="edge:top;at:17%;R:36;r:20" data-shape-edge="rgba(255,255,255,.65)">
+                <article class="sd-card sd-person sd-glass" data-ref="person" aria-labelledby="sd-person-h">
+                  <div class="sd-person-copy">
+                    <h2 id="sd-person-h">Mira Nazari</h2>
+                    <p class="sd-meta">mira.nazari@saffron.example</p>
+                  </div>
+                  <div class="sd-stats">
+                    <div><b class="num" data-sessions>8</b><span>Sessions</span><em class="sd-stat-note">this Ramadan</em></div>
+                    <div class="sd-stats-div" aria-hidden="true"></div>
+                    <div><b class="num" data-journeys>2</b><span>Journeys</span><em class="sd-stat-note">olive · cedar</em></div>
+                  </div>
+                </article>
+              </div>
               <span class="sd-avatar sd-avatar-sq" role="img" aria-label="Mira Nazari"><img src="media/profile.webp" width="160" height="160" alt="" decoding="async"></span>
-              <div class="sd-person-copy">
-                <h2 id="sd-person-h">Mira Nazari</h2>
-                <p class="sd-meta">mira.nazari@saffron.example</p>
-              </div>
-              <div class="sd-stats">
-                <div><b class="num" data-sessions>8</b><span>Sessions</span><em class="sd-stat-note">this Ramadan</em></div>
-                <div class="sd-stats-div" aria-hidden="true"></div>
-                <div><b class="num" data-journeys>2</b><span>Journeys</span><em class="sd-stat-note">olive · cedar</em></div>
-              </div>
-              <button type="button" class="sd-share sd-pour-tab sd-pour-share" data-share><svg><use href="#i-spark"/></svg> Share</button>
-            </article>
-            <article class="sd-card sd-daily sd-glass sd-glow-amber" data-ref="progress" aria-labelledby="sd-daily-h">
-              <span class="sd-pour-tab sd-pour-daily" id="sd-daily-h">Daily progress</span>
-              <div class="sd-daily-body">
-                <span class="sd-tree" aria-hidden="true"><svg><use href="#i-tree"/></svg></span>
-                <div class="sd-daybars" data-daybars role="group" aria-label="Daily progress this week"></div>
-              </div>
-              <p class="sd-day-note" data-day-note>Su · 88% of daily intention</p>
-            </article>
-            <button type="button" class="sd-card sd-upgrade sd-glass" data-ref="upgrade" data-upgrade>
-              <span class="sd-flame" aria-hidden="true"><svg><use href="#i-flame"/></svg></span>
-              <span>Upgrade <em>your experience ›</em></span>
-            </button>
-          </section>
-
-          <section class="sd-page" data-db-page="progress" hidden aria-label="Progress">
-            <header class="sd-page-h"><h2>Progress</h2><p>Week intention for Mira Nazari · fictional sample.</p></header>
-            <div class="sd-page-grid">
-              <article class="sd-tile"><h3>This week</h3><p class="num sd-big" data-p-week>62%</p><p class="sd-meta">average daily intention</p><button type="button" data-act="week-detail">Open week detail</button></article>
-              <article class="sd-tile"><h3>Water streak</h3><p class="num sd-big" data-p-streak>4</p><p class="sd-meta">days at goal</p><button type="button" data-act="streak">Log today’s glass</button></article>
-              <article class="sd-tile"><h3>Fasting days</h3><p class="num sd-big">9</p><p class="sd-meta">of Ramadan sample</p><button type="button" data-act="fast-log">Mark day complete</button></article>
-              <article class="sd-tile"><h3>Focus blocks</h3><p class="num sd-big">3</p><p class="sd-meta">deep work this morning</p><button type="button" data-act="focus">Start a block</button></article>
-              <article class="sd-tile"><h3>Steps</h3><p class="num sd-big">4,820</p><p class="sd-meta">evening walk logged</p><button type="button" data-act="steps">Add walk</button></article>
-              <article class="sd-tile"><h3>Resting pulse</h3><p class="num sd-big">62</p><p class="sd-meta">bpm · calm sample</p><button type="button" data-act="pulse">Open trend</button></article>
-              <article class="sd-tile"><h3>Sleep debt</h3><p class="num sd-big">−24m</p><p class="sd-meta">vs seven-day average</p><button type="button" data-act="sleep">Review sleep</button></article>
-              <article class="sd-tile"><h3>Mood check</h3><p class="num sd-big">Steady</p><p class="sd-meta">logged after asr</p><button type="button" data-act="mood">Update mood</button></article>
+              <button type="button" class="sd-share" data-share data-shape="tab" data-shape-opts="side:left;h:12%;w:44%;r:13;tr:9;f:7" data-shape-edge="rgba(255,255,255,.75)"><svg><use href="#i-spark"/></svg> Share</button>
             </div>
-            <div class="sd-week-chart" data-p-bars role="img" aria-label="Week bars"></div>
+            <div class="sd-daily sd-clip sd-glow-amber" data-shape="tab" data-shape-opts="side:right;h:8%;w:44%;r:16;tr:10;f:9" data-shape-edge="rgba(255,255,255,.6)">
+              <article class="sd-card sd-daily-in sd-glass" data-ref="daily" aria-labelledby="sd-daily-h">
+                <div class="sd-daily-body">
+                  <span class="sd-tree" aria-hidden="true"><svg><use href="#i-tree"/></svg></span>
+                  <div class="sd-daybars" data-daybars role="group" aria-label="Daily progress this week"></div>
+                </div>
+                <p class="sd-day-note" data-day-note>Su · 88% of daily intention</p>
+              </article>
+              <span class="sd-pour-tab sd-pour-daily" id="sd-daily-h">Daily progress</span>
+            </div>
+            <div class="sd-upgrade-clip sd-clip" data-shape="slant" data-shape-opts="rise:14;r:18" data-shape-edge="rgba(255,255,255,.5)">
+              <button type="button" class="sd-card sd-upgrade sd-glass" data-ref="upgrade" data-upgrade>
+                <span class="sd-upgrade-txt">Upgrade <em>your experience ›</em></span>
+                <span class="sd-flame" aria-hidden="true"><svg><use href="#i-flame"/></svg></span>
+              </button>
+            </div>
+            <article class="sd-card sd-journey sd-glass" data-ref="journey" aria-labelledby="sd-j-h">
+              <h2 id="sd-j-h">This week</h2>
+              <p class="sd-meta">Sessions · a thread of stars</p>
+              <ol class="sd-j-thread">
+                <li><i class="sd-j-star s1" aria-hidden="true"></i><b>Th</b><span>Fasting · 8 glasses</span></li>
+                <li><i class="sd-j-star s2" aria-hidden="true"></i><b>Fr</b><span>Community circle</span></li>
+                <li><i class="sd-j-star s3" aria-hidden="true"></i><b>Sa</b><span>Olive path walk</span></li>
+                <li><i class="sd-j-star s4" aria-hidden="true"></i><b>Su</b><span>Iftar in Laila House</span></li>
+                <li><i class="sd-j-star s5" aria-hidden="true"></i><b>Mo</b><span>Focus blocks ×3</span></li>
+                <li><i class="sd-j-star s6" aria-hidden="true"></i><b>Tu</b><span>Evening walk 4.8k</span></li>
+                <li><i class="sd-j-star s7" aria-hidden="true"></i><b>We</b><span>Today · on track</span></li>
+              </ol>
+            </article>
+          </section>
+          <div class="sd-pages">
+          <section class="sd-page" data-db-page="progress" hidden aria-label="Progress">
+            <header class="sd-hero" data-hero>
+              <img class="sd-dune-art" src="media/dune-panel.webp" width="2200" height="1238" alt="" decoding="async">
+              <svg class="sd-dune-ridges" viewBox="0 0 480 160" preserveAspectRatio="none" aria-hidden="true">
+                <path class="sd-dune-line l1" d="M0 52 C70 28 140 78 220 48 C300 18 360 62 480 36 L480 160 L0 160 Z"/>
+                <path class="sd-dune-line l2" d="M0 78 C90 58 150 98 240 72 C330 46 390 88 480 64 L480 160 L0 160 Z"/>
+                <path class="sd-dune-line l3" d="M0 108 C100 90 170 124 270 102 C360 82 420 118 480 96 L480 160 L0 160 Z"/>
+              </svg>
+              <div class="sd-hero-copy"><h2>Progress</h2><p>Week intention for Mira Nazari · fictional sample.</p></div>
+            </header>
+            <div class="sd-page-grid">
+              <article class="sd-card sd-tile teal"><h3>This week</h3><p class="num sd-big" data-p-week>62%</p><p class="sd-meta">average daily intention</p><button type="button" data-act="week-detail">Open week detail</button></article>
+              <article class="sd-card sd-tile amber"><h3>Water streak</h3><p class="num sd-big" data-p-streak>4</p><p class="sd-meta">days at goal</p><button type="button" data-act="streak">Log today’s glass</button></article>
+              <div class="sd-clip" data-shape="tab" data-shape-opts="side:left;h:4%;w:36%;r:14;tr:9;f:7" data-shape-edge="rgba(255,255,255,.5)"><article class="sd-card sd-tile"><h3>Fasting days</h3><p class="num sd-big">9</p><p class="sd-meta">of Ramadan sample</p><button type="button" data-act="fast-log">Mark day complete</button></article></div>
+              <article class="sd-card sd-tile"><h3>Focus blocks</h3><p class="num sd-big">3</p><p class="sd-meta">deep work this morning</p><button type="button" data-act="focus">Start a block</button></article>
+              <article class="sd-card sd-tile"><h3>Steps</h3><p class="num sd-big">4,820</p><p class="sd-meta">evening walk logged</p><button type="button" data-act="steps">Add walk</button></article>
+              <article class="sd-card sd-tile"><h3>Resting pulse</h3><p class="num sd-big">62</p><p class="sd-meta">bpm · calm sample</p><button type="button" data-act="pulse">Open trend</button></article>
+              <div class="sd-clip" data-shape="notch" data-shape-opts="edge:top;at:70%;R:30;r:16" data-shape-edge="rgba(255,255,255,.5)"><article class="sd-card sd-tile"><h3>Sleep debt</h3><p class="num sd-big">−24m</p><p class="sd-meta">vs seven-day average</p><button type="button" data-act="sleep">Review sleep</button></article></div>
+              <article class="sd-card sd-tile"><h3>Mood check</h3><p class="num sd-big">Steady</p><p class="sd-meta">logged after asr</p><button type="button" data-act="mood">Update mood</button></article>
+            </div>
+            <div class="sd-week-chart sd-card" data-p-bars role="img" aria-label="Week bars"></div>
             <p class="sd-state-note">Progress stays fictional for this gallery twin.</p>
           </section>
           <section class="sd-page" data-db-page="sessions" hidden aria-label="Sessions">
-            <header class="sd-page-h"><h2>Sessions</h2><p>Recent fasting days, walks and community circles.</p></header>
+            <header class="sd-hero" data-hero>
+              <img class="sd-dune-art" src="media/dune-panel.webp" width="2200" height="1238" alt="" decoding="async">
+              <svg class="sd-dune-ridges" viewBox="0 0 480 160" preserveAspectRatio="none" aria-hidden="true">
+                <path class="sd-dune-line l1" d="M0 52 C70 28 140 78 220 48 C300 18 360 62 480 36 L480 160 L0 160 Z"/>
+                <path class="sd-dune-line l2" d="M0 78 C90 58 150 98 240 72 C330 46 390 88 480 64 L480 160 L0 160 Z"/>
+                <path class="sd-dune-line l3" d="M0 108 C100 90 170 124 270 102 C360 82 420 118 480 96 L480 160 L0 160 Z"/>
+              </svg>
+              <div class="sd-hero-copy"><h2>Sessions</h2><p>Recent fasting days, walks and community circles.</p></div>
+            </header>
             <div class="sd-page-grid" style="margin-bottom:1.4cqw">
-              <article class="sd-tile"><h3>Sessions</h3><p class="num sd-big">8</p><p class="sd-meta">this Ramadan sample</p><button type="button" data-act="sess-all">View all</button></article>
-              <article class="sd-tile"><h3>Journeys</h3><p class="num sd-big">2</p><p class="sd-meta">Olive path · Cedar house</p><button type="button" data-act="journeys">Open journeys</button></article>
-              <article class="sd-tile"><h3>Streak</h3><p class="num sd-big">4</p><p class="sd-meta">days with water goal</p><button type="button" data-act="sess-streak">Keep streak</button></article>
-              <article class="sd-tile"><h3>Hosts</h3><p class="num sd-big">4</p><p class="sd-meta">Laila · Noor · Samir · Mira</p><button type="button" data-act="hosts">View hosts</button></article>
+              <article class="sd-card sd-tile teal"><h3>Sessions</h3><p class="num sd-big">8</p><p class="sd-meta">this Ramadan sample</p><button type="button" data-act="sess-all">View all</button></article>
+              <article class="sd-card sd-tile amber"><h3>Journeys</h3><p class="num sd-big">2</p><p class="sd-meta">Olive path · Cedar house</p><button type="button" data-act="journeys">Open journeys</button></article>
+              <div class="sd-clip" data-shape="tab" data-shape-opts="side:right;h:4%;w:36%;r:14;tr:9;f:7" data-shape-edge="rgba(255,255,255,.5)"><article class="sd-card sd-tile"><h3>Streak</h3><p class="num sd-big">4</p><p class="sd-meta">days with water goal</p><button type="button" data-act="sess-streak">Keep streak</button></article></div>
+              <div class="sd-clip" data-shape="wave" data-shape-opts="amp:12;r:18" data-shape-edge="rgba(255,255,255,.5)"><article class="sd-card sd-tile"><h3>Hosts</h3><p class="num sd-big">4</p><p class="sd-meta">Laila · Noor · Samir · Mira</p><button type="button" data-act="hosts">View hosts</button></article></div>
             </div>
-            <ul class="sd-list">
-              <li><b>Wed 9 · Fasting day</b><span>Water 6 / 8 · on track</span><button type="button" data-act="open-wed">Open day</button></li>
-              <li><b>Tue 8 · Fasting day</b><span>Water 5 / 8 · missed afternoon</span><button type="button" data-act="open-tue">Open day</button></li>
-              <li><b>Mon 7 · Olive path</b><span>Journey · evening walk</span><button type="button" data-act="open-mon">Open journey</button></li>
-              <li><b>Sun 6 · Fasting day</b><span>Water 8 / 8 · complete</span><button type="button" data-act="open-sun">Open day</button></li>
-              <li><b>Sat 5 · Community circle</b><span>Shared recipes</span><button type="button" data-act="open-sat">Open circle</button></li>
-              <li><b>Fri 4 · Fasting day</b><span>Water 7 / 8 · steady</span><button type="button" data-act="open-fri">Open day</button></li>
+            <article class="sd-card sd-thread sd-glass">
+              <h3>This week · a thread of stars</h3>
+              <p class="sd-meta">Sessions through the week</p>
+              <ol class="sd-j-thread">
+                <li><i class="sd-j-star s1" aria-hidden="true"></i><b>Th</b><span>Fasting · 8 glasses</span></li>
+                <li><i class="sd-j-star s2" aria-hidden="true"></i><b>Fr</b><span>Community circle</span></li>
+                <li><i class="sd-j-star s3" aria-hidden="true"></i><b>Sa</b><span>Olive path walk</span></li>
+                <li><i class="sd-j-star s4" aria-hidden="true"></i><b>Su</b><span>Iftar in Laila House</span></li>
+                <li><i class="sd-j-star s5" aria-hidden="true"></i><b>Mo</b><span>Focus blocks ×3</span></li>
+                <li><i class="sd-j-star s6" aria-hidden="true"></i><b>Tu</b><span>Evening walk 4.8k</span></li>
+                <li><i class="sd-j-star s7" aria-hidden="true"></i><b>We</b><span>Today · on track</span></li>
+              </ol>
+            </article>
+            <ul class="sd-list" style="margin-top:1.4cqw">
+              <li class="sd-card"><b>Wed 9 · Fasting day</b><span>Water 6 / 8 · on track</span><button type="button" data-act="open-wed">Open day</button></li>
+              <li class="sd-card"><b>Tue 8 · Fasting day</b><span>Water 5 / 8 · missed afternoon</span><button type="button" data-act="open-tue">Open day</button></li>
+              <li class="sd-card"><b>Mon 7 · Olive path</b><span>Journey · evening walk</span><button type="button" data-act="open-mon">Open journey</button></li>
+              <li class="sd-card"><b>Sun 6 · Fasting day</b><span>Water 8 / 8 · complete</span><button type="button" data-act="open-sun">Open day</button></li>
+              <li class="sd-card"><b>Sat 5 · Community circle</b><span>Shared recipes</span><button type="button" data-act="open-sat">Open circle</button></li>
+              <li class="sd-card"><b>Fri 4 · Fasting day</b><span>Water 7 / 8 · steady</span><button type="button" data-act="open-fri">Open day</button></li>
             </ul>
             <p class="sd-state-note">Eight sessions and two journeys in this sample Ramadan.</p>
           </section>
 
           <section class="sd-page sd-profile-page" data-db-page="profile" hidden aria-label="Profile">
             <div class="sd-m-profile">
-              <header class="sd-m-greet">
+              <div class="sd-m-veil" aria-hidden="true"></div>
+              <header class="sd-m-greet" data-ref="sky">
                 <img class="sd-dune-art" src="media/dune-panel.webp" width="2200" height="1238" alt="" decoding="async">
                 <span class="sd-dune-star" aria-hidden="true"></span>
-                <h2 data-greet-m>Good evening</h2>
+                <h2 data-greet-m>Good<br>evening</h2>
+                <span class="sd-sky-dots" aria-hidden="true"></span>
                 <button type="button" class="sd-gear" aria-label="Toggle reminder preference" data-settings-m><svg><use href="#i-gear"/></svg></button>
                 <svg class="sd-dune-ridges" viewBox="0 0 480 160" preserveAspectRatio="none" aria-hidden="true">
                   <path class="sd-dune-line l1" d="M0 52 C70 28 140 78 220 48 C300 18 360 62 480 36 L480 160 L0 160 Z"/>
@@ -192,43 +253,61 @@
                   <path class="sd-dune-line l3" d="M0 108 C100 90 170 124 270 102 C360 82 420 118 480 96 L480 160 L0 160 Z"/>
                 </svg>
               </header>
-              <article class="sd-card sd-person sd-glass sd-m-person">
+              <div class="sd-m-person-wrap">
+                <div class="sd-m-person-clip sd-clip" data-shape="notch" data-shape-opts="edge:top;at:15%;R:34;r:20" data-shape-edge="rgba(255,255,255,.65)">
+                  <article class="sd-card sd-person sd-glass sd-m-person" data-ref="person">
+                    <div class="sd-person-copy"><h3>Mira Nazari</h3><p class="sd-meta">mira.nazari@saffron.example</p></div>
+                    <div class="sd-stats">
+                      <div><b class="num" data-sessions-m>8</b><span>Sessions</span></div>
+                      <div class="sd-stats-div" aria-hidden="true"></div>
+                      <div><b class="num" data-journeys-m>2</b><span>Journeys</span></div>
+                    </div>
+                  </article>
+                </div>
                 <span class="sd-avatar sd-avatar-sq" role="img" aria-label="Mira Nazari"><img src="media/profile.webp" width="160" height="160" alt="" decoding="async"></span>
-                <div class="sd-person-copy"><h3>Mira Nazari</h3><p class="sd-meta">mira.nazari@saffron.example</p></div>
-                <div class="sd-stats">
-                  <div><b class="num" data-sessions-m>8</b><span>Sessions</span></div>
-                  <div class="sd-stats-div" aria-hidden="true"></div>
-                  <div><b class="num" data-journeys-m>2</b><span>Journeys</span></div>
-                </div>
-                <button type="button" class="sd-share sd-pour-tab sd-pour-share" data-share-m><svg><use href="#i-spark"/></svg> Share</button>
-              </article>
-              <article class="sd-card sd-daily sd-glass sd-glow-amber sd-m-daily">
+                <button type="button" class="sd-share sd-m-share" data-share-m data-shape="tab" data-shape-opts="side:left;h:12%;w:44%;r:13;tr:9;f:7" data-shape-edge="rgba(255,255,255,.75)"><svg><use href="#i-spark"/></svg> Share</button>
+              </div>
+              <div class="sd-daily sd-m-daily sd-clip sd-glow-amber" data-shape="tab" data-shape-opts="side:right;h:8%;w:44%;r:16;tr:10;f:9" data-shape-edge="rgba(255,255,255,.6)">
+                <article class="sd-card sd-daily-in sd-glass" data-ref="daily">
+                  <div class="sd-daily-body">
+                    <span class="sd-tree" aria-hidden="true"><svg><use href="#i-tree"/></svg></span>
+                    <div class="sd-daybars" data-daybars-m role="group" aria-label="Daily progress this week"></div>
+                  </div>
+                  <p class="sd-day-note" data-day-note-m>Su · 88% of daily intention</p>
+                </article>
                 <span class="sd-pour-tab sd-pour-daily">Daily progress</span>
-                <div class="sd-daily-body">
-                  <span class="sd-tree" aria-hidden="true"><svg><use href="#i-tree"/></svg></span>
-                  <div class="sd-daybars" data-daybars-m role="group" aria-label="Daily progress this week"></div>
-                </div>
-                <p class="sd-day-note" data-day-note-m>Su · 88% of daily intention</p>
-              </article>
-              <button type="button" class="sd-card sd-upgrade sd-glass sd-m-upgrade" data-upgrade-m>
-                <span class="sd-flame" aria-hidden="true"><svg><use href="#i-flame"/></svg></span>
-                <span>Upgrade <em>your experience ›</em></span>
-              </button>
+              </div>
+              <div class="sd-upgrade-clip sd-m-upgrade-clip sd-clip" data-shape="slant" data-shape-opts="rise:12;r:16" data-shape-edge="rgba(255,255,255,.5)">
+                <button type="button" class="sd-card sd-upgrade sd-m-upgrade sd-glass" data-ref="upgrade" data-upgrade-m>
+                  <span class="sd-upgrade-txt">Upgrade <em>your experience ›</em></span>
+                  <span class="sd-flame" aria-hidden="true"><svg><use href="#i-flame"/></svg></span>
+                </button>
+              </div>
+              <div class="sd-m-slope" aria-hidden="true"></div>
             </div>
-            <header class="sd-page-h sd-profile-desk"><h2>Profile</h2><p>Preferences and account for Mira Nazari · fictional sample.</p></header>
+            <header class="sd-hero sd-profile-desk" data-hero>
+              <img class="sd-dune-art" src="media/dune-panel.webp" width="2200" height="1238" alt="" decoding="async">
+              <svg class="sd-dune-ridges" viewBox="0 0 480 160" preserveAspectRatio="none" aria-hidden="true">
+                <path class="sd-dune-line l1" d="M0 52 C70 28 140 78 220 48 C300 18 360 62 480 36 L480 160 L0 160 Z"/>
+                <path class="sd-dune-line l2" d="M0 78 C90 58 150 98 240 72 C330 46 390 88 480 64 L480 160 L0 160 Z"/>
+                <path class="sd-dune-line l3" d="M0 108 C100 90 170 124 270 102 C360 82 420 118 480 96 L480 160 L0 160 Z"/>
+              </svg>
+              <div class="sd-hero-copy"><h2>Profile</h2><p>Preferences and account for Mira Nazari · fictional sample.</p></div>
+            </header>
             <div class="sd-page-grid sd-profile-desk">
-              <article class="sd-tile"><h3>Display name</h3><p class="sd-meta" data-name>Mira Nazari</p><button type="button" data-act="edit-name">Edit name</button></article>
-              <article class="sd-tile"><h3>City</h3><p class="sd-meta" data-city>Cedar Bay</p><button type="button" data-act="edit-city">Change city</button></article>
-              <article class="sd-tile"><h3>Iftar reminder</h3><p class="sd-meta" data-remind-label>20 minutes before</p><button type="button" data-act="edit-remind">Adjust reminder</button></article>
-              <article class="sd-tile"><h3>Privacy</h3><p class="sd-meta">Sample data stays on-device</p><button type="button" data-act="privacy">Review privacy</button></article>
-              <article class="sd-tile"><h3>Email</h3><p class="sd-meta">mira.nazari@saffron.example</p><button type="button" data-act="edit-email">Update email</button></article>
-              <article class="sd-tile"><h3>Theme</h3><p class="sd-meta">Dusk · Dawn · Night via gallery variants</p><button type="button" data-act="theme">Preview dusk</button></article>
-              <article class="sd-tile"><h3>Export</h3><p class="sd-meta">Download a fictional week summary</p><button type="button" data-act="export">Export CSV</button></article>
-              <article class="sd-tile"><h3>Reset</h3><p class="sd-meta">Return sample board to day 9</p><button type="button" data-act="reset">Reset sample</button></article>
+              <article class="sd-card sd-tile teal"><h3>Display name</h3><p class="sd-meta" data-name>Mira Nazari</p><button type="button" data-act="edit-name">Edit name</button></article>
+              <article class="sd-card sd-tile amber"><h3>City</h3><p class="sd-meta" data-city>Cedar Bay</p><button type="button" data-act="edit-city">Change city</button></article>
+              <div class="sd-clip" data-shape="tab" data-shape-opts="side:left;h:4%;w:36%;r:14;tr:9;f:7" data-shape-edge="rgba(255,255,255,.5)"><article class="sd-card sd-tile"><h3>Iftar reminder</h3><p class="sd-meta" data-remind-label>20 minutes before</p><button type="button" data-act="edit-remind">Adjust reminder</button></article></div>
+              <div class="sd-clip" data-shape="notch" data-shape-opts="edge:top;at:70%;R:30;r:16" data-shape-edge="rgba(255,255,255,.5)"><article class="sd-card sd-tile"><h3>Privacy</h3><p class="sd-meta">Sample data stays on-device</p><button type="button" data-act="privacy">Review privacy</button></article></div>
+              <article class="sd-card sd-tile"><h3>Email</h3><p class="sd-meta">mira.nazari@saffron.example</p><button type="button" data-act="edit-email">Update email</button></article>
+              <article class="sd-card sd-tile"><h3>Theme</h3><p class="sd-meta">Dusk · Dawn · Night via gallery variants</p><button type="button" data-act="theme">Preview dusk</button></article>
+              <article class="sd-card sd-tile"><h3>Export</h3><p class="sd-meta">Download a fictional week summary</p><button type="button" data-act="export">Export CSV</button></article>
+              <article class="sd-card sd-tile"><h3>Reset</h3><p class="sd-meta">Return sample board to day 9</p><button type="button" data-act="reset">Reset sample</button></article>
             </div>
             <p class="sd-state-note sd-profile-desk">Profile preferences stay fictional and on-device in this sample.</p>
             <p class="sd-state-note sd-profile-desk">Sessions and journeys update when you share or upgrade on Today.</p>
           </section>
+          </div>
         </main>
       </div>
     </div>
@@ -236,5 +315,8 @@
     <p class="db-sample sd-sample">Sample data · fictional · Saffron Dusk</p>
   </div>
   <script src="app.js"></script>
+  <script type="module">
+    import '../_shared/shapes.js';
+  </script>
 </body>
 </html>
