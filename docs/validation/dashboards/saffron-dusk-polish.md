@@ -70,6 +70,8 @@ Not this:    Not Haven poured device frame; not Pulsar tiles; not twin phone she
 | R11 | Bottom frosted nav bar at desktop, tablet and phone; icon over small tracked label; raised dome (bump) on the active item; no dark side rail | `.sd-rail` bottom-docked at all sizes; `data-ref="nav"`; bump clip-path on `[aria-current]` | Yes | Yes | Yes |
 | R12 | At 375 Today matches the reference's left screen and Profile matches the right screen box by box (stars under Gather included); bottom tab bar fully visible | `saffron-dusk-compare-overview-375.jpg` + `saffron-dusk-compare-profile-375.jpg`; all view boxes pass layout gate | n/a | n/a | Yes |
 | R13 | Progress, Sessions and Profile keep the same backdrop, bottom nav, glass cards (blur + translucent fill + light edge) and shape grammar; no plain settings rows | page_style gate green on all four pages at 1440/375/820 and all variants; `.sd-card` tiles + shaped tab/wave/slant cards on inner pages | Yes | Yes | Yes |
+| R14 | Clip-wrap refactor: `.sd-clip` wrappers carry `data-shape` + clip-path while inner `.sd-card.sd-glass` panes carry backdrop-filter (Chrome does not clip an element's own backdrop-filter). Pour labels are `nowrap` inside the tab silhouette at every size; stats padding clears the avatar; tray diagonal stripes replaced by smooth cream + soft relief | `probe-notch-final.mjs` pixel samples: water notch 239,231,209 cream / daily notch 174→165 warm wash at 1440, same at 820/375; DOM rects show label inside tab bounds and "8" clear of avatar; `backgroundImage` has no `repeating-` on `.sd-tray` | Yes | Yes | Yes |
+| R15 | Every inner page opens with a hero surface (`.sd-hero` dune-sky band, `data-hero`; phone Profile uses the `.sd-m-greet` sky band) then mixes overview card types: teal + amber glass tiles, tab/notch/wave clip tiles, thread-of-stars sessions list, restyled week chart | hero probe: `.sd-hero` 1256×257 @1440, 734×150 @820, 335×112 @375 on progress/sessions/profile; `.sd-m-greet` 359×202 @375 profile; page grids carry teal/amber/clip/thread cards | Yes | Yes | Yes |
 
 ## Material look-for-look (this pass)
 
@@ -181,3 +183,72 @@ Checker run after round 1: all layout boxes inside tolerance; failures were cont
 | nav | frosted bottom bar, icon over tracked label, raised dome on active | verified | 4 |
 
 Remaining honest differences: the reference's title flourishes and painted character art are denser than the font axes and generated avatars; the journey card is a maintainer-designed region with no reference counterpart; poured-tab junctions are cleaner vector cuts than the reference's inked edges.
+
+## Round 2 defects pass (maintainer review, devin/saffron-unfold)
+
+The maintainer found eight defects my earlier rounds scored ≥4. Root cause for the tab blocks: Chrome does not clip an element's own `backdrop-filter`/`filter` output by its `clip-path`, so the glow + glass on the shaped card itself painted into the notch region beside the tab. Fix pattern: `.sd-clip` wrapper owns `data-shape`/clip-path/drop-shadow; inner `.sd-card.sd-glass` owns backdrop-filter and `data-ref`.
+
+### Round 4 — defect audit (before fixes)
+
+| box | what differs | fix | score |
+|---|---|---|---|
+| title | ok | — | 4 |
+| dates | ok | — | 4 |
+| date | ok | — | 4 |
+| arc | ok | — | 4 |
+| water | pale block right of tab at all sizes — unclipped glass/glow in notch | clip-wrap refactor | 2 |
+| gather | ok | — | 4 |
+| stars | ok | — | 4 |
+| sky | ok | — | 4 |
+| person | avatar covers the "8" in SESSIONS at 1440 | stats padding-left 34% | 3 |
+| daily | label clipped to "LY PROGRESS"; olive block left of tab | nowrap label inside tab + clip-wrap | 2 |
+| day-bar | ok | — | 4 |
+| upgrade | text right-aligned, left half empty | flex row, tracked caps left, flame right | 2 |
+| journey | tablet: empty dark slab, labels in one row; nav outside frame on dark strip | 4-col thread grid; frame height cap; nav inside | 3 |
+| nav | bottom bar correct at 1440/375, sat outside frame at 820 | tablet frame aspect + rail inside | 3 |
+
+Also found (not scored boxes): tray diagonal stripes the reference does not have; inner pages were uniform cream tiles with no hero and Progress ended in grey blob bars; phone Profile repeated the daily-label clip.
+
+### Round 5 — fix pass, first verification
+
+Clip-wrap applied to water, daily, person, upgrade and both phone-profile clones; `data-ref` moved onto the glass panes; pour labels `nowrap` + repositioned; stats clear the avatar; tray stripes → smooth cream + inset relief; evening wash → soft radial; tablet journey → composed grid; inner pages → `data-hero` dune band + teal/amber/tab/notch/wave/thread variety; week chart restyled off grey blobs.
+
+| box | what differs | fix | score |
+|---|---|---|---|
+| title | ok | — | 4 |
+| dates | ok | — | 4 |
+| date | ok | — | 4 |
+| arc | ok | — | 4 |
+| water | notch now shows tray cream (pixel-verified 239,231,209); label inside tab | verified | 4 |
+| gather | ok | — | 4 |
+| stars | ok | — | 4 |
+| sky | ok | — | 4 |
+| person | "8" clear of avatar at 1440 and 820 (rect probe) | verified | 4 |
+| daily | notch shows soft evening wash not a block; full "Daily progress" inside tab at 1440/820/375 | verified | 4 |
+| day-bar | ok | — | 4 |
+| upgrade | left caps + right flame correct; text still wrapped inconsistently across sizes | `em` set to block for deterministic two lines | 3 |
+| journey | tablet grid composed, 7 thread items; nav inside frame | verified | 4 |
+| nav | inside frame bottom at all three sizes | verified | 4 |
+
+### Round 6 — final verification
+
+`node scripts/dashboards-check.mjs saffron-dusk`: zero failures — layout boxes in tolerance at 1440/820/375, page_style + hero gates green on all four pages and three variants, glass material, contrast, covered/clipped-text audit, dead controls and nav-page checks all pass. Pixel probes confirm backdrop through every tab notch; DOM rects confirm labels inside silhouettes and stats clear of the avatar.
+
+| box | what differs | fix | score |
+|---|---|---|---|
+| title | thin Fraunces caps; reference's hand-painted swash flourishes remain simplified to the font's WONK axis | documented residual | 4 |
+| dates | frosted pill + bead strip; bead gloss CSS-approximated | documented residual | 4 |
+| date | circular beads, selected gold halo | verified | 4 |
+| arc | cream-to-smoked shell, gold sun, bell tab, times band; curve smoother than the reference's sketchy arc | documented residual | 4 |
+| water | teal left tab, label fully inside, backdrop through the notch at every size | verified by pixel probe | 4 |
+| gather | saffron pill, round avatar; copy breaks slightly differently | documented residual | 4 |
+| stars | three hanging four-point stars on threads; CSS-drawn vs ink-drawn | documented residual | 4 |
+| sky | dark dune band, layered ridges, thin-serif greet, gear, bright star | verified | 4 |
+| person | notch bite, avatar break-out, share tab, stats clear of avatar | verified | 4 |
+| daily | amber right tab, full tracked label inside, backdrop through notch | verified by pixel + rect probes | 4 |
+| day-bar | rounded bars, current day highlighted | verified | 4 |
+| upgrade | slant tray, two-line tracked caps left, flame right | verified | 4 |
+| journey | desktop vertical thread; tablet 4-column grid; designed region with no reference counterpart | contract-designed | 4 |
+| nav | frosted bottom bar inside frame at every size, icon over tracked label, raised dome on active | verified | 4 |
+
+Remaining honest differences: title flourishes and painted character art are denser in the reference than font axes and generated avatars; the journey card is a maintainer-designed region; poured-tab junctions are cleaner vector cuts than the reference's inked edges; inner-page heroes reuse the overview dune band rather than per-page reference art (the reference only shows the phone screens).
