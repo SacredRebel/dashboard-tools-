@@ -47,7 +47,8 @@
   function syncArc() {
     const w = WINDOWS[day] || WINDOWS[9];
     const imsak = $('[data-imsak]'); const iftar = $('[data-iftar]'); const countdown = $('[data-countdown]'); const arc = $('[data-arc]');
-    if (imsak) imsak.textContent = w.imsak; if (iftar) iftar.textContent = w.iftar;
+    const mer = (s) => s.replace(/(AM|PM)$/, '<span class="sd-ampm">$1</span>');
+    if (imsak) imsak.innerHTML = mer(w.imsak); if (iftar) iftar.innerHTML = mer(w.iftar);
     if (countdown) countdown.textContent = remind ? `Reminder on · ${w.left}` : w.left;
     if (arc) arc.innerHTML = sunArc(w.pct);
   }
@@ -83,6 +84,7 @@
   function showPage(id) {
     $$('[data-db-page]').forEach((el) => { el.hidden = el.getAttribute('data-db-page') !== id; });
     $$('.sd-rail [data-route]').forEach((a) => { if (a.dataset.route === id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    const main = $('.sd-main'); if (main) main.scrollTop = 0;
     syncNavShape();
   }
   ensureControls(); syncDates(); syncArc(); syncWater(); syncBars();

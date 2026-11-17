@@ -251,4 +251,33 @@ Clip-wrap applied to water, daily, person, upgrade and both phone-profile clones
 | journey | desktop vertical thread; tablet 4-column grid; designed region with no reference counterpart | contract-designed | 4 |
 | nav | frosted bottom bar inside frame at every size, icon over tracked label, raised dome on active | verified | 4 |
 
+## Round 7 — maintainer round 3: page-area blocker + phone 1:1 pass
+
+New page-area gate merged from main. Maintainer found: inner pages rendered hero + empty cream panel (each `[data-db-page]` was a 244px scrolling box hiding every card); tablet bottom bar still on a dark strip; Profile card had a dead area under the avatar; and a phone 1:1 gap list against the twin-phone references.
+
+Fixes: `.sd-main` is now the single scroller (`overflow-y:auto`), `.sd-page` is in-flow `position:relative;height:auto`, `showPage()` resets `scrollTop=0` so every page opens at its hero; tablet tray height extended under the rail; person stats moved under the name with Share tucked lower-left; phone pass rebuilt title/crescent, bead rings, arc bands + times, water glass, gather bar, stars path, nav labels and the whole Profile screen.
+
+DOM probes at 375 (this pass): crescent at x300 top-right with light star; 5 ring beads on one cream band, selected bead dark + warm double glow; arc plot top −26.5px above the card with sun right of peak, IMSAK/IIFTAR tracked caps at the sides, times on the darker taupe band with small-caps AM/PM, bell tab hanging at the card's bottom edge; water = cyan glass + WATER tab + 42px drop lens + cup glyph + 8 thin segments + right-aligned litres; gather = saturated saffron with dark left bar; molded cream path + 3 hanging stars (dark green / pale teal / dark) + 6 dots under it; nav = light frosted band, active raised dome + glowing icon, inactive grey small caps. Profile: brown-olive sky + one big four-point star + two-line Fraunces greeting + gear top-right; avatar breaks out top-left on an orange rounded square; 8/2 in display serif; Share light tab joining the Daily tab; bright amber daily with tree + 7 gauges; translucent olive upgrade + slanted shelf + molded diagonal slope. Tablet 820: rail bottom 1131.8 inside frame bottom 1147.5, tray bottom 1139.7 covers it — no dark strip; journey = 7-item thread grid. Desktop 1440 inner pages: hero 1256×257, 10–13 visible cards each, scrollH > clientH on Progress/Sessions, scrollTop 0 on open.
+
+Checker re-run after the pass: `node scripts/dashboards-check.mjs saffron-dusk` → zero failures (the new covered/clipped-text gate initially caught Imsak/Iftar — the arc plot painted over the labels because the shell's `pointer-events:none` subtree lost the hit test; labels/times moved out of the masked shell as z-indexed siblings — and arc-times contrast needed a darker taupe lower band plus a soft scrim).
+
+| box | what differs | fix | score |
+|---|---|---|---|
+| title | crescent now top-right with a small light star; WED small caps; sup 9; swash flourishes still font-axis (WONK) not hand-painted | documented residual | 4 |
+| dates | beads are rings on one continuous cream band; selected dark grey + soft warm glow ring | verified | 4 |
+| date | same bead treatment at all sizes | verified | 4 |
+| arc | light taupe top / IMSAK·IFTAR sides / white arc above the card edge / sun right of peak / darker taupe band / light 4:15AM + small-caps meridiem / bold saffron 6:08PM / bell tab below; band is a translucent gradient, not painted glass | documented residual | 4 |
+| water | brighter cyan liquid glass, WATER tab cut, drop lens left, cup before "6 of 8", one thin segmented bar, litres right-aligned | verified | 4 |
+| gather | saturated saffron (was pale peach), thin dark vertical bar at left | verified | 4 |
+| stars | molded cream path curving down + hanging stars on thin threads (dark green, pale teal) + tiny dots | verified; SVG stroke not molded geometry | 4 |
+| sky | verified | — | 4 |
+| person | stats start under the name; Share tucked lower-left; phone avatar breaks out on orange rounded square | verified | 4 |
+| daily | bright amber on phone with tree + tall thin gauges; tab label inside | verified | 4 |
+| day-bar | verified | — | 4 |
+| upgrade | translucent olive phone card, slanted shelf, molded diagonal slope below; desktop/tablet tracked caps + flame | verified | 4 |
+| journey | tablet composed 4-column thread (7 items); designed region, no reference counterpart | contract-designed | 4 |
+| nav | light frosted band, active raised dome + glowing icon, inactive light grey small caps — not a dark pill | verified | 4 |
+
+Honest residuals this round: title flourishes and the painted reference art remain approximations (font axes + generated images); the arc's taupe bands and the molded path are gradients/SVG, not painted surfaces; the Share↔Daily join on the phone profile overlaps by a few px rather than inked edges; inner-page heroes reuse the overview dune band.
+
 Remaining honest differences: title flourishes and painted character art are denser in the reference than font axes and generated avatars; the journey card is a maintainer-designed region; poured-tab junctions are cleaner vector cuts than the reference's inked edges; inner-page heroes reuse the overview dune band rather than per-page reference art (the reference only shows the phone screens).
