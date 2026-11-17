@@ -492,6 +492,10 @@ for (const d of list) {
             if (ps.shapes) { const cut = (e) => { const c = getComputedStyle(e); const b = getComputedStyle(e, '::before'); return [c, b].some((x) => (x.clipPath && x.clipPath !== 'none') || (x.maskImage || x.webkitMaskImage || 'none') !== 'none'); };
               const n = cards.filter(cut).length + document.querySelectorAll('[data-db-page]:not([hidden]) svg path[data-shape]').length;
               if (n < ps.shapes) out.push(`page style: ${n} shaped elements (tab, notch, bridge, organic) on this page (want ≥ ${ps.shapes}; the reference's shape grammar applies to every page)`); }
+            // Page area: the active page must use the frame, not scroll inside a small box.
+            { const pg = document.querySelector('[data-db-page]:not([hidden])'); const fr = F && F.getBoundingClientRect();
+              if (pg && fr) { const r = pg.getBoundingClientRect(); const vis = Math.min(r.bottom, fr.bottom, innerHeight) - Math.max(r.top, fr.top, 0);
+                if (vis < Math.min(fr.height, innerHeight) * 0.5 && pg.scrollHeight > pg.clientHeight + 40 && /(auto|scroll|hidden|clip)/.test(getComputedStyle(pg).overflowY)) out.push(`page area: the page is a ${Math.round(vis)}px-tall box with its own scrollbar (${pg.scrollHeight}px of content hidden inside it); let the page fill the frame`); } }
             // Hero: every page opens with a signature surface from the reference (not only the overview).
             if (ps.hero && ![...document.querySelectorAll(ps.hero)].some((el) => vis(el) && el.closest('[data-db-page]:not([hidden])'))) out.push(`page style: no hero surface ("${ps.hero}") on this page (each page needs one signature element from the reference, not only a grid of cards)`);
             // Covered or clipped text: sample points inside each text box; the topmost element there must be the text itself.

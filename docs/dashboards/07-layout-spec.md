@@ -44,7 +44,7 @@ Top-level keys beside `frame` and `boxes`:
 | `requirements` | owner requests, `{ "id": "R1", "text": "…" }`; each must be answered in the polish report |
 | `adaptation` | set when the reference lacks this screen size and the maintainer designed it |
 | `views` | more measured views: `[{ "page": "overview", "width": 375, "ref_frame": [x,y,w], "boxes": {…} }]`. Each is checked on that page at that width with the same box keys (incl. `material`, `shape`) and gets its own compare sheet `<id>-compare-<page>-<width>.jpg`. A width other than 1440/375 (for example 820) adds that width to every run |
-| `page_style` | `{ "card": ".x-card", "material": "glass", "min": 3, "shapes": 1, "nav": "nav" }`: checked on **every page at every width**: backdrop visible, nav visible, at least `min` cards in the material, at least `shapes` shaped elements; `hero` (selector): each page shows one signature surface from the reference. On every page the check also fails text that is covered (by an avatar, tab or overlay) or cut off by a clip-path |
+| `page_style` | `{ "card": ".x-card", "material": "glass", "min": 3, "shapes": 1, "nav": "nav" }`: checked on **every page at every width**: backdrop visible, nav visible, at least `min` cards in the material, at least `shapes` shaped elements; `hero` (selector): each page shows one signature surface from the reference. On every page the check also fails a page squeezed into a small box with its own scrollbar, and text that is covered (by an avatar, tab or overlay) or cut off by a clip-path |
 
 The whole process these keys belong to: [00-twin-contract.md](00-twin-contract.md).
 

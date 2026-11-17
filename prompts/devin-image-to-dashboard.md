@@ -93,3 +93,25 @@ Do Task A first, then Task B. Report honestly what still differs from the refere
 8. **Phone Profile:** the Daily progress tab label is clipped as on desktop.
 
 Run three new review rounds (Round 4–6) in the report, scoring every box. Then update PR 20 with the check output and captures at 1440, 820 and 375 for every page. Do not merge.
+
+---
+
+## Task B · round 3 (same branch, PR 20)
+
+`git fetch origin && git merge origin/main` (a new page-area gate). The overview is now good at all three sizes. Remaining:
+
+1. **Desktop inner pages are blank (blocker).** At 1440, Progress, Sessions and Profile render the hero band and then an empty cream panel: each `[data-db-page]` is a 244px-tall box with `overflow:auto`, so every card is hidden inside it. Your own evidence images (`saffron-dusk-1440-progress.jpg` etc.) show this, and the report scored these pages 4+. Make each page fill the frame and scroll with it, then **open your captures and look at them** before scoring.
+2. **Tablet bottom bar** still sits on a dark strip below the cream tray. Extend the tray and backdrop under it so the bar floats on the same surface as on desktop.
+3. **Profile card (desktop and tablet):** a large empty area under the avatar; the stats are pushed right. Rebalance as in the reference: stats start under the name, and Share tucks into the lower-left corner.
+
+4. **Phone 1:1 with the reference (375).** Compare `saffron-dusk-compare-overview-375.jpg` and `-profile-375.jpg` element by element and close these gaps:
+   - **Title:** RAMADAN in a thin swash serif with flourishes, small "WED" before it, superscript 9; the crescent has a small star, top right.
+   - **Date beads:** one continuous cream band, each bead a ring sitting in it like a chain (not separate white circles); the selected bead is dark grey with a soft warm glow.
+   - **Arc card:** light taupe frosted top with IMSAK and IFTAR at the sides and the white arc rising **above** the card's top edge, sun just right of the peak. A darker taupe lower band holds 4:15AM (light, small-caps AM) and 6:08PM (bold saffron). The bell line sits in a tab hanging below the band. No near-black.
+   - **Water:** bright cyan liquid glass; WATER tab cut from the card; a big glass drop lens on the left; cup icon before "6 of 8"; one thin segmented bar; "1.9 LITERS of 2.5 LITERS" right-aligned under it.
+   - **Gathering:** saturated saffron orange (not pale peach), thin dark vertical bar at the left.
+   - **Under the gathering card:** the molded cream path curving down, and the hanging stars **on thin threads** (dark green, pale teal, tiny dots).
+   - **Nav:** light frosted band; the active item in a raised dome with a glowing icon; inactive labels light grey small caps. Not a dark pill.
+   - **Profile screen:** dark brown-olive dune sky (not green smoke) with one big four-point star; "Good evening" on two lines in the light swash serif; gear outline top right. Avatar breaks out of the card's top-left on an orange rounded square; 8 and 2 in the display serif; Share is a separate light tab under the card joining the Daily progress tab. Daily progress is bright amber with the tree icon and tall thin gauges. Upgrade is translucent olive with the slanted shelf below it, then the molded diagonal slope.
+
+Add Round 7 to the report with honest scores, update PR 20 with fresh captures of every page at 1440, 820 and 375, and do not merge.
