@@ -115,3 +115,17 @@ Run three new review rounds (Round 4–6) in the report, scoring every box. Then
    - **Profile screen:** dark brown-olive dune sky (not green smoke) with one big four-point star; "Good evening" on two lines in the light swash serif; gear outline top right. Avatar breaks out of the card's top-left on an orange rounded square; 8 and 2 in the display serif; Share is a separate light tab under the card joining the Daily progress tab. Daily progress is bright amber with the tree icon and tall thin gauges. Upgrade is translucent olive with the slanted shelf below it, then the molded diagonal slope.
 
 Add Round 7 to the report with honest scores, update PR 20 with fresh captures of every page at 1440, 820 and 375, and do not merge.
+
+---
+
+## Task B · round 4 (same branch, PR 20): last fixes
+
+`git fetch origin && git merge origin/main` (the text gate now also fails text closer than 6px to a shaped card's edge). Inner pages, tablet bar and most of the phone checklist are done. Fix these, then stop:
+
+1. **Clipped text:** "JOURNEYS" and "olive · cedar" run into the profile card's right edge (desktop, tablet, phone Profile); "Share" sits too close to its tab edge on phone. Give the stats real inner padding.
+2. **Progress page (1440):** a notch bite cuts into the "SLEEP DEBT" label; the "FASTING DAYS" label crosses its tab's edge; the card grid stops short of the hero's right edge, leaving an empty column. Align the grid to the hero width and keep every label inside its shape.
+3. **Arc card lower band:** near-black at every size. The reference is a dark warm taupe; use the darkest taupe that still passes contrast (around #4f4738 → #3e382c), not black.
+4. **Phone Today:** the arc does not visibly rise above the card's top edge at 375 (it does at 820); the molded path under the gathering card reads as a thin "smile" line, so make it the soft, wide cream path of the reference; the hanging stars need their thin vertical threads.
+5. **Phone Profile:** the DAILY PROGRESS label sits on the tab's top edge; centre it inside the tab.
+
+Add Round 8 with honest scores, fresh captures of every page at 1440, 820 and 375, update PR 20, do not merge.
