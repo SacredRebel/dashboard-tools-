@@ -1,303 +1,409 @@
-/* Orbit Clay: twin-phone clay console — fictional missions, helmet photo, calibration rail. */
-(function () {
-  const $ = (s, el = document) => el.querySelector(s);
-  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const root = $('[data-db-app]') || document.body;
+/* Orbit Clay — app shell, pages, interactions. Sample data is fictional. */
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const board = $('.oc-board');
+  const main = $('#main');
+  const toastEl = $('[data-toast]');
+  let toastTimer = 0;
+
+  const state = {
+    base: 'alpha',
+    mission: 0,
+    orbits: 6,
+    live: true,
+    alt: 62,
+    marked: false,
+    calibrated: false,
+    score: 0,
+  };
+
+  const MISSION_NAMES = ['Nova pass · Alpha', 'Kepler drift · Beta', 'Perihelion loop', 'Umbra survey', 'Zenith relay'];
+
   function toast(msg) {
-    const t = $('[data-toast]');
-    if (!t) return;
-    t.textContent = msg; t.hidden = false;
-    clearTimeout(toast._id);
-    toast._id = setTimeout(() => { t.hidden = true; }, 2200);
-  }
-  function countUp(el, to, { duration = 700, format = (n) => String(Math.round(n)) } = {}) {
-    if (!el) return;
-    if (reduce) { el.textContent = format(to); return; }
-    const start = performance.now();
-    function frame(now) {
-      const t = Math.min(1, (now - start) / duration);
-      el.textContent = format((1 - Math.pow(1 - t, 3)) * to);
-      if (t < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-  const ICON = {
-    home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
-    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
-    layers: '<path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/>',
-    settings: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9 7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/>',
-  };
-  const svg = (n, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICON[n] || ''}</svg>`;
-  const paintIcons = (root = document) => $$('[data-icon]', root).forEach((el) => { el.innerHTML = svg(el.dataset.icon); });
-  const fmtNum = (v) => v.toLocaleString('en-US');
-  const dayOffset = (n) => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n); };
-  const fmtDate = (d, o = { month: 'short', day: 'numeric' }) => d.toLocaleDateString('en-US', o);
-  const niceStep = (raw) => { const p = 10 ** Math.floor(Math.log10(raw || 1)); const f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; };
-  function scale(vals, o) {
-    let min = o.min ?? Math.min(...vals), max = o.max ?? Math.max(...vals);
-    const step = o.step || niceStep((max - min || 1) / (o.ticks || 4));
-    min = Math.floor(min / step) * step; max = Math.ceil(max / step) * step; if (max === min) max = min + step;
-    const ticks = []; for (let v = min; v <= max + step / 1e6; v += step) ticks.push(+v.toFixed(6));
-    return { min, max, ticks };
-  }
-  // segmented control / tabs: buttons carry data-v, the pressed one gets aria-pressed="true"
-  function seg(group, onChange) {
-    group.addEventListener('click', (e) => {
-      const b = e.target.closest('button[data-v]'); if (!b) return;
-      $$('button[data-v]', group).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      onChange(b.dataset.v, b);
-    });
-  }
-  paintIcons();
-
-  const MISSIONS = [
-    { name: 'Mission Nova', score: 227, signal: 11009 },
-    { name: 'Mission Drift', score: 184, signal: 9820 },
-    { name: 'Mission Halo', score: 301, signal: 12440 },
-    { name: 'Mission Quill', score: 156, signal: 8712 },
-    { name: 'Mission Ember', score: 268, signal: 10555 },
-  ];
-  const MODES = {
-    orbit: { thrust: 3007, label: 'Orbit hold' },
-    drift: { thrust: 2140, label: 'Soft drift' },
-    dock: { thrust: 980, label: 'Dock approach' },
-  };
-
-  let page = 0;
-  let base = 'alpha';
-  let mode = 'orbit';
-  let running = false;
-  let locked = false;
-
-  function fmt(n) {
-    return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toastEl.hidden = true; }, 2200);
   }
 
-  function render() {
-    const m = MISSIONS[page];
-    const alt = +$('[data-alt]').value;
-    const thrustBase = MODES[mode].thrust;
-    const altitude = Math.round(1800 + alt * 28);
-    const thrust = Math.round(thrustBase + alt * 6 + (running ? 220 : 0));
-    const signal = Math.round(m.signal + alt * 8 - (locked ? 0 : 40));
-    const score = m.score + (running ? 12 : 0);
-
-    countUp($('[data-score]'), score, { format: (n) => String(Math.round(n)) });
-    $('[data-kpi-a]').textContent = fmt(altitude);
-    $('[data-kpi-b]').textContent = fmt(signal);
-    $('[data-kpi-c]').textContent = fmt(thrust);
-    $('[data-foot-l]').textContent = String(page);
-    $('[data-foot-r]').textContent = String(Math.round(alt / 20));
-
-    const baseName = base === 'alpha' ? 'Base Alpha' : 'Base Beta';
-    $('[data-mission]').textContent = `${m.name} · ${baseName}`;
-
-    let note = `${MODES[mode].label} · altitude ${fmt(altitude)}`;
-    if (running) note = `Running · ${m.name} · ${fmt(altitude)} m`;
-    if (locked) note = `Locked rail · ${note}`;
-    $('[data-runnote]').textContent = note;
-
-    $('[data-start]').textContent = running ? 'RUNNING' : 'START';
-    $('[data-start]').setAttribute('aria-pressed', String(running));
-    $('[data-lock]').setAttribute('aria-pressed', String(locked));
-    $('[data-lock]').textContent = locked ? 'LOCKED' : 'LOCK';
-    $('[data-alt]').disabled = locked;
+  /* ---------- score count-up ---------- */
+  const scoreEl = $('[data-score]');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targetScore = 87;
+  if (reduced) { scoreEl.textContent = targetScore; state.score = targetScore; }
+  else {
+    const t0 = performance.now();
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / 900);
+      const e = 1 - Math.pow(1 - p, 3);
+      state.score = Math.round(targetScore * e);
+      scoreEl.textContent = state.score;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 
-  seg($('[data-modes]'), (v) => { mode = v; toast(`${MODES[mode].label} · sample`); render(); });
-
-  $('[data-pager]').addEventListener('click', (e) => {
-    const b = e.target.closest('[data-page]');
-    if (!b) return;
-    page = +b.dataset.page;
-    $$('[data-pager] [data-page]').forEach((el) => el.setAttribute('aria-selected', String(el === b)));
-    render();
-    b.focus();
-  });
-
+  /* ---------- overview interactions ---------- */
   $$('[data-base]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      base = btn.dataset.base;
-      $$('[data-base]').forEach((el) => el.setAttribute('aria-pressed', String(el === btn)));
-      render();
+      const same = state.base === btn.dataset.base;
+      state.base = btn.dataset.base;
+      $$('[data-base]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      const name = btn.dataset.base === 'alpha' ? 'Alpha' : 'Beta';
+      $('[data-mname]').textContent = MISSION_NAMES[state.mission] + ' · ' + name;
+      btn.classList.remove('is-ping'); void btn.offsetWidth; btn.classList.add('is-ping');
+      toast(same ? `Base ${name} marker confirmed` : `Marker switched to Base ${name}`);
     });
   });
 
-  $('[data-start]').addEventListener('click', () => {
-    running = !running;
-    toast(running ? 'Run started · sample' : 'Run paused · sample');
-    render();
+  $$('[data-ref="pager-dot"]').forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const i = Number(dot.dataset.page);
+      state.mission = i;
+      $$('[data-ref="pager-dot"]').forEach((d) => d.setAttribute('aria-selected', String(d === dot)));
+      const name = state.base === 'alpha' ? 'Alpha' : 'Beta';
+      $('[data-mname]').textContent = MISSION_NAMES[i] + ' · ' + name;
+      toast(`Mission page ${i + 1}: ${MISSION_NAMES[i]}`);
+    });
   });
 
-  $('[data-lock]').addEventListener('click', () => {
-    locked = !locked;
-    toast(locked ? 'Rail locked · sample' : 'Rail unlocked · sample');
-    render();
+  $('[data-start]').addEventListener('click', (e) => {
+    const btn = e.currentTarget;
+    const on = btn.getAttribute('aria-pressed') !== 'true';
+    btn.setAttribute('aria-pressed', String(on));
+    btn.textContent = on ? 'Abort' : 'Start';
+    $('[data-cal-sub]').textContent = on ? 'Running · telemetry live' : 'Idle · set altitude then start';
+    if (on) toast('Mission started — telemetry is live');
   });
 
-  $('[data-knob]').addEventListener('click', () => {
-    const on = $('[data-knob]').getAttribute('aria-pressed') === 'true';
-    $('[data-knob]').setAttribute('aria-pressed', String(!on));
-    toast(!on ? 'Status armed · sample' : 'Status idle · sample');
+  $('[data-live]').addEventListener('click', (e) => {
+    const btn = e.currentTarget;
+    state.live = btn.getAttribute('aria-pressed') !== 'true';
+    btn.setAttribute('aria-pressed', String(state.live));
+    $('[data-cal-sub]').textContent = state.live ? 'Running · telemetry live' : 'Telemetry paused';
+    toast(state.live ? 'Telemetry resumed' : 'Telemetry paused');
   });
 
-  $('[data-alt]').addEventListener('input', render);
-  $('[data-go-settings]')?.addEventListener('click', () => { location.hash = '#/settings'; });
+  $('[data-orb]').addEventListener('click', () => toast('Crew avatar · Nova-4 (sample)'));
 
-  render();
+  /* calibrate: nudges altitude toward target and updates readouts */
+  $('[data-calibrate]').addEventListener('click', (e) => {
+    const btn = e.currentTarget;
+    state.calibrated = !state.calibrated;
+    btn.classList.toggle('is-done', state.calibrated);
+    btn.textContent = state.calibrated ? 'Calibrated' : 'Calibrate';
+    const sig = Math.round(11204 + (state.calibrated ? 240 : -240));
+    $('[data-kpi-sig]').textContent = sig.toLocaleString('en-US').replace(',', ' ');
+    $('[data-cal-sub]').textContent = state.calibrated ? `Calibrated · altitude ${state.alt}%` : 'Idle · set altitude then start';
+    toast(state.calibrated ? 'Terrain calibrated' : 'Calibration cleared');
+  });
 
-  function staggerReveal() {
-    $$('.oc-reveal').forEach((el, i) => {
-      el.style.setProperty('--reveal-delay', `${reduce ? 0 : 45 * i}ms`);
-      el.classList.add('oc-reveal-in');
+  /* stepper: orbit count -> thrust readout */
+  $$('[data-step]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.orbits = Math.min(12, Math.max(1, state.orbits + Number(btn.dataset.step)));
+      $('[data-orbits]').textContent = state.orbits;
+      const thr = Math.round(3012 + state.orbits * 37);
+      $('[data-kpi-thr]').textContent = thr.toLocaleString('en-US').replace(',', ' ');
+      toast(`Orbit count set to ${state.orbits}`);
+    });
+  });
+
+  /* sphere drag -> altitude readout; tap -> survey mark */
+  const sphere = $('[data-sphere]');
+  const terrain = $('[data-terrain]');
+  let dragging = false, moved = false, suppressClick = false;
+  const paintSphere = () => {
+    const p = state.alt / 100;
+    sphere.style.top = `calc(${(1 - p) * 76}% + 6%)`;
+    sphere.setAttribute('aria-valuetext', `${state.alt} percent`);
+    $('[data-kpi-alt]').textContent = Math.round(1200 + state.alt * 22).toLocaleString('en-US').replace(',', ' ');
+  };
+  const setAlt = (clientY) => {
+    const r = terrain.getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, 1 - (clientY - r.top) / r.height));
+    const next = Math.round(p * 100);
+    if (next !== state.alt) moved = true;
+    state.alt = next;
+    paintSphere();
+    $('[data-cal-sub]').textContent = `Altitude ${state.alt}% · ${state.base === 'alpha' ? 'Alpha' : 'Beta'} grid`;
+  };
+  sphere.addEventListener('pointerdown', (e) => {
+    dragging = true; moved = false;
+    sphere.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+  sphere.addEventListener('pointermove', (e) => { if (dragging) setAlt(e.clientY); });
+  sphere.addEventListener('pointerup', () => {
+    if (dragging && moved) suppressClick = true;
+    dragging = false;
+    if (moved) toast(`Altitude set to ${state.alt}%`);
+  });
+  sphere.addEventListener('pointercancel', () => { dragging = false; });
+  sphere.addEventListener('click', () => {
+    if (suppressClick) { suppressClick = false; return; }
+    state.marked = !state.marked;
+    sphere.classList.toggle('is-marked', state.marked);
+    state.alt = 62;
+    paintSphere();
+    $('[data-cal-sub]').textContent = state.marked ? 'Survey mark set · altitude 62%' : `Altitude ${state.alt}% · ${state.base === 'alpha' ? 'Alpha' : 'Beta'} grid`;
+    toast(state.marked ? 'Survey mark set at 62%' : 'Survey mark cleared');
+  });
+  sphere.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      state.alt = Math.min(100, Math.max(0, state.alt + (e.key === 'ArrowUp' ? 4 : -4)));
+      paintSphere();
+    }
+  });
+  setAlt(terrain.getBoundingClientRect().top + terrain.getBoundingClientRect().height * 0.62);
+
+  /* terrain pointer parallax between layers */
+  const layers = $$('.oc-ridge');
+  let parX = 0, parY = 0, parRaf = 0;
+  if (!reduced) {
+    terrain.addEventListener('pointermove', (e) => {
+      const r = terrain.getBoundingClientRect();
+      parX = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      parY = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      if (!parRaf) parRaf = requestAnimationFrame(() => {
+        parRaf = 0;
+        layers.forEach((el, i) => {
+          const d = (i + 1) * 2.2;
+          el.style.transform = `translate(${(-parX * d).toFixed(2)}px, ${(-parY * d * 0.5).toFixed(2)}px)`;
+        });
+        $('.oc-spire').style.transform = `translateX(${(-parX * 1.2).toFixed(2)}px)`;
+      });
+    });
+    terrain.addEventListener('pointerleave', () => {
+      layers.forEach((el) => { el.style.transform = ''; });
+      $('.oc-spire').style.transform = '';
     });
   }
 
-  const PAGES = [
-    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
-    { id: 'library', name: 'Library', pattern: 'List' },
-    { id: 'activity', name: 'Activity', pattern: 'Report' },
-    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  /* ---------- secondary pages ---------- */
+  const LIB = [
+    { n: 'Helmet survey reel', d: 'Pass 12 · 02:14', art: 'helmet' },
+    { n: 'Dune calibration', d: 'Terrain scan · 01:48', art: 'dunes' },
+    { n: 'Ring telemetry', d: 'Gold loop · live', art: 'ring' },
+    { n: 'Spire ascent', d: 'North face · 00:57', art: 'spire' },
+    { n: 'Sphere rail log', d: 'Drag samples · 04:02', art: 'sphere' },
+    { n: 'Crew patch set', d: 'Alpha + Beta · 00:33', art: 'patch' },
+    { n: 'Beacon sweep', d: 'K-9 array · 03:10', art: 'beacon' },
+    { n: 'Orbit sheets', d: '6 passes · 05:26', art: 'orbit' },
   ];
-  const main = $('[data-main]');
-  const overview = $('[data-page-panel="overview"]');
-  let stub = null;
-  const seenPages = new Set();
 
-  function ensureStub() {
-    if (stub) return stub;
-    stub = document.createElement('div');
-    stub.setAttribute('data-db-stub-host-legacy', '');
-    stub.hidden = true;
-    main.appendChild(stub);
-    return stub;
+  const ACT = [
+    { t: 'Helmet calibration complete', s: 'auto', time: '2 min ago', dark: false },
+    { t: 'Nova-4 docked at <b>Base Alpha</b>', s: 'gold', time: '18 min ago', dark: false },
+    { t: 'Terrain layer 3 re-surveyed', s: 'green', time: '1 hr ago', dark: true },
+    { t: 'Spire beacon ping 44', s: 'gold', time: '2 hr ago', dark: false },
+    { t: 'Sphere rail test · alt 78%', s: 'green', time: '5 hr ago', dark: true },
+    { t: 'Patch set uploaded to library', s: 'green', time: 'Yesterday', dark: false },
+    { t: 'Beacon sweep K-9 finished', s: 'gold', time: 'Yesterday', dark: true },
+    { t: 'Orbit sheets exported', s: 'gold', time: '2 days ago', dark: false },
+    { t: 'Beta marker flagged for review', s: 'green', time: '2 days ago', dark: true },
+    { t: 'Ring telemetry archived', s: 'green', time: '3 days ago', dark: false },
+    { t: 'Dune scan pass 4 uploaded', s: 'gold', time: '3 days ago', dark: true },
+    { t: 'Crew patch set v2 synced', s: 'green', time: '4 days ago', dark: false },
+  ];
+
+  function libArt(kind) {
+    const svg = (inner) => `<svg viewBox="0 0 160 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${inner}</svg>`;
+    switch (kind) {
+      case 'helmet': return svg(`<rect width="160" height="120" fill="#e8eeda"/><circle cx="80" cy="62" r="34" fill="#33503f"/><rect x="58" y="46" width="44" height="26" rx="10" fill="#0c100d"/><circle cx="62" cy="86" r="10" fill="#eef3da"/><circle cx="98" cy="86" r="10" fill="#eef3da"/><rect x="70" y="96" width="20" height="8" rx="3" fill="#33503f"/>`);
+      case 'dunes': return svg(`<rect width="160" height="120" fill="#2a3a2f"/><path d="M0 84 L40 44 L74 78 L110 34 L160 82 L160 120 L0 120Z" fill="#dfe4c2" opacity=".55"/><path d="M0 100 L52 66 L96 96 L134 60 L160 92 L160 120 L0 120Z" fill="#cfd6a8" opacity=".85"/><path d="M0 112 L60 88 L120 110 L160 92 L160 120 L0 120Z" fill="#b9c294"/>`);
+      case 'ring': return svg(`<rect width="160" height="120" fill="#e8eeda"/><circle cx="80" cy="60" r="36" fill="none" stroke="#c9a24a" stroke-width="10"/><circle cx="80" cy="60" r="18" fill="#33503f"/>`);
+      case 'spire': return svg(`<rect width="160" height="120" fill="#2a3a2f"/><path d="M0 96 L50 60 L90 90 L160 52 L160 120 L0 120Z" fill="#dfe4c2" opacity=".6"/><path d="M74 96 L80 30 L86 96Z" fill="#eef3da"/><path d="M0 108 L60 88 L160 104 L160 120 L0 120Z" fill="#b9c294"/>`);
+      case 'sphere': return svg(`<rect width="160" height="120" fill="#2a3a2f"/><line x1="80" y1="10" x2="80" y2="112" stroke="#e8eeda" stroke-width="3" opacity=".7"/><circle cx="80" cy="72" r="18" fill="#c9a24a"/><circle cx="74" cy="66" r="6" fill="#e0c078"/>`);
+      case 'patch': return svg(`<rect width="160" height="120" fill="#e8eeda"/><circle cx="80" cy="60" r="40" fill="#2e4639"/><path d="M80 34 L98 48 L92 70 L68 70 L62 48Z" fill="#c9a24a"/><circle cx="80" cy="56" r="6" fill="#e8eeda"/>`);
+      case 'beacon': return svg(`<rect width="160" height="120" fill="#e8eeda"/><circle cx="80" cy="60" r="26" fill="#2e4639"/><circle cx="80" cy="60" r="10" fill="#c9a24a"/><path d="M80 20v-8M80 108v-8M40 60H32M128 60h-8" stroke="#47604f" stroke-width="4" stroke-linecap="round"/>`);
+      default: return svg(`<rect width="160" height="120" fill="#e8eeda"/><ellipse cx="80" cy="64" rx="52" ry="26" fill="none" stroke="#c9a24a" stroke-width="9"/><ellipse cx="80" cy="64" rx="30" ry="14" fill="#33503f"/>`);
+    }
   }
 
-  function setNav(id) {
-    $$('.oc-nav a').forEach((a) => {
-      const match = (a.getAttribute('href') || '') === `#/${id}`;
-      if (match) a.setAttribute('aria-current', 'page');
-      else a.removeAttribute('aria-current');
+  function renderLibrary() {
+    const el = $('.oc-lib');
+    el.innerHTML = `
+      <div class="oc-page-head">
+        <h2 class="oc-page-title">Library</h2>
+        <p class="oc-page-sub">8 captures · Orbit Clay archive</p>
+      </div>
+      <div class="oc-lib-tools clay-tools" style="display:flex;gap:.8cqw">
+        <label class="oc-chip" style="flex:1;justify-content:flex-start">${'<svg width="14" height="14"><use href="#oc-search"/></svg>'} Search captures<input data-lib-search type="search" placeholder="helmet, dunes…" style="border:0;background:transparent;font:inherit;color:inherit;outline:none;flex:1"></label>
+        <button type="button" class="oc-chip oc-chip-act" data-lib-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="oc-chip oc-chip-act" data-lib-filter="video" aria-pressed="false">Video</button>
+        <button type="button" class="oc-chip oc-chip-act" data-lib-filter="scan" aria-pressed="false">Scans</button>
+      </div>
+      <div class="oc-lib-grid">${LIB.map((it, i) => `
+        <button type="button" class="oc-lib-item oc-clay-card" data-lib-item data-kind="${i % 2 ? 'video' : 'scan'}" data-name="${it.n.toLowerCase()}">
+          <span class="oc-lib-thumb">${libArt(it.art)}<span class="oc-play"><svg><use href="#oc-play"/></svg></span></span>
+          <span class="oc-lib-meta"><span class="oc-lib-name">${it.n}</span><span class="oc-lib-desc">${it.d}</span></span>
+        </button>`).join('')}
+      </div>`;
+    el.querySelectorAll('[data-lib-item]').forEach((b) => {
+      b.addEventListener('click', () => toast(`Opening “${b.querySelector('.oc-lib-name').textContent}” (sample)`));
+    });
+    const chips = el.querySelectorAll('[data-lib-filter]');
+    chips.forEach((c) => c.addEventListener('click', () => {
+      chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+      const f = c.dataset.libFilter;
+      el.querySelectorAll('[data-lib-item]').forEach((b) => {
+        b.hidden = f !== 'all' && b.dataset.kind !== f;
+      });
+      toast(`Library filtered: ${f}`);
+    }));
+    el.querySelector('[data-lib-search]').addEventListener('input', (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      el.querySelectorAll('[data-lib-item]').forEach((b) => {
+        b.hidden = q && !b.dataset.name.includes(q);
+      });
     });
   }
 
-  function pageHtml(page) {
-    if (page.id === 'library') {
-      return `<section class="oc-page" data-db-page="library" aria-labelledby="p-h">
-        <h1 id="p-h">Library</h1>
-        <p class="oc-page-lead">Saved missions and helmet packs. Sample data · fictional.</p>
-        <div class="oc-page-seg" role="group" aria-label="Library state" data-lib-tabs>
-          <button type="button" data-v="ready" aria-pressed="true">Ready</button>
-          <button type="button" data-v="loading" aria-pressed="false">Loading</button>
-          <button type="button" data-v="empty" aria-pressed="false">Empty</button>
-          <button type="button" data-v="error" aria-pressed="false">Error</button>
-        </div>
-        <div data-lib-body></div>
-      </section>`;
-    }
-    if (page.id === 'activity') {
-      return `<section class="oc-page" data-db-page="activity" aria-labelledby="p-h">
-        <h1 id="p-h">Activity</h1>
-        <p class="oc-page-lead">Recent calibration runs.</p>
-        <div class="oc-page-grid">
-          ${MISSIONS.map((m) => `<article class="oc-page-card"><div class="oc-row"><strong>${m.name}</strong><span class="oc-chip num">${m.score}</span></div><p class="oc-meta">Signal ${fmt(m.signal)}</p></article>`).join('')}
-        </div>
-      </section>`;
-    }
-    if (page.id === 'settings') {
-      return `<section class="oc-page" data-db-page="settings" aria-labelledby="p-h">
-        <h1 id="p-h">Settings</h1>
-        <p class="oc-page-lead">Console preferences and haptics stubs.</p>
-        <div class="oc-page-grid">
-          <article class="oc-page-card"><div class="oc-row"><strong>Clay depth</strong><span class="oc-chip">Soft</span></div></article>
-          <article class="oc-page-card"><div class="oc-row"><strong>Rail lock</strong><span class="oc-chip">Manual</span></div></article>
-          <article class="oc-page-card"><div class="oc-row"><strong>Helmet pack</strong><span class="oc-chip">Nova</span></div></article>
-        </div>
-        <button type="button" class="oc-btn" data-save-settings>Save preferences</button>
-      </section>`;
-    }
-    return `<section class="oc-page"><h1>${page.name}</h1></section>`;
+  function renderActivity() {
+    const el = $('.oc-act');
+    el.innerHTML = `
+      <div class="oc-page-head">
+        <h2 class="oc-page-title">Activity</h2>
+        <p class="oc-page-sub">Mission log · last 72 hours</p>
+      </div>
+      <div class="oc-act-tools" style="display:flex;gap:.8cqw">
+        <button type="button" class="oc-chip oc-chip-act" data-act-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="oc-chip oc-chip-act" data-act-filter="gold" aria-pressed="false">Gold</button>
+        <button type="button" class="oc-chip oc-chip-act" data-act-filter="green" aria-pressed="false">Green</button>
+        <button type="button" class="oc-chip oc-chip-act" data-act-export>Export log</button>
+      </div>
+      <div class="oc-clay-card-dark oc-act-feed" style="padding:.8cqw">${ACT.map((a) => `
+        <div class="oc-act-row oc-act-${a.dark ? 'dark' : 'light'}" data-act-kind="${a.s}">
+          <span class="oc-act-dot ${a.s === 'gold' ? 'g' : a.s === 'green' ? 'd' : 'c'}"></span>
+          <div><p class="oc-act-txt">${a.t}</p><p class="oc-act-time">${a.time}</p></div>
+        </div>`).join('')}
+      </div>`;
+    const chips = el.querySelectorAll('[data-act-filter]');
+    chips.forEach((c) => c.addEventListener('click', () => {
+      chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+      const f = c.dataset.actFilter;
+      el.querySelectorAll('[data-act-kind]').forEach((r) => {
+        r.hidden = f !== 'all' && r.dataset.actKind !== f;
+      });
+    }));
+    el.querySelector('[data-act-export]').addEventListener('click', () => toast('Activity log exported (sample .txt)'));
   }
 
-  function wirePage(host, page) {
-    if (page.id === 'library') {
-      const body = host.querySelector('[data-lib-body]');
-      const paint = (state = 'ready') => {
-        if (state === 'loading') {
-          body.innerHTML = `<div class="oc-loading" role="status"><p>Syncing library…</p><div class="oc-skel"></div><div class="oc-skel"></div></div>`;
-          return;
-        }
-        if (state === 'empty') {
-          body.innerHTML = `<div class="oc-empty-block"><p>No saved missions yet.</p></div>`;
-          return;
-        }
-        if (state === 'error') {
-          body.innerHTML = `<div class="oc-error-block"><p>Could not load library.</p><button type="button" class="oc-btn" data-retry>Retry</button></div>`;
-          host.querySelector('[data-retry]')?.addEventListener('click', () => paint('ready'));
-          return;
-        }
-        body.innerHTML = `<div class="oc-page-grid">${MISSIONS.map((m) =>
-          `<article class="oc-page-card"><div class="oc-row"><strong>${m.name}</strong><span class="oc-chip">Pack</span></div><p class="oc-meta">Score ${m.score}</p></article>`
-        ).join('')}</div>`;
-      };
-      paint('ready');
-      seg(host.querySelector('[data-lib-tabs]'), (v) => paint(v));
-    }
-    if (page.id === 'settings') {
-      host.querySelector('[data-save-settings]')?.addEventListener('click', () => toast('Preferences saved · sample'));
-    }
-  }
-
-  if (window.DB?.onVisible) {
-    window.DB.onVisible(root, (visible) => {
-      document.documentElement.dataset.motionPaused = visible ? '' : '1';
+  function renderSettings() {
+    const el = $('.oc-set');
+    el.innerHTML = `
+      <div class="oc-page-head">
+        <h2 class="oc-page-title">Settings</h2>
+        <p class="oc-page-sub">Board preferences · Orbit Clay</p>
+      </div>
+      <div class="oc-set-grid">
+        <section class="oc-clay-card oc-set-card">
+          <h3>Display</h3>
+          <div class="oc-set-row"><span>Terrain parallax</span><input type="checkbox" data-set="parallax" checked aria-label="Terrain parallax"></div>
+          <div class="oc-set-row"><span>Helmet idle spin</span><input type="checkbox" data-set="spin" checked aria-label="Helmet idle spin"></div>
+          <div class="oc-set-row"><span>Board grain</span><input type="checkbox" data-set="grain" checked aria-label="Board grain"></div>
+          <div class="oc-set-row"><span>Reduce motion</span><input type="checkbox" data-set="motion" ${reduced ? 'checked' : ''} aria-label="Reduce motion"></div>
+          <h3 style="margin-top:.6cqw">Crew</h3>
+          <div class="oc-set-row"><span>Call sign</span><input value="Nova-4" data-set-input="callsign" style="border:0;background:rgba(46,70,57,.1);border-radius:.8cqw;padding:.3cqw .7cqw;font:inherit;font-weight:700;color:var(--oc-green-deep);width:38%;outline:none"></div>
+          <div class="oc-set-row"><span>Notify on calibrate</span><input type="checkbox" data-set="notify" checked aria-label="Notify on calibrate"></div>
+          <div class="oc-set-row"><span>Auto-rotate terrain</span><input type="checkbox" data-set="autorot" aria-label="Auto-rotate terrain"></div>
+          <div class="oc-set-row"><span>Sphere rail snap</span><input type="checkbox" data-set="snap" checked aria-label="Sphere rail snap"></div>
+          <div class="oc-set-row"><span>Helmet glow</span><input type="range" min="0" max="100" value="60" data-set-range="glow" aria-label="Helmet glow"></div>
+          <div class="oc-set-row"><span>Terrain detail</span>
+            <select data-set-select="detail" style="border:0;background:rgba(46,70,57,.1);border-radius:.8cqw;padding:.3cqw .7cqw;font:inherit;font-weight:700;color:var(--oc-green-deep);outline:none">
+              <option value="low">Low</option><option value="med" selected>Medium</option><option value="high">High</option>
+            </select>
+          </div>
+          <h3 style="margin-top:.6cqw">Data</h3>
+          <div class="oc-set-row"><span>Refresh telemetry</span><button type="button" class="oc-chip" data-set-refresh>Refresh now</button></div>
+          <div class="oc-set-row"><span>Export calibration</span><button type="button" class="oc-chip" data-set-export>Export .json</button></div>
+          <div class="oc-set-row"><span>Clear activity log</span><button type="button" class="oc-chip" data-set-clear>Clear</button></div>
+        </section>
+        <section class="oc-clay-card-dark oc-set-card oc-set-dark">
+          <h3>Palette</h3>
+          <div class="oc-set-preview" role="group" aria-label="Variant">
+            <button type="button" class="oc-set-swatch" data-theme-set="default" aria-pressed="true" style="background:radial-gradient(circle at 35% 30%,#e0c078,#c9a24a 60%,#937046)" aria-label="Orbit variant"></button>
+            <button type="button" class="oc-set-swatch" data-theme-set="moss" aria-pressed="false" style="background:radial-gradient(circle at 35% 30%,#bcc794,#a8b184 60%,#7e8f5e)" aria-label="Moss variant"></button>
+            <button type="button" class="oc-set-swatch" data-theme-set="dusk" aria-pressed="false" style="background:radial-gradient(circle at 35% 30%,#a8927c,#8f7a68 60%,#6a5747)" aria-label="Dusk variant"></button>
+          </div>
+          <p class="oc-set-note" style="margin:0;font-size:clamp(12px,.85cqw,12px);color:#b9c6a4">Variants recolor board, panels and the helmet from tokens.</p>
+          <h3>Session</h3>
+          <button type="button" class="oc-calibrate" data-set-reset style="position:static;width:100%;height:4cqw">Reset board</button>
+        </section>
+      </div>`;
+    el.querySelectorAll('[data-set]').forEach((inp) => {
+      inp.addEventListener('change', () => {
+        const k = inp.dataset.set;
+        if (k === 'parallax') { terrain.dataset.parallax = inp.checked ? '1' : '0'; toast(inp.checked ? 'Parallax on' : 'Parallax off'); }
+        if (k === 'spin') { window.DBHero?.setSpin?.(inp.checked); toast(inp.checked ? 'Helmet spin on' : 'Helmet spin off'); }
+        if (k === 'grain') { $('.oc-bd-grain').style.display = inp.checked ? '' : 'none'; toast(inp.checked ? 'Grain on' : 'Grain off'); }
+        if (k === 'motion') { document.documentElement.dataset.reducedMotion = inp.checked ? 'true' : 'false'; toast(inp.checked ? 'Motion reduced' : 'Full motion'); }
+        if (k === 'notify') toast(inp.checked ? 'Calibrate alerts on' : 'Calibrate alerts off');
+        if (k === 'autorot') toast(inp.checked ? 'Terrain auto-rotate on' : 'Terrain auto-rotate off');
+        if (k === 'snap') { sphere.dataset.snap = inp.checked ? '1' : '0'; toast(inp.checked ? 'Sphere rail snap on' : 'Sphere rail snap off'); }
+      });
+    });
+    el.querySelector('[data-set-range="glow"]').addEventListener('input', (e) => {
+      toast(`Helmet glow ${e.target.value}%`);
+    });
+    el.querySelector('[data-set-select="detail"]').addEventListener('change', (e) => {
+      toast(`Terrain detail: ${e.target.value}`);
+    });
+    el.querySelector('[data-set-refresh]').addEventListener('click', () => toast('Telemetry refreshed (sample)'));
+    el.querySelector('[data-set-export]').addEventListener('click', () => toast('Calibration exported (sample .json)'));
+    el.querySelector('[data-set-clear]').addEventListener('click', () => toast('Activity log cleared'));
+    el.querySelector('[data-set-input="callsign"]').addEventListener('change', (e) => {
+      toast(`Call sign set to “${e.target.value || 'Nova-4'}”`);
+    });
+    el.querySelectorAll('[data-theme-set]').forEach((b) => {
+      b.addEventListener('click', () => {
+        const t = b.dataset.themeSet;
+        document.documentElement.dataset.variant = t;
+        el.querySelectorAll('[data-theme-set]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        window.DBHero?.recolor?.();
+        toast(`Palette: ${t}`);
+      });
+    });
+    el.querySelector('[data-set-reset]').addEventListener('click', () => {
+      state.orbits = 6; state.alt = 62; state.base = 'alpha'; state.mission = 0; state.calibrated = false;
+      $('[data-orbits]').textContent = '6';
+      $('[data-kpi-thr]').textContent = '3 412';
+      $('[data-kpi-alt]').textContent = '2 484';
+      $('[data-kpi-sig]').textContent = '11 204';
+      $$('[data-base]').forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.base === 'alpha')));
+      $$('[data-ref="pager-dot"]').forEach((d, i) => d.setAttribute('aria-selected', String(i === 0)));
+      $('[data-mname]').textContent = MISSION_NAMES[0] + ' · Alpha';
+      $('[data-start]').setAttribute('aria-pressed', 'false');
+      $('[data-start]').textContent = 'Start';
+      $('[data-cal-sub]').textContent = 'Idle · set altitude then start';
+      const r = terrain.getBoundingClientRect();
+      setAlt(r.top + r.height * 0.62);
+      toast('Board reset');
     });
   }
 
-  if (!window.DB || typeof window.DB.route !== 'function') {
-    console.error('DB.route missing — is ../_shared/frame.js loaded before app.js?');
-  } else {
-    window.DB._legacyRouteDisabled && window.DB.route(PAGES, (id, page) => {
-      const isOverview = id === 'overview';
-      overview.hidden = !isOverview;
-      const host = ensureStub();
-      host.hidden = isOverview;
-      setNav(id);
-      if (!isOverview) {
-        host.innerHTML = pageHtml(page);
-        paintIcons(host);
-        wirePage(host, page);
-      } else if (!seenPages.has('overview')) {
-        seenPages.add('overview');
-        staggerReveal();
-      }
-      seenPages.add(id);
-    });
-  }
+  /* ---------- routing (shared frame router) ---------- */
+  const pages = { overview: $('.oc-over'), library: $('.oc-lib'), activity: $('.oc-act'), settings: $('.oc-set') };
+  let rendered = {};
 
-  
-/* reveal-boot */
-if (typeof staggerReveal === "function") staggerReveal();
-/* === DB multipage polish (dense kit) === */
-(function wirePages() {
-  const PAGES = [{"id":"overview","name":"Overview","pattern":"Dashboard"},{"id":"library","name":"Library","pattern":"List"},{"id":"activity","name":"Activity","pattern":"Report"},{"id":"settings","name":"Settings","pattern":"Settings"}];
-  const root = document.querySelector('[data-db-app]') || document.body;
-  const main = document.querySelector('main[data-main]') || document.querySelector('main') || document.body;
-  let overview = main.querySelector('[data-page-panel="overview"]');
-  if (!overview) {
-    overview = document.createElement('div');
-    overview.setAttribute('data-page-panel', 'overview');
-    [...main.children].forEach((ch) => {
-      if (ch.hasAttribute && (ch.hasAttribute('data-db-stub') || ch.getAttribute('data-db-page-host') != null)) return;
-      overview.appendChild(ch);
-    });
-    main.insertBefore(overview, main.firstChild);
-  }
-  main.querySelectorAll('[data-db-stub]').forEach((el) => el.remove());
-  if (window.DB?.onVisible) window.DB.onVisible(root, (v) => { document.documentElement.dataset.motionPaused = v ? '' : '1'; });
-  if (window.DB?.dense) window.DB.dense.mount({ main, overview, pages: PAGES, brand: "Orbit Clay" });
-})();
-/* === /DB multipage polish === */
-document.documentElement.dataset.ready = 'true';
+  window.DB.route([
+    { id: 'overview', name: 'Overview', pattern: 'Dashboard' },
+    { id: 'library', name: 'Library', pattern: 'Gallery' },
+    { id: 'activity', name: 'Activity', pattern: 'List' },
+    { id: 'settings', name: 'Settings', pattern: 'Settings' },
+  ], (id) => {
+    const page = pages[id] || pages.overview;
+    Object.values(pages).forEach((p) => { p.hidden = p !== page; });
+    if (!rendered[id]) {
+      rendered[id] = true;
+      if (id === 'library') renderLibrary();
+      if (id === 'activity') renderActivity();
+      if (id === 'settings') renderSettings();
+    }
+  });
+
+  document.documentElement.dataset.ready = 'true';
 })();
